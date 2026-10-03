@@ -10,7 +10,14 @@ frontmatter. Put long material in `references/` and executable helpers in
 
 Improving an existing skill is usually the best contribution. Add a package
 when users request an independently meaningful job with its own loading
-description.
+description. Open a [skill request](https://github.com/SylphxAI/skills/issues/new?template=skill_request.yml)
+first if the job is not already requested.
+
+A new skill needs an eval file before merge: `docs/evals/<skill>.md` with at
+least 5 `## Task N` sections, each with a `**Prompt:**` and a `**Rubric:**` of
+3 or more numbered items, plus a with-skill versus bare result in
+[docs/evals.md](docs/evals.md). `tests/test_evals.py` checks the structure. A
+skill that does not beat the bare model is not added.
 
 ## Writing
 

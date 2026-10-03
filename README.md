@@ -6,7 +6,7 @@
 
 Sylphx Agent Skills gives your coding agent a proven method for each recurring
 job: install the whole catalog into Claude Code, Codex, Grok, or DeepSeek
-Harness in one command.
+Harness in one command per host.
 
 ```bash
 # Claude Code
@@ -21,6 +21,27 @@ grok plugin install SylphxAI/skills --trust
 # DeepSeek Harness (DSH)
 dsh plugin --profile web add git+https://github.com/SylphxAI/skills.git
 ```
+
+## Proven to help
+
+We graded 6 skills against the same model without them
+([method, per-task scores and caveats](docs/evals.md)). Five clearly beat the
+bare model; one does not on its own.
+
+| Skill | Items with / bare (of 20) | Tasks passed with / bare (of 5) |
+| --- | --- | --- |
+| execute-hard-cutover | 19 / 10 | 5 / 2 |
+| bound-request-scope | 19 / 13 | 5 / 2 |
+| analyze-critically | 20 / 14 | 5 / 3 |
+| handoff-work | 20 / 15 | 5 / 4 |
+| launch-readiness | 20 / 16 | 5 / 4 |
+
+Caveats: one run per cell, one model, one grader; the rubrics were written from
+each skill's own text, so this shows the skill transfers its method, not that
+it is the best method. `build-product` showed no gain from its `SKILL.md`
+alone, only from its reference file. 56 of 62 skills have no eval yet.
+[Request a skill](https://github.com/SylphxAI/skills/issues/new?template=skill_request.yml)
+or help close that gap (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Why it works
 

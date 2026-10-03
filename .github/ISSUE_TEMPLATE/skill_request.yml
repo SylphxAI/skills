@@ -1,20 +1,40 @@
-name: Skill request
-description: Propose a recurring job or an improvement to an existing skill
+name: Request a skill
+description: Ask for a new skill, or a better one, for a job your agent does badly
 title: "[skill] "
 labels: ["enhancement"]
 body:
   - type: input
     id: job
     attributes:
-      label: Recurring job
-      description: State the result this skill should produce
+      label: Job to be done
+      description: State the recurring job and the result the skill should produce
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Host
+      description: Where you run it (skills install on all four)
+      multiple: true
+      options:
+        - Claude Code
+        - Codex
+        - Grok
+        - DeepSeek Harness (DSH)
     validations:
       required: true
   - type: textarea
     id: trigger
     attributes:
-      label: Example request
+      label: Example prompt
       description: Provide a realistic request that should load this method
+    validations:
+      required: true
+  - type: textarea
+    id: better
+    attributes:
+      label: What "better than bare" looks like
+      description: What does the agent get wrong or skip today without a skill, and what would a good answer state explicitly? This becomes the eval rubric.
     validations:
       required: true
   - type: textarea
