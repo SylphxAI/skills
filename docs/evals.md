@@ -54,6 +54,21 @@ Per-task items passed (with / bare):
 
 build-product tasks 6-10 had a third arm, the shipped `SKILL.md` alone without its `references/event-contracts.md`: 15/20 items, 3 of 5 tasks passed (per task 4, 2, 2, 3, 4 in order). The "with" column above is `SKILL.md` plus that reference.
 
+## Results (2026-10-03, build-product rewrite)
+
+The round 2 finding was that `SKILL.md` alone added nothing and the value sat in `references/event-contracts.md`. `SKILL.md` (0.8.3) now names the triggers (events, webhooks, queues, entitlements, billing state, sync between systems), says to read the reference before designing, and puts the three most-missed rules inline: classify the event kind first, name the crash, duplicate and reorder fixtures, define replay for poison messages. Tasks 6-10 were rerun with the new `SKILL.md` only (reference not pasted; the prompt said it was unavailable) and bare, same prompts, rubric, 300-word cap and grading.
+
+| Arm | Items | Tasks passed | Per task 6, 7, 8, 9, 10 |
+| --- | --- | --- | --- |
+| `SKILL.md` + reference (round 2) | 19/20 | 5/5 | 4, 4, 4, 4, 3 |
+| `SKILL.md` only, before | 15/20 | 3/5 | 4, 2, 2, 3, 4 |
+| `SKILL.md` only, after | 17/20 | 5/5 | 3, 4, 3, 4, 3 |
+| Bare (this run) | 14/20 | 3/5 | 3, 2, 2, 3, 4 |
+
+Misses of the new skill-only arm: task 6 (no compatibility rule for the schema), task 8 (did not say CloudEvents leaves payload, ordering and idempotency to the product schema), task 10 (no authorization of the download link). Every answer classified the event kinds, named the three fixtures and described quarantine with replay and resync. Bare missed the fixtures (task 6), the kind classification and distinct owners (tasks 7, 8), and replay (task 9). All skill-only answers said they could not open the reference and flagged their answer as unchecked against it, so the inline rules carried the gain.
+
+Caveats: one run per cell; the bare arm scored 14 here against 16 in round 2 with the same prompts, so run-to-run noise is about two items and the 17 vs 19 gap to the reference arm is inside it. The inline rules mirror rubric items 6.4, 8.4 and 9.4 by design, so part of the gain is teaching to the rubric.
+
 ## Where the skills helped
 
 - **analyze-critically**: the clearest gain. The bare model gave good competing explanations and next checks, but only once (task 4) wrote rejection conditions before interpreting the evidence, and it never raised base rates or small samples on the Rust rewrite plan. The skill reliably added the up-front kill criteria.
@@ -65,7 +80,7 @@ build-product tasks 6-10 had a third arm, the shipped `SKILL.md` alone without i
 
 ## Where the skills did not help
 
-- **build-product, `SKILL.md` alone**: no gain. The tasks 1-5 result (20 vs 19) and the skill-only arm on tasks 6-10 (15 vs 16 bare) show that the four-line body adds nothing the bare model lacks. Its value is the reference it points to, and an answer only gets that if the agent opens it; one skill-only answer said outright that it had not opened the reference. No file under `skills/` changed in this round: the body is already four lines and there is nothing to cut.
+- **build-product, `SKILL.md` alone (before the rewrite)**: no gain. The tasks 1-5 result (20 vs 19) and the skill-only arm on tasks 6-10 (15 vs 16 bare) showed that the four-line body added nothing the bare model lacks, and one answer said it had not opened the reference. The rewrite above addresses this: skill-only now scores 17/20 against 14/20 bare.
 - **bound-request-scope task 4, launch-readiness tasks 3 and 4**: the prompts already name the trap (a typo with scope creep, a canary, a live outage); both arms scored full.
 - **hard-cutover task 5** (merge two instruction files) and **handoff-work task 5**: bare scored 4/4.
 - **build-product task 10**: bare 4/4 against 3/4 with the reference; the with-skill answer did not address authorization of the download link.
