@@ -69,6 +69,28 @@ Misses of the new skill-only arm: task 6 (no compatibility rule for the schema),
 
 Caveats: one run per cell; the bare arm scored 14 here against 16 in round 2 with the same prompts, so run-to-run noise is about two items and the 17 vs 19 gap to the reference arm is inside it. The inline rules mirror rubric items 6.4, 8.4 and 9.4 by design, so part of the gain is teaching to the rubric.
 
+## Results (2026-10-03, round 3: pruning candidates)
+
+Same method and grader, but the skills were picked as the ones least likely to beat the bare model: generic advice (select-dependency-versions, run-incident-response, write-high-signal-update), a one-paragraph body that overlaps other skills (select-next-work), or a body that mostly points at a reference (notification-strategy; its with arm also read `references/notification-strategy-patterns.md`). The with arm read `SKILL.md` through the Read tool instead of having it pasted in the prompt, and every answer stayed under 300 words.
+
+| Skill | Items with | Items bare | Tasks passed with | Tasks passed bare |
+| --- | --- | --- | --- | --- |
+| select-next-work | 18/20 | 10/20 | 5/5 | 1/5 |
+| select-dependency-versions | 20/20 | 17/20 | 5/5 | 5/5 |
+| run-incident-response | 20/20 | 17/20 | 5/5 | 5/5 |
+| write-high-signal-update | 18/20 | 16/20 | 4/5 | 4/5 |
+| notification-strategy | 15/20 | 9/20 | 3/5 | 1/5 |
+
+Per-task items passed (with / bare):
+
+| Task | select-next-work | select-dependency-versions | run-incident-response | write-high-signal-update | notification-strategy |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 3 / 2 | 4 / 3 | 4 / 3 | 4 / 3 | 4 / 2 |
+| 2 | 4 / 3 | 4 / 3 | 4 / 4 | 4 / 4 | 2 / 2 |
+| 3 | 4 / 1 | 4 / 4 | 4 / 3 | 2 / 3 | 4 / 3 |
+| 4 | 3 / 2 | 4 / 4 | 4 / 3 | 4 / 4 | 4 / 2 |
+| 5 | 4 / 2 | 4 / 3 | 4 / 4 | 4 / 2 | 1 / 0 |
+
 ## Where the skills helped
 
 - **analyze-critically**: the clearest gain. The bare model gave good competing explanations and next checks, but only once (task 4) wrote rejection conditions before interpreting the evidence, and it never raised base rates or small samples on the Rust rewrite plan. The skill reliably added the up-front kill criteria.
@@ -80,10 +102,27 @@ Caveats: one run per cell; the bare arm scored 14 here against 16 in round 2 wit
 
 ## Where the skills did not help
 
+- **select-dependency-versions (20 vs 17) and run-incident-response (20 vs 17)**: the bare model already says to query the registry and not trust memory, and already stabilizes first, separates facts from estimates and gives a next-update time. See "Pruning candidates".
 - **build-product, `SKILL.md` alone (before the rewrite)**: no gain. The tasks 1-5 result (20 vs 19) and the skill-only arm on tasks 6-10 (15 vs 16 bare) showed that the four-line body added nothing the bare model lacks, and one answer said it had not opened the reference. The rewrite above addresses this: skill-only now scores 17/20 against 14/20 bare.
 - **bound-request-scope task 4, launch-readiness tasks 3 and 4**: the prompts already name the trap (a typo with scope creep, a canary, a live outage); both arms scored full.
 - **hard-cutover task 5** (merge two instruction files) and **handoff-work task 5**: bare scored 4/4.
 - **build-product task 10**: bare 4/4 against 3/4 with the reference; the with-skill answer did not address authorization of the download link.
+
+## Pruning candidates
+
+The rule from the vision is that a skill must beat the bare model. A skill shows no gain when its with arm is within 2 items of bare, or when bare matches it. Each proposal below is for the lead to decide; this round changes nothing under `skills/`.
+
+| Skill | Result | Proposal |
+| --- | --- | --- |
+| select-dependency-versions | 20 vs 17, 5/5 vs 5/5 | rewrite |
+| run-incident-response | 20 vs 17, 5/5 vs 5/5 | rewrite |
+| write-high-signal-update | 18 vs 16, 4/5 vs 4/5 | merge into handoff-work |
+
+- **select-dependency-versions: rewrite.** Bare already said to query npm or PyPI and called a remembered version unreliable, so the headline sentence adds nothing. What bare missed was narrower: exact immutable pins instead of a caret range (task 1), no local compatibility layer (task 2), and the lockfile owning transitives (task 3, where bare was close). Inline those three rules as the body and drop "query the registry" as the lead; keep the Dependabot exclusion in the description.
+- **run-incident-response: rewrite.** Bare stabilized first and gave a next-update time on every task. It missed three things: a timeline of observations kept apart from inferences (task 1), keeping sensitive and personal data out of the timeline (task 3), and the timeline as the record when closing (task 4). Inline those three; the rest of the body restates what bare does.
+- **write-high-signal-update: merge into handoff-work.** Both arms led with the outcome and labelled estimates. The one reliable gain was telling a handoff apart from a status update (task 5), and the skill's section template made task 3 worse. Fold "lead with the outcome, say live only if observed, label inference" into `handoff-work` as its status paragraph and delete the template; keep the `preserve-voice` reference only if another skill needs it.
+
+Kept: select-next-work (18 vs 10) and notification-strategy (15 vs 9) beat bare. Re-run notification-strategy task 2 and 5 first if its body is ever edited; both arms failed task 5.
 
 ## Caveats (read before citing these numbers)
 
@@ -94,7 +133,8 @@ Caveats: one run per cell; the bare arm scored 14 here against 16 in round 2 wit
 - The with-skill arm for build-product tasks 6-10 was given `references/event-contracts.md` as well as `SKILL.md`; the other skills got `SKILL.md` only, so their references (database cutover, launch-readiness patterns, release health watch) were not tested.
 - Task 6-10 prompts were written after reading the reference, to probe it; they are harder than tasks 1-5 by design.
 - Answers were capped at 300 words, which favors the dense skills and under-tests build-product's depth.
-- 6 of 62 skills have evals. The other 56 have none.
+- Round 3 was graded by the same agent that wrote the rubrics, with one run per cell. The rubric for select-next-work, write-high-signal-update and notification-strategy includes scope-probe tasks (use of a skill outside its scope); these reward only the with arm because the bare model cannot know the skill boundary.
+- 11 of 62 skills have evals. The other 51 have none.
 
 ## Adding an eval
 
