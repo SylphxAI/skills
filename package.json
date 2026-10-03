@@ -2,7 +2,7 @@
   "packageManager": "bun@1.4.2",
   "engines": { "bun": ">=1.4.0" },
   "name": "sylphx-skills",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "description": "Reusable Agent Skills for product, engineering, operations, design, and research work",
   "type": "module",
   "main": "./lib/dsh/index.js",

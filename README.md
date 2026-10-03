@@ -24,22 +24,27 @@ dsh plugin --profile web add git+https://github.com/SylphxAI/skills.git
 
 ## Proven to help
 
-We graded 6 skills against the same model without them
-([method, per-task scores and caveats](docs/evals.md)). Five clearly beat the
-bare model; one does not on its own.
+We graded 11 skills against the same model without them
+([method, per-task scores and caveats](docs/evals.md)); one of them,
+`write-high-signal-update`, was merged into `handoff-work` afterwards. Nine
+clearly beat the bare model; one does not on its own.
 
 | Skill | Items with / bare (of 20) | Tasks passed with / bare (of 5) |
 | --- | --- | --- |
 | execute-hard-cutover | 19 / 10 | 5 / 2 |
+| select-next-work | 18 / 10 | 5 / 1 |
 | bound-request-scope | 19 / 13 | 5 / 2 |
+| select-dependency-versions | 18 / 12 | 5 / 2 |
 | analyze-critically | 20 / 14 | 5 / 3 |
+| notification-strategy | 15 / 9 | 3 / 1 |
 | handoff-work | 20 / 15 | 5 / 4 |
 | launch-readiness | 20 / 16 | 5 / 4 |
+| run-incident-response | 20 / 16 | 5 / 5 |
 
 Caveats: one run per cell, one model, one grader; the rubrics were written from
 each skill's own text, so this shows the skill transfers its method, not that
 it is the best method. `build-product` showed no gain from its `SKILL.md`
-alone, only from its reference file. 56 of 62 skills have no eval yet.
+alone, only from its reference file. 51 of 61 skills have no eval yet.
 [Request a skill](https://github.com/SylphxAI/skills/issues/new?template=skill_request.yml)
 or help close that gap (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 

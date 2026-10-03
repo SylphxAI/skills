@@ -91,6 +91,27 @@ Per-task items passed (with / bare):
 | 4 | 3 / 2 | 4 / 4 | 4 / 3 | 4 / 4 | 4 / 2 |
 | 5 | 4 / 2 | 4 / 3 | 4 / 4 | 4 / 2 | 1 / 0 |
 
+## Results (2026-10-03, round 3 follow-up: pruning applied)
+
+The lead applied all three round 3 proposals. `select-dependency-versions` and `run-incident-response` were rewritten around the three rules bare missed; `write-high-signal-update` was merged into `handoff-work` and its directory deleted (its tasks are kept in `docs/evals/history/write-high-signal-update.md`, not run by the structure test; its `preserve-voice` and `iso-plain-language` references went with it, since nothing else used them). The two rewrites were rerun on the same five tasks, `SKILL.md` pasted in the prompt, bare rerun in the same sitting, 300-word cap, strict grading (an item passes only if stated explicitly; "check the support policy" needs the support constraint named, a loose range or `>=` fails an exact-pin item, "keep a timeline" does not pass "separate from inferences").
+
+| Skill | Items before / after | Items bare (round 3 / rerun) | Tasks passed before / after | Tasks passed bare (round 3 / rerun) |
+| --- | --- | --- | --- | --- |
+| select-dependency-versions | 20 / 18 | 17 / 12 | 5 / 5 | 5 / 2 |
+| run-incident-response | 20 / 20 | 17 / 16 | 5 / 5 | 5 / 5 |
+
+Per-task items passed (before / after, then bare round 3 / rerun):
+
+| Task | sdv with | sdv bare | rir with | rir bare |
+| --- | --- | --- | --- | --- |
+| 1 | 4 / 3 | 3 / 1 | 4 / 4 | 3 / 3 |
+| 2 | 4 / 4 | 3 / 2 | 4 / 4 | 4 / 4 |
+| 3 | 4 / 4 | 4 / 4 | 4 / 4 | 3 / 3 |
+| 4 | 4 / 4 | 4 / 2 | 4 / 4 | 3 / 3 |
+| 5 | 4 / 3 | 3 / 3 | 4 / 4 | 4 / 3 |
+
+Reading it: the round 3 "before" and bare columns were graded more leniently than this rerun, so before-versus-after is not a like-for-like difference; the rerun gap to bare is the number to trust. The rewrite of `run-incident-response` gains 4 items over bare (20 vs 16), all on the three added rules: the timeline kept apart from inferences (tasks 1, 5), sensitive data kept out of the timeline (task 3) and the timeline as the closing record (task 4). Bare still passes every task, so the gain is margin, not a task flip. `select-dependency-versions` gains 6 items (18 vs 12) and flips two tasks (2 of 5 bare): bare gave `^4.0.0` and `stripe>=X.Y,<X+1` instead of exact pins, and named a major tag with the digest only as an option. The rewrite lost two items against the old text: task 1 no longer says to check the support policy of the chosen version, and task 5 (the Dependabot scope probe) applied pinning rules to the config instead of handing it off. Both are in the description or dropped lines; not fixed in this round. One run per cell.
+
 ## Where the skills helped
 
 - **analyze-critically**: the clearest gain. The bare model gave good competing explanations and next checks, but only once (task 4) wrote rejection conditions before interpreting the evidence, and it never raised base rates or small samples on the Rust rewrite plan. The skill reliably added the up-front kill criteria.
@@ -110,7 +131,7 @@ Per-task items passed (with / bare):
 
 ## Pruning candidates
 
-The rule from the vision is that a skill must beat the bare model. A skill shows no gain when its with arm is within 2 items of bare, or when bare matches it. Each proposal below is for the lead to decide; this round changes nothing under `skills/`.
+Outcome (2026-10-03): applied as proposed; see the follow-up results above. The rule from the vision is that a skill must beat the bare model. A skill shows no gain when its with arm is within 2 items of bare, or when bare matches it. Each proposal below is for the lead to decide; this round changes nothing under `skills/`.
 
 | Skill | Result | Proposal |
 | --- | --- | --- |
@@ -134,7 +155,7 @@ Kept: select-next-work (18 vs 10) and notification-strategy (15 vs 9) beat bare.
 - Task 6-10 prompts were written after reading the reference, to probe it; they are harder than tasks 1-5 by design.
 - Answers were capped at 300 words, which favors the dense skills and under-tests build-product's depth.
 - Round 3 was graded by the same agent that wrote the rubrics, with one run per cell. The rubric for select-next-work, write-high-signal-update and notification-strategy includes scope-probe tasks (use of a skill outside its scope); these reward only the with arm because the bare model cannot know the skill boundary.
-- 11 of 62 skills have evals. The other 51 have none.
+- 10 of 61 skills have evals, plus the merged write-high-signal-update (historical). The other 51 have none.
 
 ## Adding an eval
 

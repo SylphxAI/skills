@@ -1,6 +1,6 @@
 ---
 name: handoff-work
-description: "Safely persist in-progress state and write an actionable resumption brief for another machine, session, or developer. Use when handing off work, switching computers or workspaces, pausing mid-task, saving work-in-progress across environments, or transferring an unfinished objective. Do not use for routine status updates without environment transfer (use write-high-signal-update), fully completed deliverables ready to merge (use drive-to-delivery), or production cutovers (use execute-hard-cutover)."
+description: "Safely persist in-progress state and write an actionable resumption brief for another machine, session, or developer. Use when handing off work, switching computers or workspaces, pausing mid-task, saving work-in-progress across environments, or transferring an unfinished objective. Also use to write a short status, decision, or incident update that leads with the outcome. Do not use for fully completed deliverables ready to merge (use drive-to-delivery), or production cutovers (use execute-hard-cutover)."
 ---
 
 # Handoff Work
@@ -23,4 +23,13 @@ Document any non-committed prerequisite the successor needs to run: updated pack
 
 Open [resumption brief template](references/resumption-brief-template.md) to format the handoff document or message.
 
-Use `write-high-signal-update` for status updates without state transfer. Use `drive-to-delivery` when the deliverable is completed and ready to land.
+Use `drive-to-delivery` when the deliverable is completed and ready to land.
+
+## Status and decision updates
+
+A status update reports where work stands without moving it; a handoff moves the work, so it also needs the persistence steps above. When the request is only a status, decision, or incident update, write it short:
+
+- Lead with the outcome in the first line.
+- Say live, deployed, or fixed only for a layer you observed; otherwise say merged, expected, or unverified.
+- Label an inference or estimate as one; never state it as fact to make the update shorter.
+- Add risks, blockers, and the next step only when the audience needs them.
