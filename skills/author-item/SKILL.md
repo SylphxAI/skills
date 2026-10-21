@@ -1,6 +1,6 @@
 ---
 name: author-item
-description: "Use when writing, filing, or revising a work outcome item or issue ticket before execution begins (Stage 1 ATDD): define the goal, observable positive and negative acceptance test cases, binding constraints, and non-binding references across product, engineering, commercial/partner, marketing/growth, or operational work without prescribing implementation steps, and rank work by Cost of Delay divided by Duration (CD3). Use when creating an item, shaping a feature/task brief into a ticket, or rewriting an over-constrained step-by-step ticket into a WHAT-only outcome. Use self-challenge when designing or comparing system architectures, tech stacks, or commercial terms; use deliver-and-verify to execute an authorized item; use author-skill to create or edit SKILL.md files."
+description: "Use ONLY when writing, filing, structuring, or revising a work outcome item, issue ticket, or backlog entry (Stage 1 ATDD: defining goal, observable positive and negative acceptance test cases, constraints, and references without implementation steps), or when ranking backlog items by Cost of Delay divided by Duration (CD3 / WSJF). Use when turning a vague request or step-by-step task list into a structured WHAT-only work item. Do NOT use when directly executing a task (use deliver-and-verify), designing or evaluating an architecture, tech stack, contract, or budget (use self-challenge), troubleshooting a failure (use unblock), or writing an article/announcement (use clear-writing)."
 ---
 
 # Author an Outcome Item (`author-item`)
