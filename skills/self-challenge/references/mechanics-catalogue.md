@@ -8,11 +8,8 @@ we could find: a catalogue to review, not rules.
 
 ## How to use it
 
-- **Review it once per design.** Read the sections for the jobs your product
-  has, pick what fits, skip what does not, and invent beyond it. Skipping an
-  entry needs no reason.
-- **Record the outcome in the design doc:** entries used, entries skipped,
-  and what you invented. One line each is enough.
+- **Review the relevant sections when designing growth, retention, or monetisation loops.** Pick what fits, skip what does not, and invent beyond it.
+- **Record the chosen mechanics and material alternatives in the design doc** (no skip-bookkeeping ceremony is needed for unrelated features).
 - **State target metrics first** - retention, conversion, revenue per user,
   payback - and judge the design by them after launch, never by which entries
   it contains ([growth.md](growth.md): test what changes a

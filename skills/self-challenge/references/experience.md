@@ -36,13 +36,13 @@ handles its applicable states: focus, hover, active, disabled with a reason,
 pending, success, error, empty, offline, denial, cancellation, and recovery.
 
 Design defaults to few words and one idea per screen: visual first, human
-language, warm imagery and motion, never a dense terminal look. Every
-capability is reachable in plain language on every channel, email and SMS
-included; a slash command is only a shortcut.
+language, warm imagery and motion, never a dense terminal look. Supported
+capabilities are reachable in plain language across the product's supported
+channels; a slash command is only a shortcut.
 
-A cross-platform product shares semantics and ships complete native adapters.
-Touch, keyboard, pointer, controller, switch, and assistive inputs each have a
-usable path; a non-visual product reports through its own supported channel.
+A cross-platform product shares semantics and ships complete native adapters for
+its target platforms, with accessible input paths (touch, keyboard, pointer,
+controller, or assistive technology as applicable to the platform).
 
 Web surfaces aim for [WCAG 2.2 AA](https://www.w3.org/TR/WCAG22/) as a quality
 default, not a launch gate: semantic HTML and native controls first, custom

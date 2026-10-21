@@ -32,9 +32,7 @@ and its [catalogue](mechanics-catalogue.md).
   from the daily budget in the strategy record.
 - Support uses the product's own records for entitlement and billing; how
   support runs is under [Support](#support).
-- Read the [mechanics catalogue](mechanics-catalogue.md) once
-  per design, state target metrics, and record which entries you used, skipped,
-  and invented.
+- When designing acquisition, retention, or monetisation loops, review the relevant sections of the [mechanics catalogue](mechanics-catalogue.md), state target metrics, and record the chosen mechanics and material alternatives considered.
 - Products are run by agents: every title ships event tracking, a metrics
   pipeline and remote A/B config, and an agent loop (data, analysis, change,
   measure) tunes prices and offers within store policy, odds disclosure and

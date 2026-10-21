@@ -20,10 +20,11 @@ Own the authorized outcome from execution through verified completion at the rea
 4. **Upstream-First with Upstream Purity (Boundary Placement)**:
    - If the task hits a bug or missing capability in an **owned upstream** (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream—never hack a downstream bypass.
    - Keep the upstream pure (`Customer Zero`): no downstream product names, backdoors, or privilege bypasses in shared layers, and depend only on published upstream versions.
-5. **Clean-Slate Replacement Over Band-Aid Patching + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke)**:
+5. **End-State Method B on Day 1 + Clean-Slate Replacement + Sibling Sweep (Yokoten) + Guard (Poka-Yoke)**:
+   - **Build Proven End-State (Method B) in the First PR**: Where a proven, scalable design (**Method B**) exists, build it in the first PR rather than landing a weaker transitional **Method A** that creates future data, contract, or caller migration cost.
    - **Optimize Total Cost to Verified Outcome, Not Lines Typed**: Do not default to stacking defensive band-aid patches just to touch fewer lines. When a failure recurs on a boundary or a fix requires workarounds, compare local repair against clean boundary replacement by total cost to a verified outcome (verification, caller migration, failure recovery, and cleanup). When the model is structurally flawed or replacement has lower total cost to a verified outcome, lock the contract with tests, replace the mechanism cleanly in one pass, migrate every caller, and delete the old code, flags, tests, and docs in the same change.
    - **Sibling Sweep (Yokoten)**: When fixing a defect, search the repository and sibling components for the same failure pattern and fix every instance in one pass.
-   - **Rule Broken Once Ships with Its Guard (Poka-Yoke)**: Whenever a standing rule or invariant was broken once, ship the automated check, type constraint, or CI guard that prevents recurrence.
+   - **Standing-Rule Guard (Poka-Yoke)**: A standing rule or invariant broken once ships with the default, type constraint, or check that enforces it (reusing existing mechanisms rather than inventing a new service or bespoke CI gate per incident); a one-off ruling gets no guard.
 
 ---
 
@@ -47,7 +48,7 @@ Before editing code, running an operational command, or publishing an asset:
 ## Stage 3: Execute, Ship, and Verify at the Real Surface ("Done" = Live Readback)
 
 1. **Build & Test**:
-   - Write automated tests (`FAIL_TO_PASS` and `PASS_TO_PASS`, plus property/adversarial tests where appropriate) covering the Stage 1 acceptance cases.
+   - For code/behavior changes and repeatable defects, write or update automated tests (`FAIL_TO_PASS` and `PASS_TO_PASS`, plus property/adversarial tests where appropriate) covering the Stage 1 acceptance cases; for operational, config, or publishing actions (such as renaming a repository or publishing approved copy), reuse existing checks and verify via live `Before Read` / `After Read`.
    - Complete the **Sibling Sweep** and delete all superseded paths.
 2. **Ship Through the Standard Path**:
    - Merge through the repository's normal merge queue on green required checks (never force-push or bypass checks).

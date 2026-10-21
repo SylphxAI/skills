@@ -148,9 +148,9 @@ pass, so rework is one round, not a drip.
 - **A rule broken once ships with its guard**: a standing rule that was broken
   once ships with the check or default that enforces it, merged and installed.
   A one-off ruling gets no guard (the repository's agent instructions).
-- **Every future idea is an item**: a possible future piece
-  of work is filed at once as a low-priority item with the trigger that would
-  start it, never left only in a document or a note. The work system orders it
+- **Authorized deferred work becomes an item**: when an actionable future piece
+  of work is decided and deferred, file it as a low-priority item with the trigger that would
+  start it rather than leaving it only in a note (do not file items for exploratory questions or rejected alternatives). The work system orders it
   like any other item.
 - **One record of work**: the work system is the single
   source of truth for work. No mirror or sync is built just so someone can
@@ -165,12 +165,7 @@ pass, so rework is one round, not a drip.
   and the record ends in one consensus decision naming the single writer
   (the repository's agent instructions,
   [swarm-fuse](../../swarm-fuse/SKILL.md)).
-- **A claim of absence is a check that runs**: a record that something does not
-  exist is read as a finding, so it carries the command that finds it and the
-  count it returned, and a deterministic CI check re-runs registered absence assertions on
-  every change. An absence nobody re-runs is not a record.
-  For a repository outside this one, the owning repository's CI re-runs the
-  same claim, because none of our checkouts covers every other repository.
+- **A claim of absence is a check that runs**: a one-time historical absence check records the exact command and count it returned; when an absence is an ongoing architectural or safety invariant, register a deterministic CI check that re-runs it on every change.
 
 ## How it is judged
 

@@ -32,7 +32,7 @@ Do not answer from generic pretraining alone. Immediately read the specific refe
 
 ## 1. The Five First-Principles Challenge Tests
 
-Evaluate every architecture, plan, product spec, commercial deal, or budget against these five tests:
+Evaluate every architecture, plan, product spec, commercial deal, or budget against the applicable tests below:
 
 1. **Test A — Category-Leader Benchmark (SOTA) & Live Primary Source**:
    - Name the **category leader** (the top product, service, or open standard in that space). When a design depends on an external specification, protocol, law, vendor API, or paper, carry a **dated read of the primary source from the current session**—never rely on training memory.
@@ -43,9 +43,10 @@ Evaluate every architecture, plan, product spec, commercial deal, or budget agai
    - Ask: *"What happens if we delete this part? How do we get the most value from the least resources?"*
    - Keep the external concept and user interface minimal (zero-config, zero-knowledge by default); keep the internal implementation deep (a narrow public interface over substantial, deterministic logic).
    - Reject every self-imposed limit, unrequested throttle, hand-built queue, approval gate, compatibility wrapper, or speculative abstraction that has no witnessed failure behind it.
-3. **Test C — Plan for 10x/100x Scale, Scale-to-Zero, and Single Source of Truth (SSOT)**:
-   - **10x / 100x Design**: State how the data model, partition key, and stateless edge hold at **10x and 100x** current load, and name what breaks first. (Size actual hardware capacity from measured physical utilization such as p95 CPU/memory/I/O, never from uncalibrated bookings.)
-   - **Nothing Runs Always-On**: Every service, worker, and job starts on demand and scales to zero when idle; fix slow cold starts at image pull/startup rather than paying for warm idle floors.
+3. **Test C — Plan for 10x/100x Scale, Build End-State Method B First, Scale-to-Zero, and SSOT**:
+   - **Build End-State Method B on Day 1 (Avoid Future Migration Tax)**: In agent-native engineering, building the proven, scalable end-state design (**Method B**) upfront costs nearly the same as building a temporary shortcut (**Method A**), whereas migrating live data, schemas, IDs, external contracts, or callers from A to B later is orders of magnitude more expensive. For any decision that carries future migration cost (tech stack, data model, identifier format, API schema, auth, or service boundary), **build Method B in the first PR—never settle for Method A now planning to migrate later**.
+   - **10x / 100x Design**: For any system, data model, contract, or boundary that persists or scales (skip only for disposable one-off reports or static prose), state how the data model, partition key, and stateless edge hold at **10x and 100x** current load, and name what breaks first. (Size actual hardware purchases from measured physical utilization such as p95 CPU/memory/I/O, never from uncalibrated bookings.)
+   - **Nothing Runs Always-On (Runtime Services & Jobs)**: Every service, worker, and job starts on demand and scales to zero when idle unless an explicit always-on exception is recorded ([references/architecture.md](references/architecture.md)); fix slow cold starts at image pull/startup rather than paying for warm idle floors.
    - **Single Source of Truth (SSOT)**: Every setting, price, model ID, schema, and rule has exactly one authoritative home; all other surfaces derive from it. Delete duplicate sources immediately.
 4. **Test D — Upstream-First vs Upstream Purity (Boundary Law)**:
    - **Fix Upstream, Not Downstream**: When a problem or capability gap sits in an upstream we own (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream—never hack a bypass in the downstream consumer.

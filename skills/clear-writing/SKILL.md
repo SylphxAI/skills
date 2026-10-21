@@ -28,14 +28,14 @@ Every piece of text fails when it mixes up who is reading, what they need to do,
 
 ---
 
-## Step 2: Universal Anti-Slop Rules (Apply to Every Text)
+## Step 2: Anti-Slop Defaults for Newly Authored Prose
 
-Weaker models default to robotic filler unless given explicit structural rules and concrete counter-examples:
+Weaker models default to robotic filler unless given explicit structural defaults and concrete counter-examples. Apply these rules to newly authored or rewritten prose (while preserving direct quotations, faithful translations of source meaning, approved legal/partner text, and exact code/API identifiers):
 
 1. **Bottom Line Up Front (BLUF) — Result Before Process**:
-   - Lead with what changed, what was decided, or why the reader should care. Never open by narrating your steps (*"First I looked at X, then I considered Y..."*) or repeating the prompt back to the reader.
-2. **Ban AI Clichés and Formulaic Contrast**:
-   - **Never write**: *"It's not just X—it's Y"*, *"不是…而是…"*, *"In today's fast-paced world"*, *"delve into"*, *"testament to"*, *"game-changer"*, *"seamless"*, *"robust"*, *"empower"*, or *"Let's break this down"*.
+   - Lead with what changed, what was decided, or why the reader should care (or the narrative hook / empathetic acknowledgment when the genre calls for storytelling or customer care). Never open by narrating your internal steps (*"First I looked at X, then I considered Y..."*) or repeating the prompt back to the reader.
+2. **Avoid AI Clichés and Formulaic Contrast in Your Own Prose**:
+   - **Do not write**: *"It's not just X—it's Y"*, *"不是…而是…"*, *"In today's fast-paced world"*, *"delve into"*, *"testament to"*, *"game-changer"*, *"seamless"*, *"robust"*, *"empower"*, or *"Let's break this down"*.
    - Replace abstract adjectives (*"ultra-fast, enterprise-grade reliability"*) with verifiable facts and numbers (*"p95 response in 18 ms across 4 regions"*).
 3. **Cut Throat-Clearing Openers and Performative Closers**:
    - **Never open with**: *"Great question!"*, *"Certainly! Here is a rewritten version..."*, *"I'd be happy to help with that."*

@@ -36,9 +36,7 @@ guessing.
   namespaces it uses, and third-party scripts, analytics, and chat do not block
   first input.
 - **Bounds and queries** follow [code.md](code.md#transactions-and-idempotency) and [code.md](code.md#outbound-calls): a timeout on every remote call, queue and pool, and one set-based query for related rows. Retries are bounded, jittered and idempotent. Index what a growing list filters and sorts on, use keyset pagination on growing tables, and skip exact totals on public or hot paths.
-- **Reports, exports, and analytics** run on a read replica with a statement
-  timeout of at most 30 seconds, then on rollups, so they cannot starve the
-  serving pool.
+- **Reports, exports, and analytics** use the platform's read replica (`<= 30 s` statement timeout) or precomputed rollups/async exports rather than starving the primary serving pool (use bounded queries proportional to the workload rather than inventing bespoke replica infrastructure per call).
 - **Workers** wait on a notification with a slow safety poll, not a tight
   database poll ([events first](../../self-challenge/references/architecture.md#real-time-events-first-resync-as-the-safety-net)). A cache speeds things up; correctness survives losing it.
 - **Rollback** has to work with the current schema and comes first in the

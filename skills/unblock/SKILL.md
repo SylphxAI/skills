@@ -56,4 +56,4 @@ Never slap a dirty workaround in a downstream consumer just to bypass an upstrea
 ## 4. Execute Recovery & Prevent Recurrence (Yokoten + Poka-Yoke)
 
 1. Choose in priority order: **(a) Complete supported root fix now** ([`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md)), **(b) Existing supported route**, or **(c) Urgent reversible mitigation** to stop live harm paired with its permanent root-fix item and removal trigger.
-2. **Sibling Sweep (Yokoten) & Mechanical Guard (Poka-Yoke)**: Search sibling files/services for the same failure class, eliminate all instances in one pass, and add an automated check so the same blocker cannot recur.
+2. **Sibling Sweep (Yokoten) & Standing-Rule Guard (Poka-Yoke)**: Search sibling files/services for the same failure class, eliminate all instances in one pass, and when a standing rule was broken, enforce it through existing defaults, types, or checks (one-off rulings get no guard).
