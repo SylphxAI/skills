@@ -144,7 +144,7 @@ def verify_links_and_references(errors: list[str]) -> None:
 def verify_no_private_leaks(errors: list[str]) -> None:
     md_files = sorted(glob.glob(os.path.join(ROOT, "skills", "**", "*.md"), recursive=True))
     forbidden = re.compile(
-        r"(use-the-room|\bKyle\b|\bSylphx\b|\bCubeage\b|\bSpiron\b|\bTachyn\b|\bEpiow\b|\bCalmora\b|\bKeep H\b|\bBig2\b|\bMahjong\b|\bHexa\b|\bBGCA\b|pg-shared-core|SylphxAI/|Ozyrix|OpenClaw|Hetzner|p:\d+|g\d{4}|owner,\s*2026|mark\.sylphx\.com|api\.sylphx\.com|1Password|keelengine\.dev|ADR-862|ADR-01M|owner-pool|scripts/absence-check)",
+        r"(use-the-room|\bKyle\b|\bSylphx\b|\bCubeage\b|\bSpiron\b|\bTachyn\b|\bEpiow\b|\bCalmora\b|\bKeep H\b|\bBig2\b|\bMahjong\b|\bHexa\b|\bBGCA\b|pg-shared-core|SylphxAI/|Ozyrix|OpenClaw|Hetzner|p:\d+|g\d{4}|owner,\s*2026|mark\.sylphx\.com|api\.sylphx\.com|1Password|keelengine\.dev|ADR-862|ADR-01M|owner-pool|scripts/absence-check|118979196997|oaep_kwp_round_trip)",
         re.I,
     )
     for p in md_files:

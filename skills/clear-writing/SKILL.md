@@ -58,9 +58,9 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 
 ### Scenario B: Team / Executive Update or Blocker Report
 - ❌ **Bad (Narrating Process + Burying the Lead)**:
-  > *"I spent some time looking into why the build was failing on the PR. First I checked the workflow YAML and then I inspected the runner logs. It looks like shard 1 ran for 60 seconds on the RSA test and hit the 16 GiB memory limit. We should probably think about what to do next."*
-- ✅ **Good (High-Signal Fact + Root Cause + Next Action)**:
-  > *"Shard 1 timed out at 60.0s on `oaep_kwp_round_trip` (job `118979196997`, read 01:23Z) because debug-mode RSA key generation runs unoptimized while the shard sits at its 16 GiB cgroup ceiling (`memory.events max = 467`). Setting `opt-level = 2` for the crypto crate in `[profile.dev.package]` drops the test to <2s."*
+  > *"I spent some time looking into why the build was failing on the PR. First I checked the workflow YAML and then I inspected the runner logs. It looks like the database test ran for 60 seconds and timed out. We should probably think about what to do next."*
+- ✅ **Good (Synthetic Example — High-Signal Observation + Verified Fix)**:
+  > *"*Illustrative example:* Job `10042` (`read 14:20:08Z`) timed out at `60.008s` in `checkout::tests::concurrent_reservation_lock` (`test 412/412`). **Observation**: `pg_stat_activity` showed 2 connections blocked on `ShareUpdateExclusiveLock` held by an unclosed fixture transaction (`pid 8812`). **Action**: Closed the fixture transaction in `tests/common/db.rs`; local run (`cargo nextest run -E 'test(concurrent_reservation_lock)'`, `read 14:22:15Z`) passed in `0.18s`."*
 
 ### Scenario C: Product Launch / Article Hook
 - ❌ **Bad (Empty Marketing Fluff)**:

@@ -9,8 +9,8 @@ Own the authorized outcome from execution through verified completion at the rea
 
 ## Core Execution Laws (Enforce on Every Delivery)
 
-1. **Finish-First (Aging WIP Priority)**:
-   - Always work backwards from completion: **Live Verification (`Verify`) > Open PR Merge (`Review/Merge`) > Active Implementation (`In-Progress`) > Starting New Work (`New`)**. Never open a new branch or start a new item while your existing merged or in-review work still owes its live verification or merge completion.
+1. **Finish-First Within a Lane (Aging WIP Priority)**:
+   - For work of comparable priority on the same surface, pull from the right side of the board first: **Live Verification (`Verify`) > Open PR Merge (`Review/Merge`) > Active Implementation (`In-Progress`) > Starting New Work (`New`)**. Finish your in-flight verification or merge on that surface before opening a new item there, unless pre-empted by a higher-CD3 blocker or live incident, or while an external step is genuinely waiting asynchronously.
 2. **Single Writer per Target**:
    - Parallel subagents may research, read logs, or audit in read-only mode, or work in disjoint worktrees/targets.
    - Exactly **one named writer** edits a given worktree, pull request, database record, or live configuration at a time.
