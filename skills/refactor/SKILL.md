@@ -20,8 +20,8 @@ When splitting an oversized file/module/test suite, eliminating duplication, del
 3. **Capability Census (Delete Superseded Paths First)**:
    - List the repository's live capabilities (`docs/capabilities.md` or public entry points).
    - Anything retired, superseded by a platform service, or left over from a completed migration is deleted outright—never refactored or kept behind a dead config flag.
-4. **Deterministic Dead-Code & Clone Census**:
-   - Run language-appropriate static analysis tools to produce candidate lists—never guess by eye:
+4. **Deterministic Dead-Code & Clone Census (When Cleaning Dead Weight or Duplication)**:
+   - When eliminating dead code or duplicate implementations, run language-appropriate static analysis tools to produce candidate lists—never guess by eye:
      - **TypeScript / JavaScript**: `knip` (unused files, exports, dependencies) and `jscpd` (copy-paste clones).
      - **Rust**: `cargo +nightly udeps` / `cargo machete`, `cargo clippy --all-targets`, and `jscpd`.
      - **Python / Go / Others**: `vulture` / `deadcode` / `staticcheck`.
@@ -33,4 +33,4 @@ When splitting an oversized file/module/test suite, eliminating duplication, del
    - Organize modules by **domain capability (vertical slice)** rather than technical layer (`controllers/`, `utils/`, `helpers/`, `misc/`).
    - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract or external I/O / clock / network boundary test seam requires them.
 7. **Stage 3 — Verify Behavior Preservation**:
-   - Run the full compiler, linter, typechecker, and test suite, confirming zero behavioral regressions and a cleaner, smaller structure.
+   - Run the required and affected compiler, linter, typechecker, and test targets (broadening to the full workspace suite when shared interfaces or uncertain boundaries are touched), confirming zero behavioral regressions and a cleaner, smaller structure.

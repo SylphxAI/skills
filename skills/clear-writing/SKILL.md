@@ -28,14 +28,14 @@ Every piece of text fails when it mixes up who is reading, what they need to do,
 
 ---
 
-## Step 2: Universal Anti-Slop Rules (Apply to Every Text)
+## Step 2: Anti-Slop Defaults for Newly Authored Prose
 
-Weaker models default to robotic filler unless given explicit structural rules and concrete counter-examples:
+Weaker models default to robotic filler unless given explicit structural defaults and concrete counter-examples. Apply these rules to newly authored or rewritten prose (while preserving direct quotations, faithful translations of source meaning, approved legal/partner text, and exact code/API identifiers):
 
 1. **Bottom Line Up Front (BLUF) — Result Before Process**:
-   - Lead with what changed, what was decided, or why the reader should care. Never open by narrating your steps (*"First I looked at X, then I considered Y..."*) or repeating the prompt back to the reader.
-2. **Ban AI Clichés and Formulaic Contrast**:
-   - **Never write**: *"It's not just X—it's Y"*, *"不是…而是…"*, *"In today's fast-paced world"*, *"delve into"*, *"testament to"*, *"game-changer"*, *"seamless"*, *"robust"*, *"empower"*, or *"Let's break this down"*.
+   - Lead with what changed, what was decided, or why the reader should care (or the narrative hook / empathetic acknowledgment when the genre calls for storytelling or customer care). Never open by narrating your internal steps (*"First I looked at X, then I considered Y..."*) or repeating the prompt back to the reader.
+2. **Avoid AI Clichés and Formulaic Contrast in Your Own Prose**:
+   - **Do not write**: *"It's not just X—it's Y"*, *"不是…而是…"*, *"In today's fast-paced world"*, *"delve into"*, *"testament to"*, *"game-changer"*, *"seamless"*, *"robust"*, *"empower"*, or *"Let's break this down"*.
    - Replace abstract adjectives (*"ultra-fast, enterprise-grade reliability"*) with verifiable facts and numbers (*"p95 response in 18 ms across 4 regions"*).
 3. **Cut Throat-Clearing Openers and Performative Closers**:
    - **Never open with**: *"Great question!"*, *"Certainly! Here is a rewritten version..."*, *"I'd be happy to help with that."*
@@ -72,8 +72,8 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 
 ## Step 4: Self-Check Before Sending
 
-Read your draft once out loud against four checks:
+Read your draft once out loud against four checks (preserving direct quotations, faithful translations, approved legal/partner text, and code/API identifiers):
 1. **Did sentence 1 deliver the value, answer, or hook immediately?** (If sentence 1 can be deleted without losing meaning, delete it.)
-2. **Are there any banned AI clichés, `"not X, but Y"` contrasts, or abstract buzzwords?** (Replace every one with a concrete fact or plain verb.)
+2. **Are there any banned AI clichés, `"not X, but Y"` contrasts, or abstract buzzwords in newly authored prose?** (Replace every one with a concrete fact or plain verb.)
 3. **Did any private internal machinery leak to a non-technical reader?** (Strip internal ticket IDs, dev-machine paths, and private table names from customer-facing copy; keep public symbols, API names, and repository paths in developer docs and code reviews.)
 4. **Does the ending stop cleanly once the point is made?** (Delete trailing summaries and *"feel free to ask"* sign-offs.)

@@ -30,10 +30,10 @@ with no backdoor.
   identity; network position grants nothing.
 - The platform holds no credential inside a tenant
   ([security.md](../../deliver-and-verify/references/security.md#practices)); each product holds its own keys.
-- Platform repositories (cloud, hands, infra) name no product: no product
-  string, ID, namespace, domain, label, allowlist entry, or special case. An
-  app's need becomes a capability every customer can configure through the
-  public API. The shared `product-names` check enforces this.
+- Shared platform and engine repositories name no downstream product: no product
+  string, ID, namespace, domain, label, allowlist entry, or special case. A
+  product's need becomes a capability every customer can configure through the
+  public API, enforced by automated boundary checks.
 - No method-specific kinds, routing, CD3 weights outside the ranker
   library, or share values are compiled into the platform.
 - No hand edit or hand-made platform-managed object for a tenant, even during

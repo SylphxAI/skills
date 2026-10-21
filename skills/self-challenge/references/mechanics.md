@@ -41,12 +41,7 @@ no rule the other standards do not already hold.
 
 ## The menu
 
-Read the [catalogue](mechanics-catalogue.md) once per design.
-Review the sections for the jobs the product has, pick what fits, skip what does
-not, and invent beyond it; skipping an entry needs no reason. Record the entries
-used, the entries skipped, and what you invented, one line each in the design
-doc. State the target metrics first (retention, conversion, revenue per user,
-payback) and judge the design by them.
+When designing an acquisition, activation, retention, progression, or monetisation loop, review the relevant sections of the [catalogue](mechanics-catalogue.md), pick what fits, skip what does not, and invent beyond it. Record the chosen mechanics, any material alternatives considered, and what you invented in the design doc (no skip-bookkeeping ceremony is needed for unrelated UI or internal features). State the target metrics first (retention, conversion, revenue per user, payback) and judge the design by them.
 
 The catalogue carries the evidence column and the `Fits` key; a `practice` entry
 is a hypothesis to test, and a published lift from another company sizes the

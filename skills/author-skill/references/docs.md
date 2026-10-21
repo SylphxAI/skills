@@ -223,19 +223,6 @@ the standard words to use instead:
 | land, landing (a change) | merge and deploy, merge |
 | D-a, D-c, D-d, D-e, B1, the R0-R3 risk codes | state the rule directly: done means independently verified in production; blocking defect; the change category, such as docs or configuration, internal code, money or credential path, real-user or data change |
 
-The shared `plain-language` action in the shared organization `.github` repository reports the
-unambiguous entries (its `terms.tsv`) on changed lines; a repository calls it
-rather than writing its own check. It runs in two modes. Advisory `warn` is
-the default for ordinary documents: annotation on changed lines, because no
-list of coined words is complete, so this rule and review still catch the
-rest. It is enforcing, with `mode: fail`, on `AGENTS.md`, `CLAUDE.md` and
-`.agents/skills/**`: a coined term
-listed in `terms.tsv` on an added line there fails the check, and
-`.github/workflows/plain-language.yml` runs it that way. A line that must keep
-a term carries `plain-language: allow(<reason>; until=YYYY-MM-DD)`. The same
-action's closed `product-names` list fails wherever it is called, as it does in
-platform repositories.
-
 ## Documentation rot
 
 - Evidence, receipts, audits, and progress notes are not committed as
