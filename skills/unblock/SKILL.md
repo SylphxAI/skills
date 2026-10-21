@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when work stops or when a feature/fix reported as done or deployed still fails in reality (for example: 'done but still can't log in', a live 403/500 error, a refused API/CLI call, a missing permission or credential, a red or stuck CI/build/deploy, a runner/sandbox/disk/memory limit, or a stalled external dependency). Checks the runner, environment, and instrument first before blaming the model, places fixes at the owning upstream boundary without downstream hacks or upstream backdoors, and restores progress immediately."
+description: "Use when actively unblocking or restoring a currently stuck, blocked, or failing task, deployment, or CI/build run (for example: 'done but still can't log in', 'diagnose and restore a 403/500 deployment', a refused API/CLI call, a missing permission or credential, a red or stuck CI/merge queue, an out-of-disk or memory runner limit, or a multi-day external review wait). Checks the runner, environment, and instrument first before blaming the model, places fixes at the owning upstream boundary without downstream hacks or upstream backdoors, and restores progress immediately. For pure root-cause attribution of past failures without an active restoration action ('Root cause: why did X fail?'), use prove-it and self-challenge. Do NOT use when a routine build or job is still making normal log progress."
 ---
 
 # Unblock: Immediate Diagnosis, Boundary Placement & Recovery (`unblock`)

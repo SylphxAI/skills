@@ -1,6 +1,6 @@
 ---
 name: clear-writing
-description: "Use when drafting, rewriting, editing, or polishing any text for clarity, tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, UI microcopy, documentation explanations, or concise internal team/executive updates. Aligns Audience × Purpose × Channel, eliminates AI slop and robotic phrasing using concrete Bad-vs-Good examples, and adapts voice across technical work, persuasive copywriting, and user communication. Use support-agent for live customer support case handling."
+description: "Use when drafting, rewriting, editing, translating, or localizing any text for clarity, natural tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, translating/localizing support FAQs or UI copy into natural target-locale phrasing (such as Traditional Chinese or written Cantonese) without stiff machine-translationese, or concise internal team/executive updates. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Use support-agent for live customer support ticket handling."
 ---
 
 # Clear Writing & Communication (`clear-writing`)
@@ -22,7 +22,7 @@ Every piece of text fails when it mixes up who is reading, what they need to do,
 
 | Dimension | Question to Answer | How It Shapes the Text |
 | :--- | :--- | :--- |
-| **1. Audience (Who?)** | Who is reading this, what do they already know, and what do they care about? | Match their vocabulary and language/script (e.g., natural written Cantonese for HK internal/player chat, crisp English for technical docs). Strip private/internal machinery irrelevant to the reader (such as internal ticket IDs or dev-machine paths in customer copy), while retaining exact public symbols, file paths, and technical terms when writing for developers, SDK docs, or PR reviews. |
+| **1. Audience (Who?)** | Who is reading this, what do they already know, and what do they care about? | Match their vocabulary and language/script (e.g., natural written Cantonese for HK internal/player chat, idiomatic Traditional Chinese for localized HK/TW support FAQs without stiff machine-translationese, crisp English for technical docs). Strip private/internal machinery irrelevant to the reader (such as internal ticket IDs or dev-machine paths in customer copy), while retaining exact public symbols, file paths, and technical terms when writing for developers, SDK docs, or PR reviews. |
 | **2. Purpose (Why?)** | What single conclusion, decision, or action should the reader take in the first 5 seconds? | Put the answer, outcome, or hook in sentence 1. If the text is informational, lead with the result; if persuasive, lead with the reader's problem and concrete benefit; if a decision request, lead with the recommended choice. |
 | **3. Channel (Where?)** | Is this a chat reply, a PR review, a landing page, a long-form article, or an incident notice? | Chat replies use natural prose (not heading/bullet walls). Reference docs use scannable tables. Articles use narrative momentum, varied sentence length, and concrete examples. |
 
