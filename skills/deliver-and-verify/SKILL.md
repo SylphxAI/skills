@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when executing and shipping an authorized change end-to-end: implementing a feature or bug fix, performing an operational, repository, or infrastructure action (such as renaming a repository, updating DNS/config/secrets, or running a migration/cutover), launching an approved marketing campaign, or closing a commercial agreement through live verification. Enforces Finish-First (verify and merge in-flight work before starting new work), Single Writer per target, Launch Burn-down (Scope Hammering), Complete Replacement (migrate callers and delete old path), Sibling Sweep (Yokoten), and live readback after every write. Do NOT use when only designing/reviewing a plan or architecture without executing (use self-challenge), only reviewing a PR (use prove-it), or only drafting/rewriting prose (use clear-writing)."
+description: "Use when executing and shipping an authorized change end-to-end: implementing a feature or bug fix, performing an operational, repository, or infrastructure action (such as renaming a repository, updating DNS/config/secrets, or running a migration/cutover), launching an approved marketing campaign, or closing a commercial agreement through live verification. Enforces Finish-First within the same lane/priority (verify and merge in-flight work on that surface before starting new work there), Single Writer per target, Launch Burn-down (Scope Hammering), Complete Replacement (migrate callers and delete old path), Sibling Sweep (Yokoten), and live readback after every write. Do NOT use when only designing/reviewing a plan or architecture without executing (use self-challenge), only reviewing a PR (use prove-it), or only drafting/rewriting prose (use clear-writing)."
 ---
 
 # Deliver and Verify (`deliver-and-verify`)
@@ -52,7 +52,7 @@ Before editing code, running an operational command, or publishing an asset:
 2. **Ship Through the Standard Path**:
    - Merge through the repository's normal merge queue on green required checks (never force-push or bypass checks).
    - **Tier 3 changes** (live real-user product or real-user data store deletion/migration) require an independent review pass ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) before merge; all other tiers merge on green automated checks.
-   - For GitOps-managed infrastructure, pause/wait out any in-flight sync before an emergency mitigation, and merge the matching change through Git.
+   - For GitOps-managed infrastructure, coordinate competing reconciliation on the affected resource so an auto-sync does not overwrite an urgent mitigation, and merge the matching change through Git.
 3. **Verify at the Real Surface (`After Read`)**:
    - Opening or merging a PR is a checkpoint, never completion.
    - Read back the authoritative live surface ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) with `date -u`:

@@ -18,8 +18,8 @@ Read the exact error code, exit status, or refusal from the live source ([`../pr
     1. Which git SHA is actually serving on `/health` or the active revision right now?
     2. Did the database migration, config sync, or cache invalidation run on the production store?
     3. Reproduce against the exact live endpoint and read the server-side error log for that request ID.
-- **Is a queued CI/workflow run held by a stale concurrency group?**
-  - Inspect the run's jobs and `started_at`: if a newer run sits pending with zero jobs while an older run holds `concurrency: group`, force-cancel the stale run.
+- **Is a queued CI/workflow run held by a genuinely stale or superseded concurrency-group holder?**
+  - Inspect the older holder run's jobs, `started_at`, and last log activity, plus the workflow's `concurrency` semantics: if the older run is genuinely hung or superseded by a newer push on the same branch, cancel the stale holder so the newer run can start. Never cancel a healthy, actively progressing merge-queue or deployment run.
 
 ---
 

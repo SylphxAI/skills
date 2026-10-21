@@ -22,10 +22,10 @@ Every discussion has a different scope and a different set of participants. The 
 
 1. **Lock the Question, Boundary, and Acceptance Criteria**:
    - State the exact question to settle, what is out of scope, and the observable positive/negative acceptance criteria ([`../author-item/SKILL.md`](../author-item/SKILL.md)).
-2. **Assign Orthogonal Angles Dynamically by Topic × Participant Context**:
-   - Never assign everyone the same prompt. Allocate distinct angles based on **what the current problem touches** and **what context/tools each present participant holds**:
+2. **Assign Angles Dynamically by Topic × Participant Context**:
+   - Allocate angles based on **what the current problem touches** and **what context/tools each present participant holds** (or, for a broad point-by-point review, have every participant independently evaluate every point before reading others' conclusions):
      - *Cross-functional roster (Product, Engineering, Commercial/Ops)*: Assign each participant their domain boundary (e.g., user experience & parity, system architecture & 10x scale, unit economics & risk score, live production telemetry).
-     - *Homogeneous roster (multiple engineering or generalist agents)*: Split by epistemic role—**(a) Propose the simplest complete mechanism**, **(b) Red-Team / Disconfirming Check** (actively hunt for the input, race condition, or edge case that breaks the proposal), and **(c) Live Primary-Source & Code Audit** (read the actual code, database, and external specs).
+     - *Homogeneous roster (multiple engineering or generalist agents)*: Split by epistemic role—**(a) Propose the simplest complete mechanism**, **(b) Red-Team / Disconfirming Check** (actively hunt for the input, race condition, or edge case that breaks the proposal), and **(c) Live Primary-Source & Code Audit** (read the actual code, database, and external specs)—or run independent full-pass reviews before cross-comparison.
 3. **Read Live Objects & External Primary Sources in Parallel**:
    - Every participant reads the live objects directly (logs, database via read-only role, PR diff, or external RFC/vendor spec) with a `date -u` timestamp ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)).
 

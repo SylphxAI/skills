@@ -31,8 +31,8 @@ Also see [../../self-challenge/references/agent-voice.md](../../self-challenge/r
 - ✅ **Good**:
   > *"Sync all `skills/<name>/references/*.md` files alongside `SKILL.md` when registering an `org_skills_repo` source (`POST /api/capabilities/sources`), and resolve cross-skill relative links (`../<sibling>/references/*.md`) at the pinned commit SHA."*
 
-### Answering a Direct Question
+### Answering a Direct Question (Synthetic Example)
 - ❌ **Bad**:
-  > *"I checked the database and ran several queries to see how many rows were affected. After analyzing the results, it appears that there are currently 2 rows with the -90% discount rate."*
+  > *"I checked the database and ran several queries to see how many rows were affected. After analyzing the results, it appears that there are currently 2 rows with the promotional tier enabled."*
 - ✅ **Good**:
-  > *"Two rows carry the `-90%` effective rate (`deepseek-v4.1-flash-1017` and `qwen-3.5-plus`, read from `ai_model_pricing` via `desk_ro` at 01:05Z), and both held their rates across two sync passes after `cloud#14868` deployed."*
+  > *"*Illustrative example:* Two plan rows currently have `promo_active = true` (`plan_starter_annual` and `plan_pro_annual`, read from `billing_plans` via read-only role at `14:05:12Z`), and both match the published pricing config from `PR #412`."*

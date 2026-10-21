@@ -22,7 +22,7 @@ Every piece of text fails when it mixes up who is reading, what they need to do,
 
 | Dimension | Question to Answer | How It Shapes the Text |
 | :--- | :--- | :--- |
-| **1. Audience (Who?)** | Who is reading this, what do they already know, and what do they care about? | Match their vocabulary and language/script (e.g., natural written Cantonese for HK internal/player chat, crisp English for technical docs). Never expose internal IDs, file paths, or org jargon to external readers. |
+| **1. Audience (Who?)** | Who is reading this, what do they already know, and what do they care about? | Match their vocabulary and language/script (e.g., natural written Cantonese for HK internal/player chat, crisp English for technical docs). Strip private/internal machinery irrelevant to the reader (such as internal ticket IDs or dev-machine paths in customer copy), while retaining exact public symbols, file paths, and technical terms when writing for developers, SDK docs, or PR reviews. |
 | **2. Purpose (Why?)** | What single conclusion, decision, or action should the reader take in the first 5 seconds? | Put the answer, outcome, or hook in sentence 1. If the text is informational, lead with the result; if persuasive, lead with the reader's problem and concrete benefit; if a decision request, lead with the recommended choice. |
 | **3. Channel (Where?)** | Is this a chat reply, a PR review, a landing page, a long-form article, or an incident notice? | Chat replies use natural prose (not heading/bullet walls). Reference docs use scannable tables. Articles use narrative momentum, varied sentence length, and concrete examples. |
 
@@ -53,8 +53,8 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 ### Scenario A: Rewriting a Technical / Internal Explanation for Customers
 - ❌ **Bad (Jargon-heavy + AI Slop)**:
   > *"We have implemented a robust, next-generation idempotency-key deduplication layer in our payment webhook processor! It's not just a bug fix—it's a seamless upgrade that ensures your checkout pipeline never experiences race-condition double-charges during upstream gateway retries."*
-- ✅ **Good (Customer-Facing, Clear Outcome, Zero Internal Jargon)**:
-  > *"If your connection drops while you're paying, clicking 'Pay' a second time will never charge your card twice. Your receipt page also shows the status of your payment right away."*
+- ✅ **Good (Synthetic Example — Customer-Facing, Clear Outcome, Zero Private Jargon)**:
+  > *"*Illustrative example:* If your connection drops while you're paying, clicking 'Pay' a second time will not submit a duplicate order, and your receipt page shows the current payment status right away."*
 
 ### Scenario B: Team / Executive Update or Blocker Report
 - ❌ **Bad (Narrating Process + Burying the Lead)**:
@@ -65,8 +65,8 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 ### Scenario C: Product Launch / Article Hook
 - ❌ **Bad (Empty Marketing Fluff)**:
   > *"In today's rapidly evolving AI landscape, developers are constantly struggling with complex deployment pipelines. Introducing our revolutionary platform—designed from the ground up to empower teams to build, scale, and innovate effortlessly."*
-- ✅ **Good (Concrete Hook + Specific Proof)**:
-  > *"Most teams spend three days wiring up auth, billing, and Kubernetes manifests before writing a single line of product code. Push your repository and get a live HTTPS endpoint, passkey sign-in, and usage billing in 90 seconds—with zero config files."*
+- ✅ **Good (Synthetic Example — Concrete Hook + Specific Proof)**:
+  > *"*Illustrative example:* Most teams spend days wiring up auth, billing, and deployment manifests before writing a line of product code. With `acme-cli`, `acme deploy` provisions an HTTPS endpoint and passkey sign-in from a single command—using the exact numbers verified for your product."*
 
 ---
 
@@ -75,5 +75,5 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 Read your draft once out loud against four checks:
 1. **Did sentence 1 deliver the value, answer, or hook immediately?** (If sentence 1 can be deleted without losing meaning, delete it.)
 2. **Are there any banned AI clichés, `"not X, but Y"` contrasts, or abstract buzzwords?** (Replace every one with a concrete fact or plain verb.)
-3. **Did any internal machinery leak to an external reader?** (Strip internal work IDs, file paths, database table names, and architecture jargon.)
+3. **Did any private internal machinery leak to a non-technical reader?** (Strip internal ticket IDs, dev-machine paths, and private table names from customer-facing copy; keep public symbols, API names, and repository paths in developer docs and code reviews.)
 4. **Does the ending stop cleanly once the point is made?** (Delete trailing summaries and *"feel free to ask"* sign-offs.)

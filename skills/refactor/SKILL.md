@@ -25,12 +25,12 @@ When splitting an oversized file/module/test suite, eliminating duplication, del
      - **TypeScript / JavaScript**: `knip` (unused files, exports, dependencies) and `jscpd` (copy-paste clones).
      - **Rust**: `cargo +nightly udeps` / `cargo machete`, `cargo clippy --all-targets`, and `jscpd`.
      - **Python / Go / Others**: `vulture` / `deadcode` / `staticcheck`.
-   - Verify that an "unused" symbol or dependency is not a public SDK export, codegen entry point, or feature-gated target, then delete every verified dead symbol, file, and dependency in the same change.
+   - Verify that an "unused" symbol or dependency is not a public SDK export, codegen/macro entry point, framework/dynamic-reflection/serialization hook, or feature-gated target, then delete every verified dead symbol, file, and dependency in the same change.
 5. **Eliminate Accidental Duplication (Single Source of Truth)**:
    - Consolidate clones (`jscpd`) when they represent the **same domain rule, parser, or contract** so every rule has a Single Source of Truth (SSOT) and one change updates one place.
    - Keep separate code that merely looks textually similar across independent domain concepts when coupling them would create a false abstraction.
 6. **Vertical Slices with a Pure Core**:
    - Organize modules by **domain capability (vertical slice)** rather than technical layer (`controllers/`, `utils/`, `helpers/`, `misc/`).
-   - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract requires them.
+   - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract or external I/O / clock / network boundary test seam requires them.
 7. **Stage 3 — Verify Behavior Preservation**:
    - Run the full compiler, linter, typechecker, and test suite, confirming zero behavioral regressions and a cleaner, smaller structure.
