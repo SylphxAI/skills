@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when asked to review a pull request (PR), code diff, design proposal, or commercial/partner contract for concrete defects and unverified claims, or before announcing/reporting to a team or room that a live fix, deployment, build, or business metric is serving, merged, fixed, or blocked. Also use when two live readings disagree or when verifying that a resource or bug is absent in a repository or environment. NEVER use for static general-knowledge questions (such as standard port numbers, language syntax, or textbook facts), simple math, or routine acknowledgements."
+description: "Use when investigating, explaining, or verifying a root-cause claim for past failures (such as 'Root cause: why did X fail?' or 'explain to our engineer why login failed') from a single concrete failing job, request, or pod rather than an aggregate; when asked to review a pull request (PR), code diff, design proposal, or commercial/partner contract for concrete defects and unverified claims; or before announcing/reporting that a live fix, deployment, build, or business metric is serving, merged, fixed, or blocked. Also use when two live readings disagree or when verifying that a resource or bug is absent. NEVER use for static general-knowledge questions (such as standard port numbers, language syntax, or textbook facts), simple math, or routine acknowledgements."
 ---
 
 # Prove It: Primary-Source Evidence & Convergent Review (`prove-it`)
