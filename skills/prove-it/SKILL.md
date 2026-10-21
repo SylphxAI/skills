@@ -1,39 +1,49 @@
 ---
 name: prove-it
-description: "Turn any claim into primary-source evidence before stating it, and run convergent one-pass reviews against Stage 1 acceptance criteria. Use when verifying or before reporting any number, root cause, capacity/usage figure, commercial metric, or status (fixed, merged, live, blocked, absent), whenever two readings disagree, and when performing an independent review of a code, design, or operational change. Use self-challenge to evaluate direction and simplicity; use deliver-and-verify to carry work to completion."
+description: "Use when asked to review a pull request (PR), code diff, design proposal, or commercial/partner contract for concrete defects and unverified claims, or before announcing/reporting to a team or room that a live fix, deployment, build, or business metric is serving, merged, fixed, or blocked. Also use when two live readings disagree or when verifying that a resource or bug is absent in a repository or environment. NEVER use for static general-knowledge questions (such as standard port numbers, language syntax, or textbook facts), simple math, or routine acknowledgements."
 ---
 
-# Prove it: primary-source evidence and convergent review
+# Prove It: Primary-Source Evidence & Convergent Review (`prove-it`)
 
-A claim is only as good as the primary read behind it. Most errors come from mistaking a proxy (a cached status, a summary, an assumption, or a peer's unchecked report) for the object itself.
+A claim about a live system, codebase, PR, or business record is only as good as the primary read behind it. Most errors come from mistaking a proxy (a cached status badge, a summary, an undeployed branch, or a peer's unchecked report) for the authoritative object itself.
 
-## Core evidence rules (all domains)
+*(Do not load this skill for static general knowledge, standard protocol defaults, simple arithmetic, or casual acknowledgements that require no live system or repository verification.)*
 
-- **Run the disconfirming check first:** Before stating a hypothesis as a fact or root cause, run the check most likely to overturn it. If no available check can test it yet, label it explicitly as an **unverified hypothesis**.
-- **Read the authoritative object itself:** Read the live service, the actual database row, the deployed revision, the signed commercial text, or the primary specification—never an undeployed branch, a local note, or a cached badge.
-- **Read back after every write:** A command exiting `0` or an API returning `200` does not prove the state changed. Read the authoritative object back after the write before reporting success.
-- **Name the population and the instrument:** Every number must state its exact query, time window, filter, and whether it is a full census or a sample. Never extrapolate a sample into a universal count, and never confuse bookings/requests with physical usage.
-- **Verify the instrument on absence claims:** Empty output, a zero count, or a silent grep can mean a broken query. Before claiming something is absent, run the same query against a target known to exist. With `git grep`, always place paths after `--` and check the exit code (`1` = no match; `>1` = broken command).
-- **Mind the cache and the clock:** Read past caches when verifying a fresh change. Take every timestamp from `date -u` in the same command as the read—never from memory.
-- **Reconcile conflicting readings:** When two numbers or observations disagree, reconcile their scope, metric definition, and timestamp before acting. Never cherry-pick the convenient reading.
-- **Peers and workers are proxies too:** Never state another agent's SHA, push, test result, or commercial figure as your own fact without reading the object yourself; if relaying unchecked, label it explicitly as unverified.
+## 1. Core Evidence Rules (Before Reporting Status, Numbers, or Causes)
 
-## Independent review (Stage 2 Plan Review & Stage 3 Tier-3 Review)
+- **Read the authoritative live object itself:**
+  - Before telling a team, room, or user that something is *"serving"*, *"deployed"*, *"merged"*, *"fixed"*, or *"blocked"*, read the live endpoint (`/health`, serving pod revision, database row, GitHub PR state, or signed contract text) directly in the current turn.
+  - State the fact alongside the **exact live object identifier** and a **`date -u` UTC timestamp** taken in the same command.
+- **Run the disconfirming check first:**
+  - Before stating a hypothesis as a root cause, run the check most likely to disprove it. If that check cannot run yet, label the statement explicitly as an **unverified hypothesis**.
+- **Read back after every write:**
+  - A command exiting `0` or an HTTP `200` does not prove state changed. Read the authoritative object back after the write before claiming completion.
+- **Name the population, pagination, and instrument:**
+  - Every count or metric must state its exact query, time window, and whether it is a full census or a sample. Always paginate list endpoints (`--paginate` / `total_count`) so a single page of 30 rows is never mistaken for the whole fleet or queue.
+  - Never confuse bookings/reservations with actual physical usage (such as 7-day p95 CPU or memory), and never compare stocks (current queue depth) when reasoning about rates (arrivals vs completions over the same time window).
+- **Verify the instrument on absence claims:**
+  - Empty output, `0` rows, or a silent `grep` can mean a broken query or wrong scope. Before claiming something is absent, run a positive control against a target known to exist. With `git grep`, place paths after `--` and check the exit code (`1` = no match; `>1` = broken command).
+- **Peers and workers are proxies too:**
+  - Never state another agent's commit SHA, push, test result, or commercial figure as your own verified fact without reading the object yourself; if relaying unchecked, mark it **unverified**.
 
-When asked to review a code change, architecture proposal, commercial agreement, or operational plan:
+---
 
-1. **Review against Stage 1 Acceptance Test Cases in one pass:**
-   - Compare the actual diff or proposal at its exact head/version against the Stage 1 positive and negative acceptance criteria, caller boundaries, state transitions, and authority/security checks.
-   - A passing test proves only what its assertion covers; check whether adversarial or boundary inputs are actually exercised.
-   - If nothing violates the acceptance criteria or introduces a defect, **"No issues found"** is a complete, valid review verdict. Never invent nits to justify the review turn.
-2. **Every finding is a proven claim:**
-   - State the exact revision/file/line (or clause), the triggering input or state, the concrete failure consequence, and the severity.
-   - Distinguish a defect introduced by this change from a pre-existing issue or an optional style suggestion. Nits never block delivery.
-3. **Converge without moving goalposts:**
-   - The first review pass lists all established defects.
-   - Subsequent passes verify only whether those points were resolved and whether the new diff introduced a regression in live user data, money, security, or required checks.
-   - The outcome's single writer decides whether to adopt non-blocking suggestions. If fixes keep cycling, step back and run [self-challenge](../self-challenge/SKILL.md) on the design rather than adding review rounds.
+## 2. Convergent One-Pass Review (Pull Requests, Proposals & Contracts)
 
-## Output
+When asked to review a pull request (PR), code change, architecture proposal, or commercial/partner contract:
 
-State the fact alongside its exact live object and `date -u` timestamp. Mark anything not directly read as **unverified**. When a stated claim is overturned, post one concise correction line: what was wrong, the verified fact with its source and read time, and who caught it.
+1. **Judge Against Acceptance Criteria & Invariants in One Pass**:
+   - Read the actual diff or document at its exact head SHA or version.
+   - Check positive and negative acceptance cases, live-user data continuity, authority/security boundaries, upstream purity (no downstream backdoors or hardcoded product names in shared layers), and whether tests actually exercise adversarial and boundary inputs.
+   - If the change improves the system and introduces no defect, **"No issues found — approved"** is a complete, valid review verdict. Never invent style nits to justify a review turn.
+2. **Every Finding Is a Proven Defect**:
+   - For each defect, cite the exact `file:line` (or contract clause), the triggering input or state, the concrete failure consequence, and whether it is blocking. Style nits never block merge.
+3. **Converge Without Moving Goalposts**:
+   - **Pass 1** lists every defect found across the entire diff.
+   - **Pass 2+** checks only whether those listed defects were resolved and whether the new diff introduced a regression in live user data, money, security, or required CI checks. Never drip-feed new non-regression demands on later rounds.
+
+---
+
+## 3. Corrections
+
+When a stated claim is overturned by new evidence, post **one concise correction line** immediately—naming what was wrong, the verified fact with its source and `date -u` read time, and who caught it—without apology filler.

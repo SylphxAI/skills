@@ -59,8 +59,8 @@ def verify_manifests(errors: list[str]) -> None:
 
 def verify_skills_frontmatter(errors: list[str]) -> set[str]:
     skill_files = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
-    if len(skill_files) != 9:
-        fail(f"Expected 9 skills, found {len(skill_files)}", errors)
+    if len(skill_files) != 10:
+        fail(f"Expected 10 skills, found {len(skill_files)}", errors)
 
     for p in skill_files:
         rel = os.path.relpath(p, ROOT)
@@ -144,7 +144,7 @@ def verify_links_and_references(errors: list[str]) -> None:
 def verify_no_private_leaks(errors: list[str]) -> None:
     md_files = sorted(glob.glob(os.path.join(ROOT, "skills", "**", "*.md"), recursive=True))
     forbidden = re.compile(
-        r"(use-the-room|\bKyle\b|\bSylphx\b|\bCubeage\b|\bSpiron\b|\bTachyn\b|\bEpiow\b|\bCalmora\b|\bKeep H\b|\bBig2\b|\bMahjong\b|\bHexa\b|\bBGCA\b|pg-shared-core|SylphxAI/|Ozyrix|OpenClaw|Hetzner|p:\d+|g\d{4}|owner,\s*2026|mark\.sylphx\.com|api\.sylphx\.com|1Password|keelengine\.dev|ADR-862|ADR-01M|owner-pool|scripts/absence-check)",
+        r"(use-the-room|\bKyle\b|\bSylphx\b|\bCubeage\b|\bSpiron\b|\bTachyn\b|\bEpiow\b|\bCalmora\b|\bKeep H\b|\bBig2\b|\bMahjong\b|\bHexa\b|\bBGCA\b|pg-shared-core|SylphxAI/|Ozyrix|OpenClaw|Hetzner|p:\d+|g\d{4}|owner,\s*2026|mark\.sylphx\.com|api\.sylphx\.com|1Password|keelengine\.dev|ADR-862|ADR-01M|owner-pool|scripts/absence-check|118979196997|oaep_kwp_round_trip|14868|ai_model_pricing|desk_ro)",
         re.I,
     )
     for p in md_files:

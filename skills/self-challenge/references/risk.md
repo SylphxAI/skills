@@ -11,9 +11,10 @@ Scoring, acceptance and the internal-use de minimis rule below never waive
 
 ## Hard lines
 
-- Never block or slow a launch on a theoretical risk.
-- Never spend to avoid a risk that costs less than its fix.
-- Never repeat a risk in every document; state it once and link here.
+- **Never knowingly commit a crime.** Criminal illegality is the one unscored boundary.
+- **Never take a single ruinous loss** (a loss that ends the organization or destroys active users' live data without recovery).
+- **One-way doors escalate to the accountable owner:** committing new spend, executing an irreversible delete of live/personal data, or changing core governance rulings requires explicit human authorization.
+- **Everything else is a scored grey area:** never block or slow a launch on a theoretical or unscored risk, never spend to avoid a risk that costs less than its fix, and never repeat a risk warning in every document—score it once and proceed.
 
 ## 1. Everything is scored
 
@@ -188,8 +189,6 @@ takes over a design.
 ## How it is judged
 
 A decision states the score (likelihood times impact) and the band's action. A score of 15 or more, or a decision that spends, also states a rough annual loss beside the treatment's yearly cost; it informs the choice and never blocks it. An accepted risk scored 8 or more is a row in the accepted risks record with its trigger. Scores rank risks; they are not added or averaged.
-
-## Method sources
 
 ## Method sources
 
