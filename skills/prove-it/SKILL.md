@@ -44,6 +44,20 @@ When asked to review a pull request (PR), code change, architecture proposal, or
 
 ---
 
-## 3. Corrections
+## 3. Responsibility Boundary & Zero Model-Constraining Gate (Agent/Harness Reviews)
+
+When a review, incident, or performance claim touches an agent, harness, sandbox, tool loop, or model configuration, apply this boundary:
+
+1. **Model autonomy is never constrained**:
+   - Which tools an agent calls, how many tool rounds it takes, whether it uses bash or a sandbox/code-mode, and how deeply it reasons belong to the model's quality and autonomy.
+   - Never cap tool rounds. Never ban sandbox/code-mode on chat turns. Never inject canned acknowledgment text. Never kill an active stream while reasoning tokens are flowing.
+2. **Platform and harness own the overhead**:
+   - When an agent feels slow, measure and fix platform overhead: sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
+3. **Judge the measured span, not the model's path**:
+   - A "slow agent" claim names which span was measured and what it cost. Tool-call counts, step transcripts, or an expected-tool assertion are diagnostics for the environment, never evidence that the model should be capped.
+
+---
+
+## 4. Corrections
 
 When a stated claim is overturned by new evidence, post **one concise correction line** immediately—naming what was wrong, the verified fact with its source and `date -u` read time, and who caught it—without apology filler.

@@ -10,7 +10,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
      - **How We Think & Design (`self-challenge`)**: Simple Concept / Powerful & Deep Implementation (maximum value from minimum resources), Plan for 10x/100x Scale, Nothing Runs Always-On (scale-to-zero), Single Source of Truth (SSOT), SOTA Category-Leader Benchmarking, Opinionated Stack Selection (`stack.md`), and Quantitative `5×5` Risk Scoring (`risk.md`).
      - **How We Deliberate (`swarm-fuse`)**: Dynamic Group Facilitation (`Topic × Participant Context`), Independent Delphi + Red-Team Challenge Angles, and Single-Writer Convergence.
      - **How We Build, Unblock & Ship (`author-item`, `deliver-and-verify`, `prove-it`, `unblock`, `refactor`)**: Three-Stage Acceptance Test-Driven Development (ATDD), Finish-First (Aging WIP priority), Launch Burn-down / Scope Hammering, Upstream-First with Upstream Purity (`Customer Zero`, zero backdoors), Complete Replacement + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke), and Primary-Source Verification.
-     - **How We Communicate & Serve (`clear-writing`, `support-agent`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, and Deterministic Support Case-State Machines.
+     - **How We Communicate & Serve (`clear-writing`, `customer-support`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, and Deterministic Support Case-State Machines.
    - **Organization State Lives Outside Skills**: Company-specific state (current headcount/size, active project portfolio, live server inventory, or specific rows in an accepted-risk register) belongs in the workspace repository or **Organization Knowledge**—never inside a skill.
 
 2. **Three-Stage Acceptance Test-Driven Development (ATDD) for Every Outcome**:
@@ -34,7 +34,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | [`refactor`](skills/refactor/SKILL.md) | Splitting oversized files/modules/test suites, deleting dead code/flags, consolidating duplicate logic into one SSOT, or restructuring into vertical slices | `health.md` |
 | [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md` |
 | [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
-| [`support-agent`](skills/support-agent/SKILL.md) | Replying to incoming customer or player support messages with deterministic state and priority rules | `product-facts.md` |
+| [`customer-support`](skills/customer-support/SKILL.md) | Replying to incoming customer or user support messages with deterministic state and priority rules | `product-facts.md` |
 
 ## Installation Across Agent Harnesses
 
