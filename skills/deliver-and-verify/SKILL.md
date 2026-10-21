@@ -20,8 +20,8 @@ Own the authorized outcome from execution through verified completion at the rea
 4. **Upstream-First with Upstream Purity (Boundary Placement)**:
    - If the task hits a bug or missing capability in an **owned upstream** (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream—never hack a downstream bypass.
    - Keep the upstream pure (`Customer Zero`): no downstream product names, backdoors, or privilege bypasses in shared layers, and depend only on published upstream versions.
-5. **Complete Replacement + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke)**:
-   - **No Side-by-Side Leftovers**: When replacing a mechanism, migrate every caller and delete the old code, flags, tests, and docs in the same change.
+5. **Clean-Slate Replacement Over Band-Aid Patching + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke)**:
+   - **Optimize Total Cost to Verified Outcome, Not Lines Typed**: Do not default to stacking defensive band-aid patches just to touch fewer lines. When a failure recurs on a boundary or a fix requires workarounds, compare local repair against clean boundary replacement by total cost to a verified outcome (verification, caller migration, failure recovery, and cleanup). When the model is structurally flawed or replacement has lower total cost to a verified outcome, lock the contract with tests, replace the mechanism cleanly in one pass, migrate every caller, and delete the old code, flags, tests, and docs in the same change.
    - **Sibling Sweep (Yokoten)**: When fixing a defect, search the repository and sibling components for the same failure pattern and fix every instance in one pass.
    - **Rule Broken Once Ships with Its Guard (Poka-Yoke)**: Whenever a standing rule or invariant was broken once, ship the automated check, type constraint, or CI guard that prevents recurrence.
 
@@ -54,7 +54,7 @@ Before editing code, running an operational command, or publishing an asset:
    - **Tier 3 changes** (live real-user product or real-user data store deletion/migration) require an independent review pass ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) before merge; all other tiers merge on green automated checks.
    - For GitOps-managed infrastructure, coordinate competing reconciliation on the affected resource so an auto-sync does not overwrite an urgent mitigation, and merge the matching change through Git.
 3. **Verify at the Real Surface (`After Read`)**:
-   - Opening or merging a PR is a checkpoint, never completion.
+   - Opening or merging a PR is a checkpoint, never completion. Follow the canonical completion and review-tier table in [`../author-item/references/work.md#done-and-review-stage-3-atdd-verification`](../author-item/references/work.md#done-and-review-stage-3-atdd-verification) (**Tier 3 live real-user changes require an independent live verifier pass on the post-rollout production verification**).
    - Read back the authoritative live surface ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) with `date -u`:
      - *Deployed Service*: Verify the serving revision/SHA and run the Stage 1 positive and negative checks against the live endpoint.
      - *Operational / Repository Action (e.g., repo rename, config update, DNS/secret change)*: Read back the updated object from the live API/CLI and verify dependent callers/redirects.
