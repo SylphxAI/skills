@@ -1,34 +1,40 @@
 # Sylphx Agent Skills (`SylphxAI/skills`)
 
-Universal, scenario-driven Agent Skills and colocated reference standards for autonomous AI agents and human-agent teams across software engineering, product design, commercial/partner negotiations, operations, marketing/growth, and customer support.
+Opinionated, scenario-driven Agent Skills and colocated reference methodologies for autonomous AI agents and human-agent teams across software engineering, system architecture, product design, commercial/partner negotiations, operations, marketing/growth, customer support, and clear communication.
 
-## Core Design Principles
+## Core Design Philosophy: Opinionated Methodology vs. Organization State
 
-1. **Three-Stage Acceptance Test-Driven Development (ATDD) for Every Task**:
-   - **Stage 1 — Define Acceptance Test Cases First (`author-item` + `self-challenge`)**: Before proposing a plan or executing work, lock down observable positive and negative **Acceptance Test Cases** and evaluate the goal against the three universal standards:
-     1. **Category-Leader Benchmark** (when designing or changing a product surface, commercial/growth mechanic, or platform capability, benchmark against the category leader and match or beat it in one step; skip for routine operational tasks or internal bug fixes with no category benchmark).
-     2. **Zero-Unrequested-Mechanism Simplification** (no unrequested throttles, queues, approval rituals, or speculative abstractions).
-     3. **One-Shot Direct Path** (complete replacement and cleanup in the same delivery).
-   - **Stage 2 — Verify the Plan Passes the Test Cases (`self-challenge` + `swarm-fuse`)**: Verify that the proposed commercial, operational, growth, product, or technical plan satisfies every Stage 1 acceptance test case, and cite a same-session dated read whenever the plan depends on an external specification, protocol, law, or vendor API.
-   - **Stage 3 — Execute and Verify at the Real Surface (`deliver-and-verify` + `prove-it`)**: Execute through one writer, clean up superseded paths, and verify the delivered outcome at the real user, partner, customer, or operator surface.
-2. **Role-Neutral, Moment-Triggered Skills**:
-   - Skills trigger on the **situation and moment**, never on a static job title or persona. Whether a single worker agent is executing a task or a multi-agent team is deliberating on a cross-domain decision, the exact same skills apply.
-3. **Colocated Reference Standards (Progressive Disclosure)**:
-   - There is no standalone `standards/` directory that agents must memorize up front. Every domain standard lives inside the `references/` folder of the skill that uses it when triggered, so agents load only the exact reference needed for the current task.
+1. **Skills Encode Chosen Frontier Methodology (Not Neutral Option Lists or State)**:
+   - In every discipline—how we think and design, how we deliberate as a team, which technology stack we build on, how we score risk, how we ship software, and how we write—there are competing schools of thought.
+   - Each skill in this repository states **the specific frontier methodology we chose and how to execute it deterministically**:
+     - **How We Think & Design (`self-challenge`)**: Simple Concept / Powerful & Deep Implementation (maximum value from minimum resources), Plan for 10x/100x Scale, Nothing Runs Always-On (scale-to-zero), Single Source of Truth (SSOT), SOTA Category-Leader Benchmarking, Opinionated Stack Selection (`stack.md`), and Quantitative `5×5` Risk Scoring (`risk.md`).
+     - **How We Deliberate (`swarm-fuse`)**: Dynamic Group Facilitation (`Topic × Participant Context`), Independent Delphi + Red-Team Challenge Angles, and Single-Writer Convergence.
+     - **How We Build, Unblock & Ship (`author-item`, `deliver-and-verify`, `prove-it`, `unblock`, `refactor`)**: Three-Stage Acceptance Test-Driven Development (ATDD), Finish-First (Aging WIP priority), Launch Burn-down / Scope Hammering, Upstream-First with Upstream Purity (`Customer Zero`, zero backdoors), Complete Replacement + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke), and Primary-Source Verification.
+     - **How We Communicate & Serve (`clear-writing`, `support-agent`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, and Deterministic Support Case-State Machines.
+   - **Organization State Lives Outside Skills**: Company-specific state (current headcount/size, active project portfolio, live server inventory, or specific rows in an accepted-risk register) belongs in the workspace repository or **Organization Knowledge**—never inside a skill.
 
-## Skills Catalog
+2. **Three-Stage Acceptance Test-Driven Development (ATDD) for Every Outcome**:
+   - **Stage 1 — Define Acceptance Test Cases First (`author-item` + `self-challenge`)**: Lock down observable positive and negative **Acceptance Test Cases** and pass the Category-Leader Benchmark, Zero-Unrequested-Mechanism Simplification, and One-Shot Direct Path tests before implementation starts.
+   - **Stage 2 — Verify the Plan Passes the Test Cases (`self-challenge` + `swarm-fuse`)**: Verify that the proposed commercial, operational, growth, product, or technical plan satisfies every Stage 1 acceptance test case, carrying a same-session dated read of any external specification, law, or vendor API.
+   - **Stage 3 — Execute and Verify at the Real Surface (`deliver-and-verify` + `prove-it`)**: Execute through one writer, complete caller migration and old-path deletion in the same delivery, and verify the delivered outcome at the real user, partner, customer, or operator surface.
+
+3. **Role-Neutral Triggers & Colocated Reference Standards (Progressive Disclosure)**:
+   - Skills trigger on the **observable task moment**, never on a static persona. Every deep domain standard lives in `skills/<name>/references/*.md` beside the skill that uses it, so agents load only the exact reference needed for the task at hand.
+
+## Skills Catalog (10 Skills)
 
 | Skill | Trigger Moment | Colocated Reference Standards (`references/`) |
 | --- | --- | --- |
-| [`author-item`](skills/author-item/SKILL.md) | Writing or revising a work outcome item before execution (Stage 1 ATDD) | `work.md`, `priority.md`, `quality-signals.md` |
-| [`self-challenge`](skills/self-challenge/SKILL.md) | Challenging Stage 1 acceptance criteria, Stage 2 plans/designs/root causes, Stage 3 completion claims, or any 30+ minute wait | `product.md`, `experience.md`, `growth.md`, `mechanics.md`, `mechanics-catalogue.md`, `commercial.md`, `games.md`, `feedback.md`, `conduct.md`, `agent-voice.md`, `risk.md`, `architecture.md`, `stack.md` |
-| [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing an authorized outcome end-to-end through Stage 1, Stage 2, and Stage 3 verification | `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
-| [`prove-it`](skills/prove-it/SKILL.md) | Turning any claim into primary-source evidence or running a convergent one-pass review | *(Uses Stage 1 acceptance criteria and live system queries)* |
-| [`swarm-fuse`](skills/swarm-fuse/SKILL.md) | Facilitating multi-angle group deliberation when a problem hits a wall, stalls 10+ minutes, or spans domains | *(Coordinates with `self-challenge` and `deliver-and-verify`)* |
-| [`unblock`](skills/unblock/SKILL.md) | Restoring progress the moment work stops on a refusal, missing grant, red check, or external dependency | *(Coordinates with `swarm-fuse` and `self-challenge`)* |
-| [`refactor`](skills/refactor/SKILL.md) | Running a behavior-preserving repository slim-down, dead-code deletion, or vertical-slice restructuring | `health.md` |
+| [`author-item`](skills/author-item/SKILL.md) | Writing or revising a work outcome item or ticket before execution (Stage 1 ATDD, CD3 priority) | `work.md`, `priority.md`, `quality-signals.md` |
+| [`self-challenge`](skills/self-challenge/SKILL.md) | Designing/comparing architectures or tech stacks, stress-testing plans/contracts/budgets/risks, questioning over-engineering, or checking root causes | `architecture.md`, `stack.md`, `commercial.md`, `growth.md`, `mechanics.md`, `mechanics-catalogue.md`, `games.md`, `product.md`, `experience.md`, `feedback.md`, `risk.md`, `conduct.md`, `agent-voice.md` |
+| [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing, finishing, merging, deploying, and verifying a change end-to-end (Finish-First, Launch Burn-down, Upstream-First, Complete Replacement) | `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
+| [`prove-it`](skills/prove-it/SKILL.md) | Reviewing a PR/diff, auditing contract/SLA evidence, or verifying a live status/readiness claim against primary sources | *(Uses Stage 1 acceptance criteria and live system queries)* |
+| [`swarm-fuse`](skills/swarm-fuse/SKILL.md) | Facilitating multi-agent/group deliberation (`Topic × Participant Context`) when blocked, stalled 10+ minutes, or resolving cross-domain trade-offs | *(Coordinates with `self-challenge` and `deliver-and-verify`)* |
+| [`unblock`](skills/unblock/SKILL.md) | Restoring progress when work hits a blocker, CI/build failure, runner/env error, `"done but still broken"` report, or upstream dependency defect | *(Coordinates with `swarm-fuse` and `self-challenge`)* |
+| [`refactor`](skills/refactor/SKILL.md) | Splitting oversized files/modules/test suites, deleting dead code/flags, consolidating duplicate logic into one SSOT, or restructuring into vertical slices | `health.md` |
+| [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md` |
 | [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
-| [`support-agent`](skills/support-agent/SKILL.md) | Answering customer or player support messages autonomously with deterministic state and priority rules | `product-facts.md` |
+| [`support-agent`](skills/support-agent/SKILL.md) | Replying to incoming customer or player support messages with deterministic state and priority rules | `product-facts.md` |
 
 ## Installation Across Agent Harnesses
 

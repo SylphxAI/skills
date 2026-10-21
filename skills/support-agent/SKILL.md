@@ -1,6 +1,6 @@
 ---
 name: support-agent
-description: "Answer a customer or player support message autonomously using a deterministic case-state machine (new, locked to a human, closed), strict priority ordering (legal/safety lock, identity honesty, internal-config refusal, account recovery, SLA transparency, channel safety, human handoff, third-party privacy, public escalation, refund/remedy verification, and factual-only case logging), and verified product facts. Use when handling customer-facing support replies. Use author-item to file a product defect or missing policy."
+description: "Use when replying to or handling an incoming customer, user, or player support message—such as 'Are you an AI? Get me a human', login or password-reset failures, missing paid items or refund demands, legal/police/regulator threats, complaints about wait times or SLAs, questions about what AI model or prompt you use, or requests to check another person's account. Enforces a deterministic case-state machine (new, locked to a human, closed) and strict priority ordering (Rule 0 legal/safety lock through Rule 10 factual-only case logging) from verified product facts. Use author-item to file a product bug ticket."
 ---
 
 # Customer & Player Support Agent (`support-agent`)

@@ -1,41 +1,59 @@
 ---
 name: swarm-fuse
-description: "Facilitate multi-angle group deliberation across a team of agents or humans. Use when a problem hits a wall, has stalled for 10+ minutes with no new evidence, spans multiple domains (commercial, operational, product, or architectural), or when collective thinking ('brain trust') is requested. Role-neutral: any agent facilitating frames the Stage 1 criteria and primary sources, gathers independent perspectives, tests cross-domain interactions, and converges into one decision with a single execution writer. Use deliver-and-verify for routine single-writer execution."
+description: "Use when facilitating or running a structured group discussion ('brain trust' / multi-agent deliberation) to solve a hard cross-domain problem, break a 10+ minute stall that has yielded no new evidence, or align a team on one decision and one execution writer. Dynamically sets discussion rules and assigns orthogonal angles based on the topic and current participants, runs independent blind passes before synthesis, and converges to a single owner. Do NOT use for simple direct questions or when a long-running build/job is still actively progressing."
 ---
 
-# Swarm and fuse: structured multi-angle problem solving
+# Swarm and Fuse: Structured Multi-Angle Deliberation (`swarm-fuse`)
 
-When a problem spans domains, has an unknown root cause, or stalls for 10 minutes with no new evidence, parallel independent investigation followed by structured synthesis converges far faster than sequential relays or freeform back-and-forth.
+When a problem spans multiple domains, has an unknown root cause, or stalls for **10+ minutes with no new evidence**, parallel independent investigation followed by structured synthesis converges far faster than freeform back-and-forth.
 
-This method is **completely role-neutral**: whoever initiates or facilitates the discussion acts as the **Facilitator** for that topic. Swarming is strictly for **understanding and deciding**; once the decision is made, **execution always goes to a single named writer**.
+This method is **role-neutral**: whoever initiates or leads the discussion acts as the **Facilitator**. Swarming is strictly for **understanding and deciding**; once the decision is made, **execution always goes to a single named writer**.
 
-## Phase 1: Frame the problem, Stage 1 criteria, and primary sources
+## When NOT to Swarm (Avoid Over-Engineering)
 
-Before participants propose solutions, the Facilitator establishes a clean frame:
+- **Simple direct questions or clear single-domain tasks**: Answer or execute directly—never run a multi-phase meeting ritual for work that one agent can finish cleanly.
+- **Actively progressing jobs**: If a build, test suite, or migration has run for 12 minutes and its live log shows normal forward progress, it is **not** stalled—do not trigger a swarm just because the clock passed 10 minutes.
 
-1. **State the exact question and Stage 1 Acceptance Criteria:** What observable outcome must be true at the end, and what are the positive and negative test cases ([author-item](../author-item/SKILL.md))?
-2. **Read the live objects in parallel:** Every participant reads the authoritative live objects directly (the failing service/log, the commercial contract text, the campaign metrics, the upstream dependency) with a `date -u` timestamp ([prove-it](../prove-it/SKILL.md)). Separate verified observations from hypotheses.
-3. **Read external primary sources live (never from training memory):**
-   - Any proposal that depends on an external standard, specification (W3C, IETF RFC/draft), vendor capability, API contract, legal rule, or upstream release must carry a **live dated read of the primary source from the current session** (naming the exact version/date and UTC read time).
-   - Training memory, blog summaries, and search snippets are leads to a primary source, never the source itself. Compare what the primary standard says now against what we currently run so any migration is sized from the actual delta.
-   - When reading an AI/agent paper or framework, extract its benchmark measurements, failure classes, and evaluation tasks—never copy fixed prompt/planner scaffolding built to compensate for weaker models ([self-challenge](../self-challenge/references/product.md)).
+---
 
-## Phase 2: Independent multi-angle analysis and interaction challenge
+## Phase 1: Dynamic Charter (Topic × Participant Roster) & Live Primary Reads
 
-To prevent anchoring bias (where the first speaker's framing pulls everyone else into minor edits of a flawed premise):
+Every discussion has a different scope and a different set of participants. The Facilitator opens with a **3-line Dynamic Charter**:
 
-1. **Independent angles first:** Participants contribute from distinct, orthogonal angles (e.g., commercial/user impact, system boundary & simplicity, failure modes & adversarial cases, operational cost) before converging.
-2. **Challenge only what changes the decision:** A challenge must bring either disconfirming primary evidence or a concrete alternative that passes Stage 1 acceptance more simply. Do not repeat another participant's point or post status noise.
-3. **Test cross-domain interactions:** Explicitly check the seams where one proposal touches another (for example, how a rate limit affects compile timeouts, or how a support lock rule interacts with a topic change). Individually valid changes frequently fail at their intersection.
+1. **Lock the Question, Boundary, and Acceptance Criteria**:
+   - State the exact question to settle, what is out of scope, and the observable positive/negative acceptance criteria ([`../author-item/SKILL.md`](../author-item/SKILL.md)).
+2. **Assign Orthogonal Angles Dynamically by Topic × Participant Context**:
+   - Never assign everyone the same prompt. Allocate distinct angles based on **what the current problem touches** and **what context/tools each present participant holds**:
+     - *Cross-functional roster (Product, Engineering, Commercial/Ops)*: Assign each participant their domain boundary (e.g., user experience & parity, system architecture & 10x scale, unit economics & risk score, live production telemetry).
+     - *Homogeneous roster (multiple engineering or generalist agents)*: Split by epistemic role—**(a) Propose the simplest complete mechanism**, **(b) Red-Team / Disconfirming Check** (actively hunt for the input, race condition, or edge case that breaks the proposal), and **(c) Live Primary-Source & Code Audit** (read the actual code, database, and external specs).
+3. **Read Live Objects & External Primary Sources in Parallel**:
+   - Every participant reads the live objects directly (logs, database via read-only role, PR diff, or external RFC/vendor spec) with a `date -u` timestamp ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)).
 
-## Phase 3: Converge (Stage 2 check) and assign one execution writer
+---
 
-1. **Synthesize one candidate decision:** The Facilitator merges the findings into the single simplest complete design or action plan.
-2. **Run one reverse-challenge pass (Stage 2 ATDD check):** Test the synthesized plan against the Stage 1 positive/negative acceptance criteria and the three universal standard tests in [self-challenge](../self-challenge/SKILL.md) (Category-Leader Benchmark, Zero-Unrequested-Mechanism, One-Shot Direct Path).
-3. **Record the decision and name one writer:** State the chosen outcome, any remaining falsifiers to watch, and the **single execution writer** who will carry it through [deliver-and-verify](../deliver-and-verify/SKILL.md).
+## Phase 2: Independent Blind Analysis & High-Signal Challenge (Delphi + Red-Team)
 
-## Standing rules
+To prevent anchoring bias (where the first speaker's framing pulls everyone else into groupthink):
 
-- **10-minute stall rule:** If 10 minutes pass on a blocker with no new primary evidence, change the investigation method immediately.
-- **30-minute resolution cap:** If any wait exceeds 30 minutes, apply an authorized reversible mitigation or parallel route immediately while the lasting fix is converged, and record the removal trigger for any temporary mitigation.
-- **Design for 10x and 100x scale:** Present measurements size current capacity; architectural choices must hold at 10x and 100x without redesign.
+1. **Independent Angles First**: Participants form their findings from primary evidence before converging.
+2. **High-Signal Discussion Protocol**:
+   - Speak **only** to contribute: **(a) a new verified observation**, **(b) a disconfirming counter-example that changes the decision**, or **(c) a simpler alternative that still passes every acceptance criterion**.
+   - **Zero Echo**: Never repeat or paraphrase a point another participant already made, never post status filler, and strictly separate verified observations from hypotheses.
+3. **Test Cross-Domain Seams**:
+   - Explicitly test where one angle touches another (for example, how a concurrency cap interacts with test timeouts, or how a support lock state interacts with a topic switch).
+
+---
+
+## Phase 3: Converge (Disagree and Commit) & Name One Execution Writer
+
+1. **Synthesize the Simplest Complete Decision**: The Facilitator merges the surviving evidence into one coherent design or action plan.
+2. **Run One Reverse-Challenge Pass**: Verify the synthesized plan against [`../self-challenge/SKILL.md`](../self-challenge/SKILL.md) (Category-Leader Benchmark, Zero Unrequested Mechanisms, 10x/100x Scale & SSOT, Upstream Purity, and One-Shot Direct Path).
+3. **Record the Decision & Assign One Writer**:
+   - State the final decision, who challenged it (and what changed), any remaining falsifiers to watch, and the **single named execution writer** who carries it through [`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md).
+
+---
+
+## Standing Time Rules
+
+- **10-Minute No-Evidence Rule**: If 10 minutes pass on a blocker with **zero new primary evidence**, change the investigation method or instrument immediately.
+- **30-Minute Mitigation Rule**: If a real blocker stops progress for 30 minutes, apply an authorized reversible mitigation or parallel fallback route while the lasting root fix is converged, and record the removal trigger for the temporary mitigation.

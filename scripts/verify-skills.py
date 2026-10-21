@@ -59,8 +59,8 @@ def verify_manifests(errors: list[str]) -> None:
 
 def verify_skills_frontmatter(errors: list[str]) -> set[str]:
     skill_files = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
-    if len(skill_files) != 9:
-        fail(f"Expected 9 skills, found {len(skill_files)}", errors)
+    if len(skill_files) != 10:
+        fail(f"Expected 10 skills, found {len(skill_files)}", errors)
 
     for p in skill_files:
         rel = os.path.relpath(p, ROOT)
