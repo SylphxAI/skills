@@ -1,6 +1,6 @@
 ---
 name: clear-writing
-description: "Use when drafting, rewriting, editing, translating, or localizing any text for clarity, natural tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, translating/localizing support FAQs or UI copy into natural target-locale phrasing (such as Traditional Chinese or written Cantonese) without stiff machine-translationese, or concise internal team/executive updates. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Use support-agent for live customer support ticket handling."
+description: "Use when drafting, rewriting, editing, translating, or localizing any text for clarity, natural tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, translating/localizing support FAQs or UI copy into natural target-locale phrasing (such as Traditional Chinese or written Cantonese) without stiff machine-translationese, or concise internal team/executive updates. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Use customer-support for live customer support ticket handling."
 ---
 
 # Clear Writing & Communication (`clear-writing`)
@@ -12,7 +12,7 @@ Before writing or rewriting a single sentence, lock three inputs and load the ma
 - **Internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
 - **Public articles, blog posts, launch announcements, marketing/landing-page copy, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
 - **Agent persona and conversational voice defaults** → Load [../self-challenge/references/agent-voice.md](../self-challenge/references/agent-voice.md)
-- *(If handling an active customer/player support ticket with case state and remedies, load [`../support-agent/SKILL.md`](../support-agent/SKILL.md) as well.)*
+- *(If handling an active customer/user support ticket with case state and remedies, load [`../customer-support/SKILL.md`](../customer-support/SKILL.md) as well.)*
 
 ---
 

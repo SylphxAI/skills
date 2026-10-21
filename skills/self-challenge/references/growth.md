@@ -176,8 +176,8 @@ Intercom Fin and Decagon, built on our own platform (Identity, Notify, Search).
 - **Support learns.** Every resolved case feeds the product's knowledge, and a
   frequent question becomes a help-centre article automatically (Fin content
   gap detection).
-- **One case alone.** An agent answering a player uses
-  [support-agent](../../support-agent/SKILL.md): the fixed lines,
+- **One case alone.** An agent answering a user uses
+  [customer-support](../../customer-support/SKILL.md): the fixed lines,
   the lock, the reset and no-time rules, and the replay table.
 
 ## How it is judged

@@ -21,6 +21,14 @@ Read the exact error code, exit status, or refusal from the live source ([`../pr
 - **Is a queued CI/workflow run held by a genuinely stale or superseded concurrency-group holder?**
   - Inspect the older holder run's jobs, `started_at`, and last log activity, plus the workflow's `concurrency` semantics: if the older run is genuinely hung or superseded by a newer push on the same branch, cancel the stale holder so the newer run can start. Never cancel a healthy, actively progressing merge-queue or deployment run.
 
+### Responsibility Boundary & Zero Model-Constraining Gate
+
+When the stuck work is an agent that "feels slow" or appears to take too many steps, do not unblock it by constraining the model:
+
+1. **Model autonomy is never constrained**: which tools an agent calls, how many tool rounds it takes, whether it uses bash or a sandbox/code-mode, and how deeply it reasons belong to the model's quality and autonomy. Never cap tool rounds, never ban sandbox/code-mode on chat turns, never inject canned acknowledgment text, and never kill an active stream while reasoning tokens are flowing.
+2. **Platform and harness own the overhead**: measure and fix sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
+3. **Read the real span before acting**: a latency claim names the measured span and its cost. A step transcript or tool-call count is a signal to inspect the tool or environment, never a reason to reduce the model's reasoning or tool access.
+
 ---
 
 ## 2. Classify the Blocker

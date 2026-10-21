@@ -445,6 +445,25 @@ assertions about tool choice).
   of trials where the whole run succeeds — not one run at temperature 0, which
   says nothing about the tenth run (tau-bench; Anthropic 2026-01-09).
 
+### Responsibility Boundary & Zero Model-Constraining Gate
+
+An agent's reasoning and tool path belong to the model; the environment and
+its overhead belong to the platform. Keep that boundary in one direction.
+
+- **Never constrain model autonomy.** Which tools an agent calls, how many
+  tool rounds it takes, whether it uses bash or a sandbox/code-mode, and how
+  deeply it reasons are model quality and autonomy. Never cap tool rounds,
+  never ban sandbox/code-mode on chat turns, never inject canned
+  acknowledgment text, and never kill an active stream while reasoning
+  tokens flow. A step-order rule belongs in the tooling or a machine check,
+  never in prose that prescribes the model's path.
+- **Fix platform overhead, not the model.** When an agent feels slow, measure
+  and fix the platform: sandbox startup latency (keep the scale-to-zero rule
+  unless an explicit exception is recorded), per-tool preparation and progress
+  I/O overhead, stream liveness during active reasoning deltas plus live
+  progress-card status visibility, and immediate auto-backgrounding of
+  in-flight tools when a new user message or steer arrives.
+
 ## Shared capacity pool
 
 Compute nodes form one shared pool rather than idle per-team silos; importance

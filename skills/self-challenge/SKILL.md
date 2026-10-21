@@ -1,6 +1,6 @@
 ---
 name: self-challenge
-description: "Use when drafting, designing, comparing, or reviewing a launch/migration/rollout plan, system architecture, service boundary, data model, tech stack, or product spec; when stress-testing a commercial contract, reseller/partner agreement, pricing model, marketing/ad budget, risk assessment, operational runbook, or vendor/build-vs-buy choice; when establishing or challenging a root-cause hypothesis ('Root cause: why did X fail?'); or when asking 'are we over-engineering / over-building this?' or 'is there a simpler way?'. Load this skill and its matching reference (architecture, stack, commercial, growth, product, experience, games, risk, conduct, agent-voice) to enforce our methodology: Simple Concept / Deep Implementation, 10x/100x Scale, Scale-to-Zero, Single Source of Truth (SSOT), SOTA Category-Leader benchmarks, Upstream-First purity, and 5x5 risk scoring. Use author-item to write a ticket; use deliver-and-verify to execute changes."
+description: "Use when drafting, designing, comparing, or reviewing a launch/migration/rollout plan, system architecture, service boundary, data model, tech stack, or product spec; when stress-testing a commercial contract, reseller/partner agreement, pricing model, marketing/ad budget, risk assessment, operational runbook, or vendor/build-vs-buy choice; when establishing or challenging a root-cause hypothesis ('Root cause: why did X fail?'); or when asking 'are we over-engineering / over-building this?' or 'is there a simpler way?'. Load this skill and its matching reference (architecture, stack, commercial, growth, product, experience, games, risk, conduct, agent-voice) to enforce our methodology: Simple Concept / Deep Implementation, 10x/100x Scale, Scale-to-Zero, Single Source of Truth (SSOT), SOTA Category-Leader benchmarks, Upstream-First purity, the Responsibility Boundary & Zero Model-Constraining gate, and 5x5 risk scoring. Use author-item to write a ticket; use deliver-and-verify to execute changes."
 ---
 
 # Self-Challenge (`self-challenge`)
@@ -58,7 +58,21 @@ Evaluate every architecture, plan, product spec, commercial deal, or budget agai
 
 ---
 
-## 2. Applying the Challenge by Scenario
+## 2. Responsibility Boundary & Zero Model-Constraining Gate (Every Agent/Platform Change)
+
+Apply this gate whenever a design, review, incident, or performance complaint touches an agent, harness, sandbox, tool loop, or model configuration. Keep the boundary in one direction: the model owns its reasoning and tool path; the platform owns the environment and its overhead.
+
+1. **Model autonomy is never constrained**:
+   - Which tools an agent calls, how many tool rounds it takes, whether it uses bash or a sandbox/code-mode, and how deeply it reasons belong to the model's quality and autonomy.
+   - Never cap tool rounds. Never ban sandbox/code-mode on chat turns. Never inject canned acknowledgment text. Never kill an active stream while reasoning tokens are flowing.
+   - A rule about the order of a session's steps belongs in the tooling or a machine check, never in a prompt or a gate that pre-scripts the model's path.
+2. **Platform and harness own the overhead**:
+   - When an agent feels slow, measure and fix the platform, not the model: sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
+   - Judge the result at the real surface, never by tool-call counts, step transcripts, or an expected-tool assertion ([references/architecture.md](references/architecture.md), "Steering agents by environment").
+
+---
+
+## 3. Applying the Challenge by Scenario
 
 ### Scenario 1 — Designing or Comparing Architectures / Technical Specs
 - Check `references/architecture.md` and `references/stack.md`.
