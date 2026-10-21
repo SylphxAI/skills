@@ -55,11 +55,12 @@ provide a unified, high-performance baseline:
 - **Protobuf with Google AIP** as the only API schema, generating the
   HTTP/JSON and gRPC surfaces, OpenAPI, the SDKs, the CLI and the MCP server
   ([agent-first APIs](architecture.md#agent-first-apis-and-operations)).
-- **Dependencies:** pin the app graph with a lock file and treat source
-  replacement as a security boundary. Take a supported stable update within an
-  adopted line after reading the release changes and running the affected
-  checks; a new line, a major contract, or a substitution is a decision for the
-  authority that owns it. Update shared substrate before its consumers.
+- **Dependencies & Agent-Native Build vs. Buy:**
+  - Traditional *"never reinvent the wheel"* heuristics assumed human implementation and maintenance were expensive. In agent-native engineering, implementing a focused in-house library, system, or engine against a clear specification and conformance/reference test suite (respecting test-suite licensing) is often low-cost while eliminating third-party bloat, mismatched abstractions, transitive supply-chain risk, and waiting on external release cycles.
+  - Evaluate **in-house build vs. external dependency/system** over full lifecycle cost (implementation, test verification, security, maintenance, optimization headroom, and blocker recovery speed):
+    - **Prefer building and owning in-house** when the specification is well-defined, behavior can be locked with conformance/property tests, and owning the engine/system lets us fix defects, tune performance, and evolve capabilities immediately without external baggage.
+    - **Prefer established external engines or dependencies** when the domain carries deep irreducible complexity or formal certification requirements (such as cryptographic primitives, database storage kernels, OS/browser runtimes, or regulated payment rails) or when an external engine wins our workload benchmark on our hardware.
+  - Pin the dependency graph with a lock file and treat source replacement as a security boundary. Take a supported stable update within an adopted line after reading the release changes and running the affected checks; a new line, a major contract, or a substitution is a decision for the authority that owns it. Update shared substrate before its consumers.
 - **Developer commands:** one command each for bootstrap, edit-feedback, build,
   test, and release, documented in the owning repository and runnable from a
   clean checkout.
