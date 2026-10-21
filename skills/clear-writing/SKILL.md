@@ -72,8 +72,8 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 
 ## Step 4: Self-Check Before Sending
 
-Read your draft once out loud against four checks:
+Read your draft once out loud against four checks (preserving direct quotations, faithful translations, approved legal/partner text, and code/API identifiers):
 1. **Did sentence 1 deliver the value, answer, or hook immediately?** (If sentence 1 can be deleted without losing meaning, delete it.)
-2. **Are there any banned AI clichés, `"not X, but Y"` contrasts, or abstract buzzwords?** (Replace every one with a concrete fact or plain verb.)
+2. **Are there any banned AI clichés, `"not X, but Y"` contrasts, or abstract buzzwords in newly authored prose?** (Replace every one with a concrete fact or plain verb.)
 3. **Did any private internal machinery leak to a non-technical reader?** (Strip internal ticket IDs, dev-machine paths, and private table names from customer-facing copy; keep public symbols, API names, and repository paths in developer docs and code reviews.)
 4. **Does the ending stop cleanly once the point is made?** (Delete trailing summaries and *"feel free to ask"* sign-offs.)
