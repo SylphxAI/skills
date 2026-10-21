@@ -1,0 +1,36 @@
+{
+  "name": "sylphx-skills",
+  "version": "1.0.0",
+  "description": "Scenario-driven Agent Skills and domain reference standards for product, commercial, operations, growth, support, and engineering work",
+  "author": {
+    "name": "SylphxAI",
+    "url": "https://github.com/SylphxAI"
+  },
+  "homepage": "https://github.com/SylphxAI/skills",
+  "repository": "https://github.com/SylphxAI/skills",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "atdd",
+    "product",
+    "engineering",
+    "operations",
+    "commercial",
+    "growth",
+    "support"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Sylphx Skills",
+    "shortDescription": "Scenario-Driven Agent Skills & Standards",
+    "longDescription": "Reusable, role-neutral Agent Skills with embedded domain reference standards and a three-stage Acceptance Test-Driven Delivery (ATDD) workflow across commercial, operational, growth, product, support, and engineering work.",
+    "developerName": "SylphxAI",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/SylphxAI/skills"
+  }
+}

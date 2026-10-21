@@ -1,0 +1,9 @@
+{
+  "name": "sylphx-skills",
+  "description": "Scenario-driven Agent Skills and domain reference standards for product, commercial, operations, growth, support, and engineering work",
+  "author": {
+    "name": "SylphxAI"
+  },
+  "repository": "https://github.com/SylphxAI/skills",
+  "license": "MIT"
+}
