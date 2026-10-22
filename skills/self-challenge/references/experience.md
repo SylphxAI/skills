@@ -51,6 +51,65 @@ least 44 by 44 CSS pixels (WCAG 2.2 success criterion 2.5.5; AA itself asks
 for 24 in 2.5.8). Where a market's law requires conformance (for example the
 EU Accessibility Act for e-commerce), that market's surfaces meet it.
 
+## Spatial rhythm, breathing room, and fluid motion
+
+An interface feels rigid ("死板") when every group has the same spacing density,
+borders replace spatial hierarchy, and motion moves at constant velocity or
+snaps abruptly. Letting a design breathe means deliberate contrast in space,
+hierarchy, and timing: the eye rests on what matters and motion feels physical.
+
+The numbers below are starting product defaults, tuned against the
+Category-Leader benchmark. They are not universal external laws.
+
+1. **Proximity hierarchy over nested borders.** Group related items with whitespace
+   and subtle surface elevation before adding lines; avoid box-in-box nesting.
+   Space between groups exceeds group padding, which exceeds sibling spacing.
+   Start with a `>= 2x` step ratio across levels: `8px` element gaps,
+   `16–24px` card padding, and `32–64px` section gaps. Leave `25–35%` open
+   background or negative space on standard views so content is not packed
+   wall-to-wall.
+2. **Focal contrast: one visual anchor per view.** Give each screen one primary
+   focal point through scale, weight, and surrounding whitespace. Secondary
+   metadata and controls recede in contrast and density rather than competing
+   at equal visual weight.
+3. **Interruptible spring physics and asymmetric settling.** Sheets, dialogs,
+   layout shifts, and cards use interruptible springs or fast-out, long-tail
+   deceleration curves ([Material Design 3 Motion](https://m3.material.io/styles/motion),
+   read 2026-10-22), rather than `linear` or symmetric `ease-in-out`.
+   Reserve `linear` for continuous progress indicators or opacity-only fades.
+   Without springs, start at `150–250ms` for micro-interactions and `250–450ms`
+   for spatial transitions. Motion never blocks input and stays interruptible
+   mid-flight. Honour `prefers-reduced-motion`: replace spatial travel with
+   instant states or subtle cross-fades.
+4. **Origin-aware emergence and subtle scale.** Popovers, menus, and dialogs
+   emerge from their trigger, with `transform-origin` anchored to that source.
+   Pair a subtle scale shift (`0.96–0.98 -> 1`) with opacity; never inflate from
+   `scale(0 -> 1)` out of nowhere.
+5. **Choreographed stagger and rest beats.** When a list or group enters together,
+   stagger items lightly: start at `20–40ms` per item, capped at `<= 200ms` for
+   the whole cascade so the UI never drags. Leave `100–150ms` settling beats
+   between distinct state transitions rather than firing back-to-back animations
+   in the same frame. These beats never delay input or required feedback.
+
+| Rigid | Breathing |
+| --- | --- |
+| Triple-nested bordered cards, uniform `16px` gaps | Borderless surface groups, `8px / 20px / 48px` spacing progression |
+| `transition: all 300ms linear`, modal starting at `scale(0)` | Origin-anchored `scale(0.97)` spring entrance paired with opacity |
+| Wall-to-wall metric boxes of equal weight | One primary hero figure with quiet supporting context |
+
+Enforce this in two layers:
+
+- **Machine-checked in CI (tokens and lint).** Product design systems define
+  spacing, duration, and spring/easing tokens and enforce them in CI. Lint rules
+  flag arbitrary off-scale spacing literals such as `13px`, `transition: all`,
+  `linear` easing on spatial properties, and `scale(0)` dialog or popover
+  entrances.
+- **Reviewed in Stage 1/3 (`self-challenge` and `prove-it`).** Valid tokens can
+  still be packed into a rigid grid. Compare screenshots and interaction
+  recordings side by side with the Category-Leader benchmark to verify visual
+  rhythm, negative space, focal hierarchy, and motion pacing. Set that comparison
+  in Stage 1 and verify the delivered surface in Stage 3.
+
 ## Show the outcome, not the machinery
 
 A person sees what they need to decide or act, and the result. Technical
@@ -165,4 +224,6 @@ Task completion and error recovery in the critical journeys, accessibility check
 on web surfaces, a locale sweep of the built site, and, for account protection,
 bind rate and retention (reshape the ask if it costs retention). The product
 review checks each surface's default view and failure states against "Show the
-outcome, not the machinery".
+outcome, not the machinery". For "Spatial rhythm, breathing room, and fluid
+motion", require both CI token/lint checks and Stage 1/3 side-by-side screenshots
+and interaction recordings against the Category-Leader benchmark.
