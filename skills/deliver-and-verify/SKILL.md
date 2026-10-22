@@ -50,11 +50,13 @@ Before editing code, running an operational command, or publishing an asset:
 
 ## Stage 3: Execute, Ship, and Verify at the Real Surface ("Done" = Live Readback)
 
-1. **Build & Test**:
-   - For code/behavior changes and repeatable defects, write or update automated tests (`FAIL_TO_PASS` and `PASS_TO_PASS`, plus property/adversarial tests where appropriate) covering the Stage 1 acceptance cases; for operational, config, or publishing actions (such as renaming a repository or publishing approved copy), reuse existing checks and verify via live `Before Read` / `After Read`.
+1. **Build & Verify in the Local Inner Loop First (No CI-Driven Debugging)**:
+   - Run compilation, unit/integration tests (`FAIL_TO_PASS` and `PASS_TO_PASS`, plus property/adversarial tests where appropriate), and local dev-server / end-to-end surface verification in the local inner loop until the entire outcome passes with zero defects; never push partial commits to use remote CI as a compiler or debugger, and never split one fix into sequential trial-and-error PRs.
+   - For local single-host / dev-machine software, build, verify, and activate directly in place in the local environment first without blocking on a remote PR/CI round-trip.
+   - For operational, config, or publishing actions (such as renaming a repository or publishing approved copy), reuse existing checks and verify via live `Before Read` / `After Read`.
    - Complete the **Sibling Sweep** and delete all superseded paths.
-2. **Ship Through the Standard Path**:
-   - Merge through the repository's normal merge queue on green required checks (never force-push or bypass checks).
+2. **Ship Through the Standard Outer Loop Once**:
+   - Once the complete outcome is verified in the local inner loop, package it into one clean pull request and run CI and the repository's normal merge queue once (never force-push or bypass checks).
    - **Tier 3 changes** (live real-user product or real-user data store deletion/migration) require an independent review pass ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) before merge; all other tiers merge on green automated checks.
    - For GitOps-managed infrastructure, coordinate competing reconciliation on the affected resource so an auto-sync does not overwrite an urgent mitigation, and merge the matching change through Git.
 3. **Verify at the Real Surface (`After Read`)**:

@@ -50,7 +50,9 @@ one per product. Sign-in, device, and consent pages a product shows its own cust
   development line stays below `1.0` until the product declares its first
   stable public contract.
 
-## Internal development
+## Internal development (Inner Loop first, Outer Loop once)
+
+Separate the **Inner Loop** (local edit, compile, unit/integration test, and local dev-server / end-to-end verification in seconds) from the **Outer Loop** (PR, clean-room CI, merge queue, and production rollout). Every change is iterated and verified end-to-end in the local Inner Loop until the complete outcome passes with zero defects; never use remote CI as a compiler or debugger (CI-driven debugging), and never split one fix across multiple trial-and-error PRs. Local single-host / dev-machine tools are built, verified, and updated directly in place without waiting on a remote CI/release round-trip; shared and production services enter the Outer Loop once after local verification succeeds so a single coherent outcome lands as one batch and deploys once.
 
 Common workflows (bootstrap, edit, build and test, integration, release,
 recovery) are reproducible and easy to diagnose. A clean environment resolves
@@ -62,8 +64,7 @@ budget per check (named beside the command) measured like any other wait.
 Linters, formatters, and test
 runners emit diagnostics with exact file paths and line numbers, and a failure
 distinguishes invalid input, authority denial, conflict, unavailability, a
-limit, cancellation, and an unknown effect where that affects recovery. A
-coherent outcome lands as one batch and deploys once.
+limit, cancellation, and an unknown effect where that affects recovery.
 
 A setting that can change is read when it is used, from synced config, never
 from start-up environment, so changing it needs no restart or window. No synthetic health probe or uptime check spends model tokens: health comes
