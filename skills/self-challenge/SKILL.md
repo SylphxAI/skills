@@ -69,6 +69,9 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 2. **Platform and harness own the overhead**:
    - When an agent feels slow, measure and fix the platform, not the model: sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
    - Judge the result at the real surface, never by tool-call counts, step transcripts, or an expected-tool assertion ([references/architecture.md](references/architecture.md), "Steering agents by environment").
+3. **Unified Engine Loop vs. Isolated Agent Instances**:
+   - All agents share one unified runtime loop (model, tools, sandbox, and capability/grant interfaces)—never split the runtime into separate "worker" and "assistant" engines.
+   - Each agent **instance** holds an isolated identity, session, memory, and grant scope: persistent assistants belong to their user or standing role, whereas dispatched task/project work spawns an independent agent instance with task-scoped grants and never borrows a user's persistent assistant or active conversation session.
 
 ---
 
@@ -82,6 +85,11 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 - Check `references/commercial.md`, `references/growth.md`, and `references/risk.md`.
 - Compute unit economics (net margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; flag one-way doors (new spend, irreversible deletion, or unapproved commitments) with one recommended option.
 
-### Scenario 3 — Root-Cause Claims & 30-Minute Stalls
-- Before claiming a root cause, cite one concrete observation from a single failing job, request, or pod, and state what observation would **disprove** your hypothesis. Run the disconfirming check first (or label the claim as an unverified hypothesis).
+### Scenario 3 — Root-Cause Claims, Incident Framing & 30-Minute Stalls
+- **Walk the Five-Step Evidence Path Before Naming a Cause or Shared Fix**:
+  1. **Layer**: Name the exact layer (product concept, runtime engine, agent instance, configuration/policy, runtime code, or operations)—never conflate engine/class with instance/session, and never swing to the opposite extreme when a framing is challenged.
+  2. **Observation**: Read the authoritative primary source for that layer (live log/DB trace, live policy/request receipt, or `file:line`) with its `date -u` read time and exact object ID.
+  3. **Hypothesis & Disconfirming Check**: Separate read facts, hypotheses, and recommendations (never present a suggestion as a user ruling). State what observation would **disprove** the hypothesis (e.g., whether earlier occurrences in the timeline predate the suspected change) and run that check first.
+  4. **Boundary**: State the intended outcome, target, and blast radius—which identities, sessions, memories, or grants are touched and which must remain untouched.
+  5. **Action**: Test the proposed fix against one concrete counterexample to confirm it repairs the right layer without adding unrequested gates, agent categories, or model constraints. Until the live event and governing code/config are read, label any explanation a **hypothesis** and never use it to redirect shared architecture or dispatch; when new evidence disproves a conclusion, retract affected decisions immediately.
 - If any task or wait has stalled for **30 minutes or more**, stop waiting passively: read the live object directly and switch to [`../unblock/SKILL.md`](../unblock/SKILL.md) or [`../swarm-fuse/SKILL.md`](../swarm-fuse/SKILL.md).
