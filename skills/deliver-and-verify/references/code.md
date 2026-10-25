@@ -64,10 +64,10 @@ diff), because the ledger alone is not proof.
 A migration carries schema only. It never carries data or one deployment's
 operational state: a record, a backfill, a tenant plan status, a token, an
 environment's policy row, a deployed version, or a flag. Change that state live, through
-the product's operator API or CLI where one exists, otherwise with one direct
-write under a dedicated operator role. Read the rows before and after, and
+the product's API or CLI where it has the method, otherwise with one direct
+write under the database's dedicated write role. Read the rows before and after, and
 note the statement and the reason on the item. The target is an
-authorized, audited operator API and CLI for every such change; a direct write
+authorized, audited API method and CLI for every such change; a direct write
 is a workaround used while that API is missing, never a reason to wait. Each
 workaround is tracked until the API replaces it and is then cleaned up. The
 hard line above (no hand-written ledger rows) and

@@ -30,9 +30,9 @@ surfaces meet [dx.md](../../deliver-and-verify/references/dx.md).
   future destination, or exclude with a product reason. A catalog entry is not a
   reason to build, and a future capability gets no speculative extension point,
   SDK, permission, telemetry stream, or dormant runtime.
-- **Operations are a capability:** every admin read and action is in the
-  product's operator API, which agents use; the admin site is its rare-use
-  client, and no fixed operator tool is built
+- **Operations are a capability:** every admin read and action is a
+  permissioned method of the product's one API, which agents use; the admin
+  site is its rare-use client, and no fixed admin tool is built
   ([agent-first APIs](architecture.md#agent-first-apis-and-operations)).
 - **Gating:** tying a capability to tenure, spend, or engagement (VIP tiers,
   loyalty rewards) is a normal business tool. Reachability, recovery, and

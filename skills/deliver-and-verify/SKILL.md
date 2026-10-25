@@ -37,7 +37,7 @@ When an operational path is slow or blocked, use a reversible workaround within 
 
 Before editing code, running an operational command, or publishing an asset:
 1. State the concrete **positive test cases** (what observable behavior or state must succeed at the real surface) and **negative/invariant test cases** (what bad inputs, unauthorized calls, or regressions must fail closed). If the brief lacks clear acceptance criteria, shape them with [`../author-item/SKILL.md`](../author-item/SKILL.md).
-2. For operational or live-state changes (such as renaming a repository, updating a setting, or modifying database rows via the operator API), **read and record the current live state before acting (`Before Read`)** with a `date -u` timestamp.
+2. For operational or live-state changes (such as renaming a repository, updating a setting, or modifying database rows via the product's API), **read and record the current live state before acting (`Before Read`)** with a `date -u` timestamp.
 
 ---
 
@@ -45,7 +45,7 @@ Before editing code, running an operational command, or publishing an asset:
 
 1. **Read Primary Sources Live**: Read the actual codebase, live config, and any external specification/API docs in the current session—never from memory.
 2. **Live-User Continuity vs Pre-Launch Speed**:
-   - **Live Products with Real Users**: Zero broken accounts, zero lost data, zero failed logins, and never stop taking paid orders. Reach a new storage or service path by **adding the new replica/path and switching over**—never migrate in place. Database migrations change schema only; state/record updates go through the operator API (or audited write role with before-and-after row reads).
+   - **Live Products with Real Users**: Zero broken accounts, zero lost data, zero failed logins, and never stop taking paid orders. Reach a new storage or service path by **adding the new replica/path and switching over**—never migrate in place. Database migrations change schema only; state/record updates go through the product's API (or audited write role with before-and-after row reads).
    - **Pre-Launch Products (Zero Real Users)**: No grandfathering, no maintenance windows, and no compatibility shims—change directly to the cleanest target design.
 
 ---

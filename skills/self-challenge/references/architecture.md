@@ -369,23 +369,28 @@ the research/api paradigms 2026 record.
   bytes-scanned limits with the cost on every answer, served from a replica or
   the analytics store, never the primary. No agent or person gets a database
   connection for this.
-- **Every product has a complete operator API.** Every admin read and action
-  is a scoped, audited method in the product's published contract, so an agent
+- **Every admin read and action is an ordinary API method.** Each is a
+  permissioned, audited method in the product's one contract, so an agent
   composes reports and views on demand. A back-office admin site exists for
   the rare times a person signs in, and is a client of that API. No new fixed
-  operator tools (bots, dashboards, report pages, one-off scripts): a gap is
-  fixed in the API. A direct data migration while an app's operator API is
+  admin tools (bots, dashboards, report pages, one-off scripts): a gap is
+  fixed in the API. A direct data migration while that method is
   missing follows [code.md](../../deliver-and-verify/references/code.md#migrations); it never edits a
   platform-managed object or bypasses the recovery procedure.
-- **Every method carries a permission and a visibility.** A method the schema
-  does not mark public or operator does not build; its permission names the
-  scope a caller needs, and its visibility says whether a customer may call
-  it. Docs, SDK and CLI are generated only from the methods marked public: an
-  operator method never appears in them, and a hand-written client is refused
-  by the same CI check as a hand-written route.
-- **Operator methods live in the same API, not a second back door.** They sit
-  in the one generated contract, are discoverable to a caller whose scopes
-  cover them, and are refused to everyone else. A filtered discovery list is
+- **Every method names its permission; roles grant permissions.** A method
+  whose schema names no permission does not build. A role is a named bundle of
+  permissions bound to a principal on an organization, project or resource, as
+  in Google Cloud IAM and Kubernetes RBAC. There is no operator API, operator
+  identity or operator key: the platform's own staff act through roles on the
+  platform's organization, as any customer acts on its own, and a cross-tenant
+  action is a permission granted on that scope (Kyle, 2026-10-19 and
+  2026-10-25). A size or limit a customer may not choose is bounded by its
+  plan or quota grant, not by a privileged role. Docs, SDK and CLI are
+  generated from the one contract, and a hand-written client is refused by the
+  same CI check as a hand-written route.
+- **Discovery is not authorization.** Every method sits in the one generated
+  contract and is discoverable to a caller whose permissions cover it. A
+  filtered discovery list is
   how a call is found, never how it is authorised: authorization is checked
   per call from the caller's grants, so an unfiltered list leaks names, not
   access (RFC 9110 §15.5.4 allows a 404 to conceal a resource; discovery
