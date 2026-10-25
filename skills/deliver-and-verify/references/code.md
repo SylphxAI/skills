@@ -73,7 +73,9 @@ workaround is tracked until the API replaces it and is then cleaned up. The
 hard line above (no hand-written ledger rows) and
 objects a reconciler owns (write those through their owner) stay unchanged.
 This direct-write allowance applies only to app-owned data, never
-platform-managed objects or control-plane recovery; those follow the
+platform-managed objects or control-plane recovery. Products never use this
+allowance to work around our own engines; the engine owner fixes the gap
+upstream first. Platform recovery follows the
 [recovery procedure](security.md#recovery-procedure) on the same customer path.
 
 ## Tests

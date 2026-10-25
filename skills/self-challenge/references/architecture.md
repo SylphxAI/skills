@@ -16,6 +16,8 @@ connection is isolated to what it touches, never to the whole service
 
 ## Hard lines
 
+When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
+
 Products trust each other no more than a stranger, so one product's compromise
 or private shortcut never becomes another's breach.
 

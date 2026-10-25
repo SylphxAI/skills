@@ -110,7 +110,7 @@ never completion. Review depth follows blast radius and risk tier (`deliver-and-
 | Commercial, operational, marketing, or docs/config | Stage 2 self-challenge pass against Stage 1 test cases; CI green where applicable | Author reads back the live published surface, signed agreement, campaign telemetry, or operator state after execution |
 | Pre-launch code or internal tooling (no live external users) | Automated CI and Stage 1 acceptance tests green | Merged, deployed, and automated acceptance checks pass on the target environment |
 | Tier 2: Money, billing, auth, credential, or secret paths (pre-revenue) | Merge on green automated checks, followed by non-blocking review; revert on real defect | Deployed, user-visible acceptance verified at the live surface, and short soak with zero SLO burn ([priority.md](priority.md)) |
-| Tier 3: Live real-user product, or deleting/migrating a real-user data store | Independent review pass (`prove-it`) before merge | Deployed, live user-visible acceptance verified by an independent verifier, and short soak with zero SLO burn ([priority.md](priority.md)) |
+| Tier 3: Live real-user product, or deleting/migrating a real-user data store | Required repository checks green, then the merge queue; independent review in parallel or after merge | Deployed, live user-visible acceptance verified by an independent verifier, and short soak with zero SLO burn ([priority.md](priority.md)) |
 
 When verification fails, findings return to the owning writer in one consolidated
 pass. A replacement reads back every consumer on the new mechanism before completion.
@@ -162,7 +162,8 @@ pass, so rework is one round, not a drip.
 - **A blocker is read in parallel, then settled by one writer**: a blocker is
   worked by everyone reading the same live objects at once, not passed from
   owner to owner; the owner who stops hearing new evidence changes the method,
-  and the record ends in one consensus decision naming the single writer
+  and the accountable owner decides on evidence, records dissent, and names the single writer;
+  agreement from every participant is not a gate
   (the repository's agent instructions,
   [swarm-fuse](../../swarm-fuse/SKILL.md)).
 - **A claim of absence is a check that runs**: a one-time historical absence check records the exact command and count it returned; when an absence is an ongoing architectural or safety invariant, register a deterministic CI check that re-runs it on every change.

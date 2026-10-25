@@ -1,11 +1,11 @@
 ---
 name: swarm-fuse
-description: "Use when a multi-agent design, root-cause, architecture, or writer-assignment topic starts—at the VERY START, not only after a 10+ minute stall—to run a structured group discussion ('brain trust' / multi-agent deliberation) that assigns orthogonal angles first, runs independent blind first passes, synthesizes once, and names one execution writer. Also use to break a 10+ minute stall that has yielded no new evidence. Do NOT use for simple direct questions or when a long-running build/job is still actively progressing."
+description: "Use when a question needs several independent views: multi-domain design, uncertain root cause, architecture trade-offs, or a blocker needing new evidence. Assign orthogonal angles, gather independent findings, and let the accountable owner decide on evidence and record dissent. Not a mandatory ritual before editing or a consensus gate. Do NOT use for clear single-agent work or actively progressing jobs."
 ---
 
 # Swarm and Fuse: Structured Multi-Angle Deliberation (`swarm-fuse`)
 
-When a problem spans multiple domains, has an unknown root cause, or touches a design, architecture, or writer assignment, run this method at the **very start**—before the first proposal or the first agent starts editing—not only after a stall. Waiting for a 10-minute stall wastes the cheapest window to get the shape right: assign orthogonal angles first, run independent blind first passes, synthesize once, and name one execution writer. The same method also breaks a stall of **10+ minutes with no new evidence**.
+Use this method when a question needs several independent views. It is not a required step before a first proposal or edit: clear work proceeds directly. On a blocked path, change the method immediately; gather other views when they can supply new evidence, not merely because a timer elapsed. The accountable owner decides on evidence and records dissent; unanimity is not required.
 
 This method is **role-neutral**: whoever initiates or leads the discussion acts as the **Facilitator**. Swarming is strictly for **understanding and deciding**; once the decision is made, **execution always goes to a single named writer**.
 
@@ -47,7 +47,7 @@ To prevent anchoring bias (where the first speaker's framing pulls everyone else
 
 ## Phase 3: Converge (Disagree and Commit) & Name One Execution Writer
 
-1. **Synthesize the Simplest Complete Decision**: The Facilitator merges the surviving evidence into one coherent design or action plan.
+1. **Synthesize the Simplest Complete Decision**: The Facilitator summarizes the evidence; the accountable owner chooses one coherent design or action plan, recording dissent without waiting for consensus.
 2. **Run One Reverse-Challenge Pass**: Verify the synthesized plan against [`../self-challenge/SKILL.md`](../self-challenge/SKILL.md) (Category-Leader Benchmark, YAGNI, 10x/100x Scale & SSOT, Separation of Concerns, and Complete Migration).
 3. **Record the Decision & Assign One Writer**:
    - State the final decision, who challenged it (and what changed), any remaining falsifiers to watch, and the **single named execution writer** who carries it through [`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md).
@@ -56,5 +56,5 @@ To prevent anchoring bias (where the first speaker's framing pulls everyone else
 
 ## Standing Time Rules
 
-- **10-Minute No-Evidence Rule**: If 10 minutes pass on a blocker with **zero new primary evidence**, change the investigation method or instrument immediately.
-- **30-Minute Mitigation Rule**: If a real blocker stops progress for 30 minutes, apply an authorized reversible mitigation or parallel fallback route while the lasting root fix is converged, and record the removal trigger for the temporary mitigation.
+- **10-Minute No-Evidence Re-Check**: Change a blocked method immediately; if 10 minutes pass with **zero new primary evidence**, re-check the method or instrument again. This is not a required wait.
+- **Immediate Recovery, Latest Re-Check at 30 Minutes**: Change the method as soon as the path is blocked; 30 minutes is the latest re-check, not a required wait. Use a reversible operational workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it once fixed. Products never work around our own engines: the engine owner fixes the gap upstream first. Preserve spending approval, unique user data, auth, tenant isolation, and ledger protections.
