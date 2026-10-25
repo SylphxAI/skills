@@ -1,6 +1,6 @@
 ---
 name: clear-writing
-description: "Use when drafting, rewriting, editing, translating, or localizing any text for clarity, natural tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, translating/localizing support FAQs or UI copy into natural target-locale phrasing (such as Traditional Chinese or written Cantonese) without stiff machine-translationese, or concise internal team/executive updates. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Use customer-support for live customer support ticket handling."
+description: "Use when drafting, rewriting, editing, translating, or localizing any text for clarity, natural tone, or persuasion: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, translating/localizing support FAQs or UI copy into natural target-locale phrasing (such as Traditional Chinese or written Cantonese) without stiff machine-translationese, concise internal team/executive updates, or tracking personal to-dos and pending asks. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Use customer-support for live customer support ticket handling."
 ---
 
 # Clear Writing & Communication (`clear-writing`)
@@ -10,6 +10,7 @@ Good writing keeps the complexity on the writer's side and hands the reader simp
 Before writing or rewriting a single sentence, lock three inputs and load the matching reference standard:
 
 - **Naming concepts or replacing internal shorthand in any document, skill, or agent instruction** → Load [references/terminology.md](references/terminology.md)
+- **Personal to-dos, pending asks, resuming follow-ups, or pruning questions before sending** → Load [references/personal-follow-ups.md](references/personal-follow-ups.md)
 - **Internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
 - **Public articles, blog posts, launch announcements, marketing/landing-page copy, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
 - **Agent persona and conversational voice defaults** → Load [../self-challenge/references/agent-voice.md](../self-challenge/references/agent-voice.md)

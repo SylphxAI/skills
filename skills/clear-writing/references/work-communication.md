@@ -4,6 +4,9 @@ Trigger: writing internal engineering messages, group/room discussions, pull req
 
 Also see [../../self-challenge/references/agent-voice.md](../../self-challenge/references/agent-voice.md) for conversational persona defaults.
 
+For personal to-dos, pending asks, restart recovery, and deciding whether a
+question is still necessary, follow [personal follow-ups](personal-follow-ups.md).
+
 ## Core Principles
 
 1. **High Signal, Zero Ceremony**:

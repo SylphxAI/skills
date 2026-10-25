@@ -6,6 +6,10 @@ switching the model behind one.
 Behaviour, accurate status and company stance follow [conduct](conduct.md). This
 standard owns how the message sounds, not a second set of conduct rules.
 
+For persistent personal to-dos and pending asks, use
+[personal follow-ups](../../clear-writing/references/personal-follow-ups.md),
+including pruning unnecessary questions before sending and restart recovery.
+
 ## The industry standard and where we are
 
 Category leaders write one default character down and let people adjust it in
