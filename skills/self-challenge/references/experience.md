@@ -186,7 +186,7 @@ repository paths, internal architecture jargon (`Bounded Context`, `Outbox`,
 platform and process vocabulary (kernel, gate, fail-closed, Cell, Hands,
 price-list and policy identifiers), and every retired name in
 the names record. Copy states the fact rather than defending its
-truthfulness ("honest", "not fake", "no invented").
+truthfulness (claims of accuracy without supporting facts).
 
 Every public site ships a real 404 status and page, a unique title, description,
 and social preview per page, and no placeholder or loading text in rendered HTML.

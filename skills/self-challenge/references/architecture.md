@@ -37,7 +37,7 @@ with no backdoor.
 - No method-specific kinds, routing, CD3 weights outside the ranker
   library, or share values are compiled into the platform.
 - No hand edit or hand-made platform-managed object for a tenant, even during
-  an outage. Follow the [recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder).
+  an outage. Follow the [recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure).
 
 ## Slices, core, and shell
 
@@ -120,7 +120,7 @@ arriving requests or queues.
   pick the lowest option that fits (Knative `min-scale: 0`, Kueue for Jobs, a
   long-running Deployment only for a named always-on role), and a Hosting
   Service has no floor. A service stays always-on only by a recorded decision
-  naming its reason on the owning item; an unrecorded floor is a B1 blocker in
+  naming its reason on the owning item; an unrecorded floor is a blocking defect in
   review.
 - **A slow cold start is fixed at the start, never by staying warm.** Measure the
   start as a span, set a target per service class and keep a probe on it
@@ -147,7 +147,7 @@ repair what missed events, reconnects and start-up gaps left behind.
 Clients receive changes the same way (server-sent events or WebSockets).
 
 - **The primary path is an event.** A design whose normal path is a poll,
-  cron or sleep loop is a B1 blocker in review. A schedule is right only for
+  cron or sleep loop is a blocking defect in review. A schedule is right only for
   work that is genuinely time-based (a daily report, an expiry, a backoff).
 - **The resync is the safety net.** It runs at a slow interval and goes
   through the same reconciliation as an event, so both converge on the same
@@ -374,7 +374,7 @@ the research/api paradigms 2026 record.
   operator tools (bots, dashboards, report pages, one-off scripts): a gap is
   fixed in the API. A direct data migration while an app's operator API is
   missing follows [code.md](../../deliver-and-verify/references/code.md#migrations); it never edits a
-  platform-managed object or bypasses the recovery ladder.
+  platform-managed object or bypasses the recovery procedure.
 - **Every method carries a permission and a visibility.** A method the schema
   does not mark public or operator does not build; its permission names the
   scope a caller needs, and its visibility says whether a customer may call
@@ -445,7 +445,7 @@ assertions about tool choice).
   of trials where the whole run succeeds — not one run at temperature 0, which
   says nothing about the tenth run (tau-bench; Anthropic 2026-01-09).
 
-### Responsibility Boundary & Zero Model-Constraining Gate
+### Separation of Concerns Between Model and Runtime
 
 An agent's reasoning and tool path belong to the model; the environment and
 its overhead belong to the platform. Keep that boundary in one direction.

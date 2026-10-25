@@ -15,7 +15,7 @@ guessing.
 - **Real-device frame-time evidence:** use Keel real-user monitoring (RUM),
   following the real-user measurement approach of
   [Datadog RUM](https://docs.datadoghq.com/real_user_monitoring/browser/monitoring_page_performance/)
-  (read 2026-10-10), not a desk phone, a paid device farm, or a capture on the
+  (read 2026-10-10), not a physical phone, a paid device farm, or a capture on the
   owner's phone. Keep the title's device cohorts, gameplay scope, percentiles,
   and worst-frame limits unchanged. The evidence names the measured build, query and time range, device model or supported
   cohort, OS/browser, and sample count. Missing samples or dimensions are
@@ -40,7 +40,7 @@ guessing.
 - **Workers** wait on a notification with a slow safety poll, not a tight
   database poll ([events first](../../self-challenge/references/architecture.md#real-time-events-first-resync-as-the-safety-net)). A cache speeds things up; correctness survives losing it.
 - **Rollback** has to work with the current schema and comes first in the
-  [recovery ladder](security.md#recovery-ladder).
+  [recovery procedure](security.md#recovery-procedure).
 - **Incidents** get a short blameless record: impact, cause, fix, and the
   follow-up with its owner. An incident needs real impact; a finding nobody
   exploited is a bug, not an incident.

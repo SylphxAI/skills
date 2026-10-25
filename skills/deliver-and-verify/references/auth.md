@@ -173,7 +173,7 @@ follows [experience.md](../../self-challenge/references/experience.md#account-pr
 - The approval page names the client, the scopes in plain words, and where the
   request came from, requires a recent sign-in, and says "Approve only if you
   started this just now", because device-code phishing (Storm-2372, 2025)
-  works by getting a person to approve an attacker's code. The desk's own
+  works by getting a person to approve an attacker's code. The development machine's own
   An operator device-flow login is that same delegated grant
   to agents, scoped, audited and revocable, never a shared credential
   (the repository's agent instructions).

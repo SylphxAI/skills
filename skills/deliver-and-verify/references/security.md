@@ -41,7 +41,7 @@ paid-order delivery working, which is product work, not security work.
 - **Guards fail closed.** A missing signing key, cron secret, webhook secret, or
   database pool refuses the request or the boot instead of waving it through.
 - **Grants come from the server.** Money, rewards, and entitlements follow a
-  server-verified receipt or callback; a client cannot mint its own.
+  server-verified receipt or callback; a client cannot create its own.
 - **Secrets stay out of** Git (including a remote URL), logs, chat, agent
   transcripts, URLs, and third-party rendering services (render a TOTP QR code
   locally). An agent reads a secret only to hash, compare, or pass it to a
@@ -76,7 +76,7 @@ paid-order delivery working, which is product work, not security work.
 - Recover in order: keep the healthy release serving, then break-glass on that same path, then the foundation runbook (recovery).
 - A CI job starts with a read-only token and asks for the write it needs. Pin a third-party action by commit.
 
-## Recovery ladder
+## Recovery procedure
 
 The order is in the recovery runbook.
 

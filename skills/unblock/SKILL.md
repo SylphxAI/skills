@@ -21,12 +21,12 @@ Read the exact error code, exit status, or refusal from the live source ([`../pr
 - **Is a queued CI/workflow run held by a genuinely stale or superseded concurrency-group holder?**
   - Inspect the older holder run's jobs, `started_at`, and last log activity, plus the workflow's `concurrency` semantics: if the older run is genuinely hung or superseded by a newer push on the same branch, cancel the stale holder so the newer run can start. Never cancel a healthy, actively progressing merge-queue or deployment run.
 
-### Responsibility Boundary & Zero Model-Constraining Gate
+### Separation of Concerns Between Model and Runtime
 
 When the stuck work is an agent that "feels slow" or appears to take too many steps, do not unblock it by constraining the model:
 
 1. **Model autonomy is never constrained**: which tools an agent calls, how many tool rounds it takes, whether it uses bash or a sandbox/code-mode, and how deeply it reasons belong to the model's quality and autonomy. Never cap tool rounds, never ban sandbox/code-mode on chat turns, never inject canned acknowledgment text, and never kill an active stream while reasoning tokens are flowing.
-2. **Platform and harness own the overhead**: measure and fix sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
+2. **Platform and agent runtime own the overhead**: measure and fix sandbox startup latency (preserving the scale-to-zero rule unless an explicit exception is recorded), per-tool preparation and progress I/O overhead, stream liveness during active reasoning deltas plus live progress-card status visibility, and immediate auto-backgrounding of in-flight tools when a new user message or steer arrives.
 3. **Read the real span before acting**: a latency claim names the measured span and its cost. A step transcript or tool-call count is a signal to inspect the tool or environment, never a reason to reduce the model's reasoning or tool access.
 
 ---
@@ -44,15 +44,15 @@ When the stuck work is an agent that "feels slow" or appears to take too many st
 
 ---
 
-## 3. Upstream-First vs Upstream Purity (Where to Place the Fix)
+## 3. Upstream-First vs Separation of Concerns (Where to Place the Fix)
 
 Never slap a dirty workaround in a downstream consumer just to bypass an upstream bug. Place the fix according to who owns the upstream boundary:
 
 1. **In-House / Owned Upstream (Engine, Platform, Shared SDK, or Skill Repo)**:
    - **Rule: Fix Upstream Directly (Engine-First / Platform-First)**. Repair the defect or implement the missing generic capability in the upstream repository and consume the published version downstream.
-   - **Upstream Purity Check (Mandatory)**:
+   - **Separation of Concerns Check (Mandatory)**:
      - Would this upstream change make complete sense for an unrelated external tenant?
-     - First-party apps are ordinary customers (`Customer Zero`): **never** add downstream product names, business logic, privilege bypasses, or backdoors into an upstream layer. Dependencies flow strictly one way.
+     - First-party apps are ordinary clients: **never** add downstream product names, business logic, privilege bypasses, or backdoors into an upstream layer. Dependencies flow strictly one way.
 2. **External Open-Source Upstream**:
    - Check whether an existing supported version, configuration, or extension point already solves it.
    - If it is a genuine upstream bug/gap, use a thin, isolated boundary adapter or pinned patch with a recorded removal condition to unblock now, and contribute or control the fix upstream.
@@ -61,7 +61,7 @@ Never slap a dirty workaround in a downstream consumer just to bypass an upstrea
 
 ---
 
-## 4. Execute Recovery & Prevent Recurrence (Yokoten + Poka-Yoke)
+## 4. Execute Recovery & Prevent Recurrence (Systemic Corrective Action + Mistake-Proofing)
 
 1. Choose in priority order: **(a) Complete supported root fix now** ([`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md)), **(b) Existing supported route**, or **(c) Urgent reversible mitigation** to stop live harm paired with its permanent root-fix item and removal trigger.
-2. **Sibling Sweep (Yokoten) & Standing-Rule Guard (Poka-Yoke)**: Search sibling files/services for the same failure class, eliminate all instances in one pass, and when a standing rule was broken, enforce it through existing defaults, types, or checks (one-off rulings get no guard).
+2. **Systemic Corrective Action & Mistake-Proofing**: Search sibling files/services for the same failure class, eliminate all instances in one pass, and when a standing rule was broken, enforce it through existing defaults, types, or checks (one-off rulings get no guard).

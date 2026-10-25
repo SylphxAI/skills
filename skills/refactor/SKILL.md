@@ -31,6 +31,6 @@ When splitting an oversized file/module/test suite, eliminating duplication, del
    - Keep separate code that merely looks textually similar across independent domain concepts when coupling them would create a false abstraction.
 6. **Vertical Slices with a Pure Core**:
    - Organize modules by **domain capability (vertical slice)** rather than technical layer (`controllers/`, `utils/`, `helpers/`, `misc/`).
-   - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract or external I/O / clock / network boundary test seam requires them.
+   - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract or external I/O / clock / network boundary test interface requires them.
 7. **Stage 3 — Verify Behavior Preservation**:
    - Run the required and affected compiler, linter, typechecker, and test targets (broadening to the full workspace suite when shared interfaces or uncertain boundaries are touched), confirming zero behavioral regressions and a cleaner, smaller structure.

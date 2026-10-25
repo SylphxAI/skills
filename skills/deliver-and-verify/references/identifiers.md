@@ -30,7 +30,7 @@ name or a secret. The platform's migration onto this standard is
 - **Stored as `uuid`** (16 bytes), not `text`. Primary key
   `id uuid primary key default uuidv7()` (PostgreSQL 18); a reference is
   `<entity>_id uuid`. When the id is needed before the insert (an outbox row,
-  an idempotent create), mint it with the SDK's `ids` helper. Those two
+  an idempotent create), create it with the SDK's `ids` helper. Those two
   RFC 9562 generators are the only sources: UUIDv4, ULID, nanoid, CUID, KSUID,
   Snowflake, sequences, hashes of a seed, and a wrapped UUID
   (`customer-<uuid>`) lose time order, native typing, or the database check.
@@ -38,7 +38,7 @@ name or a secret. The platform's migration onto this standard is
   from the log ([order](#order-is-the-logs-never-the-ids)).
 - **The database refuses a non-v7 id.** Every `id` column carries the shared
   `enforce_uuidv7_id` trigger (version 7 on insert and on an id change).
-- **Why not the others**: UUIDv4 inserts land at random index positions; a
+- **Why not the others**: UUIDv4 values are inserted at random index positions; a
   [ULID](https://github.com/ulid/spec) is not a valid UUID, so the database can
   neither type nor check it; [KSUID](https://github.com/segmentio/ksuid) is 160
   bits and fits no native type; a [Snowflake](https://blog.x.com/engineering/en_us/a/2010/announcing-snowflake)

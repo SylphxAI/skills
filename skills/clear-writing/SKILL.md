@@ -9,6 +9,7 @@ Good writing keeps the complexity on the writer's side and hands the reader simp
 
 Before writing or rewriting a single sentence, lock three inputs and load the matching reference standard:
 
+- **Naming concepts or replacing internal shorthand in any document, skill, or agent instruction** → Load [references/terminology.md](references/terminology.md)
 - **Internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
 - **Public articles, blog posts, launch announcements, marketing/landing-page copy, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
 - **Agent persona and conversational voice defaults** → Load [../self-challenge/references/agent-voice.md](../self-challenge/references/agent-voice.md)

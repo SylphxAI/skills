@@ -7,7 +7,7 @@ accepted is the accepted risks record.
 
 Scoring, acceptance and the internal-use de minimis rule below never waive
 [ONE PATH](architecture.md#hard-lines) or the
-[recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder), including its audit and alerts.
+[recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure), including its audit and alerts.
 
 ## Hard lines
 
@@ -123,7 +123,7 @@ alone decides: a money estimate would cost more than the risk.
 
 ## 4. Price the realistic outcome, not the worst imaginable one
 
-Most grey-area risks move up a ladder, and each step is a chance to stop:
+Most grey-area risks escalate in stages, and each step is a chance to stop:
 
 1. nothing happens (the usual case);
 2. a warning, a policy notice, or a delisting;
@@ -204,5 +204,5 @@ A decision states the score (likelihood times impact) and the band's action. A s
 | Treatments | accept, reduce, transfer, avoid | COSO ERM 2017 responses; ISO 31000:2018 6.5.2 | kept |
 | Expected value | probability × loss per year | annual loss expectancy, FIPS PUB 65 (1979) | kept |
 | Risk of ruin | ruin is never traded for expected value | Taleb et al. 2014; COSO ERM 2017 risk capacity | kept |
-| Escalation ladder | realistic step only | none | replaced: probability-weighted sum (decision tree, IEC 31010:2019) |
+| Escalation sequence | realistic step only | none | replaced: probability-weighted sum (decision tree, IEC 31010:2019) |
 | Proximity, velocity | when it could arrive, how fast it hurts | PMBOK Guide 6th ed., qualitative risk analysis (proximity); COSO ERM 2017 (velocity) | kept |
