@@ -30,6 +30,8 @@ Do not answer from generic pretraining alone. Immediately read the specific refe
 
 ---
 
+When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
+
 ## 1. The Five First-Principles Challenge Tests
 
 Evaluate every architecture, plan, product spec, commercial deal, or budget against the applicable tests below:
@@ -49,7 +51,7 @@ Evaluate every architecture, plan, product spec, commercial deal, or budget agai
    - **Nothing Runs Always-On (Runtime Services & Jobs)**: Every service, worker, and job starts on demand and scales to zero when idle unless an explicit always-on exception is recorded ([references/architecture.md](references/architecture.md)); fix slow cold starts at image pull/startup rather than paying for warm idle floors.
    - **Single Source of Truth (SSOT)**: Every setting, price, model ID, schema, and rule has exactly one authoritative home; all other surfaces derive from it. Delete duplicate sources immediately.
 4. **Test D — Upstream-First, Separation of Concerns & Agent-Native Build vs. Buy**:
-   - **Fix Upstream, Not Downstream**: When a problem or capability gap sits in an upstream we own (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream—never hack a bypass in the downstream consumer.
+   - **Fix Upstream, Not Downstream**: When a problem or capability gap sits in an upstream we own (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream; products never bypass our own engines.
    - **Separation of Concerns (No Privileged First-Party Access)**: Ask: *"Would this upstream change make complete sense for an unrelated external tenant?"* First-party apps are ordinary clients: never put downstream product names, business rules, privilege bypasses, or backdoors into an upstream layer. Dependencies flow strictly one way (downstream depends on published upstream versions).
    - **Agent-Native Build vs. Buy ([references/stack.md](references/stack.md))**: Separate **adopting open standards** (for interoperability) from **owning the implementation**. Compare building a focused implementation in our shared platform/engine against adopting a third-party dependency/system across full lifecycle cost (implementation, verification against specification/conformance/differential tests, third-party baggage, ability to modify/optimize immediately, and cost of waiting on external release cycles). Build and own the implementation once in our shared platform/engine (never duplicated DIY per product) when the capability is bounded, frequently evolving, or shapes core product experience and can be verified against a clear specification/test suite; adopt external engines where deep irreducible complexity, formal certification, or our workload benchmark favors them.
 5. **Test E — Complete Migration, Clean-Slate Replacement vs. Patching & Launch Convergence**:
@@ -83,7 +85,7 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 
 ### Scenario 2 — Evaluating a Commercial Contract, Budget, Vendor, or Growth Plan
 - Check `references/commercial.md`, `references/growth.md`, and `references/risk.md`.
-- Compute unit economics (net margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; flag one-way doors (new spend, irreversible deletion, or unapproved commitments) with one recommended option.
+- Compute unit economics (net margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; ask only for new unauthorized spend, a missing grant, or an ambiguous request, with one recommended option. Already authorized deletions or governance changes need no repeated approval; preserve unique user data.
 
 ### Scenario 3 — Root-Cause Claims, Incident Framing & 30-Minute Stalls
 - **Perform Root-Cause Analysis Before Naming a Cause or Shared Fix**:
@@ -92,4 +94,4 @@ Apply this gate whenever a design, review, incident, or performance complaint to
   3. **Hypothesis & Disconfirming Check**: Separate read facts, hypotheses, and recommendations (never present a suggestion as a user ruling). State what observation would **disprove** the hypothesis (e.g., whether earlier occurrences in the timeline predate the suspected change) and run that check first.
   4. **Boundary**: State the intended outcome, target, and blast radius—which identities, sessions, memories, or grants are touched and which must remain untouched.
   5. **Action**: Test the proposed fix against one concrete counterexample to confirm it repairs the right layer without adding unrequested gates, agent categories, or model constraints. Until the live event and governing code/config are read, label any explanation a **hypothesis** and never use it to redirect shared architecture or dispatch; when new evidence disproves a conclusion, retract affected decisions immediately.
-- If any task or wait has stalled for **30 minutes or more**, stop waiting passively: read the live object directly and switch to [`../unblock/SKILL.md`](../unblock/SKILL.md) or [`../swarm-fuse/SKILL.md`](../swarm-fuse/SKILL.md).
+- Change the method as soon as a path is blocked; **30 minutes is the latest re-check, not a wait**. Read the live object directly and switch to [`../unblock/SKILL.md`](../unblock/SKILL.md) or [`../swarm-fuse/SKILL.md`](../swarm-fuse/SKILL.md).

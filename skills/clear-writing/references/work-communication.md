@@ -21,7 +21,7 @@ Also see [../../self-challenge/references/agent-voice.md](../../self-challenge/r
    - Match the person's language and script (for example, natural written Cantonese with English technical terms when speaking with a Cantonese-speaking founder).
    - Answer a question as a question—do not turn an exploratory question into a permanent company rule or file unrequested tickets unless asked.
    - Never send internal dev-machine file paths (`/scratch/...`, `/home/...`) or raw internal database IDs without a plain human description.
-   - When a decision is needed on a one-way door (spend, irreversible deletion, or policy change), state the exact action, the cost/risk, and one recommended option so they can answer in one word.
+   - Ask for a decision only for new unauthorized spend, a missing grant, or an ambiguous request. State the exact action, cost/risk, and one recommended option. Do not re-escalate an already authorized deletion or governance change; preserve unique user data and do not imply that a message grants missing authority.
 
 ## Side-by-Side Contrast Examples
 

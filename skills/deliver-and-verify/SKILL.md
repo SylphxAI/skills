@@ -18,7 +18,7 @@ Own the authorized outcome from execution through verified completion at the rea
    - When driving a product, remake, or platform cutover to launch, work from a **finite, burn-down-only checklist** of what a real user needs to complete the core value loop (or the screen-by-screen parity sheet for a remake).
    - Once in convergence, the checklist only shrinks: hammer every newly discovered nice-to-have, polish idea, or non-blocking enhancement to post-launch items rather than expanding pre-launch scope.
 4. **Upstream Contribution and Separation of Concerns**:
-   - If the task hits a bug or missing capability in an **owned upstream** (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream—never hack a downstream bypass.
+   - If the task hits a bug or missing capability in an **owned upstream** (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream; products never bypass our own engines.
    - Treat first-party apps as ordinary clients: no downstream product names, backdoors, or privilege bypasses in shared layers, and depend only on published upstream versions.
 5. **Target Architecture from the First Change + Clean-Slate Replacement + Systemic Corrective Action + Mistake-Proofing**:
    - **Build the Target Architecture in the First PR**: Where a proven, scalable design (the target architecture) exists, build it in the first PR rather than implementing an interim design that creates future data, contract, or caller migration cost.
@@ -30,6 +30,8 @@ Own the authorized outcome from execution through verified completion at the rea
    - **Receipt on the first call**: Record a submission receipt on the work record: the endpoint, the `date -u` UTC timestamp, the HTTP/response status, and the returned submission/event/resource ID. Reuse that receipt for every status check, retry, or follow-up. An unknown receipt means read the target again before any second write; a blind retry that creates a duplicate submission is a defect.
 
 ---
+
+When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
 
 ## Stage 1: Lock Acceptance Test Cases First
 
@@ -50,14 +52,14 @@ Before editing code, running an operational command, or publishing an asset:
 
 ## Stage 3: Execute, Ship, and Verify at the Real Surface ("Done" = Live Verification)
 
-1. **Build & Verify in the Local Inner Loop First (No CI-Driven Debugging)**:
-   - Run compilation, unit/integration tests (`FAIL_TO_PASS` and `PASS_TO_PASS`, plus property/adversarial tests where appropriate), and local dev-server / end-to-end surface verification in the local inner loop until the entire outcome passes with zero defects; never push partial commits to use remote CI as a compiler or debugger, and never split one fix into sequential trial-and-error PRs.
+1. **Run Practical Targeted Local Checks, Then Publish**:
+   - Run the targeted local checks that are practical (compilation, unit/integration tests, and surface checks as applicable), then publish one coherent pull request. Name what remains unverified and let CI verify the rest; fix failures and rerun the affected checks on that same branch.
    - For local single-host / dev-machine software, build, verify, and activate directly in place in the local environment first without blocking on a remote PR/CI round-trip.
    - For operational, config, or publishing actions (such as renaming a repository or publishing approved copy), reuse existing checks and verify via live `Before Read` / `After Read`.
    - Complete the **Systemic Corrective Action** and delete all superseded paths.
-2. **Ship Through the Standard Outer Loop Once**:
-   - Once the complete outcome is verified in the local inner loop, package it into one clean pull request and run CI and the repository's normal merge queue once (never force-push or bypass checks).
-   - **Tier 3 changes** (live real-user product or real-user data store deletion/migration) require an independent review pass ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) before merge; all other tiers merge on green automated checks.
+2. **Ship Through Required Checks and the Merge Queue**:
+   - Publish one coherent pull request, iterate as evidence requires, and enter the repository's normal merge queue when its required checks are green (never force-push or bypass checks).
+   - For every tier, independent review ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) runs in parallel or after merge, never as an added pre-merge gate. Revert or repair a real defect immediately; keep live-user and data safeguards intact.
    - For GitOps-managed infrastructure, coordinate competing reconciliation on the affected resource so an auto-sync does not overwrite an urgent mitigation, and merge the matching change through Git.
 3. **Verify at the Real Surface (`After Read`)**:
    - Opening or merging a PR is a checkpoint, never completion. Follow the canonical completion and review-tier table in [`../author-item/references/work.md#done-and-review-stage-3-atdd-verification`](../author-item/references/work.md#done-and-review-stage-3-atdd-verification) (**Tier 3 live real-user changes require an independent live verifier pass on the post-rollout production verification**).

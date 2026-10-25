@@ -13,7 +13,7 @@ Scoring, acceptance and the internal-use de minimis rule below never waive
 
 - **Never knowingly commit a crime.** Criminal illegality is the one unscored boundary.
 - **Never take a single ruinous loss** (a loss that ends the organization or destroys active users' live data without recovery).
-- **One-way doors escalate to the accountable owner:** committing new spend, executing an irreversible delete of live/personal data, or changing core governance rulings requires explicit human authorization.
+- **Ask only for new unauthorized spend, a missing grant, or an ambiguous request.** Already authorized deletion and governance changes need no repeated approval. Preserve unique user data: verify a recoverable copy before destructive changes; never destroy the only copy. Spending approval, auth, tenant isolation, and ledger protections remain hard boundaries.
 - **Everything else is a scored grey area:** never block or slow a launch on a theoretical or unscored risk, never spend to avoid a risk that costs less than its fix, and never repeat a risk warning in every document—score it once and proceed.
 
 ## 1. Everything is scored
@@ -83,7 +83,7 @@ extreme), and the action for each band is our risk appetite (ISO 31000:2018
 | --- | --- |
 | 1–6 | **Accept.** Note it in one line; do not slow work. |
 | 8–12 | **Accept with a trigger,** or a cheap mitigation if one costs less than the expected loss. Record it in the register. |
-| 15–25 | **Reduce or avoid** now, unless avoiding it costs more than it saves; then take the cheaper side and note it. Spend, an irreversible delete or a change to core governance rulings escalates to the accountable human owner. |
+| 15–25 | **Reduce or avoid** now, unless avoiding it costs more than it saves; then take the cheaper side and note it. Ask the accountable owner only for new unauthorized spend, a missing grant, or an ambiguous request; existing authorization is sufficient, and unique user data must be preserved. |
 
 The four treatments are **accept**, **reduce** (cheaper, smaller exposure),
 **transfer** (a vendor, a plan, an insurer carries it) and **avoid** (don't do

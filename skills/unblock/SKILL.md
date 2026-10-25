@@ -31,6 +31,8 @@ When the stuck work is an agent that "feels slow" or appears to take too many st
 
 ---
 
+When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
+
 ## 2. Classify the Blocker
 
 1. **Transient external condition** (network blip, upstream 5xx, temporary rate limit): Retry with bounded backoff and advance unblocked parallel work.
@@ -38,15 +40,15 @@ When the stuck work is an agent that "feels slow" or appears to take too many st
    - Read the gate's **witnessed failure**, **owning authority**, and **shared-resource effect** before touching it.
    - If the gate protects a real invariant (e.g., branch protection, secret scanning, OOM protection), satisfy it through the supported path—never skip secret/safety guards (`--no-verify` or `LEFTHOOK=0` is forbidden).
    - If a timeout or build cap has no witnessed failure behind it, or if a prior change shifted the bottleneck (e.g., lowering compile parallelism or running unoptimized crypto in debug tests), resize or fix the config at its source from measured usage plus margin.
-3. **Missing authority, credential, or one-way door**:
+3. **Missing authority, credential, or unclear request**:
    - Use existing delegated credentials and operator APIs first (read credentials once per process, never print secrets).
-   - Escalate to the accountable human owner **only** for genuine one-way doors (new monetary spend, irreversible deletion, or changes to core governance rulings), asking for the single exact step needed.
+   - Ask the accountable owner only for new unauthorized spend, a missing grant, or an ambiguous request, naming the exact decision needed. An already authorized deletion or governance change needs no repeated approval. Preserve unique user data: verify a recoverable copy before destructive changes and never destroy the only copy.
 
 ---
 
 ## 3. Upstream-First vs Separation of Concerns (Where to Place the Fix)
 
-Never slap a dirty workaround in a downstream consumer just to bypass an upstream bug. Place the fix according to who owns the upstream boundary:
+Place the fix according to who owns the upstream boundary:
 
 1. **In-House / Owned Upstream (Engine, Platform, Shared SDK, or Skill Repo)**:
    - **Rule: Fix Upstream Directly (Engine-First / Platform-First)**. Repair the defect or implement the missing generic capability in the upstream repository and consume the published version downstream.
@@ -63,5 +65,5 @@ Never slap a dirty workaround in a downstream consumer just to bypass an upstrea
 
 ## 4. Execute Recovery & Prevent Recurrence (Systemic Corrective Action + Mistake-Proofing)
 
-1. Choose in priority order: **(a) Complete supported root fix now** ([`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md)), **(b) Existing supported route**, or **(c) Urgent reversible mitigation** to stop live harm paired with its permanent root-fix item and removal trigger.
+1. Choose in priority order: **(a) Complete supported root fix now** ([`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md)), **(b) Existing supported route**, or **(c) Reversible operational workaround** as soon as the path is blocked, paired with its permanent root-fix item and removal trigger. Live harm is not a prerequisite; the engine-first and safety boundaries above still apply.
 2. **Systemic Corrective Action & Mistake-Proofing**: Search sibling files/services for the same failure class, eliminate all instances in one pass, and when a standing rule was broken, enforce it through existing defaults, types, or checks (one-off rulings get no guard).

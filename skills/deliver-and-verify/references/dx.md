@@ -50,9 +50,9 @@ one per product. Sign-in, device, and consent pages a product shows its own cust
   development line stays below `1.0` until the product declares its first
   stable public contract.
 
-## Internal development (Inner Loop first, Outer Loop once)
+## Internal development (local feedback and CI verification)
 
-Separate the **Inner Loop** (local edit, compile, unit/integration test, and local dev-server / end-to-end verification in seconds) from the **Outer Loop** (PR, clean-room CI, merge queue, and production rollout). Every change is iterated and verified end-to-end in the local Inner Loop until the complete outcome passes with zero defects; never use remote CI as a compiler or debugger (CI-driven debugging), and never split one fix across multiple trial-and-error PRs. Local single-host / dev-machine tools are built, verified, and updated directly in place without waiting on a remote CI/release round-trip; shared and production services enter the Outer Loop once after local verification succeeds so a single coherent outcome lands as one batch and deploys once.
+Separate the **Inner Loop** (local edit and targeted checks) from the **Outer Loop** (PR, clean-room CI, merge queue, and production rollout). Run targeted local checks that are practical, then publish one coherent pull request, naming what remains unverified. CI verifies the rest; fix failures on the same branch and rerun checks as needed. Required repository checks must be green before entering its merge queue. Local single-host tools can be built, verified, and activated in place without a remote release round trip. Independent review runs in parallel or after merge, not as an added publication or merge gate.
 
 Common workflows (bootstrap, edit, build and test, integration, release,
 recovery) are reproducible and easy to diagnose. A clean environment resolves
