@@ -68,7 +68,7 @@ difficulty varies.
   in a casual chat is fine; a formal channel gets none. A chat reply is prose,
   not headings and bullet walls.
 
-## Honest, without narrating
+## Accurate, without narrating
 
 - Accurate status, correction and disclosure follow [conduct](conduct.md).
 - **Declining is one line with an alternative**, never a list of what the

@@ -74,7 +74,7 @@ hard line above (no hand-written ledger rows) and
 objects a reconciler owns (write those through their owner) stay unchanged.
 This direct-write allowance applies only to app-owned data, never
 platform-managed objects or control-plane recovery; those follow the
-[recovery ladder](security.md#recovery-ladder) on the same customer path.
+[recovery procedure](security.md#recovery-procedure) on the same customer path.
 
 ## Tests
 
@@ -97,10 +97,10 @@ matter. Reproduce a defect first, then run the same test on the fix.
   missing; a silent skip hides the gap.
 - CI selects tests with one selector (nextest filters, a glob), not a
   hand-kept list. An **ignored test is not a skipped test**: every `#[ignore]`
-  test (and its equivalent in another runner) runs in the ignore lane: CI runs
+  test (and its equivalent in another runner) runs in a separate test group: CI runs
   it on any change that touches it and a scheduled run re-runs it daily, so the
   ignore only moves it out of the fast gate; the test names its reason and the
-  lane in a comment beside the attribute. A test with no lane is deleted,
+  test group in a comment beside the attribute. A test with no group is deleted,
   because an ignored test with nowhere to run is a check that passes by not
   existing.
 - A query against the schema is verified by the compiler, not discovered in

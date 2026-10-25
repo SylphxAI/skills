@@ -23,8 +23,8 @@ Before any plan or execution starts, author the item with four fields:
      - *Operations / Support*: live runbook execution, operator API state read back before and after, and zero regression on active users.
    - Pass the **Three Universal Standard Tests** from [`../self-challenge/SKILL.md`](../self-challenge/SKILL.md):
      - **Category-Leader Benchmark**: When shaping a product feature, UX flow, commercial/growth mechanic, or platform capability, does the target acceptance match or beat the category leader? *(Skip for routine operational chores or internal bug fixes with no category benchmark.)*
-     - **Zero-Unrequested-Mechanism Simplification**: Does the acceptance avoid demanding unrequested gates, queues, or internal scaffolding?
-     - **One-Shot Direct Path**: Does it require the complete end state (including caller migration and old-path removal) rather than a half-step?
+     - **YAGNI (You Aren’t Gonna Need It)**: Does the acceptance avoid demanding unrequested gates, queues, or internal scaffolding?
+     - **Complete Migration**: Does it require the complete end state (including caller migration and old-path removal) rather than a half-step?
 3. **Hard Constraints (`constraints`)**:
    - True non-negotiable boundaries only: law/compliance, data continuity for live users, budget/spend caps, security/secret boundaries, or external protocol/contract compatibility.
    - Never put file paths to edit, function names to write, or step-by-step instructions into `constraints`.

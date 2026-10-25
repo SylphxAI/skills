@@ -103,7 +103,7 @@ input path.
 Every title, legacy titles included, is a standard serverless project on
 the platform and deploys through it. A title touches no
 cluster directly: no raw TCP port, hand sync or special route for rescue.
-Follow the [recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder). A legacy backend is
+Follow the [recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure). A legacy backend is
 rewritten as a standard platform project in Rust ([stack.md](stack.md)), not
 ported, because few players remain and a rewrite is cheap for agents. Legacy
 titles still get the cheap updates that earn: the client on the platform's
@@ -126,7 +126,7 @@ such as Royal Match earn almost entirely from purchases.
   purchase. The economy is redesigned around purchases: currency packs, VIP,
   month card, offers and event packs.
 - **New titles:** no ads at all, rewarded ads included. Pure in-app purchases
-  on a deep economy: a currency pack ladder of six or more, first-purchase
+  on a deep economy: a currency price points of six or more, first-purchase
   bonus, starter pack, month card, VIP by spend, chain offers, piggy bank,
   growth fund, and gacha or a season pass where the genre fits
   ([the catalogue's monetisation

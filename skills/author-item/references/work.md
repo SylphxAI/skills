@@ -19,7 +19,7 @@ and corrected at its inputs.
 - A live product keeps its players' accounts and paid-order delivery working
   ([games.md](../../self-challenge/references/games.md), [commercial.md](../../self-challenge/references/commercial.md)); no scheduling gate
   or order delays that work, but [ONE PATH](../../self-challenge/references/architecture.md#hard-lines) and the
-  [recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder) still apply.
+  [recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure) still apply.
 
 ## Order
 

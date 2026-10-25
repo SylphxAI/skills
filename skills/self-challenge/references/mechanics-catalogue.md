@@ -151,7 +151,7 @@ size the upside, they do not predict yours.
 | Email digest | A weekly summary of activity or progress | Duolingo, GitHub, LinkedIn | practice | A S E |
 | Home-screen widget | Streak or progress on the home screen | Duolingo, weather-style apps | practice | A E G |
 | Live Activities and lock-screen state | Ongoing state on the lock screen | Sports and delivery apps | practice | A G |
-| In-app inbox and mailbox | Gifts and messages waiting inside the product | Most live games | practice | G A |
+| In-app inbox | Gifts and messages waiting inside the product | Most live games | practice | G A |
 | Recap and year in review | A personal summary that is also a share card | Spotify Wrapped, Duolingo Year in Review | practice | A E |
 | Collections and albums | Sets to complete with rewards for a full set | Monopoly Go, Pokemon GO, Coin Master | practice | G A |
 | Seasons | Time-boxed themes with new content and a reset | Fortnite, Duolingo seasonal events | practice | G A E |
@@ -222,7 +222,7 @@ size the upside, they do not predict yours.
 | Higher price points | Test upward before discounting | Subscription apps | Higher-priced apps converted download-to-trial about 2x (8.9% vs 4.4%) ([RevenueCat](https://www.revenuecat.com/state-of-subscription-apps)) | A S |
 | Introductory price | First period cheaper | Apple and Google intro offers | practice | A E |
 | Promo and offer codes | Codes for creators, partners and campaigns | Apple offer codes, Play promo codes | practice | A G |
-| Currency pack ladder | Six or more price points; bonus grows with size | Nearly every F2P game | practice | G |
+| Currency price points | Six or more price points; bonus grows with size | Nearly every F2P game | practice | G |
 | Dual currency | Soft earned currency and hard premium currency | Nearly all F2P games | Premium currency and bundles in at least 90% of top-500 games ([App Developer Magazine](https://appdevelopermagazine.com/2025-mobile-gaming-report/)) | G A |
 | First-purchase bonus | Double value on the first purchase | Clash Royale, Honor of Kings | practice | G A |
 | Starter pack | Discounted bundle for new players, time-limited | Clash of Clans, Royal Match | Typically 5-10x the standard value, 24-72 hours ([Unity](https://unity.com/resources/in-app-purchases-guide)); day 0 was about 47% of payers in one study ([ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1875952126001175)) | G A |

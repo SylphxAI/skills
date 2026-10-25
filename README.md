@@ -4,17 +4,17 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 
 ## Core Design Philosophy: Opinionated Methodology vs. Organization State
 
-1. **Skills Encode Chosen Frontier Methodology (Not Neutral Option Lists or State)**:
+1. **Skills Encode Chosen Methodology (Not Neutral Option Lists or State)**:
    - In every discipline—how we think and design, how we deliberate as a team, which technology stack we build on, how we score risk, how we ship software, and how we write—there are competing schools of thought.
-   - Each skill in this repository states **the specific frontier methodology we chose and how to execute it deterministically**:
+   - Each skill in this repository states **the specific methodology we chose and how to execute it deterministically**:
      - **How We Think & Design (`self-challenge`)**: Simple Concept / Powerful & Deep Implementation (maximum value from minimum resources), Plan for 10x/100x Scale, Nothing Runs Always-On (scale-to-zero), Single Source of Truth (SSOT), SOTA Category-Leader Benchmarking, Opinionated Stack Selection (`stack.md`), and Quantitative `5×5` Risk Scoring (`risk.md`).
-     - **How We Deliberate (`swarm-fuse`)**: Dynamic Group Facilitation (`Topic × Participant Context`), Independent Delphi + Red-Team Challenge Angles, and Single-Writer Convergence.
-     - **How We Build, Unblock & Ship (`author-item`, `deliver-and-verify`, `prove-it`, `unblock`, `refactor`)**: Three-Stage Acceptance Test-Driven Development (ATDD), Finish-First (Aging WIP priority), Launch Burn-down / Scope Hammering, Upstream-First with Upstream Purity (`Customer Zero`, zero backdoors), Complete Replacement + Sibling Sweep (Yokoten) + Mechanical Guard (Poka-Yoke), and Primary-Source Verification.
+     - **How We Deliberate (`swarm-fuse`)**: Dynamic Group Facilitation (`Topic × Participant Context`), Independent Delphi + Red-Team Challenge Angles, and Single-Writer Coordination.
+     - **How We Build, Unblock & Ship (`author-item`, `deliver-and-verify`, `prove-it`, `unblock`, `refactor`)**: Three-Stage Acceptance Test-Driven Development (ATDD), Work-in-progress limits and work item age, Release Scope Management, Upstream Contribution and Separation of Concerns (first-party client, zero backdoors), Complete Replacement + Systemic Corrective Action + Mistake-Proofing, and Primary-Source Verification.
      - **How We Communicate & Serve (`clear-writing`, `customer-support`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, and Deterministic Support Case-State Machines.
    - **Organization State Lives Outside Skills**: Company-specific state (current headcount/size, active project portfolio, live server inventory, or specific rows in an accepted-risk register) belongs in the workspace repository or **Organization Knowledge**—never inside a skill.
 
 2. **Three-Stage Acceptance Test-Driven Development (ATDD) for Every Outcome**:
-   - **Stage 1 — Define Acceptance Test Cases First (`author-item` + `self-challenge`)**: Lock down observable positive and negative **Acceptance Test Cases** and pass the Category-Leader Benchmark, Zero-Unrequested-Mechanism Simplification, and One-Shot Direct Path tests before implementation starts.
+   - **Stage 1 — Define Acceptance Test Cases First (`author-item` + `self-challenge`)**: Lock down observable positive and negative **Acceptance Test Cases** and pass the Category-Leader Benchmark, YAGNI (You Aren’t Gonna Need It), and Complete Migration tests before implementation starts.
    - **Stage 2 — Verify the Plan Passes the Test Cases (`self-challenge` + `swarm-fuse`)**: Verify that the proposed commercial, operational, growth, product, or technical plan satisfies every Stage 1 acceptance test case, carrying a same-session dated read of any external specification, law, or vendor API.
    - **Stage 3 — Execute and Verify at the Real Surface (`deliver-and-verify` + `prove-it`)**: Execute through one writer, complete caller migration and old-path deletion in the same delivery, and verify the delivered outcome at the real user, partner, customer, or operator surface.
 
@@ -27,12 +27,12 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | --- | --- | --- |
 | [`author-item`](skills/author-item/SKILL.md) | Writing or revising a work outcome item or ticket before execution (Stage 1 ATDD, CD3 priority) | `work.md`, `priority.md`, `quality-signals.md` |
 | [`self-challenge`](skills/self-challenge/SKILL.md) | Designing/comparing architectures or tech stacks, stress-testing plans/contracts/budgets/risks, questioning over-engineering, or checking root causes | `architecture.md`, `stack.md`, `commercial.md`, `growth.md`, `mechanics.md`, `mechanics-catalogue.md`, `games.md`, `product.md`, `experience.md`, `feedback.md`, `risk.md`, `conduct.md`, `agent-voice.md` |
-| [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing, finishing, merging, deploying, and verifying a change end-to-end (Finish-First, Launch Burn-down, Upstream-First, Complete Replacement) | `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
+| [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing, finishing, merging, deploying, and verifying a change end-to-end (Limit Work in Progress, Release Scope Management, Upstream-First, Complete Replacement) | `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
 | [`prove-it`](skills/prove-it/SKILL.md) | Reviewing a PR/diff, auditing contract/SLA evidence, or verifying a live status/readiness claim against primary sources | *(Uses Stage 1 acceptance criteria and live system queries)* |
 | [`swarm-fuse`](skills/swarm-fuse/SKILL.md) | Facilitating multi-agent/group deliberation (`Topic × Participant Context`) when blocked, stalled 10+ minutes, or resolving cross-domain trade-offs | *(Coordinates with `self-challenge` and `deliver-and-verify`)* |
 | [`unblock`](skills/unblock/SKILL.md) | Restoring progress when work hits a blocker, CI/build failure, runner/env error, `"done but still broken"` report, or upstream dependency defect | *(Coordinates with `swarm-fuse` and `self-challenge`)* |
 | [`refactor`](skills/refactor/SKILL.md) | Splitting oversized files/modules/test suites, deleting dead code/flags, consolidating duplicate logic into one SSOT, or restructuring into vertical slices | `health.md` |
-| [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md` |
+| [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md`, `terminology.md` |
 | [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
 | [`customer-support`](skills/customer-support/SKILL.md) | Replying to incoming customer or user support messages with deterministic state and priority rules | `product-facts.md` |
 
@@ -41,7 +41,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 ### 1. Universal Skills CLI (`npx skills` — Claude Code, OpenCode, Codex, Cursor, Windsurf, Antigravity, Amp)
 
 ```bash
-# Install all skills globally across detected agent harnesses
+# Install all skills globally across detected coding agents
 npx skills add SylphxAI/skills -g -y
 
 # Or install into the current project workspace
@@ -83,6 +83,8 @@ Run the repository verification script to validate all YAML frontmatters (`PyYAM
 
 ```bash
 python3 scripts/verify-skills.py
+python3 scripts/verify-terminology.py
+python3 -m unittest discover -s scripts -p "test_*.py"
 ```
 
 ## License

@@ -113,7 +113,7 @@ language, and remove repetition and obsolete instructions.
 ## Agent instructions
 
 A repository's agent instructions live in one root `AGENTS.md`, which every
-harness loads automatically. For transitional Claude Code workers, a repository keeps no
+coding agent loads automatically. For transitional Claude Code workers, a repository keeps no
 `CLAUDE.md`, or one whose first line is `@AGENTS.md`, which imports the file.
 A `CLAUDE.md` that merely says "see AGENTS.md" is advice, not an import.
 
@@ -171,57 +171,17 @@ a metaphor a technical meaning, or use private shorthand: coined words make
 every reader, human or agent, decode before they can act, and they spread by
 copying.
 
-Name the system, the action, and the result: "api 00611 has not been deployed
-to production", not "the pin has not crossed". Spell out an abbreviation the
+Name the system, the action, and the result: "the API version has not been deployed
+to production", not a private deployment metaphor. Spell out an abbreviation the
 first time a file uses it, never reuse a severity label (P0) for a phase, and
 refer to a decision by its title as well as its number. A file name states the
 system and the symptom (a dated note named for the system and the symptom), not a
 sentence.
 
-Our product and company nouns (Cell, Release, Hands, Drive, Maintain) are
-defined once, in the ownership record or
-the portfolio record, and a term that is neither defined
-there nor standard vocabulary is not used. Replace these coined terms on
-sight; the column on the left names each coined term and the column on the right
-the standard words to use instead:
-
-| Instead of | Write |
-| --- | --- |
-| residual | legacy code, remaining work |
-| honesty, honest | accurate status, fail-closed |
-| dual-oracle | differential test |
-| oracle (for a reference copy) | reference implementation |
-| doorbell | wake-up webhook |
-| the pin, pin moved | the deployed version |
-| crossing, crosses release | deploy to production |
-| polaris | target architecture |
-| fence (outside fencing tokens) | lock, pause |
-| ladder | order of preference |
-| settled path | no-op path |
-| clean cut, hard cut | breaking change |
-| mint, seat (for a runner slot) | create, runner slot |
-| effect writer, owning write | handler that changes state |
-| gap fill | backfill |
-| universe | catalog |
-| seam | interface |
-| denominator | inventory |
-| evidence pack, proof-shaped | verification record, test environment |
-| dens, densed, dens tip, dens-live | the specific thing: deployed version, promote, migrate, legacy BaaS runtime |
-| readback | post-deploy check, production verification |
-| class S | critical incident (the large-harm thresholds in priority.md) |
-| stop-bleed | emergency mitigation |
-| desk | our dev machine |
-| feeder | dispatcher |
-| lane | area, or queue where the industry word is queue |
-| spawn gate | admission control |
-| owner session | owner agent |
-| service master | orchestrator |
-| harness | coding agent |
-| mailbox | inbox |
-| dark scope | unpriced model tier |
-| fused verdict, fused decision | consensus decision |
-| land, landing (a change) | merge and deploy, merge |
-| D-a, D-c, D-d, D-e, B1, the R0-R3 risk codes | state the rule directly: done means independently verified in production; blocking defect; the change category, such as docs or configuration, internal code, money or credential path, real-user or data change |
+Use the [terminology glossary](../../clear-writing/references/terminology.md)
+when translating internal shorthand or naming a new concept. It is the single
+mapping from retired labels to sourced industry vocabulary. Product names belong
+in the workspace ownership record, not in a reusable terminology standard.
 
 ## Documentation rot
 
@@ -234,7 +194,7 @@ the standard words to use instead:
   to its successor.
 - Every deployed service has a short runbook for deploy, rollback, and
   restore, using commands that actually exist and following the
-  [recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder).
+  [recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure).
 
 
 ## README visuals

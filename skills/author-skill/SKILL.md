@@ -1,13 +1,13 @@
 ---
 name: author-skill
-description: "Use when creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md): write concrete moment-based trigger descriptions, package opinionated frontier methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
+description: "Use when creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md): write concrete moment-based trigger descriptions, package opinionated methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
 ---
 
 # Author a Reusable, Opinionated Agent Skill (`author-skill`)
 
 Apply the documentation and plain-language standards in [references/docs.md](references/docs.md) and [`../clear-writing/SKILL.md`](../clear-writing/SKILL.md).
 
-An Agent Skill packages **our chosen frontier methodology** for a specific recurring scenario. In every domain—how we think and design, how we deliberate as a team, how we choose our technology stack, how we score risk, how we build and verify software, and how we write—there are competing schools of thought (School A, School B, School C). A skill is **not** a neutral textbook listing options; a skill states **which methodology we chose, why it wins from first principles, and how to execute it deterministically**.
+An Agent Skill packages **our chosen methodology** for a specific recurring scenario. In every domain—how we think and design, how we deliberate as a team, how we choose our technology stack, how we score risk, how we build and verify software, and how we write—there are competing schools of thought (School A, School B, School C). A skill is **not** a neutral textbook listing options; a skill states **which methodology we chose, why it wins from first principles, and how to execute it deterministically**.
 
 ## 1. Methodology vs. Organization State (The Hard Boundary)
 

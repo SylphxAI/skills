@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import subprocess
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -161,6 +162,14 @@ def main() -> int:
     verify_skills_frontmatter(errors)
     verify_links_and_references(errors)
     verify_no_private_leaks(errors)
+    # Keep terminology and its regression tests on the existing CI entry point.
+    for args in (
+        [sys.executable, "scripts/verify-terminology.py"],
+        [sys.executable, "-B", "-m", "unittest", "discover", "-s", "scripts", "-p", "test_*.py"],
+    ):
+        result = subprocess.run(args, cwd=ROOT, check=False)
+        if result.returncode:
+            fail(f"Verification command failed: {' '.join(args[1:])}", errors)
 
     if errors:
         print(f"FAILED with {len(errors)} error(s):", file=sys.stderr)

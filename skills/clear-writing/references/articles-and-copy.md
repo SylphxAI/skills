@@ -18,7 +18,7 @@ Also see [../../self-challenge/references/growth.md](../../self-challenge/refere
    - Show the outcome on the user's screen, wallet, or calendar—never our internal architecture diagram, unless the audience is specifically reading a deep-dive engineering post.
 3. **Specificity Is Credibility**:
    - Round, vague claims (*"much faster builds"*, *"save tons of money"*) trigger reader skepticism.
-   - Specific, honest facts (*"cuts CI compile time from 14m 20s to 3m 05s"*, *"$0 base fee, billed per active second"*) build immediate trust. Never fabricate numbers or fake urgency (such as countdown timers that reset).
+   - Specific, accurate facts (*"cuts CI compile time from 14m 20s to 3m 05s"*, *"$0 base fee, billed per active second"*) build immediate trust. Never fabricate numbers or fake urgency (such as countdown timers that reset).
 4. **Rhythm, Scannability, and Visual Breathing Room**:
    - Break long walls of text with informative subheadings that tell the story on their own if a reader only skims the bold lines.
    - Mix short, declarative sentences (5–8 words) with medium sentences (15–22 words). Cut every adverb that adds no information (*"very"*, *"extremely"*, *"seamlessly"*, *"actually"*).

@@ -46,7 +46,7 @@ surfaces meet [dx.md](../../deliver-and-verify/references/dx.md).
   our infrastructure (clusters, pools, runners, Cells, queues, Dockerfiles); a
   deploy works from the code alone, as on Vercel. The platform derives priority,
   sizing, placement and scaling itself, identically for every tenant. The first-party organization is
-  customer zero with no backdoor: any knob we use, customers get. Configuration
+  a first-party client with no backdoor: any knob we use, customers get. Configuration
   is an optional advanced layer, never a prerequisite.
 
 ## Agent products
@@ -72,7 +72,7 @@ silent miss.
   tools. It does not encode judgement as fixed steps, routing tables or prompt
   choreography. Assume a stronger model arrives; the architecture improves with
   it instead of capping it.
-- **Delete the crutches.** A prompt rule, retry ladder, planner stage or
+- **Delete the crutches.** A prompt rule, retry sequence, planner stage or
   scaffold that exists to compensate for a weaker model is removed when the
   model can carry the judgement. A constraint stays only where it still
   prevents a named, observed failure. Safety, privacy, auth and spend limits

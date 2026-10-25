@@ -89,7 +89,7 @@ hours, open a ticket when 10% burns in three days.
 A critical incident (an interrupt) is Kanban's expedite class (Anderson,
 *Kanban*, 2010): it stops other work, jumps the merge queue and passes
 scheduling holds, never customer-path authority or the
-[recovery ladder](../../deliver-and-verify/references/security.md#recovery-ladder). It is used only when the cost
+[recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure). It is used only when the cost
 of waiting outweighs the price of interrupting (Reinertsen F20: preempt only
 when switching costs are low). It is reserved for large harm:
 
