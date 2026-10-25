@@ -36,10 +36,10 @@ Every discussion has a different scope and a different set of participants. The 
 
 To prevent anchoring bias (where the first speaker's framing pulls everyone else into groupthink):
 
-1. **Independent Angles First**: Participants form their findings from primary evidence before converging.
+1. **Independent Angles First**: Participants form their findings from primary evidence before converging, using the [shared analysis output contract](../self-challenge/SKILL.md#output-contract) so their results are comparable.
 2. **High-Signal Discussion Protocol**:
    - Speak **only** to contribute: **(a) a new verified observation**, **(b) a disconfirming counter-example that changes the decision**, or **(c) a simpler alternative that still passes every acceptance criterion**.
-   - **Zero Echo**: Never repeat or paraphrase a point another participant already made, never post status filler, and strictly separate verified observations from hypotheses.
+   - **Zero Echo**: Never repeat or paraphrase a point another participant already made, never post status filler.
 3. **Test Cross-Domain Seams**:
    - Explicitly test where one angle touches another (for example, how a concurrency cap interacts with test timeouts, or how a support lock state interacts with a topic switch).
 

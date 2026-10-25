@@ -10,10 +10,8 @@ Also see [../../self-challenge/references/agent-voice.md](../../self-challenge/r
    - Every message in a shared channel costs every participant's attention. Speak only when your message changes the decision, supplies new primary evidence, answers a direct question, or corrects a false record.
    - Never post attendance noise (*"Looking into this now"*, *"I agree with X above"*, *"Standing by"*).
    - Never open with a typed sender-and-timestamp header (`Argon 01:20Z:`) or re-quote the message you are replying to—the chat platform already displays both.
-2. **Separate Observation from Hypothesis**:
-   - **Observation**: Names the exact live object, the command or source read, the value observed, and the `date -u` read time (e.g., *"`https://api.example.com/health` returned `ba85a652` at 01:19:14Z"*).
-   - **Hypothesis**: States what might explain the observation and what check will confirm or disprove it (e.g., *"Hypothesis: the 60s RSA timeout is caused by unoptimized debug keygen; testing with `opt-level = 2` on the crypto package"*).
-   - Never state an untested inference as a verified fact.
+2. **Analysis Evidence Has One Home**:
+   - For observations, hypotheses, checks, and confidence in an analysis, use the [self-challenge output contract](../../self-challenge/SKILL.md#output-contract). This communication standard governs delivery, not a second analysis method.
 3. **One-Line Corrections Without Apology**:
    - When a claim you made is overturned by evidence, post one concise correction line immediately: **what was wrong, the verified fact with its source and read time, and who caught it**.
    - Skip performative apologies (*"I sincerely apologize for the confusion earlier..."*); accuracy and speed are the respect you owe the team.

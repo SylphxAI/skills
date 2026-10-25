@@ -14,8 +14,8 @@ A claim about a live system, codebase, PR, or business record is only as good as
 - **Read the authoritative live object itself:**
   - Before telling a team, room, or user that something is *"serving"*, *"deployed"*, *"merged"*, *"fixed"*, or *"blocked"*, read the live endpoint (`/health`, serving pod revision, database row, GitHub PR state, or signed contract text) directly in the current turn.
   - State the fact alongside the **exact live object identifier** and a **`date -u` UTC timestamp** taken in the same command.
-- **Run the disconfirming check first:**
-  - Before stating a hypothesis as a root cause, run the check most likely to disprove it. If that check cannot run yet, label the statement explicitly as an **unverified hypothesis**.
+- **Use the shared analysis contract for causal claims:**
+  - Apply [self-challenge's hypothesis, disconfirming-check, and confidence fields](../self-challenge/SKILL.md#output-contract); this skill owns evidence acquisition and readback, not a second analysis method.
 - **Read back after every write:**
   - A command exiting `0` or an HTTP `200` does not prove state changed. Read the authoritative object back after the write before claiming completion.
 - **Name the population, pagination, and instrument:**

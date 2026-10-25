@@ -30,6 +30,31 @@ Do not answer from generic pretraining alone. Immediately read the specific refe
 
 ---
 
+## Shared Analysis Standard
+
+Every owner answering a question in this skill's scope uses the same output contract below, so readers can compare evidence rather than infer a method from the owner's prose. This generalizes Scenario 3's evidence path; it is not an extra review gate or a prescribed order of tool calls. Static general-knowledge answers and acknowledgements are outside this skill's scope.
+
+### Output Contract
+
+Use these six headings in this order in the delivered analysis. Keep short answers short; use `not applicable — <reason>` rather than silently omitting a field. Different owners may reach different conclusions; structural agreement is not consensus.
+
+| Heading | Content |
+| --- | --- |
+| **1. Question & boundary** | Exact question, intended outcome, layer and target being analysed, blast radius, and what remains untouched. Distinguish a class/engine from an instance/session. |
+| **2. Sources read** | Only sources actually read: source ID, exact object/version or `file:line`, UTC read time, and relevant excerpt/value. Include the Step 0 domain references used; identify missing or inaccessible evidence separately, not as a completed read. Apply [prove-it's evidence rules](../prove-it/SKILL.md#1-core-evidence-rules-before-reporting-status-numbers-or-causes) for primary-source freshness, instruments, and live readback. |
+| **3. Observations** | What those reads directly establish, each tied to a source ID. An observation is a read fact; an explanation is a hypothesis; a proposed action is a recommendation, not a user ruling. |
+| **4. Hypotheses & disconfirming checks** | For each material hypothesis, name the observation that would disprove it, the check and its result (or explicitly `not run — <blocker>`), and whether the hypothesis survives, is rejected, or remains unresolved. Run the strongest available falsifier before presenting a cause as established. |
+| **5. Confidence & gaps** | State confidence per material conclusion and why: **high** = direct evidence plus a passed disconfirming check with no material unresolved contradiction; **medium** = evidence supports it but a material alternative or coverage gap remains; **low** = indirect/insufficient evidence or the decisive check has not run. Name the missing evidence that could change it. Confidence is not a risk score or a claim that a hypothesis is proven. |
+| **6. Recommendation & counterexample** | Recommended action, clearly separate from observations, with one concrete counterexample testing whether it solves the right layer. Apply the relevant challenge tests below; until the live event and governing code/config are read, keep causal explanations labelled hypotheses and do not use them to redirect shared architecture or dispatch. Retract affected decisions when new evidence disproves a conclusion. |
+
+### Comparing Owners' Analyses
+
+Compare the six fields side by side: source coverage/freshness, observed facts, competing explanations, falsifier results, confidence/gaps, and proposed action. Explain a disagreement by the evidence or inference that differs, not by the owner's role or writing style. To explain **past** analyses, cite both original analyses and their underlying evidence; where either is unavailable, state the gap rather than inventing a historical example. Keep private incident records at their owning destination, not in this reusable skill.
+
+Read [analysis examples](references/analysis-examples.md) when comparing owners or checking that the same question yields the same structure. The examples are synthetic, not records of past owners' work.
+
+---
+
 ## 1. The Five First-Principles Challenge Tests
 
 Evaluate every architecture, plan, product spec, commercial deal, or budget against the applicable tests below:
@@ -86,10 +111,5 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 - Compute unit economics (net margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; flag one-way doors (new spend, irreversible deletion, or unapproved commitments) with one recommended option.
 
 ### Scenario 3 — Root-Cause Claims, Incident Framing & 30-Minute Stalls
-- **Walk the Five-Step Evidence Path Before Naming a Cause or Shared Fix**:
-  1. **Layer**: Name the exact layer (product concept, runtime engine, agent instance, configuration/policy, runtime code, or operations)—never conflate engine/class with instance/session, and never swing to the opposite extreme when a framing is challenged.
-  2. **Observation**: Read the authoritative primary source for that layer (live log/DB trace, live policy/request receipt, or `file:line`) with its `date -u` read time and exact object ID.
-  3. **Hypothesis & Disconfirming Check**: Separate read facts, hypotheses, and recommendations (never present a suggestion as a user ruling). State what observation would **disprove** the hypothesis (e.g., whether earlier occurrences in the timeline predate the suspected change) and run that check first.
-  4. **Boundary**: State the intended outcome, target, and blast radius—which identities, sessions, memories, or grants are touched and which must remain untouched.
-  5. **Action**: Test the proposed fix against one concrete counterexample to confirm it repairs the right layer without adding unrequested gates, agent categories, or model constraints. Until the live event and governing code/config are read, label any explanation a **hypothesis** and never use it to redirect shared architecture or dispatch; when new evidence disproves a conclusion, retract affected decisions immediately.
+- Apply the [Shared Analysis Standard](#shared-analysis-standard), including its layer/instance distinction and causal-evidence safeguards; there is no separate incident-only evidence path.
 - If any task or wait has stalled for **30 minutes or more**, stop waiting passively: read the live object directly and switch to [`../unblock/SKILL.md`](../unblock/SKILL.md) or [`../swarm-fuse/SKILL.md`](../swarm-fuse/SKILL.md).
