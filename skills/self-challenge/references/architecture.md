@@ -475,3 +475,15 @@ resource envelopes, while batch, build, and CI workloads share burst capacity
 and yield first when protected demand rises. Capacity planning and hardware
 scaling are driven by measured physical utilization (such as 7-day p95 CPU,
 memory, and I/O), never by uncalibrated scheduler bookings alone.
+
+## Method sources
+
+| Term | Formula / Rule | Source | Replace when |
+| --- | --- | --- | --- |
+| Functional core, imperative shell & vertical slices | Pure deterministic domain core (`decide(state, cmd) -> events`) with zero I/O; imperative shell handles auth, storage, and transactional outbox per capability slice | Gary Bernhardt, *Boundaries* (2012); David L. Parnas, *On the Criteria To Be Used in Decomposing Systems into Modules* (1972) | Never replaced for stateful domain invariants. |
+| Theory of Constraints (TOC) & queueing capacity | System throughput is bounded by the single bottleneck ($\min(r_1, \dots, r_n)$); scale hardware only on 7-day p95 physical utilization (`>70%` add, `<25%` consolidate) and fix downstream stalls rather than resizing non-bottlenecks | Eliyahu M. Goldratt, *The Goal* (1984); John D. C. Little (1961); J. F. C. Kingman (1961) | Measured workload telemetry establishes a tighter utilization threshold for a specific hardware class. |
+| Scale-to-zero & shared-pool QoS tiering | Every service, worker, and job starts on demand and scales to zero when idle (`min-scale: 0`); shared nodes isolate incompressible resources via `Guaranteed`, `Burstable`, and `BestEffort` tiers | Verma et al., *Large-scale cluster management at Google with Borg* (EuroSys 2015); Kubernetes QoS classes | A workload records an explicit always-on exception backed by measured cold-start physics. |
+| Level-triggered reconciliation | Events trigger idempotent reconciliation against desired vs. observed state; periodic resync is a safety net only | Kubernetes Controller Pattern (*Resources and Controllers*) | Never replaced by polling-primary loops. |
+| Durable execution & transactional outbox | Accepted requests carry a stable idempotency identity, transactional outbox state, and system-side retry/dead-letter recovery | Temporal / Restate durable execution model; Martin Kleppmann, *Designing Data-Intensive Applications* (2017) | Workload benchmarks prove whether row-and-dispatcher Postgres or a dedicated durable engine wins at p95. |
+| Environment-steered agents & outcome evaluation | Invest in the agent-computer interface (tools, schemas, diagnostics) rather than scripting model step order; evaluate end-state outcomes (`pass^k`), never tool-call transcripts | Richard Sutton, *The Bitter Lesson* (2019); SWE-bench / $\tau$-bench end-state evaluation | Empirical evaluation across $\ge 2$ models proves a better agent-environment contract. |
+| Architectural prompt-injection defense | Separate untrusted data from privileged control flow via least-authority capability grants rather than prompt warnings | Google DeepMind, *CaMeL* (arXiv:2503.18813, 2025); Meta *Agents Rule of Two* (2025); OWASP *LLM01:2025* | Stronger formal capability-isolation primitives supersede current sandbox boundaries. |
