@@ -158,9 +158,15 @@ it. Write each standard in three layers:
 - **Chosen methodology and menu of options**, such as the standard's `Method
   sources` table and [the mechanics
   catalogue](../../self-challenge/references/mechanics-catalogue.md):
-  literature-backed formulas, known patterns, who uses them, and evidence. An
-  agent applies the quantitative methodology to the measured inputs, reviews the
-  menu once per design, may skip any catalogue entry, and may invent beyond it.
+  literature-backed objective functions, causal and economic models, known
+  patterns, who uses them, and evidence. **Methodology always precedes
+  conclusion ($f(\text{Measured Inputs}) \to \text{Derived Conclusion}$):**
+  choose each methodology for its independent predictive and mathematical rigor,
+  never backward to rationalize a pre-stated conclusion or single example. State
+  how different measured input regimes produce different conclusions under the
+  same model. An agent applies the quantitative methodology to the measured
+  inputs, reviews the menu once per design, may skip any catalogue entry, and
+  may invent beyond it.
 - **Outcomes**: the metric or observable result that says the work is good
   (retention, conversion, gross margin, latency, a post-deploy check). A design
   is judged by its outcome, not by conformance.

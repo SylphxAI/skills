@@ -102,13 +102,16 @@ class DeliveryRulesTests(unittest.TestCase):
         self.assertIn('## Methods table', self.read('self-challenge/references/conduct.md'))
         sc = self.read('self-challenge/SKILL.md')
         for phrase in ('Strong Inference', 'Analysis of Competing Hypotheses',
+                       'Structural Causal Models', 'Expected Value of Information',
+                       'Methodology always precedes conclusion',
                        'Only measured inputs move a conclusion', 'Theory of Constraints'):
             self.assertIn(phrase, sc)
         comm = self.read('self-challenge/references/commercial.md')
-        for phrase in ('Price follows the market', 'Never undercut', 'gross margin', 'CAC'):
+        for phrase in ('Mussa-Rosen', 'Price follows the market', 'Never undercut',
+                       'Regime A', 'Regime B', 'Regime C', 'gross margin', 'CAC'):
             self.assertIn(phrase, comm)
         games = self.read('self-challenge/references/games.md')
-        for phrase in ('Freemium Economics', 'power-law'):
+        for phrase in ('Freemium Economics', 'power-law', 'Regime A', 'Regime B'):
             self.assertIn(phrase, games)
         docs = self.read('author-skill/references/docs.md').lower()
         self.assertNotIn('what a big company in the same market does', docs)

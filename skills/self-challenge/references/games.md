@@ -115,18 +115,16 @@ operations team.
 
 ## Access and economy
 
-The goal is in-app purchase (IAP) revenue optimised to the limit; in-app
-advertising (IAA) revenue is not chased (Eric Seufert, *Freemium Economics*,
-2014). For a small studio, paid user acquisition carries high marginal cost per
-install ($\text{CPI}$): IAA caps daily revenue per active user ($\text{ARPDAU}$)
-at pennies with no right-tail spender curve, bloats binary size with ad SDKs
-(lowering store conversion and raising effective $\text{CPI}$), degrades
-retention and game feel through interruptions, and requires large working
-capital to survive long payback windows. Deep IAP follows a power-law spend
-distribution where uncapped high-propensity payers (`P95–P99`) generate
-$10\times\text{–}100\times$ average payer value, recovering acquisition cost and
-compounding margin on small cohorts; top-grossing titles such as Royal Match
-earn almost entirely from purchases.
+Select the monetization mechanism $M \in \{\text{Deep IAP}, \text{Subscription}, \text{Hybrid}, \text{IAA}\}$ by maximizing expected **Retention-Coupled Cohort Net-LTV** over the title's measured parameters rather than from a pre-baked dogma:
+
+$$\max_{M} \ \left[ \sum_{t=0}^{T} S(t \mid M) \cdot \text{ARPDAU}(t \mid M) - \text{CPI}(M) \right]$$
+
+where $S(t \mid M)$ is the cohort retention curve under mechanism $M$, $\text{ARPDAU}(t \mid M)$ is daily net revenue per active user (governed by the genre's Pareto spender tail exponent $\alpha$ — Eric Seufert, *Freemium Economics*, 2014), and $\text{CPI}(M)$ is effective cost per install (including store conversion loss from ad SDK binary bloat):
+
+- **Regime A — Paid acquisition ($\text{CPI} > 0$) + social, competitive, card/table, or progression games:** Pure IAA caps $\text{ARPDAU}$ at pennies with no right-tail spender curve, bloats binary size with ad SDKs (raising $\text{CPI}$), and degrades $S(t)$ via interruptions, whereas social and progression depth exhibits a heavy power-law payer tail (`P95–P99` spenders generating $10\times\text{–}100\times$ average payer value). The objective function therefore selects **uncapped deep IAP** (and excludes pure IAA) so small cohorts recover $\text{CPI}$ and compound margin; top-grossing titles such as Royal Match earn almost entirely from purchases.
+- **Regime B — Daily habit puzzles, early-childhood education, or high-frequency utilities:** Aggressive consumable whale gates collapse long-term retention $S(t \mid \text{Whale IAP})$ and user/parental trust, whereas daily habit utility sustains high D30–D365 survival $S(t)$. For these inputs, the same equation selects a **frictionless free daily hook or parent-gated trial paired with a recurring Subscription** (`Plus` / `Pro`).
+
+For titles in Regime A:
 
 - **Legacy titles** (the live games and their remasters): light ads, heavy
   in-app purchases. Ads stay light: rewarded ads kept at their current caps or
@@ -200,7 +198,7 @@ first download and 14-30 s blank screens.
 
 | Term | Formula / Rule | Source | Replace when |
 | --- | --- | --- | --- |
-| Freemium power-law IAP over IAA | Pure deep IAP (6+ price points, starter pack, month card, VIP, chain offers, gacha/pass) recovers high paid $\text{CPI}$ via right-tail spenders (`P95–P99`); IAA is excluded on new titles due to capped ARPDAU, SDK binary bloat, and retention decay | Eric Seufert, *Freemium Economics* (2014); Pareto power-law payer distribution in free-to-play games | Never replaced by ad-first monetisation while paid acquisition requires high LTV per cohort. |
+| Retention-coupled cohort Net-LTV & Pareto spender model | Maximize $\sum_{t=0}^T S(t \mid M)\,\text{ARPDAU}(t \mid M) - \text{CPI}(M)$ across $M \in \{\text{Deep IAP}, \text{Subscription}, \text{Hybrid}, \text{IAA}\}$; derive deep power-law IAP for high-$\text{CPI}$ social/progression games and recurring subscription for daily-habit/education apps from measured $S(t)$, tail exponent $\alpha$, and $\text{CPI}$ | Eric Seufert, *Freemium Economics* (2014); Fader & Hardie, *Probability Models for Customer-Base Analysis* (BG/NBD & Gamma-Gamma CLV, 2005) | A higher-accuracy stochastic cohort CLV model outperforms BG/NBD + Pareto tail estimation on our live telemetry. |
 | Core-to-meta loop coupling & MDA | Separate deterministic simulation mechanics from presentation; couple the core skill loop to medium- and long-term progression and collection sinks | Hunicke, LeBlanc & Zubek, *MDA: A Formal Approach to Game Design* (2004); Will Luton, *Free-to-Play* (2013) | Genre-specific telemetry demonstrates a higher-retention loop structure. |
 | Closed-sink virtual economy conservation | Every sold currency or item requires a live sink; AI opponents trade from one daily-reconciled house account so currency is never minted from nothing | Vili Lehdonvirta & Edward Castronova, *Virtual Economies: Design and Analysis* (2014) | Never replaced; unbacked currency minting devalues paid purchases. |
 | Session-protected scale-to-zero room hosting | Wake real-time hosts on lobby join intent (`p95 <= 5s`), protect active sessions with disruption budgets and drain, and sleep at zero open sessions | Agones game-server allocation and disruption model, adapted without a warm buffer floor | Platform room-service benchmarks validate a faster wake or migration mechanism. |

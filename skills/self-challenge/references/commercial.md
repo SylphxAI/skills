@@ -22,30 +22,51 @@ money, entitlements, and legal text are built.
 - Prices and marketing show the product as it will be at launch; features are
   built to match, and copy is never trimmed to today's state.
 
-## Pricing, tiers, and unit economics
+## Pricing, mechanism design, and unit economics
 
-Prices and tier structures follow established value-based pricing and
-unit-economics methodology (Nagle & Müller, *The Strategy and Tactics of
-Pricing*; Ramanujam & Tacke, *Monetizing Innovation*, 2016; Skok, *SaaS Metrics
-2.0*), calibrated to a small, self-funded company:
+Derive prices, tier structures, and monetization models from the governing
+economic optimization model ($f(\text{Measured Inputs}) \to \text{Derived Conclusion}$),
+never from a pre-baked conclusion or cost-plus habit. We use **Discrete-Choice
+Demand & Elasticity Optimization** (McFadden 1974; Berry, Levinsohn & Pakes
+1995), **Mussa-Rosen / Maskin-Riley Second-Degree Price Discrimination
+(Incentive-Compatible Screening)** (Mussa & Rosen 1978; Maskin & Riley 1984),
+and **Cohort LTV/CAC Payback Calculus** (Gupta & Lehmann 2003; Skok):
 
-- **Price follows the market, never cost-plus undercutting:** set prices against
-  what competitors charge for the same unit, read from their published pricing on
-  the decision day and cited in the product's commercial policy. Match the market
-  where quality matches, price slightly below only where weaker, and price at or
-  above the market where clearly better. Never undercut because our cost is
-  lower: it invites a price war a small company cannot win.
-- **Maximize gross margin to recover acquisition cost:** a small company lacks
-  incumbent brand distribution and faces higher marginal Customer Acquisition
-  Cost ($\text{CAC}$) with bounded cash runway. Lower unit cost from compiled
-  engines, scale-to-zero infrastructure, and automation goes entirely into
-  maximizing gross margin ($\text{Price} - \text{Marginal Cost}$) and Lifetime
-  Value ($\text{LTV}$) so each acquired cohort clears
+$$\max_{P, M} \ \sum_{i} \text{Conv}_i(P_i, M) \cdot \big( \text{LTV}_i(P_i, M) - c_i \big) - \text{CAC}_i(M), \qquad \frac{P^* - MC}{P^*} = -\frac{1}{\epsilon(P^*)}$$
+
+Different measured input regimes ($\text{CAC}$, price elasticity $|\epsilon(P)|$,
+viral distribution coefficient $K(P)$, and marginal cost $MC$) produce different
+derived conclusions from this single equation:
+
+- **Regime A — Paid or scarce acquisition ($\text{CAC} > 0$) with low-to-moderate
+  price elasticity ($|\epsilon| \le \frac{P}{P - MC}$) and established category
+  benchmarks:** Price follows the market and segment Willingness-to-Pay ($\text{WTP}$),
+  read from published competitor pricing on the decision day and cited in the
+  product's commercial policy. Match the market where quality matches, price
+  slightly below only where weaker, and price at or above the market where
+  clearly better. Never undercut on price merely because our unit cost is lower:
+  when $|\epsilon|$ is modest, cutting price evaporates gross margin
+  ($P - MC$) without multiplying conversion enough to recover high small-company
+  $\text{CAC}$, and invites a price war. Lower marginal cost from compiled
+  engines, scale-to-zero infrastructure, and automation goes into maximizing
+  gross margin so each cohort clears
   $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a
-  short payback window. High margin beats thin-margin volume.
-- **Cost is a floor check only:** an offer whose market price falls below
-  marginal cost plus payment and store fees is made cheaper to run or is not
-  sold.
+  short payback window. Separate segments with Mussa-Rosen incentive-compatible
+  screening tiers (`Free` / `Pro` / `Enterprise`).
+- **Regime B — Zero-CAC viral or open-source distribution ($\text{CAC} \approx 0$,
+  $\frac{\partial K}{\partial P} < 0$, local $MC \approx 0$):** When payment
+  friction on the entry loop suppresses the viral or developer adoption
+  coefficient $K(P)$, the same equation sets the local or entry tier to $P = 0$
+  (such as an open-source CLI or a guest-first viral front door) to maximize
+  top-of-funnel distribution, while monetizing low-elasticity cloud compute,
+  managed execution, or team workspaces through metered and tiered screening.
+- **Regime C — Empirically high price elasticity ($|\epsilon| > \frac{P}{P - MC}$
+  verified via sequential holdout or Thompson Sampling):** When live sequential
+  experiments prove that a lower price point expands total net contribution
+  margin $\text{Conv}(P) \cdot (P - MC) - \text{CAC}$, set $P^*$ at the empirical
+  profit-maximizing point rather than copying an incumbent's price.
+- **Cost is a floor check only:** an offer whose price falls below marginal cost
+  plus payment and store fees is made cheaper to run or is not sold.
 - **Sell in the market's value metric:** price along the unit customers equate
   with value in that category (per minute for CI runners, per size and storage
   for a database, per request or token for an API, per workspace or seat for
@@ -214,8 +235,7 @@ serves.
 
 | Term | Formula / Rule | Source | Replace when |
 | --- | --- | --- | --- |
-| Value-based market pricing | Price against published competitor prices for the same value unit (match at parity, at or above where better); never undercut from lower cost | Nagle & Müller, *The Strategy and Tactics of Pricing* (6th ed.); Ramanujam & Tacke, *Monetizing Innovation* (2016) | Empirical holdout price elasticity proves a different price point maximizes net contribution margin after CAC. |
-| Gross-margin maximization & cost floor | Lower unit cost increases gross margin ($\text{Price} - C_m$); cost is a floor check only, never a cost-plus price setter | Nagle & Müller (value-based vs. cost-plus pricing); our small-company unit economics | Never replaced by cost-plus undercutting. |
-| CAC payback & LTV/CAC survival constraint | $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a bounded payback window; high per-customer margin beats thin-margin volume | David Skok, *SaaS Metrics 2.0*; Gupta & Lehmann, *Customers as Assets* (2003) | Organic acquisition or capital structure changes the binding payback horizon. |
-| Value-metric tiering & workspace billing | Scale paid tiers along the customer's primary value unit; bind team entitlements to workspaces and hard-cap free tiers | Ramanujam & Tacke (2016); industry workspace billing (Vercel, Linear, Slack) | Customer usage telemetry shows a stronger value metric correlates with retention and expansion. |
+| Discrete-choice demand & Lerner elasticity optimization | Maximize $\sum_i \text{Conv}_i(P_i)(\text{LTV}_i(P_i) - c_i) - \text{CAC}_i$ subject to $\frac{P^* - MC}{P^*} = -\frac{1}{\epsilon(P^*)}$; derive price from measured $\text{CAC}$, elasticity $\epsilon(P)$, viral $K(P)$, and marginal cost $MC$ rather than post-hoc rules | Daniel McFadden, *Conditional Logit Analysis of Qualitative Choice Behavior* (1974); Berry, Levinsohn & Pakes, *Econometrica* (1995); Nagle & Müller, *The Strategy and Tactics of Pricing* | A better-calibrated demand estimation model outperforms discrete-choice + sequential bandit pricing on our cohorts. |
+| Mussa-Rosen incentive-compatible screening (second-degree price discrimination) | Partition features and usage limits across self-selecting tiers (`Free` / `Pro` / `Enterprise`) so high-WTP segments upgrade voluntarily while entry tiers maximize funnel reach | Michael Mussa & Sherwin Rosen, *Monopoly and Product Quality*, JET (1978); Eric Maskin & John Riley, *RAND J. Econ.* (1984); Ramanujam & Tacke, *Monetizing Innovation* (2016) | Empirical usage telemetry shows a stronger screening dimension or continuous usage curve yields higher net LTV. |
+| CAC payback & LTV/CAC survival constraint | $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a bounded payback window; under paid acquisition and modest elasticity, lower $MC$ goes into gross margin rather than undercutting | Gupta & Lehmann, *Customers as Assets* (2003); David Skok, *SaaS Metrics 2.0* | Organic acquisition or capital structure changes the binding payback horizon. |
 | Durable double-entry order ledger | Decouple payment capture from idempotent fulfillment; append-only refund and credit entries | Kleppmann, *Designing Data-Intensive Applications* (2017), ch. 11–12 | Never replaced; immutable audit trails are a hard boundary. |
