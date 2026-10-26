@@ -3,9 +3,8 @@
 Trigger: changing price, entitlement, billing, or a customer contract.
 
 What the customer sees, pays, and gets always agree. Legal texts follow
-[conduct](conduct.md). Pricing is a company decision
-(the decisions record, "Price follows the market");
-this standard covers how money, entitlements, and legal text are built.
+[conduct](conduct.md). This standard covers how prices, tiers, unit economics,
+money, entitlements, and legal text are built.
 
 ## Hard lines
 
@@ -22,6 +21,36 @@ this standard covers how money, entitlements, and legal text are built.
   is unlawful, because one can void the clauses around it.
 - Prices and marketing show the product as it will be at launch; features are
   built to match, and copy is never trimmed to today's state.
+
+## Pricing, tiers, and unit economics
+
+Prices and tier structures follow established value-based pricing and
+unit-economics methodology (Nagle & Müller, *The Strategy and Tactics of
+Pricing*; Ramanujam & Tacke, *Monetizing Innovation*, 2016; Skok, *SaaS Metrics
+2.0*), calibrated to a small, self-funded company:
+
+- **Price follows the market, never cost-plus undercutting:** set prices against
+  what competitors charge for the same unit, read from their published pricing on
+  the decision day and cited in the product's commercial policy. Match the market
+  where quality matches, price slightly below only where weaker, and price at or
+  above the market where clearly better. Never undercut because our cost is
+  lower: it invites a price war a small company cannot win.
+- **Maximize gross margin to recover acquisition cost:** a small company lacks
+  incumbent brand distribution and faces higher marginal Customer Acquisition
+  Cost ($\text{CAC}$) with bounded cash runway. Lower unit cost from compiled
+  engines, scale-to-zero infrastructure, and automation goes entirely into
+  maximizing gross margin ($\text{Price} - \text{Marginal Cost}$) and Lifetime
+  Value ($\text{LTV}$) so each acquired cohort clears
+  $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a
+  short payback window. High margin beats thin-margin volume.
+- **Cost is a floor check only:** an offer whose market price falls below
+  marginal cost plus payment and store fees is made cheaper to run or is not
+  sold.
+- **Sell in the market's value metric:** price along the unit customers equate
+  with value in that category (per minute for CI runners, per size and storage
+  for a database, per request or token for an API, per workspace or seat for
+  team software), and size free tiers to market convention with hard
+  server-enforced caps.
 
 ## Always take the money
 
@@ -180,3 +209,13 @@ that stance.
 A live purchase shows the same price on the page, in the charge, and in the
 granted entitlement, and each legal page names the entity and fits the market it
 serves.
+
+## Method sources
+
+| Term | Formula / Rule | Source | Replace when |
+| --- | --- | --- | --- |
+| Value-based market pricing | Price against published competitor prices for the same value unit (match at parity, at or above where better); never undercut from lower cost | Nagle & Müller, *The Strategy and Tactics of Pricing* (6th ed.); Ramanujam & Tacke, *Monetizing Innovation* (2016) | Empirical holdout price elasticity proves a different price point maximizes net contribution margin after CAC. |
+| Gross-margin maximization & cost floor | Lower unit cost increases gross margin ($\text{Price} - C_m$); cost is a floor check only, never a cost-plus price setter | Nagle & Müller (value-based vs. cost-plus pricing); our small-company unit economics | Never replaced by cost-plus undercutting. |
+| CAC payback & LTV/CAC survival constraint | $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a bounded payback window; high per-customer margin beats thin-margin volume | David Skok, *SaaS Metrics 2.0*; Gupta & Lehmann, *Customers as Assets* (2003) | Organic acquisition or capital structure changes the binding payback horizon. |
+| Value-metric tiering & workspace billing | Scale paid tiers along the customer's primary value unit; bind team entitlements to workspaces and hard-cap free tiers | Ramanujam & Tacke (2016); industry workspace billing (Vercel, Linear, Slack) | Customer usage telemetry shows a stronger value metric correlates with retention and expansion. |
+| Durable double-entry order ledger | Decouple payment capture from idempotent fulfillment; append-only refund and credit entries | Kleppmann, *Designing Data-Intensive Applications* (2017), ch. 11–12 | Never replaced; immutable audit trails are a hard boundary. |

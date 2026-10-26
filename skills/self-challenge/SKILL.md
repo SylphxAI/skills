@@ -7,18 +7,20 @@ description: "Use when drafting, designing, comparing, or reviewing a launch/mig
 
 Use this skill whenever designing, planning, evaluating trade-offs, reviewing a proposal/contract/budget, or questioning whether an approach is over-engineered. It is **role-neutral and domain-universal** across software architecture, product design, commercial/partner deals, marketing/growth budgets, and operations.
 
+Just as `references/stack.md` selects proven languages and storage engines rather than inventing them from scratch, this skill treats **decision methodology as a stack**: every domain applies an explicitly chosen, literature-backed methodology calibrated to a small, self-funded, agent-native organization rather than intuition, surface analogy, or uncalibrated big-company habits. When a newer paper, benchmark, or industry method demonstrates better prediction or return per unit cost, replace the row in `Method sources` in one commit.
+
 ## Step 0: Load the Matching Domain Reference First (Mandatory)
 
 Do not answer from generic pretraining alone. Immediately read the specific reference file(s) under `references/` that govern the domain of the question:
 
 - **System Architecture, Service Boundaries, Scale & Stack**:
-  - [references/architecture.md](references/architecture.md) — Vertical slices with a pure core, Single Source of Truth (SSOT), 10x/100x scale, scale-to-zero (`min-scale: 0`), event-driven reconciliation, durable request ownership, upstream contribution / separation of concerns, and agent-first APIs
+  - [references/architecture.md](references/architecture.md) — Vertical slices with a pure core, Single Source of Truth (SSOT), 10x/100x scale, scale-to-zero (`min-scale: 0`), Theory of Constraints capacity calculus, event-driven reconciliation, durable request ownership, upstream contribution / separation of concerns, and agent-first APIs
   - [references/stack.md](references/stack.md) — Target languages, runtimes, storage engines, and dependency selection
 - **Commercial Agreements, Pricing, Marketing Budgets, Growth & Games**:
-  - [references/commercial.md](references/commercial.md) — Pricing, plans, unit economics, partner/reseller terms, always-take-the-money, and refund rules
-  - [references/growth.md](references/growth.md) — Acquisition, activation, referral loops, ad-spend/CAC/ROAS economics, and SEO/ASO
+  - [references/commercial.md](references/commercial.md) — Value-based market pricing (`Price follows the market`), gross-margin maximization, LTV/CAC unit economics, workspace plans, partner/reseller terms, always-take-the-money, and refund rules
+  - [references/growth.md](references/growth.md) — Acquisition, activation, referral loops, holdout experiments, ad-spend/CAC/ROAS economics, and SEO/ASO
   - [references/mechanics.md](references/mechanics.md) and [references/mechanics-catalogue.md](references/mechanics-catalogue.md) — Engagement, progression, monetisation, and retention mechanics
-  - [references/games.md](references/games.md) — Game economy, matchmaking, live-player continuity, and remake parity sheets
+  - [references/games.md](references/games.md) — Freemium power-law IAP economics vs. IAA, closed-sink virtual economy, matchmaking, live-player continuity, and remake parity sheets
 - **Product Scope, UX/UI & Customer Feedback**:
   - [references/product.md](references/product.md) — Product value thesis, first value with zero-config, SOTA evidence vs model crutches, and multi-agent conversation contracts
   - [references/experience.md](references/experience.md) — UI/UX quality, onboarding, localization, accessibility, and latency feel
@@ -32,13 +34,30 @@ Do not answer from generic pretraining alone. Immediately read the specific refe
 
 When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
 
-## 1. The Five First-Principles Challenge Tests
+## 1. The Scientific Decision Method (Strong Inference, Competing Hypotheses & Bottleneck Calculus)
+
+Derive every non-trivial judgment, trade-off, capacity decision, or response to a challenge through four positive steps:
+
+1. **Model the Objective & Governing Equation (`Theory of Constraints` — Goldratt 1984; `Reinertsen 2009`)**:
+   - State the objective metric to maximize (such as net revenue, gross margin, or verified throughput per unit cost) and the causal variables that govern it (for example, $\text{Throughput} = \min(\text{Demand}, \text{Capacity} \times \text{Active Duty Cycle}, \text{Execution Completion Rate}, \text{Verification Rate})$).
+2. **Enumerate Competing Hypotheses (`Strong Inference` — Platt 1964; `ACH` — Heuer 1999)**:
+   - List mutually exclusive, collectively exhaustive competing hypotheses $\{H_0, H_1, H_2\}$ across those variables, always including the null/baseline hypothesis $H_0$ (for example, that current capacity is sufficient and output is throttled by a downstream failure or synchronous wait).
+   - Place any initial hunch, peer claim, or directional challenge from a user into $\{H_0, H_1, H_2\}$ as a candidate hypothesis pointing to an input variable to test—never as an unverified conclusion.
+3. **Measure All Variables Across the Representative Window (`Crucial Experiment` — Popper 1959)**:
+   - Query the authoritative primary sources across the full population and window (such as 7-day p95 physical utilization and 12–24h active duty cycle and completion rates) to eliminate hypotheses contradicted by data.
+   - **Only measured inputs move a conclusion**: a directional challenge or counter-argument changes the decision if and only if measuring the challenged variable changes the model's inputs. When the measured inputs confirm the original or a third hypothesis, keep the proven conclusion and show the numbers.
+4. **Act on the Binding Constraint (`Goldratt 1984`; `Kingman 1961`)**:
+   - Intervene on the variable that bounds the equation. Adding or cutting capacity at a non-bottleneck step yields zero throughput gain; low output at low utilization indicates a downstream stall or synchronous wait to fix at its source.
+
+---
+
+## 2. The Five First-Principles Challenge Tests
 
 Evaluate every architecture, plan, product spec, commercial deal, or budget against the applicable tests below:
 
-1. **Test A — Category-Leader Benchmark (SOTA) & Live Primary Source**:
+1. **Test A — Category-Leader Benchmark (SOTA), First-Principles Decomposition & Live Primary Source**:
    - Name the **category leader** (the top product, service, or open standard in that space). When a design depends on an external specification, protocol, law, vendor API, or paper, carry a **dated read of the primary source from the current session**—never rely on training memory.
-   - Ask: *"Does our target match or beat the category leader on every user-visible dimension, or are we settling for a weaker step?"*
+   - **Separate irreducible mechanics from legacy compromises**: deconstruct *why* the category leader works—which parts reflect fundamental physical, protocol, or unit-economics laws, and which parts are compromises forced by a large incumbent's human coordination overhead, enterprise sales force, or pre-serverless infrastructure. Match or beat the leader on every user-visible dimension while discarding its legacy compromises.
    - On AI/agent systems, use external papers for benchmark metrics and failure classes only—never copy multi-step prompt/planner scaffolding built as crutches for older, weaker models ([references/product.md](references/product.md)).
    - *(Skip Test A for routine internal chores or mechanical bug fixes.)*
 2. **Test B — Simple Concept, Powerful & Deep Implementation (YAGNI)**:
@@ -60,7 +79,7 @@ Evaluate every architecture, plan, product spec, commercial deal, or budget agai
 
 ---
 
-## 2. Separation of Concerns Between Model and Runtime (Every Agent/Platform Change)
+## 3. Separation of Concerns Between Model and Runtime (Every Agent/Platform Change)
 
 Apply this gate whenever a design, review, incident, or performance complaint touches an agent, runtime, sandbox, tool loop, or model configuration. Keep the boundary in one direction: the model owns its reasoning and tool path; the platform owns the environment and its overhead.
 
@@ -77,7 +96,7 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 
 ---
 
-## 3. Applying the Challenge by Scenario
+## 4. Applying the Challenge by Scenario
 
 ### Scenario 1 — Designing or Comparing Architectures / Technical Specs
 - Check `references/architecture.md` and `references/stack.md`.
@@ -85,7 +104,7 @@ Apply this gate whenever a design, review, incident, or performance complaint to
 
 ### Scenario 2 — Evaluating a Commercial Contract, Budget, Vendor, or Growth Plan
 - Check `references/commercial.md`, `references/growth.md`, and `references/risk.md`.
-- Compute unit economics (net margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; ask only for new unauthorized spend, a missing grant, or an ambiguous request, with one recommended option. Already authorized deletions or governance changes need no repeated approval; preserve unique user data.
+- Compute unit economics (value-based market pricing, gross margin after store/payment fees, CAC vs LTV, downside exposure) and score every legal, tax, or commercial risk quantitatively by `likelihood (1–5) × impact (1–5)`. Never block on an unscored hypothetical risk; ask only for new unauthorized spend, a missing grant, or an ambiguous request, with one recommended option. Already authorized deletions or governance changes need no repeated approval; preserve unique user data.
 
 ### Scenario 3 — Root-Cause Claims, Incident Framing & 30-Minute Stalls
 - **Perform Root-Cause Analysis Before Naming a Cause or Shared Fix**:
@@ -95,3 +114,15 @@ Apply this gate whenever a design, review, incident, or performance complaint to
   4. **Boundary**: State the intended outcome, target, and blast radius—which identities, sessions, memories, or grants are touched and which must remain untouched.
   5. **Action**: Test the proposed fix against one concrete counterexample to confirm it repairs the right layer without adding unrequested gates, agent categories, or model constraints. Until the live event and governing code/config are read, label any explanation a **hypothesis** and never use it to redirect shared architecture or dispatch; when new evidence disproves a conclusion, retract affected decisions immediately.
 - Change the method as soon as a path is blocked; **30 minutes is the latest re-check, not a wait**. Read the live object directly and switch to [`../unblock/SKILL.md`](../unblock/SKILL.md) or [`../swarm-fuse/SKILL.md`](../swarm-fuse/SKILL.md).
+
+---
+
+## Method sources
+
+| Method | Formula / Rule | Source | Replace when |
+| --- | --- | --- | --- |
+| Strong inference & falsification | Formulate mutually exclusive competing hypotheses $\{H_0, H_1, H_2\}$ and run the crucial disconfirming check that eliminates wrong hypotheses before concluding. | John R. Platt, *Strong Inference*, Science 146(3642), 1964; Karl Popper, *The Logic of Scientific Discovery* (1959) | A more diagnostic empirical falsification protocol outperforms competing-hypothesis elimination. |
+| Analysis of Competing Hypotheses (ACH) | Evaluate primary evidence across all competing hypotheses simultaneously by diagnosticity; any intuition, peer claim, or directional challenge enters as a candidate hypothesis / input variable to measure, and only measured inputs move a conclusion. | Richards J. Heuer Jr., *Psychology of Intelligence Analysis* (1999), ch. 8 | A better-calibrated multi-hypothesis evaluation method reduces false-positive and flip-flop error rates on our tasks. |
+| Theory of Constraints (TOC) & queueing physics | System throughput equals the rate of its single binding constraint ($\min(r_1, \dots, r_n)$); non-bottleneck capacity changes yield zero throughput gain, and low output at low utilization indicates a downstream stall or synchronous wait. | Eliyahu M. Goldratt, *The Goal* (1984); John D. C. Little (1961); J. F. C. Kingman (1961) | The flow topology changes or a more accurate queueing model governs our dispatch and build pipelines. |
+| First-principles decomposition | Separate a category leader's irreducible physical, protocol, or unit-economics mechanics from compromises forced by legacy human coordination, sales overhead, or pre-serverless infrastructure. | Aristotle, *Metaphysics* 1013a; Richard Feynman (first-principles derivation over analogy) | Never replaced by surface imitation; update domain decompositions as technology constraints shift. |
+| Sacrificial architecture & agent-native lifecycle cost | Compare local patching vs. complete boundary replacement by total cost to a verified outcome (duration × daily burn + monthly idle floor + maintenance/recovery cost), never by diff line count. | Martin Fowler, *Sacrificial Architecture* (2014); Donald G. Reinertsen, *The Principles of Product Development Flow* (2009) | Relative costs of agent code authoring, verification, or runtime state change materially. |
