@@ -111,14 +111,14 @@ what is deployed today.
   classifier, counts people to decide who answers, forces attendance, caps how
   often the agent may reply, or adds a registry of who may speak. The model
   decides from the facts and its tools.
-- **Orthogonal 4-layer agent architecture (tools & grants, harness session goal loop, relationship graph, and automation ledger):**
+- **Orthogonal 4-layer agent architecture (tools & grants, agent loop & session goal, relationship graph, and automation ledger):**
   keep these four layers decoupled so removing any layer leaves the others
   working independently:
   1. *Tools & permissions*: grants attach directly to tools and are checked at
      tool invocation, independent of agent role, relationship graph, or outer
      ledger state.
-  2. *Harness agent loop & session goal (`working <-> waiting -> kept / dropped`)*:
-     the harness owns a built-in per-session Goal system with no separate
+  2. *Agent loop & session goal (`working <-> waiting -> kept / dropped`)*:
+     the agent runtime owns a built-in per-session Goal system with no separate
      middleman goal table (`sessions.active_promise_id`). Even without an outer
      automation platform or sub-agents, any session can hold at most one active
      goal at a time, immutable while active until settled, running one
@@ -139,8 +139,8 @@ what is deployed today.
      awareness and messaging channels.
   4. *Automation platform (`promises` ledger)*: when the ledger dispatches work
      to an agent, it acts as an orthogonal adapter that pre-configures and locks
-     the session's harness Goal (`sessions.active_promise_id`) and provisions
-     the required tool grants for that session.
+     the session's Goal (`sessions.active_promise_id`) and provisions the
+     required tool grants for that session.
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken
