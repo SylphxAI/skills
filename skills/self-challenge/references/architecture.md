@@ -74,12 +74,17 @@ feature/
   point (`lib.rs`, `index.ts`, `pub(crate)`), everything else private, no
   cycles.
 - Split by capability, not size; merge pieces that always change together.
-  Introduce an abstraction at its second real use: keep domain rules in a pure
-  functional core (`values in -> values out`, zero I/O or traits) and keep
-  persistence direct in the imperative shell (`load -> decide -> commit` in
-  Postgres without speculative `Repository` or `DatabaseAdapter` traits), so
-  extracting a second shell later takes minutes without paying an indirection
-  tax today.
+  Keep domain rules in a pure functional core (`values in -> values out`, zero
+  I/O or traits). When a shared engine or runtime runs across multiple hosts
+  (such as a standalone CLI/TUI/Desktop on local SQLite and a cloud worker on
+  Postgres), define a small number of narrow, semantic ports at the host
+  boundary (Alistair Cockburn, *Hexagonal Architecture*, 2005: purposeful
+  conversations such as atomic session journal checkpoints or relationship
+  graph edges — never a 1-to-1 CRUD `Repository` trait per database table).
+  Inside single-host cloud services (such as multi-tenant billing holds, RLS,
+  and `FOR UPDATE SKIP LOCKED` dispatch queues that only run on Postgres), keep
+  persistence direct in the imperative shell (`load -> decide -> atomic SQL
+  commit` without speculative `Repository` traits).
 - **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
   (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
   Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
