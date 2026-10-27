@@ -113,19 +113,22 @@ what is deployed today.
   decides from the facts and its tools.
 - **Unified Goal and Promise obligation loop (`working <-> waiting -> kept / dropped`):**
   dispatched work items and assistant self-set goals use one unified mechanism
-  (`promises` + `goal_contexts`). When the system dispatches a work item, it
-  pre-attaches the promise as the session's active goal at start; when a
-  conversational assistant is working and judges that an outcome requires
-  multi-step tracking or waiting across time or events (such as monitoring an
-  external site to place an order or driving a deployment to completion), the
-  model calls the goal/promise tool to attach a goal to its own session. While a
-  goal is active, the agent runs one interleaved loop across `working` and
-  `waiting` (suspending compute during `waiting`/`sleep` and continuing quietly
-  between meaningful changes, as in OpenAI Codex `persistent_mode.md`) with no
-  mandatory upfront planner stage and no external `checking` or LLM-reviewer
-  gate, until it verifies the outcome against the real environment with an
-  observable receipt (`kept`) or records disconfirming evidence when a premise
-  is falsified (`dropped`).
+  bound directly to the session (`promises` + `sessions.active_promise_id`),
+  with no separate middleman goal table. Every session holds at most one
+  `active_promise_id` at a time, and its objective is immutable while active
+  until it settles: a dispatched task session is born with `active_promise_id`
+  locked to its promise and archives on settlement, while a conversational
+  assistant (`active_promise_id = NULL`) may lock a self-set promise onto its
+  own session via tool call until settled (then clearing `active_promise_id`
+  back to `NULL` so a new goal can be set later) or spawn a child task session
+  for parallel background work. While `active_promise_id` is non-null, the
+  agent runs one interleaved loop across `working` and `waiting` (suspending
+  compute during `waiting`/`sleep` and continuing quietly between meaningful
+  changes, as in OpenAI Codex `persistent_mode.md`) with no mandatory upfront
+  planner stage and no external `checking` or LLM-reviewer gate, until it
+  verifies the outcome against the real environment with an observable receipt
+  (`kept`) or records disconfirming evidence when a premise is falsified
+  (`dropped`).
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken
