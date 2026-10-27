@@ -111,24 +111,36 @@ what is deployed today.
   classifier, counts people to decide who answers, forces attendance, caps how
   often the agent may reply, or adds a registry of who may speak. The model
   decides from the facts and its tools.
-- **Unified Goal and Promise obligation loop (`working <-> waiting -> kept / dropped`):**
-  dispatched work items and assistant self-set goals use one unified mechanism
-  bound directly to the session (`promises` + `sessions.active_promise_id`),
-  with no separate middleman goal table. Every session holds at most one
-  `active_promise_id` at a time, and its objective is immutable while active
-  until it settles: a dispatched task session is born with `active_promise_id`
-  locked to its promise and archives on settlement, while a conversational
-  assistant (`active_promise_id = NULL`) may lock a self-set promise onto its
-  own session via tool call until settled (then clearing `active_promise_id`
-  back to `NULL` so a new goal can be set later) or spawn a child task session
-  for parallel background work. While `active_promise_id` is non-null, the
-  agent runs one interleaved loop across `working` and `waiting` (suspending
-  compute during `waiting`/`sleep` and continuing quietly between meaningful
-  changes, as in OpenAI Codex `persistent_mode.md`) with no mandatory upfront
-  planner stage and no external `checking` or LLM-reviewer gate, until it
-  verifies the outcome against the real environment with an observable receipt
-  (`kept`) or records disconfirming evidence when a premise is falsified
-  (`dropped`).
+- **Orthogonal 4-layer agent architecture (tools & grants, harness session goal loop, relationship graph, and automation ledger):**
+  keep these four layers decoupled so removing any layer leaves the others
+  working independently:
+  1. *Tools & permissions*: grants attach directly to tools and are checked at
+     tool invocation, independent of agent role, relationship graph, or outer
+     ledger state.
+  2. *Harness agent loop & session goal (`working <-> waiting -> kept / dropped`)*:
+     the harness owns a built-in per-session Goal system with no separate
+     middleman goal table (`sessions.active_promise_id`). Even without an outer
+     automation platform or sub-agents, any session can hold at most one active
+     goal at a time, immutable while active until settled, running one
+     interleaved loop across `working` and `waiting` (suspending compute during
+     `waiting`/`sleep` and continuing quietly with same-session compaction, as
+     in OpenAI Codex `persistent_mode.md`) with no mandatory upfront planner
+     stage and no external `checking` or LLM-reviewer gate, until verified
+     against the real environment with an observable receipt (`kept`) or
+     settled with disconfirming evidence (`dropped`).
+  3. *Agent relationship graph & awareness (`AnyAgents` topology)*: every agent
+     (assistant, one-off, sub-agent, parent, or peer) is structurally identical,
+     never deleted (100% of history retained), and differs only by reversible
+     state (`active`, `idle`, `paused`, `archived` — waking on a new message or
+     task) and edges in the relationship graph. A `parent` edge (`sub-agent`)
+     simply means the parent has state awareness, serves as the default
+     escalation/reporting channel, and receives a completion notification; a
+     `group`, `team`, or `workspace` (one concept) gives members shared roster
+     awareness and messaging channels.
+  4. *Automation platform (`promises` ledger)*: when the ledger dispatches work
+     to an agent, it acts as an orthogonal adapter that pre-configures and locks
+     the session's harness Goal (`sessions.active_promise_id`) and provisions
+     the required tool grants for that session.
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken
