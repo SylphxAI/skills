@@ -113,7 +113,7 @@ feature/
     compile and test hit rate. Never leak explicit lifetime parameters
     (`<'a>`), cross-module interior mutability (`Arc<Mutex<...>>`, `RefCell`),
     or manual arena/SIMD/GPU micro-optimization into feature slices.
-  - **Lower tier (10% of code — shared engines `Keel`, `Spiron`, `Sylphx`)**:
+  - **Lower tier (10% of code — shared UI, agent, and platform engines)**:
     Absorb all low-level performance complexity (WASM linear memory arenas,
     Structure-of-Arrays layout, tree/layout diffing, GPU instancing and
     frustum culling, SIMD, and connection pooling/batching) beneath a stable,
