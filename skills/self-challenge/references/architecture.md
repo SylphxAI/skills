@@ -75,6 +75,28 @@ feature/
   cycles.
 - Split by capability, not size; merge pieces that always change together.
   Introduce an abstraction at its second real use.
+- **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
+  (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
+  Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
+  temporal co-occurrence in a workflow ("when the platform dispatches a ticket,
+  it also spawns a sub-agent, sets a goal, and grants tools") with structural
+  coupling. Separate **What** (tools & capability grants checked at invocation),
+  **How** (per-session execution loop & goal state), **Who / Where**
+  (relationship graph & awareness: `parent` edge or shared `group` / `team` /
+  `workspace` roster), and **Why / When** (outer scheduler or ledger that
+  configures a session). Every layer $L_i$ must pass the **ablation test**: if
+  $L_i$ is deleted completely, layers $L_1 \dots L_{i-1}$ still work standalone
+  with zero dead branches or `if` checks referencing $L_i$.
+- **Keep nodes isomorphic; put roles on edges and lifecycles in state** (Carl
+  Hewitt, *Actor Model*, 1973; Martin Fowler, *Party-Role Pattern*, 1997): do
+  not turn role nouns (`assistant`, `sub-agent`, `parent`, `one-off worker`,
+  `team member`) into entity subclasses, separate tables, or `kind` /
+  `lifetime` columns that branch tool authority or loop execution. Keep every
+  entity node structurally identical, represent relationships (`parent`,
+  `team` / `group` / `workspace`) as graph edges that govern awareness and
+  notification routing only, and represent lifecycle (`active`, `idle`,
+  `paused`, `archived`) as a reversible state machine without destructive
+  deletes.
 - Start as a modular monolith with one composition root. Extract a service for
   a named need: scale, failure isolation, trust, data authority, release
   cadence, or placement.
@@ -481,6 +503,7 @@ memory, and I/O), never by uncalibrated scheduler bookings alone.
 | Term | Formula / Rule | Source | Replace when |
 | --- | --- | --- | --- |
 | Functional core, imperative shell & vertical slices | Pure deterministic domain core (`decide(state, cmd) -> events`) with zero I/O; imperative shell handles auth, storage, and transactional outbox per capability slice | Gary Bernhardt, *Boundaries* (2012); David L. Parnas, *On the Criteria To Be Used in Decomposing Systems into Modules* (1972) | Never replaced for stateful domain invariants. |
+| Orthogonal de-complecting, layer ablation & actor/role isomorphism | Unbraid What (tools/grants), How (session loop/goal), Who (relationship edges), and Why (outer ledger); verify each layer $L_i$ passes the ablation test (deleting $L_i$ leaves $L_1 \dots L_{i-1}$ working with zero dead branches), and keep entity nodes 100% isomorphic with roles on edges and lifecycle in reversible state | Rich Hickey, *Simple Made Easy* (2011); Edsger W. Dijkstra, *THE Multiprogramming System* (CACM 1968); Carl Hewitt et al., *Actor Model* (IJCAI 1973); Martin Fowler, *Analysis Patterns* (1997); Dennis & Van Horn, *Object-Capability Model* (CACM 1966) | Never replaced; every boundary design must pass the ablation and node-isomorphism check. |
 | Theory of Constraints (TOC) & queueing capacity | System throughput is bounded by the single bottleneck ($\min(r_1, \dots, r_n)$); scale hardware only on 7-day p95 physical utilization (`>70%` add, `<25%` consolidate) and fix downstream stalls rather than resizing non-bottlenecks | Eliyahu M. Goldratt, *The Goal* (1984); John D. C. Little (1961); J. F. C. Kingman (1961) | Measured workload telemetry establishes a tighter utilization threshold for a specific hardware class. |
 | Scale-to-zero & shared-pool QoS tiering | Every service, worker, and job starts on demand and scales to zero when idle (`min-scale: 0`); shared nodes isolate incompressible resources via `Guaranteed`, `Burstable`, and `BestEffort` tiers | Verma et al., *Large-scale cluster management at Google with Borg* (EuroSys 2015); Kubernetes QoS classes | A workload records an explicit always-on exception backed by measured cold-start physics. |
 | Level-triggered reconciliation | Events trigger idempotent reconciliation against desired vs. observed state; periodic resync is a safety net only | Kubernetes Controller Pattern (*Resources and Controllers*) | Never replaced by polling-primary loops. |
