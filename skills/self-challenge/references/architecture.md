@@ -77,14 +77,32 @@ feature/
   Keep domain rules in a pure functional core (`values in -> values out`, zero
   I/O or traits). When a shared engine or runtime runs across multiple hosts
   (such as a standalone CLI/TUI/Desktop on local SQLite and a cloud worker on
-  Postgres), define a small number of narrow, semantic ports at the host
+  Postgres), define a small number of narrow, semantic atomic ports at the host
   boundary (Alistair Cockburn, *Hexagonal Architecture*, 2005: purposeful
   conversations such as atomic session journal checkpoints or relationship
-  graph edges — never a 1-to-1 CRUD `Repository` trait per database table).
-  Inside single-host cloud services (such as multi-tenant billing holds, RLS,
-  and `FOR UPDATE SKIP LOCKED` dispatch queues that only run on Postgres), keep
-  persistence direct in the imperative shell (`load -> decide -> atomic SQL
-  commit` without speculative `Repository` traits).
+  graph edges — never a 1-to-1 CRUD `Repository` trait per database table), and
+  implement both the `sqlite` and `postgres` adapters on Day 1 against one
+  shared conformance test suite. Inside single-host cloud services (such as
+  multi-tenant billing holds, RLS, and `FOR UPDATE SKIP LOCKED` dispatch queues
+  that only run on Postgres), keep persistence direct in the imperative shell
+  (`load -> decide -> atomic SQL commit` without speculative `Repository`
+  traits).
+- **Optimize for Agent-Native physics ($C_{\text{write}} \to 0$, $C_{\text{migration}} \gg C_{\text{write}}$): freeze irreversible semantics on Day 1 and make projections disposable**:
+  - Never apply YAGNI or "Rule of Three" to identity, tenancy, authority, or
+    known multi-host boundaries: every entity uses globally unique,
+    time-sortable IDs (`<prefix>_<uuidv7>`) and carries `org_id` from Day 1 (a
+    local CLI workspace uses a local `org_id` rather than a schema without
+    tenancy).
+  - Never use shared mutable `UPDATE`-in-place tables as a cross-module
+    integration surface: store sessions, goals, capability grants, messages,
+    and financial postings as single-writer, append-only fact streams (with
+    monotonic `seq`, `expected_seq` fencing, and `idempotency_key`), and treat
+    SQL read tables and views as disposable, rebuildable projections so query
+    or UI evolution never requires a multi-PR live data migration.
+  - Keep vertical capability crates small enough to fit in a single agent's
+    context window (`<5,000` lines) with composable extension hooks rather than
+    central giant enums or shared route files that serialize 100 parallel
+    agents in the merge queue.
 - **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
   (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
   Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
