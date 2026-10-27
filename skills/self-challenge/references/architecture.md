@@ -93,12 +93,16 @@ feature/
     time-sortable IDs (`<prefix>_<uuidv7>`) and carries `org_id` from Day 1 (a
     local CLI workspace uses a local `org_id` rather than a schema without
     tenancy).
-  - Never use shared mutable `UPDATE`-in-place tables as a cross-module
-    integration surface: store sessions, goals, capability grants, messages,
-    and financial postings as single-writer, append-only fact streams (with
-    monotonic `seq`, `expected_seq` fencing, and `idempotency_key`), and treat
-    SQL read tables and views as disposable, rebuildable projections so query
-    or UI evolution never requires a multi-PR live data migration.
+  - Never use unlogged `UPDATE`-in-place tables that silently overwrite history
+    or couple unrelated modules: every state transition on sessions, goals,
+    capability grants, messages, or financial postings commits both an
+    append-only fact row (with monotonic `seq`, `expected_seq` fencing, and
+    `idempotency_key`) and the authoritative current-state row inside the same
+    ACID transaction (preserving synchronous database invariants: `UNIQUE`
+    constraints, foreign keys, and `FOR UPDATE SKIP LOCKED`), while treating
+    secondary search, analytics, and UI read views as disposable projections
+    rebuildable from the fact log so query or UI evolution never requires a
+    multi-PR live data migration.
   - Keep vertical capability cells small enough to fit in a single agent's
     context window (`<3,000` lines) with composable extension hooks rather than
     central giant enums or shared route files that serialize 100 parallel
@@ -119,8 +123,9 @@ feature/
     frustum culling, SIMD, and connection pooling/batching) beneath a stable,
     high-level authoring contract.
 - **Semantic immutability via Rust ownership and value semantics (never clone-heavy persistent collections)**:
-  - Distinguish **database immutability** (append-only fact streams plus
-    disposable read projections) from **in-memory Rust immutability**: at
+  - Distinguish **database immutability** (append-only fact streams paired with
+    in-transaction authoritative current-state rows and disposable secondary
+    read projections) from **in-memory Rust immutability**: at
     module boundaries, pass owned values and return new state plus explicit
     effects (`fn decide(mut state: State, event: Event) -> (State, Vec<Effect>)`
     with `#[derive(Clone, PartialEq, Eq, Debug)]`), giving 100% deterministic
