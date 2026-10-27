@@ -99,10 +99,36 @@ feature/
     monotonic `seq`, `expected_seq` fencing, and `idempotency_key`), and treat
     SQL read tables and views as disposable, rebuildable projections so query
     or UI evolution never requires a multi-PR live data migration.
-  - Keep vertical capability crates small enough to fit in a single agent's
-    context window (`<5,000` lines) with composable extension hooks rather than
+  - Keep vertical capability cells small enough to fit in a single agent's
+    context window (`<3,000` lines) with composable extension hooks rather than
     central giant enums or shared route files that serialize 100 parallel
-    agents in the merge queue.
+    agents in the merge queue. When a cell's design is superseded, replace it
+    cleanly against its conformance test suite and delete the old code, tables,
+    and compatibility shims in the same change (zero legacy residue).
+- **Two-tier separation: high-hit-rate declarative authoring vs. extreme-optimized engine internals**:
+  - **Upper tier (90% of code — products, games, SaaS, and business slices)**:
+    Write pure, lifetime-free (`'static` owned types), safe
+    (`#![forbid(unsafe_code)]`), declarative Rust (`struct`, `enum`, `Vec`,
+    pure value transitions) so coding agents achieve a `>95%` first-pass
+    compile and test hit rate. Never leak explicit lifetime parameters
+    (`<'a>`), cross-module interior mutability (`Arc<Mutex<...>>`, `RefCell`),
+    or manual arena/SIMD/GPU micro-optimization into feature slices.
+  - **Lower tier (10% of code — shared UI, agent, and platform engines)**:
+    Absorb all low-level performance complexity (WASM linear memory arenas,
+    Structure-of-Arrays layout, tree/layout diffing, GPU instancing and
+    frustum culling, SIMD, and connection pooling/batching) beneath a stable,
+    high-level authoring contract.
+- **Semantic immutability via Rust ownership and value semantics (never clone-heavy persistent collections)**:
+  - Distinguish **database immutability** (append-only fact streams plus
+    disposable read projections) from **in-memory Rust immutability**: at
+    module boundaries, pass owned values and return new state plus explicit
+    effects (`fn decide(mut state: State, event: Event) -> (State, Vec<Effect>)`
+    with `#[derive(Clone, PartialEq, Eq, Debug)]`), giving 100% deterministic
+    unit tests (`assert_eq!`) and zero shared-reference mutation bugs while
+    compiling to zero-copy, in-place LLVM/WASM machine code. Never import
+    Flutter/JS-style persistent immutable collection wrappers (`im`, `rpds`) or
+    deep-clone state on every transition unless a user-facing undo/time-travel
+    feature explicitly requires structural sharing.
 - **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
   (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
   Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
@@ -531,6 +557,7 @@ memory, and I/O), never by uncalibrated scheduler bookings alone.
 | Term | Formula / Rule | Source | Replace when |
 | --- | --- | --- | --- |
 | Functional core, imperative shell & vertical slices | Pure deterministic domain core (`decide(state, cmd) -> events`) with zero I/O; imperative shell handles auth, storage, and transactional outbox per capability slice | Gary Bernhardt, *Boundaries* (2012); David L. Parnas, *On the Criteria To Be Used in Decomposing Systems into Modules* (1972) | Never replaced for stateful domain invariants. |
+| Two-tier authoring & Rust value-semantic immutability | Upper 90% feature slices use `#![forbid(unsafe_code)]`, `'static` owned values, and `fn(mut State, Event) -> (State, Vec<Effect>)` (semantic immutability at boundaries, zero-copy in-place mutation in LLVM/WASM, no persistent-collection cloning); lower 10% engines absorb arenas, SIMD, and GPU/WASM internals; cells stay `<3,000` LOC and delete legacy paths on cutover | Niko Matsakis & Felix S. Klock II, *The Rust Language* (ACM HILT 2014, Aliasing XOR Mutability); Gary Bernhardt, *Boundaries* (2012) | Never replaced by shared mutable references across modules or clone-on-write collection wrappers in feature code. |
 | Orthogonal de-complecting, layer ablation & actor/role isomorphism | Unbraid What (tools/grants), How (session loop/goal), Who (relationship edges), and Why (outer ledger); verify each layer $L_i$ passes the ablation test (deleting $L_i$ leaves $L_1 \dots L_{i-1}$ working with zero dead branches), and keep entity nodes 100% isomorphic with roles on edges and lifecycle in reversible state | Rich Hickey, *Simple Made Easy* (2011); Edsger W. Dijkstra, *THE Multiprogramming System* (CACM 1968); Carl Hewitt et al., *Actor Model* (IJCAI 1973); Martin Fowler, *Analysis Patterns* (1997); Dennis & Van Horn, *Object-Capability Model* (CACM 1966) | Never replaced; every boundary design must pass the ablation and node-isomorphism check. |
 | Theory of Constraints (TOC) & queueing capacity | System throughput is bounded by the single bottleneck ($\min(r_1, \dots, r_n)$); scale hardware only on 7-day p95 physical utilization (`>70%` add, `<25%` consolidate) and fix downstream stalls rather than resizing non-bottlenecks | Eliyahu M. Goldratt, *The Goal* (1984); John D. C. Little (1961); J. F. C. Kingman (1961) | Measured workload telemetry establishes a tighter utilization threshold for a specific hardware class. |
 | Scale-to-zero & shared-pool QoS tiering | Every service, worker, and job starts on demand and scales to zero when idle (`min-scale: 0`); shared nodes isolate incompressible resources via `Guaranteed`, `Burstable`, and `BestEffort` tiers | Verma et al., *Large-scale cluster management at Google with Borg* (EuroSys 2015); Kubernetes QoS classes | A workload records an explicit always-on exception backed by measured cold-start physics. |
