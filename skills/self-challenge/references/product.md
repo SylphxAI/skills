@@ -111,10 +111,21 @@ what is deployed today.
   classifier, counts people to decide who answers, forces attendance, caps how
   often the agent may reply, or adds a registry of who may speak. The model
   decides from the facts and its tools.
-- **A turn ends where its obligations end.** The goal subsystem is retired as a
-  direction: an agent is not continued by a goal it set. The obligations and the
-  record of what it did that a turn carries stay where the work system already
-  holds them.
+- **Unified Goal and Promise obligation loop (`working <-> waiting -> kept / dropped`):**
+  dispatched work items and assistant self-set goals use one unified mechanism
+  (`promises` + `goal_contexts`). When the system dispatches a work item, it
+  pre-attaches the promise as the session's active goal at start; when a
+  conversational assistant is working and judges that an outcome requires
+  multi-step tracking or waiting across time or events (such as monitoring an
+  external site to place an order or driving a deployment to completion), the
+  model calls the goal/promise tool to attach a goal to its own session. While a
+  goal is active, the agent runs one interleaved loop across `working` and
+  `waiting` (suspending compute during `waiting`/`sleep` and continuing quietly
+  between meaningful changes, as in OpenAI Codex `persistent_mode.md`) with no
+  mandatory upfront planner stage and no external `checking` or LLM-reviewer
+  gate, until it verifies the outcome against the real environment with an
+  observable receipt (`kept`) or records disconfirming evidence when a premise
+  is falsified (`dropped`).
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken
