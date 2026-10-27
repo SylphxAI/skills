@@ -67,14 +67,27 @@ feature/
 
 - Dependencies point one way: adapters and delivery depend on the shell, the
   shell on the core. The core imports no framework.
-- A port belongs at a true external edge (database, provider, queue, clock).
-  Internal code calls internal code directly; pass-through use cases, mappers,
-  and an interface per class add reading cost and no safety.
+- **Every external edge is a composable port from Day 1; every subsystem runs standalone**
+  (Alistair Cockburn, *Hexagonal Architecture / Ports & Adapters*, 2005; M. D.
+  McIlroy, *Unix Time-Sharing System*, 1978): a port belongs at every true
+  external edge (database/storage, provider, queue, clock, transport) from the
+  very first implementation — never wait for a "second database" before
+  separating domain/runtime logic from concrete storage (`Postgres`, `SQLite`,
+  local files, or in-memory state). Never dump domain, tool, or execution-loop
+  logic into a database adapter crate (`*-db` holds storage adapters only, never
+  business rules). Each capability crate (such as a tool system, an agent loop
+  with session goals, a relationship graph, or an outer scheduler) must compile
+  and run standalone with a local or in-memory port implementation so it can be
+  composed without modification into a CLI, TUI, desktop app, test suite, or
+  cloud server at the top-level composition root, enforced by a CI dependency
+  graph check (`cargo tree`).
+- Within a single slice's pure domain core, internal code calls internal code
+  directly without pass-through mappers, and internal helper abstractions wait
+  for a second real use.
 - A module is deep: a small public surface over substantial behavior, one entry
   point (`lib.rs`, `index.ts`, `pub(crate)`), everything else private, no
   cycles.
 - Split by capability, not size; merge pieces that always change together.
-  Introduce an abstraction at its second real use.
 - **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
   (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
   Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
