@@ -52,9 +52,37 @@ provide a unified, high-performance baseline:
   engine is provisional. Neither maturity, market share nor a published
   benchmark decides; published numbers only pick the contenders. An engine
   whose licence forbids offering it as a managed service is a reference only.
-- **Protobuf with Google AIP** as the only API schema, generating the
-  HTTP/JSON and gRPC surfaces, OpenAPI, the SDKs, the CLI and the MCP server
-  ([agent-first APIs](architecture.md#agent-first-apis-and-operations)).
+- **One writable contract per boundary**, never one schema forced across all
+  of them. Write a fact once at its boundary's authority and generate the rest;
+  a hand-written copy beside a generated one is a defect.
+  - *Domain rules and invariants* (game rules, policy, accounting): Rust types
+    and functions. No IDL wrapper inside one process.
+  - *Our remote APIs and events*: Protobuf descriptors served with Connect
+    (binary or ProtoJSON). HTTP routes, OpenAPI, SDKs, the CLI, the MCP server
+    and our own model tool schemas are generated from them, with a check that
+    the generated output is fresh. Resource-shaped APIs follow AIP resource
+    design ([agent-first APIs](architecture.md#agent-first-apis-and-operations));
+    do not add a second REST design beside it. ProtoJSON parsing rejects
+    unknown fields and 64-bit integers travel as strings; generator defaults
+    differ, so a negative test proves both.
+  - *Components a host loads at run time* (plugins, tools, game rules, policy
+    units): a WIT world with generated bindings. The host offers narrow
+    capabilities we define instead of ambient filesystem or network, and each
+    effect carries the caller's grant. A component sandbox never replaces
+    authorization.
+  - *Third-party tools discovered at run time*: the provider's JSON Schema at
+    a pinned catalogue revision. A model-specific strict subset is a
+    projection, never an edit of the source schema.
+  - *Durable state*: the database schema and its transaction invariants.
+  - *Hashes, signatures and idempotency keys*: an explicit canonical form.
+    Deterministic Protobuf serialization is not canonical.
+- **Portable product logic is Rust that builds both native and Wasm**; hosts
+  stay native for the OS, GPU, audio, payments, permissions and identity.
+  Wasm buys portability and isolation, not speed: choose each target's
+  execution strategy from a measured workload, and never ship downloaded code
+  that changes an iOS app's behaviour. Pin the component toolchain (runtime,
+  bindgen, linker) as one tested set. Our own WIT worlds do not depend on the
+  experimental WASI 0.3 host adapters.
 - **Dependencies & Agent-Native Build vs. Buy:**
   - Separate **adopting an open standard/protocol** (for interoperability) from **owning the implementation**. Traditional *"never reinvent the wheel"* heuristics assumed writing and maintaining code was the bottleneck; for agents, implementing a focused, well-bounded library, system, or engine against an open specification, conformance suite, or differential test harness (respecting test-suite licensing) is often low-cost while eliminating third-party bloat, mismatched abstractions, transitive supply-chain risk, and waiting on external release cycles.
   - Evaluate **building in-house vs. adopting an external dependency/system** case by case over full lifecycle cost (implementation, verification, security, maintenance, value of control/optimization freedom, and blocker recovery speed):
@@ -87,8 +115,15 @@ through the platform localization pipeline
 ## References
 
 - Rust(edition 2024), checked 2026-10-20: https://doc.rust-lang.org/edition-guide/rust-2024/index.html
+- Protobuf, read 2026-10-28: deterministic serialization is not canonical, https://protobuf.dev/programming-guides/serialization-not-canonical/ ; ProtoJSON int64 as strings and reject-unknown default, https://protobuf.dev/programming-guides/json/
+- Wasmtime v50 WASIp3 module, read 2026-10-28: "Experimental, unstable and incomplete … not ready for production use", https://github.com/bytecodealliance/wasmtime/blob/v50.0.0/crates/wasi/src/p3/mod.rs
+- Component Model FAQ, read 2026-10-28: "WASI is layered on top of the Component Model", https://github.com/WebAssembly/component-model/blob/main/design/high-level/FAQ.md
+- Connect protocol: https://connectrpc.com/docs/protocol/
+- App Store Review Guideline 2.5.2, read 2026-10-28: apps may not "download, install, or execute code which introduces or changes features or functionality", https://developer.apple.com/app-store/review/guidelines/#software-requirements
 
 ## How it is judged
 
 A clean checkout builds and tests with the documented commands, dependency
 updates pass their affected checks, and a media build reproduces from the lock.
+Each contract boundary has one writable authority, its generated projections
+are checked fresh, and the ProtoJSON negative tests pass.
