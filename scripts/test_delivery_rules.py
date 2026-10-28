@@ -87,3 +87,32 @@ class DeliveryRulesTests(unittest.TestCase):
             text = self.read(name).lower()
             for required in ('unverified', 'same branch', 'required', 'merge queue'):
                 self.assertIn(required, text)
+
+    def test_methodology_stack_sources_and_pricing_invariants(self):
+        for name in (
+            'self-challenge/SKILL.md',
+            'self-challenge/references/commercial.md',
+            'self-challenge/references/games.md',
+            'self-challenge/references/architecture.md',
+            'self-challenge/references/risk.md',
+            'author-item/references/priority.md',
+        ):
+            with self.subTest(name=name):
+                self.assertIn('## Method sources', self.read(name))
+        self.assertIn('## Methods table', self.read('self-challenge/references/conduct.md'))
+        sc = self.read('self-challenge/SKILL.md')
+        for phrase in ('Strong Inference', 'Analysis of Competing Hypotheses',
+                       'Structural Causal Models', 'Expected Value of Information',
+                       'Methodology always precedes conclusion',
+                       'A conclusion moves on evidence, a broken model, or a changed goal', 'Theory of Constraints'):
+            self.assertIn(phrase, sc)
+        comm = self.read('self-challenge/references/commercial.md')
+        for phrase in ('Mussa-Rosen', 'Price follows the market', 'Never undercut',
+                       'Regime A', 'Regime B', 'Regime C', 'gross margin', 'CAC'):
+            self.assertIn(phrase, comm)
+        games = self.read('self-challenge/references/games.md')
+        for phrase in ('Freemium Economics', 'power-law', 'Regime A', 'Regime B'):
+            self.assertIn(phrase, games)
+        docs = self.read('author-skill/references/docs.md').lower()
+        self.assertNotIn('what a big company in the same market does', docs)
+        self.assertIn('method sources', docs)

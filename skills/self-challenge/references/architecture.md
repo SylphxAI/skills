@@ -74,7 +74,88 @@ feature/
   point (`lib.rs`, `index.ts`, `pub(crate)`), everything else private, no
   cycles.
 - Split by capability, not size; merge pieces that always change together.
-  Introduce an abstraction at its second real use.
+  Keep domain rules in a pure functional core (`values in -> values out`, zero
+  I/O or traits). When a shared engine or runtime runs across multiple hosts
+  (such as a standalone CLI/TUI/Desktop on local SQLite and a cloud worker on
+  Postgres), define a small number of narrow, semantic atomic ports at the host
+  boundary (Alistair Cockburn, *Hexagonal Architecture*, 2005: purposeful
+  conversations such as atomic session journal checkpoints or relationship
+  graph edges — never a 1-to-1 CRUD `Repository` trait per database table), and
+  implement both the `sqlite` and `postgres` adapters on Day 1 against one
+  shared conformance test suite. Inside single-host cloud services (such as
+  multi-tenant billing holds, RLS, and `FOR UPDATE SKIP LOCKED` dispatch queues
+  that only run on Postgres), keep persistence direct in the imperative shell
+  (`load -> decide -> atomic SQL commit` without speculative `Repository`
+  traits).
+- **Optimize for Agent-Native physics ($C_{\text{write}} \to 0$, $C_{\text{migration}} \gg C_{\text{write}}$): freeze irreversible semantics on Day 1 and make projections disposable**:
+  - Never apply YAGNI or "Rule of Three" to identity, tenancy, authority, or
+    known multi-host boundaries: every entity uses globally unique,
+    time-sortable IDs (`<prefix>_<uuidv7>`) and carries `org_id` from Day 1 (a
+    local CLI workspace uses a local `org_id` rather than a schema without
+    tenancy).
+  - Never use unlogged `UPDATE`-in-place tables that silently overwrite history
+    or couple unrelated modules: every state transition on sessions, goals,
+    capability grants, messages, or financial postings commits both an
+    append-only fact row (with monotonic `seq`, `expected_seq` fencing, and
+    `idempotency_key`) and the authoritative current-state row inside the same
+    ACID transaction (preserving synchronous database invariants: `UNIQUE`
+    constraints, foreign keys, and `FOR UPDATE SKIP LOCKED`), while treating
+    secondary search, analytics, and UI read views as disposable projections
+    rebuildable from the fact log so query or UI evolution never requires a
+    multi-PR live data migration.
+  - Keep vertical capability cells small enough to fit in a single agent's
+    context window (`<3,000` lines) with composable extension hooks rather than
+    central giant enums or shared route files that serialize 100 parallel
+    agents in the merge queue. When a cell's design is superseded, replace it
+    cleanly against its conformance test suite and delete the old code, tables,
+    and compatibility shims in the same change (zero legacy residue).
+- **Two-tier separation: high-hit-rate declarative authoring vs. extreme-optimized engine internals**:
+  - **Upper tier (90% of code — products, games, SaaS, and business slices)**:
+    Write pure, lifetime-free (`'static` owned types), safe
+    (`#![forbid(unsafe_code)]`), declarative Rust (`struct`, `enum`, `Vec`,
+    pure value transitions) so coding agents achieve a `>95%` first-pass
+    compile and test hit rate. Never leak explicit lifetime parameters
+    (`<'a>`), cross-module interior mutability (`Arc<Mutex<...>>`, `RefCell`),
+    or manual arena/SIMD/GPU micro-optimization into feature slices.
+  - **Lower tier (10% of code — shared UI, agent, and platform engines)**:
+    Absorb all low-level performance complexity (WASM linear memory arenas,
+    Structure-of-Arrays layout, tree/layout diffing, GPU instancing and
+    frustum culling, SIMD, and connection pooling/batching) beneath a stable,
+    high-level authoring contract.
+- **Semantic immutability via Rust ownership and value semantics (never clone-heavy persistent collections)**:
+  - Distinguish **database immutability** (append-only fact streams paired with
+    in-transaction authoritative current-state rows and disposable secondary
+    read projections) from **in-memory Rust immutability**: at
+    module boundaries, pass owned values and return new state plus explicit
+    effects (`fn decide(mut state: State, event: Event) -> (State, Vec<Effect>)`
+    with `#[derive(Clone, PartialEq, Eq, Debug)]`), giving 100% deterministic
+    unit tests (`assert_eq!`) and zero shared-reference mutation bugs while
+    compiling to zero-copy, in-place LLVM/WASM machine code. Never import
+    Flutter/JS-style persistent immutable collection wrappers (`im`, `rpds`) or
+    deep-clone state on every transition unless a user-facing undo/time-travel
+    feature explicitly requires structural sharing.
+- **Unbraid orthogonal dimensions and run the layer ablation test before writing code**
+  (Rich Hickey, *Simple Made Easy*, 2011; Edsger W. Dijkstra, *THE
+  Multiprogramming System*, 1968; David L. Parnas, 1972): never confuse
+  temporal co-occurrence in a workflow ("when the platform dispatches a ticket,
+  it also spawns a sub-agent, sets a goal, and grants tools") with structural
+  coupling. Separate **What** (tools & capability grants checked at invocation),
+  **How** (per-session execution loop & goal state), **Who / Where**
+  (relationship graph & awareness: `parent` edge or shared `group` / `team` /
+  `workspace` roster), and **Why / When** (outer scheduler or ledger that
+  configures a session). Every layer $L_i$ must pass the **ablation test**: if
+  $L_i$ is deleted completely, layers $L_1 \dots L_{i-1}$ still work standalone
+  with zero dead branches or `if` checks referencing $L_i$.
+- **Keep nodes isomorphic; put roles on edges and lifecycles in state** (Carl
+  Hewitt, *Actor Model*, 1973; Martin Fowler, *Party-Role Pattern*, 1997): do
+  not turn role nouns (`assistant`, `sub-agent`, `parent`, `one-off worker`,
+  `team member`) into entity subclasses, separate tables, or `kind` /
+  `lifetime` columns that branch tool authority or loop execution. Keep every
+  entity node structurally identical, represent relationships (`parent`,
+  `team` / `group` / `workspace`) as graph edges that govern awareness and
+  notification routing only, and represent lifecycle (`active`, `idle`,
+  `paused`, `archived`) as a reversible state machine without destructive
+  deletes.
 - Start as a modular monolith with one composition root. Extract a service for
   a named need: scale, failure isolation, trust, data authority, release
   cadence, or placement.
@@ -480,3 +561,17 @@ resource envelopes, while batch, build, and CI workloads share burst capacity
 and yield first when protected demand rises. Capacity planning and hardware
 scaling are driven by measured physical utilization (such as 7-day p95 CPU,
 memory, and I/O), never by uncalibrated scheduler bookings alone.
+
+## Method sources
+
+| Term | Formula / Rule | Source | Replace when |
+| --- | --- | --- | --- |
+| Functional core, imperative shell & vertical slices | Pure deterministic domain core (`decide(state, cmd) -> events`) with zero I/O; imperative shell handles auth, storage, and transactional outbox per capability slice | Gary Bernhardt, *Boundaries* (2012); David L. Parnas, *On the Criteria To Be Used in Decomposing Systems into Modules* (1972) | Never replaced for stateful domain invariants. |
+| Two-tier authoring & Rust value-semantic immutability | Upper 90% feature slices use `#![forbid(unsafe_code)]`, `'static` owned values, and `fn(mut State, Event) -> (State, Vec<Effect>)` (semantic immutability at boundaries, zero-copy in-place mutation in LLVM/WASM, no persistent-collection cloning); lower 10% engines absorb arenas, SIMD, and GPU/WASM internals; cells stay `<3,000` LOC and delete legacy paths on cutover | Niko Matsakis & Felix S. Klock II, *The Rust Language* (ACM HILT 2014, Aliasing XOR Mutability); Gary Bernhardt, *Boundaries* (2012) | Never replaced by shared mutable references across modules or clone-on-write collection wrappers in feature code. |
+| Orthogonal de-complecting, layer ablation & actor/role isomorphism | Unbraid What (tools/grants), How (session loop/goal), Who (relationship edges), and Why (outer ledger); verify each layer $L_i$ passes the ablation test (deleting $L_i$ leaves $L_1 \dots L_{i-1}$ working with zero dead branches), and keep entity nodes 100% isomorphic with roles on edges and lifecycle in reversible state | Rich Hickey, *Simple Made Easy* (2011); Edsger W. Dijkstra, *THE Multiprogramming System* (CACM 1968); Carl Hewitt et al., *Actor Model* (IJCAI 1973); Martin Fowler, *Analysis Patterns* (1997); Dennis & Van Horn, *Object-Capability Model* (CACM 1966) | Never replaced; every boundary design must pass the ablation and node-isomorphism check. |
+| Theory of Constraints (TOC) & queueing capacity | System throughput is bounded by the single bottleneck ($\min(r_1, \dots, r_n)$); scale hardware only on 7-day p95 physical utilization (`>70%` add, `<25%` consolidate) and fix downstream stalls rather than resizing non-bottlenecks | Eliyahu M. Goldratt, *The Goal* (1984); John D. C. Little (1961); J. F. C. Kingman (1961) | Measured workload telemetry establishes a tighter utilization threshold for a specific hardware class. |
+| Scale-to-zero & shared-pool QoS tiering | Every service, worker, and job starts on demand and scales to zero when idle (`min-scale: 0`); shared nodes isolate incompressible resources via `Guaranteed`, `Burstable`, and `BestEffort` tiers | Verma et al., *Large-scale cluster management at Google with Borg* (EuroSys 2015); Kubernetes QoS classes | A workload records an explicit always-on exception backed by measured cold-start physics. |
+| Level-triggered reconciliation | Events trigger idempotent reconciliation against desired vs. observed state; periodic resync is a safety net only | Kubernetes Controller Pattern (*Resources and Controllers*) | Never replaced by polling-primary loops. |
+| Durable execution & transactional outbox | Accepted requests carry a stable idempotency identity, transactional outbox state, and system-side retry/dead-letter recovery | Temporal / Restate durable execution model; Martin Kleppmann, *Designing Data-Intensive Applications* (2017) | Workload benchmarks prove whether row-and-dispatcher Postgres or a dedicated durable engine wins at p95. |
+| Environment-steered agents & outcome evaluation | Invest in the agent-computer interface (tools, schemas, diagnostics) rather than scripting model step order; evaluate end-state outcomes (`pass^k`), never tool-call transcripts | Richard Sutton, *The Bitter Lesson* (2019); SWE-bench / $\tau$-bench end-state evaluation | Empirical evaluation across $\ge 2$ models proves a better agent-environment contract. |
+| Architectural prompt-injection defense | Separate untrusted data from privileged control flow via least-authority capability grants rather than prompt warnings | Google DeepMind, *CaMeL* (arXiv:2503.18813, 2025); Meta *Agents Rule of Two* (2025); OWASP *LLM01:2025* | Stronger formal capability-isolation primitives supersede current sandbox boundaries. |

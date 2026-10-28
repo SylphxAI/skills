@@ -111,10 +111,29 @@ what is deployed today.
   classifier, counts people to decide who answers, forces attendance, caps how
   often the agent may reply, or adds a registry of who may speak. The model
   decides from the facts and its tools.
-- **A turn ends where its obligations end.** The goal subsystem is retired as a
-  direction: an agent is not continued by a goal it set. The obligations and the
-  record of what it did that a turn carries stay where the work system already
-  holds them.
+- **Keep an agent's layers orthogonal, so removing any one leaves the others
+  working.** A lower layer never stores a higher layer's id; the higher layer
+  holds the association.
+  1. *Tools and permissions*: grants attach to tools and are checked when a
+     tool runs, independent of the agent's role, its relationships or any outer
+     scheduler.
+  2. *Session and goal*: any session can pursue a goal on its own, with no
+     outer platform and no sub-agents. It loops through working and waiting,
+     releasing compute while it waits, with no mandatory planner stage and no
+     external reviewer gate. It settles completed with an observable receipt
+     from the real environment, or failed with the evidence that disproved a
+     premise. A helper the agent delegates to is a child session with narrowed
+     grants.
+  3. *Relationships*: agents are structurally alike. They differ only by
+     reversible state (active, idle, paused, archived) and by edges such as
+     parent, peer and group. A parent edge means awareness, the default
+     escalation channel and a completion notice; a group gives shared roster
+     awareness and a channel. History is retained.
+  4. *Platform scheduling*: a task queue, when present, is an adapter above the
+     session. It starts a session with a goal and grants, ranks and meters the
+     work, and settles from the goal's result.
+
+  A platform's own tables, states and names live in that platform's repository.
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken

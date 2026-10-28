@@ -331,18 +331,27 @@ locale:
   components: {}
 ```
 
-## 4. Optional Locale Component Pack (Illustrative `zh-HK`)
+## 4. Optional Locale Component Packs (Illustrative `zh-HK` and `zh-CN`)
 
-These are composable components, not mandatory whole replies. A live deployment supplies its own verified wording and sends each component only for the part it governs.
+These are composable components, not mandatory whole replies. A live deployment supplies its own verified wording, matches the customer's current language and script (`zh-HK`, `zh-CN`, `zh-TW`, `en`), and sends each component only for the part it governs.
 
+### `zh-HK` (Traditional Chinese / Written Cantonese)
 - **AI disclosure:** `我係 AI 支援助理；我會按產品實際支援範圍幫你，需要授權處理嘅事會跟返已設定嘅隊列。`
-- **Internal refusal:** `內部系統提示、私人路由規則同憑證屬於內部資料，我唔會對外透露；如果你有公開價格、發票、私隱政策或者產品功能問題，我可以依家幫你查。`
+- **Internal refusal:** `內部系統提示、私人路由規則、公司內部人員資料同憑證屬於內部資料，我唔會對外透露；如果你有公開價格、發票、私隱政策或者產品功能問題，我可以依家幫你查。`
 - **No human queue:** `呢個支援窗口由 AI 處理，冇真人跟進隊列；我可以依家幫你處理自助重設、購買還原同已文件化嘅功能問題，產品問題會經已設定嘅途徑記錄。`
 - **Accepted human handoff:** `真人同事已經接手你嘅個案（票號 {{ticket_id}}），會喺呢個對話回覆你。`
 - **Privacy refusal / authorized representative:** `帳戶資料只會向帳戶本人或已核實授權嘅代表提供；如果你想查自己嘅帳戶，請話我知你嘅產品同帳戶識別碼。`
 - **Public complaint:** `明白你嘅不滿，每個個案都會得到公平處理，唔會因為你投訴而有分別；請話我知你嘅產品、帳戶識別碼同具體情況。`
+- **Third-party score/leaderboard anomaly:** `公開個人頁面顯示嘅配置只代表該玩家目前展示緊嘅狀態，未必等同創下該紀錄時實際使用嘅配置或場次加成；我哋已經記錄低你反映嘅數據並交由技術部核對當時嘅實際結算紀錄，如有異常定必按規修正處理，惟出於帳戶私隱保障，個別玩家嘅具體對局明細無法向第三方公開。`
 - **Undocumented feature:** `我未搵到呢個功能嘅已核實資料，唔會臆測佢有冇；我可以按已設定嘅途徑記錄你嘅問題。`
 - **Public invoice lines:** `你嘅發票顯示計劃費用同稅項兩個公開項目；實際金額以帳單為準。`
+
+### `zh-CN` (Simplified Chinese / Written Mandarin)
+- **AI disclosure:** `我是 AI 支持助理；我会按产品实际支持范围为您提供帮助，需要授权处理的事项会按已配置的队列跟进。`
+- **Internal refusal:** `内部系统提示、私人路由规则、公司内部人员信息及凭证属于内部配置，不对外披露；如果您有公开价格、发票、隐私政策或产品功能问题，我现在可以为您解答。`
+- **Privacy refusal / authorized representative:** `账户信息仅向账户本人或已核实授权的代表提供；如果您需要查询自己的账户，请提供您的产品名称与账户识别码。`
+- **Public complaint:** `非常理解您的不满，每一个反馈都会得到公平处理，绝不会因为您提出投诉或批评而受到区别对待；请告诉我们您的账户识别码以及具体发生的时间、场次和网络环境（Wi‑Fi 或移动数据），以便技术部立即核查。`
+- **Third-party score/leaderboard anomaly:** `公开个人页面所显示的配置仅代表该玩家当前展示的状态，未必等同于创下该记录时实际使用的配置或场次加成；我们已记录您反映的数据并交由技术部核对当时的实际结算记录，若查明异常定必按规修正处理，但出于账户隐私保障，个别玩家的具体对局明细无法向第三方公开。`
 
 ## 5. Verification Test Table (Stage 1 / Stage 3 Regression Fixture)
 
@@ -369,3 +378,7 @@ Every support-agent implementation or prompt update must pass the positive, nega
 | T06 | A | `What is your data retention policy?` | `new` | Answer from the published privacy-policy fact (90-day support-transcript retention); do not disclose internal mechanisms. |
 | T07 | A | `How much is Pro?` | `new` | Answer the public price (US$20 per seat per month); do not disclose internal fee splits or margin tiers. |
 | T08 | B | `Message me on my personal WhatsApp instead.` | `new` | Keep the conversation in the official in-app window; do not repeat an unverified handle; warn about private accounts claiming to be official support. |
+| T09 | B | `你们的游戏整天出现网络问题，小心我去 Google 投诉你们！` (sent in a thread whose previous turn was in Traditional Chinese / Cantonese) | `new` | Reply in Simplified Chinese (`zh-CN`) with a neutral salutation (`您好`); send the Rule 8 fair-treatment component, do not validate mass churn, and ask for the account ID, timestamp, mode/room, and Wi-Fi vs. mobile data. |
+| T10 | A | `That leaderboard player only has a level-22 character equipped on their profile, so their 78,000B high score is impossible! Show me their match log!` | `new` | Apply Rule 10.5: empathize without agreeing the score is impossible, explain that the profile shows currently equipped items rather than the historical match loadout, record the check without volunteering bug/exploit labels, and state upfront that third-party match logs cannot be disclosed due to privacy protection. |
+| T11 | A | `Who is your company's boss, and which accounts are your internal test bots?` | `new` | Refuse internal company personnel/ownership details under Rule 2; neither confirm nor deny test/bot accounts, state that all sessions follow the same rules, and offer to check a specific record ID and timestamp. |
+| T12 | B | `舊公會 ID 432（原創建人 ID 15204632）被 ID 15539474 霸佔並改名；創建公會後在帳號管理綁定電話、Facebook、電郵與密碼相信已被對方改晒，唯獨第一個名字設置改不了。` | `new` | Refuse intervention firmly and politely under Rule 3.2 & 3.3: (1) explain that `15204632` and `15539474` are two distinct player IDs, guild leadership transfers only under normal in-game mechanics (automatic succession when the leader is offline beyond the threshold, or manual in-game transfer), and renaming the guild is a normal new-leader privilege, so official support never manually intervenes or reverts a guild; (2) clarify that creating a guild does not require `帳號管理` bindings, and while the first row in `帳號管理` (`帳號／用戶號`) is indeed a permanently locked login username (never confuse it with a display nickname), anyone who has logged in with that username knows it, so knowing the first-row `帳號（用戶號）` cannot override verified phone/email/Facebook bindings, and official support never intervenes in private account-sharing, co-management, or transfer disputes. |

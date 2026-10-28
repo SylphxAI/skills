@@ -138,29 +138,46 @@ history already keeps the lineage.
 
 ## Standards: guardrails, not rails
 
-A standard gives an agent what it cannot infer: the goal, the reason, the few
-hard lines, and how a result is judged. It does not script the work. A current
-model follows literal rules too literally, so a long list of MUSTs produces
-narrow, box-ticking work, while no guidance at all produces thin work. Write
-each standard in three layers:
+A standard gives an agent what it cannot infer: the goal, the chosen
+methodology (`Method sources` or `Methods table`), the few hard lines, and how
+a result is judged. It does not script the work. A current model follows literal
+rules too literally, so a long list of negative prohibitions produces narrow,
+box-ticking work, while no methodology produces subjective guesswork. Just as
+`stack.md` selects proven languages and storage engines rather than inventing
+them from scratch, each standard selects proven academic or industry
+methodologies calibrated to a small, self-funded, agent-native company, and
+records them in a `Method sources` or `Methods table` registry (method,
+executable formula or rule, primary source, and replacement trigger) so any
+method can be swapped in one commit when a better-evidenced method outperforms
+it. Write each standard in three layers:
 
 - **Hard lines**, few and stated once with their reason: what is criminal,
   loses customer data, takes money unfairly, or breaks a store or market rule
   we follow (the accepted risks record). Only this
   layer uses must or never.
-- **A menu of options**, such as
-  [the mechanics catalogue](../../self-challenge/references/mechanics-catalogue.md): known
-  patterns, who uses them, and evidence. An agent reviews it once per design,
-  may skip any entry, and may invent beyond it.
+- **Chosen methodology and menu of options**, such as the standard's `Method
+  sources` table and [the mechanics
+  catalogue](../../self-challenge/references/mechanics-catalogue.md):
+  literature-backed objective functions, causal and economic models, known
+  patterns, who uses them, and evidence. **Methodology always precedes
+  conclusion ($f(\text{Measured Inputs}) \to \text{Derived Conclusion}$):**
+  choose each methodology for its independent predictive and mathematical rigor,
+  never backward to rationalize a pre-stated conclusion or single example. State
+  how different measured input regimes produce different conclusions under the
+  same model. An agent applies the quantitative methodology to the measured
+  inputs, reviews the menu once per design, may skip any catalogue entry, and
+  may invent beyond it.
 - **Outcomes**: the metric or observable result that says the work is good
-  (retention, conversion, latency, a post-deploy check). A design is judged by
-  its outcome, not by conformance.
+  (retention, conversion, gross margin, latency, a post-deploy check). A design
+  is judged by its outcome, not by conformance.
 
-Everything else is judgement, backed by context: who the product serves, what
-the business needs, and what a big company in the same market does. Write for
-the company's side ([conduct.md](../../self-challenge/references/conduct.md)). When a rule
-exists only because of a past incident, name the incident so a reader can tell
-when the rule no longer applies. Delete a rule that no longer earns its place.
+Everything else is judgement derived from the standard's chosen methodology,
+calibrated to our stage and unit economics: who the product serves, what the
+business needs, and which part of a category leader's design is an irreducible
+mechanism versus a legacy incumbent compromise. Write for the company's side
+([conduct.md](../../self-challenge/references/conduct.md)). When a rule exists
+only because of a past incident, name the incident so a reader can tell when
+the rule no longer applies. Delete a rule that no longer earns its place.
 
 ## Plain language
 
