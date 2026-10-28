@@ -46,14 +46,14 @@ paid-order delivery working, which is product work, not security work.
   transcripts, URLs, and third-party rendering services (render a TOTP QR code
   locally). An agent reads a secret only to hash, compare, or pass it to a
   program. If a secret is exposed, contain and redact the exposure at once and
-  follow the organization's rotation policy and authorized operator grants
+  follow the organization's rotation policy and authorized grants
   (revoking and rotating at the provider whenever a secret reaches an
   unauthorized or public surface, because deleting a file does not revoke it).
   Deliver replacement credentials only through the organization's managed
   secret store or encrypted vault sharing, never as plain chat text.
 - **Restricted resources are granted, never named in code.** Subscription
   seats, dedicated runners and private providers are reached only through audited
-  grant records issued by the operator API, failing closed.
+  grant records issued by the grant API, failing closed.
 - **Account deletion actually runs** (see Personal data).
 
 ## Practices

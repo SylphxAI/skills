@@ -20,7 +20,7 @@ Before any plan or execution starts, author the item with four fields:
      - *Software / Product*: end-state database row, HTTP/UI response, latency/SLO bound, or `FAIL_TO_PASS` / `PASS_TO_PASS` behavior.
      - *Commercial / Partner*: signed/published terms, unit-economics floor, risk band, and partner-facing artifact state.
      - *Marketing / Growth*: live campaign asset, attribution/tracking event verified end-to-end, and CAC/ROAS guardrails.
-     - *Operations / Support*: live runbook execution, operator API state read back before and after, and zero regression on active users.
+     - *Operations / Support*: live runbook execution, API state read back before and after, and zero regression on active users.
    - Pass the **Three Universal Standard Tests** from [`../self-challenge/SKILL.md`](../self-challenge/SKILL.md):
      - **Category-Leader Benchmark**: When shaping a product feature, UX flow, commercial/growth mechanic, or platform capability, does the target acceptance match or beat the category leader? *(Skip for routine operational chores or internal bug fixes with no category benchmark.)*
      - **YAGNI (You Aren’t Gonna Need It)**: Does the acceptance avoid demanding unrequested gates, queues, or internal scaffolding?

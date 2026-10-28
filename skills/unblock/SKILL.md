@@ -41,7 +41,7 @@ When an operational path is slow or blocked, use a reversible workaround within 
    - If the gate protects a real invariant (e.g., branch protection, secret scanning, OOM protection), satisfy it through the supported path—never skip secret/safety guards (`--no-verify` or `LEFTHOOK=0` is forbidden).
    - If a timeout or build cap has no witnessed failure behind it, or if a prior change shifted the bottleneck (e.g., lowering compile parallelism or running unoptimized crypto in debug tests), resize or fix the config at its source from measured usage plus margin.
 3. **Missing authority, credential, or unclear request**:
-   - Use existing delegated credentials and operator APIs first (read credentials once per process, never print secrets).
+   - Use existing delegated credentials and the products' APIs first (read credentials once per process, never print secrets).
    - Ask the accountable owner only for new unauthorized spend, a missing grant, or an ambiguous request, naming the exact decision needed. An already authorized deletion or governance change needs no repeated approval. Preserve unique user data: verify a recoverable copy before destructive changes and never destroy the only copy.
 
 ---
