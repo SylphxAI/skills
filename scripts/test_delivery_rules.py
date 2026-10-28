@@ -104,7 +104,7 @@ class DeliveryRulesTests(unittest.TestCase):
         for phrase in ('Strong Inference', 'Analysis of Competing Hypotheses',
                        'Structural Causal Models', 'Expected Value of Information',
                        'Methodology always precedes conclusion',
-                       'Only measured inputs move a conclusion', 'Theory of Constraints'):
+                       'A conclusion moves on evidence, a broken model, or a changed goal', 'Theory of Constraints'):
             self.assertIn(phrase, sc)
         comm = self.read('self-challenge/references/commercial.md')
         for phrase in ('Mussa-Rosen', 'Price follows the market', 'Never undercut',
