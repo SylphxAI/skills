@@ -464,8 +464,7 @@ the research/api paradigms 2026 record.
   in Google Cloud IAM and Kubernetes RBAC. There is no operator API, operator
   identity or operator key: the platform's own staff act through roles on the
   platform's organization, as any customer acts on its own, and a cross-tenant
-  action is a permission granted on that scope (Kyle, 2026-10-19 and
-  2026-10-25). A size or limit a customer may not choose is bounded by its
+  action is a permission granted on that scope. A size or limit a customer may not choose is bounded by its
   plan or quota grant, not by a privileged role. Docs, SDK and CLI are
   generated from the one contract, and a hand-written client is refused by the
   same CI check as a hand-written route.
