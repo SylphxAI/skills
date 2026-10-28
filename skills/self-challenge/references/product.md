@@ -111,36 +111,29 @@ what is deployed today.
   classifier, counts people to decide who answers, forces attendance, caps how
   often the agent may reply, or adds a registry of who may speak. The model
   decides from the facts and its tools.
-- **Orthogonal 4-layer agent architecture (tools & grants, agent loop & session goal, relationship graph, and automation ledger):**
-  keep these four layers decoupled so removing any layer leaves the others
-  working independently:
-  1. *Tools & permissions*: grants attach directly to tools and are checked at
-     tool invocation, independent of agent role, relationship graph, or outer
-     ledger state.
-  2. *Agent loop & session goal (`working <-> waiting -> kept / dropped`)*:
-     the agent runtime owns a built-in per-session Goal system with no separate
-     middleman goal table (`sessions.active_promise_id`). Even without an outer
-     automation platform or sub-agents, any session can hold at most one active
-     goal at a time, immutable while active until settled, running one
-     interleaved loop across `working` and `waiting` (suspending compute during
-     `waiting`/`sleep` and continuing quietly with same-session compaction, as
-     in OpenAI Codex `persistent_mode.md`) with no mandatory upfront planner
-     stage and no external `checking` or LLM-reviewer gate, until verified
-     against the real environment with an observable receipt (`kept`) or
-     settled with disconfirming evidence (`dropped`).
-  3. *Agent relationship graph & awareness (`AnyAgents` topology)*: every agent
-     (assistant, one-off, sub-agent, parent, or peer) is structurally identical,
-     never deleted (100% of history retained), and differs only by reversible
-     state (`active`, `idle`, `paused`, `archived` — waking on a new message or
-     task) and edges in the relationship graph. A `parent` edge (`sub-agent`)
-     simply means the parent has state awareness, serves as the default
-     escalation/reporting channel, and receives a completion notification; a
-     `group`, `team`, or `workspace` (one concept) gives members shared roster
-     awareness and messaging channels.
-  4. *Automation platform (`promises` ledger)*: when the ledger dispatches work
-     to an agent, it acts as an orthogonal adapter that pre-configures and locks
-     the session's Goal (`sessions.active_promise_id`) and provisions the
-     required tool grants for that session.
+- **Keep an agent's layers orthogonal, so removing any one leaves the others
+  working.** A lower layer never stores a higher layer's id; the higher layer
+  holds the association.
+  1. *Tools and permissions*: grants attach to tools and are checked when a
+     tool runs, independent of the agent's role, its relationships or any outer
+     scheduler.
+  2. *Session and goal*: any session can pursue a goal on its own, with no
+     outer platform and no sub-agents. It loops through working and waiting,
+     releasing compute while it waits, with no mandatory planner stage and no
+     external reviewer gate. It settles completed with an observable receipt
+     from the real environment, or failed with the evidence that disproved a
+     premise. A helper the agent delegates to is a child session with narrowed
+     grants.
+  3. *Relationships*: agents are structurally alike. They differ only by
+     reversible state (active, idle, paused, archived) and by edges such as
+     parent, peer and group. A parent edge means awareness, the default
+     escalation channel and a completion notice; a group gives shared roster
+     awareness and a channel. History is retained.
+  4. *Platform scheduling*: a task queue, when present, is an adapter above the
+     session. It starts a session with a goal and grants, ranks and meters the
+     work, and settles from the goal's result.
+
+  A platform's own tables, states and names live in that platform's repository.
 
 This supersedes the older contract in which a direct message, mention, reply or
 already-active thread was what woke an agent. It changes when an agent is woken
