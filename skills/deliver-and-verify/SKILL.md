@@ -46,6 +46,7 @@ Before editing code, running an operational command, or publishing an asset:
 1. **Read Primary Sources Live**: Read the actual codebase, live config, and any external specification/API docs in the current session—never from memory.
 2. **Live-User Continuity vs Pre-Launch Speed**:
    - **Live Products with Real Users**: Zero broken accounts, zero lost data, zero failed logins, and never stop taking paid orders. Reach a new storage or service path by **adding the new replica/path and switching over**—never migrate in place. Database migrations change schema only; state/record updates go through the product's API (or audited write role with before-and-after row reads).
+   - **Platform Releases Keep Each Tenant's Served Contract**: A platform or engine release that changes how it converges existing tenant state (routes, path prefixes, quotas, grants, defaults) applies any narrowing only when that tenant next releases its own declaration. Before rollout, read every affected live tenant and list what would narrow. A path, grant or limit a live tenant serves never disappears on reconcile alone, and a new, stricter rule ships with a check that refuses the narrowing.
    - **Pre-Launch Products (Zero Real Users)**: No grandfathering, no maintenance windows, and no compatibility shims—change directly to the cleanest target design.
 
 ---
