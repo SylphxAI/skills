@@ -90,6 +90,22 @@ provide a common starting point:
   test, and release, documented in the owning repository and runnable from a
   clean checkout.
 
+## Native output and first load
+
+A shared cross-platform engine compiles one codebase to each host's native
+execution and presentation by default, with zero configuration: the compiler
+chooses HTML, JavaScript, native code and compute boundaries. On the web, serve
+HTML for first paint and use compiled fine-grained DOM updates, a small
+JavaScript runtime and hydrated islands for interaction, in the SolidJS style.
+Load WASM only as an on-demand heavy-compute module; whole-app WASM does not meet
+this default. Use Canvas for game/3D surfaces or an explicit identical-pixels
+mode in the Flutter style. Require a measured per-title first-load byte baseline
+(compressed HTML, JS, WASM and required assets) that can only shrink, with a
+small fixed tolerance for growth, and reuse existing first-paint and ready-frame
+budgets. A compiled native binary alone does not prove platform-native controls
+are delivered. Engine writers implement this output standard upstream and
+products consume the published capability.
+
 ## Media and content assets
 
 Use the project's declared asset and localization pipelines. Procedural visuals
