@@ -14,6 +14,14 @@ known monetisation and retention patterns in
 
 - A player never loses purchased value, and play against real people stays
   skill-based. Money and conserved value follow [commercial.md](commercial.md).
+- A cache only serves display. Every purchase, claim or grant decision
+  re-reads the authoritative row inside the granting transaction; price,
+  eligibility, limits, stock and the grant commit together, so stale data
+  cannot let a player farm items or break the economy (DM 470, 2026-10-30).
+  Every cache change ships exploit tests: buying twice inside the cache
+  lifetime; buying after expiry; a stale price; two concurrent buys of the
+  last unit; a stale cache on another instance; a callback against a stale
+  template. Prove no duplicate or ineligible grant and no wrong charge.
 - A live game backend answers success only after the write has committed,
   because a 200 before commit loses progress when the process dies. A
   single-replica backend crashed once when a Cilium roll reset its database
