@@ -1,4 +1,4 @@
-"""Pin the audited delivery-policy corrections on the existing CI entry point."""
+"""Detect previously witnessed blocking instructions without prescribing prose."""
 from pathlib import Path
 import re
 import unittest
@@ -52,67 +52,9 @@ class DeliveryRulesTests(unittest.TestCase):
             with self.subTest(example=example):
                 self.assertTrue(blocking_patterns(example))
 
-    def test_operational_workarounds_keep_engine_and_safety_boundaries(self):
-        for name in ('deliver-and-verify/SKILL.md', 'self-challenge/SKILL.md',
-                     'unblock/SKILL.md', 'self-challenge/references/architecture.md',
-                     'swarm-fuse/SKILL.md'):
-            text = self.read(name).lower()
-            with self.subTest(name=name):
-                for required in ('reversible', 'existing grants', 'removal trigger',
-                                 'our own engines', 'engine owner fixes the gap upstream first',
-                                 'spending approval', 'unique user data', 'auth',
-                                 'tenant isolation', 'ledger protections'):
-                    self.assertIn(required, text)
-
-    def test_authorization_not_repeated_and_data_not_destroyed(self):
-        for name in ('unblock/SKILL.md', 'self-challenge/references/risk.md',
-                     'clear-writing/references/work-communication.md'):
-            text = self.read(name).lower()
-            with self.subTest(name=name):
-                for required in ('new unauthorized spend', 'missing grant',
-                                 'ambiguous request', 'already authorized', 'unique user data'):
-                    self.assertIn(required, text)
-
     def test_no_false_positives_for_review_recovery_or_local_checks(self):
         self.assertEqual([], blocking_patterns(
             'Required checks green, then merge queue. Independent review in parallel. '
             'Verify the live rollout independently. Use the email sign-in fallback. '
             'Run targeted local checks, then publish; CI verifies the rest. '
             '30 minutes is the latest re-check, not a wait.'))
-
-    def test_owner_decides_and_ci_can_iterate(self):
-        self.assertIn('records dissent', self.read('swarm-fuse/SKILL.md'))
-        self.assertIn('records dissent', self.read('author-item/references/work.md'))
-        for name in ('deliver-and-verify/SKILL.md', 'deliver-and-verify/references/dx.md'):
-            text = self.read(name).lower()
-            for required in ('unverified', 'same branch', 'required', 'merge queue'):
-                self.assertIn(required, text)
-
-    def test_methodology_stack_sources_and_pricing_invariants(self):
-        for name in (
-            'self-challenge/SKILL.md',
-            'self-challenge/references/commercial.md',
-            'self-challenge/references/games.md',
-            'self-challenge/references/architecture.md',
-            'self-challenge/references/risk.md',
-            'author-item/references/priority.md',
-        ):
-            with self.subTest(name=name):
-                self.assertIn('## Method sources', self.read(name))
-        self.assertIn('## Methods table', self.read('self-challenge/references/conduct.md'))
-        sc = self.read('self-challenge/SKILL.md')
-        for phrase in ('Strong Inference', 'Analysis of Competing Hypotheses',
-                       'Structural Causal Models', 'Expected Value of Information',
-                       'Methodology always precedes conclusion',
-                       'A conclusion moves on evidence, a broken model, or a changed goal', 'Theory of Constraints'):
-            self.assertIn(phrase, sc)
-        comm = self.read('self-challenge/references/commercial.md')
-        for phrase in ('Mussa-Rosen', 'Price follows the market', 'Never undercut',
-                       'Regime A', 'Regime B', 'Regime C', 'gross margin', 'CAC'):
-            self.assertIn(phrase, comm)
-        games = self.read('self-challenge/references/games.md')
-        for phrase in ('Freemium Economics', 'power-law', 'Regime A', 'Regime B'):
-            self.assertIn(phrase, games)
-        docs = self.read('author-skill/references/docs.md').lower()
-        self.assertNotIn('what a big company in the same market does', docs)
-        self.assertIn('method sources', docs)

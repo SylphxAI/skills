@@ -13,8 +13,9 @@ surfaces meet [dx.md](../../deliver-and-verify/references/dx.md).
 
 - Data is never held hostage and urgency is never false (a countdown that resets,
   a "last one" that is not), because they trade trust for a short-term gain.
-- A product built for children under 13 checks age before collecting any data
-  ([Products for children](#products-for-children)).
+- For a child-directed product, minimize data collection and satisfy the
+  applicable age-assurance and parental-consent requirements before regulated
+  processing ([Products for children](#products-for-children)).
 
 ## Practices
 
@@ -27,46 +28,36 @@ surfaces meet [dx.md](../../deliver-and-verify/references/dx.md).
 - **Capability scope:** consider the whole destination before cutting work, so an
   essential capability or cross-product dependency is not lost. For each material
   capability, decide: complete now, consume the owning product, keep as a stated
-  future destination, or exclude with a product reason. A catalog entry is not a
-  reason to build, and a future capability gets no speculative extension point,
-  SDK, permission, telemetry stream, or dormant runtime.
-- **Operations are a capability:** every admin read and action is a
-  permissioned method of the product's one API, which agents use; the admin
-  site is its rare-use client, and no fixed admin tool is built
-  ([agent-first APIs](architecture.md#agent-first-apis-and-operations)).
+  future destination, or exclude with a product reason. Add supporting
+  interfaces when a current consumer or measured delivery need requires them.
+- **Operations are a capability:** expose operational actions through the same
+  permissioned API used by other clients. Choose a human client for an observed
+  operator need ([agent-first APIs](architecture.md#agent-first-apis-and-operations)).
 - **Gating:** tying a capability to tenure, spend, or engagement (VIP tiers,
   loyalty rewards) is a normal business tool. Reachability, recovery, and
   accurate state are part of a finished product.
-- **Generic by default:** mechanisms are generic, data-driven and
-  language-agnostic; the owner's own usage informs priorities and tests, never
-  defaults or code branches. One model serves a capability in every language,
-  chosen from public data, with no per-language split. A use case is met by
-  adding the missing context, data or tool, not a hardcoded feature.
-- **Zero-config, zero-knowledge by default:** a user never needs to know or set
-  our infrastructure (clusters, pools, runners, Cells, queues, Dockerfiles); a
-  deploy works from the code alone, as on Vercel. The platform derives priority,
-  sizing, placement and scaling itself, identically for every tenant. The first-party organization is
-  a first-party client with no backdoor: any knob we use, customers get. Configuration
-  is an optional advanced layer, never a prerequisite.
+- **Generic by default:** use shared, data-driven mechanisms. Select models
+  against the capability's measured tasks and supported languages; apply the
+  workspace's chosen model configuration. Add product-specific behaviour when
+  the value thesis requires it, at the layer that owns that behaviour.
+- **Automatic configuration by default:** infer supported deployment and sizing
+  choices, ask for required inputs clearly, and expose advanced configuration
+  where it serves a real need. A first-party client uses the same published
+  permissions and capabilities offered to other customers.
 
 ## Agent products
 
-An agent product assumes a capable model. Anything pending (a message on any
-channel, a due commitment, a helper's result, a failed send) wakes the agent,
-which sees all of it together with a recap and decides what to do and where to
-reply. Behaviour comes from the system's design, meaning what the agent sees,
-when it wakes, and which tools it holds, not from hardcoded routing or
-instruction text. Safety is a system property: a privacy check on every send,
-fairness so a busy channel cannot starve another, and an alarm instead of a
-silent miss.
+An agent product gives the model current events, authorized tools and access to
+relevant history. Pending messages, due commitments, helper results and failed
+sends remain durable until handled. Prompts express the chosen method; the
+runtime enforces permissions, private-data boundaries, fair delivery and spend.
+Measure missed work and alert on a delivery failure.
 
 ### Designing for the model that is coming
 
-- **Evidence, not a template.** An external paper, post or open-source project
-  supplies empirical benchmark data: what was measured, on which task and
-  hardware, and how it compares with the leader. It is never a workflow to
-  copy. A multi-step pipeline that exists because an earlier model could not
-  plan is data about that model, not a design for ours.
+- **Assess external methods.** Read their assumptions, task, measurements and
+  implementation. Reuse a method when it is the simplest complete mechanism;
+  remove stages whose original limitation no longer applies.
 - **Thin runtime, full judgement.** The system supplies only what a model
   cannot do for itself: access, delivery, durable state, safety checks and
   tools. It does not encode judgement as fixed steps, routing tables or prompt
@@ -82,8 +73,7 @@ silent miss.
 
 This contract governs multi-agent group conversations.
 Receiving is about shared conversations; speaking covers every place a person
-sees an agent's words. It states required behaviour and makes no claim about
-what is deployed today.
+sees an agent's words.
 
 - **Receiving is continuous.** Every message an agent is authorized to receive
   reaches the agent as it arrives, whether the agent is idle or already working,
@@ -107,10 +97,9 @@ what is deployed today.
   Where a fact is unavailable, or the participant list may be incomplete, the
   input marks it as unknown or incomplete rather than filling it in; an
   incomplete list is never completed by guessing who is present.
-- **No reply rules stand in for judgement.** The system runs no reply
-  classifier, counts people to decide who answers, forces attendance, caps how
-  often the agent may reply, or adds a registry of who may speak. The model
-  decides from the facts and its tools.
+- **Speaking follows context and authority.** The model decides whether and
+  where to speak from the conversation facts and its authorized tools. The
+  runtime owns delivery, permission and shared-resource controls.
 - **Keep an agent's layers orthogonal, so removing any one leaves the others
   working.** A lower layer never stores a higher layer's id; the higher layer
   holds the association.
@@ -126,66 +115,38 @@ what is deployed today.
      grants.
   3. *Relationships*: agents are structurally alike. They differ only by
      reversible state (active, idle, paused, archived) and by edges such as
-     parent, peer and group. A parent edge means awareness, the default
-     escalation channel and a completion notice; a group gives shared roster
-     awareness and a channel. History is retained.
+     parent, peer and group. A parent edge records delegation and completion
+     custody; the workspace defines supervisory and escalation authority. A
+     group gives shared roster awareness and a channel. History is retained.
   4. *Platform scheduling*: a task queue, when present, is an adapter above the
      session. It starts a session with a goal and grants, ranks and meters the
      work, and settles from the goal's result.
 
   A platform's own tables, states and names live in that platform's repository.
 
-This supersedes the older contract in which a direct message, mention, reply or
-already-active thread was what woke an agent. It changes when an agent is woken
-and how it speaks, and says nothing new about how messages are stored or
-delivered. Where any text still states mention-based wake as current behaviour,
-this rule governs.
-
 ### Returning to a conversation
 
-This rule applies alongside the multi-agent conversation contract above. It
-states required behaviour and makes no claim about what is deployed today.
-
-- **No old message bodies.** The system never puts earlier messages into an
-  agent's context on its own.
-- **One optional pointer.** When the source channel keeps a history the agent
-  can read, and the active context holds nothing from that conversation yet, the
-  input may carry one short pointer to a history tool the agent can actually
-  call. Looking anything up stays the model's choice.
-- **Nothing when it does not apply.** A channel with no accessible history, or a
-  context that already covers the conversation, gets no pointer.
-- **One pointer per conversation.** A conversation carries at most one such
-  pointer while it remains in the current context, and the same conversation's
-  pointer is never repeated. Another conversation whose readable earlier
-  history is missing from the active context gets its own short pointer, scoped
-  to that conversation.
-- **No thresholds and no second store.** No fixed message count, time gap or age
-  decides when a pointer appears, and no lookup is forced. History stays in the
-  conversation record that already holds it.
-- **Each conversation keeps its own identity.** A pointer is scoped to the
-  conversation it belongs to. It never asserts that two conversations are one,
-  or that a wider platform hierarchy binds them. The existing connector or
-  provider defines a conversation: its account, conversation, and optional
-  thread or topic. A room on our platform and a group on an outside service are
-  one conversation only where that mapping is explicit; nothing assumes they are
-  the same, and no registry of conversations is created.
+Deliver the new event and its conversation identity. Offer an available history
+lookup when earlier context would help; the model decides whether to use it.
+Avoid injecting redundant history. The connector records the account,
+conversation and optional thread, and any explicit mapping to another channel.
 
 ## Products for children
 
-A product built for children under 13 is designed from the start to qualify for
-the stores' children's programmes, because a place in them is how these products
-spread:
+Choose distribution programmes for the product's audience and markets. Read the
+current store and child-privacy requirements for its declared age bands.
 
-- **Google Play:** the Families Policy, then Teacher Approved (teachers rate age
-  fit, quality, enrichment, and delight; approved apps appear on the Kids tab;
-  [Play Console](https://play.google.com/console/about/programs/teacherapproved/)).
-  Content spanning age bands suits the youngest declared band.
-- **App Store:** the Kids category with its age band: no third-party analytics or
-  advertising, and a parental gate before any link out, purchase, or permission.
-- **In the product:** no ads; purchases, links out, and settings behind the
-  parental gate; no behavioural targeting or promotion addressed to the child;
-  contextual, non-identifying events only; age checked before any data is
-  collected ([security.md](../../deliver-and-verify/references/security.md)).
+- **Google Play:** apply the [Families Policy](https://support.google.com/googleplay/android-developer/answer/9893335)
+  when it covers the target audience. Consider Teacher Approved for the
+  distribution opportunity ([programme](https://play.google.com/console/about/programs/teacherapproved/)).
+- **App Store:** the [Kids category rules](https://developer.apple.com/app-store/review/guidelines/#kids-category)
+  require a parental gate for links out, purchasing opportunities and other
+  distractions. They generally exclude third-party analytics and advertising,
+  with limited exceptions described in those rules.
+- **Product choices:** an ad-free experience, gated settings and non-identifying
+  analytics may simplify the product. Distinguish those choices from binding
+  requirements; minimize data and apply the consent and age-assurance method in
+  [security.md](../../deliver-and-verify/references/security.md).
 
 ## How it is judged
 

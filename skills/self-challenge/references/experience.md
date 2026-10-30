@@ -11,19 +11,20 @@ density, radius, and motion.
 - A success message for money, entitlement, deletion, or another consequential
   effect waits for its owning authority (the server) to confirm it, and duplicate
   submission is prevented, because a false success message costs real money or
-  data. This governs what the screen claims; it never asks a person to approve.
-- A grant is the authorization. A permission given once (a
-  platform admin right, an OS permission, a shared location, an OAuth scope) is
-  used without asking again until it is revoked, as Apple's and Google's
-  permission models and OAuth work. Ask again only where a market's law requires
-  fresh consent, or for an action outside what was granted. A confirmation or
-  approval step for something already granted is a defect; remove it.
+  data.
+- Use a current grant within its scope and lifetime. Request a missing or
+  expired permission through the platform's supported flow. Confirm an action
+  when its consent or error-prevention contract requires it; reuse authorization
+  already supplied. OS and OAuth grants can expire or require reauthorization
+  ([Android permissions](https://developer.android.com/training/permissions/requesting)).
 - Binding a login never moves or loses data: a login that already belongs to
   another account offers a switch, not a silent merge.
-- Consent the law requires follows its market's rule (EU and UK: no pre-ticked
-  box).
-- Public surfaces carry no internal artifacts, and brand files come only from the
-  brand home (both below).
+- Where processing relies on EU or UK data-protection consent, collect an
+  affirmative choice; a pre-ticked box does not supply it. Check other consent
+  requirements against the applicable market and action.
+- Public surfaces carry the information their audience needs; private records
+  stay within their sharing scope. Brand assets come from their canonical home
+  (both below).
 
 ## Design from the task
 
@@ -35,10 +36,10 @@ immediately; read price and policy from their owners. Every reachable surface
 handles its applicable states: focus, hover, active, disabled with a reason,
 pending, success, error, empty, offline, denial, cancellation, and recovery.
 
-Design defaults to few words and one idea per screen: visual first, human
-language, warm imagery and motion, never a dense terminal look. Supported
-capabilities are reachable in plain language across the product's supported
-channels; a slash command is only a shortcut.
+Design defaults to few words, a clear hierarchy and the audience's vocabulary.
+Choose imagery, motion, density and command-oriented controls for the actual
+task. Make supported capabilities discoverable in the channels where they are
+useful.
 
 A cross-platform product shares semantics and ships complete native adapters for
 its target platforms, with accessible input paths (touch, keyboard, pointer,
@@ -58,104 +59,58 @@ borders replace spatial hierarchy, and motion moves at constant velocity or
 snaps abruptly. Letting a design breathe means deliberate contrast in space,
 hierarchy, and timing: the eye rests on what matters and motion feels physical.
 
-The numbers below are starting product defaults, tuned against the
-Category-Leader benchmark. They are not universal external laws.
+Use the product's design tokens and compare the affected journey with its
+category benchmark.
 
-1. **Proximity hierarchy over nested borders.** Group related items with whitespace
-   and subtle surface elevation before adding lines; avoid box-in-box nesting.
-   Space between groups exceeds group padding, which exceeds sibling spacing.
-   Start with a `>= 2x` step ratio across levels: `8px` element gaps,
-   `16–24px` card padding, and `32–64px` section gaps. Leave `25–35%` open
-   background or negative space on standard views so content is not packed
-   wall-to-wall.
-2. **Focal contrast: one visual anchor per view.** Give each screen one primary
-   focal point through scale, weight, and surrounding whitespace. Secondary
-   metadata and controls recede in contrast and density rather than competing
-   at equal visual weight.
-3. **Interruptible spring physics and asymmetric settling.** Sheets, dialogs,
-   layout shifts, and cards use interruptible springs or fast-out, long-tail
-   deceleration curves ([Material Design 3 Motion](https://m3.material.io/styles/motion),
-   read 2026-10-22), rather than `linear` or symmetric `ease-in-out`.
-   Reserve `linear` for continuous progress indicators or opacity-only fades.
-   Without springs, start at `150–250ms` for micro-interactions and `250–450ms`
-   for spatial transitions. Motion never blocks input and stays interruptible
-   mid-flight. Honour `prefers-reduced-motion`: replace spatial travel with
-   instant states or subtle cross-fades.
-4. **Origin-aware emergence and subtle scale.** Popovers, menus, and dialogs
-   emerge from their trigger, with `transform-origin` anchored to that source.
-   Pair a subtle scale shift (`0.96–0.98 -> 1`) with opacity; never inflate from
-   `scale(0 -> 1)` out of nowhere.
-5. **Choreographed stagger and rest beats.** When a list or group enters together,
-   stagger items lightly: start at `20–40ms` per item, capped at `<= 200ms` for
-   the whole cascade so the UI never drags. Leave `100–150ms` settling beats
-   between distinct state transitions rather than firing back-to-back animations
-   in the same frame. These beats never delay input or required feedback.
-
-| Rigid | Breathing |
-| --- | --- |
-| Triple-nested bordered cards, uniform `16px` gaps | Borderless surface groups, `8px / 20px / 48px` spacing progression |
-| `transition: all 300ms linear`, modal starting at `scale(0)` | Origin-anchored `scale(0.97)` spring entrance paired with opacity |
-| Wall-to-wall metric boxes of equal weight | One primary hero figure with quiet supporting context |
-
-Enforce this in two layers:
-
-- **Machine-checked in CI (tokens and lint).** Product design systems define
-  spacing, duration, and spring/easing tokens and enforce them in CI. Lint rules
-  flag arbitrary off-scale spacing literals such as `13px`, `transition: all`,
-  `linear` easing on spatial properties, and `scale(0)` dialog or popover
-  entrances.
-- **Reviewed in Stage 1/3 (`self-challenge` and `prove-it`).** Valid tokens can
-  still be packed into a rigid grid. Compare screenshots and interaction
-  recordings side by side with the Category-Leader benchmark to verify visual
-  rhythm, negative space, focal hierarchy, and motion pacing. Set that comparison
-  in Stage 1 and verify the delivered surface in Stage 3.
+- Group related items through proximity and surface hierarchy. Make separation
+  between groups clear without nesting borders around every element.
+- Give the primary action or content visual emphasis; supporting metadata
+  recedes in weight. Dense expert surfaces may need several comparable objects.
+- Keep motion interruptible and feedback prompt. Choose easing and staggering
+  for the transition; honor reduced-motion preferences with instant states or
+  subtle fades. Anchor a popover or menu to its trigger when that preserves
+  spatial understanding.
+- Judge screenshots and interactions for hierarchy, spacing and pacing. Add a
+  mechanical check only when it distinguishes a recurring concrete defect from
+  valid designs.
 
 ## Show the outcome, not the machinery
 
-A person sees what they need to decide or act, and the result. Technical
-internals stay out of the default view: tool calls, step
-counts, timings, internal ids, stack traces and raw errors. Optional detail sits
-behind a deliberate "show more", or only in admin and audit views
+Show the result, progress and controls this audience needs. Put incidental
+implementation detail behind deliberate disclosure; include timings, public
+identifiers and technical detail where they help the user's task
 ([progressive disclosure](https://www.nngroup.com/articles/progressive-disclosure/)).
-An agent at work shows at most that it is working, plus one short plain phrase.
 
-A failure shows one calm sentence with the next step ("I couldn't finish that;
-I'm on it", or "Try again"), never an internal error string. The detail goes to
-our observability (logs, metrics, alerts), which alerts on the symptoms users
-experience, as [Google's SRE practice](https://sre.google/sre-book/monitoring-distributed-systems/)
-recommends, so we find and fix a problem early, often before anyone has to
-report it.
+A failure shows the known state and a safe next action. Say recovery is running
+only when it is. Offer retry when the request can safely be repeated; otherwise
+show its existing receipt and status. Send diagnostic detail to observability
+and alert on symptoms users experience
+([Google SRE](https://sre.google/sre-book/monitoring-distributed-systems/)).
 
-Simplicity never hides what a person is owed, and the floor is exactly two
-things: what each market's law requires, and what the leading companies in the
-category actually do. In practice that is the price and recurring terms before
-purchase, what happens to their data, an outage that affects them (on the status
-surface), and what an action will do before they confirm it. How we meter
-internally (tokens, per-request cost, exact limits, routing) is not owed: usage
-may show as a share of the plan, a reset time, credits or fair use, as category
-leaders show it ([commercial.md](commercial.md#usage-and-billing-disclosure)).
-
-Why: most people who use our products are not technical, and visible machinery
-reads as hard to use; a plain message with a next step leaves them less confused
-and needing less support.
+Disclose the price, recurring terms, purchased entitlement and material limits
+needed for the customer's decision. Explain data handling and consequential
+actions at the relevant point. Derive additional obligations from the current
+market, contract and channel ([commercial.md](commercial.md#usage-and-billing-disclosure)).
 
 ## International experience
 
-- The source text is the message key (English unless the product says
-  otherwise), with a context note only where the same text means two things.
+- Use source text as message keys by default (English unless the product says
+  otherwise), or follow the established catalogue's stable-key contract. Add
+  context where the same text means different things.
   Format numbers, currency, dates, and plurals by locale, and build sentences
   whole, because concatenated translated pieces break grammar.
-- Translation runs in CI through the platform localization pipeline and lands as committed
-  catalog files in a pull request; builds and runtime call no translator. A
-  translation a person pinned stays, since overwriting it discards human work.
+- For static interface text, default to the project's localization pipeline
+  producing reviewed, versioned catalogues before release. Preserve pinned
+  human translations. Evaluate live translation separately when it is a product
+  capability, including latency, cost and required quality.
 - Ship the locales of the markets you launch in and add more as demand shows.
   The tier-1 set (`en`, `zh-Hans`, `zh-Hant-HK`, `zh-Hant-TW`, `ja`, `ko`, `es`,
   `pt-BR`, `de`, `fr`) is the default for a global launch, not a gate. Language,
   currency, and region are separate settings.
 - Web locales live in path prefixes (`/ja/...`; the source locale at the root).
-  Each page lists every locale and `x-default` in `hreflang`, has its own
-  canonical URL and per-locale sitemap entry, and translated titles,
-  descriptions, and social previews. The locale comes from the URL, then the
+  Use reciprocal `hreflang` links for available equivalent language/region
+  pages and an appropriate `x-default`. Maintain canonical URLs, sitemap entries,
+  and localized titles, descriptions and social previews. The locale comes from the URL, then the
   person's choice, then `Accept-Language`; IP redirects trap travellers, so a
   language suggestion is a banner and the requested page stays.
 - Test long text, CJK, right-to-left text, and emoji where user text shows.
@@ -178,45 +133,38 @@ platform login) helps them protect what they build before they can lose it:
 
 ## Public surfaces
 
-A public surface (marketing site, landing page, customer documentation, console
-UI, callout, notification, error, search metadata) speaks in customer domain
-terms. Keep out decision-record identifiers (`ADR-055`, `RFC-123`), internal
-repository paths, internal architecture jargon (`Bounded Context`, `Outbox`,
-`Worktree`), agent coordination rationale, task ids, prompt artifacts, our
-platform and process vocabulary (kernel, gate, fail-closed, Cell, Hands,
-price-list and policy identifiers), and every retired name in
-the names record. Copy states the fact rather than defending its
-truthfulness (claims of accuracy without supporting facts).
+Write in the audience's vocabulary. Include public technical identifiers when
+they help the task; keep private coordination records and unrelated
+implementation detail out. State the fact directly.
 
-Every public site ships a real 404 status and page, a unique title, description,
-and social preview per page, and no placeholder or loading text in rendered HTML.
-A product's name and one-line description come from one source that the site,
-README, and package or store listings render. Each surface declares its locale
-(`zh-Hant-HK`, `zh-Hant-TW`, `zh-Hans`, `en`), keeps one register within it, and
-uses no Simplified characters or mainland vocabulary in a Traditional locale.
+Public sites provide a useful 404 page with the correct status and distinct
+metadata for meaningful pages. Remove permanent placeholders and misleading
+empty HTML; preserve accessible pending states for asynchronous work. A product
+name and description come from one source used by its site and listings.
+Declare the locale and use its natural script, terminology and register,
+preserving exact names and quotations.
 
 ## Brand home
 
-Every brand has one home that every surface takes its identity from, so it looks
-the same everywhere and can be picked up years later from one place.
+Give each brand one canonical home for the identity assets shared across its
+surfaces, so later work can find and reuse them.
 
-- **Company brand:** the organization's `brand` repository - the organization's canonical `brand` repository.
-- **Product or title brand:** a `brand/` folder in the product's repository
-  (the portfolio record names it).
+- **Company brand:** the organization's canonical brand repository.
+- **Product or title brand:** the product's declared asset location, such as a
+  `brand/` folder in its repository.
 
-A home holds the name and spelling rules (running text, legal name, local-script
-names, where capitals appear only as the logo image); vector masters in every
-lockup and colour variant; small-size (pixel-snapped) and app-icon versions;
-colour and type tokens; a usage sheet; each file's source, hashes, and
-construction spec or generator, so it can be rebuilt; and the real trademark
-status.
+Keep the name and spelling rules, source assets, required size and colour
+variants, design tokens, usage guidance and known rights status together. Record
+provenance and build inputs for generated assets; preserve the approved bytes
+where regeneration is not deterministic.
 
-A surface consumes the home's files or tokens and keeps no redrawn copy, traced
-logo, or hand-picked colour. A redesign lands in the home first. Before choosing
-a new brand, a quick web search rules out a clash with a well-known mark; a
-formal trademark search or filing waits for traction and does not gate a launch.
-An existing name is never changed because a similar name exists elsewhere; act
-only on a complaint, takedown or legal notice.
+Surfaces consume the canonical files or derived variants and design tokens.
+Update the home with a redesign and migrate its consumers together. Before
+choosing a new brand, check for obvious collisions with established marks;
+choose further clearance work from the market, exposure and cost.
+Assess an existing name by user confusion, business value, legal exposure and
+migration cost. Rename it, including its references, when that decision supports
+the change.
 
 ## How it is judged
 
@@ -224,6 +172,5 @@ Task completion and error recovery in the critical journeys, accessibility check
 on web surfaces, a locale sweep of the built site, and, for account protection,
 bind rate and retention (reshape the ask if it costs retention). The product
 review checks each surface's default view and failure states against "Show the
-outcome, not the machinery". For "Spatial rhythm, breathing room, and fluid
-motion", require both CI token/lint checks and Stage 1/3 side-by-side screenshots
-and interaction recordings against the Category-Leader benchmark.
+outcome, not the machinery" and compares the affected visual and interaction
+journey with its category benchmark.

@@ -5,11 +5,11 @@ description: "Use ONLY when explicitly asked to write, file, structure, or revis
 
 # Author an Outcome Item (`author-item`)
 
-Every unit of work—whether software engineering, product design, commercial/partner negotiation, marketing/growth campaign, or operational execution—is authored as a **WHAT-only outcome** using **Stage 1 Acceptance Test-Driven Development (ATDD)**. An item defines the destination and the observable acceptance tests that prove it works; the executing agent chooses the implementation path in its session.
+An outcome item states the goal, observable acceptance tests, constraints and references. The executing agent chooses the implementation path. This applies acceptance test-driven development (ATDD) to software, product, commercial and operational work.
 
 ## 1. Stage 1 ATDD: Write Acceptance Test Cases First
 
-Before any plan or execution starts, author the item with four fields:
+When authoring an item, use four fields:
 
 1. **Goal (`goal`)**:
    - One plain sentence stating who benefits and what changes in the real world (for users, customers, partners, or operators), plus the parent objective and economic value inputs (`cost of delay / duration`, see [references/priority.md](references/priority.md)).
@@ -26,8 +26,8 @@ Before any plan or execution starts, author the item with four fields:
      - **YAGNI (You Aren’t Gonna Need It)**: Does the acceptance avoid demanding unrequested gates, queues, or internal scaffolding?
      - **Complete Migration**: Does it require the complete end state (including caller migration and old-path removal) rather than a half-step?
 3. **Hard Constraints (`constraints`)**:
-   - True non-negotiable boundaries only: law/compliance, data continuity for live users, budget/spend caps, security/secret boundaries, or external protocol/contract compatibility.
-   - Never put file paths to edit, function names to write, or step-by-step instructions into `constraints`.
+   - Record applicable legal obligations, live-user data continuity, authorized spend and required protocol or contract compatibility. Distinguish binding constraints from defaults the outcome owner may change.
+   - Put suggested edit locations and implementation steps in references; an exact interface or file format belongs in constraints when it is part of the required result.
 4. **Non-Binding References (`references`)**:
    - Prior commits, pull requests, incident logs, user/support signals ([references/quality-signals.md](references/quality-signals.md)), and **dated primary-source reads** whenever the outcome relies on an external specification, vendor release, or category-leader benchmark.
    - Any suggested approach or sketch from intake belongs here as a non-binding hint so the executing agent can replace it if live evidence shows a simpler path.

@@ -44,7 +44,12 @@ class TerminologyTests(unittest.TestCase):
                 self.assertTrue(terminology.verify(self.root))
         self.glossary.write_text(self.text)
 
-    def test_named_https_source_required(self):
+    def test_named_relative_source_allowed(self):
+        self.glossary.write_text(self.text.replace(
+            self.rows[0][2], '[Owning method](../method/SKILL.md)', 1))
+        self.assertEqual([], terminology.verify(self.root))
+
+    def test_insecure_source_rejected(self):
         self.glossary.write_text(self.text.replace('https://', 'http://', 1))
         self.assertTrue(terminology.verify(self.root))
 

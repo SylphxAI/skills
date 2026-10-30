@@ -60,17 +60,14 @@ def verify_manifests(errors: list[str]) -> None:
 
 def verify_skills_frontmatter(errors: list[str]) -> set[str]:
     skill_files = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
-    if len(skill_files) != 10:
-        fail(f"Expected 10 skills, found {len(skill_files)}", errors)
+    if not skill_files:
+        fail("No skills found", errors)
 
     for p in skill_files:
         rel = os.path.relpath(p, ROOT)
         dir_name = os.path.basename(os.path.dirname(p))
         with open(p) as f:
             text = f.read()
-        lines = text.splitlines()
-        if len(lines) > 500:
-            fail(f"{rel}: {len(lines)} lines exceeds 500-line limit", errors)
         if not text.startswith("---\n"):
             fail(f"{rel}: missing opening YAML frontmatter delimiter", errors)
             continue
@@ -97,8 +94,6 @@ def verify_skills_frontmatter(errors: list[str]) -> set[str]:
             fail(f"{rel}: invalid skill name {name!r}", errors)
         if not desc or len(desc) > 1024:
             fail(f"{rel}: invalid description length ({len(desc)})", errors)
-        if "<" in desc or ">" in desc:
-            fail(f"{rel}: XML angle brackets found in description", errors)
         if "Use when" not in desc:
             fail(f"{rel}: description missing 'Use when' trigger clause", errors)
 

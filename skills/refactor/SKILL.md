@@ -1,36 +1,15 @@
 ---
 name: refactor
-description: "Use when splitting an oversized file, module, or test suite (for example, breaking up a multi-thousand-line file or test module), deduplicating repeated code or parsers, deleting dead code and unused dependencies, removing legacy compatibility layers, or restructuring a codebase into clean vertical slices with a pure core while preserving exact observable behavior. Do NOT use when adding new features or changing product behavior (use deliver-and-verify)."
+description: "Use when splitting an oversized module or test suite, deduplicating implementations, deleting dead code or unused dependencies, removing completed compatibility layers, or restructuring a codebase while preserving its observable behavior. Use deliver-and-verify when the outcome adds features or changes product behavior."
 ---
 
-# Refactor (`refactor`)
+# Refactor
 
-When splitting an oversized file/module/test suite, eliminating duplication, deleting dead weight, or restructuring a codebase is the authorized outcome, execute this pass while preserving 100% of intended observable behavior. Load [references/health.md](references/health.md) for the repository health and zero-debt standard, and [../deliver-and-verify/references/code.md](../deliver-and-verify/references/code.md) for pure-core / imperative-shell boundaries.
+Preserve the supported behavior while removing the named structural debt. Read [health.md](references/health.md) for deletion and duplication criteria and [code.md](../deliver-and-verify/references/code.md) for domain and I/O boundaries.
 
-*(If the task adds new user-facing features or changes observable product behavior rather than preserving behavior, use [`../deliver-and-verify/SKILL.md`](../deliver-and-verify/SKILL.md) instead.)*
-
-## Workflow
-
-1. **Stage 1 — Lock Observable Behavior & Invariants**:
-   - Define the positive and negative acceptance test cases: existing public contracts, user-facing workflows, and test suites that must pass unchanged, plus the specific structural debt to eliminate (an oversized file/test module, duplicate parsers/helpers, dead code, or tangled layers).
-2. **Splitting Oversized Files, Modules, or Test Suites (Cohesive Domain Seams)**:
-   - When a source file or test module has grown too large (e.g., thousands of lines), split it along **domain capability or scenario seams**—never by arbitrary line counts or numbered shards (`part_01`, `part_02`).
-   - For a large test module: group tests into focused submodules by feature behavior, state transition, or failure class, sharing a small `fixtures` / `helpers` module only for setup that every submodule genuinely uses.
-   - For a large production module: separate **types/contracts**, **pure domain core** (deterministic decisions, calculations, state machines—zero I/O), and **imperative shell** (I/O, database, HTTP/RPC adapters).
-3. **Capability Census (Delete Superseded Paths First)**:
-   - List the repository's live capabilities (`docs/capabilities.md` or public entry points).
-   - Anything retired, superseded by a platform service, or left over from a completed migration is deleted outright—never refactored or kept behind a dead config flag.
-4. **Deterministic Dead-Code & Clone Census (When Cleaning Dead Weight or Duplication)**:
-   - When eliminating dead code or duplicate implementations, run language-appropriate static analysis tools to produce candidate lists—never guess by eye:
-     - **TypeScript / JavaScript**: `knip` (unused files, exports, dependencies) and `jscpd` (copy-paste clones).
-     - **Rust**: `cargo +nightly udeps` / `cargo machete`, `cargo clippy --all-targets`, and `jscpd`.
-     - **Python / Go / Others**: `vulture` / `deadcode` / `staticcheck`.
-   - Verify that an "unused" symbol or dependency is not a public SDK export, codegen/macro entry point, framework/dynamic-reflection/serialization hook, or feature-gated target, then delete every verified dead symbol, file, and dependency in the same change.
-5. **Eliminate Accidental Duplication (Single Source of Truth)**:
-   - Consolidate clones (`jscpd`) when they represent the **same domain rule, parser, or contract** so every rule has a Single Source of Truth (SSOT) and one change updates one place.
-   - Keep separate code that merely looks textually similar across independent domain concepts when coupling them would create a false abstraction.
-6. **Vertical Slices with a Pure Core**:
-   - Organize modules by **domain capability (vertical slice)** rather than technical layer (`controllers/`, `utils/`, `helpers/`, `misc/`).
-   - Collapse single-implementation traits/interfaces, pass-through wrappers, and `v1`/`v2` compatibility shims when no external contract or external I/O / clock / network boundary test interface requires them.
-7. **Stage 3 — Verify Behavior Preservation**:
-   - Run the required and affected compiler, linter, typechecker, and test targets (broadening to the full workspace suite when shared interfaces or uncertain boundaries are touched), confirming zero behavioral regressions and a cleaner, smaller structure.
+1. State the public contracts, workflows and affected test configurations that must keep working, and the structural problem to remove.
+2. Split large modules along domain capabilities or test scenarios. Keep contracts, deterministic domain decisions and I/O adapters distinguishable within a capability. Keep scenario-specific setup near its tests and share focused fixtures where related scenarios use them.
+3. Inventory the affected public entry points and consumers. Delete a superseded path after verifying that its consumers moved and supported behavior/data remain available. An accidentally unreachable capability is a regression to restore.
+4. Use available language tooling when it adds coverage: `knip` and `jscpd` for JavaScript/TypeScript; `cargo machete`, `cargo +nightly udeps`, clippy and clone detection for Rust; appropriate static analysis for other languages. Tools supply candidates. Check public exports, generated/macro entry points, dynamic hooks and supported feature targets before deletion.
+5. Consolidate copies of the same domain rule, parser or contract. Keep independent concepts separate when combining them would create a false abstraction. Collapse pass-through wrappers and unused compatibility paths when no supported contract or test boundary needs them.
+6. Run the required and affected compiler, lint, type and behavior checks. Broaden coverage when shared interfaces or uncertain boundaries justify it. Judge the result by behavior preservation and clearer boundaries; a useful refactor can add explicit types or module declarations.

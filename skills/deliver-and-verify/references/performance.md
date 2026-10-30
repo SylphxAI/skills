@@ -1,52 +1,15 @@
 # Performance standard
 
-Trigger: setting a speed or reliability target, touching a hot path, or
-handling an incident.
+Trigger: setting a speed/reliability target, changing a hot path or investigating an incident.
 
-Fast and correct beat fast: plausible, wrong output is an outage the customer
-cannot see. Each critical customer journey has one target, how it is measured,
-and what happens when it is missed; with too little data, say so instead of
-guessing.
+Choose a measurable target for each critical journey and define its response when missed. Correctness remains part of the journey; state uncertainty when samples are insufficient.
 
-- **Web:** Core Web Vitals at p75, mobile and desktop separately: LCP at most
-  2.5 s, INP at most 200 ms, CLS at most 0.1.
-- **Games and native apps:** each title sets its own frame-time, input-latency,
-  and start-up targets for its weakest supported device.
-- **Real-device frame-time evidence:** use Keel real-user monitoring (RUM),
-  following the real-user measurement approach of
-  [Datadog RUM](https://docs.datadoghq.com/real_user_monitoring/browser/monitoring_page_performance/)
-  (read 2026-10-10), not a physical phone, a paid device farm, or a capture on the
-  owner's phone. Keep the title's device cohorts, gameplay scope, percentiles,
-  and worst-frame limits unchanged. The evidence names the measured build, query and time range, device model or supported
-  cohort, OS/browser, and sample count. Missing samples or dimensions are
-  unverified, never a pass; an emulator or a session-wide percentile cannot
-  prove a physical-device or sequence-specific worst-frame limit.
+- Web defaults follow Core Web Vitals at p75, mobile and desktop separately: LCP at most 2.5 s, INP at most 200 ms and CLS at most 0.1 ([primary definitions](https://web.dev/articles/vitals), checked 2026-10-30).
+- Games/native apps set frame-time, input-latency and startup targets for supported devices. Record the build, workload/sequence, device/cohort, OS/browser, query/window and sample count. Use real-user instrumentation or an authorized controlled-device measurement that can establish the claimed property. An emulator or session-wide percentile does not prove a physical-device sequence's worst-frame bound.
+- Choose caching, payload and JavaScript budgets from the journey and measured workload. Keep third-party work off the critical input path; cache anonymous content where its actual variation permits it.
+- Use [bounded calls and set-based queries](code.md#outbound-calls). Index growing filter/sort paths and use appropriate pagination. Choose report isolation, a read replica, rollup or asynchronous export when measured query cost would starve serving work; a fixed replica topology or timeout is not universal.
+- Prefer notifications with a slow safety resync to tight database polling, following [events first](../../self-challenge/references/architecture.md#real-time-events-first-resync-as-the-safety-net). Losing a performance cache does not lose correctness.
+- A replica is not a backup: deletion can propagate. Protect authoritative/unique user data with a tested recovery source; a safely rebuildable derived store need not invent an independent backup copy.
+- Plan rollback/repair against the current schema using the [recovery procedure](security.md#recovery-procedure). Verify restored data and the affected customer behavior.
 
-## Hard lines
-
-- **A replica is not a backup:** a deleted row is deleted on the replica too.
-  Every durable store has a backup, and losing data is a hard line.
-
-## Practices
-
-- **Web delivery:** anonymous marketing and catalog pages return
-  shared-cacheable HTML, with session reads and per-request nonces in an island
-  rather than the layout. Each public route has a compressed first-load
-  JavaScript budget CI enforces, a client receives only the translation
-  namespaces it uses, and third-party scripts, analytics, and chat do not block
-  first input.
-- **Bounds and queries** follow [code.md](code.md#transactions-and-idempotency) and [code.md](code.md#outbound-calls): a timeout on every remote call, queue and pool, and one set-based query for related rows. Retries are bounded, jittered and idempotent. Index what a growing list filters and sorts on, use keyset pagination on growing tables, and skip exact totals on public or hot paths.
-- **Reports, exports, and analytics** use the platform's read replica (`<= 30 s` statement timeout) or precomputed rollups/async exports rather than starving the primary serving pool (use bounded queries proportional to the workload rather than inventing bespoke replica infrastructure per call).
-- **Workers** wait on a notification with a slow safety poll, not a tight
-  database poll ([events first](../../self-challenge/references/architecture.md#real-time-events-first-resync-as-the-safety-net)). A cache speeds things up; correctness survives losing it.
-- **Rollback** has to work with the current schema and comes first in the
-  [recovery procedure](security.md#recovery-procedure).
-- **Incidents** get a short blameless record: impact, cause, fix, and the
-  follow-up with its owner. An incident needs real impact; a finding nobody
-  exploited is a bug, not an incident.
-
-## How it is judged
-
-By the measured target per journey. A restore is tested by reading the restored
-data back, not by seeing the job finish. An incident is over when the customer
-behavior is checked working, not when the record is written.
+Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
