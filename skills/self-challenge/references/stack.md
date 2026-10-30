@@ -92,6 +92,10 @@ provide a common starting point:
 
 ## Native output and first load
 
+**Proposed; under first-principles review (2026-10-30).** Rendering defaults
+below are a proposal; the measured, shrink-only first-load baseline applies
+independently of the rendering choice.
+
 A shared cross-platform engine compiles one codebase to each host's native
 execution and presentation by default, with zero configuration: the compiler
 chooses HTML, JavaScript, native code and compute boundaries. On the web, serve
