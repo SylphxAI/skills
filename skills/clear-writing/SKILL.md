@@ -7,7 +7,7 @@ description: "Use when drafting, rewriting, editing, translating, or localizing 
 
 Good writing keeps the complexity on the writer's side and hands the reader simplicity. Weak writing dumps internal thought processes, hedges every sentence, and leans on generic AI clichés ("delve into", "not just X, but Y", hollow triads, and performative filler).
 
-Before writing or rewriting a single sentence, lock three inputs and load the matching reference standard:
+Identify the audience, purpose and channel; read the reference relevant to the task:
 
 - **Naming concepts or replacing internal shorthand in any document, skill, or agent instruction** → Load [references/terminology.md](references/terminology.md)
 - **Internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
@@ -19,7 +19,7 @@ Before writing or rewriting a single sentence, lock three inputs and load the ma
 
 ## Step 1: Lock Audience × Purpose × Channel
 
-Every piece of text fails when it mixes up who is reading, what they need to do, and where they are reading it:
+Choose wording and structure from three inputs:
 
 | Dimension | Question to Answer | How It Shapes the Text |
 | :--- | :--- | :--- |
@@ -31,7 +31,7 @@ Every piece of text fails when it mixes up who is reading, what they need to do,
 
 ## Step 2: Anti-Slop Defaults for Newly Authored Prose
 
-Weaker models default to robotic filler unless given explicit structural defaults and concrete counter-examples. Apply these rules to newly authored or rewritten prose (while preserving direct quotations, faithful translations of source meaning, approved legal/partner text, and exact code/API identifiers):
+Use the following defaults for newly authored or rewritten prose (while preserving direct quotations, faithful translations of source meaning, approved legal/partner text, and exact code/API identifiers):
 
 1. **Bottom Line Up Front (BLUF) — Result Before Process**:
    - Lead with what changed, what was decided, or why the reader should care (or the narrative hook / empathetic acknowledgment when the genre calls for storytelling or customer care). Never open by narrating your internal steps (*"First I looked at X, then I considered Y..."*) or repeating the prompt back to the reader.
@@ -67,7 +67,7 @@ Use these concrete `❌ Bad` vs `✅ Good` pairs to calibrate tone and density b
 - ❌ **Bad (Empty Marketing Fluff)**:
   > *"In today's rapidly evolving AI landscape, developers are constantly struggling with complex deployment pipelines. Introducing our revolutionary platform—designed from the ground up to empower teams to build, scale, and innovate effortlessly."*
 - ✅ **Good (Synthetic Example — Concrete Hook + Specific Proof)**:
-  > *"*Illustrative example:* Most teams spend days wiring up auth, billing, and deployment manifests before writing a line of product code. With `acme-cli`, `acme deploy` provisions an HTTPS endpoint and passkey sign-in from a single command—using the exact numbers verified for your product."*
+  > *"*Illustrative example:* `acme deploy` gives your app an HTTPS endpoint and passkey sign-in in one command."*
 
 ---
 

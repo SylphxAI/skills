@@ -9,89 +9,56 @@ and its [catalogue](mechanics-catalogue.md).
 
 ## Hard lines
 
-- No false urgency, hidden costs, hard-to-find cancellation, review gating, or
-  paid ratings; law and stores ban them. Cancellation, export, and deletion stay
-  easy. Real limited-time offers, energy timers, and paid streak protection are
-  normal tools (business judgement).
+- Use truthful urgency and clear prices, cancellation, export and deletion.
+  Protect review integrity; apply the actual market and store requirements.
+  Assess genuine limited offers and retention incentives by their contribution
+  and effect on the product promise.
 - Promotion posts are factual, identify the brand, and disclose promotion where
   the platform requires it; never fabricate first-person experiences.
-- Every public statistic (users, ratings, prices, benchmarks) is rendered from
-  its source (price list, benchmark file, analytics query) or removed, because a
-  stale number is a false claim. A benchmark names its sample; a forecast is
-  labelled as one. Vision and roadmap selling follows
-  [commercial.md](commercial.md#legal-surface).
-- An AI support agent never claims to be a person, and a customer can always
-  reach support or leave.
+- Generate changing commercial values from their authority. Give historical
+  statistics their source, date and population; refresh when the claim requires
+  current data. Label forecasts and name benchmark samples. Roadmap selling
+  follows [commercial.md](commercial.md#legal-surface).
+- Describe the responder's identity truthfully and provide the product's actual
+  support and exit paths.
 
 ## Practices
 
 - Retention counts people who come back for a useful result; opens, logins, and
   installs are diagnostics. Count gains net of refunds and support cost.
-- Run a holdout when the result would change a real decision; a stopped campaign
-  stops spending. Paid promotion starts once the product is done and is funded
-  from the daily budget in the strategy record.
+- Run decision-relevant experiments inside an authorized budget once the
+  advertised acquisition-to-value or purchase journey works. A stopped campaign
+  stops spending; current allocations live in the owning commercial record.
 - Support uses the product's own records for entitlement and billing; how
   support runs is under [Support](#support).
 - When designing acquisition, retention, or monetisation loops, review the relevant sections of the [mechanics catalogue](mechanics-catalogue.md), state target metrics, and record the chosen mechanics and material alternatives considered.
-- Products are run by agents: every title ships event tracking, a metrics
-  pipeline and remote A/B config, and an agent loop (data, analysis, change,
-  measure) tunes prices and offers within store policy, odds disclosure and
-  fairness.
+- Choose instrumentation and experiment support for decisions the product will
+  actually make. Reuse shared capabilities when present.
 
 ## Campaigns and gifts
 
-Small gifts and freebies are a deliberate engagement strategy in every
-product, not only games. The reference is Braze's
-lifecycle campaigns with a global control group and frequency caps, and the
-scheduled live-ops overrides games run; the platform's design is the
-platform campaigns specification.
+Treat gifts and seasonal campaigns as candidates. Compare incremental
+contribution, retention and support cost. Reuse the owning shared campaign
+capability; its service design and current rollout belong in its repository.
 
-- **One mechanism.** Every seasonal event, offer, sale and gift runs as a
-  platform campaign (the platform notification service): an occasion from the platform's
-  calendar per market or the product's own dates, a Config segment as the
-  audience, a Money promotion or entitlement grant as the value, a creative
-  per channel, a holdout and a budget. A product builds no campaign,
-  coupon or event-scheduling code of its own; a product-local copy moves
-  onto the platform once it serves the effect, and runs under these rules
-  until then.
-- **Seasonal by default.** Each product's agent reads the upcoming
-  occasions for its markets on a schedule, drafts and launches campaigns,
-  and reuses what won for the same occasion and market the year before.
-  The guards below are server-side and are the only gate: no approval step
-  is added.
-- **Holdout when a result will change a decision.** A campaign whose result
-  will change a decision carries a holdout (5-50%, default 10%) that sees none
-  of it, and a 5% global control group never receives campaigns. A one-off gift
-  or a fix needs no holdout. The result
-  records incremental revenue and retention against the holdout, net of
-  refunds and the campaign's cost; a result below the minimum sample counts
-  as no evidence.
-- **Cost and frequency caps on the server.** A real-money effect cannot
-  launch without a budget held in the ledger with no overdraft, and a
-  virtual gift needs a unit cap, so a giveaway cannot outrun its cap or
-  inflate an economy. Our own products' real-money campaign budgets come
-  from their share of the promotion budget;
-  an agent spends inside it and never raises it. Messages, live offers and
-  gifts per person are capped per environment at the tier default; an agent
-  may tighten a cap, never loosen it. Transactional messages are never
-  capped.
-- **Truthful reference prices only.** A "was" price is never typed: the
-  only reference price is computed from prices actually charged in that
-  market, the lowest of the previous 30 days in the EU, EEA and UK, the
-  regular price charged before the offer elsewhere, and none without price
-  history. Bonus claims render from the granted amounts and countdowns from
-  the real end time; an ended offer never returns as a "last chance"
-  (the accepted risks record).
-- **Each market's consent.** A marketing message goes only to a person who
-  has the consent that market requires (opt-in for push and email in the EU,
-  UK and Hong Kong; opt-out elsewhere where the law allows it), with its
-  quiet hours. Gifts and inbox items seen inside the product are not
-  marketing messages. An effect unlawful in a market leaves that market out
-  and never blocks the others.
-- **Gifts give once.** Every gift and discount is a ledger record or grant
-  with a deterministic id per person ([commercial.md](commercial.md)), so a
-  retried claim or replayed webhook gives once, and given value stays given
-  when a campaign ends.
+- **Decision-relevant control.** Size a holdout and observation window from the
+  decision, variance, interference and cost of withholding treatment. Report
+  estimates and uncertainty; use a control when it can change the decision.
+- **Authorized exposure.** Enforce approved real-money budgets. Set or resize
+  resource, economic and messaging limits from measured exposure and channel
+  requirements, recording the rationale. A virtual reward's effect depends on
+  its issuance, sinks and use; choose its limit from that economy.
+- **Truthful reference prices.** Derive a reference price from actual price
+  history under the selected market's current rules and product scope. For UK
+  savings claims, use a genuine established usual selling price
+  ([ASA guidance](https://www.asa.org.uk/advice-online/promotional-savings-claims.html)).
+  Bonus claims reflect granted amounts and a countdown reflects a real end time.
+- **Applicable consent.** Classify purpose, channel, recipient and market; apply
+  the relevant consent or objection rule and exceptions. Classify in-product
+  inbox messages by their actual purpose and the applicable channel rules.
+- **One intended grant.** Key an award by stable account and campaign, award or
+  source event. Persist its request/result so a retry returns the same grant
+  ([commercial.md](commercial.md)). Ending a campaign preserves granted value.
 
 ## Revenue inputs for cost of delay
 
@@ -128,57 +95,38 @@ IAP revenue; the work system still computes CD3 ([priority.md](../../author-item
   login at zero. Apply the affected share and the expected recoverable fraction
   once, and do not add lost revenue again as value per person.
 - **Unmatched or sparse evidence stays an estimate.** If activity combines iOS
-  and Android while revenue is iOS-only, a calculation using all activity is an
-  all-players-on-iOS scenario, not measured iOS revenue. An approximate historic
+  and Android while revenue is iOS-only, a calculation using all activity is a
+  ratio of iOS proceeds to all-platform player-days, not measured iOS revenue
+  per iOS player-day. Modelling all players on iOS needs an explicit conversion
+  assumption. An approximate historic
   DAU is an assumption, not a measured multi-month denominator. Record the
   window, missing split, central scenario and sensitivity; never replace
   missing activity with downloads. At low purchase volume, zero paid units in
   a short after-window alone does not prove the purchase path is broken.
 
-**Input guard:** before publishing any revenue-based `WSJF-INPUTS` or `work
-impact`, Growth records the source rows and window, transaction classification,
-activity definition and coverage, matched population (or explicit scenario),
-formula, units, affected/recoverable share, and measured-versus-estimated status.
-An input missing these is not published as measured revenue. When the method
-changes an existing estimate, append a replacement sourced input on the original
-item and read `work score` once to confirm the computed input changed; correcting
-only a narrative run note leaves the old score active. Acquisition forecasts
-use incremental activated players and a sourced conversion/retention model (or
-the store's controlled experiment), not total installs times historical revenue
-per download.
+Before publishing revenue-based priority inputs, record the source/window,
+transaction classification, activity definition and coverage, matched population
+or explicit scenario, formula and units, affected/recoverable share, and what is
+measured versus estimated. Correct the authoritative input and verify its
+recomputed value; a narrative note alone leaves the old input active.
+Acquisition forecasts use incremental activated players and a sourced conversion
+and retention model, rather than total installs times revenue per download.
 
 ## Support
 
-Support is agent-native, not a reply pipeline; the reference to beat is
-Intercom Fin and Decagon, built on our own platform (Identity, Notify, Search).
+Use [customer-support](../../customer-support/SKILL.md) for live case handling
+and [conduct](conduct.md#customers-and-players) for company stance and remedies.
 
-- **One profile per contact.** Every contact on any channel resolves to one
-  account; email, phone and game uid are identities on that profile, keyed by
-  the stable account id. An unknown contact starts as a lead and is linked
-  once evidence appears; an automatic merge needs a verified sign-in (Zendesk
-  multi-identity users, Intercom users and leads).
-- **One agent decides.** One support agent per company receives every case
-  with its context (profile, account and game data, past cases, product
-  knowledge) and its tools (look up an account, file a problem, grant per
-  written policy, schedule a reply), and decides whether, what and when to
-  reply: a high-value customer at once, others after a natural delay, a
-  repeated flood slowed or left unanswered. Before the agent, the system
-  rate-limits each sender, folds duplicates and floods, and filters spam and
-  abuse, so repetition cannot spend agent time.
-- **Answers come from the source of truth.** Product behaviour is answered
-  only from the product's own configuration, code and per-title docs, read
-  through a read-only knowledge tool, never guessed (Intercom Fin answers
-  only from verified sources). What cannot be verified is escalated as a
-  problem ([quality-signals.md](../../author-item/references/quality-signals.md)).
-- **Company stance and case remedies** follow
-  [conduct](conduct.md#customers-and-players); this section owns the support
-  mechanism, not a separate conduct policy.
-- **Support learns.** Every resolved case feeds the product's knowledge, and a
-  frequent question becomes a help-centre article automatically (Fin content
-  gap detection).
-- **One case alone.** An agent answering a user uses
-  [customer-support](../../customer-support/SKILL.md): the fixed lines,
-  the lock, the reset and no-time rules, and the replay table.
+Give the support agent current scoped account records, prior case context,
+authoritative product knowledge and tools appropriate to its remedies. Link a
+contact to an account with verified evidence; preserve uncertain identities and
+duplicate provenance. Choose assignment and backpressure from measured workload
+and response obligations, keeping authorized case context available.
+
+Extract reusable, non-personal lessons from resolved cases. Publish material
+knowledge corrections through the owning workflow; keep case-specific data out
+of general guidance. A frequent question is evidence for a help article, not an
+automatic policy change.
 
 ## How it is judged
 

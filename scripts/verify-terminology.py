@@ -26,8 +26,8 @@ def glossary_rows(text):
         cells = [c.strip() for c in line.strip('|').split('|')]
         if len(cells) != 4 or not all(cells):
             raise ValueError(f'glossary:{number}: expected four nonempty cells')
-        if not re.fullmatch(r'\[[^\]]+\]\(https://[^\s)]+\)', cells[2]):
-            raise ValueError(f'glossary:{number}: missing named HTTPS source')
+        if not re.fullmatch(r'\[[^\]]+\]\((?:https://|\.\.?/)[^\s)]+\)', cells[2]):
+            raise ValueError(f'glossary:{number}: missing named HTTPS or relative source')
         rows.append(cells)
     if not rows:
         raise ValueError('glossary: no mappings')

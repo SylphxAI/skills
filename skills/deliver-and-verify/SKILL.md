@@ -1,82 +1,44 @@
 ---
 name: deliver-and-verify
-description: "Use when asked to add, build, implement, or ship a code feature, parser, serializer/export format, endpoint, or bug fix, or when shipping an authorized operational, repository, marketing, or commercial change end-to-end (such as a repository rename, DNS/config change, migration/cutover, approved promotion, or commercial close). Enforces Limit work in progress, Single Writer per target, Release Scope Management, Complete Replacement (migrate callers, delete old path), Systemic Corrective Action, live verification after every write, and an External Write Pre-Flight & Submission Receipt gate (read the target's live status before any external write, never resend an in-flight request, and record endpoint, UTC timestamp, response status, and returned submission/event ID on the first call). Do NOT use when only drafting/reviewing a plan or architecture (use self-challenge), only reviewing a PR or investigating past root causes (use prove-it), or only drafting/rewriting/translating prose (use clear-writing)."
+description: "Use when implementing or shipping a feature, bug fix, parser, export format, endpoint, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use self-challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
-# Deliver and Verify (`deliver-and-verify`)
+# Deliver and verify
 
-Own the authorized outcome from execution through verified completion at the real user, partner, or operator surface. This skill governs **doing and shipping work** across software engineering, repository/infrastructure operations, commercial/partner execution, and marketing launches.
+Carry the authorized outcome through execution and verification at the user, partner, or operator surface. Use the existing grants and release path; preserve user data and authorized spending limits.
 
-## Core Execution Laws (Enforce on Every Delivery)
+## Coordinate the work
 
-1. **Limit Work in Progress and Prioritize Aging Work**:
-   - For work of comparable priority on the same surface, pull from the right side of the board first: **Live Verification (`Verify`) > Open PR Merge (`Review/Merge`) > Active Implementation (`In-Progress`) > Starting New Work (`New`)**. Finish your in-flight verification or merge on that surface before opening a new item there, unless pre-empted by a higher-CD3 blocker or live incident, or while an external step is genuinely waiting asynchronously.
-2. **Single Writer per Target**:
-   - Parallel subagents may research, read logs, or audit in read-only mode, or work in disjoint worktrees/targets.
-   - Exactly **one named writer** edits a given worktree, pull request, database record, or live configuration at a time.
-3. **Release Scope Management**:
-   - When driving a product, remake, or platform cutover to launch, work from a **finite, burn-down-only checklist** of what a real user needs to complete the core value loop (or the screen-by-screen parity sheet for a remake).
-   - Once in convergence, the checklist only shrinks: hammer every newly discovered nice-to-have, polish idea, or non-blocking enhancement to post-launch items rather than expanding pre-launch scope.
-4. **Upstream Contribution and Separation of Concerns**:
-   - If the task hits a bug or missing capability in an **owned upstream** (engine, platform, shared SDK/skill), fix or build the generic capability in the upstream; products never bypass our own engines.
-   - Treat first-party apps as ordinary clients: no downstream product names, backdoors, or privilege bypasses in shared layers, and depend only on published upstream versions.
-5. **Target Architecture from the First Change + Clean-Slate Replacement + Systemic Corrective Action + Mistake-Proofing**:
-   - **Build the Target Architecture in the First PR**: Where a proven, scalable design (the target architecture) exists, build it in the first PR rather than implementing an interim design that creates future data, contract, or caller migration cost.
-   - **Optimize Total Cost to Verified Outcome, Not Lines Typed**: Do not default to stacking defensive band-aid patches just to touch fewer lines. When a failure recurs on a boundary or a fix requires workarounds, compare local repair against clean boundary replacement by total cost to a verified outcome (verification, caller migration, failure recovery, and cleanup). When the model is structurally flawed or replacement has lower total cost to a verified outcome, lock the contract with tests, replace the mechanism cleanly in one pass, migrate every caller, and delete the old code, flags, tests, and docs in the same change.
-   - **Systemic Corrective Action**: When fixing a defect, search the repository and sibling components for the same failure pattern and fix every instance in one pass.
-   - **Mistake-Proofing**: A standing rule or invariant broken once ships with the default, type constraint, or check that enforces it (reusing existing mechanisms rather than inventing a new service or bespoke CI gate per incident); a one-off ruling gets no guard.
-6. **External Write Pre-Flight & Submission Receipt (Never Resend an In-Flight Request)**:
-   - **Pre-flight read**: Before calling any external write API—a store review submission, payment or webhook trigger, messaging/social post, or DNS/cloud mutation—read the target's live status and timeline in the same session (`date -u`). If a request is already in flight, already accepted, or already recorded, do not send it again; inspect its current state and continue from that receipt.
-   - **Receipt on the first call**: Record a submission receipt on the work record: the endpoint, the `date -u` UTC timestamp, the HTTP/response status, and the returned submission/event/resource ID. Reuse that receipt for every status check, retry, or follow-up. An unknown receipt means read the target again before any second write; a blind retry that creates a duplicate submission is a defect.
+- Keep one named writer per worktree, pull request, database record, or live configuration. Parallel readers and writers on independent targets can proceed together.
+- Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
+- During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
+- Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.
+- Compare repair and replacement by total cost to a verified outcome, including migration, recovery and cleanup. When replacing a mechanism, migrate its consumers and remove the superseded path. Split a delivery where a migration or dependency must merge first.
+- Search related components for the same defect class. Repair affected instances within the authorized boundary and record separately owned work. Use a default, type or existing check when it proportionately prevents recurrence; a one-off ruling does not need a permanent guard.
 
----
+## Establish the acceptance cases
 
-When an operational path is slow or blocked, use a reversible workaround within existing grants, record its root-fix follow-up and removal trigger, and remove it when the fix lands. This does not authorize a product to work around or bypass our own engines or platform: the engine owner fixes the gap upstream first, and the product consumes the published capability. Spending approval remains required. Preserve unique user data and keep auth, tenant isolation, and ledger protections hard.
+Use read-only discovery to understand the target. Before changing it, state the observable positive cases and relevant negative or invariant cases. Use [author-item](../author-item/SKILL.md) when the brief needs clearer acceptance criteria.
 
-## Stage 1: Lock Acceptance Test Cases First
+Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
-Before editing code, running an operational command, or publishing an asset:
-1. State the concrete **positive test cases** (what observable behavior or state must succeed at the real surface) and **negative/invariant test cases** (what bad inputs, unauthorized calls, or regressions must fail closed). If the brief lacks clear acceptance criteria, shape them with [`../author-item/SKILL.md`](../author-item/SKILL.md).
-2. For operational or live-state changes (such as renaming a repository, updating a setting, or modifying database rows via the product's API), **read and record the current live state before acting (`Before Read`)** with a `date -u` timestamp.
+Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 
----
+## Execute and verify
 
-## Stage 2: Verify the Plan & Protect Live Users
+1. Run practical targeted checks, then publish one coherent change. State the remaining uncertainty; fix failures and rerun the affected checks on the same branch. Follow the repository's required checks and normal merge queue without force-push or bypass merge. Review depth follows the change's risk; independent review can run alongside or after delivery and does not create a separate completion stage.
+2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and retry semantics; if the result is unknown, inspect the target before a repeat.
+3. For a blocked operational route, follow [unblock](../unblock/SKILL.md). A temporary repair stays within existing grants and has a durable fix and removal condition. Coordinate reconciliation on a GitOps-managed resource and merge the matching configuration.
+4. Read the authoritative result back before claiming completion, following [prove-it](../prove-it/SKILL.md). A service needs its serving revision and affected acceptance cases checked; an operation needs the updated object and dependent behavior; a package, CLI or document needs its required checks and published artifact or source verified where applicable. Use a soak only when its measured behavior is part of the outcome.
 
-1. **Read Primary Sources Live**: Read the actual codebase, live config, and any external specification/API docs in the current session—never from memory.
-2. **Live-User Continuity vs Pre-Launch Speed**:
-   - **Live Products with Real Users**: Zero broken accounts, zero lost data, zero failed logins, and never stop taking paid orders. Reach a new storage or service path by **adding the new replica/path and switching over**—never migrate in place. Database migrations change schema only; state/record updates go through the product's API (or audited write role with before-and-after row reads).
-   - **Platform Releases Preserve Each Live Tenant's Served Contract**: Before rolling out a platform or engine change that tightens how tenant declarations converge (routes, path prefixes, quotas, grants, defaults), diff the proposed reconciler output against every live tenant's currently served state and migrate the affected tenant declarations first, so reconcile produces no unapproved narrowing. A path, grant or limit a live tenant serves never disappears on reconcile or on a tenant release unless that release explicitly declares its removal, and a stricter rule ships with an admission or reconcile check that refuses silent narrowing.
-   - **Pre-Launch Products (Zero Real Users)**: No grandfathering, no maintenance windows, and no compatibility shims—change directly to the cleanest target design.
+Opening or merging a pull request is a checkpoint. Completion is the acceptance receipt at the delivered surface. Pre-launch code can be judged by automated checks in its target environment; verification does not add an approval ritual before first use.
 
----
+## Domain references
 
-## Stage 3: Execute, Ship, and Verify at the Real Surface ("Done" = Live Verification)
-
-1. **Run Practical Targeted Local Checks, Then Publish**:
-   - Run the targeted local checks that are practical (compilation, unit/integration tests, and surface checks as applicable), then publish one coherent pull request. Name what remains unverified and let CI verify the rest; fix failures and rerun the affected checks on that same branch.
-   - For local single-host / dev-machine software, build, verify, and activate directly in place in the local environment first without blocking on a remote PR/CI round-trip.
-   - For operational, config, or publishing actions (such as renaming a repository or publishing approved copy), reuse existing checks and verify via live `Before Read` / `After Read`.
-   - Complete the **Systemic Corrective Action** and delete all superseded paths.
-2. **Ship Through Required Checks and the Merge Queue**:
-   - Publish one coherent pull request, iterate as evidence requires, and enter the repository's normal merge queue when its required checks are green (never force-push or bypass checks).
-   - For every tier, independent review ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) runs in parallel or after merge, never as an added pre-merge gate. Revert or repair a real defect immediately; keep live-user and data safeguards intact.
-   - For GitOps-managed infrastructure, coordinate competing reconciliation on the affected resource so an auto-sync does not overwrite an urgent mitigation, and merge the matching change through Git.
-3. **Verify at the Real Surface (`After Read`)**:
-   - Opening or merging a PR is a checkpoint, never completion. Follow the canonical completion and review-tier table in [`../author-item/references/work.md#done-and-review-stage-3-atdd-verification`](../author-item/references/work.md#done-and-review-stage-3-atdd-verification) (the executing agent verifies at the live surface for every tier; for Tier 3 live real-user changes, an independent audit runs in parallel or after rollout and is never a completion stage).
-   - Read back the authoritative live surface ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)) with `date -u`:
-     - *Deployed Service*: Verify the serving revision/SHA and run the Stage 1 positive and negative checks against the live endpoint.
-     - *Operational / Repository Action (e.g., repo rename, config update, DNS/secret change)*: Read back the updated object from the live API/CLI and verify dependent callers/redirects.
-     - *Pre-launch Library / CLI / Docs (no live deployment)*: Green CI and artifact verification on the merged commit.
-
----
-
-## Domain Reference Standards (Load When Relevant)
-
-- [references/code.md](references/code.md) — Pure-core / imperative-shell structure, error handling, transactions, idempotency, and migrations
-- [references/auth.md](references/auth.md) — Sign-in, passkeys/WebAuthn, OAuth/OIDC, workspaces, and RFC 8693 delegated grants
-- [references/security.md](references/security.md) — Secret handling (read once, never print), fail-closed guards, injection defense, and recovery procedure
-- [references/integration.md](references/integration.md) — Third-party APIs, webhooks, idempotency keys, retries, and billing callbacks
-- [references/identifiers.md](references/identifiers.md) — TypeID / UUIDv7 entity IDs, slugs, and external key formats
-- [references/performance.md](references/performance.md) — Latency budgets, query discipline, caching, streaming, and real-time events
-- [references/dx.md](references/dx.md) — CLI/SDK ergonomics, CI speed, merge queue discipline, and rollout runbooks
+- [code.md](references/code.md): domain boundaries, transactions, tests and migrations.
+- [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
+- [security.md](references/security.md): authority, secrets, personal data and recovery.
+- [integration.md](references/integration.md): provider calls, webhooks and reconciliation.
+- [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
+- [performance.md](references/performance.md): journey budgets, queries and measurement.
+- [dx.md](references/dx.md): APIs, packages, feedback loops and releases.

@@ -12,77 +12,40 @@ known monetisation and retention patterns in
 
 ## Hard lines
 
-- A player never loses purchased value, and play against real people stays
-  skill-based. Money and conserved value follow [commercial.md](commercial.md).
-- For economy decisions, a cache only serves display. Every purchase, claim
-  or grant decision re-reads the authoritative row inside the granting
-  transaction; price, eligibility, limits, stock and the grant commit together,
-  with locks or conditional writes and a unique grant key so concurrent
-  requests cannot duplicate value. For external payments, save the agreed
-  price, items and stock reservation before charging; settlement re-reads
-  that durable order and honors verified payment even if the display template
-  later changes or expires (DM 470, 2026-10-30). Every economy cache change
-  ships exploit tests: buying twice inside the cache lifetime; buying after
-  expiry; a stale price; two concurrent buys of the last unit; a stale cache
-  on another instance; a callback against a stale template. Prove no duplicate
-  or ineligible grant, no wrong charge and no undelivered paid order.
-- A live game backend answers success only after the write has committed,
-  because a 200 before commit loses progress when the process dies. A
-  single-replica backend crashed once when a Cilium roll reset its database
-  connections.
-- A maintenance, restart or fix that live multiplayer game players
-  would see is announced in-game first. The Fun titles get no notices
-  (the repository's agent instructions), and a title with no real players
-  needs none.
-- A live match is never ended by the platform. A real-time room host declares
-  that it holds sessions. While a session is open, the host is in use: it is not
-  evicted, a release waits for the old revision's sessions to end, and it gets a
-  PodDisruptionBudget at two or more replicas and a drain on shutdown through
-  its one drain setting. When no session is open, the host sleeps. The client
-  sends a join intent as the player opens the lobby or asks for a match, so the
-  host wakes while the player waits, and the join reaches a room within 5
-  seconds (p95). State that outlives a match lives in Postgres, never in the
-  process. This is the platform's managed room service, which follows Agones
-  allocation and disruption control without its warm buffer
-  . A title takes no
-  `min-scale` floor. A floor already on a launched title stays until that title
-  passes the room-service production verification (session protection live, join intent sent,
-  join from zero within target, a room kept through a release), so live players
-  see no churn.
-- Everything a player can buy has a use in the live game: a paid product grants
-  only currency or items that a shipped feature spends or applies, and is sold
-  only once that use is live; three titles once priced packs whose currency or
-  content nothing in the game could spend.
-- A remaster is equal to or better than the shipped original on every screen,
-  feature, animation and sound, and never worse. Better means clearly better to
-  a player: the same rules and flows, no lost feature, and at least the same
-  polish. Different but plainer counts as worse. A remaster may upgrade the
-  monetisation (heavier, better-designed IAP within these hard lines) and add
-  what the old engine could not do; parity of experience is the floor, earning
-  more is the goal. A remaster replaces the
-  original only when its parity sheet (each original screen and feature
-  captured from the store build beside the remake, graded equal, better or
-  worse) has zero worse rows; the sheet is shown to the owner, not held for his
-  approval. A missing fact stays an open gap, not license to invent, and parity is not claimed from a green
-  subset; a game remake must never show a generic dark result box with a
-  flat green button where the original had finished art.
-- A visual or sensory effect writes no economy, simulation, or network truth.
-- Every title has a real art direction and game feel (motion, sound, haptics,
-  a living lobby), never a developer UI, judged by screenshots against the
-  top-grossing titles in its genre; a missing Keel capability is filed as
-  priority, and nothing below the bar is promoted .
-- Every title is playable by people and by agents, built once in Keel: a
-  headless deterministic simulation, an agent API, replay-verified scores, and
-  separate human and AI leaderboards .
+- Preserve purchased and promised value. Define how skill, randomness and paid
+  advantages affect each mode, and honor the advertised competitive contract.
+  Money follows [commercial.md](commercial.md).
+- Display caches do not authorize an economy effect. Re-read price, eligibility,
+  stock and limits at the authoritative transaction boundary, with conditional
+  writes or locks and a unique grant key. Save agreed order terms before an
+  external charge; settlement honors the verified payment against that durable
+  order. Select regression cases for the changed boundary, including applicable
+  concurrency, expiry, stale-price and callback cases.
+- Claim a durable effect only after its authoritative commit. Asynchronous work
+  returns a durable accepted or pending receipt. This prevents progress loss
+  when a process fails between a response and its write.
+- Plan maintenance around active matches and preserve them during a planned
+  release. Test the actual drain and rollout mechanism, durable recovery and
+  startup budget. Disruption budgets alone do not guarantee session continuity.
+  Give disruption notices according to the product's current policy.
+- Sell currency or items only when their promised use is available on the
+  contracted delivery terms. Verify that use end to end; a granted balance
+  without a usable spending path does not establish a finished purchase.
+- A remaster replaces its original only when its parity sheet shows every
+  original screen and feature equal or better. Capture the shipped reference,
+  compare visuals, sound and interactions, and keep unknown facts as open gaps.
+  Show the sheet to the owner. Judge experience parity across the whole sheet.
+- Keep sensory effects separate from economy, simulation and network truth.
+- Give the title a coherent art direction and game feel, checked against its
+  category leaders. Choose agent-play APIs, deterministic simulation, replay
+  verification and leaderboard separation for the title's rules and competition.
+  The workspace specifies the engine and any stronger product commitments.
 
 ## Choosing what to build
 
-A new title starts as a proposal with market evidence: the genre's revenue,
-the competition, our edge, monetisation, and cost. A saturated clone market
-where we have no edge is not built (a 2048 remake was stopped for that
-reason).
-Proven-revenue genres come first, and titles are built in parallel as capacity
-grows.
+Compare the genre's market, competition, differentiation, acquisition costs,
+expected contribution and lifecycle cost. Choose the title from those inputs;
+parallel development follows available capacity and computed priority.
 
 ## Player promise and loops
 
@@ -112,105 +75,60 @@ Device input maps to abstract actions so simulation stays separate from
 presentation, and each supported platform gets a complete adapter and a usable
 input path.
 
-Every title, legacy titles included, is a standard serverless project on
-the platform and deploys through it. A title touches no
-cluster directly: no raw TCP port, hand sync or special route for rescue.
-Follow the [recovery procedure](../../deliver-and-verify/references/security.md#recovery-procedure). A legacy backend is
-rewritten as a standard platform project in Rust ([stack.md](stack.md)), not
-ported, because few players remain and a rewrite is cheap for agents. Legacy
-titles still get the cheap updates that earn: the client on the platform's
-WebSocket, the current SDK and company name, in-app purchases through the platform billing service
-Money, an economy redesigned for revenue, then a repackaged store release.
-Whether to do each piece is decided by the money it earns and its fit with the
-platform, not by human effort. A legacy externally operated original stays with its own
-operations team.
+For a legacy backend, compare repair, port and rewrite by full lifecycle cost,
+including integration, account continuity, data migration and operating cost.
+Respect the actual project boundary and existing writer. Fix a missing shared
+engine capability upstream, then consume it. Keep an externally operated title
+with its operations team until the authorized handover.
 
 ## Access and economy
 
-Select the monetization mechanism $M \in \{\text{Deep IAP}, \text{Subscription}, \text{Hybrid}, \text{IAA}\}$ by maximizing expected **Retention-Coupled Cohort Net-LTV** over the title's measured parameters rather than from a pre-baked dogma:
+Compare feasible ads, purchases, subscriptions and hybrid offers using a
+finite-horizon cohort contribution model:
 
-$$\max_{M} \ \left[ \sum_{t=0}^{T} S(t \mid M) \cdot \text{ARPDAU}(t \mid M) - \text{CPI}(M) \right]$$
+$$V(M)=\sum_{t=0}^{T} d_t S(t\mid M)\,[r_t(M)-c_t(M)]-a(M)$$
 
-where $S(t \mid M)$ is the cohort retention curve under mechanism $M$, $\text{ARPDAU}(t \mid M)$ is daily net revenue per active user (governed by the genre's Pareto spender tail exponent $\alpha$ — Eric Seufert, *Freemium Economics*, 2014), and $\text{CPI}(M)$ is effective cost per install (including store conversion loss from ad SDK binary bloat):
+Here `M` is the offer, `S` the probability an acquired player is active on day
+`t`, `r` net receipts per active player-day after refunds and payment/store fees,
+`c` variable service cost per active player-day, `d` the discount factor and `a`
+acquisition cost per acquired player. Define the horizon, population and units;
+mark assumed inputs and show sensitivity. Validate the chosen model against
+the title's actual cohort and candidate offers.
 
-- **Regime A — Paid acquisition ($\text{CPI} > 0$) + social, competitive, card/table, or progression games:** Pure IAA caps $\text{ARPDAU}$ at pennies with no right-tail spender curve, bloats binary size with ad SDKs (raising $\text{CPI}$), and degrades $S(t)$ via interruptions, whereas social and progression depth exhibits a heavy power-law payer tail (`P95–P99` spenders generating $10\times\text{–}100\times$ average payer value). The objective function therefore selects **uncapped deep IAP** (and excludes pure IAA) so small cohorts recover $\text{CPI}$ and compound margin; top-grossing titles such as Royal Match earn almost entirely from purchases.
-- **Regime B — Daily habit puzzles, early-childhood education, or high-frequency utilities:** Aggressive consumable whale gates collapse long-term retention $S(t \mid \text{Whale IAP})$ and user/parental trust, whereas daily habit utility sustains high D30–D365 survival $S(t)$. For these inputs, the same equation selects a **frictionless free daily hook or parent-gated trial paired with a recurring Subscription** (`Plus` / `Pro`).
+Deep purchase economies and recurring subscriptions are candidate strategies.
+Choose the offer mix and price menu from measured or explicit assumed demand,
+retention, contribution and player impact. Apply the workspace's ad policy.
+Review relevant [mechanisms](mechanics-catalogue.md#monetisation), then build
+only those that fit the title and objective. Place ads, store prompts and social
+requests at natural breaks. Paid access, multiplayer identity and other required
+controls need clear denial, cancellation and recovery states.
 
-For titles in Regime A:
+Events, offers and gifts follow [growth.md](growth.md#campaigns-and-gifts).
+Reuse the owning shared campaign capability when one exists.
 
-- **Legacy titles** (the live games and their remasters): light ads, heavy
-  in-app purchases. Ads stay light: rewarded ads kept at their current caps or
-  lower, interstitials only for players who have never paid, and a remove-ads
-  purchase. The economy is redesigned around purchases: currency packs, VIP,
-  month card, offers and event packs.
-- **New titles:** no ads at all, rewarded ads included. Pure in-app purchases
-  on a deep economy: a currency price points of six or more, first-purchase
-  bonus, starter pack, month card, VIP by spend, chain offers, piggy bank,
-  growth fund, and gacha or a season pass where the genre fits
-  ([the catalogue's monetisation
-  section](mechanics-catalogue.md#monetisation)). The free
-  path is daily rewards and earned currency, never ads.
+For randomness, difficulty, matchmaking and AI opponents:
 
-Events, limited-time offers, sales and gifts are campaigns: they run on the
-platform's campaign capability under
-[growth.md](growth.md#campaigns-and-gifts) (holdout, cost and frequency
-caps, truthful reference prices, each market's consent), not on title code.
-
-Place ads (legacy titles only), store prompts, and social requests at natural
-breaks, because an interruption mid-action reads as a defect. Required
-multiplayer identity, entitlement, age, safety, and paid access have clear
-denial, cancellation, retry, and recovery, including promised offline behavior.
-
-Monetisation, randomness, difficulty, and AI opponents are designed for retention
-and revenue (business judgement):
-gacha, adaptive difficulty, progression- or spend-aware matchmaking outside
-ranked play, skills that help against the computer, and AI opponents that look
-like players are normal tools. A design reviews the
-[mechanics catalogue](mechanics-catalogue.md) once and states
-target metrics.
-
-These tools follow five rules :
-
-- **Ranked stays fair, casual is tuned.** Play with a leaderboard or ranked
-  reward (rank seasons, guild wars) uses skill only. Casual tables may tune
-  luck, difficulty and opponents by spend, progression and retention.
-- **AI chips are a closed account.** AI players win and lose from one house
-  account that is reconciled daily against a drift band, with an alarm. Never
-  top an AI player up from nothing; that mints currency and devalues every
-  pack a player bought.
-- **New players are protected.** For their first days new players do not meet
-  boosted payers, and adaptive difficulty favours them, so they stay long
-  enough to buy.
-- **A payer advantage may be sold openly.** VIP luck, skill and relief
-  boosts can be named on the VIP page and marketed; hidden tuning is kept for
-  casual tables.
-- **Change by evidence, gradually.** A change that takes something players
-  are used to is measured first, offset by something they can feel improving,
-  rolled out in steps and reverted when payer retention, revenue or support
-  complaints worsen. Players must never feel something was taken away.
+- Define ranked fairness separately from the genre's inherent chance. Test any
+  tuning or paid advantage against the advertised rules and applicable
+  market/store requirements, including paid-randomness disclosures.
+- Model currency sources, sinks, balances and purchasing power. Reconcile
+  material value movements. Use a house bankroll when the game's transfer model
+  requires it; choose issuance rules from the economy model.
+- Test onboarding protection, difficulty and opponent design against actual
+  player outcomes rather than assuming a fixed number of protected days.
+- Protect purchased promises. State a material outcome and rollback rule with
+  uncertainty and trade-offs; phase a change when its exposure warrants it.
 
 ## How it is judged
 
-Agent play and deterministic tests verify rules, journeys, and defects. A player
-understands the goal, explains success and failure, and repeats, exits, or
-recovers within the latency and startup budgets. Enjoyment and return willingness
-are empirical: target-player evidence and retention and revenue metrics answer
-them. Release claims follow [product.md](product.md); title release numbering
-follows the owning release channel.
+Machine checks verify rules, journeys and defects. Test the release build's
+first session against the real server path: expected scene, actionable controls,
+startup budget, and recovery. Assert the journey across supported layouts rather
+than fixed coordinates. A route returning the web page instead of the declared
+server response fails the check.
 
-Before a store or production release, an automated gate checks the release
-build. It plays the first session against a real server and database, and fails
-when the expected scene or on-screen positions are wrong. It keeps the first
-frame inside the title's start-up byte budget, with a poster shown before the
-game loads. It finds every declared server path answered by the server, not by
-the web page. Green offline checks once hid a first-session crash, a 4.5 MB
-first download and 14-30 s blank screens.
-
-## Method sources
-
-| Term | Formula / Rule | Source | Replace when |
-| --- | --- | --- | --- |
-| Retention-coupled cohort Net-LTV & Pareto spender model | Maximize $\sum_{t=0}^T S(t \mid M)\,\text{ARPDAU}(t \mid M) - \text{CPI}(M)$ across $M \in \{\text{Deep IAP}, \text{Subscription}, \text{Hybrid}, \text{IAA}\}$; derive deep power-law IAP for high-$\text{CPI}$ social/progression games and recurring subscription for daily-habit/education apps from measured $S(t)$, tail exponent $\alpha$, and $\text{CPI}$ | Eric Seufert, *Freemium Economics* (2014); Fader & Hardie, *Probability Models for Customer-Base Analysis* (BG/NBD & Gamma-Gamma CLV, 2005) | A higher-accuracy stochastic cohort CLV model outperforms BG/NBD + Pareto tail estimation on our live telemetry. |
-| Core-to-meta loop coupling & MDA | Separate deterministic simulation mechanics from presentation; couple the core skill loop to medium- and long-term progression and collection sinks | Hunicke, LeBlanc & Zubek, *MDA: A Formal Approach to Game Design* (2004); Will Luton, *Free-to-Play* (2013) | Genre-specific telemetry demonstrates a higher-retention loop structure. |
-| Closed-sink virtual economy conservation | Every sold currency or item requires a live sink; AI opponents trade from one daily-reconciled house account so currency is never minted from nothing | Vili Lehdonvirta & Edward Castronova, *Virtual Economies: Design and Analysis* (2014) | Never replaced; unbacked currency minting devalues paid purchases. |
-| Session-protected scale-to-zero room hosting | Wake real-time hosts on lobby join intent (`p95 <= 5s`), protect active sessions with disruption budgets and drain, and sleep at zero open sessions | Agones game-server allocation and disruption model, adapted without a warm buffer floor | Platform room-service benchmarks validate a faster wake or migration mechanism. |
+Evaluate enjoyment and willingness to return with actual audience evidence when
+available, together with retention and contribution. For a product without real
+users, machine checks supply the release verdict; production evidence follows
+rollout. Do not claim observed enjoyment from a synthetic test. Release numbering
+follows the owning channel.

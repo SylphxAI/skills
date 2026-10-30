@@ -14,20 +14,20 @@ Also see [../../self-challenge/references/growth.md](../../self-challenge/refere
    - Never open an article with throat-clearing history (*"Since the dawn of cloud computing..."*, *"In 2026, AI agents are everywhere..."*).
 2. **Benefits and Concrete Pictures Beat Abstract Features**:
    - **Feature**: *"Built-in WebAuthn passkey authentication with automatic session refresh."*
-   - **Benefit**: *"Sign in with Touch ID in one second and stay signed in across every tab."*
+   - **Benefit**: *"Sign in with Touch ID and stay signed in across your tabs."*
    - Show the outcome on the user's screen, wallet, or calendar—never our internal architecture diagram, unless the audience is specifically reading a deep-dive engineering post.
 3. **Specificity Is Credibility**:
    - Round, vague claims (*"much faster builds"*, *"save tons of money"*) trigger reader skepticism.
    - Specific, accurate facts (*"cuts CI compile time from 14m 20s to 3m 05s"*, *"$0 base fee, billed per active second"*) build immediate trust. Never fabricate numbers or fake urgency (such as countdown timers that reset).
 4. **Rhythm, Scannability, and Visual Breathing Room**:
    - Break long walls of text with informative subheadings that tell the story on their own if a reader only skims the bold lines.
-   - Mix short, declarative sentences (5–8 words) with medium sentences (15–22 words). Cut every adverb that adds no information (*"very"*, *"extremely"*, *"seamlessly"*, *"actually"*).
+   - Vary sentence length to make the point easy to follow. Cut adverbs that add no information (*"very"*, *"extremely"*, *"seamlessly"*, *"actually"*).
 5. **One Clear Call to Action (CTA)**:
-   - Every landing page, launch post, or announcement ends with **one unambiguous next step** (e.g., `npx my-cli deploy`, a live interactive demo with no signup wall, or a single button naming what happens when clicked: *"Start free — no card required"*).
+   - For an announcement or page that asks the reader to act, give **one clear primary next step** (e.g., `npx my-cli deploy`, a live interactive demo with no signup wall, or a single button naming what happens when clicked: *"Start free — no card required"*).
 
 ## UI Microcopy (Buttons, Empty States, and Error Messages)
 
-Every error message or empty state must answer three questions in plain language in under two lines:
+Use enough plain language to explain the relevant facts in an error or empty state:
 1. **What happened?** (without blaming the user or printing raw error codes like `ERR_CONSTRAINT_23505`)
 2. **Is my data/money safe?** (when relevant to payments, saves, or account state)
 3. **What is the one button or step to fix it right now?**

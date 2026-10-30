@@ -12,66 +12,44 @@ money, entitlements, and legal text are built.
   an entitlement, and a payment processor is an adapter.
 - A refund or correction adds a ledger entry and leaves the past transaction and
   its price intact, because rewriting history breaks audit and reconciliation.
-- No personal or home address in legal text; a registered office appears only
-  where the company's law requires it (decision).
+- Use an appropriate business contact address and publish the entity and
+  contact information required for the applicable market.
 - Never take money for something the customer cannot get when the contract or
-  purchase says they will (the accepted risks record).
+  purchase says they will.
   Accurate status is judged when a customer pays or relies, not when copy is written.
-- A term we rely on is stated plainly where the customer sees it, and no clause
-  is unlawful, because one can void the clauses around it.
-- Prices and marketing show the product as it will be at launch; features are
-  built to match, and copy is never trimmed to today's state.
+- State material terms plainly at the point of reliance and use enforceable
+  terms for the applicable market. Forward-looking promotion identifies the
+  delivery scope and commitment accurately before purchase.
 
 ## Pricing, mechanism design, and unit economics
 
-Derive prices, tier structures, and monetization models from the governing
-economic optimization model ($f(\text{Measured Inputs}) \to \text{Derived Conclusion}$),
-never from a pre-baked conclusion or cost-plus habit. We use **Discrete-Choice
-Demand & Elasticity Optimization** (McFadden 1974; Berry, Levinsohn & Pakes
-1995), **Mussa-Rosen / Maskin-Riley Second-Degree Price Discrimination
-(Incentive-Compatible Screening)** (Mussa & Rosen 1978; Maskin & Riley 1984),
-and **Cohort LTV/CAC Payback Calculus** (Gupta & Lehmann 2003; Skok):
+Define the cohort, horizon and net contribution before selecting prices or
+monetization. For candidate offer `x`, a useful decision model is:
 
-$$\max_{P, M} \ \sum_{i} \text{Conv}_i(P_i, M) \cdot \big( \text{LTV}_i(P_i, M) - c_i \big) - \text{CAC}_i(M), \qquad \frac{P^* - MC}{P^*} = -\frac{1}{\epsilon(P^*)}$$
+$$\Pi(x)=\sum_i n_i(x)\left[\sum_{t=0}^{T}d_t\,\mathbb{E}(r_{it}(x)-c_{it}(x))\right]-A(x)-F(x)$$
 
-Different measured input regimes ($\text{CAC}$, price elasticity $|\epsilon(P)|$,
-viral distribution coefficient $K(P)$, and marginal cost $MC$) produce different
-derived conclusions from this single equation:
+`n_i` is the number of acquired customers in segment `i`; receipts `r` and
+variable costs `c` are per acquired customer, including zero-revenue periods,
+refunds and fees. `A` is total acquisition spending and `F` incremental fixed
+cost. Keep every term in the same currency and population. Model retention,
+conversion, cross-price effects and referrals where they can change the choice.
+Distinguish observed inputs from assumptions and show the decisive sensitivity.
 
-- **Regime A — Paid or scarce acquisition ($\text{CAC} > 0$) with low-to-moderate
-  price elasticity ($|\epsilon| \le \frac{P}{P - MC}$) and established category
-  benchmarks:** Price follows the market and segment Willingness-to-Pay ($\text{WTP}$),
-  read from published competitor pricing on the decision day and cited in the
-  product's commercial policy. Match the market where quality matches, price
-  slightly below only where weaker, and price at or above the market where
-  clearly better. Never undercut on price merely because our unit cost is lower:
-  when $|\epsilon|$ is modest, cutting price evaporates gross margin
-  ($P - MC$) without multiplying conversion enough to recover high small-company
-  $\text{CAC}$, and invites a price war. Lower marginal cost from compiled
-  engines, scale-to-zero infrastructure, and automation goes into maximizing
-  gross margin so each cohort clears
-  $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a
-  short payback window. Separate segments with Mussa-Rosen incentive-compatible
-  screening tiers (`Free` / `Pro` / `Enterprise`).
-- **Regime B — Zero-CAC viral or open-source distribution ($\text{CAC} \approx 0$,
-  $\frac{\partial K}{\partial P} < 0$, local $MC \approx 0$):** When payment
-  friction on the entry loop suppresses the viral or developer adoption
-  coefficient $K(P)$, the same equation sets the local or entry tier to $P = 0$
-  (such as an open-source CLI or a guest-first viral front door) to maximize
-  top-of-funnel distribution, while monetizing low-elasticity cloud compute,
-  managed execution, or team workspaces through metered and tiered screening.
-- **Regime C — Empirically high price elasticity ($|\epsilon| > \frac{P}{P - MC}$
-  verified via sequential holdout or Thompson Sampling):** When live sequential
-  experiments prove that a lower price point expands total net contribution
-  margin $\text{Conv}(P) \cdot (P - MC) - \text{CAC}$, set $P^*$ at the empirical
-  profit-maximizing point rather than copying an incumbent's price.
-- **Cost is a floor check only:** an offer whose price falls below marginal cost
-  plus payment and store fees is made cheaper to run or is not sold.
-- **Sell in the market's value metric:** price along the unit customers equate
-  with value in that category (per minute for CI runners, per size and storage
-  for a database, per request or token for an API, per workspace or seat for
-  team software), and size free tiers to market convention with hard
-  server-enforced caps.
+Read competitor offers on the decision day as evidence of the market. Compare
+candidate prices, free entry, tiers and metering against contribution, cash
+exposure and the product promise. Low unit cost alone does not select a price;
+neither positive acquisition cost nor a competitor's price proves a universal
+price floor. Keep a preferred offer as a testable default.
+
+Define whether LTV is revenue or contribution before comparing it with CAC.
+Compute cash payback from cumulative cohort cash contribution. A ratio target
+such as `3 × CAC` is a stage/funding heuristic, not a survival identity; applying
+gross margin again to contribution LTV double-counts costs.
+
+Price in a unit the customer associates with value. Make the entry tier useful,
+and size resource limits from measured economics and the published commitment.
+An authorized loss-leader or bundle is assessed at the offer/cohort level,
+including its funded exposure.
 
 ## Always take the money
 
@@ -83,24 +61,23 @@ path recovers. If fulfillment cannot complete within the promised window,
 notify or remedy according to the product's published terms and
 [conduct](conduct.md#customers-and-players).
 
-## Free stays free
+## Free-tier commitments
 
-Once real users rely on a free capability it stays free: paid tiers sell new
-value (team, private, hosted, higher limits, support), never a feature taken
-back, because a paywall on what users already rely on costs more trust than it
-earns. Lower free limits only for new accounts, and never below what keeps the
-free product useful. A product with no real users changes directly.
+Honor contractual and purchased rights and preserve user data. Assess a change
+to a live free tier by measured user impact, retention, economics and migration
+cost. An explicit permanent-free promise belongs in that product's offer record;
+a pre-launch product changes directly.
 
 ## Open data, sticky value
 
-Customers can take their data with them: every product exports everything a
-customer put in, or that is about them, in a documented open format, with
-self-service export and an API, and imports from the main competitors too.
-UK and EU law requires this for personal data, and an easy exit lowers the
-fear that stops people from signing up. We keep customers through value, not
-by holding their data: one account across products, one bill, agents and
-integrations that work best together, and the quality of the product. Never
-make leaving deliberately hard.
+Choose documented self-service export and useful import paths as part of the
+product promise. Preserve statutory access and portability rights. UK/EU data
+portability covers qualifying personal data provided by the person and processed
+by automated means under consent or contract; it does not require every inferred
+datum, a competitor import or an API. An API is one implementation option
+([ICO portability guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/right-to-data-portability/)).
+Keep customers through useful interoperability and product quality; make exit
+usable.
 
 ## Compensation follows a request or proof
 
@@ -113,117 +90,71 @@ Ledger mechanics remain here.
 The price shown, the amount charged, and what the customer gets agree. The live
 price comes from the billing system, not from copied prose.
 
-### Plans belong to workspaces
+### Shared and individual purchasing
 
-A subscription, a purchase and the entitlements they grant belong to a
-workspace (a team, family or organisation, or a person's personal workspace),
-never to a user, as Vercel, Linear and Slack bill; it is the only shape in which
-a team pays once for its members.
+For shared purchasing, attach the subscription, purchase and entitlements to the
+workspace, team or family that bought them. Check the entitlement for the
+workspace in which the person acts. A member leaving does not transfer the
+workspace's purchase to that person; a personal purchase stays personal.
 
-- A personal workspace carries individual plans (Free, Pro); a team or family
-  workspace carries team plans, managed by its owners and not any one member's.
-  One person can be Pro in their personal workspace and a member of a team
-  workspace on another plan; the two never mix.
-- A product's server checks the entitlement of the workspace the person is
-  acting in, never a sum of their plans across workspaces.
-- A person who leaves a workspace loses its entitlements at once and keeps
-  their personal plan; what the workspace bought stays with it, including what
-  the leaver paid for while in it, and a per-seat plan frees the seat.
-- A product without workspaces (games, single-person tools) bills the account
-  itself; when it turns workspaces on, each account's purchases move to that
-  person's personal workspace without a lapse.
+An individual product can bill its account directly. If it adds workspaces,
+migrate existing purchases to the correct personal workspace without a lapse.
+Define membership and seat changes according to the published plan.
 
 ## Getting paid for usage
 
-We are small, so we take bounded collection risk, not zero risk. Every product
-and the platform use the same mechanism, driven by data, with no per-customer
-exception in code:
+Choose bounded collection risk from prepayment, credits, postpaid thresholds or
+contracted invoice terms. A stored payment method enables collection but does
+not guarantee it. Set exposure and retry/suspension rules from measured economics
+and approved risk; preserve user data if paid compute is suspended.
 
-- **Subscriptions and one-off purchases are paid upfront.**
-- **Metered usage is postpaid, but never unsecured:**
-  - paid usage needs a payment method on file; without one an account gets only
-    the free tier, hard-capped;
-  - unbilled usage is charged when it reaches the account's threshold, not only
-    at month end;
-  - each account has a spend limit that starts low and rises with its payment
-    history, like the usage tiers of the major AI and cloud platforms;
-  - a failed payment retries, then suspends paid resources (data is kept) until
-    it is paid.
-- **Free or discounted service is a ledger record, never a code path:** a credit
-  grant naming the account, the amount or monthly cap, the expiry and the
-  approver. Usage is still metered and invoiced at full price, and the credit
-  offsets the invoice. To start charging, the credit is simply not renewed.
-  Our projects and companies qualify only for the same published offers as
-  outside customers, never free or discounted internal use
-  ([ONE PATH](architecture.md#hard-lines)).
-- **Invoice terms** (pay later than usage) need a contract record with a credit
-  limit.
+A free or discounted allocation is an auditable credit grant naming its scope,
+amount, expiry and authority. Meter actual usage and apply the grant through the
+published entitlement path ([architecture.md](architecture.md#hard-lines)).
+The owning offer record sets eligibility. Invoice credit terms need a recorded
+limit and contract.
 
 ## Usage and billing disclosure
 
-What we show about usage and billing follows each market's law and the
-industry practice of category leaders, and nothing stricter, under
-[conduct](conduct.md).
+Show the details needed to understand and predict the actual offer's charge:
+price, billing period, included entitlement, material limits, overage units,
+renewal, cancellation and applicable remedies. Verify the current rules and
+commencement for the market and type of sale.
 
-- **Consumer and prosumer products** (games, developer tools, coding agents, web apps) show usage
-  abstractly: a share of the plan, a reset time, credits or fair use, as
-  ChatGPT, Claude, Gemini and Cursor do. Per-request metering is not shown, and
-  exact limits may flex with capacity. A fair-use limit is described plainly,
-  and reaching it shows the limit and when it resets, not an unexplained
-  failure.
-- **Platform and API products** (AI gateways and cloud platform services) give a detailed
-  usage and cost dashboard and an export, because developers and enterprises
-  allocate cost by project, as with
-  [AWS Cost Explorer](https://aws.amazon.com/aws-cost-management/aws-cost-explorer/)
-  and the [OpenAI usage API](https://platform.openai.com/docs/api-reference/usage).
-  Pay-as-you-go may bill by usage without a per-request breakdown on the
-  invoice.
-- **Spend caps and alerts** are a setting the customer may turn on; none is
-  imposed by default. This is separate from the account spend limit above, which
-  bounds our collection risk.
-- **The floor is each market's law:** the price and billing period, what the
-  plan includes, any overage unit price, when and how renewals charge, how to
-  cancel, and refunds where the law gives them, with no drip pricing or hidden
-  fees (EU consumer price rules, the UK DMCC Act's subscription and drip-pricing
-  rules, the US FTC rules on negative options and junk fees, as each applies in
-  its market).
+Plan shares, reset times, credits and fair-use summaries can make usage clear.
+Provide detailed metering and exports when customers need them to allocate or
+predict costs. Keep the summary consistent with the billing authority.
+
+Distinguish a customer-selected spend cap from a collection-risk limit. Choose
+defaults and alerts for the product's actual exposure and user-harm model, and
+explain a reached limit and its recovery path.
 
 ## What we say outside
 
-An outside party (partner, customer or community) hears only its own product's
-progress, public prices and limits, never platform internals, infrastructure
-state, sourcing, subscription pools or coupon economics.
+Give the recipient the information needed for its product, contract or incident.
+Keep unrelated private sourcing and economics out. Use the audience, purpose and
+channel method in [clear-writing](../../clear-writing/SKILL.md).
 
 ## Legal surface
 
-A product that takes an account, personal data, or money ships Privacy and Terms
-naming the legal entity before launch, linked from every page; contact goes
-through support channels. Where we sell to consumers, include that market's
-required cancellation, refund, tax-inclusive price, and data-protection text (UK:
-the 14-day cancellation right, VAT, UK GDPR with the ICO).
+Provide the applicable entity, privacy and contract information at the points
+where people need it, including before an account, regulated data processing or
+purchase. Use the actual market's cancellation, pricing, tax and data-protection
+requirements. Drafting stance and claim handling follow
+[conduct](conduct.md#methods-table).
 
-Drafting stance, market-specific obligations and responses to claims follow
-[conduct](conduct.md#methods-table). The contract implementation below applies
-that stance.
-
-- **Promise the legal minimum:** its deadlines, notice thresholds, and refund
-  rules. A voluntary promise stays only when it sells ("we never train models on
-  your content"). There is no voluntary money-back guarantee: digital content
-  supplied at once takes the customer's express consent at checkout,
-  acknowledging the loss of the cancellation right, and a refund is decided case
-  by case when the customer insists (decision).
-- **Take the widest protection the law enforces:** disclaimers, exclusions, the
-  liability cap, and discretion to change features, prices, limits, and terms,
-  and to suspend or end service. Keep what the law makes mandatory (consumer and
-  data-subject rights, death, injury, and fraud carve-outs) and stop at the
-  enforceable limit.
-- **Marketing, demos, and pitches sell the product as it will be when
-  delivered,** in a confident sales voice: no "coming soon" labels or dates, no
-  volunteered weaknesses, demos show the working parts. Pre-selling, roadmap
-  selling, fake-door tests, and puffery (vague superlatives are not factual
-  claims) are standard practice. Contracts and order forms state the delivery
-  scope and dates we will meet; a self-serve purchase delivers what was bought at
-  the moment of payment.
+- State delivery and remedy commitments accurately. Separate statutory remedies
+  from discretionary goodwill and voluntary commercial guarantees.
+- Distinguish digital content from ongoing services. For UK immediate digital
+  content, regulation 37 requires prior express consent, acknowledgment of the
+  cancellation consequence and the required confirmation; it does not erase
+  remedies for defective content or every service cancellation right
+  ([regulation 37](https://www.legislation.gov.uk/uksi/2013/3134/regulation/37)).
+- Use the protections, liability allocation and change rights that the applicable
+  law enforces while preserving mandatory consumer and data-subject rights.
+- Use confident sales copy and working demos. A pre-sale or roadmap offer states
+  material scope and timing in context, especially before self-serve purchase.
+  Deliver what the contract promises when it promises it.
 
 ## How it is judged
 
@@ -231,11 +162,10 @@ A live purchase shows the same price on the page, in the charge, and in the
 granted entitlement, and each legal page names the entity and fits the market it
 serves.
 
-## Method sources
+## Decision record
 
-| Term | Formula / Rule | Source | Replace when |
-| --- | --- | --- | --- |
-| Discrete-choice demand & Lerner elasticity optimization | Maximize $\sum_i \text{Conv}_i(P_i)(\text{LTV}_i(P_i) - c_i) - \text{CAC}_i$ subject to $\frac{P^* - MC}{P^*} = -\frac{1}{\epsilon(P^*)}$; derive price from measured $\text{CAC}$, elasticity $\epsilon(P)$, viral $K(P)$, and marginal cost $MC$ rather than post-hoc rules | Daniel McFadden, *Conditional Logit Analysis of Qualitative Choice Behavior* (1974); Berry, Levinsohn & Pakes, *Econometrica* (1995); Nagle & Müller, *The Strategy and Tactics of Pricing* | A better-calibrated demand estimation model outperforms discrete-choice + sequential bandit pricing on our cohorts. |
-| Mussa-Rosen incentive-compatible screening (second-degree price discrimination) | Partition features and usage limits across self-selecting tiers (`Free` / `Pro` / `Enterprise`) so high-WTP segments upgrade voluntarily while entry tiers maximize funnel reach | Michael Mussa & Sherwin Rosen, *Monopoly and Product Quality*, JET (1978); Eric Maskin & John Riley, *RAND J. Econ.* (1984); Ramanujam & Tacke, *Monetizing Innovation* (2016) | Empirical usage telemetry shows a stronger screening dimension or continuous usage curve yields higher net LTV. |
-| CAC payback & LTV/CAC survival constraint | $\text{LTV} \times \text{Gross Margin \%} \ge 3 \times \text{CAC}$ within a bounded payback window; under paid acquisition and modest elasticity, lower $MC$ goes into gross margin rather than undercutting | Gupta & Lehmann, *Customers as Assets* (2003); David Skok, *SaaS Metrics 2.0* | Organic acquisition or capital structure changes the binding payback horizon. |
-| Durable double-entry order ledger | Decouple payment capture from idempotent fulfillment; append-only refund and credit entries | Kleppmann, *Designing Data-Intensive Applications* (2017), ch. 11–12 | Never replaced; immutable audit trails are a hard boundary. |
+Record the offer, source date, population, assumptions, contribution and cash
+exposure, decisive alternative, and observed result. The formulas above are
+chosen decision models; validate them against the actual cohort before using
+them to rank materially different offers. Durable orders, idempotent grants and
+append-only adjustments are the ledger method used here.
