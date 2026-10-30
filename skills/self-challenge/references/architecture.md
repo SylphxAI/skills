@@ -25,6 +25,8 @@ Shared infrastructure provides neutral capabilities. Products consume its
 published contracts using ordinary tenant permissions; the workspace records
 which platform and delivery template it has adopted.
 
+- Our own products and companies pay the same public prices as other customers
+  and receive entitlements only through the public grant path.
 - Reach another product through its published API or events under the caller's
   scoped identity. Network location grants no authority; a private address does
   not replace authentication. Keep direct cross-product database access out of
