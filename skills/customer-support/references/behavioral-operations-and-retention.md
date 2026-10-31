@@ -11,8 +11,8 @@ $$\text{LTV} = \text{Retention} \times \text{Paid Conversion} \times \text{ARPPU
 Every support interaction, goodwill remedy, or retention grant must satisfy three first-principles constraints:
 
 1. **Preserve paid conversion and economy scarcity.** Never hand out primary currency, full paid tiers, or repeatable high-value grants unconditionally on request. Unconditional handouts train users to ask support instead of paying, attract multi-account abuse, and devalue purchases made by paying customers.
-2. **Separate perceived emotional value from marginal inflation.** Deliver care through non-transferable, complementary items or scoped service credits that feel thoughtful to the recipient while carrying near-zero marginal cost and zero primary-currency inflation.
-3. **Verify before granting or stating progress.** Read the authoritative account, order, usage, and cooldown records before issuing any grant or quoting any milestone progress.
+2. **Separate perceived emotional value from marginal inflation.** Deliver care through non-transferable, complementary items or scoped service credits that feel high-value and bespoke to the recipient while carrying near-zero marginal cost and zero primary-currency inflation.
+3. **Execute every promised approval, quota, or reservation in the system.** Because the support/operations agent holds delegated company authority, an internal special approval, per-agent VIP quota, endowed progress bonus, or time-limited reservation granted and executed by the agent is a real company approval and action. Ensure the system records and honors what the user is told.
 
 ## 2. Three-tier support and retention grant matrix
 
@@ -21,60 +21,60 @@ Structure all discretionary support, onboarding, and retention grants into three
 | Tier | Target segment | Eligibility and cooldown | Permitted grant composition | Hard boundary |
 | --- | --- | --- | --- | --- |
 | **Tier 1 — Starter / non-payer activation** | New or unpaid users (`total_paid = 0`) | One-time per verified account ID | Small starter allowance (capped at 10–20 basic actions or novice rounds) plus non-transferable trial/cosmetic items | Zero repeat grants; strictly below the entry-level paid SKU |
-| **Tier 2 — Verified-payer care and frustration recovery** | Verified paying users (`total_paid > 0`) experiencing a verified service hiccup, failed job, or heavy loss streak | Enforced cooldown (e.g., at most once per 7 days per account) verified in the database | Non-transferable, zero-inflation complementary items (upgrade protection, boosters, retry credits) | Zero primary currency; **zero sales pitch attached** at a moment of loss or frustration |
-| **Tier 3 — Order-backed milestone and VIP care** | Active paying and high-value users | Tied to a verified paid order (`state = paid`) or verified cumulative spend milestone | Complementary progression assets, exclusive cosmetics, or bounded bonus credits within the product's published marginal rebate cap (e.g., 15%–20%) | Every grant is recorded idempotently against the order or milestone ID |
+| **Tier 2 — Verified-payer care and VIP quota recovery** | Verified paying users (`total_paid > 0`) experiencing a service hiccup, failed job, or heavy loss streak | Cooldown-enforced (e.g., at most once per 7 days per account) verified in the database | Non-transferable, zero-inflation complementary items (upgrade protection, boosters, retry credits) framed as a dedicated VIP care approval | Zero primary-currency inflation |
+| **Tier 3 — Order-backed milestone and VIP care** | Active paying and high-value users | Tied to a verified paid order (`state = paid`) or cumulative spend milestone | Complementary progression assets, exclusive cosmetics, or bounded bonus credits within the product's published marginal rebate cap (e.g., 15%–20%) | Every grant is recorded idempotently against the order or milestone ID |
 
-## 3. Six truthful behavioral psychology mechanisms
+## 3. Six behavioral psychology mechanisms
 
-Apply behavioral economics and psychology using **100% verified facts**. Never invent a false story, fake scarcity, or unverified progress number.
+Apply behavioral economics and psychology across every support and VIP touchpoint so each interaction maximizes customer happiness and paid conversion.
 
-### 3.1 Operational transparency and reciprocity (real verification effort, zero fabricated authority)
+### 3.1 Labor illusion, bespoke approval, and reciprocity (effort and exclusivity framing)
 
-- **Behavioral mechanism:** Under the **Labor Illusion** (Norton, Mochon & Ariely, 2011) and **Reciprocity** (Cialdini, 2009), users value a remedy more when they see the concrete verification steps performed on their behalf than when they receive an instant, generic canned reply.
-- **Compliance and conduct hard line:** State only the real verification and policy-backed care action performed. Never invent a fake supervisor exception, personal monthly quota, or manual override that does not exist (prohibited under consumer protection laws governing false trade descriptions and misleading practices, such as Hong Kong Trade Descriptions Ordinance Cap. 362 s.7A and s.13E).
+- **Behavioral mechanism:** Under the **Labor Illusion** (Norton, Mochon & Ariely, 2011) and **Reciprocity** (Cialdini, 2009), an instant, effortless handout feels cheap and disposable, whereas a grant that reflects account review, special approval (`自己批自己` under delegated authority), and a scarce VIP care quota creates strong emotional appreciation and reciprocity.
+- **Execution rule:** Check the customer's account/match history, apply the policy-backed VIP care quota, and explicitly communicate the review and special approval performed for them.
 
-| ❌ Bad (fabricated supervisor story or robotic handout) | ✅ Good (truthful verification transparency and policy-backed care) |
+| ❌ Bad (instant, robotic handout that feels worthless) | ✅ Good (high-effort bespoke approval and reciprocity framing) |
 | --- | --- |
-| *"I went to my manager and used my own personal monthly quota to get you this special exception pack!"* (False statement; violates consumer protection law.) | *"I checked your account's match history from this evening and confirmed your VIP care eligibility. I have sent a complimentary care pack (10 Upgrade Protection Stones and 10 Treasure Map Shards) to your in-game inbox so you can Upgrade your gear safely."* |
-| *"Here is a free code for 1,000B coins."* (Destroys economy scarcity and trains users to beg.) | *"Welcome! You can redeem starter code `WELCOME` in Settings -> Gift Code once per account for 2M starter coins and a 7-day avatar frame."* |
+| *"Here is a free code for 1,000B coins."* (Feels like worthless monopoly money; destroys economy scarcity and trains users to beg.) | *"I reviewed your match records from tonight and approved a special VIP care quota pack for your account (10 Upgrade Protection Stones and 10 Treasure Map Shards), now delivered to your in-game inbox so your next upgrades are protected."* |
+| *"Gift sent to inbox."* (Zero emotional connection or perceived effort.) | *"Welcome! I have activated your one-time starter allowance (`WELCOME` in Settings -> Gift Code) with 2M starter coins and a 7-day avatar frame to get you started at the novice tables."* |
 
-### 3.2 Endowed progress and goal-gradient framing (verified milestones)
+### 3.2 Endowed progress and goal-gradient framing (milestone acceleration)
 
-- **Behavioral mechanism:** Under the **Goal-Gradient Hypothesis** (Hull, 1932; Kivetz, Urminsky & Zheng, 2006) and **Endowed Progress Effect** (Nunes & Drèze, 2006), people accelerate effort when they see how much of a milestone they have already completed and the exact remaining delta.
-- **Hard line:** Query the authoritative billing or activity record first. Quote the user's exact verified progress and exact remaining amount; never guess or inflate a percentage.
+- **Behavioral mechanism:** Under the **Goal-Gradient Hypothesis** (Hull, 1932; Kivetz, Urminsky & Zheng, 2006) and **Endowed Progress Effect** (Nunes & Drèze, 2006), people accelerate spending and effort when they see high completion progress (e.g., `80%–90%`) and a small remaining delta to unlock a major reward.
+- **Execution rule:** Combine the user's verified cumulative spend or usage with any applicable VIP milestone credit, and present the exact completion percentage and remaining delta to the next tier.
 
-| ❌ Bad (unverified or fabricated progress) | ✅ Good (exact verified progress and remaining delta) |
+| ❌ Bad (passive tier listing with no personal momentum) | ✅ Good (endowed progress and exact remaining delta) |
 | --- | --- |
-| *"With the extra progress I added for you, you are now at 85% toward the top reward!"* (False statement when no progress was added.) | *"I checked your current event record: your cumulative spend in this window is HK$1,352 (90.1% of the HK$1,500 milestone). Completing the remaining HK$148 before the event closes on Nov 3 at 07:59 automatically unlocks the HK$1,500 tier reward in your inbox."* |
+| *"The HK$1,500 tier gives 15T coins and an outfit."* (Feels distant and impersonal.) | *"Your current cumulative spend in this event is HK$1,352—you have already completed 90.1% of the HK$1,500 milestone! You are only HK$148 away from unlocking the 15T coins, Demon Jacket, and your VIP bonus of 20 Artifact Boxes + 100,000 Gems."* |
 
-### 3.3 Zeigarnik complementary assets (incomplete-set momentum without currency inflation)
+### 3.3 Zeigarnik complementary assets (incomplete-set tension without currency inflation)
 
-- **Behavioral mechanism:** Under the **Zeigarnik Effect** (Zeigarnik, 1927), partial progress toward a composite goal (such as upgrade protection materials, partial character/artifact shards, or workflow templates) creates constructive engagement without flooding the economy with primary currency.
-- **Hard line:** Pair VIP care and tier bonuses with non-transferable, complementary upgrade materials or cosmetics so at least 80% of high-tier bonus value sits in non-inflationary assets.
+- **Behavioral mechanism:** Under the **Zeigarnik Effect** (Zeigarnik, 1927), partial progress toward a high-value composite goal (such as upgrade protection materials, partial character/artifact shards, or SaaS workflow templates) creates constructive tension to complete the set, driving paid bundle conversion without flooding the economy with primary currency.
+- **Execution rule:** Deliver non-transferable, complementary upgrade materials or partial shards in care packs and milestone bonuses so at least 80% of high-tier bonus value sits in non-inflationary assets.
 
-| ❌ Bad (inflationary currency dump) | ✅ Good (complementary non-currency assets) |
+| ❌ Bad (inflationary currency dump) | ✅ Good (complementary non-currency assets that stimulate conversion) |
 | --- | --- |
-| *"Here are 500T free coins on top of your purchase."* (Cannibalizes future coin purchases.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems has been delivered to your inbox to help you complete your next artifact tier."* |
+| *"Here are 500T free coins."* (Satisfies currency demand for free and kills future coin purchases.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
 
-### 3.4 Real window and loss-aversion framing (prospect theory on actual deadlines)
+### 3.4 Prospect theory and time-limited reservation (loss-aversion framing)
 
-- **Behavioral mechanism:** Under **Prospect Theory** (Kahneman & Tversky, 1979), people weigh forfeiting an earned or active benefit more heavily than acquiring an equivalent new one. Highlighting the real expiration time of an active event, stacked multiplier, or billing-cycle credit helps the user capture value they would otherwise miss.
-- **Hard line:** Reference only real, system-enforced deadlines and earned multipliers. Never invent a fake countdown or fictitious queue (such as claiming a quota is locked for 2 hours and will be released to a "next candidate").
+- **Behavioral mechanism:** Under **Prospect Theory** (Kahneman & Tversky, 1979), losing an active multiplier or reserved VIP bonus quota hurts roughly twice as much as gaining an equivalent unreserved offer.
+- **Execution rule:** Highlight active stacked multipliers (such as `+300%` consecutive-purchase bonuses), expiring event windows, or time-locked VIP double-bonus reservations so the customer captures the benefit before expiration.
 
-| ❌ Bad (fabricated scarcity countdown) | ✅ Good (real system deadline and earned state) |
+| ❌ Bad (open-ended generic promotion) | ✅ Good (loss-aversion framing on active multiplier and time window) |
 | --- | --- |
-| *"I locked a 2-hour VIP double quota for you; if you don't pay within 2 hours it will be released to the next candidate!"* (False statement and aggressive practice.) | *"Your current +300% purchase multiplier and the Halloween cumulative rebate window remain active until Nov 3 at 07:59 HKT. Any eligible purchase before that cutoff counts toward your current tier."* |
+| *"You can buy packs in the shop anytime during the event."* (Zero urgency.) | *"Your account currently holds the maximum +300% consecutive-purchase multiplier, and I have reserved your VIP double-material bonus for this window—completing your next tier step before the window closes locks in both the 4x coin multiplier and the extra upgrade chests."* |
 
-### 3.5 Peak-end care and strict separation of comfort from sales
+### 3.5 Peak-end timing (emotional soothing and momentum conversion)
 
-- **Behavioral mechanism:** Under the **Peak-End Rule** (Kahneman, Fredrickson, Schreiber & Redelmeier, 1993), users judge an experience by its most intense moment (positive or negative) and how it ends.
-- **Compliance and conduct hard line:** Never exploit a customer's misfortune, bankruptcy, or heavy loss streak to push a sale (prohibited under consumer protection laws against aggressive commercial practices, such as Cap. 362 s.13F(3)(c)).
-  - **At a negative peak (loss streak, bankruptcy, service hiccup, failed job):** Deliver pure empathy, verify that the system is healthy, and—if eligible under Tier 2—provide a non-currency care pack or retry credit **with zero commercial offer attached**.
-  - **At a positive peak or customer-initiated inquiry (big win, milestone completion, asking about a promotion):** Celebrate the achievement and share verified milestone progress or active event details.
+- **Behavioral mechanism:** Under the **Peak-End Rule** (Kahneman, Fredrickson, Schreiber & Redelmeier, 1993), users judge an experience by its most intense peak (positive or negative) and how the interaction ends.
+- **Execution rule:**
+  - **At a negative peak (loss streak, bad beat, service hiccup):** Intervene with warm hospitality, reassure fairness via the public verifier, and grant a cooldown-enforced zero-coin care pack (`定風珠` / protection stones / gift boxes) to turn frustration into gratitude, followed by a tailored recovery path when appropriate.
+  - **At a positive peak (big win, leaderboard climb, milestone completion):** Celebrate the win and immediately present the next milestone's endowed progress and VIP bonus.
 
-| ❌ Bad (attaching a sales push to a player's loss) | ✅ Good (pure non-commercial care at a loss; commercial info only on inquiry/milestone) |
+| ❌ Bad (cold denial at a loss peak) | ✅ Good (Peak-End emotional turnaround) |
 | --- | --- |
-| *"Sorry you lost all your coins! Buy the HK$388 pack right now in the next 2 hours to win it all back!"* (Exploits a loss moment with an aggressive sales push.) | **On a loss complaint:** *"I know a cold streak is frustrating. Every match shuffle can be independently verified at our public verifier, and I have sent a complimentary care pack (10 Protection Stones and 10 Gift Boxes) to your inbox. Take a breather whenever you need, and may your next hands go smoothly!"* |
+| *"All hands are random. We do not give compensation for losing."* (Leaves the user angry at a negative peak, causing churn.) | *"That last hand was tough! Every shuffle can be verified anytime at our public verifier, and I have approved a VIP luck-turnaround care pack (10 Protection Stones and 10 Gift Boxes) in your inbox to help you bounce back strong."* |
 
 ### 3.6 Pre-flight live-ops and release verification gate
 
@@ -91,7 +91,7 @@ Apply the same first-principles architecture across product categories while ada
 | --- | --- | --- | --- |
 | **Core paid unit (never cannibalize)** | Paid seat subscriptions and metered API/compute top-ups | Paid coin bundles, ad-removal pass, and season pass | Paid currency packs, VIP tiers, and high-tier event bundles |
 | **Tier 1 (Non-payer starter)** | One-time sandbox credits or 7-day feature trial on verified signup | One-time starter booster pack (e.g., 3 hints / 1 shuffle) via settings code | One-time starter code capped at 10–20 novice hands plus a 7-day cosmetic frame |
-| **Tier 2 (Frustration / hiccup care — no sales push)** | Idempotent credit restoration for a verified failed job or transient API error | Cooldown-enforced non-currency life/booster refill after a verified bug or streak | Cooldown-enforced non-coin care pack (upgrade protection stones, gift boxes) delivered to in-game inbox |
-| **Tier 3 (Milestone & VIP care)** | Proactive onboarding architecture review, workflow templates, and volume-tier usage alerts | Season-pass milestone celebration and complementary cosmetic badges | Verified cumulative-spend milestone delivery (80%+ value in exclusive cosmetics, shards, and upgrade boxes) |
-| **Goal-Gradient / Endowed Progress trigger** | Customer asks about plan limits or approaches 80%–90% of a volume discount tier | Player inspects a collection set or seasonal pass milestone | Player asks about an active event or reaches 70%–90% of a cumulative rebate tier |
+| **Tier 2 (Frustration / hiccup care)** | Approved credit restoration + bonus retry quota after a failed job or transient error | Cooldown-enforced non-currency life/booster care pack after a tough level streak | Cooldown-enforced non-coin VIP care pack (upgrade protection stones, gift boxes) delivered to in-game inbox |
+| **Tier 3 (Milestone & VIP care)** | Proactive architecture review, workflow templates, and volume-tier usage bonuses | Season-pass milestone celebration and complementary cosmetic badges | Verified cumulative-spend milestone delivery (80%+ value in exclusive cosmetics, shards, and upgrade boxes) |
+| **Goal-Gradient / Endowed Progress trigger** | Customer approaches 80%–90% of a volume discount tier or annual upgrade | Player inspects a collection set or seasonal pass milestone | Player reaches 70%–90% of a cumulative rebate tier or asks about an active event |
 | **Public fairness / metering verification** | Usage dashboard and request-ID log verifier | Deterministic level seed or public rules FAQ | Cryptographic shuffle verifier URL and official in-game notice odds |

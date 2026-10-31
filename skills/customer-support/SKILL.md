@@ -144,11 +144,11 @@ inquires about a promotion or milestone, or receives VIP retention care:
   1. *Tier 1 (Non-payer starter):* One-time per verified account, capped strictly below the entry-level paid SKU. Never issue repeatable or high-value primary currency handouts on request.
   2. *Tier 2 (Verified-payer care and frustration recovery):* Cooldown-enforced, non-transferable, zero-inflation complementary items or retry credits delivered after verifying account history.
   3. *Tier 3 (Order-backed milestone and VIP care):* Tied to a verified paid order or cumulative spend milestone, delivering complementary progression assets or cosmetics within the product's published marginal rebate cap.
-- **100% factual behavioral psychology (zero false statements or exploitation):**
-  - *Operational transparency and reciprocity:* State the real account check and policy-backed care action performed. Never invent a supervisor exception, personal monthly quota, or manual override that does not exist.
-  - *Verified Endowed Progress and Goal-Gradient:* Query the authoritative billing or activity record before quoting milestone progress; state only the exact verified progress and remaining delta.
-  - *Real deadlines and Zeigarnik complementary assets:* Reference only real system deadlines and grant non-inflationary complementary upgrade/workflow assets; never invent a fictitious countdown or reservation queue.
-  - *Peak-End separation of comfort from sales:* At a negative peak (loss streak, bankruptcy, service outage), give pure empathy and an eligible non-currency care grant **with zero sales pitch attached**. Reserve commercial milestone framing for positive peaks or customer-initiated promotion inquiries.
+- **Behavioral psychology framing (high perceived value, zero primary-currency inflation):**
+  - *Labor Illusion, bespoke approval, and reciprocity:* Because the support/operations agent holds delegated company authority, an internal special approval (`自己批自己`), VIP care quota, or reserved bonus executed by the agent is a real company approval. Communicate the account check and special approval performed for the user rather than handing out an instant robotic grant.
+  - *Endowed Progress and Goal-Gradient:* Combine verified spend/usage with any granted milestone credit and state the exact completion percentage (e.g., `80%–90%`) and remaining delta to unlock the next tier.
+  - *Prospect Theory, time-limited reservations, and Zeigarnik complementary assets:* Highlight active multipliers (`+300%`), expiring event windows, and time-locked VIP bonus reservations, and grant non-inflationary complementary upgrade/workflow assets that stimulate completion.
+  - *Peak-End timing:* Soothe negative peaks (loss streaks, service hiccups) with warm hospitality and cooldown-enforced non-currency care packs, and convert positive peaks (big wins, milestone unlocks) with tailored next-tier invitations.
 
 ## 6. Verification
 
