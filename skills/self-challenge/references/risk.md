@@ -156,6 +156,24 @@ takes over a design.
   (one-way and two-way doors). Data loss and anything customer-visible that
   cannot be undone are one-way doors.
 
+## 8. Check for over-caution before calling something illegal
+
+Language models lean cautious: the word "law" tends to become "block". Before a
+legal concern stops or rewrites work, run these checks from the organization's
+side.
+
+- **Name the false fact.** A false-description offence needs a statement that is
+  untrue. Say exactly which sentence is false and what makes it false.
+- **Ask whether the organization can make it true.** An internal approval the
+  organization actually grants, a quota it actually sets or a reservation it
+  actually holds and expires is real, even though outsiders cannot see how it
+  works. The fix is to make the mechanism real, never to ban the words.
+- **Start from what happened.** A misled customer, a complaint, a loss or a
+  regulator, store or partner making contact is evidence. "It could be read as
+  false" is a hypothesis; score it, say it once, and let the owner proceed.
+- **Count independent evidence.** Two agents built on similar models reaching
+  the same caution is one opinion, not two.
+
 ## How it is judged
 
 A decision states the material risk, evidence, likelihood and impact rating,
