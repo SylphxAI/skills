@@ -37,7 +37,9 @@ known monetisation and retention patterns in
   Show the sheet to the owner. Judge experience parity across the whole sheet.
 - Keep sensory effects separate from economy, simulation and network truth.
 - Give the title a coherent art direction and game feel, checked against its
-  category leaders. Choose agent-play APIs, deterministic simulation, replay
+  category leaders: visuals run in the engine, drawn by code or made in Blender
+  and imported as glTF/GLB on the same animator, never flat placeholder boxes.
+  Choose agent-play APIs, deterministic simulation, replay
   verification and leaderboard separation for the title's rules and competition.
   The workspace specifies the engine and any stronger product commitments.
 

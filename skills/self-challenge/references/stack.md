@@ -112,10 +112,14 @@ products consume the published capability.
 
 ## Media and content assets
 
-Use the project's declared asset and localization pipelines. Procedural visuals
-stay in code; generated media records the recipe and pins the approved artifact
-bytes or content hash, model version and required rights. A model name and seed
-alone do not guarantee that a hosted generation service reproduces the bytes.
+Use the project's declared asset and localization pipelines. Visuals run in the
+target engine and may be drawn by code (shaders, procedural meshes, particles,
+spring motion, camera shake, synthesized audio) or authored in Blender and
+imported as glTF/GLB on the same animator; each team chooses per asset, never
+flat placeholder boxes. Generated media records the recipe and pins the approved
+artifact bytes or content hash, model version and required rights. A model name
+and seed alone do not guarantee that a hosted generation service reproduces the
+bytes.
 
 Builds consume the pinned output, cached or bundled according to the product's
 latency and offline needs. Compare upgrades by task quality and total cost, keep
