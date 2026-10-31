@@ -121,9 +121,12 @@ artifact bytes or content hash, model version and required rights. A model name
 and seed alone do not guarantee that a hosted generation service reproduces the
 bytes.
 
-Builds consume the pinned output, cached or bundled according to the product's
-latency and offline needs. Compare upgrades by task quality and total cost, keep
-a reference to the prior approved artifact, and verify the resulting product.
+Builds consume the pinned output, loaded on demand and versioned per individual
+asset (by content hash or manifest revision, like the web) rather than packed
+into one monolithic bundle, so the initial download stays minimal and single
+assets update independently while meeting the product's latency and offline
+needs. Compare upgrades by task quality and total cost, keep a reference to the
+prior approved artifact, and verify the resulting product.
 
 ## References
 
