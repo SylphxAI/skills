@@ -72,6 +72,15 @@ is an independent parallel build of another generation ([stack.md](stack.md)). A
 engine upgrade is one coordinated outcome covering the affected titles, their
 promised behavior, and removal of the old paths. An engine gap is fixed in the
 engine; a title keeps no private copy, compatibility fallback, or second engine.
+When a workspace retires a legacy engine generation (such as an older 2D Lua or
+Solar2D stack) in favor of its active engines, remasters replace the legacy
+titles once the parity sheet passes, and the retired engine is flagged as a
+stack departure until every legacy project is retired.
+
+Load game resources on demand and version each asset individually (by content
+hash or manifest revision, like the web) rather than shipping one monolithic
+asset bundle, keeping the initial download minimal and letting individual assets
+update independently.
 
 Device input maps to abstract actions so simulation stays separate from
 presentation, and each supported platform gets a complete adapter and a usable
@@ -99,11 +108,15 @@ the title's actual cohort and candidate offers.
 
 Deep purchase economies and recurring subscriptions are candidate strategies.
 Choose the offer mix and price menu from measured or explicit assumed demand,
-retention, contribution and player impact. Apply the workspace's ad policy.
-Review relevant [mechanisms](mechanics-catalogue.md#monetisation), then build
-only those that fit the title and objective. Place ads, store prompts and social
-requests at natural breaks. Paid access, multiplayer identity and other required
-controls need clear denial, cancellation and recovery states.
+retention, contribution and player impact. When a title or portfolio shares a
+character creator and cosmetic economy across engines, define one portable
+cosmetic contract covering outfits with cloth or spring physics, skins, pets,
+emotes, voices and animations, so items authored or sold once render and animate
+consistently across every target engine and platform. Apply the workspace's ad
+policy. Review relevant [mechanisms](mechanics-catalogue.md#monetisation), then
+build only those that fit the title and objective. Place ads, store prompts and
+social requests at natural breaks. Paid access, multiplayer identity and other
+required controls need clear denial, cancellation and recovery states.
 
 Events, offers and gifts follow [growth.md](growth.md#campaigns-and-gifts).
 Reuse the owning shared campaign capability when one exists.
