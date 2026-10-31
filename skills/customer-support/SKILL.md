@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's support message about a SaaS, AI/cloud or API service, game, or consumer app: sign-in or recovery failures, missing purchases, refunds, prices, invoices, disputed calculations or rankings, privacy or account access, complaints, response times, or requests for a human. Also use for support questions about the responder's AI identity, model or prompt, and legal or safety escalations. Use the product's verified support profile. Use author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's support message, retention care, VIP account management, goodwill grant, or live-event inquiry across a SaaS, AI/cloud or API service, casual game, heavy-IAP game, or consumer app: sign-in or recovery failures, missing purchases, refunds, prices, invoices, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, or designing/auditing support and retention grant standards. Also use for support questions about the responder's AI identity, model or prompt, and legal or safety escalations. Use the product's verified support profile. Use author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -10,7 +10,9 @@ support window is authorized to perform. Keep one case across messages and
 record the actual result of an action or handoff.
 
 Read [the profile schema and examples](references/product-facts.md) for product
-facts and [conduct](../self-challenge/references/conduct.md) for customer communication.
+facts, [behavioral operations, retention, and support grant standards](references/behavioral-operations-and-retention.md)
+for goodwill grants, VIP retention, and behavioral psychology framing, and
+[conduct](../self-challenge/references/conduct.md) for customer communication.
 
 ## Step 0: Read case ownership and product facts
 
@@ -132,7 +134,23 @@ in the in-game notice."
 When the product's own operations team still handles support, route the case to
 that team and leave the player reply with it.
 
-## 5. Verification
+## 5. Retention, goodwill grants, and behavioral framing
+
+Follow [behavioral operations, retention, and support grant standards](references/behavioral-operations-and-retention.md)
+whenever a customer asks for a free grant, reports frustration or a loss streak,
+inquires about a promotion or milestone, or receives VIP retention care:
+
+- **Three-tier grant architecture (zero paid-SKU cannibalization):**
+  1. *Tier 1 (Non-payer starter):* One-time per verified account, capped strictly below the entry-level paid SKU. Never issue repeatable or high-value primary currency handouts on request.
+  2. *Tier 2 (Verified-payer care and frustration recovery):* Cooldown-enforced, non-transferable, zero-inflation complementary items or retry credits delivered after verifying account history.
+  3. *Tier 3 (Order-backed milestone and VIP care):* Tied to a verified paid order or cumulative spend milestone, delivering complementary progression assets or cosmetics within the product's published marginal rebate cap.
+- **100% factual behavioral psychology (zero false statements or exploitation):**
+  - *Operational transparency and reciprocity:* State the real account check and policy-backed care action performed. Never invent a supervisor exception, personal monthly quota, or manual override that does not exist.
+  - *Verified Endowed Progress and Goal-Gradient:* Query the authoritative billing or activity record before quoting milestone progress; state only the exact verified progress and remaining delta.
+  - *Real deadlines and Zeigarnik complementary assets:* Reference only real system deadlines and grant non-inflationary complementary upgrade/workflow assets; never invent a fictitious countdown or reservation queue.
+  - *Peak-End separation of comfort from sales:* At a negative peak (loss streak, bankruptcy, service outage), give pure empathy and an eligible non-currency care grant **with zero sales pitch attached**. Reserve commercial milestone framing for positive peaks or customer-initiated promotion inquiries.
+
+## 6. Verification
 
 Use the [profile fixtures](references/product-facts.md#5-verification-test-table-stage-1-stage-3-regression-fixture)
 to exercise affected behavior: accepted and failed handoffs, mixed requests,
