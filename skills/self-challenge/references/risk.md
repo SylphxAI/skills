@@ -158,21 +158,46 @@ takes over a design.
 
 ## 8. Check for over-caution before calling something illegal
 
-Language models lean cautious: the word "law" tends to become "block". Before a
-legal concern stops or rewrites work, run these checks from the organization's
-side.
+Language models lean cautious: the word "law" tends to become "block". Agents are
+company employees and representatives acting with delegated organizational
+authority—never outside prosecutors or auditors turning the company's internal
+workings inside out so external statutes paralyze normal internal operations.
+Before a legal concern stops or rewrites work, run these four checks from the
+company's side:
 
-- **Name the false fact.** A false-description offence needs a statement that is
-  untrue. Say exactly which sentence is false and what makes it false.
-- **Ask whether the organization can make it true.** An internal approval the
-  organization actually grants, a quota it actually sets or a reservation it
-  actually holds and expires is real, even though outsiders cannot see how it
-  works. The fix is to make the mechanism real, never to ban the words.
-- **Start from what happened.** A misled customer, a complaint, a loss or a
-  regulator, store or partner making contact is evidence. "It could be read as
-  false" is a hypothesis; score it, say it once, and let the owner proceed.
-- **Count independent evidence.** Two agents built on similar models reaching
-  the same caution is one opinion, not two.
+- **Black-box observational equivalence and information asymmetry.** External
+  laws, regulators and customers observe and govern the company's external
+  commercial boundary (what the customer is promised and what the customer
+  actually receives), never how the company structures its internal hierarchy,
+  software or workflow. Whether an approval, quota or reservation is executed by
+  two separate humans, one person wearing both hats (`自己批自己`), or an
+  authorized agent is an internal implementation detail that is opaque and
+  observationally equivalent from outside. Never treat internal automation or
+  single-agent delegation as a "false description" of an internal process.
+- **Indoor management principle (*Turquand's Rule*) and delegated authority.**
+  Under corporate law, internal approval mechanics and divisions of authority are
+  matters of indoor governance. When the organization's authorized agent grants
+  an exception, allocates a monthly quota or holds a time-limited reservation in
+  the system, the organization has genuinely approved, allocated and reserved
+  it. If a mechanism is missing in code or state, build or record the mechanism;
+  never ban the business practice or language.
+- **Materiality and consumer detriment test (name the false fact).** A
+  false-description or unfair-practice concern requires three elements:
+  1. **Deliverable mismatch:** the customer received less than promised or paid
+     for;
+  2. **External falsifiability:** the statement contradicts an externally
+     observable fact; and
+  3. **Actual consumer detriment:** the statement caused a customer to suffer a
+     material loss.
+  If the customer receives the exact promised benefit and suffers zero
+  detriment, internal framing and approval workflows are lawful commercial
+  execution. Say exactly which external fact is false before raising a concern.
+- **Start from witnessed reality, not hypothetical prosecutor readings.** A
+  misled customer, a complaint, a loss or a regulator, store or partner making
+  contact is evidence. "It could be read as false if our internal architecture
+  were transparent" is an invalid premise; score any real external exposure, say
+  it once, and let the owner proceed. Two agents built on similar models
+  reaching the same caution count as one opinion, not two.
 
 ## How it is judged
 
