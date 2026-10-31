@@ -7,6 +7,11 @@ description: "Use when implementing or shipping a feature, bug fix, parser, expo
 
 Carry the authorized outcome through execution and verification at the user, partner, or operator surface. Use the existing grants and release path; preserve user data and authorized spending limits.
 
+When changing a game, app or SaaS user journey, remaking a product, or publishing
+assets or configuration that change the experience, read
+[parity.md](references/parity.md) before defining the acceptance cases. It owns
+the screen-and-feature comparison, live evidence and automated release checks.
+
 ## Coordinate the work
 
 - Keep one named writer per worktree, pull request, database record, or live configuration. Parallel readers and writers on independent targets can proceed together.
@@ -35,6 +40,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 
 ## Domain references
 
+- [parity.md](references/parity.md): verifying game, app and SaaS journeys against a category leader; remake parity, live captures, asset/table checks and automatic recovery.
 - [code.md](references/code.md): domain boundaries, transactions, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
 - [security.md](references/security.md): authority, secrets, personal data and recovery.

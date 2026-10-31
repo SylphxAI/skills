@@ -173,4 +173,6 @@ on web surfaces, a locale sweep of the built site, and, for account protection,
 bind rate and retention (reshape the ask if it costs retention). The product
 review checks each surface's default view and failure states against "Show the
 outcome, not the machinery" and compares the affected visual and interaction
-journey with its category benchmark.
+journey with its category benchmark. For delivery, use the shared
+[product parity and live verification method](../../deliver-and-verify/references/parity.md)
+for the comparison, serving-revision evidence and machine checks.

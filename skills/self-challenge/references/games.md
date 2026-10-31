@@ -31,10 +31,9 @@ known monetisation and retention patterns in
 - Sell currency or items only when their promised use is available on the
   contracted delivery terms. Verify that use end to end; a granted balance
   without a usable spending path does not establish a finished purchase.
-- A remaster replaces its original only when its parity sheet shows every
-  original screen and feature equal or better. Capture the shipped reference,
-  compare visuals, sound and interactions, and keep unknown facts as open gaps.
-  Show the sheet to the owner. Judge experience parity across the whole sheet.
+- For a remaster, use the shared
+  [screen-and-feature parity method](../../deliver-and-verify/references/parity.md#keep-a-screen-and-feature-parity-sheet)
+  to establish that it can replace its original.
 - Keep sensory effects separate from economy, simulation and network truth.
 - Give the title a coherent art direction and game feel, checked against its
   category leaders: visuals run in the engine, drawn by code or made in Blender
