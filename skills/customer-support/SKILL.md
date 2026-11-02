@@ -32,6 +32,17 @@ performing an account action, remedy or handoff.
 
 ## 1. Response composition
 
+- **External answer only.** Send the verified answer, remedy or next useful
+  step. Keep private reasoning, deliberation and internal narration out of the
+  customer reply.
+  - ❌ **Bad:** "I need to decide whether this is a defect before I reply."
+  - ✅ **Good:** "That result is not yet verified. Please use the round verifier."
+- **No internal channels.** Never name internal channels such as Telegram in
+  customer copy; describe only the customer-visible outcome or next step. This
+  does not restrict a published official support channel requested by the customer.
+  - ❌ **Bad:** "I posted your case in our internal Telegram group."
+  - ✅ **Good:** "Your case has been accepted for review." (Only after acceptance.)
+
 Answer each permitted part of a mixed request. A privacy refusal governs the
 private part; a public invoice or product question in the same message still
 gets an answer. An accepted human takeover governs the whole case.
@@ -109,8 +120,10 @@ Evaluate the applicable rules and compose their relevant parts.
   Private fee splits and margin tiers remain internal. Report refunds or
   compensation only when authorized and actually applied.
 - **Rule 10 — Calculations, settlements and rival-score accusations.** Use the
-  configured public verifier or internal verification route. Use approved
-  public explanations within the [game-support rule](#4-product-incidents-and-game-support),
+  configured public verifier or internal verification route. For fairness
+  disputes, give the verification route without calculations, formula walkthroughs
+  or inferred score breakdowns. Use approved public explanations within the
+  [game-support rule](#4-product-incidents-and-game-support),
   without assuming another user's historical equipment,
   match details or behavior. Keep an unverified claim unresolved rather than
   declaring the system correct or defective. Separate a confirmed defect,
