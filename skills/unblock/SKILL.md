@@ -22,6 +22,32 @@ For agent latency, apply the shared [model/runtime boundary](../self-challenge/S
 - Use existing delegated access first. Ask for a missing grant, ambiguous decision or new unauthorized spend only when needed; do not repeat an approval already given. Before destructive work, identify authoritative data and preserve unique or uncertain data/recovery sources. Proven-unused resources without user/personal data need no manufactured backup.
 - Prefer a complete supported repair or existing supported route. A reversible operational workaround can restore progress within existing grants; record the durable fix and removal condition and remove the workaround when replaced. It does not grant new spend or data-destructive authority.
 
+### Accepted queue work without progress
+
+When accepted external queue work shows no progress, inspect its timeline,
+assignment and shared queue (the full population when queryable). Distinguish a
+stall from healthy work or a documented waiting cycle; elapsed time alone does
+not establish a failure or a provider deadline.
+
+- Compare the delay cost of preserving acceptance and position with losing
+  acceptance/order, failed re-admission and repeated work. Acceptance is valuable,
+  but preserving it indefinitely is not free.
+- If the comparison favors intervention, use one bounded, documented lifecycle
+  attempt, such as ordinary removal and rejoining at the unchanged reviewed
+  revision. A supported lifecycle is not a diagnosis-specific repair guarantee;
+  keep required checks and guards effective.
+- Preserve the prior identity and evidence. Follow the
+  [external-mutation discipline](../deliver-and-verify/SKILL.md#execute-and-verify):
+  read the live state/timeline before each write, verify each resulting state,
+  and reconcile an in-flight or unknown effect instead of resending it.
+- Verify downstream progress. New progress does not prove the internal cause.
+  If the attempt fails, change the method or seek new evidence instead of
+  repeating resets or identical diagnostics.
+
+❌ **Bad:** Preserve an unassigned entry indefinitely because it was accepted.
+✅ **Good:** Price the waiting and re-admission costs, try one supported lifecycle
+when justified, and verify the result without claiming a root cause.
+
 ## Place the durable fix
 
 An owned engine, platform or shared SDK gets the generic repair upstream; its downstream products consume the published capability without privileged exceptions or business rules in the shared layer. For an external dependency, first check supported versions/configuration/extensions. If needed, isolate a pinned patch or boundary adapter, track its removal and contribute upstream where practical.
