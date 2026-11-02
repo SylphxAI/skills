@@ -72,6 +72,8 @@ Before promising a date, read each title's managed-publishing setting, open poli
 
 Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
+A queue that builds one entry at a time makes total wait the sum of every entry ahead, so read its parallel-build setting before forecasting a release. A required job can also be lost: the scheduler treats it as finished while the host still shows it queued. Read one exact job's assignment history before waiting on it further; a job that never ran can be cancelled and rerun without being a retried test.
+
 ## How it is judged
 
 Measure publication, admission/runner wait, compilation and test spans separately. Record median/p95, failure/ejection rate and recovery time on a named population/window. Choose budgets from the workload and objective, and follow the repository's quarantine and rerun rules.
