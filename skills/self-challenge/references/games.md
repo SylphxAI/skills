@@ -172,6 +172,12 @@ For randomness, difficulty, matchmaking and AI opponents:
 
 ## How it is judged
 
+Walk the first session as a new player on a real or emulated device before paid
+acquisition: fresh install, wait for download, first table, first settled hand,
+then what the game does after the player's first loss. A new balance must survive
+one losing hand at the default table, and free recovery comes before any paid
+offer. Automated checks that seed an account skip exactly these failures.
+
 Machine checks verify rules, journeys and defects. Test the release build's
 first session against the real server path: expected scene, actionable controls,
 startup budget, and recovery. Assert the journey across supported layouts rather
