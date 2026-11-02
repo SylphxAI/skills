@@ -124,6 +124,16 @@ Reuse the owning shared campaign capability when one exists.
 
 For randomness, difficulty, matchmaking and AI opponents:
 
+- Measure tap-to-actionable-first-hand on the serving build. Successful-match
+  wait logs omit queues that never filled and do not measure first-hand latency;
+  report their population and missing events rather than treating them as the
+  new-player experience. A config file on disk does not prove the loaded policy.
+- For a coin-neutral table, reconcile human, AI, house and reserve deltas in the
+  same currency over a complete hand. Stake modifiers paid by losing players
+  are transfers, not automatically issuance. Classify loss shields, reserve
+  payouts, fees and host rebates separately; preserve paid promises by funding
+  them rather than silently removing them. Require crash/replay-safe commits,
+  not only an arithmetic sum of intended wins and losses.
 - Define ranked fairness separately from the genre's inherent chance. Test any
   tuning or paid advantage against the advertised rules and applicable
   market/store requirements, including paid-randomness disclosures.
