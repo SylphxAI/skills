@@ -71,6 +71,8 @@ Choose the smallest test that fails on the defect: examples for finite decisions
 
 Test runtime behavior by calling it. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
+For shell evidence gates, execute the actual script with the runner's shell options and inputs larger than a pipe buffer. Include clean output, missing evidence, and failure matches both early and late. With Bash [`pipefail`](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html), a diagnostic pipeline such as `if grep ... | head -n 20 | grep .; then ...` can miss a known failure: `head` closes early, the first grep receives SIGPIPE, and the condition becomes false. Separate the decision from bounded display, or use a consuming display filter such as `sed -n '1,20p'`. Keep the failure predicate unchanged and prove that output truncation cannot reverse the verdict.
+
 A required resource-dependent check fails clearly when the resource is unavailable rather than silently passing. Test selection covers supported configurations. An intentionally excluded or slow test records its reason and a supported execution route; choose scheduling from the workload rather than requiring a daily job or deleting useful coverage when no group exists.
 
 Check SQL against the migrated schema through compiler support where available, generated contracts or database-backed tests for dynamic queries. Share cohesive fixtures and table-driven cases where that improves readability.
