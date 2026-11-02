@@ -148,6 +148,8 @@ looking at screenshots.
 
 ### After publishing
 
+A WORSE row found on a live surface outranks queued work on that product: restore the reference or repair it first. When showing a person an image, say whether it is a design or already live; they may read a live screen as a demo.
+
 Run a browser or device check against the serving revision immediately after
 publication. Exercise the affected journey, assert its visible state and
 actions, and verify the dependent API/server effects. Include visual regression
