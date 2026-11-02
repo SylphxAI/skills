@@ -13,6 +13,8 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
+- A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time.
+- Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
 - For a count or metric, retain the query, window, instrument and population. Follow continuation pages for a census; label a sample and its uncertainty. A returned total can cross-check a census where the API defines it, but is not a pagination mechanism.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
 - Validate absence queries with a positive control and the correct scope. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1).

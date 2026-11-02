@@ -128,6 +128,12 @@ For randomness, difficulty, matchmaking and AI opponents:
 - Model currency sources, sinks, balances and purchasing power. Reconcile
   material value movements. Use a house bankroll when the game's transfer model
   requires it; choose issuance rules from the economy model.
+- A new player's first game starts at once. Set a maximum wait, fill seats with
+  AI players, and read the fill logic end to end: a table that needs two humans,
+  or adds one AI per tick with a long timer, fails this with no error. Practice
+  play that moves no currency can ship first; AI seats on currency tables play
+  from a finite house bankroll, so they add no net currency. Count every source
+  when balancing, manual grants included.
 - Test onboarding protection, difficulty and opponent design against actual
   player outcomes rather than assuming a fixed number of protected days.
 - Protect purchased promises. State a material outcome and rollback rule with

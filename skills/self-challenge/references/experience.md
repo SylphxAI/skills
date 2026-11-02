@@ -74,6 +74,12 @@ category benchmark.
   mechanical check only when it distinguishes a recurring concrete defect from
   valid designs.
 
+## The home screen is the loading screen
+
+The first frame after launch is a local, render-only copy of the home screen, shown before any network, version or account work. It holds no live state and no active controls; the real screen replaces it when ready, and content loads lazily inside it. A separate splash, logo card or loading scene earns its place only when a store, licence or contract requires it. Optional updates, announcements and promotions never gate startup.
+
+Overlays owned by an SDK, such as a floating account button, stay reachable on every later screen. Check them after each scene change, because a full-screen view drawn later can cover them with no error.
+
 ## Show the outcome, not the machinery
 
 Show the result, progress and controls this audience needs. Put incidental
