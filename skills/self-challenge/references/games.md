@@ -127,7 +127,15 @@ For randomness, difficulty, matchmaking and AI opponents:
   market/store requirements, including paid-randomness disclosures.
 - Model currency sources, sinks, balances and purchasing power. Reconcile
   material value movements. Use a house bankroll when the game's transfer model
-  requires it; choose issuance rules from the economy model.
+  requires it; choose issuance rules from the economy model. Never grant large
+  multiples of the shop's base currency in cumulative-recharge tiers or VIP
+  care, and never raise global delivery safety caps to push an oversized grant
+  through: saturating currency or maxing progression in one grant destroys table
+  tension and causes immediate graduation churn. Cap raw currency rebates to a
+  strict marginal fraction of verified paid spend, fulfill high-tier milestones
+  with non-inflationary progression, consumable refinement sinks and status
+  cosmetics that keep the next tier in sight, and run milestone fulfillment from
+  versioned server tables rather than private scripts.
 - A new player's first game starts at once. Set a maximum wait, fill seats with
   AI players, and read the fill logic end to end: a table that needs two humans,
   or adds one AI per tick with a long timer, fails this with no error. Practice
