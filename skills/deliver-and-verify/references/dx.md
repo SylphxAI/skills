@@ -32,6 +32,8 @@ Choose local or existing remote build capacity from measured feedback cost and a
 
 Choose configuration reload semantics from the service's availability/consistency need: dynamic reads, a snapshot or controlled restart can each fit a different setting. Make the update behavior explicit and test the affected path. Routine health is deterministic and cheap; an authorized model/provider correctness test is a separate operation with its own purpose and budget.
 
+A service with no drain path can still stop cleanly. Close input at the outermost door, confirm which queues live outside the process and survive, wait until its activity goes flat, then stop it. Put the drain path in the next version, not in the one already running.
+
 ## Workflow admission
 
 A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
