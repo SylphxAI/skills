@@ -121,6 +121,7 @@ through [mechanics](mechanics.md#hard-lines).
 | Achievements and badges | Permanent marks for milestones | G E A |
 | Experience points and levels | A visible number that rises with use | E G A |
 | Progress bar and completion | Show how close the next milestone is | all |
+| Endowed progress milestone | Seed and label initial progress toward a milestone or cumulative rebate; show the exact completion percentage and remaining points or spend for a target item | all |
 | Weekly leagues | Promotion and demotion in small groups by weekly points | E A G |
 | Friends leaderboard | Rank against people you know | all |
 | Global and regional leaderboards | Public ranks by country or city | G E A |
@@ -179,6 +180,7 @@ through [mechanics](mechanics.md#hard-lines).
 | Usage-based pricing | Charge by consumption | S |
 | Hybrid platform fee plus usage | Base subscription with included usage and overage | S |
 | Credits and token packs | Prepaid units for compute or AI | S A |
+| Prepaid balance and mental accounting | Separate payment checkout from item redemption through wallet or voucher tiers with bonus value; reduce per-item payment friction while tracking cash bookings separately from voucher consumption | G A W |
 | Pay-as-you-go top-up | Buy more when the balance runs out | S A |
 | Auto-recharge | Top up automatically below a threshold | S A |
 | Transaction fee or take rate | A cut of each sale or payment | W S |
@@ -213,23 +215,28 @@ through [mechanics](mechanics.md#hard-lines).
 | Payer conversion targets | Benchmarks for share of players who pay | G |
 | Triggered offers | Offer on level-up, low currency, return or a stuck moment | G A |
 | Personalised offers and prices | Price and contents by segment | G A W |
-| Rescue and out-of-currency offer | Offer at the moment the user cannot continue | G |
+| Dynamic offer tiers and progression pacing | Match visible tiers to past purchase brackets; limit high-tier bundles to cosmetics, privileges and progression materials rather than raw base currency; cap progression value to preserve top-tier time-to-max | G A |
+| Loss-state recovery offer | Time-bounded bundle after active-session resources run out; size it to restore session continuity without inflating the core economy | G |
 | Milestone offers | Offer when a level or feature unlocks | G A |
 | Daily deals and free daily item | A rotating discount plus a free item | G W |
 | Flash and holiday sales | Real time-limited discounts | all |
+| Mystery discount privilege draw | Award a personalised discount multiplier before purchase as an earned benefit, with a clear expiry and redemption terms | G A W |
 | Bundles and bundle builder | Themed value bundles, user-assembled | G W |
 | Chain offers | Stepped chain of free and paid rewards | G |
 | Piggy bank | A bank fills as you play and is paid to open | G |
 | Growth fund | Pay once, receive rewards at level milestones | G |
 | Monthly card | Pay once, receive a daily reward for 30 days | G |
+| Daily-unit price framing (pennies-a-day) | Show a multi-week or monthly pass's daily price equivalent alongside the total charge, immediate grant and daily vesting schedule | G A |
 | VIP tiers by spend | Status and perks rise with lifetime spend | G A |
 | Accumulated and daily first top-up rewards | Rewards at spend thresholds or for the day's first purchase | G |
 | Season or battle pass | Free and paid reward tracks over a season | G A |
 | Premium pass tier | Pass plus level skips and cosmetics | G |
+| Stackable multi-tier subscriptions | Run base, premium and seasonal passes concurrently; show combined daily vesting, renewal terms and missed-day recovery options | G A |
 | Rotating cosmetic shop | Daily or weekly featured items | G |
 | Tiered and upgradable cosmetics | Common to legendary skins that evolve | G |
 | Trial cosmetics | Wear an item for 1-3 days, then buy | G |
-| Paid random draws and gacha | Purchased random rewards, optionally with pity | G |
+| Serialised one-of-one auction | Sell a numbered, server-unique prestige item through a time-boxed ascending auction; serve high-tier demand without adding currency or competitive power | G W |
+| Paid random draws and gacha | Purchased random rewards, optionally with pity; disclose item-type probabilities before purchase | G |
 | Lucky wheel and mystery box | Paid or free random reward | G A |
 | Direct-buy alternative to random | Buy the featured item outright at a higher price | G |
 | Paid rerolls and enhancement | Pay to re-roll or upgrade an item | G |
@@ -254,7 +261,7 @@ through [mechanics](mechanics.md#hard-lines).
 | Cashback and credits | Return a share of spend as balance | W A |
 | Subscribe-and-save | Repeat delivery at a discount | W |
 | Upsell and cross-sell | Suggest a larger or related purchase at checkout | W S |
-| Decoy and anchor pricing | Add a plan or price that makes the target look better | S A W |
+| Asymmetric decoy pricing | Offer three tiers with the middle priced close to the top but with disproportionately less value, directing comparison toward the flagship bundle | all |
 | Scarcity and social proof on price | Real stock, real recent-buyer counts | W G A |
 | Abandoned-cart and checkout recovery | Remind and offer after an unfinished purchase | W |
 | Payment retry and dunning | Retry failed cards and message the user | A S |
@@ -269,6 +276,7 @@ through [mechanics](mechanics.md#hard-lines).
 | Pause instead of cancel | Offer a pause of 1-3 months | A S E |
 | Downgrade offer | Move to a cheaper plan instead of leaving | A S E |
 | Discount to stay | Time-limited reduction for price-driven cancellers | A S E |
+| Conditional retention offer | On cancellation or a churn signal, offer a personalised progress summary, pause, downgrade or conditional milestone-completion upgrade; keep cancellation directly available | A S E |
 | Retention message on the system cancel sheet | Offer shown by the store when the user cancels | A |
 | Billing grace and account hold | Keep access while the payment is fixed | A S |
 | Fix-payment in-app message | Prompt the user to update the card | A |
@@ -321,8 +329,10 @@ through [mechanics](mechanics.md#hard-lines).
 | Presence and activity status | Show who is online | A G S |
 | Comments and discussion | Threads on content | W A |
 | Public profiles with badges and titles | Visible status | all |
+| Asymmetric rivalry and overtake alert | Notify a user when a peer overtakes a held rank, streak or collection milestone; link to reclaim it without requiring a mutual challenge | G A E |
 | Visit a friend's space | See a friend's home, farm or city | G |
 | Seasonal gifting and red packets | Send small gifts on festivals | G A |
+| Patronage broadcast and server-wide gifts | Pair a high-tier purchase with a capped, server-wide claimable reward credited to the buyer, turning patronage into visible community status | G A |
 | Two-sided reviews | Both sides rate, revealed together | W |
 | Seller and buyer ratings | Reputation that carries across deals | W |
 | Verified badges and identity checks | Trust marks | W A |
@@ -348,3 +358,21 @@ source incentives and transferability still matter.
 Use the [contribution model](commercial.md#pricing-mechanism-design-and-unit-economics)
 and a decision-relevant experiment to choose the offer. Verify the current rules
 for the selected market and storefront ([legal surface](commercial.md#legal-surface)).
+
+## Store and lifecycle guards
+
+Disclose item-type probabilities next to the purchase action before payment for
+every randomised draw, including draws redeemed with purchased balance or
+vouchers. Apply
+[Apple Guideline 3.1.1](https://developer.apple.com/app-store/review/guidelines/#in-app-purchase)
+and [Google Play Payments](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en)
+for the selected storefront.
+
+Keep cancellation offers separate from account deletion. Limit optional
+pre-deletion messaging to one clearly skippable confirmation screen; do not
+require accepting an offer, answering a survey or pausing instead of requesting
+deletion. This screen limit is a design guard, not a quoted store rule; necessary
+identity checks remain separate. Follow
+[Apple Guideline 5.1.1(v) deletion guidance](https://developer.apple.com/support/offering-account-deletion-in-your-app/)
+and [Google Play's account deletion policy](https://support.google.com/googleplay/android-developer/answer/13327111?hl=en),
+including Google's required external deletion request path.
