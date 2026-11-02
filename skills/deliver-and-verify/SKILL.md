@@ -36,6 +36,8 @@ Preserve existing users' accounts, data and supported client workflows. For a li
 3. For a blocked operational route, follow [unblock](../unblock/SKILL.md). A temporary repair stays within existing grants and has a durable fix and removal condition. Coordinate reconciliation on a GitOps-managed resource and merge the matching configuration.
 4. Read the authoritative result back before claiming completion, following [prove-it](../prove-it/SKILL.md). A service needs its serving revision and affected acceptance cases checked; an operation needs the updated object and dependent behavior; a package, CLI or document needs its required checks and published artifact or source verified where applicable. Use a soak only when its measured behavior is part of the outcome.
 
+Size the mechanism to the harm. A reversible change to a few fields takes one conditional statement with the row read before and after, not a new role, schema and scheduler. Verify what crosses a boundary: a release, an upload, a live surface. Rehashing your own working files, auditing your own helper with another helper or tracing a queue that will drain by itself costs time and proves nothing to a user.
+
 Opening or merging a pull request is a checkpoint. Completion is the acceptance receipt at the delivered surface. Pre-launch code can be judged by automated checks in its target environment; verification does not add an approval ritual before first use.
 
 ## Domain references

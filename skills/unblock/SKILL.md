@@ -48,6 +48,10 @@ not establish a failure or a provider deadline.
 ✅ **Good:** Price the waiting and re-admission costs, try one supported lifecycle
 when justified, and verify the result without claiming a root cause.
 
+### Human steps through a tool
+
+Before sending a person a link or control page, open it yourself and confirm it connects and that its input works on a harmless control, and bring the target screen back fresh. A person's time on a dead link costs more than the check. Refuse to issue a link the platform can't serve, and fix that gap in the platform.
+
 ## Place the durable fix
 
 An owned engine, platform or shared SDK gets the generic repair upstream; its downstream products consume the published capability without privileged exceptions or business rules in the shared layer. For an external dependency, first check supported versions/configuration/extensions. If needed, isolate a pinned patch or boundary adapter, track its removal and contribute upstream where practical.
