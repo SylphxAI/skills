@@ -69,7 +69,9 @@ A remaster uses the original or an accepted reference implementation as its
 reference. A title binds the exact consumer revision of its engine generation, or
 is an independent parallel build of another generation ([stack.md](stack.md)). An
 engine upgrade is one coordinated outcome covering the affected titles, their
-promised behavior, and removal of the old paths. An engine gap is fixed in the
+promised behavior, and removal of the old paths. Every title in a portfolio meets the same player standard: first open, first game,
+purchase path and release checks. Fix a shared gap in the engine or shared template
+once, then sweep every title for it. An engine gap is fixed in the
 engine; a title keeps no private copy, compatibility fallback, or second engine.
 When a workspace retires a legacy engine generation (such as an older 2D Lua or
 Solar2D stack) in favor of its active engines, remasters replace the legacy
