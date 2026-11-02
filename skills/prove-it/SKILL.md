@@ -24,6 +24,11 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Validate absence queries with a positive control and the correct scope. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1).
 - Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
 
+For token-use boards, prompt duplication, cache claims or model-cost savings, read
+[model-usage.md](references/model-usage.md). It covers response deduplication,
+counter semantics, counts-only privacy, comparable before/after work and product
+economics.
+
 ## Review a change
 
 Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
