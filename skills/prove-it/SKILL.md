@@ -29,6 +29,11 @@ For token-use boards, prompt duplication, cache claims or model-cost savings, re
 counter semantics, counts-only privacy, comparable before/after work and product
 economics.
 
+For Android native launch/recreation ANRs or store-build exposure claims, read
+[Android lifecycle and shipped-build evidence](references/android-lifecycle.md).
+It separates the destruction handshake, exact dependency, signed artifact and
+current publication state.
+
 ## Review a change
 
 Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
