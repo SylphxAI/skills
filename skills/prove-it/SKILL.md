@@ -34,6 +34,11 @@ For Android native launch/recreation ANRs or store-build exposure claims, read
 It separates the destruction handshake, exact dependency, signed artifact and
 current publication state.
 
+For app-store rejections, policy declarations, release status or shipped-app
+privacy links, read [app store state](references/app-store-state.md). It
+separates event approvals, version reviews, Console declarations, public
+releases and installed-build evidence.
+
 ## Review a change
 
 Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
