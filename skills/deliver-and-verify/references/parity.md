@@ -191,6 +191,23 @@ Illustrative automated cases:
 | App navigation rebuild | Browser assertions cover route, focus, back navigation and layout; captures compare phone/tablet/desktop with the real original | Served revision matches; create/reopen journey succeeds at each size; a broken route restores the prior web release automatically |
 | SaaS plan configuration | Independent reader checks every changed plan field and reference; candidate server loads the configuration | Owned synthetic account's UI and server plan, quota, features and expiry match field by field; mismatch restores prior configuration automatically |
 
+### Temporary release announcements
+
+When an in-product message says a change is available now, trigger it from the
+exact serving-accepted release and its required observation period, never a
+calendar date, merged source or completed build. Recheck the affected supported
+clients immediately before sending; a preview does not prove that those users
+can see the change.
+
+Prepare the client check before creating the message. Use the existing
+[durable request method](../../self-challenge/references/architecture.md#durable-ownership-of-an-accepted-request)
+for creation and uncertain responses. Confirm the rendered copy in the actual
+client; an API row, generated caption or font sample cannot establish delivery.
+Give temporary copy an expiry. If acceptance fails or a rollback makes its claim
+false, expire only that message. Verify its expiry at the authority and removal
+from the public delivery feed; account for any already queued display interval.
+Leave unrelated standing messages unchanged.
+
 ## Keep devices and tests dependable
 
 Prepare builds, fixtures, scripts and the capture plan before taking a device
