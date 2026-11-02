@@ -14,6 +14,8 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
 - A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time.
+- A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
+- Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
 - For a count or metric, retain the query, window, instrument and population. Follow continuation pages for a census; label a sample and its uncertainty. A returned total can cross-check a census where the API defines it, but is not a pagination mechanism.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
