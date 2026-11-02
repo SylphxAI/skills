@@ -24,6 +24,8 @@ A published package states its API, runtimes and license and follows its version
 
 Follow the [delivery workflow](../SKILL.md): practical targeted checks, publication, iteration on the same branch and the repository's required merge/release path. State what remains unverified and rerun affected checks after a repair. Independent review does not manufacture a new publication/completion stage.
 
+Before removing a worktree or clearing a working folder, check unpushed commits and ignored files as well as `git status`; a clean status says nothing about ignored evidence. Size a preservation job before it starts, and copy only what is unique and small: reports, logs, captures and patches, never rebuildable trees.
+
 Choose local or existing remote build capacity from measured feedback cost and authorized resource use. A local single-host tool can be built, checked and activated in its target environment when that is its supported release path.
 
 Choose configuration reload semantics from the service's availability/consistency need: dynamic reads, a snapshot or controlled restart can each fit a different setting. Make the update behavior explicit and test the affected path. Routine health is deterministic and cheap; an authorized model/provider correctness test is a separate operation with its own purpose and budget.
@@ -46,6 +48,10 @@ Admission follows an operation's resource and effect. Publishing source does not
 ## App-store client releases
 
 Read the current store controls and the product's release contract. Identify the artifact, compatibility/data/account effects and the supported staged or direct rollout path. Choose staging from actual change risk and available telemetry rather than a universal number of percentage steps. Verify installation/update and the affected user journey on the released build; know the store's stop/rollback limits before relying on them.
+
+Read what players can install, not the release's status. On either store, a release marked in progress, completed or ready to publish can still be in review or held by managed publishing. Read the release page and publishing overview, then confirm exposure from a second source such as the public listing or the install share by version. A version record's creation date says when the container was made: read its review submissions before saying whether it was submitted, rejected or approved.
+
+Before promising a date, read each title's managed-publishing setting, open policy declarations and compatibility restrictions. A live build below the store's target level can keep updating existing players while new players on recent OS versions can't install at all, so that gap is a growth defect even with no error reports.
 
 ## Merge queue
 
