@@ -48,6 +48,18 @@ Key an OIDC identity by validated issuer/provider and subject (`iss`, `sub`), no
 
 List linked methods in settings and prevent removing the last supported way in. Keep one declared authority for memberships and permissions, with derived read copies where needed. The actual account/organization design and current service ownership belong with that product.
 
+### Prove guest continuity
+
+For a live product, separate these evidence levels; a pass at one level does not pass the others:
+
+- **Implementation:** read the existing-account selector, creation guard and every creation entrypoint. Preserve the documented working selector unless the outcome explicitly changes it. Name eligibility, missing-identifier and lock-expiry paths rather than promising universal exactly-once creation from a conditional guard.
+- **Serving behavior:** bind the relevant source bytes to every serving revision and read the actual runtime switches, including unset/default behavior. A main-branch commit or configuration schema does not prove rollout.
+- **Installed client:** use an owned fixture on the supported old client. Record account identity and nonzero progress before an in-place signed update and, separately, uninstall/reinstall. Repeat for guest and bound accounts; compare the same fields afterwards. Read account IDs from the product UI or authorized account surface, not a device identifier. An API-only login does not pass an installed-client case.
+- **Paid value:** verify an existing supported test entitlement through the product's normal test-payment or authorized grant route, then compare entitlement and expiry after each transition. Free starting balance cannot prove paid-value continuity. Without a supported fixture, retain the paid-value row as unproven; do not invent a grant or spend real money.
+- **Population:** use authorized, bounded aggregate reports with the title, window, exclusions and total eligible population stated. An unavailable report or timed-out query means unknown, not zero. Shared device-code overlap alone does not establish a person, physical device or lost value.
+
+Report the exact remaining client/account/transition/value combinations. Keep source, serving, client and population receipts distinct so a strong result in one cannot hide a gap in another.
+
 ## Recovery
 
 Recover through an established verified channel and apply the product's required step-up/assurance policy. Offer stronger protection afterwards. Avoid knowledge questions as proof of identity.
