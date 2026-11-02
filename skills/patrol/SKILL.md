@@ -12,6 +12,8 @@ Find what is late, over a limit or contradictory while it is still cheap to fix,
 - Read the post, pull request, ledger row or database row itself. A summary drops the detail that matters.
 - Read the payload, not its label. A title, a commit subject or a status line states an intent; the stored row states what happened. They can differ on the amount.
 - When a worker cites a table, a standard or an approval, open it and find the row. "According to the table" stays a claim until the row is on your screen.
+- Read the whole result before saying something is missing. A `tail`, a row limit or a keyword filter can hide the row that disproves you.
+- Judge a worker's state by its transcript and file times. A status table can show working while nothing moves, or idle while work continues.
 - Compare what runs with what is committed. A private script, a hand-edited config or a local copy can diverge from the reviewed source, and then the reviewed source tells you nothing.
 - A permission refusal on another worker's private files is a boundary. Ask for a readable copy, or read the effects in the live store.
 
@@ -22,6 +24,7 @@ Find what is late, over a limit or contradictory while it is still cheap to fix,
 - After finding one case, sweep the population for the same kind. Report the count, the total and a size the reader can judge, such as the share of the whole stock.
 - Count independently of the worker's own audit. When the two counts differ, report both and the gap instead of choosing one.
 - Separate work inside the rule from work outside it before totalling, so an automated, published reward is not counted with a custom one.
+- Before calling something over a limit harmful, read what it earned. A breach and a revenue driver can be the same thing, so report both.
 
 ## Bound a live change
 
@@ -48,7 +51,7 @@ A live change lasts from the first write until the last reader stops using the o
 ## Report
 
 - Send one short message: what, where, when and source. Across an ownership line it carries facts only, never an instruction.
-- Name any decision the reader owes, with your recommendation, and say plainly what you have not read.
+- Raise observations, questions and possible problems. Leave the method and the decision to the owner: a recommendation or a plan from patrol reads as an order, and it can stop work that was earning. Say plainly what you have not read.
 - When a read changes your number, correct it at once in the same place, showing which number replaced which and whether the conclusion moved.
 - Hold your own work to the same standard and report your own breaches with the same words.
 - Stay silent when the owner has already told the same person the same fact.
