@@ -29,6 +29,42 @@ Readiness checks compatibility with the serving revision rather than demanding t
 
 Keep schema migrations separate from deployment-specific state and record updates. Use the owning product's supported API/CLI. Where an authorized app-owned state change has no method, a dedicated write role with before/after reads can be the documented operational route; it does not authorize changing migration-ledger rows or bypassing a reconciler or owned platform boundary. Record the reason and replace a temporary route with the proper API when needed. Use the [recovery procedure](security.md#recovery-procedure) for restoration.
 
+## Recovering missing normalized state
+
+Use this procedure when a normalized child row is absent but an older saved
+representation may still contain the user's state. Absence is not authoritative
+zero, and the existence of an old save does not by itself establish data loss or
+its cause.
+
+- **Wrong:** return default zeros on load, then accept that snapshot as a save.
+  **Right:** establish whether a valid recovery source exists before presenting
+  or accepting a replacement snapshot.
+- Initialize only missing canonical rows. Existing rows, including legitimate
+  zeros or reductions, remain authoritative; fieldwise maxima are not a general
+  recovery or merge policy. Keep the original source unchanged.
+- Serialize recovery and every affected writer on the same entity within one
+  transaction. Cover load, direct save before first load, settlement and replay.
+  Read the current state and validate a submitted snapshot after acquiring that
+  lock; a comparison made before waiting can accept a stale regression.
+- Preserve the original projection contract: source types, missing/null defaults,
+  numeric conversion, finite values and destination bounds. Reject an invalid
+  source for the affected record rather than silently clamping or coercing it.
+  Require matching cycle identity before restoring daily or other expiring state.
+  Do not revive completed erasure or inactive accounts.
+- Recover history only under an explicit parsing, duplicate-key, ordering and
+  retention contract. An empty canonical history and unexplained gaps in a
+  nonempty history need different decisions; do not fill the latter by assumption.
+- Compare all protected progress and claim fields in the fresh canonical state.
+  A refused stale snapshot must leave unrelated fields unchanged; test legitimate
+  forward updates and identical replay as well as regression refusal.
+
+Verify with the actual database and two concurrent connections: observe a real
+lock wait in both operation orders, then assert the resulting state. Include
+missing rows with valid old data, existing zero rows, malformed and out-of-range
+sources, expired cycles, direct save, duplicate settlement and completed erasure.
+Keep database tests, deployed API checks and a population census as separate
+claims; none alone proves all users were repaired.
+
 ## Tests
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
