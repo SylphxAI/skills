@@ -217,6 +217,17 @@ browser sessions and remove synthetic fixtures through their supported cleanup
 path. For abrupt process death, use a bounded lease expiry as well. Do not hold a
 device while waiting for a build, merge queue or another writer.
 
+On a fresh Android emulator, let Google Play services and automatic system
+package updates settle before launching the app, measuring startup or judging a
+process loss. Retain an update-completion marker or bounded, repeated stable
+version-code reads; recheck the versions after the journey. An update during the
+run confounds the comparison, so preserve that run rather than treating it as an
+app verdict. For a process loss, bind unfiltered system logs and exit information
+to the exact app PID, and compare simultaneous exits in other processes before
+naming a cause. After repairing the environment, repeat the same fixture past
+the earlier loss interval and through the intended UI state. Survival establishes
+that route only; a new loss without an update reopens the app investigation.
+
 Illustrative pseudocode, independent of any device provider:
 
 ```python
