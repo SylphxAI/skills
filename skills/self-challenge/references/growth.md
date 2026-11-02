@@ -29,6 +29,15 @@ and its [catalogue](mechanics-catalogue.md).
 - Run decision-relevant experiments inside an authorized budget once the
   advertised acquisition-to-value or purchase journey works. A stopped campaign
   stops spending; current allocations live in the owning commercial record.
+- Verify end-to-end attribution on live storage before enabling paid acquisition
+  spend: confirm that install or click touches (`AdServices`, `InstallReferrer`,
+  `gclid`/`fbclid`/`utm_*`) persist to the account attribution record on
+  sign-in, settled real-money orders join that attribution (excluding internal
+  test accounts and zero-cash vouchers), and conversion outbox events are
+  delivered (`delivered_at_utc` set) to the ad network's conversion API with
+  actual settled value and currency. Where revenue concentrates in high-value
+  payers, optimize paid campaigns for purchase value (`tROAS` / value bidding)
+  and high-intent search rather than install volume (`tCPI`).
 - Support uses the product's own records for entitlement and billing; how
   support runs is under [Support](#support).
 - When designing acquisition, retention, or monetisation loops, review the relevant sections of the [mechanics catalogue](mechanics-catalogue.md), state target metrics, and record the chosen mechanics and material alternatives considered.

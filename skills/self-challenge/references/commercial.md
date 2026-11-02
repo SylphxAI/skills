@@ -88,7 +88,11 @@ Ledger mechanics remain here.
 ## Money and entitlement
 
 The price shown, the amount charged, and what the customer gets agree. The live
-price comes from the billing system, not from copied prose.
+price comes from the billing system, not from copied prose. In revenue and
+cohort reporting, report settled real-money cash bookings, catalog face value,
+and internal voucher or credit redemptions (`$0` incremental cash) separately,
+and exclude internal test accounts at the query boundary so reports and operator
+consoles reconcile to the cent.
 
 ### Shared and individual purchasing
 
