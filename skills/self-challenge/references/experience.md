@@ -80,6 +80,8 @@ The first frame after launch is a local, render-only copy of the home screen, sh
 
 Overlays owned by an SDK, such as a floating account button, stay reachable on every later screen. Check them after each scene change, because a full-screen view drawn later can cover them with no error.
 
+Brand recognition comes from the product itself, so the mark sits on the home screen. Sources, read 2026-11-02: [Apple Launching](https://developer.apple.com/design/human-interface-guidelines/launching) (nearly identical to the first screen, no branding unless a fixed part of it) and [Android splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) (dismissed at the first frame, animation at most 1,000 ms, no branding image recommended).
+
 ## Show the outcome, not the machinery
 
 Show the result, progress and controls this audience needs. Put incidental

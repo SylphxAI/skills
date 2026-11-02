@@ -27,6 +27,9 @@ filenames, descriptions, DOM structure and an image-generation prompt cannot
 establish what the pixels show. Use recordings and actual playback for motion,
 sound and input response.
 
+Every sheet carries a row for tap to first usable screen, cold and warm, measured
+the same way on both products ([performance.md](performance.md)).
+
 Exercise the journey at phone, tablet and desktop sizes. Record exact viewport
 or device dimensions, orientation, scale, browser/OS and input method; use the
 same conditions on both products. For example, 390×844, 834×1194 and 1440×900 CSS
