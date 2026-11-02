@@ -137,6 +137,11 @@ colours or variance, not only that the file exists.
 - Enumerate every changed asset and table from the candidate manifest/diff,
   including additions, removals and dependent references. Match the checked set
   to that inventory so one successful sample cannot stand for all changed files.
+- Diff the prepared change against what is mounted live, not against the source
+  repository. Label every changed cell as chosen, with its decision, or as drift
+  that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
+  live value and is reported. A source template can hold old values nobody chose,
+  and a flag that looks like a harmless hide can remove what a user already owns.
 - Read every changed artifact with an independent reader: the actual shipped
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check
