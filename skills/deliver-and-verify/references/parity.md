@@ -45,6 +45,12 @@ depth, failure states and recovery. Read the
 criteria and [performance method](performance.md) for journey budgets. A green
 HTTP response or an existing button does not establish a usable result.
 
+Before making art or copy for a screen, read one frame from the shipped client in
+the state a player reaches. Prefabs, atlases and offline renders show defaults;
+the server and runtime decide what is visible. A check that each planned path
+exists does not prove the visible set is covered, so list what the frame shows
+and map every item to its source.
+
 ## Keep a screen-and-feature parity sheet
 
 Inventory every screen and feature in scope, including applicable loading,
@@ -124,6 +130,9 @@ decides pass/fail and performs recovery. No hand publication based on someone
 looking at screenshots.
 
 ### Before publishing assets, tables or configuration
+
+A generated image a release depends on fails closed on blank output: check its
+colours or variance, not only that the file exists.
 
 - Enumerate every changed asset and table from the candidate manifest/diff,
   including additions, removals and dependent references. Match the checked set
