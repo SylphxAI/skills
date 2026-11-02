@@ -124,6 +124,22 @@ Reuse the owning shared campaign capability when one exists.
 
 For randomness, difficulty, matchmaking and AI opponents:
 
+- Measure tap-to-actionable-first-hand on the serving build. Successful-match
+  wait logs omit queues that never filled and do not measure first-hand latency;
+  report their population and missing events rather than treating them as the
+  new-player experience. A config file on disk does not prove the loaded policy.
+- For a coin-neutral table, reconcile human, AI, house and reserve deltas in the
+  same currency over a complete hand. Stake modifiers paid by losing players
+  are transfers, not automatically issuance. Classify loss shields, reserve
+  payouts, fees and host rebates separately; preserve paid promises by funding
+  them rather than silently removing them. Require crash/replay-safe commits,
+  not only an arithmetic sum of intended wins and losses.
+- For points-only play, check admission, packet serialization, manual and timeout
+  actions, results, replay, reconnect and exit for economy effects. Execute the
+  actual lifecycle with disallowed storage and commerce calls configured to fail;
+  repair a missed boundary instead of weakening the refusal. Keep neutral-mode
+  behavior separate from test-fixture authorization. Hidden controls or isolated
+  constructors and settlement tests do not prove the remaining lifecycle safe.
 - Define ranked fairness separately from the genre's inherent chance. Test any
   tuning or paid advantage against the advertised rules and applicable
   market/store requirements, including paid-randomness disclosures.
@@ -143,7 +159,12 @@ For randomness, difficulty, matchmaking and AI opponents:
   or adds one AI per tick with a long timer, fails this with no error. Practice
   play that moves no currency can ship first; AI seats on currency tables play
   from a finite house bankroll, so they add no net currency. Count every source
-  when balancing, manual grants included.
+  when balancing, manual grants included. Measure through the human's first legal
+  action from every possible starting seat: CPU warm-up timers and simulated
+  hesitation can consume the budget after all seats are full. Count legal prerequisite
+  actions as well as turns; avoid adding a timer between already-ready CPU actions.
+  Bound each batch and preserve human input windows. Keep advertised dealer and turn
+  rules rather than changing them to make the measurement pass.
 - Test onboarding protection, difficulty and opponent design against actual
   player outcomes rather than assuming a fixed number of protected days.
 - Protect purchased promises. State a material outcome and rollback rule with
