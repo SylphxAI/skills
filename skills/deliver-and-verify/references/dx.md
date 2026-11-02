@@ -24,6 +24,8 @@ A published package states its API, runtimes and license and follows its version
 
 Follow the [delivery workflow](../SKILL.md): practical targeted checks, publication, iteration on the same branch and the repository's required merge/release path. State what remains unverified and rerun affected checks after a repair. Independent review does not manufacture a new publication/completion stage.
 
+Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after the fetch. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit source-to-destination refspec when the tracking ref is required.
+
 Before removing a worktree or clearing a working folder, check unpushed commits and ignored files as well as `git status`; a clean status says nothing about ignored evidence. Size a preservation job before it starts, and copy only what is unique and small: reports, logs, captures and patches, never rebuildable trees.
 
 Choose local or existing remote build capacity from measured feedback cost and authorized resource use. A local single-host tool can be built, checked and activated in its target environment when that is its supported release path.
@@ -41,6 +43,7 @@ Admission follows an operation's resource and effect. Publishing source does not
 - Keep the required feedback path fast enough for the workload. Name which checks run on drafts, ready PRs, merge groups and the default branch, and where expensive/device/integration coverage runs. Concrete job names, rollout modes and gate labels live with their implementation.
 - A required aggregate verdict reflects failure of its required work. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
 - Validate workflow references and their scope. A nonexistent context property evaluates to an empty string; evaluate comparisons using the operator's documented coercion rules. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context.
+- Bind a verification result to the workflow path or ID, event, branch, exact commit and run attempt. Display names can be dynamic; accepting or rejecting a run by its title alone can select the wrong execution or refuse the right one.
 - Select affected checks and share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
 - Keep time/resource bounds appropriate to the job. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
 - Quarantine a known flaky test instead of retrying until green. A corrected defect or repaired infrastructure can justify rerunning the affected check; identify what changed.
@@ -55,10 +58,12 @@ Before promising a date, read each title's managed-publishing setting, open poli
 
 ## Merge queue
 
-Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants and runbook beside the queue implementation.
+Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
 ## How it is judged
 
 Measure publication, admission/runner wait, compilation and test spans separately. Record median/p95, failure/ejection rate and recovery time on a named population/window. Choose budgets from the workload and objective, and follow the repository's quarantine and rerun rules.
 
 Primary references checked 2026-10-30: [GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue), [Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions), [contexts](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts), [expressions](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions) and [job outputs](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/pass-job-outputs).
+
+Primary references checked 2026-11-02: [Git fetch remote-tracking mappings](https://git-scm.com/docs/git-fetch#CRTB) and [GitHub workflow run names](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#run-name).
