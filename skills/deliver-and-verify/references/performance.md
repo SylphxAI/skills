@@ -20,3 +20,38 @@ Choose a measurable target for each critical journey and define its response whe
 - Plan rollback/repair against the current schema using the [recovery procedure](security.md#recovery-procedure). Verify restored data and the affected customer behavior.
 
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
+
+
+## Startup measurements from video and queued logs
+
+Use this method when a startup event and the screen people can use disagree:
+
+- Treat an application's ready event as one diagnostic boundary. Establish the
+  first usable screen from its required controls and content, then exercise a
+  safe control. Keep appearance and input-response results separate; an empty
+  container behind an onboarding overlay does not establish readiness.
+- For sampled video, retain the last frame missing the required content and
+  the first frame showing it. Report that interval, including uncertainty in
+  the input timestamp. Preserve original presentation timestamps (PTS) and
+  source-frame indices. A frame-rate conversion can duplicate frames and assign
+  new timestamps; its output index divided by frame rate is not the original
+  frame's time. Match selected images to source frames by index or decoded-pixel
+  hashes before calculating a latency.
+- Bind video time to the recorded input's clock. Android `screenrecord` can
+  embed Winscope frame timestamps and a clock offset; validate the magic,
+  version, length and frame count against the
+  [matching implementation](https://android.googlesource.com/platform/frameworks/av/+/refs/heads/android14-release/cmds/screenrecord/screenrecord.cpp)
+  (Android 14 implementation read 2026-11-03). Cross-check the mapping against
+  the video's PTS and the device's clock observations. A recorder process's
+  launch timestamp does not establish when its first frame was captured. If no
+  reliable mapping exists, report the remaining clock-alignment uncertainty.
+- Separate event capture from log emission. A logger posted to a UI thread can
+  report the emitter's thread ID and a later wall time. Capture a monotonic
+  timestamp and the producer's thread identity before posting; compare clocks
+  with the same origin before attributing a delay to a network call or message
+  delivery.
+- Verify that required timing records survive the actual release logging
+  settings. Keep diagnostic fields fixed and numeric, preserve startup behavior
+  when an older native wrapper lacks the diagnostic method, and retain a
+  positive-control event after settings change. Missing filtered logs do not
+  prove that the operation never ran.
