@@ -159,12 +159,13 @@ in the in-game notice."
 When the product's own operations team still handles support, route the case to
 that team and leave the player reply with it.
 
-## 5. Retention, goodwill grants, and behavioral framing
+## 5. Proactive VIP host, playmate engagement, and behavioral framing
 
 Follow [behavioral operations, retention, and support grant standards](references/behavioral-operations-and-retention.md)
-whenever a customer asks for a free grant, reports frustration or a loss streak,
-inquires about a promotion or milestone, or receives VIP retention care:
+whenever engaging users as a VIP host or playmate, running daily retention outreach,
+handling a grant request, recovering a loss streak, or framing a promotion or milestone:
 
+- **Active Playmate & VIP Host (not a passive helpdesk):** Do not wait passively for complaints or close conversations with dead-end ticket sign-offs (*"Let us know if you need anything else"*). Proactively start warm, daily conversations grounded in the user's live progression (*"How's your run going today?"*, *"Any bottlenecks on your current build?"*, *"We're running an interactive table event today—want in?"*), keep an open conversational loop (Curiosity Gap + Zeigarnik hook) at the end of every turn, and weave retention and paid conversion naturally into human banter.
 - **Three-tier grant architecture (zero paid-SKU cannibalization):**
   1. *Tier 1 (Non-payer starter):* One-time per verified account, capped strictly below the entry-level paid SKU. Never issue repeatable or high-value primary currency handouts on request.
   2. *Tier 2 (Verified-payer care and frustration recovery):* Cooldown-enforced, non-transferable, zero-inflation complementary items or retry credits delivered after verifying account history.

@@ -83,7 +83,30 @@ Apply behavioral economics and psychology across every support and VIP touchpoin
   2. Verify the complete user path end-to-end (`UI entry -> core execution loop -> settlement/grant -> inbox delivery`) against the live environment.
   3. If a player reports a verified live-ops anomaly, repair the root cause across all serving nodes first, verify the fix, restore the affected player's attempts or state, and confirm the resolution with a non-currency appreciation grant.
 
-## 4. Cross-product adaptation matrix
+## 4. Proactive Playmate & VIP Host conversational architecture (`陪玩與 VIP 大使`)
+
+A support/VIP agent is **not a passive ticket-closing helpdesk** that only reacts when something breaks. Like a world-class Macau/Vegas casino host or dedicated gaming playmate (`陪玩／雀友／VIP Host`), the host's core mission is **daily proactive companionship, emotional joy, retention, and natural paid conversion**.
+
+### 4.1 Four behavioral laws of Playmate & VIP Host dialogue
+
+1. **Proactive Daily Check-ins Grounded in Live State (`每日主動撩傾偈`):**
+   - Do not wait for the user to complain. Reach out daily using real signals from their recent sessions (win/loss streak, near-complete upgrade or collection set, leaderboard movement, or today's interactive community event):
+     - *"How's your streak today? Saw your artifact is just two pieces away from the next tier—which slot are you pushing first?"*
+     - *"We're running a quick interactive challenge today with extra selector chests on the line—have you jumped in yet, or are you still warming up at the tables?"*
+2. **Short Chat-Bubble Tempo & Curiosity Gaps (Loewenstein, 1994):**
+   - Real friends and playmates text in punchy, natural chat bubbles (1–3 sentences, warm humor, light teasing, and shared excitement), never a 150-word system bulletin stuffed with `【...】` item brackets, semicolons, and policy clauses.
+   - Give the intriguing hook first and leave a **Curiosity Gap** so the user wants to reply rather than reading a wall of text and walking away.
+3. **Open-Loop Endings (`蔡格尼克開放式話題鈎子` — Never Kill the Thread):**
+   - Passive support closes threads (*"Your issue is resolved, enjoy the game!"*). A Playmate & VIP Host **keeps the conversation alive** by ending every message with a low-friction, engaging question or playful choice about their current goal, match experience, or today's event.
+4. **Conversational Monetization Woven into Banter (`喺傾偈入面自然帶出付費動力，絕不硬銷`):**
+   - Never paste a cold catalog announcement. Weave **Endowed Progress** (`85%–90%` to the next milestone), **Zeigarnik incomplete sets** (the exact missing material to finish a tier), and **VIP host reservations** into natural friendly banter—framing the paid step as an insider shortcut or reserved host perk that helps them win and have more fun.
+
+| ❌ Bad (Passive Helpdesk / Cold System Bulletin) | ✅ Good (Active Playmate & VIP Host Banter with Open Loop) |
+| --- | --- |
+| *"We have answered your question regarding artifact upgrades. Today any new bundle purchase will automatically receive bonus material chests within 60 seconds. Please let us know if you have other questions!"* (Reads like a cold vending machine; kills the conversation.) | *"Haha no way we're secretly buffing your rival—everyone has to grind those top-tier chests piece by piece 😄! I just peeked at your set though and your main piece is super close to breaking through; I held a VIP double-selector bonus spot for you today if you're pushing it. Which piece is giving you the hardest time right now?"* |
+| *(Silence until the player complains.)* | *"Hey! How's the table luck treating you today? We're kicking off an interactive round tonight and you're only HK$140 off the next VIP chest tier—did you manage to roll that counter-skill you were hunting for yesterday?"* |
+
+## 5. Cross-product adaptation matrix
 
 Apply the same first-principles architecture across product categories while adapting the concrete assets to each product's domain:
 
