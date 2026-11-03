@@ -27,7 +27,8 @@ Before putting anything into a skill or `references/*.md` file, separate **Metho
 2. **Include Concrete `❌ Bad vs ✅ Good` Contrast and Step 0 Reference Routing:**
    - Use a concrete `❌ Bad vs ✅ Good` pair when it explains a recurring mistake. Route each domain scenario to the reference it needs.
 3. **Define positive and negative trigger test cases:**
-   - Compare the description against held-out positive and negative prompts. Use the runtimes and models affected by the change when available, and record which checks actually ran.
+   - Add or update the skill's entries in `tests/skill-trigger-cases.json`: at least three positive prompts and three negative controls, each quoting its applicable description clause. Negative controls name the routed skill, or `null` for an explicit no-skill/direct-work boundary.
+   - Compare the description against held-out positive and negative prompts. Use the runtimes and models affected by the change when available, and record which checks actually ran. Deterministic corpus checks establish coverage and text consistency, not model routing accuracy.
 
 ## 3. Stage 2: Structure `SKILL.md` and Colocated `references/`
 
@@ -35,7 +36,7 @@ Follow the open [Agent Skills specification](https://agentskills.io/specificatio
 - **Frontmatter:** `name` matches the directory name (lowercase-hyphen), and `description` is nonempty and at most 1,024 characters.
 - **Role-neutral examples:** Keep workspace identities, private domains, machine paths and incident records in the owning workspace. Preserve exact public API identifiers and attributed method sources.
 - **Single Source of Truth (SSOT):** State a shared method once in its owning skill and link to it from sibling skills rather than pasting duplicate copies.
-- **Colocated `references/`:** Place deep domain standards in `skills/<name>/references/*.md` and link each file from `SKILL.md` with a clear trigger explaining when to read it. The specification recommends keeping the main file under 500 lines; split details when that improves navigation and context use.
+- **Colocated `references/`:** Place deep domain standards in `skills/<name>/references/*.md` and link each file from `SKILL.md` with a clear trigger explaining when to read it. Keep the main file under 500 lines (the repository's enforced budget, following the specification's recommendation); split details into references.
 
 ## 4. Stage 3: Verify Links, Format, and Trigger Discrimination
 

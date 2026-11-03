@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "skills": {
+    "author-item": {
+      "positive": [
+        {
+          "prompt": "Write an issue describing the missing CSV export, with observable acceptance cases.",
+          "clause": "write, file, structure, or revise a work outcome item"
+        },
+        {
+          "prompt": "Rank these backlog outcomes using their cost of delay and estimated duration.",
+          "clause": "ranking backlog items by Cost of Delay divided by Duration"
+        },
+        {
+          "prompt": "Turn this implementation checklist into an outcome brief without prescribing steps.",
+          "clause": "turning a vague request or step-by-step task list into a structured WHAT-only work item or brief"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Implement CSV export in this empty repository; do not write a ticket.",
+          "clause": "Do NOT use when asked to add, build, or implement a code feature, parser capability, or export format directly (use deliver-and-verify, even if the workspace is empty)",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Compare two launch plans and decide which assumptions need testing.",
+          "clause": "when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use self-challenge)",
+          "route_to": "self-challenge"
+        },
+        {
+          "prompt": "Investigate the failed request and establish whether the claimed root cause is true.",
+          "clause": "when investigating a failure or unblocking a task (use prove-it or unblock)",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Translate this launch announcement into natural Traditional Chinese.",
+          "clause": "when writing/translating user-facing copy (use clear-writing)",
+          "route_to": "clear-writing"
+        }
+      ]
+    },
+    "author-skill": {
+      "positive": [
+        {
+          "prompt": "Create a reusable skill for reviewing API compatibility.",
+          "clause": "creating, refactoring, or auditing a reusable Agent Skill"
+        },
+        {
+          "prompt": "Audit this SKILL.md description for trigger ambiguity and missing reference links.",
+          "clause": "write concrete moment-based trigger descriptions"
+        },
+        {
+          "prompt": "Add positive prompts and negative controls for this reusable skill.",
+          "clause": "validate positive/negative trigger test cases"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "File a work outcome ticket for the failing checkout flow.",
+          "clause": "Use author-item to write a work outcome ticket.",
+          "route_to": "author-item"
+        },
+        {
+          "prompt": "Write an issue with positive and negative acceptance tests for a search endpoint.",
+          "clause": "Use author-item to write a work outcome ticket.",
+          "route_to": "author-item"
+        },
+        {
+          "prompt": "Revise this backlog ticket so it states the result rather than implementation steps.",
+          "clause": "Use author-item to write a work outcome ticket.",
+          "route_to": "author-item"
+        }
+      ]
+    },
+    "clear-writing": {
+      "positive": [
+        {
+          "prompt": "Rewrite this release note so a nontechnical customer can understand it.",
+          "clause": "customer-facing announcements, release notes"
+        },
+        {
+          "prompt": "Localize these UI labels into idiomatic written Cantonese.",
+          "clause": "translating/localizing support FAQs or UI copy into natural target-locale phrasing"
+        },
+        {
+          "prompt": "Make this executive update concise without losing the decision or evidence.",
+          "clause": "concise internal team/executive updates"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "A customer paid but received no entitlement. Investigate the case and resolve the purchase.",
+          "clause": "Use customer-support for live customer support ticket handling.",
+          "route_to": "customer-support"
+        },
+        {
+          "prompt": "Handle this open account-recovery support case using its existing case state.",
+          "clause": "Use customer-support for live customer support ticket handling.",
+          "route_to": "customer-support"
+        },
+        {
+          "prompt": "A subscriber requests a refund. Check eligibility and carry out the authorized remedy.",
+          "clause": "Use customer-support for live customer support ticket handling.",
+          "route_to": "customer-support"
+        }
+      ]
+    },
+    "customer-support": {
+      "positive": [
+        {
+          "prompt": "A customer says a paid purchase is missing. Resolve it from verified product facts.",
+          "clause": "missing purchases, refunds, prices, invoices"
+        },
+        {
+          "prompt": "Handle this VIP retention complaint and determine the authorized goodwill grant.",
+          "clause": "retention care, VIP account management, goodwill grant"
+        },
+        {
+          "prompt": "A customer asks whether the support responder is an AI and requests a human.",
+          "clause": "support questions about the responder's AI identity, model or prompt"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "File a bug outcome for the reproducible invoice rounding defect.",
+          "clause": "Use author-item to file a bug outcome",
+          "route_to": "author-item"
+        },
+        {
+          "prompt": "Implement the confirmed invoice rounding fix and deploy it.",
+          "clause": "deliver-and-verify to implement a fix",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Draft general homepage copy explaining the product; there is no customer case.",
+          "clause": "clear-writing for general copy.",
+          "route_to": "clear-writing"
+        }
+      ]
+    },
+    "deliver-and-verify": {
+      "positive": [
+        {
+          "prompt": "Add JSON Lines export to the parser and ship the working change.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Apply this authorized repository configuration change and verify the published result.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Deploy the checkout bug fix and verify the affected customer journey.",
+          "clause": "Carry the outcome through execution and verification at its real surface."
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Design a migration plan and compare its alternatives; do not execute it yet.",
+          "clause": "Use self-challenge for a plan or architecture",
+          "route_to": "self-challenge"
+        },
+        {
+          "prompt": "Review this exact pull request diff for defects without changing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Polish this paragraph for clarity; no implementation or publication is requested.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        }
+      ]
+    },
+    "patrol": {
+      "positive": [
+        {
+          "prompt": "Check worker reports for missed finish times and contradictory progress claims.",
+          "clause": "checking other workers' output for a broken rule, a late finish time"
+        },
+        {
+          "prompt": "Compare the reported grant with its written spending cap and report any breach.",
+          "clause": "judging whether a spend, grant or change stayed within its written limit"
+        },
+        {
+          "prompt": "Two workers published different revenue totals. Inspect the original reports and raise the discrepancy.",
+          "clause": "two documents or workers disagree on a number"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Verify whether this one deployment is serving the reported revision.",
+          "clause": "Use prove-it to establish one claim or review a diff",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Restore the stalled deployment by fixing its confirmed configuration error.",
+          "clause": "unblock to restore stalled work",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Compare these two database architectures and choose the simpler design.",
+          "clause": "self-challenge to compare designs.",
+          "route_to": "self-challenge"
+        },
+        {
+          "prompt": "File a new outcome issue for the discovered defect.",
+          "clause": "author-item to file a new outcome",
+          "route_to": "author-item"
+        }
+      ]
+    },
+    "prove-it": {
+      "positive": [
+        {
+          "prompt": "Review this pull request at its exact head SHA for concrete regressions.",
+          "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+        },
+        {
+          "prompt": "The incident report blames the cache. Test that past root-cause claim against the failed request.",
+          "clause": "investigating a root-cause claim for a past failure"
+        },
+        {
+          "prompt": "Read the live deployment and verify the reported serving revision.",
+          "clause": "verifying a live status or metric before reporting it"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Restore the currently failing deployment, not merely explain the past outage.",
+          "clause": "Use unblock to restore currently failing work",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Compare two proposed service boundaries before choosing an architecture.",
+          "clause": "self-challenge to compare designs.",
+          "route_to": "self-challenge"
+        },
+        {
+          "prompt": "What is 17 multiplied by 23?",
+          "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+          "route_to": null
+        }
+      ]
+    },
+    "refactor": {
+      "positive": [
+        {
+          "prompt": "Split this oversized test module while preserving its test behavior.",
+          "clause": "splitting an oversized module or test suite"
+        },
+        {
+          "prompt": "Consolidate duplicate parsers without changing the supported input contract.",
+          "clause": "deduplicating implementations"
+        },
+        {
+          "prompt": "Remove completed compatibility layers and unused dependencies after checking callers.",
+          "clause": "deleting dead code or unused dependencies, removing completed compatibility layers"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Add a new search endpoint that the product does not currently support.",
+          "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Change the discount calculation to support a newly requested pricing rule.",
+          "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Implement an additional export format, including its new public behavior.",
+          "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+          "route_to": "deliver-and-verify"
+        }
+      ]
+    },
+    "self-challenge": {
+      "positive": [
+        {
+          "prompt": "Compare these architecture and data-model proposals, including scaling and lifecycle cost.",
+          "clause": "system architecture, service boundary, data model, tech stack, or product spec"
+        },
+        {
+          "prompt": "Stress-test this reseller agreement and its pricing assumptions before signing.",
+          "clause": "commercial contract, reseller/partner agreement, pricing model"
+        },
+        {
+          "prompt": "Are we over-engineering this migration? Find the simplest complete alternative.",
+          "clause": "'are we over-engineering / over-building this?' or 'is there a simpler way?'"
+        },
+        {
+          "prompt": "Challenge the hypothesis that a connection limit caused this incident.",
+          "clause": "establishing or challenging a root-cause hypothesis"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Write a backlog ticket from these agreed acceptance outcomes.",
+          "clause": "Use author-item to write a ticket",
+          "route_to": "author-item"
+        },
+        {
+          "prompt": "Implement and ship the agreed endpoint rather than comparing designs.",
+          "clause": "use deliver-and-verify to execute changes.",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Execute the approved configuration rollout and verify the live state.",
+          "clause": "use deliver-and-verify to execute changes.",
+          "route_to": "deliver-and-verify"
+        }
+      ]
+    },
+    "swarm-fuse": {
+      "positive": [
+        {
+          "prompt": "Get independent architecture and commercial views because either could change this launch decision.",
+          "clause": "several independent views can change a decision"
+        },
+        {
+          "prompt": "Investigate this uncertain cause from distinct evidence angles before the owner decides.",
+          "clause": "a multi-domain design, uncertain cause, architecture tradeoff or blocker needing new evidence"
+        },
+        {
+          "prompt": "A blocker needs new evidence from independent runtime and database investigations.",
+          "clause": "Assign distinct evidence angles and let the accountable owner decide."
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Rename this local variable; the change is clear and needs no independent views.",
+          "clause": "Use direct single-agent work for a clear task",
+          "route_to": null
+        },
+        {
+          "prompt": "Restore the failing job using its confirmed fix; no additional view is needed.",
+          "clause": "unblock for restoration that needs no additional view.",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Apply the known configuration repair to the stalled deployment without organizing a discussion.",
+          "clause": "unblock for restoration that needs no additional view.",
+          "route_to": "unblock"
+        }
+      ]
+    },
+    "unblock": {
+      "positive": [
+        {
+          "prompt": "The promised checkout fix still fails. Restore the affected flow.",
+          "clause": "a promised fix still fails"
+        },
+        {
+          "prompt": "The build runner hit its disk limit and the failed build must be restored.",
+          "clause": "a runner hits a resource limit"
+        },
+        {
+          "prompt": "The merge queue stopped making progress. Inspect the stuck job and recover it.",
+          "clause": "a queue/review stops progressing"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Establish the root cause of a past failure; the service is healthy and no restoration is needed.",
+          "clause": "Use prove-it and self-challenge for attribution of a past failure without restoration.",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare causal hypotheses in an old incident report, without changing the healthy system.",
+          "clause": "Use prove-it and self-challenge for attribution of a past failure without restoration.",
+          "route_to": "self-challenge"
+        },
+        {
+          "prompt": "A build is still making normal progress within its documented external cycle. Leave it running.",
+          "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+          "route_to": null
+        }
+      ]
+    }
+  }
+}
