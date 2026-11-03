@@ -80,9 +80,22 @@ The first frame after launch is a local, render-only copy of the home screen, sh
 
 When a native view shows that first frame over an engine surface, remove it only after the engine has presented a frame of its own; an engine signal that an object exists is not a presented frame. Removing it early shows black, and covering the engine's surface for long can stall the engine itself. Read video frames on both sides of the handoff for black, and time the engine with and without the cover.
 
-Overlays owned by an SDK, such as a floating account button, stay reachable on every later screen. Check them after each scene change, because a full-screen view drawn later can cover them with no error.
-
 Brand recognition comes from the product itself, so the mark sits on the home screen. Sources, read 2026-11-02: [Apple Launching](https://developer.apple.com/design/human-interface-guidelines/launching) (nearly identical to the first screen, no branding unless a fixed part of it) and [Android splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) (dismissed at the first frame, animation at most 1,000 ms, no branding image recommended).
+
+## Game-owned SDK entry
+
+Games open the SDK or platform panel from a button in the game's own Settings
+or Profile, styled to fit the game. Account and support stay reachable through
+that entry.
+
+A floating SDK button is a legacy compatibility path. Remove it as each client
+gains a working game-owned entry. Keep it on shipped clients that lack the
+replacement until they update, so no player loses account or support access.
+
+After each scene change, verify that the game-owned entry still opens the panel
+and reaches account and support. On legacy clients, check that the floating
+button remains visible and operable: a full-screen view drawn later can cover
+an SDK overlay without an error.
 
 ## Show the outcome, not the machinery
 
