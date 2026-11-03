@@ -222,6 +222,18 @@
         {
           "prompt": "Read the live deployment and verify the reported serving revision.",
           "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "The provider refunded this Play order. Verify the claimed reason without assuming why the game checkout failed.",
+          "clause": "investigating a root-cause claim for a past failure"
+        },
+        {
+          "prompt": "Review whether this Play server-delivery contract trusts provider-verified ownership rather than client-supplied markers.",
+          "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+        },
+        {
+          "prompt": "Verify the reported Play purchase acceptance against the released native plugin, actual entitlement grant, and store completion.",
+          "clause": "verifying a live status or metric before reporting it"
         }
       ],
       "negative": [

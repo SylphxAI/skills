@@ -57,6 +57,10 @@ privacy links, read [app store state](references/app-store-state.md). It
 separates event approvals, version reviews, Console declarations, public
 releases and installed-build evidence.
 
+For Play purchase refunds, missing entitlements, or server-delivery claims, read
+[Play purchase evidence](references/play-purchases.md). It separates the provider
+refund reason, application failure, verified ownership, grant and store completion.
+
 ## Verify effective entrypoint behavior
 
 Before inferring a runtime defect from an omitted argument, read the full callee
