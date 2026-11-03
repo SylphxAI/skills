@@ -178,6 +178,14 @@ changed subscription grant checks plan, features, quota and expiry, plus refusal
 after expiry; a success toast proves none of those fields. Keep synthetic
 fixtures isolated from real balances, messages, purchases and audience metrics.
 
+A store test purchase proves a purchase path only if the server grants it. A
+server that rightly refuses store test orders needs a supported test lane: an
+allowlist of synthetic test accounts that an agent can set through the API with a
+narrow machine credential, without a person's login. When a release moves
+purchases to a new delivery path, the old path's working sales prove nothing about
+the new one; prove the new one with a granted, consumed test order before real
+players reach it.
+
 For web releases, hot updates and other reversible deployments, arm automatic
 rollback before publication. A failed, missing or timed-out required
 post-publish check automatically restores the last known good code/assets/config

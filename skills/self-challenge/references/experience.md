@@ -78,6 +78,8 @@ category benchmark.
 
 The first frame after launch is a local, render-only copy of the home screen, shown before any network, version or account work. It holds no live state and no active controls; the real screen replaces it when ready, and content loads lazily inside it. A separate splash, logo card or loading scene earns its place only when a store, licence or contract requires it. Optional updates, announcements and promotions never gate startup.
 
+When a native view shows that first frame over an engine surface, remove it only after the engine has presented a frame of its own; an engine signal that an object exists is not a presented frame. Removing it early shows black, and covering the engine's surface for long can stall the engine itself. Read video frames on both sides of the handoff for black, and time the engine with and without the cover.
+
 Overlays owned by an SDK, such as a floating account button, stay reachable on every later screen. Check them after each scene change, because a full-screen view drawn later can cover them with no error.
 
 Brand recognition comes from the product itself, so the mark sits on the home screen. Sources, read 2026-11-02: [Apple Launching](https://developer.apple.com/design/human-interface-guidelines/launching) (nearly identical to the first screen, no branding unless a fixed part of it) and [Android splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) (dismissed at the first frame, animation at most 1,000 ms, no branding image recommended).
