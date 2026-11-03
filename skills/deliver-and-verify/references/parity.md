@@ -188,6 +188,14 @@ Where a channel cannot retract installed clients, follow its supported stop or
 disable mechanism and verify it; do not claim automatic rollback that the channel
 cannot perform ([app-store releases](dx.md#app-store-client-releases)).
 
+Before a hot update reaches a device, run the real publisher's manifest generator
+on the PR and assert that every bundle and dependency the build lists has a
+catalog row and a staged file. A build that lists all its bundles can disagree
+with a publisher that collects from a narrower list, and the client then waits
+forever on a screen that reads as slow. Report what a returning player must
+download for that update, in bytes, before publishing: on a coarse bundle layout
+a small art change can cost hundreds of megabytes at startup.
+
 Illustrative automated cases:
 
 | Change | Independent pre-publish check | Live check and failure action |
