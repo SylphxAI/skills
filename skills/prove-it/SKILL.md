@@ -13,7 +13,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
-- A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. A watch that fires when checks finish is not a merge: read the pull request's merged state, and its merge-queue entry, from the live API before calling it merged, since a cached view can show an old head.
+- A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
 - Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
@@ -60,6 +60,25 @@ releases and installed-build evidence.
 For Play purchase refunds, missing entitlements, or server-delivery claims, read
 [Play purchase evidence](references/play-purchases.md). It separates the provider
 refund reason, application failure, verified ownership, grant and store completion.
+
+## Pull request checks and merge-queue state
+
+Bind check evidence to the current pull request, exact head, workflow run and
+required-check decision. A commit-level check list can include successful runs
+from another pull request at the same SHA. Those results establish what ran;
+they do not by themselves establish the current pull request's merge eligibility.
+If the provider still expects a required check, preserve that refusal separately
+from the earlier passing result and follow the current required-check path.
+
+Automatic merge being enabled records intent. Read the live queue entry to
+establish enqueueing, and the pull request's merged state and merge SHA to
+establish merging. Neither a completed-check watch nor a successful enable
+request proves either transition. Restore stalled work through [unblock](../unblock/SKILL.md)
+without bypassing required checks or repeatedly resubmitting an unchanged refusal.
+
+**Wrong:** "The previous pull request passed at this SHA, so its replacement is
+ready to merge." **Right:** "That run passed; the replacement still expects its
+required check and has no queue entry."
 
 ## Verify effective entrypoint behavior
 
