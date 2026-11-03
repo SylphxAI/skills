@@ -120,6 +120,25 @@ Illustrative evidence contrast:
   the changed journey, saves new paired captures and assertions, and confirms
   that the served revision stayed the same through the run.
 
+For a **frozen web run**, bind the browser to the bytes it actually received:
+
+- Locally, serve an immutable build rather than a changing development server.
+  Record its source revision and clean source status before and after the run,
+  plus the running server's build identity at both ends. A checkout's `HEAD`
+  alone does not identify an already running process.
+- Hash the JavaScript and CSS response bodies loaded by the browser, including
+  lazy-loaded files reached by the journey. Compare them with the immutable
+  build and fresh end-of-run GET responses. A filename or a later fetch alone
+  does not establish which bytes the browser used.
+- On a public content delivery network without revision headers, retain start
+  and end document response headers and the browser-loaded asset bodies/hashes.
+  Compare those bytes with the intended immutable release; headers alone do
+  not identify a revision. Leave release identity OPEN if that binding is absent.
+
+Keep local fixture, public web, installed-client and authoritative server
+results separate. Frozen local captures establish the tested local behavior,
+not public propagation, installed behavior or real authentication/server effects.
+
 ## Let machine checks decide publication
 
 Human or agent inspection finds quality gaps and informs acceptance cases. It
@@ -128,6 +147,54 @@ the expected values, tolerances, timeout and recovery action before publishing;
 do not weaken them to fit the candidate. The release automation runs the checks,
 decides pass/fail and performs recovery. No hand publication based on someone
 looking at screenshots.
+
+### UI coverage, geometry and painted output
+
+Declare the expected case count and each fixture's target identities/counts
+independently of the selector results. A nonempty-state case fails on missing
+configuration, empty matches, wrong counts or duplicate/unexpected targets.
+Record expected, discovered and checked counts, and cover every rendered row in
+scope. Exact named-label assertions complement that census; a passing loop over
+`[]` proves nothing. An intentionally empty state needs its own acceptance case.
+
+Measure the defect's actual geometry. A single-line label at the required font
+size can still overlap a chevron. Use the text node's `Range.getClientRects()`
+bounds, not its allocated container width, and measure the gap to the chevron
+in the same coordinate space on every rendered row. Check the acceptance case's
+required gap, line count and typography together; for example, an 8 CSS px gap
+is a contextual requirement, not a universal minimum. Do not shrink the font
+to hide a spacing failure. Run the guard against the old failing state before
+claiming it catches the defect, then test the repair under the same conditions.
+
+Treat target size, hit testing and visible paint as separate assertions:
+
+- A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
+  all pass while an ancestor's `opacity: 0` makes the control invisible. Check
+  the control's effective opacity through every ancestor, visibility, clipping
+  and occlusion as well as the required hit area and action.
+- Check the actual icon's painted fill/stroke, alpha and contrast against its
+  background, not only the SVG box or parent colour. Read the captured pixels
+  yourself as well as running the assertions; geometry cannot prove visible ink.
+- Exercise reduced motion both at mount and when the preference changes from
+  false to true after initial render or hydration. If an entrance starts hidden
+  or offset, explicitly settle its final state (for example `opacity: 1`,
+  `y: 0`, `scale: 1` for properties it animates) with zero duration and no delay.
+  Dropping `animate` can strand the previous hidden initial state. Sweep shared
+  entrances for the same pattern and verify every affected control's paint.
+
+Mechanism references (read 2026-11-03):
+[text range bounds](https://developer.mozilla.org/en-US/docs/Web/API/Range/getClientRects),
+[opacity and descendants](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity),
+[`getBBox()` before rendering](https://developer.mozilla.org/en-US/docs/Web/API/SVGGraphicsElement/getBBox),
+and [the reduced-motion preference](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
+
+Preserve failed captures and raw assertion output. Missing test configuration
+is a verification coverage error, not evidence of a product layout failure or
+success. After repairing the test, make a new run and retain the earlier result.
+An unexpected golden-image mismatch that repeats at later frames establishes
+stability, not that it is pre-existing or unrelated. Keep the committed baseline
+and strict tolerance until a same-source/environment comparison or other
+disconfirming check establishes the cause; adopt only explained, intended changes.
 
 ### Before publishing assets, tables or configuration
 
