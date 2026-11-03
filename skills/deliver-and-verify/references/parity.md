@@ -305,6 +305,23 @@ browser sessions and remove synthetic fixtures through their supported cleanup
 path. For abrupt process death, use a bounded lease expiry as well. Do not hold a
 device while waiting for a build, merge queue or another writer.
 
+For native input, retain the original frame, capture time, dimensions and hash.
+Identify the visible control, then map any viewer scaling, crop or rotation back
+to the original pixels before choosing an interior point. Check that point
+against the raw pixels and measured control bounds; an observer's estimated
+coordinate is not a measurement. Colour-threshold bounds describe only the
+matching painted subset, not the full control or its hit area.
+
+If an accepted input leaves the state unchanged, first test whether it missed
+the control. Request acceptance and cursor coordinates do not establish a hit.
+Use a fresh frame and, where needed, a supported pointer-location diagnostic
+before blaming a handler, backend or input driver, patching code or replacing
+the device. Record the prior diagnostic setting, restore it and verify cleanup.
+A matching pointer trace establishes only that gesture's coordinate mapping.
+Record the observed UI transition separately from the requested action. For
+short-lived turns or dialogs, capture before, act and capture after in one
+bounded sequence; an observer round trip can outlast the state being tested.
+
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a
 process loss. When the image has pending automatic updates, require observed
