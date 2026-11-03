@@ -52,6 +52,7 @@ A live change lasts from the first write until the last reader stops using the o
 
 - Send one short message: what, where, when and source. Across an ownership line it carries facts only, never an instruction.
 - Raise observations, questions and possible problems. Leave the method and the decision to the owner: a recommendation or a plan from patrol reads as an order, and it can stop work that was earning. Say plainly what you have not read.
+- After reporting a breach to the person who set the rule, ask the worker a few open questions as well: what went wrong, what it could lead to, and how it could be solved. Ask whether the cause is the worker or a capability the system lacks. Leave the answer to the worker; someone in the middle of the work often can't see the pattern.
 - When a read changes your number, correct it at once in the same place, showing which number replaced which and whether the conclusion moved.
 - Hold your own work to the same standard and report your own breaches with the same words.
 - Stay silent when the owner has already told the same person the same fact.
