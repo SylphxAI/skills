@@ -57,6 +57,31 @@ privacy links, read [app store state](references/app-store-state.md). It
 separates event approvals, version reviews, Console declarations, public
 releases and installed-build evidence.
 
+## Verify effective entrypoint behavior
+
+Before inferring a runtime defect from an omitted argument, read the full callee
+and relevant wrappers, including defaults, environment fallbacks and input
+transformations. A capture mock proves the call wiring it observes. Replacing a
+callee that resolves configuration removes that behavior from the test; the
+mock cannot establish which policy the real execution applies.
+
+**Wrong:** “The caller omitted the optional event argument, so the policy is
+inactive.” **Right:** “The mock captured an omitted argument; the real callee
+may resolve it from the environment. Test the shipped path before concluding.”
+
+Resolve conflicting readings with a fresh subprocess invoking the unmodified
+published entrypoint in the relevant real environment. Bind the receipt to the
+immutable revision and loaded artifact hash; record the command, relevant
+non-secret configuration, exit status and diagnostic output. Run a positive
+control and an adversarial negative through that same entrypoint, preserving
+the fallback behavior under investigation. A direct callee test or rewritten
+local copy does not establish the published entrypoint's behavior.
+
+Keep unexpected success as disconfirming evidence, including when the verifier's
+own assertion expected failure. Correct the causal claim and affected decisions
+from the actual result; do not turn the verifier's failed expectation into a
+runtime failure or change the artifact to force the expected verdict.
+
 ## Split-binary startup failures
 
 A symbol name does not prove exclusive function ownership. Compiler-folded
