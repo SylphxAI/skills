@@ -49,6 +49,23 @@ privacy links, read [app store state](references/app-store-state.md). It
 separates event approvals, version reviews, Console declarations, public
 releases and installed-build evidence.
 
+## Split-binary startup failures
+
+A symbol name does not prove exclusive function ownership. Compiler-folded
+functions can serve unrelated callers, including indirect table calls. Before
+skipping a compiled module, test the final packed artifact on the affected call
+path; a direct-call graph, a hardware capability probe or a renderer-only test
+cannot establish that all of its functions are unreachable. If that cannot be
+established, loading the module before synchronous title calls is safer than
+assuming the probe makes it unnecessary. Measure the added download bytes.
+
+Continue startup tracing across navigation and recovery. **Wrong:** a module
+exception proves the page stayed blank. **Right:** record the exception, any
+reload, the next document and its eventual readiness separately. Preserve the
+strict check's failure even if the user-visible page later recovers. Keep an
+original CI artifact, a same-source reconstruction and a live capture as distinct
+claims; compressed files on disk do not prove negotiated network transfer sizes.
+
 ## Review a change
 
 Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
