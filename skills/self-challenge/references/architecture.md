@@ -141,6 +141,13 @@ live, what to test, or what to delete.
   source.
 - Converge competing authorities in the owning change, migrating their callers
   before deleting the superseded source.
+- **Separate code and schema from runtime business state.** Source code (`.rs`,
+  `.ts`) and SQL migrations (`migrations/*.sql`, `atlas/migrations/*.sql`) hold
+  only generic mechanisms and schema DDL (`CREATE`, `ALTER`, `DROP`), never
+  mutable tenant, product, title, or catalogue data (such as per-title feature
+  flags, bundle IDs, ad unit IDs, SKU prices, or live-ops schedules). Live
+  business state is read from and written to the authoritative database or Admin
+  API so state changes take effect without code changes or PR merges.
 
 ## Scale
 
