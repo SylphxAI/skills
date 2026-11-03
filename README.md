@@ -21,7 +21,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 3. **Role-Neutral Triggers & Colocated Reference Standards (Progressive Disclosure)**:
    - Skills trigger on the **observable task moment**, never on a static persona. Every deep domain standard lives in `skills/<name>/references/*.md` beside the skill that uses it, so agents load only the exact reference needed for the task at hand.
 
-## Skills Catalog (10 Skills)
+## Skills Catalog (11 Skills)
 
 | Skill | Trigger Moment | Colocated Reference Standards (`references/`) |
 | --- | --- | --- |
