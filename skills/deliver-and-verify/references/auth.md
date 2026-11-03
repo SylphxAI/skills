@@ -23,22 +23,57 @@ Choose a stable RP ID valid for the calling origin and validate origins on the s
 
 After a rejected unknown credential, use `signalUnknownCredential()` where supported. Use `signalAllAcceptedCredentials()` only in the authenticated context appropriate to the full credential list. Feature-detect support and verify the provider's behavior; a signal does not replace the server's check or guarantee every picker updates immediately.
 
-## Detailed sign-in and sign-up flow
+## The one sign-in flow
 
-Use one identifier-first entry where it simplifies the product's flow:
+Every product uses the same entry for new and returning people. This is one standard for every product and site; there is no per-product variant.
 
-1. Offer the supported native/provider buttons, a passkey button and an identifier field. For conditional passkey autofill, annotate the field with `autocomplete="username webauthn"` and feature-detect the ceremony.
-2. Select an available method for the identified account: passkey, an existing password or a verified-channel code. An unknown email can verify a code to create an account. These branches can reveal different account states; do not claim indistinguishability unless all relevant branches are designed and tested for it.
-3. For a code, use a pasteable input with `autocomplete="one-time-code"`, a declared short lifetime, single-use redemption and an attempt budget. Bind completion to the intended transaction/browser when the flow needs it, including handling mail-scanner clicks and cross-device links.
-4. Ask only for information needed for the first useful action; obtain terms/consent as the applicable product/market requires. Offer a passkey after a successful non-passkey sign-in, using conditional create only where supported and appropriate.
+### Rules
 
-Choose methods for the audience and assurance requirement:
+1. **One entry, one verb.** There is no separate sign-up page. The entry is titled for the product ("Sign in to …" / 「登入 …」) and the action is **Continue** (「繼續」). A verified identity that has no account gets one at that moment; one that has an account goes in. Old `/signup`, `/register` and `/forgot-password` routes redirect permanently to the entry and keep the return page.
+2. **No new passwords.** Nobody is asked to create a password. There is no "forgot password" flow, because a code sign-in already proves the same thing. Existing password accounts keep working (live sign-ins never break): when the identifier has a password and no passkey, step 2 offers "Use password instead" as a secondary link. A person can remove their password in settings once a passkey or verified channel exists.
+3. **Email is the identifier.** The field accepts an email address only. No usernames for sign-in, no public phone/SMS sign-up (SMS costs money per message and invites pumping). Accounts that already sign in with a phone number keep their existing route; that is continuity, not a new option. A display name or public handle is asked later, inside the product, only where it is needed; take the name from the provider when there is one.
+4. **Codes, not links.** Email verification is a 6-digit code, not a magic link (links break across devices and in-app browsers).
+5. **One implementation.** Products never hand-write sign-in or sign-up forms. Web uses the platform's hosted entry or its single shared component; native apps use the SDK's native sheet with the same order, wording and states. A change to the flow is made once.
+
+### Screen 1: choose a way in
+
+- At the top, the provider buttons for the product's audience, at most three visible, each "Continue with …" (「使用 … 繼續」), with the provider's own marks and equal size. Order: on iOS, Sign in with Apple first; on Android and the web, Google first; then the audience's next most used (for example LINE in Taiwan and Japan, GitHub for developers). The rest sit behind "More ways to continue".
+- A "Last used" tag on the method this browser or device used last.
+- A divider, then one email field (`type="email"`, `autocomplete="username webauthn"`, `inputmode="email"`) and the Continue button. On page load, start a conditional passkey request so a saved passkey appears in the field's autofill; selecting it signs in with no further step.
+- Under the button, one plain line: continuing means agreeing to the terms and privacy policy, both linked. No checkbox; marketing consent is never pre-ticked and is asked separately, later.
+- In an in-app browser where a provider refuses to load (for example Google in embedded web views), hide that provider's button and lead with email and passkey instead of showing a dead end.
+
+### Screen 2: prove it, on the same page
+
+- No page load. If the account has a passkey on this device, call it. Otherwise send the code and show a single code field (`autocomplete="one-time-code"`, `inputmode="numeric"`) that accepts a pasted code and submits by itself at the sixth digit.
+- Show where the code went ("Sent to k•••@example.com"), "Change email", and "Resend" that becomes available after 30 seconds. The code lives 10 minutes, is single-use and has an attempt budget; wrong entries say so plainly and keep what was typed.
+- New and returning people see exactly the same screens until the code is accepted.
+
+### After the code
+
+- A returning person lands where they started. A new person lands in the product's first useful screen; ask nothing else first.
+- Offer a passkey once ("Use Face ID next time"), using conditional create where the browser supports it. If declined, don't ask again for 30 days.
+
+### Linking and guests
+
+- A verified email links automatically only when the provider is authoritative for that address (Google for Gmail and verified Workspace domains, Apple, Microsoft for its domains, a GitHub primary verified email, an email code). Otherwise the person proves the existing account first. See [Guests and linking logins](#guests-and-linking-logins).
+- Guests play or try first. "Save progress" opens this same flow and keeps the guest's identity and data. If the chosen login already belongs to another account with progress or purchases, show both and let the person choose: keep this one, or switch to the other. Never overwrite either silently.
+
+### Apple and account deletion
+
+- Where an iOS app offers a third-party login for the primary account, it offers an equivalent privacy-focused option as App Store Guideline 4.8 requires; Sign in with Apple meets it. Show it at the same size and level as the others.
+- Account deletion is in the app and revokes Sign in with Apple tokens.
+
+### Check every site against this
+
+For each product, record: entry URL, screen 1 frame (phone and desktop), the code step, a returning-account sign-in, a new-account sign-in, a passkey sign-in and the passkey offer, the in-app-browser case, and the guest-to-account case. A site passes only when all of them match this section.
+
+### Assurance notes
 
 - Passkeys are the preferred phishing-resistant method. For multi-factor assurance, request and verify the required user-verification result; a passkey without verified UV is single-factor cryptographic authentication under NIST.
-- Apple/Google or enterprise federation can supply supported native/SSO paths. Apply App Store 4.8 where it binds, including its stated exceptions, rather than assuming every iOS product needs another provider.
-- Email codes can be a product's convenience or recovery choice. NIST prohibits email as out-of-band authentication for its assurance model; email confirmation/recovery is a separate use, so an email login does not establish that NIST assurance.
-- Existing or necessary passwords follow the selected assurance profile. NIST SP 800-63B-4 calls for at least 15 characters for a sole factor or 8 within MFA, no composition rules, paste/password-manager support and a compromised-password blocklist. Avoid periodic changes; require a reset when there is evidence of compromise.
-- Use SMS only where its audience/value justifies it and the existing authorization covers the cost. Ask only for new unauthorized spending, not another approval of an already funded integration.
+- NIST SP 800-63B-4 prohibits email for out-of-band authentication in its assurance model (confirmation and recovery codes are a separate use). An email-code sign-in is a consumer convenience and does not establish that assurance; step up with a passkey for sensitive actions where the product's contract needs it.
+- Existing passwords follow NIST SP 800-63B-4: at least 15 characters as a sole factor (8 within MFA), no composition rules, paste and password-manager support, a compromised-password blocklist, and no periodic changes (reset only on evidence of compromise).
+- SMS is only for routes that already exist and whose cost is already authorized; it is never a public sign-up path.
 
 ## Guests and linking logins
 
@@ -108,7 +143,7 @@ Watch sign-in success/time, recovery completion and support/account-takeover rep
 
 ## References
 
-Primary sources checked 2026-10-30:
+Primary sources checked 2026-10-30; the one-flow section re-read on 2026-11-03 against [passkeys.dev bootstrapping](https://passkeys.dev/docs/use-cases/bootstrapping/) (updated 31 October 2025), [NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html) sections 3.1.1 and 3.1.3.1, [App Store Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) 4.8 and 5.1.1(v), and [Google One Tap behaviour](https://developers.google.com/identity/gsi/web/guides/features):
 
 - [WebAuthn Level 3](https://www.w3.org/TR/webauthn-3/) and [signal API guidance](https://developer.chrome.com/docs/identity/webauthn-signal-api).
 - [Passkey autofill](https://web.dev/articles/passkey-form-autofill) and [conditional create](https://developer.chrome.com/docs/identity/webauthn-conditional-create).
