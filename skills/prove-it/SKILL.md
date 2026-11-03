@@ -24,6 +24,11 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Validate absence queries with a positive control and the correct scope. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1).
 - Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
 
+For agent workspace cleanup, instruction freshness, retained/searchable history
+or uncertain tool mutations, read [agent runtime evidence](references/agent-runtime.md).
+It separates source, generated files, session context, raw retention, search
+coverage and actual runtime execution.
+
 For API route rankings, ingress-log percentiles, slow-request attribution or
 before/after latency claims, read [API latency evidence](references/api-latency.md).
 It covers parser and coverage controls, duplicate records versus proxy hops,
