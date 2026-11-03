@@ -44,6 +44,10 @@ Choose configuration reload semantics from the service's availability/consistenc
 
 A service with no drain path can still stop cleanly. Close input at the outermost door, confirm which queues live outside the process and survive, wait until its activity goes flat, then stop it. Put the drain path in the next version, not in the one already running.
 
+Count a service as open when a real client gets through, not when the orchestrator reports it ready. A front door can pass its readiness probe and still refuse clients until the application logs that it accepts them, which can take close to a minute after a restart. Read that line, or complete one sign-in, before telling anyone the stop is over, and report the time from that moment.
+
+A fixed stop window does not wait for its own pull requests. When the source path is slow, make the change with the supported live control, dry-run it, then merge the same change and restore automatic reconciliation afterwards. A prerequisite such as "merged by a set time" that protects no hard limit is a self-imposed gate: remove it rather than slip the window.
+
 ## Workflow admission
 
 A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
@@ -74,6 +78,8 @@ Before promising a date, read each title's managed-publishing setting, open poli
 Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
 A queue that builds one entry at a time makes total wait the sum of every entry ahead, so read its parallel-build setting before forecasting a release. A required job can also be lost: the scheduler treats it as finished while the host still shows it queued. Read one exact job's assignment history before waiting on it further; a job that never ran can be cancelled and rerun without being a retried test.
+
+A branch name can be reused, so a run's branch and pull-request fields can point at an old merged PR while the run belongs to a live one. Before calling a run superseded or cancelling it, compare its head SHA with the current head of every open PR on that branch. Turning a PR into a draft does not take it out of the queue: read its queue entry and dequeue it directly.
 
 ## How it is judged
 
