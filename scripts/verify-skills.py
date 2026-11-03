@@ -7,6 +7,8 @@ import os
 import re
 import sys
 import subprocess
+from pathlib import Path
+
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -58,56 +60,156 @@ def verify_manifests(errors: list[str]) -> None:
                 fail(f"{rel} skills path does not exist: {skills_rel}", errors)
 
 
-def verify_skills_frontmatter(errors: list[str]) -> set[str]:
-    skill_files = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
+class UniqueKeyLoader(yaml.SafeLoader):
+    """Do not silently accept a second description or name."""
+
+
+def unique_mapping(loader, node):
+    result = {}
+    for key_node, value_node in node.value:
+        key = loader.construct_object(key_node)
+        if not isinstance(key, str) or key in result:
+            raise ValueError(f"invalid or duplicate YAML key: {key!r}")
+        result[key] = loader.construct_object(value_node)
+    return result
+
+
+UniqueKeyLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, unique_mapping)
+
+# Local authoring convention: positive task moments first, then exclusions or
+# neighbouring routes. This checks text contracts, not a model's interpretation.
+BOUNDARY = re.compile(
+    r"\b(?:Do NOT use when|Use (?!when\b|ONLY when\b|the\b|this\b)[a-z][a-z0-9-]*\b)")
+
+
+def verify_skills_frontmatter(errors: list[str], root=ROOT) -> dict[str, str]:
+    skill_files = sorted(Path(root).glob("skills/*/SKILL.md"))
     if not skill_files:
         fail("No skills found", errors)
-
+    descriptions = {}
+    names = {p.parent.name for p in skill_files}
     for p in skill_files:
-        rel = os.path.relpath(p, ROOT)
-        dir_name = os.path.basename(os.path.dirname(p))
-        with open(p) as f:
-            text = f.read()
-        if not text.startswith("---\n"):
-            fail(f"{rel}: missing opening YAML frontmatter delimiter", errors)
+        rel = p.relative_to(root)
+        text = p.read_text(encoding="utf-8")
+        if len(text.splitlines()) >= 500:
+            fail(f"{rel}: SKILL.md must stay under 500 lines; move detail to references", errors)
+        match = re.match(r"\A---\r?\n(.*?)\r?\n---(?:\r?\n|$)", text, re.S)
+        if not match:
+            fail(f"{rel}: missing standalone YAML frontmatter delimiters", errors)
             continue
-        parts = text.split("---", 2)
-        if len(parts) < 3:
-            fail(f"{rel}: missing closing YAML frontmatter delimiter", errors)
-            continue
-
         try:
-            fm = yaml.safe_load(parts[1])
-        except Exception as e:
-            fail(f"{rel}: yaml.safe_load failed: {e}", errors)
+            fm = yaml.load(match.group(1), Loader=UniqueKeyLoader)
+        except (yaml.YAMLError, ValueError, TypeError) as e:
+            fail(f"{rel}: invalid YAML frontmatter: {e}", errors)
             continue
-
         if not isinstance(fm, dict):
             fail(f"{rel}: frontmatter is not a YAML mapping", errors)
             continue
-
-        name = str(fm.get("name", ""))
-        desc = str(fm.get("description", ""))
-        if name != dir_name:
-            fail(f"{rel}: frontmatter name {name!r} != directory {dir_name!r}", errors)
-        if not re.fullmatch(r"[a-z0-9-]{1,64}", name):
+        name, desc = fm.get("name"), fm.get("description")
+        if name != p.parent.name:
+            fail(f"{rel}: frontmatter name {name!r} != directory {p.parent.name!r}", errors)
+        if (not isinstance(name, str) or len(name) > 64
+                or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name)):
             fail(f"{rel}: invalid skill name {name!r}", errors)
-        if not desc or len(desc) > 1024:
-            fail(f"{rel}: invalid description length ({len(desc)})", errors)
-        if "Use when" not in desc:
-            fail(f"{rel}: description missing 'Use when' trigger clause", errors)
+        if not isinstance(desc, str) or not 1 <= len(desc.strip()) <= 1024 or len(desc) > 1024:
+            fail(f"{rel}: description must be a nonempty string of at most 1024 characters", errors)
+            continue
+        descriptions[p.parent.name] = desc
+        if not re.match(r"Use (?:ONLY )?when\b", desc):
+            fail(f"{rel}: description must start with a 'Use when' task moment", errors)
+        if not BOUNDARY.search(desc):
+            fail(f"{rel}: missing explicit negative boundary or neighbouring skill route", errors)
+        for route in re.findall(r"\b[Uu]se ([a-z][a-z0-9-]+) (?:for|to|when)\b", desc):
+            if route not in names or route == p.parent.name:
+                fail(f"{rel}: invalid neighbouring skill route {route!r}", errors)
+        if not text[match.end():].strip():
+            fail(f"{rel}: missing Markdown instructions after frontmatter", errors)
+    return descriptions
 
-    return set(skill_files)
+
+def unique_json_mapping(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON key: {key!r}")
+        result[key] = value
+    return result
 
 
-def verify_links_and_references(errors: list[str]) -> None:
-    md_files = sorted(glob.glob(os.path.join(ROOT, "**", "*.md"), recursive=True))
+def verify_trigger_cases(descriptions: dict[str, str], errors: list[str], root=ROOT) -> tuple[int, int]:
+    corpus_path = Path(root) / "tests/skill-trigger-cases.json"
+    try:
+        corpus = json.loads(corpus_path.read_text(encoding="utf-8"), object_pairs_hook=unique_json_mapping)
+    except (OSError, ValueError) as e:
+        fail(f"{corpus_path.name}: cannot read trigger corpus: {e}", errors)
+        return 0, 0
+    if (not isinstance(corpus, dict) or set(corpus) != {"version", "skills"}
+            or type(corpus.get("version")) is not int or corpus["version"] != 1
+            or not isinstance(corpus.get("skills"), dict)):
+        fail("Trigger corpus must have version 1 and a skills mapping", errors)
+        return 0, 0
+    skills = corpus["skills"]
+    for name in sorted(descriptions.keys() - skills.keys()):
+        fail(f"{name}: missing trigger cases", errors)
+    for name in sorted(skills.keys() - descriptions.keys()):
+        fail(f"{name}: trigger cases have no valid skill description", errors)
+    counts = {"positive": 0, "negative": 0}
+    for name, cases in skills.items():
+        if name not in descriptions:
+            continue
+        if not isinstance(cases, dict) or set(cases) != set(counts):
+            fail(f"{name}: require positive and negative trigger case lists", errors)
+            continue
+        desc = descriptions[name]
+        boundary = BOUNDARY.search(desc)
+        positive_text = desc[:boundary.start()] if boundary else desc
+        negative_text = desc[boundary.start():] if boundary else ""
+        prompts = set()
+        for polarity in counts:
+            rows = cases[polarity]
+            if not isinstance(rows, list) or len(rows) < 3:
+                fail(f"{name}: require at least 3 {polarity} trigger cases", errors)
+                continue
+            for index, case in enumerate(rows, 1):
+                label = f"{name} {polarity}[{index}]"
+                fields = {"prompt", "clause"} | ({"route_to"} if polarity == "negative" else set())
+                if not isinstance(case, dict) or set(case) != fields:
+                    fail(f"{label}: expected fields {sorted(fields)}", errors)
+                    continue
+                prompt, clause = case["prompt"], case["clause"]
+                if not isinstance(prompt, str) or not prompt.strip():
+                    fail(f"{label}: prompt must be a nonempty string", errors)
+                    continue
+                normalized = " ".join(prompt.casefold().split())
+                if normalized in prompts:
+                    fail(f"{label}: duplicate or conflicting prompt", errors)
+                prompts.add(normalized)
+                region = positive_text if polarity == "positive" else negative_text
+                if not isinstance(clause, str) or not clause.strip() or clause not in region:
+                    fail(f"{label}: clause must quote the description's {polarity} region", errors)
+                    continue
+                if polarity == "negative":
+                    route = case["route_to"]
+                    if route is None:
+                        if not re.search(r"\b(?:no|not)\b|direct single-agent work", clause, re.I):
+                            fail(f"{label}: null route requires an explicit no-skill/direct-work boundary", errors)
+                    elif (not isinstance(route, str) or route not in descriptions or route == name
+                          or not re.search(rf"(?<![\w-]){re.escape(route)}(?![\w-])", clause)):
+                        fail(f"{label}: route_to must name a different existing skill in the quoted boundary", errors)
+                counts[polarity] += 1
+    return counts["positive"], counts["negative"]
+
+
+def verify_links_and_references(errors: list[str], root=ROOT) -> None:
+    md_files = sorted(glob.glob(os.path.join(root, "**", "*.md"), recursive=True))
     link_re = re.compile(r"(?<!`)\[([^\]]+)\]\(([^)]+)\)(?!`)")
     referenced_files = set()
+    links_by_source = {}
     heading_cache: dict[str, set[str]] = {}
 
     for p in md_files:
-        rel = os.path.relpath(p, ROOT)
+        rel = os.path.relpath(p, root)
         with open(p) as f:
             text = f.read()
         for m in link_re.finditer(text):
@@ -125,16 +227,22 @@ def verify_links_and_references(errors: list[str]) -> None:
                 fail(f"{rel}: broken link [{label}]({target})", errors)
                 continue
             referenced_files.add(resolved)
+            links_by_source.setdefault(p, set()).add(resolved)
             if frag:
                 if resolved not in heading_cache:
                     heading_cache[resolved] = headings_for_file(resolved)
                 if frag not in heading_cache[resolved]:
-                    fail(f"{rel}: missing anchor #{frag} in {os.path.relpath(resolved, ROOT)}", errors)
+                    fail(f"{rel}: missing anchor #{frag} in {os.path.relpath(resolved, root)}", errors)
 
-    ref_files = sorted(glob.glob(os.path.join(ROOT, "skills", "*", "references", "*.md")))
+    ref_files = sorted(glob.glob(os.path.join(root, "skills", "*", "references", "*.md")))
     for rf in ref_files:
         if rf not in referenced_files:
-            fail(f"Orphan reference file not linked anywhere: {os.path.relpath(rf, ROOT)}", errors)
+            fail(f"Orphan reference file not linked anywhere: {os.path.relpath(rf, root)}", errors)
+
+    for rf in ref_files:
+        entry = os.path.join(os.path.dirname(os.path.dirname(rf)), "SKILL.md")
+        if rf not in links_by_source.get(entry, set()):
+            fail(f"Reference not linked from its own SKILL.md: {os.path.relpath(rf, root)}", errors)
 
 
 def verify_no_private_leaks(errors: list[str]) -> None:
@@ -154,10 +262,11 @@ def verify_no_private_leaks(errors: list[str]) -> None:
 def main() -> int:
     errors: list[str] = []
     verify_manifests(errors)
-    verify_skills_frontmatter(errors)
+    descriptions = verify_skills_frontmatter(errors)
+    positive, negative = verify_trigger_cases(descriptions, errors)
     verify_links_and_references(errors)
     verify_no_private_leaks(errors)
-    # Keep terminology and its regression tests on the existing CI entry point.
+    # Keep all regression tests on the existing CI entry point.
     for args in (
         [sys.executable, "scripts/verify-terminology.py"],
         [sys.executable, "-B", "-m", "unittest", "discover", "-s", "scripts", "-p", "test_*.py"],
@@ -174,7 +283,7 @@ def main() -> int:
 
     skill_count = len(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
     ref_count = len(glob.glob(os.path.join(ROOT, "skills", "*", "references", "*.md")))
-    print(f"PASS: {skill_count} skills (PyYAML verified), {ref_count} reference files, 3 plugin manifests, 0 broken links/anchors, 0 private leaks.")
+    print(f"PASS: {skill_count} skills (PyYAML verified), {positive} positive/{negative} negative trigger contracts (static, not model routing), {ref_count} reference files, 3 plugin manifests, 0 broken links/anchors, 0 private leaks.")
     return 0
 
 

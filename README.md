@@ -80,13 +80,45 @@ mkdir -p ~/.gemini/antigravity-cli/skills && ln -sfn ~/.local/share/sylphx-skill
 
 ## Verification
 
-Run the repository verification script to validate all YAML frontmatters (`PyYAML`), plugin manifests, relative Markdown links, and reference coverage:
+Run the repository verification script to validate YAML frontmatter (`PyYAML`),
+plugin manifests, relative Markdown links and anchors, direct reference coverage,
+and every skill's positive and negative trigger contracts:
 
 ```bash
 python3 scripts/verify-skills.py
 python3 scripts/verify-terminology.py
-python3 -m unittest discover -s scripts -p "test_*.py"
+python3 -B -m unittest discover -s scripts -p "test_*.py"
 ```
+
+The existing `ci-ok` check runs the full verifier for pull requests, merge queue
+entries, and pushes to `main`. It includes the regression tests; running unittest
+separately gives named results when debugging.
+
+### Trigger cases
+
+[The trigger corpus](tests/skill-trigger-cases.json) contains at least three
+positive prompts and three negative controls per skill. Every case quotes the
+applicable clause from its current description. A negative case names the
+neighbouring skill in that clause, or uses `null` for an explicit no-skill or
+direct-work boundary. Skills may be combined for composite tasks; a negative
+control tests the named skill against the primary task, not every possible
+subtask.
+
+The verifier discovers `skills/*/SKILL.md` rather than maintaining a second skill
+list. A new skill without both case lists, an obsolete case, a wrong-polarity
+clause, a missing route, or a duplicate/conflicting prompt fails CI. Metadata
+checks reject malformed or duplicate YAML keys, non-string descriptions, invalid
+names, descriptions over 1,024 characters, and main files of 500 lines or more.
+Reference checks require each reference to be linked from its own `SKILL.md`.
+
+These are **deterministic editorial and contract checks**, not a keyword router
+or proof that a model loads the right skill. When changing a description, also
+run a blind evaluation of positive and negative prompts with the affected model
+and runtime when available. Keep expected answers and quoted clauses out of that
+evaluation's input, and record prompts, model/runtime, per-case decisions, and
+any confusion. A metadata-only model check is not an end-to-end automatic skill
+loading test. See [skill authoring](skills/author-skill/SKILL.md) for that evidence
+boundary.
 
 ## License
 
