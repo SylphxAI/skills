@@ -14,6 +14,8 @@ Apply the owning standards rather than duplicating their rules:
   own truthful promotion, consent, experiment design and campaign exposure.
 - [Commercial](commercial.md) owns purchases, entitlements, billing and remedies.
 - [Games](games.md#hard-lines) owns purchased value and competitive promises.
+- [Game-economy](../../game-economy/SKILL.md) owns pack value, resource limits,
+  progression coverage and gift budgets.
 - [Risk](risk.md) owns assessment of market and store requirements, including
   those applying to a paid-randomness mechanic.
 

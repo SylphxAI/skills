@@ -85,6 +85,10 @@ Delivery and remedies follow the product's authorization and
 Use published response commitments and real accepted handoffs when describing
 the next step to the customer.
 
+Keep owed delivery and repair separate from optional care. Use
+[game-economy](../../game-economy/SKILL.md) to establish discretionary gift
+budgets and measured exposure; an optional-gift test never withholds an owed remedy.
+
 ## Deadlines and penalties are valued too
 
 For a fixed date, model the loss at that date and the latest feasible start.

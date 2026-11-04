@@ -36,6 +36,10 @@ tenure, progression, paying status and relevant modes. Report balance and use
 quantiles, upper-tail concentration and the share unable to afford normal
 play. Averages can hide both depleted newcomers and saturated veterans.
 
+Set the future net issuance path from active population, desired access and
+meaningful progression demand; a growing game need not have zero net issuance.
+Use wanted voluntary sinks and new goals where they address the measured surplus.
+
 ## Distinguish three problems
 
 | Observation | Disconfirming check | Candidate response |
@@ -89,6 +93,10 @@ content interval together. Raising a numeric ceiling without useful choices
 adds little; forcing existing players to re-earn a bought finish can break
 trust.
 
+Separate spendable progression resources from prestige and status rewards.
+Collections or optional prestige can give a completed build another useful
+goal; make any reset explicit and player-chosen, preserving purchased promises.
+
 Test whether players choose and enjoy the extension. The motivation research
 in [sources](sources.md#motivation) supports examining autonomy, competence and
 relatedness; it does not show that endless grind retains players. Improve or
@@ -100,3 +108,12 @@ content together. Preserve existing assets and bought promises. Derive the
 limit from time to exhaustion, circulation, desired access and funded delivery
 capacity; replace it when those inputs change. Neither a large nominal number
 nor a fixed fraction of purchase price establishes economic harm.
+
+## Evaluate a resource bottleneck
+
+Measure the cohort's reach rate, resource balances, time to the next useful
+upgrade, available free recovery, offer exposure, paid conversion and abandonment.
+Compare affordable acceleration or funded care with the baseline over complete
+windows. Judge return play and contribution across all eligible players; higher
+conversion among the remaining payers does not establish that scarcity helped.
+Revise the bottleneck when it blocks enjoyable play or reduces contribution.

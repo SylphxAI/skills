@@ -47,9 +47,11 @@ minimum required legal scope, while meeting every binding obligation.
 
 In-product retention and goodwill gifts belong to
 [ambassador](../../ambassador/SKILL.md) and live operations. When a player or
-guild is unhappy, proactively offer generous bound gifts within pre-approved
-budgets (`送禮令佢開心`), without legalistic proof of loss or a restriction to
-small gifts. A gift expresses care and does not establish a defect or liability.
+guild is unhappy, give attention and help, and proactively offer generous bound
+gifts when useful within pre-approved budgets (`送禮令佢開心`), without legalistic
+proof of loss or a restriction to small gifts. Use
+[game-economy](../../game-economy/SKILL.md) to size and measure that optional care.
+A gift expresses care and does not establish a defect or liability.
 Preserve delivered items, levels and guild progress; resolve imbalances by
 lifting up affected players under the [games standard](games.md#player-joy-and-content-expansion).
 

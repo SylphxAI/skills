@@ -92,6 +92,10 @@ Choose the smallest funded incentive that meets the measured conversion and
 retention objective; stop escalating when additional generosity reduces expected
 contribution without achieving the chosen objective.
 
+For virtual-resource flows, progression coverage and measured gift displacement,
+use [game-economy](../../game-economy/SKILL.md); cross-channel pricing and payment
+mechanics remain here.
+
 For extra VIP appreciation, prefer meaningful recognition, status perks or
 distinctive collectibles that do not issue more spendable currency. Measure
 their delivery cost and displacement of paid demand too, and preserve promised
@@ -118,10 +122,11 @@ immediate paid delivery and restoration, maximum lawful statutory/platform
 windows and minimum required legal scope for hostile refund or dispute demands.
 Meet all binding obligations.
 
-Proactive in-product care belongs to ambassador/live operations: delight an
-unhappy player or guild with generous bound gifts within pre-approved retention
-budgets, without requiring legalistic proof of loss or limiting care to small
-gifts. [Conduct](conduct.md#customers-and-players) owns the role distinction;
+Proactive in-product care belongs to ambassador/live operations: begin with
+attention and help, and offer generous bound gifts when useful within standing
+retention budgets. Care requires neither legalistic proof of loss nor a small-gift
+restriction. [Game-economy](../../game-economy/SKILL.md) owns gift budget sizing
+and measurement. [Conduct](conduct.md#customers-and-players) owns the role distinction;
 [games](games.md#player-joy-and-content-expansion) owns preserving gains and
 expanding progression. Ledger mechanics remain here.
 

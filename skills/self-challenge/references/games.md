@@ -221,21 +221,23 @@ owns the relationship practices within this loop.
 
 ### Player joy and content expansion
 
-Use agent-native tools and reusable assets to make additional content, tiers and
-progression depth fast and near-zero in marginal authoring effort, with daily
-delivery when verification and release capacity permit. Measure actual authoring,
-verification, serving and delivery costs; the premise changes when those inputs
-do. Losing a player is an irreversible loss of that relationship and its revenue.
-Verify and release new content through the normal product path. When players progress quickly,
+Use agent-native tools and reusable assets to reduce the cost of useful content,
+tiers and progression depth. Measure actual authoring, verification, serving and
+delivery costs and achievable release cadence; cheap generation alone does not
+establish daily delivery. Compare that cost with the player enjoyment, return
+play and contribution an expansion can protect. Verify and release new content
+through the normal product path. When players exhaust worthwhile goals,
 extend the progression runway upward (`加長成長嘅路`) with meaningful new goals,
 tiers and optional prestige. Preserve completed progress and existing item
 utility; never throttle a player's earned growth or claw back gains to stretch
 the old content.
 
-When a player or guild is unhappy, delight them with generous bound in-product
-gifts (`送禮令佢開心`) within pre-approved retention budgets. Choose useful
-personal materials, protection, cosmetics or other valued assets from their
-actual needs, without demanding legalistic proof of loss. Delivery or restoration
+When a player or guild is unhappy, start with attention and help. Offer generous
+bound in-product gifts (`送禮令佢開心`) when useful within pre-approved retention
+budgets; care does not require legalistic proof of loss or a gift on every
+occasion. Choose useful assets from the player's actual needs and the
+[gift budget method](../../game-economy/references/offers-gifts-and-experiments.md#give-attention-repair-loss-and-budget-optional-care).
+Delivery or restoration
 of paid value is an immediate obligation separate from a discretionary gift.
 [Ambassador](../../ambassador/SKILL.md) owns warm companionship and gift advocacy;
 [customer-support](../../customer-support/SKILL.md) owns formal billing remedies.
@@ -327,46 +329,19 @@ of unwanted scraps or faster abandonment falsifies the abundance hypothesis.
 
 ### Scientific economy balance
 
-Use a source–sink model for the macro economy and telemetry to test it. Cheap
-content authoring enables generous care; it does not make every virtual asset's
-economic effect zero. The following is the chosen game-economy method, informed
-by Machinations' primary documentation for
-[sources](https://www-content.machinations.io/docs/sources/),
-[drains](https://www-content.machinations.io/docs/drains/) and
-[converters versus traders](https://www-content.machinations.io/docs/converters/)
-(read 2026-11-04).
+Use [game-economy](../../game-economy/SKILL.md) as the authority for pack value,
+resource flows, inflation, progression coverage, gift budgets and sales diagnosis.
+Its [economy model](../../game-economy/references/economy-model.md) owns stock
+reconciliation, purchasing power, concentration, time to cap and bottlenecks;
+its [offer and experiment method](../../game-economy/references/offers-gifts-and-experiments.md)
+owns funded gift exposure, purchase displacement and complete-window comparisons.
+Non-transferable and non-currency rewards still need that analysis.
 
-- **Faucets and drains:** Inventory sources, sinks, balances and conversion paths
-  per currency, including shop delivery, gameplay, events, protection and manual
-  gifts. Reconcile `closing balance = opening balance + issuance - consumption`
-  across the full population; player-to-player transfers redistribute value and
-  do not create aggregate currency. Set a target net issuance path from active
-  population and progression demand; equilibrium need not mean zero issuance in
-  a growing game. Add attractive voluntary sinks and new uses to absorb surplus.
-- **Dual progression loops:** Separate spendable progression resources from
-  prestige/status rewards. Extend the core upgrade path and add long-lived
-  collection, cosmetic or prestige goals so fast progress opens another useful
-  loop. Make an optional prestige reset explicit and player-chosen; never use
-  prestige to disguise an involuntary loss of purchased or earned value.
-- **Pinch-point conversion:** Model each resource bottleneck using the cohort's
-  reach rate, balance distribution, time to the next useful upgrade, offer price,
-  paid conversion and abandonment. Estimate incremental net receipts alongside
-  retention and free recovery; a bottleneck that drives players away fails even
-  if surviving payers convert more often. Test affordable acceleration and
-  generous care against the baseline rather than assuming scarcity earns more.
-- **Inflation and wealth concentration:** Track issuance/consumption by source,
-  currency balances by cohort and percentile, purchasing power for a stable
-  basket, time to progression milestones, top-holder wealth shares and a Gini
-  coefficient where meaningful. Include stockpiled bound materials: a bound item
-  can accelerate progression even when it cannot be traded. Compare complete
-  time windows, retention and net contribution before changing future grants or
-  sinks. A large grant or fast progression alone does not establish churn.
-
-Product configuration owns pre-approved budgets and server-side grant limits.
-Deliver gifts idempotently through that path, record their economic effect and
-read the result back. Escalate a larger gift through the company application
-path instead of raising a global safety cap. Recalibrate the model when live
-cohort data disproves its assumptions; preserve delivered value throughout.
+Product configuration owns approved budgets and server-side grant limits.
+Deliver through the authoritative, idempotent grant path and verify the result.
+A larger gift needs a budget decision through the configured company path;
+recalibrate the budget from measured exposure rather than changing a shared
+safety limit for one request. Preserve delivered value throughout.
 
 For randomness, difficulty, matchmaking and AI opponents:
 
