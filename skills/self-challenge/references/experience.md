@@ -88,18 +88,18 @@ Brand recognition comes from the product itself, so the mark sits on the home sc
 
 ## Game-owned SDK entry
 
-Games open the SDK or platform panel from a button in the game's own Settings
-or Profile, styled to fit the game. Account and support stay reachable through
-that entry.
+Games reach one account page through one entry in the game's own Settings,
+styled to fit the game, without a floating button over play. Before removing an
+old SDK entry, inventory every function it offers and verify a working route to
+each from the account page; account and support are not the whole inventory.
 
-A floating SDK button is a legacy compatibility path. Remove it as each client
-gains a working game-owned entry. Keep it on shipped clients that lack the
-replacement until they update, so no player loses account or support access.
+Keep the floating entry only on shipped clients that lack the replacement,
+until they update, so no player loses access. Remove it from each updated client
+once the game-owned route covers every inventoried function.
 
-After each scene change, verify that the game-owned entry still opens the panel
-and reaches account and support. On legacy clients, check that the floating
-button remains visible and operable: a full-screen view drawn later can cover
-an SDK overlay without an error.
+After each scene change, verify that Settings still reaches the account page
+and its functions. On legacy clients, check that the floating entry remains
+operable; a full-screen view drawn later can cover it without an error.
 
 ## Show the outcome, not the machinery
 

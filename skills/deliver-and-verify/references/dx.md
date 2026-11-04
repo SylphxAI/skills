@@ -59,7 +59,7 @@ Admission follows an operation's resource and effect. Publishing source does not
 ## Continuous integration
 
 - Keep the required feedback path fast enough for the workload. Name which checks run on drafts, ready PRs, merge groups and the default branch, and where expensive/device/integration coverage runs. Concrete job names, rollout modes and gate labels live with their implementation.
-- A required aggregate verdict reflects failure of its required work. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
+- A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
 - Validate workflow references and their scope. A nonexistent context property evaluates to an empty string; evaluate comparisons using the operator's documented coercion rules. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context.
 - Before editing a workflow file in a product repository, read which workflows run on a push to the default branch and what each one publishes. A runner or cache change to a file that triggers a production release ships that release on merge, even when nobody intended one.
 - Bind a verification result to the workflow path or ID, event, branch, exact commit and run attempt. Display names can be dynamic; accepting or rejecting a run by its title alone can select the wrong execution or refuse the right one.
