@@ -86,6 +86,30 @@ When a native view shows that launch image over an engine surface, remove it onl
 
 Brand recognition comes from the product itself, so the mark sits on the home screen. Sources, read 2026-11-02: [Apple Launching](https://developer.apple.com/design/human-interface-guidelines/launching) (nearly identical to the first screen, no branding unless a fixed part of it) and [Android splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) (dismissed at the first frame, animation at most 1,000 ms, no branding image recommended).
 
+## Game experience
+
+- Until a new player finishes the first game or task, show only the primary
+  action, profile, currency and shop. Introduce events, social feeds and
+  promotions afterwards, so the first session teaches the core loop.
+- Focus each tutorial step with a strong mask, a pulsing target and a large
+  pointer. Localize every control, including tutorial prompts and navigation;
+  honor the reduced-motion preference for the pulse.
+- Measure the first-session funnel daily with one frozen, versioned query.
+  Fix the cohort-day definition, the first core action within 24 hours and
+  test-device exclusions, so a query change cannot masquerade as improvement.
+- Register every fresh-install test account. Exclude registered test accounts,
+  test devices and test egress IPs from player reports, including the funnel.
+- Ship look-only content on a steady cadence. Players read visible change as a
+  live, cared-for game; keep that signal independent of changes to game balance.
+- Review the play surface against a real-table or category-leader reference
+  before judging the HUD or polish. Conserve pieces across zones, put each hand
+  and discard area in front of its seat, use one coherent scale and leave
+  nothing floating. Adopt the leader's readable screen layout rather than a
+  literal model of the table.
+- Show owners real engine renders, never HTML or SVG mockups of game screens.
+  Avoid web-page composition: app bars, card grids and flat slabs. Use in-world
+  materials with depth and a visible pressed state for interactive surfaces.
+
 ## Game-owned SDK entry
 
 Games reach one account page through one entry in the game's own Settings,
@@ -121,6 +145,10 @@ market, contract and channel ([commercial.md](commercial.md#usage-and-billing-di
 
 ## International experience
 
+- Before each release, census all shipped text in every supported locale.
+  Check the locale's script, spelling, glyph coverage in the shipped font
+  subset and overlays covering profile data. Fix the whole defect class and
+  repeat the census; do not repair isolated strings one at a time.
 - Use source text as message keys by default (English unless the product says
   otherwise), or follow the established catalogue's stable-key contract. Add
   context where the same text means different things.
