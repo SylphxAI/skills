@@ -107,8 +107,16 @@ Evaluate the applicable rules and compose their relevant parts.
   self-service flow. Collect the configured identifier and evidence needed for
   an authorized action; credentials and one-time codes stay in the product's
   secure recovery surface. Apply the product's actual account, guild or team
-  transfer policy. A display name or knowledge of a login username alone does
-  not establish authority to change verified bindings. Explain an unavailable
+  transfer policy. A display name, login username, or publicly visible
+  in-product/leaderboard ID quoted on an external channel (such as Facebook
+  Messenger, Discord, or email) never establishes account ownership: while the
+  caller is unverified, never disclose account-specific records (creation date,
+  login or match history, balances, orders, or roll logs) on the external
+  channel and never bind the external handle or consume the account's cooldown
+  quota; require in-product possession proof (an in-product inbox one-time
+  code with per-account rate limits, or an authenticated in-app message) for
+  account-specific inquiries, or verified store receipts (Apple App Store /
+  Google Play order IDs) for lost-access recovery. Explain an unavailable
   remedy before asking for evidence that cannot change eligibility.
 - **Rule 4 — Response times or undocumented features.** State the published
   commitment and available path. If the fact is unknown, say what could not be

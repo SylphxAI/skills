@@ -164,3 +164,32 @@ messages:
      order or cumulative spend milestone, delivering 80%+ of value in
      non-inflationary progression materials or cosmetics within the product's
      marginal rebate cap.
+3. **Social-channel account ownership verification (`社交平台帳號持有人認證 — 只防私密外洩，絕不影響主動出擊搵用戶傾偈`):**
+   An Ambassador **always initiates proactive outreach (`主動出擊搵用戶傾偈`)** both
+   inside the product (in-app private chat, where the user is already
+   authenticated) and on external social channels (proactively chatting with
+   every Facebook Messenger `PSID` about gameplay, events, and daily life).
+   Because in-product numeric IDs and display names are publicly visible on
+   leaderboards, tables, and guild rosters, quoting an ID on an external social
+   channel does **not** by itself prove ownership of that specific account:
+   - **Unverified social caller (`UNVERIFIED` — proactive chat continues, private
+     account records stay gated):** Keep proactively chatting with the social user
+     by `PSID`, answering public gameplay/event questions, or delivering an
+     inbox-only care pack into the in-product inbox (which only the true
+     account holder can open inside the product), while **never** disclosing
+     account-specific private records on the external social channel (creation
+     date, match count, last login time, spend/order history, or gacha/roll
+     logs), **never** pushing another player's private in-game telemetry to an
+     unverified `PSID`, and **never** letting an unverified caller consume the
+     account's cooldown-gated care quota.
+   - **Verified in-product possession (`VERIFIED_INGAME`):** Before answering
+     account-specific questions on social chat or linking `PSID <-> accountId`
+     for cross-channel telemetry, verify possession by sending a short-lived
+     one-time code to the target's in-product inbox (rate-limited per target
+     account) and having the caller read it back, **or** matching a two-way
+     message sent from inside the logged-in account's in-app private chat.
+   - **Lost-access recovery (`HIGH_SECURITY_RECOVERY`):** If the caller cannot
+     log in, never disclose account details or rebind access from an ID alone;
+     require official store receipts (Apple App Store / Google Play order IDs)
+     via the authenticated recovery flow in
+     [customer-support](../customer-support/SKILL.md).
