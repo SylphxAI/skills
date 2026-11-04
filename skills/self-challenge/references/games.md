@@ -139,12 +139,47 @@ required controls need clear denial, cancellation and recovery states.
 Events, offers and gifts follow [growth.md](growth.md#campaigns-and-gifts).
 Reuse the owning shared campaign capability when one exists.
 
+### End-to-end belief and fandom
+
+Connect product design, content, scarcity, social homes, gifts and companionship
+to one player promise (`每一個動作、決定、產品設計同送禮都串連埋一齊`). Each
+decision should strengthen the player's reason to enjoy the product, trust the
+team and belong to its community. Use this chosen causal model as a hypothesis
+to test, rather than treating isolated engagement tactics as an outcome:
+
+1. **Earn confidence:** Deliver enjoyable play, rapid useful improvements and
+   kept promises, giving players visible evidence that continued support matters.
+2. **Give confidence a lasting expression:** Offer meaningful progression,
+   numbered scarce collectibles, personal identity and decorated social homes.
+   Continued content expands the next goal while preserving existing value;
+   remote on-demand delivery keeps the base client bounded.
+3. **Make expression social:** Let friends experience the host's home, table,
+   collection and reactions. Connect authentic recognition, collective milestones
+   and referral exclusives to voluntary participation and word of mouth.
+4. **Care for the relationship:** Warm companionship reads the person's mood,
+   resolves real trouble promptly and offers approved useful gifts when they
+   help. A gift complements the player's goals and sense of belonging; it never
+   replaces attention, requires another purchase or licenses a clawback.
+5. **Fund the next useful improvement:** Willing purchases and return play fund
+   further depth and care. Measure economy sources/sinks and cohort net
+   contribution so generosity and scarcity sustain the same player promise.
+
+Trace an actual player journey across these steps. Track trusted delivery,
+return play, social participation, qualified referrals, voluntary purchases and
+contribution together. If a tactic raises short-term spend while trust, return
+play or belonging falls, revise the broken link. Participation supplies feedback
+and social proof; factual claims still require evidence. The
+[ambassador method](../../ambassador/references/behavioral-operations-and-retention.md#fan-belonging-psychological-ownership-and-earned-trust)
+owns the relationship practices within this loop.
+
 ### Player joy and content expansion
 
-In an agent-native studio, additional content, tiers and progression depth have
-near-zero marginal authoring cost and can ship daily; losing a player is an
-irreversible loss of that relationship and its revenue. Verify and release the
-new content through the normal product path. When players progress quickly,
+Use agent-native tools and reusable assets to make additional content, tiers and
+progression depth fast and near-zero in marginal authoring effort, with daily
+delivery when verification and release capacity permit. Measure actual authoring,
+verification, serving and delivery costs; the premise changes when those inputs
+do. Losing a player is an irreversible loss of that relationship and its revenue.
+Verify and release new content through the normal product path. When players progress quickly,
 extend the progression runway upward (`加長成長嘅路`) with meaningful new goals,
 tiers and optional prestige. Preserve completed progress and existing item
 utility; never throttle a player's earned growth or claw back gains to stretch

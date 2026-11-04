@@ -16,9 +16,9 @@ owns progression expansion and additive remedies; its
 [scientific economy model](../../self-challenge/references/games.md#scientific-economy-balance)
 owns sources, sinks and telemetry.
 
-1. **Keep players and extend content.** Agent-native content and new progression
-   tiers have near-zero marginal authoring cost and can ship daily; a lost player
-   is an irreversible relationship loss. When growth is fast, extend the runway
+1. **Keep players and extend content.** Use the games standard's measured
+   agent-native authoring and delivery premise; a lost player is an irreversible
+   relationship loss. When growth is fast, extend the runway
    upward (`加長成長嘅路`) while preserving earned items, levels and guild progress.
 2. **Delight unhappy players and guilds.** Start with emotional care. When useful,
    proactively arrange generous bound gifts (`送禮令佢開心`) within pre-approved
@@ -105,7 +105,7 @@ not a demand for proof of legal loss or another purchase before helping.
 
 | Tier | Target segment | Eligibility and cooldown | Permitted grant composition | Boundary |
 | --- | --- | --- | --- | --- |
-| **Tier 1 — Starter / non-payer activation** | New or unpaid users | Verified account; product-defined activation budget | Useful starter allowance, bound trial items or cosmetics | Do not replace the paid offer with unconditional repeat grants; larger care uses the company application path |
+| **Tier 1 — Starter / non-payer activation** | New or unpaid users | Verified account; product-defined activation budget | Useful starter allowance, bound trial items or cosmetics | Fund repeat care from an approved retention budget and measure net contribution and sales displacement; larger care uses the company application path |
 | **Tier 2 — Player and guild care** | Unhappy players or guilds, including verified payers after frustration or service trouble | Product-defined retention budget and cooldown; no legalistic proof of loss | Generous bound protection, materials, boosters, retry credits or cosmetics matched to actual needs | Record the grant and its economy effect; preserve existing gains |
 | **Tier 3 — Order-backed milestone and VIP care** | Paying and high-value users | Verified paid order or cumulative-spend milestone; product-defined budget | Generous complementary progression assets and status cosmetics | Deliver promised value and record each grant idempotently against the order or milestone; expand progression when players advance quickly |
 
@@ -143,7 +143,7 @@ and offer composition from the product's measured cohorts and economy model.
 
 | ❌ Bad (inflationary currency dump) | ✅ Good (complementary non-currency assets that stimulate conversion) |
 | --- | --- |
-| *"Here are 500T free coins."* (Satisfies currency demand for free and kills future coin purchases.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
+| *"Here are 500T free coins."* (An uncalibrated currency grant; sales displacement and retention need measurement.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
 
 ### 3.4 Prospect theory and time-limited reservation (loss-aversion framing)
 
@@ -170,7 +170,7 @@ and offer composition from the product's measured cohorts and economy model.
 - **Operational rule:** A broken promotion or uninitialized event room destroys trust faster than any support script can repair it. Before any scheduled event, promotion, or config reload crosses its start boundary:
   1. Verify that all serving nodes (gateway, lobby/API, and execution/room workers) have loaded the active configuration in memory.
   2. Verify the complete user path end-to-end (`UI entry -> core execution loop -> settlement/grant -> inbox delivery`) against the live environment.
-  3. If a player reports a verified live-ops anomaly, repair the root cause across all serving nodes first, verify the fix, restore the affected player's attempts or state, and confirm the resolution with a non-currency appreciation grant.
+  3. For a verified live-ops anomaly, act immediately on the root cause across affected serving nodes, verify the fix and restore the affected player's attempts or state. Keep soothing the player while the work proceeds; offer an approved bound appreciation gift when useful, with attention-only care remaining a valid resolution.
 
 ## 4. Proactive Playmate, Confidant & VIP Host conversational architecture (`知己陪玩與銀座 Hostess 級情感陪伴`)
 
