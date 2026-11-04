@@ -115,12 +115,43 @@ window receipts. Run early diagnostics separately; they do not replace that
 window. Revalidate parser, topology, coverage and population-count controls. A changed
 boundary requires a comparable remeasurement, not an unqualified subtraction.
 
-Compare the same workload and client/hour mixture, or stratify and use a common
-mixture; disclose uncontrolled confounding and changed sample counts. Separate
-organic traffic from authorized synthetic fixtures. With no eligible demand,
+Compare the same workload and client/hour mixture, or use the fixed-mixture
+method below; disclose uncontrolled confounding and changed sample counts.
+Separate organic traffic from authorized synthetic fixtures. Finish fixtures
+before starting the acceptance window when they cannot be reliably excluded at
+the selected boundary. A revision's creation time and source ancestry do not
+prove when it began serving all selected traffic. With no eligible demand,
 validate logging with a positive control and report **no eligible demand**, not a
 latency pass. Missing logs remain a coverage failure, not zero demand. Synthetic
 probes can establish functionality and measured phase costs, not an organic tail.
+
+### Compare a fixed workload mixture
+
+Freeze the strata, reference weights and counts before inspecting follow-up
+results. Retain the baseline aggregates needed for the comparison before logs
+expire: total and per-stratum counts, status policy, query bytes and window.
+A later query over the same dates can contain fewer records as retention moves;
+use it as a diagnostic, never a silent replacement for the frozen population.
+If original stratum weights were not retained, name that evidence gap.
+
+Weight distributions, not percentiles. For stratum `s`, let `w_s` be its frozen
+reference share and `F_s(t)` the follow-up empirical cumulative distribution
+function (CDF). The standardized CDF is `F_mix(t) = sum_s w_s * F_s(t)`;
+obtain its percentile from that CDF, never `sum_s w_s * P95_s`. For a fixed
+latency threshold `t`, aggregate counts above it in each stratum and compute
+`E_mix(t) = sum_s w_s * (above_s(t) / n_s)`. This needs only safe aggregates,
+not exported request-level rows. Match the threshold inequality and quantile
+convention to the declared target.
+
+Retain unknown strata. When a positive-weight reference stratum has no follow-up
+observations, its distribution is unknown, not zero latency or zero exceedances.
+Report unsupported reference weight; any common-support renormalization is a
+separate diagnostic with the retained reference weights and their sum disclosed. For example, a stratum
+with reference weight `0.6` and `3/20` follow-up records above the target alone
+contributes `0.09` to the plug-in exceedance estimate. It does not support an
+empirical fixed-mixture P95 pass even if the unadjusted P95 fell. Sparse stratum
+samples and estimated weights remain uncertain: a plug-in estimate is neither a
+population confidence bound nor proof of a causal regression or unavoidable floor.
 
 Read representative plans and run production-shaped benchmarks to test a query
 hypothesis. Record cardinality, history, cache, concurrency and client plan mode
