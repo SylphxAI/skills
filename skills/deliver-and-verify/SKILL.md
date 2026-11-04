@@ -8,9 +8,10 @@ description: "Use when implementing or shipping a feature, bug fix, parser, expo
 Carry the authorized outcome through execution and verification at the user, partner, or operator surface. Use the existing grants and release path; preserve user data and authorized spending limits.
 
 When changing a game, app or SaaS user journey, remaking a product, or publishing
-assets or configuration that change the experience, read
+assets or configuration that change the experience, or comparing engines, read
 [parity.md](references/parity.md) before defining the acceptance cases. It owns
-the screen-and-feature comparison, live evidence and automated release checks.
+the screen-and-feature comparison, engine benchmarks, live evidence and automated
+release checks.
 
 ## Coordinate the work
 

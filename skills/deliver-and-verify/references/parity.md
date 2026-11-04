@@ -1,9 +1,10 @@
 # Product parity and live verification
 
 Trigger: changing a game, app or SaaS journey; rebuilding an existing product;
-or publishing assets, content or configuration that change what a person sees
-or receives. Apply this method to the affected journey. A remake covers every
-original screen and feature.
+publishing assets, content or configuration that change what a person sees
+or receives; or comparing engine capabilities and performance. Apply this method
+to the affected journey or declared benchmark. A remake covers every original
+screen and feature.
 
 The result people see and can use decides product quality. Establish it on the
 serving build, compare it with a real reference, and turn the acceptance cases
@@ -83,6 +84,50 @@ owner the sheet and the actual side-by-side captures when reporting replacement.
 An average score cannot cancel one regression. This is evidence delivery, not a
 new approval ceremony. New products compare their declared value loop with the
 leader without importing every unrelated feature into launch scope.
+
+## Compare engines on declared equal work
+
+A capability inventory and a benchmark answer different questions. Split compound
+capabilities into observable requirements; distinguish documented support, an
+isolated implementation and an exercised integrated path. An unmeasured cell is
+OPEN, not evidence of absence. Keep product and platform responsibilities outside
+the engine's verdict.
+
+1. Keep a primary-source ledger for each engine: exact release/revision, official
+   source URL, UTC read time from this session and the claim it supports. Read the
+   current version's documentation/code rather than carrying forward an older
+   release's limitations. Bind local builds and fixtures to immutable revisions.
+2. Before running, declare the equal-work set, acceptance predicate, sample count,
+   trial order and summary statistic. Match scene/content, resolution, quality,
+   lights and shadows, assets, backend, build flags and workload semantics. Record
+   compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
+   load and instrumentation. Name unavoidable differences and the comparison they
+   prevent; a software-GPU run does not establish physical-device performance.
+3. Counterbalance engine order across trials. Retain every raw sample, failed or
+   cancelled attempt, error and confound; report distributions and the exact
+   aggregation, not only a favorable median. If an unequal setting is discovered,
+   preserve the original set and predeclare an **additive** matched-work follow-up
+   before mutating fixtures or running it. For example, equalize shadow settings
+   explicitly. Never replace the original evidence or select reruns until green.
+4. Use one observable completion predicate across engines, and test it against
+   loading, blank and wrong-content controls. Separate engine-ready events, first
+   rendered content and usable input. A positive screenshot's completion time is
+   a conservative observation upper bound, not exact onset. A negative capture's
+   completion is not an onset lower bound: its image may have been acquired much
+   earlier. Use capture-start bounds only with justified monotonic readiness, or
+   validated image-acquisition timestamps. Record real capture/analysis gaps and
+   observer overhead; a polling sleep is not the measurement's time resolution.
+5. Separate raw export bytes, compressed export bytes, startup response-body bytes
+   and actual network transfer. Name the compression settings and request census;
+   a server's completed write does not prove client receipt or wire bytes. Retain
+   startup phases and cache policy ([performance.md](performance.md)); do not
+   silently substitute archive size or engine-ready time for the user journey.
+6. Report bounded conclusions with versions, workload, environment, uncertainty
+   and unresolved acceptance cases. A serial entity-component-system (ECS) loop
+   microbenchmark does not establish scheduler, rendering or whole-engine parity;
+   matching checksums alone do not establish correctness. Overlapping trial
+   ranges, a few successful samples or one scene do not establish equivalence,
+   statistical significance, category leadership or blanket engine parity.
 
 ## Capture evidence from the serving revision
 
