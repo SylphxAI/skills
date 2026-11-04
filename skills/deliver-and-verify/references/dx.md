@@ -89,6 +89,8 @@ A queue that builds one entry at a time makes total wait the sum of every entry 
 
 A branch name can be reused, so a run's branch and pull-request fields can point at an old merged PR while the run belongs to a live one. Before calling a run superseded or cancelling it, compare its head SHA with the current head of every open PR on that branch. Turning a PR into a draft does not take it out of the queue: read its queue entry and dequeue it directly.
 
+A merge queue builds each entry on the latest base itself, so a pull request that is only behind its base, with no conflict, needs no update. Merging the base into it restarts every finished check and sends it back through the CI queue. Update a branch only for a conflict or when it needs a file that is new on the base.
+
 ## How it is judged
 
 Measure publication, admission/runner wait, compilation and test spans separately. Record median/p95, failure/ejection rate and recovery time on a named population/window. Choose budgets from the workload and objective, and follow the repository's quarantine and rerun rules.
