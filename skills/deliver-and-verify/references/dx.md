@@ -38,6 +38,8 @@ Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` 
 
 Before removing a worktree or clearing a working folder, check unpushed commits and ignored files as well as `git status`; a clean status says nothing about ignored evidence. Size a preservation job before it starts, and copy only what is unique and small: reports, logs, captures and patches, never rebuildable trees.
 
+Start a long-running local server from an agent tool call so the call can return. In `cd dir && nohup server > log 2>&1 &`, the `&` backgrounds the whole list as a subshell that keeps the tool's output pipe open until the server exits, so the call never returns and the session hangs without an error. Redirect the outer job instead: `(cd dir && exec server) > log 2>&1 < /dev/null &`, or use the repository's process manager. If a session's last entry is a shell call that started a server, read that process's open file descriptors. A wrapper holding a pipe is the hang, and stopping only the wrapper releases the call while the server keeps running.
+
 Choose local or existing remote build capacity from measured feedback cost and authorized resource use. A local single-host tool can be built, checked and activated in its target environment when that is its supported release path.
 
 Choose configuration reload semantics from the service's availability/consistency need: dynamic reads, a snapshot or controlled restart can each fit a different setting. Make the update behavior explicit and test the affected path. Routine health is deterministic and cheap; an authorized model/provider correctness test is a separate operation with its own purpose and budget.
@@ -71,6 +73,12 @@ Read the current store controls and the product's release contract. Identify the
 
 Read what players can install, not the release's status. On either store, a release marked in progress, completed or ready to publish can still be in review or held by managed publishing. Read the release page and publishing overview, then confirm exposure from a second source such as the public listing or the install share by version. A version record's creation date says when the container was made: read its review submissions before saying whether it was submitted, rejected or approved.
 
+A fix build cut from current main can carry every change made since the version players run. When the live version is old, read what the new build changes in sign-in, purchase delivery and SDK pins, and check each against the live server before promoting it. A client that waits for a server grant the live service doesn't provide yet takes the money and grants nothing. Prove account continuity with an in-place upgrade from the exact published build. If the new line isn't ready, ship the urgent fix as a minimal patch on the published version's source instead.
+
+A store or TestFlight submission can package a binary built earlier than the workflow commit it runs on. Before anyone tests a build for a fix, or before saying a build lacks one, read the packaged binary's own build receipt: its base commit plus any pinned overlays (SDK versions, native bridges) layered on top. Neither the submit run's head nor the base commit's date alone tells you what's inside. Also list the server or hosted pieces the fix needs; a client fix can be in the binary and still fail because its web or server half isn't live. Put both in the build's test notes.
+
+A preview of an SDK or hosted screen drawn in a component gallery shows the page, not how the host app presents it. Full screen versus a card over the game is decided by the native presentation call, so a gallery preview can be approved while the shipped build opens something different. Before showing a screen as the design, capture it inside the real host app on the target build, or label it a mock and list the presentation as unverified.
+
 Before promising a date, read each title's managed-publishing setting, open policy declarations and compatibility restrictions. A live build below the store's target level can keep updating existing players while new players on recent OS versions can't install at all, so that gap is a growth defect even with no error reports.
 
 ## Merge queue
@@ -80,6 +88,8 @@ Use the normal queue with its required checks and existing incident-priority rul
 A queue that builds one entry at a time makes total wait the sum of every entry ahead, so read its parallel-build setting before forecasting a release. A required job can also be lost: the scheduler treats it as finished while the host still shows it queued. Read one exact job's assignment history before waiting on it further; a job that never ran can be cancelled and rerun without being a retried test.
 
 A branch name can be reused, so a run's branch and pull-request fields can point at an old merged PR while the run belongs to a live one. Before calling a run superseded or cancelling it, compare its head SHA with the current head of every open PR on that branch. Turning a PR into a draft does not take it out of the queue: read its queue entry and dequeue it directly.
+
+A merge queue builds each entry on the latest base itself, so a pull request that is only behind its base, with no conflict, needs no update. Merging the base into it restarts every finished check and sends it back through the CI queue. Update a branch only for a conflict or when it needs a file that is new on the base.
 
 ## How it is judged
 
