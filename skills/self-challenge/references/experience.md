@@ -88,12 +88,14 @@ Brand recognition comes from the product itself, so the mark sits on the home sc
 
 ## Game experience
 
-- Until a new player finishes the first game or task, show only the primary
-  action, profile, currency and shop. Introduce events, social feeds and
-  promotions afterwards, so the first session teaches the core loop.
-- Focus each tutorial step with a strong mask, a pulsing target and a large
-  pointer. Localize every control, including tutorial prompts and navigation;
-  honor the reduced-motion preference for the pulse.
+- Apply [first value](product.md#practices) to games: the first session
+  reaches the core loop as directly as the game allows. Hold back a surface
+  (events, social feeds, promotions) only while it would pull a new player away
+  from that loop; keep it when it helps them reach it.
+- Guidance earns its place like any other step. Where a step needs it, make the
+  target unmistakable and the prompt short, and let the player act on the real
+  control. Localize every control, including tutorial prompts and navigation,
+  and honor the reduced-motion preference for any attention motion.
 - Measure the first-session funnel daily with one frozen, versioned query.
   Fix the cohort-day definition, the first core action within 24 hours and
   test-device exclusions, so a query change cannot masquerade as improvement.
@@ -101,8 +103,9 @@ Brand recognition comes from the product itself, so the mark sits on the home sc
   test devices and test egress IPs from player reports, including the funnel.
 - Ship look-only content on a steady cadence. Players read visible change as a
   live, cared-for game; keep that signal independent of changes to game balance.
-- Review the play surface against a real-table or category-leader reference
-  before judging the HUD or polish. Conserve pieces across zones, put each hand
+- In every review round, review the whole play surface against a real-table or
+  category-leader reference before judging the HUD or polish
+  ([parity rounds](../../deliver-and-verify/references/parity.md#keep-a-screen-and-feature-parity-sheet)). Conserve pieces across zones, put each hand
   and discard area in front of its seat, use one coherent scale and leave
   nothing floating. Adopt the leader's readable screen layout rather than a
   literal model of the table.
