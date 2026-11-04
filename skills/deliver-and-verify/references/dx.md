@@ -73,6 +73,8 @@ Read the current store controls and the product's release contract. Identify the
 
 Read what players can install, not the release's status. On either store, a release marked in progress, completed or ready to publish can still be in review or held by managed publishing. Read the release page and publishing overview, then confirm exposure from a second source such as the public listing or the install share by version. A version record's creation date says when the container was made: read its review submissions before saying whether it was submitted, rejected or approved.
 
+A fix build cut from current main can carry every change made since the version players run. When the live version is old, read what the new build changes in sign-in, purchase delivery and SDK pins, and check each against the live server before promoting it. A client that waits for a server grant the live service doesn't provide yet takes the money and grants nothing. Prove account continuity with an in-place upgrade from the exact published build. If the new line isn't ready, ship the urgent fix as a minimal patch on the published version's source instead.
+
 Before promising a date, read each title's managed-publishing setting, open policy declarations and compatibility restrictions. A live build below the store's target level can keep updating existing players while new players on recent OS versions can't install at all, so that gap is a growth defect even with no error reports.
 
 ## Merge queue
