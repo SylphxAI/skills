@@ -82,7 +82,12 @@ A remake replaces its original only when every original screen and feature is
 EQUAL or BETTER: no WORSE row remains, and every OPEN fact is resolved. Show the
 owner the sheet and the actual side-by-side captures when reporting replacement.
 An average score cannot cancel one regression. This is evidence delivery, not a
-new approval ceremony. New products compare their declared value loop with the
+new approval ceremony.
+
+Every review round grades the whole sheet again from fresh captures, starting
+with the core surface (for a game, the play surface) before polish. Checking only
+the previous round's defect list misses what that round never saw, and misses
+anything a fix broke. New products compare their declared value loop with the
 leader without importing every unrelated feature into launch scope.
 
 ## Compare engines on declared equal work
