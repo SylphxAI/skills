@@ -193,3 +193,14 @@ messages:
      require official store receipts (Apple App Store / Google Play order IDs)
      via the authenticated recovery flow in
      [customer-support](../customer-support/SKILL.md).
+4. **Stateless direct-request dispatch over stateful UI clicking (`直接組裝帶 recipient_id / thread_id 嘅請求發送，嚴禁喺多對話 UI 靠點擊換人發訊`):**
+   From first principles, a web inbox UI is merely a stateful view over an
+   underlying request. Because you already know the target parameters (`page_id`,
+   `recipient_id` / `PSID`, `thread_id`, and message body) from reading the API,
+   **always** send outbound replies through a stateless tool or API request that
+   binds `recipient_id` / `thread_id` directly in the request payload (e.g.,
+   Graph API `POST /{page_id}/messages` with `recipient.id = PSID` and
+   automatic retry queueing on transient rate limits such as `1893063`). **Never**
+   click thread-list items in a multi-conversation web UI to switch recipients and
+   type into a shared input box—where a missed click or focus lag sends user B's
+   private message into user A's conversation window.
