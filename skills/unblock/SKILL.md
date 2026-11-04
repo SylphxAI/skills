@@ -3,70 +3,37 @@ name: unblock
 description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, or a queue/review stops progressing. Use prove-it and self-challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
-# Unblock
+# Unblock Stalled or Failing Work
 
-When progress has stalled or a promised result fails, inspect one live failing object and take the most useful recovery step. Continue independent work during normal asynchronous waits. Record UTC read times and use [prove-it](../prove-it/SKILL.md) for evidence.
+Use this skill to restore a task, CI run, merge queue entry, or deployment that has actually stalled or failed.
 
-## Inspect the failing boundary
+## 1. Verify It Is Actually Blocked
 
-Read the exact error, status and relevant code/configuration. Check the environment and instrument before blaming application logic or a model: memory ceilings/events, disk, sandbox limits and main-branch flakes can explain the failure.
+Before intervening, read the live state of the job, queue, or target resource:
+1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
+2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
+3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../self-challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
 
-If a shipped fix still fails, read the serving revision, relevant migration/config/cache state, and the request's server-side result. For a held CI run, inspect the holder's jobs and live activity with the workflow's concurrency semantics. Cancel a genuinely stale/superseded holder through supported controls; preserve healthy progressing work.
+## 2. Diagnose by Failure Class
 
-For agent latency, apply the shared [model/runtime boundary](../self-challenge/SKILL.md) and measure the span that grew. Tool counts alone do not justify reducing reasoning/tool access. Keep user cancellation and actual authorized limits effective.
+Read the exact failing job log, exit status, and resource metrics before choosing the action:
 
-## Choose a supported recovery
+| Failure class | Observable signal | Immediate restoration path |
+| --- | --- | --- |
+| **1. Real code, test, or migration defect** | Deterministic compilation, test, lint, or schema failure on the candidate commit | Fix the root cause on the branch (or quarantine a proven pre-existing flaky test with its tracking issue per `../deliver-and-verify/references/dx.md#continuous-integration`). Never retry a failing test hoping for a pass. |
+| **2. Lost runner or infrastructure drop** | Runner lost communication, node OOM/disk full, or aggregate gate timed out with zero failed child checks | Inspect the runner/node health; free disk or restart the wedged daemon if needed, and rerun **only** the lost/incomplete job once for that commit SHA (`../deliver-and-verify/references/dx.md#merge-queue`). |
+| **3. Merge queue or bottleneck deadlock** | A fix for the broken queue/CI check is itself stuck behind the broken check or queue | Hold unrelated entries, prioritize the bottleneck's own repair PR through the queue, or apply the supported live operational control first and merge the durable source change right after. |
+| **4. Authority, credential, or session challenge** | Missing scope/grant, expired token, or interactive login/CAPTCHA challenge | Reuse existing delegated credentials from the authorized secret store (including in-process secret-reference resolution and automated TOTP), preserve persistent browser profiles (`--user-data-dir` / cookies) so authenticated sessions are never needlessly wiped, and trigger an interactive human browser takeover only when an anti-bot challenge or hardware approval genuinely requires human input. |
+| **5. Quota, rate limit, or capacity ceiling** | Provider HTTP `429`, exhausted seat/API quota, or saturated build lock | Pace concurrency to the measured sustainable rate, switch to an approved fallback capacity pool within existing spend limits, or surface the exact measured capacity gap to the budget owner. |
 
-- For a transient condition, use bounded provider-supported backoff when repeating is safe, and advance independent work. For a provider write returning HTTP 500/502, read the remote state and provider status page before blaming local tools. An unchanged remote state means the failed write does not consume a one-attempt recovery allowance: retry about every five minutes unless the provider specifies another interval, reading state first and stopping once the change takes. A timed-out write has an unknown effect and may arrive late; reconcile it before resending, following the [external-mutation discipline](../deliver-and-verify/SKILL.md#execute-and-verify).
-- For a refusing gate, read its witnessed failure, authority and shared-resource effect. Keep effective checks for real invariants; repair a miscalibrated timeout/cap at its owning configuration from measured use plus margin. Judge the control by its function rather than a flag's spelling, without adding a generic bypass.
-- Use existing delegated access first. Ask for a missing grant, ambiguous decision or new unauthorized spend only when needed; do not repeat an approval already given. Before destructive work, identify authoritative data and preserve unique or uncertain data/recovery sources. Proven-unused resources without user/personal data need no manufactured backup.
-- Prefer a complete supported repair or existing supported route. A reversible operational workaround can restore progress within existing grants; record the durable fix and removal condition and remove the workaround when replaced. It does not grant new spend or data-destructive authority.
+## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
-### Accepted queue work without progress
+When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
+1. **Apply the smallest supported reversible control now:** Use the product's API, feature flag, routing weight, or GitOps sync to restore service immediately while preserving all user data and ledger integrity.
+2. **Drive the durable fix to completion:** Open and merge the source repair in the owning repository, verify it live, and remove the temporary workaround in the same delivery cycle.
 
-When accepted external queue work shows no progress, inspect its timeline,
-assignment and shared queue (the full population when queryable). Distinguish a
-stall from healthy work or a documented waiting cycle; elapsed time alone does
-not establish a failure or a provider deadline.
+## 4. Escalate or Switch Method After 10 Minutes Without New Evidence
 
-- Compare the delay cost of preserving acceptance and position with losing
-  acceptance/order, failed re-admission and repeated work. Acceptance is valuable,
-  but preserving it indefinitely is not free.
-- If the comparison favors intervention, use one bounded, documented lifecycle
-  attempt, such as ordinary removal and rejoining at the unchanged reviewed
-  revision. A supported lifecycle is not a diagnosis-specific repair guarantee;
-  keep required checks and guards effective.
-- Preserve the prior identity and evidence. Follow the
-  [external-mutation discipline](../deliver-and-verify/SKILL.md#execute-and-verify):
-  read the live state/timeline before each write, verify each resulting state,
-  and reconcile an in-flight or unknown effect instead of resending it.
-- Verify downstream progress. New progress does not prove the internal cause.
-  If the attempt fails, change the method or seek new evidence instead of
-  repeating resets or identical diagnostics.
-
-❌ **Bad:** Preserve an unassigned entry indefinitely because it was accepted.
-✅ **Good:** Price the waiting and re-admission costs, try one supported lifecycle
-when justified, and verify the result without claiming a root cause.
-
-### An agent that reports working but has stopped
-
-`working` only says the agent's process is alive. Read the last line of its transcript and that file's time. A last line that is an unanswered tool call, older than the command could need, means one call has hung, commonly a shell wrapper that outlived a background server it started. Terminate that wrapper only, leave the server and the session alone, and confirm the transcript moves.
-
-Run this check from something that does not need its owner to be idle. A check that fires only when its owner is free misses hangs during the owner's busiest hours.
-
-❌ **Bad:** Trust `working` for seven hours because the agent's schedules look healthy.
-✅ **Good:** Read the transcript's last line and time, release the one wrapper, and confirm the agent resumed.
-
-### A wait names who ends it
-
-Before leaving a worker waiting on a signal (capacity cleared, a release published, a decision), name who sends it and when. Otherwise give the worker a read it can run itself at a set time. A wait with no sender never ends.
-
-### Human steps through a tool
-
-Before sending a person a link or control page, open it yourself and confirm it connects and that its input works on a harmless control, and bring the target screen back fresh. A person's time on a dead link costs more than the check. Refuse to issue a link the platform can't serve, and fix that gap in the platform.
-
-## Place the durable fix
-
-An owned engine, platform or shared SDK gets the generic repair upstream; its downstream products consume the published capability without privileged exceptions or business rules in the shared layer. For an external dependency, first check supported versions/configuration/extensions. If needed, isolate a pinned patch or boundary adapter, track its removal and contribute upstream where practical.
-
-Verify the repaired behavior at its actual surface through [deliver-and-verify](../deliver-and-verify/SKILL.md). Search the affected scope for the same failure class; repair it or hand separately owned instances to their writer. Prefer proportionate prevention through existing defaults, types or checks.
+If 10 minutes of investigation produce no new disconfirming evidence:
+- Change the diagnostic angle or launch parallel read-only checks across the competing hypotheses (`../swarm-fuse/SKILL.md`).
+- If an external dependency is genuinely unavailable and no workaround exists within current authority, record the exact failing endpoint, timestamp, and error receipt, and hand off or escalate with that concrete evidence.
