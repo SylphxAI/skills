@@ -215,8 +215,8 @@ through [mechanics](mechanics.md#hard-lines).
 | Payer conversion targets | Benchmarks for share of players who pay | G |
 | Triggered offers | Offer on level-up, low currency, return or a stuck moment | G A |
 | Personalised offers and prices | Price and contents by segment | G A W |
-| Dynamic offer tiers and progression pacing | Match visible tiers to past purchase brackets; limit high-tier bundles to cosmetics, privileges and progression materials rather than raw base currency; cap progression value to preserve top-tier time-to-max | G A |
-| Loss-state recovery offer | Time-bounded bundle after active-session resources run out; size it to restore session continuity without inflating the core economy | G |
+| Dynamic offer tiers and progression pacing | Match useful tiers to observed demand; size currency, materials and content depth together using the [game economy model](../../game-economy/references/economy-model.md), preserving existing value | G A |
+| Loss-state recovery offer | Bundle after active-session resources run out; size it for useful session continuity under the [game economy method](../../game-economy/SKILL.md), with a genuine time limit if offered | G |
 | Milestone offers | Offer when a level or feature unlocks | G A |
 | Daily deals and free daily item | A rotating discount plus a free item | G W |
 | Flash and holiday sales | Real time-limited discounts | all |
