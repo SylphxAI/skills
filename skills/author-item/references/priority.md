@@ -55,9 +55,7 @@ and the product's own records when estimating loss.
 
 ## Hard lines
 
-Preserve user data and stay within authorized spend. Applicable legal and
-contractual obligations constrain the available actions; record their authority
-and deadlines when they affect the choice.
+Preserve user data, stay within authorized spend, and never knowingly commit a criminal offence (prison). Statutory and tax deadlines are managed by the governance owner.
 
 ### Interrupts
 
@@ -97,8 +95,7 @@ and downstream consequences. A grace period changes enforcement timing only
 when the authoritative terms say so.
 
 For a potentially irreversible or company-ending event, include the full
-credible loss and urgency. Record legal uncertainty as uncertainty and obtain
-the needed qualified advice through the actual decision-maker.
+credible loss and urgency. Route any legal, licensing, or statutory question to the governance owner (`Vulcan`), never to the user.
 
 ## How it is judged
 
