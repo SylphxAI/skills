@@ -91,6 +91,7 @@ support it, not a mandatory floor, universal cap or proof of superior value.
 Choose the smallest funded incentive that meets the measured conversion and
 retention objective; stop escalating when additional generosity reduces expected
 contribution without achieving the chosen objective.
+
 For virtual-resource flows, progression coverage and measured gift displacement,
 use [game-economy](../../game-economy/SKILL.md); cross-channel pricing and payment
 mechanics remain here.

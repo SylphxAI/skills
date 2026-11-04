@@ -12,7 +12,7 @@ contribution through player happiness, retention and willingness to pay. Formal
 billing remedies and official support pacing belong to
 [customer-support](../../customer-support/SKILL.md). The
 [games standard](../../self-challenge/references/games.md#player-joy-and-content-expansion)
-owns progression expansion and additive remedies; its
+owns progression expansion and additive remedies. The
 [game-economy method](../../game-economy/SKILL.md) owns resource flows, pack value,
 progression coverage, gift budgets and sales displacement. Use its
 [offer and experiment reference](../../game-economy/references/offers-gifts-and-experiments.md)
