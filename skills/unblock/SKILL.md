@@ -48,6 +48,19 @@ not establish a failure or a provider deadline.
 ✅ **Good:** Price the waiting and re-admission costs, try one supported lifecycle
 when justified, and verify the result without claiming a root cause.
 
+### An agent that reports working but has stopped
+
+`working` only says the agent's process is alive. Read the last line of its transcript and that file's time. A last line that is an unanswered tool call, older than the command could need, means one call has hung, commonly a shell wrapper that outlived a background server it started. Terminate that wrapper only, leave the server and the session alone, and confirm the transcript moves.
+
+Run this check from something that does not need its owner to be idle. A check that fires only when its owner is free misses hangs during the owner's busiest hours.
+
+❌ **Bad:** Trust `working` for seven hours because the agent's schedules look healthy.
+✅ **Good:** Read the transcript's last line and time, release the one wrapper, and confirm the agent resumed.
+
+### A wait names who ends it
+
+Before leaving a worker waiting on a signal (capacity cleared, a release published, a decision), name who sends it and when. Otherwise give the worker a read it can run itself at a set time. A wait with no sender never ends.
+
 ### Human steps through a tool
 
 Before sending a person a link or control page, open it yourself and confirm it connects and that its input works on a harmless control, and bring the target screen back fresh. A person's time on a dead link costs more than the check. Refuse to issue a link the platform can't serve, and fix that gap in the platform.
