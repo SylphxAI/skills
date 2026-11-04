@@ -139,6 +139,43 @@ required controls need clear denial, cancellation and recovery states.
 Events, offers and gifts follow [growth.md](growth.md#campaigns-and-gifts).
 Reuse the owning shared campaign capability when one exists.
 
+### High-value web top-up and direct bank transfer
+
+Pair useful mass-market entry packs with a first-class web top-up portal and
+direct bank or instant-transfer payments, including Hong Kong's Faster Payment
+System (FPS) and wire where supported
+(`平台大額充值與銀行轉賬，大小通吃`). Support high-denomination single orders,
+such as HK$10,000 to HK$100,000+, and expand the supported range with verified
+demand and payment-provider capacity rather than imposing an arbitrary VIP
+ceiling. Players can have seven-figure or larger discretionary budgets; assess
+actual demand without treating a small pack menu as their willingness to pay.
+A largest available pack of HK$788 makes a HK$100,000 purchase take 127
+checkouts. Measure checkout repetitions, abandonment and unmet order sizes.
+
+Read the current price range, region and payment-method rules before choosing
+the channel. HK$788 and US$99.99 are illustrative pack prices, not universal
+App Store or Google Play transaction caps. Apple's
+[IAP pricing documentation](https://developer.apple.com/help/app-store-connect/manage-in-app-purchases/set-a-price-for-an-in-app-purchase/)
+offers 800 default price points and 100 higher points on request, up to
+US$10,000. Its [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+3.1.1(a) and 3.1.3(b) distinguish regional external-link permissions from
+multiplatform access to web purchases. [Google Play's Payments policy](https://support.google.com/googleplay/android-developer/answer/9858738?hl=en)
+also makes alternative billing and external links depend on regional program
+eligibility. These primary sources were read on 2026-11-04; verify the current
+terms for the actual distribution before release.
+
+Use the shared platform payment and entitlement APIs for web and bank orders.
+Record the account, title, amount, currency, payment reference and promised
+voucher or game-currency grant before payment. Fulfill automatically and
+immediately after authoritative payment verification or bank settlement, with
+one durable grant per order; a submitted transfer or screenshot alone is not
+settlement. Show pending status while a transfer clears and reconcile delayed
+receipts without losing or duplicating paid value. Apply the
+[durable order and ledger method](commercial.md#always-take-the-money).
+Verify a high-value order, delayed settlement, duplicate notification and
+grant-path recovery end to end using the provider's test facilities, without
+moving real money.
+
 ### End-to-end belief and fandom
 
 Connect product design, content, scarcity, social homes, gifts and companionship
