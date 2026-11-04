@@ -21,12 +21,13 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 3. **Role-Neutral Triggers & Colocated Reference Standards (Progressive Disclosure)**:
    - Skills trigger on the **observable task moment**, never on a static persona. Every deep domain standard lives in `skills/<name>/references/*.md` beside the skill that uses it, so agents load only the exact reference needed for the task at hand.
 
-## Skills Catalog (12 Skills)
+## Skills Catalog (13 Skills)
 
 | Skill | Trigger Moment | Colocated Reference Standards (`references/`) |
 | --- | --- | --- |
 | [`author-item`](skills/author-item/SKILL.md) | Writing or revising a work outcome item or ticket before execution (Stage 1 ATDD, CD3 priority) | `work.md`, `priority.md`, `quality-signals.md` |
 | [`self-challenge`](skills/self-challenge/SKILL.md) | Designing/comparing architectures or tech stacks, stress-testing plans/contracts/budgets/risks, questioning over-engineering, or checking root causes | `architecture.md`, `stack.md`, `commercial.md`, `growth.md`, `mechanics.md`, `mechanics-catalogue.md`, `games.md`, `product.md`, `experience.md`, `feedback.md`, `risk.md`, `conduct.md`, `agent-voice.md` |
+| [`game-economy`](skills/game-economy/SKILL.md) | Choosing pack contents or prices, changing caps or growth lines, budgeting gifts, checking inflation, or diagnosing falling game sales | `economy-model.md`, `offers-gifts-and-experiments.md`, `sources.md` |
 | [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing, finishing, merging, deploying, and verifying a change end-to-end (Limit Work in Progress, Release Scope Management, Upstream-First, Complete Replacement) | `parity.md`, `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
 | [`prove-it`](skills/prove-it/SKILL.md) | Reviewing a PR/diff, auditing contract/SLA evidence, or verifying a live status/readiness claim against primary sources | *(Uses Stage 1 acceptance criteria and live system queries)* |
 | [`patrol`](skills/patrol/SKILL.md) | Checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction | *(Reads and reports; the work's owner changes it)* |
