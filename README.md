@@ -10,7 +10,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
      - **How We Think, Decide & Design (`self-challenge`)**: Strong Inference & Falsification (Platt 1964; Popper 1959), Analysis of Competing Hypotheses (Heuer 1999), Theory of Constraints & Queueing Physics (Goldratt 1984; Little 1961; Kingman 1961), Value-Based Market Pricing & Gross-Margin Maximization (`commercial.md` — Nagle & Müller; Ramanujam & Tacke 2016; Skok SaaS Metrics), Freemium Power-Law IAP Economics (`games.md` — Seufert 2014), Simple Concept / Deep Implementation, 10x/100x Scale, Scale-to-Zero (`architecture.md`), Opinionated Stack Selection (`stack.md`), and Quantitative `5×5` Risk Scoring (`risk.md` — ISO 31000; IEC 31010; FAIR).
      - **How We Deliberate (`swarm-fuse`)**: Dynamic Group Facilitation (`Topic × Participant Context`), Independent Delphi + Red-Team Challenge Angles, and Single-Writer Coordination.
      - **How We Prioritize, Build, Unblock & Ship (`author-item`, `deliver-and-verify`, `prove-it`, `unblock`, `refactor`)**: Cost of Delay Divided by Duration (`priority.md` — Reinertsen 2009 CD3; Graham 2015 Default Alive/Dead), Three-Stage Acceptance Test-Driven Development (ATDD), Work-in-progress limits and work item age, Release Scope Management, Upstream Contribution and Separation of Concerns (first-party client, zero backdoors), Complete Replacement + Systemic Corrective Action + Mistake-Proofing, and Primary-Source Verification.
-     - **How We Communicate & Serve (`clear-writing`, `customer-support`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, and Deterministic Support Case-State Machines.
+     - **How We Communicate & Serve (`clear-writing`, `customer-support`, `ambassador`)**: `Audience × Purpose × Channel` calibration, Concrete `❌ Bad vs ✅ Good` side-by-side examples, Deterministic Support Case-State Machines, and In-Character Ambassador (`大使`) Companionship with Adversarial Turing Self-Testing.
    - **Organization State Lives Outside Skills**: Company-specific state (current headcount/size, active project portfolio, live server inventory, or specific rows in an accepted-risk register) belongs in the workspace repository or **Organization Knowledge**—never inside a skill.
 
 2. **Three-Stage Acceptance Test-Driven Development (ATDD) for Every Outcome**:
@@ -21,7 +21,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 3. **Role-Neutral Triggers & Colocated Reference Standards (Progressive Disclosure)**:
    - Skills trigger on the **observable task moment**, never on a static persona. Every deep domain standard lives in `skills/<name>/references/*.md` beside the skill that uses it, so agents load only the exact reference needed for the task at hand.
 
-## Skills Catalog (11 Skills)
+## Skills Catalog (12 Skills)
 
 | Skill | Trigger Moment | Colocated Reference Standards (`references/`) |
 | --- | --- | --- |
@@ -35,7 +35,8 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | [`refactor`](skills/refactor/SKILL.md) | Splitting oversized files/modules/test suites, deleting dead code/flags, consolidating duplicate logic into one SSOT, or restructuring into vertical slices | `health.md` |
 | [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md`, `terminology.md` |
 | [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
-| [`customer-support`](skills/customer-support/SKILL.md) | Replying to incoming customer or user support messages with deterministic state and priority rules | `product-facts.md` |
+| [`customer-support`](skills/customer-support/SKILL.md) | Handling official customer support tickets, billing/refund remedies, account recovery, privacy requests, and statutory disclosures | `product-facts.md` |
+| [`ambassador`](skills/ambassador/SKILL.md) | Engaging users or players as an in-character brand or game ambassador (`大使`, such as `小亨`), playmate companion, or VIP relationship host | `behavioral-operations-and-retention.md` |
 
 ## Installation Across Agent Harnesses
 
