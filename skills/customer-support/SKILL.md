@@ -157,7 +157,11 @@ Evaluate the applicable rules and compose their relevant parts.
   without assuming another user's historical equipment,
   match details or behavior. Keep an unverified claim unresolved rather than
   declaring the system correct or defective. Separate a confirmed defect,
-  a verified repair and an applied remedy. Third-party private records remain
+  a verified repair and an applied remedy. Serve customers from their perspective
+  rather than acting as a courtroom referee adjudicating who is right or wrong:
+  preserve public fairness while soothing every affected customer with authorized
+  remedies so no paying customer feels cheated or leaves unhappy. Third-party
+  private records remain
   confidential. Ask for evidence only when the authorized verification path
   needs it, and promise an investigation only after it is accepted.
 - **Rule 11 — Case record.** Log reported facts, verified identifiers and
