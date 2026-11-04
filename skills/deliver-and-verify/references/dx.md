@@ -77,6 +77,8 @@ A fix build cut from current main can carry every change made since the version 
 
 A store or TestFlight submission can package a binary built earlier than the workflow commit it runs on. Before anyone tests a build for a fix, or before saying a build lacks one, read the packaged binary's own build receipt: its base commit plus any pinned overlays (SDK versions, native bridges) layered on top. Neither the submit run's head nor the base commit's date alone tells you what's inside. Also list the server or hosted pieces the fix needs; a client fix can be in the binary and still fail because its web or server half isn't live. Put both in the build's test notes.
 
+A preview of an SDK or hosted screen drawn in a component gallery shows the page, not how the host app presents it. Full screen versus a card over the game is decided by the native presentation call, so a gallery preview can be approved while the shipped build opens something different. Before showing a screen as the design, capture it inside the real host app on the target build, or label it a mock and list the presentation as unverified.
+
 Before promising a date, read each title's managed-publishing setting, open policy declarations and compatibility restrictions. A live build below the store's target level can keep updating existing players while new players on recent OS versions can't install at all, so that gap is a growth defect even with no error reports.
 
 ## Merge queue
