@@ -50,3 +50,4 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.
 - [dx.md](references/dx.md): APIs, packages, feedback loops and releases.
+- [private-device-preview.md](references/private-device-preview.md): art, text or layout edits in a private real-client session without publishing content or a store build; cold/warm timing and exclusive device handoff.
