@@ -1,6 +1,39 @@
 {
   "version": 1,
   "skills": {
+    "ambassador": {
+      "positive": [
+        {
+          "prompt": "Reply in character as the game ambassador to a player joking that they want 1,000 upgrade chests.",
+          "clause": "engaging users or players as an in-character brand or game ambassador"
+        },
+        {
+          "prompt": "Comfort a frustrated VIP player after a tough loss streak and apply to the company for a care pack.",
+          "clause": "comforting frustrated users, running proactive retention outreach, applying to the company for pre-approved or escalated rewards"
+        },
+        {
+          "prompt": "Audit this companion chat reply against the Adversarial Turing self-test so it sounds like a real friend on WhatsApp.",
+          "clause": "running an Adversarial Turing self-test on conversational replies"
+        }
+      ],
+      "negative": [
+        {
+          "prompt": "Handle an official support ticket for a missing invoice, privacy deletion request, or statutory AI disclosure.",
+          "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+          "route_to": "customer-support"
+        },
+        {
+          "prompt": "File a structured bug outcome ticket for the broken event room.",
+          "clause": "author-item to file a bug outcome",
+          "route_to": "author-item"
+        },
+        {
+          "prompt": "Rewrite this public press release for clarity and natural tone.",
+          "clause": "clear-writing for general copy.",
+          "route_to": "clear-writing"
+        }
+      ]
+    },
     "author-item": {
       "positive": [
         {
@@ -112,8 +145,8 @@
           "clause": "missing purchases, refunds, prices, invoices"
         },
         {
-          "prompt": "Handle this VIP retention complaint and determine the authorized goodwill grant.",
-          "clause": "retention care, VIP account management, goodwill grant"
+          "prompt": "A user cannot sign in and requests account recovery on the official support channel.",
+          "clause": "sign-in or recovery failures"
         },
         {
           "prompt": "A customer asks whether the support responder is an AI and requests a human.",
@@ -122,8 +155,13 @@
       ],
       "negative": [
         {
+          "prompt": "Chat with a player in character as the game ambassador to comfort them after a loss streak.",
+          "clause": "Use ambassador for in-character ambassador or playmate companionship",
+          "route_to": "ambassador"
+        },
+        {
           "prompt": "File a bug outcome for the reproducible invoice rounding defect.",
-          "clause": "Use author-item to file a bug outcome",
+          "clause": "author-item to file a bug outcome",
           "route_to": "author-item"
         },
         {
