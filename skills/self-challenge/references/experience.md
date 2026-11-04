@@ -137,6 +137,9 @@ only when it is. Offer retry when the request can safely be repeated; otherwise
 show its existing receipt and status. Send diagnostic detail to observability
 and alert on symptoms users experience
 ([Google SRE](https://sre.google/sre-book/monitoring-distributed-systems/)).
+A status or diagnostic check never sits in front of the user's own work: it
+runs when its view opens or when the app is idle, under its own deadline, so a
+slow check cannot delay a request the user started.
 
 Disclose the price, recurring terms, purchased entitlement and material limits
 needed for the customer's decision. Explain data handling and consequential
