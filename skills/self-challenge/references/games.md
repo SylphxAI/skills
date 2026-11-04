@@ -164,6 +164,16 @@ also makes alternative billing and external links depend on regional program
 eligibility. These primary sources were read on 2026-11-04; verify the current
 terms for the actual distribution before release.
 
+Anchor the offer to that live store baseline and the player's useful value and
+checkout effort. A single large payment plus a moderate bonus, for example up
+to 10–12% where measured economics support it, can be attractive without
+matching an old manual rebate. Apply the
+[web top-up value and bonus budget method](commercial.md#web-top-up-value-and-bonus-budgets)
+to all stacked bonuses and gifts; measure currency issuance, progression,
+future purchase displacement and cohort contribution. Add VIP recognition or
+exclusive collectibles without more spendable currency when extra appreciation
+helps, accounting for their costs and preserving promised scarcity.
+
 Use the shared platform payment and entitlement APIs for web and bank orders.
 Record the account, title, amount, currency, payment reference and promised
 voucher or game-currency grant before payment. Fulfill automatically and

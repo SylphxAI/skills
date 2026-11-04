@@ -68,6 +68,37 @@ to a live free tier by measured user impact, retention, economics and migration
 cost. An explicit permanent-free promise belongs in that product's offer record;
 a pre-launch product changes directly.
 
+## Web top-up value and bonus budgets
+
+Anchor web and bank-transfer value to the live App Store or Google Play offer:
+price, useful paid value, included bonus and checkout effort
+(`以 App Store / Google Play 為基準，唔靠無限派福利競爭`). Record those inputs;
+a zero-bonus HK$788 pack is an example to verify, not a universal storefront
+rule. A single HK$10,000–HK$100,000+ payment removes repeated checkouts for a
+high-value buyer. That convenience plus a moderate tier bonus can be attractive
+without matching a historically over-generous manual rebate. Include other
+currently available alternatives in the comparison, but never treat historical
+over-discounting as the target for future offers. Honor already agreed terms.
+
+Size the total benefit from first principles using the
+[cohort contribution model](#pricing-mechanism-design-and-unit-economics).
+Count base value, tier bonuses, campaigns, manual gifts and other stackable
+grants together. Extra currency can displace later paid purchases and shorten
+progression; measure those effects, payment costs, retention and contribution
+instead of treating virtual currency as free because its issuance costs little.
+A bonus up to 10–12% is an illustrative moderate offer where those economics
+support it, not a mandatory floor, universal cap or proof of superior value.
+Choose the smallest funded incentive that meets the measured conversion and
+retention objective; stop escalating when additional generosity reduces expected
+contribution without achieving the chosen objective.
+
+For extra VIP appreciation, prefer meaningful recognition, status perks or
+distinctive collectibles that do not issue more spendable currency. Measure
+their delivery cost and displacement of paid demand too, and preserve promised
+edition limits and existing item value. Customer care remains within its
+[approved budget](#billing-remedies-and-retention-gifts); a gift and a top-up
+bonus draw from the same assessed total benefit when they can stack.
+
 ## Open data, sticky value
 
 Choose documented self-service export and useful import paths as part of the
