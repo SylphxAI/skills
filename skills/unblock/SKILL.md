@@ -65,6 +65,8 @@ Before leaving a worker waiting on a signal (capacity cleared, a release publish
 
 Before sending a person a link or control page, open it yourself and confirm it connects and that its input works on a harmless control, and bring the target screen back fresh. A person's time on a dead link costs more than the check. Refuse to issue a link the platform can't serve, and fix that gap in the platform.
 
+Keep all operational complexity on the agent side: never clear browser cookies or open a fresh logged-out profile on an already-authenticated site, never visit vendor billing pages unnecessarily, and never ask the user to forward verification codes or click login prompts when a persistent profile, CLI/API token, licence file, or automated inbox/credential store (`op://` / `op-otp://`) can complete the flow autonomously.
+
 ## Place the durable fix
 
 An owned engine, platform or shared SDK gets the generic repair upstream; its downstream products consume the published capability without privileged exceptions or business rules in the shared layer. For an external dependency, first check supported versions/configuration/extensions. If needed, isolate a pinned patch or boundary adapter, track its removal and contribute upstream where practical.
