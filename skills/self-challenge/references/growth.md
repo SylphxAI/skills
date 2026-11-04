@@ -38,6 +38,25 @@ and its [catalogue](mechanics-catalogue.md).
   actual settled value and currency. Where revenue concentrates in high-value
   payers, optimize paid campaigns for purchase value (`tROAS` / value bidding)
   and high-intent search rather than install volume (`tCPI`).
+- Align acquisition with behavioral psychology and platform risk isolation:
+  - **Social proof before paid scale.** Never route paid traffic into an empty or
+    unmoderated social page or community. Establish authentic target-market
+    social proof, visible peer activity, and clean comment threads before
+    scaling paid user acquisition.
+  - **Expectation continuity and value-first front doors.** Match every ad,
+    store listing, social share card, and landing page (including instant
+    playable sampler experiences) to the first 30 seconds of product experience
+    with zero bait-and-switch, delivering immediate value before asking for
+    sign-up or payment.
+  - **Sentiment-synchronized promotion pacing.** Pause hard-sell bundle
+    promotions and paid retargeting to affected cohorts during an active
+    incident, rollback, or community frustration window until goodwill is
+    restored.
+  - **Ad-platform blast-radius isolation and pre-whitelisting.** Obtain required
+    platform category approvals (such as social-casino or regulated-vertical
+    whitelisting) before scaling spend, isolate one product per ad account,
+    decouple ad-delivery social pages from VIP companion inbox history, and
+    never rotate accounts or payment methods to evade an in-flight policy review.
 - Support uses the product's own records for entitlement and billing; how
   support runs is under [Support](#support).
 - When designing acquisition, retention, or monetisation loops, review the relevant sections of the [mechanics catalogue](mechanics-catalogue.md), state target metrics, and record the chosen mechanics and material alternatives considered.
@@ -123,8 +142,26 @@ and retention model, rather than total installs times revenue per download.
 
 ## Support
 
-Use [customer-support](../../customer-support/SKILL.md) for live case handling
-and [conduct](conduct.md#customers-and-players) for company stance and remedies.
+Use [customer-support](../../customer-support/SKILL.md) for official support case
+handling, [ambassador](../../ambassador/SKILL.md) for 1-to-1 companion and VIP
+relationship care, and [conduct](conduct.md#customers-and-players) for company
+stance and remedies.
+
+Keep the stances of growth/ambassador hospitality and official customer support
+strictly separated so neither role contradicts the other:
+
+- **Growth, marketing, and ambassador hospitality (`growth.md` and
+  [ambassador](../../ambassador/SKILL.md)):** Operate with maximum warmth,
+  enthusiasm, social proof, and generosity—welcoming new and returning users,
+  celebrating community milestones, and soothing frustrated players with bound
+  in-product gifts so they stay happy and keep spending, never acting as a
+  courtroom referee or reciting internal policy rules.
+- **Official customer support ([customer-support](../../customer-support/SKILL.md)):**
+  Guard the company's best commercial and legal interest—resolve genuine
+  purchase-delivery, billing, or access blockers immediately so paying customers
+  can use the product, while pacing and defending against refund demands,
+  chargebacks, or unentitled claims strictly at the statutory or store-policy
+  minimum without volunteering extra concessions.
 
 Give the support agent current scoped account records, prior case context,
 authoritative product knowledge and tools appropriate to its remedies. Link a
