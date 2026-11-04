@@ -38,6 +38,8 @@ Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` 
 
 Before removing a worktree or clearing a working folder, check unpushed commits and ignored files as well as `git status`; a clean status says nothing about ignored evidence. Size a preservation job before it starts, and copy only what is unique and small: reports, logs, captures and patches, never rebuildable trees.
 
+Start a long-running local server from an agent tool call so the call can return. In `cd dir && nohup server > log 2>&1 &`, the `&` backgrounds the whole list as a subshell that keeps the tool's output pipe open until the server exits, so the call never returns and the session hangs without an error. Redirect the outer job instead: `(cd dir && exec server) > log 2>&1 < /dev/null &`, or use the repository's process manager. If a session's last entry is a shell call that started a server, read that process's open file descriptors. A wrapper holding a pipe is the hang, and stopping only the wrapper releases the call while the server keeps running.
+
 Choose local or existing remote build capacity from measured feedback cost and authorized resource use. A local single-host tool can be built, checked and activated in its target environment when that is its supported release path.
 
 Choose configuration reload semantics from the service's availability/consistency need: dynamic reads, a snapshot or controlled restart can each fit a different setting. Make the update behavior explicit and test the affected path. Routine health is deterministic and cheap; an authorized model/provider correctness test is a separate operation with its own purpose and budget.
