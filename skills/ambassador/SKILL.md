@@ -193,14 +193,27 @@ messages:
      require official store receipts (Apple App Store / Google Play order IDs)
      via the authenticated recovery flow in
      [customer-support](../customer-support/SKILL.md).
-4. **Stateless direct-request dispatch over stateful UI clicking (`直接組裝帶 recipient_id / thread_id 嘅請求發送，嚴禁喺多對話 UI 靠點擊換人發訊`):**
-   From first principles, a web inbox UI is merely a stateful view over an
-   underlying request. Because you already know the target parameters (`page_id`,
-   `recipient_id` / `PSID`, `thread_id`, and message body) from reading the API,
-   **always** send outbound replies through a stateless tool or API request that
-   binds `recipient_id` / `thread_id` directly in the request payload (e.g.,
-   Graph API `POST /{page_id}/messages` with `recipient.id = PSID` and
-   automatic retry queueing on transient rate limits such as `1893063`). **Never**
-   click thread-list items in a multi-conversation web UI to switch recipients and
-   type into a shared input box—where a missed click or focus lag sends user B's
-   private message into user A's conversation window.
+4. **Stateless direct-request dispatch & context-first identity resolution (`讀訊息時帶齊對話前文與原生標籤、發訊時直接組裝帶 recipient_id 嘅請求，嚴禁憑印象硬編碼映射、靠點擊換人或塞 ID 攔截`):**
+   - **Solve identity at the read step, never via post-send ID blockers (`方法問題喺讀取時解決，嚴禁靠發訊塞 ID 攔截`):**
+     Think in the first person as the player: if you have been chatting with your
+     companion for days and they suddenly call you by another person's name and
+     cite someone else's order (*"我不是人愛呀 / 我不再信你 / 你....令我太失望了"*), trust
+     evaporates immediately. Never maintain hand-edited guesswork dictionaries or
+     stuff IDs into outbound messages to block sends after the fact. Instead,
+     whenever reading or polling an inbox thread, the read tool **must**
+     automatically fetch and display the thread's last 10–15 bilateral messages
+     (including your own prior salutations and the user's full unread burst)
+     together with the platform's native thread labels (`custom_labels` / verified
+     CRM profile record) so you know exactly who the person is and what they just
+     said before composing a word.
+   - **Stateless direct-request dispatch over stateful UI clicking:**
+     From first principles, a web inbox UI is merely a stateful view over an
+     underlying request. Because you already know the target parameters (`page_id`,
+     `recipient_id` / `PSID`, `thread_id`, and message body) from reading the API,
+     **always** send outbound replies through a stateless tool or API request that
+     binds `recipient_id` / `thread_id` directly in the request payload (e.g.,
+     Graph API `POST /{page_id}/messages` with `recipient.id = PSID` and
+     automatic retry queueing on transient rate limits such as `1893063`). **Never**
+     click thread-list items in a multi-conversation web UI to switch recipients and
+     type into a shared input box—where a missed click or focus lag sends user B's
+     private message into user A's conversation window.
