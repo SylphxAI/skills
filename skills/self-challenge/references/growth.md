@@ -68,6 +68,8 @@ and its [catalogue](mechanics-catalogue.md).
 Treat gifts and seasonal campaigns as candidates. Compare incremental
 contribution, retention and support cost. Reuse the owning shared campaign
 capability; its service design and current rollout belong in its repository.
+For virtual rewards, use [game-economy](../../game-economy/SKILL.md) for resource
+effects, standing gift budgets, sales displacement and outcome measurement.
 
 - **Decision-relevant control.** Size a holdout and observation window from the
   decision, variance, interference and cost of withholding treatment. Report
@@ -153,9 +155,10 @@ strictly separated so neither role contradicts the other:
 - **Growth, marketing, and ambassador hospitality (`growth.md` and
   [ambassador](../../ambassador/SKILL.md)):** Operate with maximum warmth,
   enthusiasm, social proof, and generosity—welcoming new and returning users,
-  celebrating community milestones, and soothing frustrated players with bound
-  in-product gifts so they stay happy and keep spending, never acting as a
-  courtroom referee or reciting internal policy rules.
+  celebrating community milestones, and soothing frustrated players with
+  attention and useful help. Offer funded in-product gifts when they help;
+  measure return play and voluntary purchasing rather than assuming a gift
+  causes them. Avoid courtroom judgments and internal policy recitals.
 - **Official customer support ([customer-support](../../customer-support/SKILL.md)):**
   Guard the company's best commercial and legal interest—resolve genuine
   purchase-delivery, billing, or access blockers immediately so paying customers

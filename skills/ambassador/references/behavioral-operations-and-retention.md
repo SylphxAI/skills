@@ -13,12 +13,14 @@ billing remedies and official support pacing belong to
 [customer-support](../../customer-support/SKILL.md). The
 [games standard](../../self-challenge/references/games.md#player-joy-and-content-expansion)
 owns progression expansion and additive remedies; its
-[scientific economy model](../../self-challenge/references/games.md#scientific-economy-balance)
-owns sources, sinks and telemetry.
+[game-economy method](../../game-economy/SKILL.md) owns resource flows, pack value,
+progression coverage, gift budgets and sales displacement. Use its
+[offer and experiment reference](../../game-economy/references/offers-gifts-and-experiments.md)
+to measure attention-only resolution, optional gifts, return play and contribution.
 
 1. **Keep players and extend content.** Use the games standard's measured
-   agent-native authoring and delivery premise; a lost player is an irreversible
-   relationship loss. When growth is fast, extend the runway
+   authoring and delivery capacity. When players exhaust worthwhile goals,
+   extend the runway
    upward (`加長成長嘅路`) while preserving earned items, levels and guild progress.
 2. **Delight unhappy players and guilds.** Start with emotional care. When useful,
    proactively arrange generous bound gifts (`送禮令佢開心`) within pre-approved
@@ -124,7 +126,7 @@ and offer composition from the product's measured cohorts and economy model.
 
 | ❌ Bad (instant, robotic handout that feels worthless) | ✅ Good (high-effort bespoke approval and reciprocity framing) |
 | --- | --- |
-| *"Here is a free code for 1,000B coins."* (Feels like worthless monopoly money; destroys economy scarcity and trains users to beg.) | *"That was a tough run tonight. I got you some protection stones and treasure shards from the company; they are in your inbox for your next upgrades."* |
+| *"Here is a free code for 1,000B coins."* (Gives no personal context or useful purpose; the amount alone establishes neither economic harm nor a change in future requests.) | *"That was a tough run tonight. I got you some protection stones and treasure shards from the company; they are in your inbox for your next upgrades."* |
 | *"Gift sent to inbox."* (Zero emotional connection or perceived effort.) | *"Welcome! I have activated your one-time starter allowance (`WELCOME` in Settings -> Gift Code) with 2M starter coins and a 7-day avatar frame to get you started at the novice tables."* |
 
 ### 3.2 Endowed progress and goal-gradient framing (milestone acceleration)
@@ -136,12 +138,12 @@ and offer composition from the product's measured cohorts and economy model.
 | --- | --- |
 | *"The HK$1,500 tier gives 15T coins and an outfit."* (Feels distant and impersonal.) | *"Your current cumulative spend in this event is HK$1,352—you have already completed 90.1% of the HK$1,500 milestone! You are only HK$148 away from unlocking the 15T coins, Demon Jacket, and your VIP bonus of 20 Artifact Boxes + 100,000 Gems."* |
 
-### 3.3 Zeigarnik complementary assets (incomplete-set tension without currency inflation)
+### 3.3 Zeigarnik complementary assets (incomplete-set tension)
 
-- **Behavioral mechanism:** Under the **Zeigarnik Effect** (Zeigarnik, 1927), partial progress toward a high-value composite goal (such as upgrade protection materials, partial character/artifact shards, or SaaS workflow templates) creates constructive tension to complete the set, driving paid bundle conversion without flooding the economy with primary currency.
-- **Execution rule:** Deliver useful bound upgrade materials, partial shards or cosmetics in care packs and milestone bonuses. Calibrate their mix and budget from progression needs, retention and net contribution; count their economic effect under the games standard instead of assuming an arbitrary percentage is optimal.
+- **Behavioral hypothesis:** Partial progress toward a valued composite goal (such as upgrade protection materials, character/artifact shards, or SaaS workflow templates) may encourage completion. Invoking the **Zeigarnik Effect** (Zeigarnik, 1927) does not establish paid conversion or economic safety. Measure useful completion, return play, purchase displacement and contribution for the actual offer.
+- **Execution rule:** Choose useful bound materials, partial shards or cosmetics within the standing care or milestone budget. Apply [game-economy](../../game-economy/SKILL.md) to their conversions, progression and paid-demand effects; revise the mix when measured player outcomes or contribution worsen.
 
-| ❌ Bad (inflationary currency dump) | ✅ Good (complementary non-currency assets that stimulate conversion) |
+| ❌ Bad (unmeasured grant) | ✅ Good (useful complementary assets within an assessed budget) |
 | --- | --- |
 | *"Here are 500T free coins."* (An uncalibrated currency grant; sales displacement and retention need measurement.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
 
@@ -255,9 +257,9 @@ Apply the same first-principles architecture across product categories while ada
 
 | Dimension | Archetype A: SaaS, AI & Cloud Platforms | Archetype B: Casual & Puzzle Games | Archetype C: Heavy-IAP & Competitive Games |
 | --- | --- | --- | --- |
-| **Core paid unit (never cannibalize)** | Paid seat subscriptions and metered API/compute top-ups | Paid coin bundles, ad-removal pass, and season pass | Paid currency packs, VIP tiers, and high-tier event bundles |
-| **Tier 1 (Non-payer starter)** | One-time sandbox credits or 7-day feature trial on verified signup | One-time starter booster pack (e.g., 3 hints / 1 shuffle) via settings code | One-time starter code capped at 10–20 novice hands plus a 7-day cosmetic frame |
-| **Tier 2 (Frustration / hiccup care)** | Company-arranged bonus retry care, alongside official support restoring failed-job credits | Cooldown-enforced non-currency life/booster care pack after a tough level streak | Cooldown-enforced non-coin VIP care pack (upgrade protection stones, gift boxes) delivered to in-game inbox |
+| **Core paid unit (measure substitution and contribution)** | Paid seat subscriptions and metered API/compute top-ups | Paid coin bundles, ad-removal pass, and season pass | Paid currency packs, VIP tiers, and high-tier event bundles |
+| **Tier 1 (Non-payer starter)** | Funded sandbox credits or a useful feature trial on verified signup | Useful starter hints, shuffles or boosters within the activation budget | Starter resources and trial cosmetics sized from novice play and economy data |
+| **Tier 2 (Frustration / hiccup care)** | Optional funded retry care, alongside official support restoring failed-job credits | Optional useful life/booster care after a tough streak, under the standing budget | Optional VIP materials, protection or other useful assets under the standing budget |
 | **Tier 3 (Milestone & VIP care)** | Proactive architecture review, workflow templates, and volume-tier usage bonuses | Season-pass milestone celebration and complementary cosmetic badges | Verified cumulative-spend milestone delivery with a measured mix of cosmetics, shards and upgrade boxes |
 | **Goal-Gradient / Endowed Progress trigger** | Customer approaches 80%–90% of a volume discount tier or annual upgrade | Player inspects a collection set or seasonal pass milestone | Player reaches 70%–90% of a cumulative rebate tier or asks about an active event |
 | **Public fairness / metering verification** | Usage dashboard and request-ID log verifier | Deterministic level seed or public rules FAQ | Cryptographic shuffle verifier URL and official in-game notice odds |

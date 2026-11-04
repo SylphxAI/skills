@@ -63,9 +63,11 @@ Apply **asymmetric company-interest pacing (`非對稱商業利益節奏`)**:
 
 Apply **additive-only protection (`只加唔減`)** to genuine paying customers:
 never claw back delivered items, levels or guild progress to correct an internal
-mistake or settle a fairness complaint. Preserve their gains, top up the other
-affected side and arrange generous bound goodwill gifts within pre-approved
-retention budgets under the [games standard](../self-challenge/references/games.md#player-joy-and-content-expansion).
+mistake or settle a fairness complaint. Preserve their gains and assess an
+upward remedy for affected players under the
+[games standard](../self-challenge/references/games.md#player-joy-and-content-expansion).
+Give attention and help promptly; offer generous bound goodwill gifts when useful
+under [game-economy's standing budget method](../game-economy/SKILL.md).
 Cash refunds and billing reversals follow verified order evidence and the pacing
 above; discretionary in-product care belongs to ambassador/live operations and
 does not require legalistic proof of loss.
