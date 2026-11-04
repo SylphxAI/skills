@@ -14,6 +14,10 @@
         {
           "prompt": "Audit this companion chat reply against the Adversarial Turing self-test so it sounds like a real friend on WhatsApp.",
           "clause": "running an Adversarial Turing self-test on conversational replies"
+        },
+        {
+          "prompt": "Keep the in-character ambassador warm and enthusiastic on in-game private chat and social Messenger when a player complains.",
+          "clause": "engaging users or players as an in-character brand or game ambassador"
         }
       ],
       "negative": [
@@ -31,6 +35,11 @@
           "prompt": "Rewrite this public press release for clarity and natural tone.",
           "clause": "clear-writing for general copy.",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Adjudicate a formal refund dispute through the published official support email.",
+          "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+          "route_to": "customer-support"
         }
       ]
     },
@@ -85,6 +94,10 @@
         {
           "prompt": "Add positive prompts and negative controls for this reusable skill.",
           "clause": "validate positive/negative trigger test cases"
+        },
+        {
+          "prompt": "Distill a named customer incident into a reusable causal method with product-neutral examples and measured replacement conditions.",
+          "clause": "creating, refactoring, or auditing a reusable Agent Skill"
         }
       ],
       "negative": [
@@ -151,6 +164,14 @@
         {
           "prompt": "A customer asks whether the support responder is an AI and requests a human.",
           "clause": "support questions about the responder's AI identity, model or prompt"
+        },
+        {
+          "prompt": "On official support email, immediately restore a paid top-up missing after a system cap.",
+          "clause": "missing purchases"
+        },
+        {
+          "prompt": "Handle a hostile refund demand on a formal support ticket using verified obligations and response deadlines.",
+          "clause": "refunds"
         }
       ],
       "negative": [
@@ -173,6 +194,11 @@
           "prompt": "Draft general homepage copy explaining the product; there is no customer case.",
           "clause": "clear-writing for general copy.",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Continue friendly in-character companionship on social Messenger while routing a formal billing dispute to official email.",
+          "clause": "Use ambassador for in-character ambassador or playmate companionship",
+          "route_to": "ambassador"
         }
       ]
     },

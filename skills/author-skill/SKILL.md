@@ -18,6 +18,51 @@ Before putting anything into a skill or `references/*.md` file, separate **Metho
 | **Methodology (Skill)** | Opinionated, reusable methods and standards: how to think (`self-challenge`), how to discuss (`swarm-fuse`), how to develop & ship (`deliver-and-verify`, `unblock`, `refactor`), which technology stack paradigm we use (`stack.md`), how to score risks (`risk.md`), and how to write (`clear-writing`). | `skills/<name>/SKILL.md` and `skills/<name>/references/*.md` |
 | **Organization State** | Current facts about a specific company or workspace: company size, active project roster, live server inventory, specific rows in an accepted-risk register, or workspace credentials/leases. | The workspace's own repository (`AGENTS.md`, `company/`) or the platform's **Organization Knowledge**—never inside a skill, and skills do not need special loader instructions to tell an agent to read its own workspace context. |
 
+### General, reusable and future-proof skill evolution
+
+Turn a live lesson into a reusable, future-proof skill
+(`由具體事件提煉通用、可持續演進嘅 Future-Proof Skill`): identify the governing
+behavioral, economic or architectural mechanism, its assumptions, and the
+observable evidence that would change the method. Strip episodic proper nouns:
+customer/player names, mascot/persona names, internal agent names and raw
+database IDs. Keep the incident and product bindings, including persona names,
+support addresses and channel IDs, in the company or product repository.
+
+Use role names and explicit placeholders such as `<ambassador_name>` and
+`<account_id>` in synthetic examples. Preserve attributed method authors,
+standard names and exact public API identifiers. Test the extracted rule on a
+different product and an unrelated negative case: if it still needs the original
+person, product or incident to make sense, the mechanism has not been distilled.
+Update the owning method as new evidence changes its assumptions; remove the
+superseded rule and reconcile sibling skills in the same change.
+
+- **Derive formulas and governing variables**
+  (`寫推算公式與決策變量，唔寫死單一產品數字`). State the relevant population,
+  units, objective and measured inputs; calibrate a threshold from cohort,
+  economy or service data. An arbitrary percentage or currency threshold from
+  one product never becomes a standing rule. Keep product values in product
+  configuration; label numerical examples as synthetic. Preserve a number when
+  an actual specification or binding obligation sets it, with that source.
+- **State the causal reason and falsification signal**
+  (`寫明背後因果理由與推翻條件`). Explain why the rule improves the objective,
+  its assumptions and which measured signal changes the action. When evidence
+  cannot establish the cause, label the mechanism a hypothesis.
+- **Refine the authoritative rule in place**
+  (`原地提煉升級舊規則，嚴禁疊床架屋貼膠布`). Rewrite the existing method when
+  experience reveals a flaw; remove conflicting old text and link consumers to
+  its one authoritative home. Do not append an incident-specific exception
+  beneath a contradictory rule.
+- **Run a cross-product transfer test** (`跨領域盲測驗證`). Remove names and
+  apply the decision to a different product or domain, such as a business SaaS
+  tool and a competitive card game. The same governing mechanism must select
+  the appropriate action under each domain's inputs; a domain-specific method
+  states the boundary rather than pretending to apply universally.
+
+For example, replace “a named player received another named player's order
+details” with “resolve the recipient from authoritative conversation context and
+bind the outbound request to that recipient; a public account ID alone does not
+prove ownership.” The mechanism survives changes of player, persona and product.
+
 ## 2. Stage 1: Define the Scenario Trigger and Positive/Negative Cases
 
 1. **Write concrete, moment-based triggers in `description`:**
