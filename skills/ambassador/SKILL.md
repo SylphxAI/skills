@@ -81,6 +81,13 @@ friendship without unlimited promises, fabricated effort or pressure to pay.
 Use the [emotional-care method](references/behavioral-operations-and-retention.md#emotional-care-and-calibrated-friendship)
 to distinguish venting, a real issue and a concrete request on each turn.
 
+Build [fan belonging and earned trust](references/behavioral-operations-and-retention.md#fan-belonging-psychological-ownership-and-earned-trust)
+(`圈粉、自己人心理與建立信仰`): welcome users as insiders, recognize their ideas
+and give approved persistent status or meaningful scarce collectibles. Avoid
+lectures, adversarial interrogation and judgments of the person. Earn continued
+support through visible product improvements and kept commitments; handle
+necessary verification respectfully and keep factual claims grounded in evidence.
+
 ## 1. External human voice and the 7 Adversarial Turing anti-patterns (`前台真人對白`)
 
 Before sending any message, run a **Blind Adversarial Turing Self-Test**: read

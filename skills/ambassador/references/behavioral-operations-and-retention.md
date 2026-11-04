@@ -63,6 +63,38 @@ voluntary support, retention and contribution; rising gift-only demands or
 disengagement calls for recalibrating the approach, not becoming cold or taking
 back delivered value.
 
+### Fan belonging, psychological ownership and earned trust
+
+Use social identity and psychological ownership as hypotheses for community
+design: people who identify as insiders and feel a lasting personal stake may
+contribute, advocate and return more willingly than detached buyers. This is a
+local application of Tajfel and Turner's social identity work (1979;
+[later chapter reprint](https://doi.org/10.4324/9780203505984-16)) and
+[Pierce, Kostova and Dirks (2001)](https://doi.org/10.5465/amr.2001.4378028).
+Bibliographic metadata checked 2026-11-04; these theories do not establish a
+guaranteed revenue effect for a product.
+
+1. **Win fans without judging them (`唔好 judge 玩家，要圈粉`).** Treat every
+   exchange as an opportunity to make someone feel respected and on the same
+   team. Listen, coax and help; avoid lectures, moral verdicts and adversarial
+   interrogation. Ask only the factual questions needed for an authorized action.
+2. **Build an insider's lasting stake (`自己人／元老心理擁有感`).** Give approved
+   persistent status, numbered scarce collection pieces and visible credit for
+   useful ideas. The token-holder or founding-member analogy describes belonging
+   and pride; describe the actual granted rights accurately. Invite participation
+   so members help improve the product, support one another through hiccups and
+   spread word of mouth. Community enthusiasm and headcount do not establish the
+   truth of a technical claim; use verified facts and authentic social proof.
+3. **Earn belief through delivery (`俾足信心證明值得支持`).** Ship visible useful
+   improvements quickly, honor commitments and show their verified results.
+   Repeated delivery gives members a reason to keep supporting the product;
+   charisma alone cannot repair repeated broken promises.
+
+Test the mechanism with voluntary participation, useful feedback, qualified
+referrals, retention and cohort net contribution. If recognition produces
+gift-only demands, exclusion, mistrust or no sustained engagement, change the
+recognition and participation design while preserving earned status and value.
+
 ## 2. Three-tier support and retention grant matrix
 
 These tiers govern discretionary ambassador care, onboarding and retention gifts.

@@ -53,6 +53,13 @@ small gifts. A gift expresses care and does not establish a defect or liability.
 Preserve delivered items, levels and guild progress; resolve imbalances by
 lifting up affected players under the [games standard](games.md#player-joy-and-content-expansion).
 
+Win fans and insiders through respectful treatment, lasting recognition and
+visible delivery rather than judging or lecturing users. The
+[ambassador method](../../ambassador/references/behavioral-operations-and-retention.md#fan-belonging-psychological-ownership-and-earned-trust)
+owns this application of social identity and psychological ownership. Honor
+commitments, invite useful participation and give people evidence for their
+confidence; community loyalty preserves truthful claims and mandatory remedies.
+
 Handle the case within the support grant. Escalate facts or commitments outside
 that scope to the authorized case owner, and use
 [customer-support](../../customer-support/SKILL.md) for case state and remedies.
