@@ -91,6 +91,10 @@ A branch name can be reused, so a run's branch and pull-request fields can point
 
 A merge queue builds each entry on the latest base itself, so a pull request that is only behind its base, with no conflict, needs no update. Merging the base into it restarts every finished check and sends it back through the CI queue. Update a branch only for a conflict or when it needs a file that is new on the base.
 
+A job GitHub marks as lost ("self-hosted runner lost communication") has no test verdict, and neither has an aggregate gate that timed out while no real check failed. The pull request's own writer reruns only that job, once per head, after reading the head and the check list, and reports a second loss with the job and runner. A failing test is different: it is fixed or quarantined, never retried.
+
+Before naming why an entry left the queue, read the removal event and its reason in the pull request's timeline. A check that reports after the removal did not cause it. For a `checks_timed_out` removal with an unchanged head, one normal re-enqueue by the writer is the supported recovery.
+
 ## How it is judged
 
 Measure publication, admission/runner wait, compilation and test spans separately. Record median/p95, failure/ejection rate and recovery time on a named population/window. Choose budgets from the workload and objective, and follow the repository's quarantine and rerun rules.
