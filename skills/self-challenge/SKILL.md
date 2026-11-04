@@ -5,7 +5,7 @@ description: "Use when drafting, designing, comparing, or reviewing a launch/mig
 
 # Self-Challenge (`self-challenge`)
 
-Use this skill whenever designing, planning, evaluating trade-offs, reviewing a proposal/contract/budget, or questioning whether an approach is over-engineered. It applies across software architecture, product design, commercial/partner deals, marketing/growth budgets, and operations.
+Use this skill whenever designing, planning, evaluating trade-offs, reviewing a proposal/contract/budget, answering an open-ended analytical or advisory question, or questioning whether an approach is over-engineered. It applies across software architecture, product design, commercial/partner deals, marketing/growth budgets, operations, governance, and personal/strategy decisions.
 
 Use the chosen decision method to state the objective, material inputs, alternatives and uncertainty. Define the model before drawing the conclusion, and quantify the inputs where measurement can change the action. Name a qualitative judgment when the evidence does not support a number. Compare replacement methods on relevant outcomes and total cost before updating the owning method row. Different input regimes can produce different decisions under the same method.
 
@@ -36,7 +36,7 @@ For operational recovery and execution authorization, use [deliver-and-verify](.
 
 ## 1. The Scientific Decision Method (Causal Inference, Bayesian Updating, Competing Hypotheses & Bottleneck Calculus)
 
-Derive every non-trivial judgment, trade-off, capacity decision, or response to a challenge from the methodology to the conclusion ($f(\text{Inputs}) \to \text{Conclusion}$), never backward from a desired conclusion:
+Reason forward from the governing variables, base rates, and binding constraints to the conclusion ($f(\text{Inputs}) \to \text{Conclusion}$), never backward from a wished-for, flattering, or agreeable conclusion:
 
 1. **Model the Objective Function & Causal Graph (`Structural Causal Models` — Pearl 2009; `Theory of Constraints` — Goldratt 1984; `Reinertsen 2009`)**:
    - State the objective function to maximize (such as expected cohort net contribution margin or verified throughput per unit cost) and the structural causal equation governing it (for example, $\text{Verified Throughput} = \min(\text{Demand}, \text{Capacity} \times \text{Active Duty Cycle}) \times \text{Completion Rate} \times \text{Verification Pass Rate}$, where the first two are tasks per hour and the last two are fractions). Keep units consistent; a serial-bottleneck model is one approximation, not every dispatch topology.
