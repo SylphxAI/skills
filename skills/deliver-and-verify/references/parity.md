@@ -36,7 +36,9 @@ same conditions on both products. For example, 390×844, 834×1194 and 1440×900
 pixels are a starting matrix for a responsive web app, not universal device
 requirements. For a genuinely unsupported platform, record that product boundary
 and its evidence explicitly. A resized desktop screenshot cannot establish
-native touch, keyboard, controller or device behavior.
+native touch, keyboard, controller or device behavior. A fixed fixture matrix
+does not cover every state: reproduce a reported fault at its exact viewport
+and state as well as running the standard matrix.
 
 Compare what matters in use: composition, art and typography, content density,
 discoverability, controls, motion and sound, latency, accessibility, feature
@@ -49,7 +51,8 @@ Before making art or copy for a screen, read one frame from the shipped client i
 the state a player reaches. Prefabs, atlases and offline renders show defaults;
 the server and runtime decide what is visible. A check that each planned path
 exists does not prove the visible set is covered, so list what the frame shows
-and map every item to its source.
+and map every item to its source. An empty accessibility tree does not establish
+a blank page; inspect the actual frame, including canvas-rendered content.
 
 ## Keep a screen-and-feature parity sheet
 
@@ -101,7 +104,9 @@ counts as evidence for that release.
    with the release's declared timeout rather than retrying until green.
 4. Open and inspect the resulting images. Compare them side by side with the
    real reference at the same state and size. Record visible defects and keep
-   subjective judgments distinct from measured facts.
+   subjective judgments distinct from measured facts. Full-page captures can
+   misdraw sticky or fixed bars; check a viewport capture at the same scroll
+   position and state before calling it a layout defect.
 5. Save a new dated record for every repair or release. Preserve prior captures,
    machine results and hashes; never overwrite old evidence with a new image at
    the same path. Store receipts in the product's authorized evidence location
