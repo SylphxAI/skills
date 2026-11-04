@@ -259,6 +259,26 @@ def verify_no_private_leaks(errors: list[str]) -> None:
                     fail(f"{rel}:{idx}: internal/private reference found: {line.strip()}", errors)
 
 
+def verify_no_episodic_identifiers(errors: list[str], root=ROOT) -> None:
+    """Reject known incident identities in skill text, including examples."""
+    forbidden = re.compile(
+        r"小亨|人愛|子璐|(?<![A-Za-z0-9_])"
+        r"(?:Sima|Alan|Alex|15659296|10048291)(?![A-Za-z0-9_])",
+        re.I,
+    )
+    for path in sorted((Path(root) / "skills").rglob("*")):
+        if not path.is_file():
+            continue
+        try:
+            lines = path.read_text(encoding="utf-8").splitlines()
+        except UnicodeDecodeError:
+            continue  # Raster assets and other binary resources are not prose.
+        for idx, line in enumerate(lines, 1):
+            if forbidden.search(line):
+                fail(f"{path.relative_to(root)}:{idx}: episodic persona/customer "
+                     "identifier found; use a role or explicit placeholder", errors)
+
+
 def main() -> int:
     errors: list[str] = []
     verify_manifests(errors)
@@ -266,6 +286,7 @@ def main() -> int:
     positive, negative = verify_trigger_cases(descriptions, errors)
     verify_links_and_references(errors)
     verify_no_private_leaks(errors)
+    verify_no_episodic_identifiers(errors)
     # Keep all regression tests on the existing CI entry point.
     for args in (
         [sys.executable, "scripts/verify-terminology.py"],

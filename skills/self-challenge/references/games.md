@@ -34,7 +34,7 @@ known monetisation and retention patterns in
 - For a remaster, use the shared
   [screen-and-feature parity method](../../deliver-and-verify/references/parity.md#keep-a-screen-and-feature-parity-sheet)
   to establish that it can replace its original.
-- Keep sensory effects separate from economy, simulation and network truth.
+- Follow the [sensory separation rules](feedback.md#hard-lines).
 - Give the title a coherent art direction and game feel, checked against its
   category leaders: visuals run in the engine, drawn by code or made in Blender
   and imported as glTF/GLB on the same animator, never flat placeholder boxes.
@@ -78,10 +78,27 @@ Solar2D stack) in favor of its active engines, remasters replace the legacy
 titles once the parity sheet passes, and the retired engine is flagged as a
 stack departure until every legacy project is retired.
 
-Load game resources on demand and version each asset individually (by content
-hash or manifest revision, like the web) rather than shipping one monolithic
-asset bundle, keeping the initial download minimal and letting individual assets
-update independently.
+### Content delivery independent of client size
+
+An agent-native studio can continuously expand its catalog without expanding the
+base client with every new cosmetic. Keep the base binary (IPA, AAB or initial
+WebAssembly bundle) small and bounded independently of catalog size. Decouple
+content publication from client releases and monolithic engine build queues;
+catalog additions alone must not require another full application build.
+
+Serve fine-grained, content-addressed remote bundles through a content delivery
+network (CDN), per item or coherent set, with a versioned compatibility manifest.
+Load a lightweight 2D icon first; fetch the 3D mesh, textures, animation or shader
+bundle only when previewed or present at the active table. Verify compatibility
+and content hashes before use. Cache downloaded assets on disk with a bounded
+least-recently-used (LRU) policy, protecting currently used resources and evicting
+downloadable cache data rather than user saves or ownership records.
+
+Measure cold download, first-preview and table-entry latency, base-client size,
+network use and peak cache size as the catalog grows by 10x and 100x. Keep those
+budgets independent of total catalog size; a manifest that downloads every item
+or preloads the whole catalog fails this design. A runtime/format change can
+require a client release; ordinary compatible content does not.
 
 Device input maps to abstract actions so simulation stays separate from
 presentation, and each supported platform gets a complete adapter and a usable
@@ -122,6 +139,153 @@ required controls need clear denial, cancellation and recovery states.
 Events, offers and gifts follow [growth.md](growth.md#campaigns-and-gifts).
 Reuse the owning shared campaign capability when one exists.
 
+### Player joy and content expansion
+
+In an agent-native studio, additional content, tiers and progression depth have
+near-zero marginal authoring cost and can ship daily; losing a player is an
+irreversible loss of that relationship and its revenue. Verify and release the
+new content through the normal product path. When players progress quickly,
+extend the progression runway upward (`加長成長嘅路`) with meaningful new goals,
+tiers and optional prestige. Preserve completed progress and existing item
+utility; never throttle a player's earned growth or claw back gains to stretch
+the old content.
+
+When a player or guild is unhappy, delight them with generous bound in-product
+gifts (`送禮令佢開心`) within pre-approved retention budgets. Choose useful
+personal materials, protection, cosmetics or other valued assets from their
+actual needs, without demanding legalistic proof of loss. Delivery or restoration
+of paid value is an immediate obligation separate from a discretionary gift.
+[Ambassador](../../ambassador/SKILL.md) owns warm companionship and gift advocacy;
+[customer-support](../../customer-support/SKILL.md) owns formal billing remedies.
+
+**Fairness is a means to player joy (`公平只係手段，唔係第一要素`).** Judge a
+fairness intervention by enjoyment, retention and willingness to pay. A measure
+that makes players unhappy by taking away their items, levels or guild progress
+puts the means ahead of the goal (`本末倒置`) and is prohibited. Correct an
+internal grant mistake or imbalance by lifting up or compensating affected
+players and adding progression depth, never by clawing back items or downgrading
+a guild. Preserve advertised competitive rules and purchased promises while
+designing the additive remedy; replacement gifts do not license a reduction.
+
+### Catalog purpose, scarcity and acquisition
+
+Give every new item a distinct player purpose, aesthetic identity, numerical
+role and acquisition path. Organize the catalog as a coherent portfolio; never
+dump all items into a flat direct-buy shop or create filler without useful or
+collectible value. Cheap authoring supports depth, while designed scarcity and
+visible status support demand. Calibrate prices and thresholds from actual
+collector demand, cohort contribution and the economy model rather than copying
+a product's currency amounts.
+
+- **Unique and numbered editions:** Apply luxury-watchmaking (haute horlogerie)
+  principles to one-of-one and ultra-limited numbered collections: immutable
+  serial numbers, an explicit issuance limit and unmistakable table-wide
+  prestige. Support very high anchor prices and spend milestones for collectors
+  with exceptional budgets, including seven-figure capacity where demand
+  supports it. Honor scarcity after sale; never expand a promised edition or
+  dilute it with indistinguishable copies.
+- **Shard collection and crafting:** Create multi-stage collection and crafting
+  paths with meaningful material sinks, useful intermediate progress and a
+  valuable completion goal. Measure time to completion and abandonment; deepen
+  the runway without making earned materials useless.
+- **Referral exclusives:** Reserve desirable items for verified friend referrals
+  under the [referral mechanisms](mechanics-catalogue.md), turning item demand into
+  organic acquisition. Keep the exclusive acquisition promise and verify the
+  qualifying referral before the idempotent grant.
+- **Guild and competitive milestones:** Use collective and tournament unlocks
+  to build social pride, shared goals and return play. State the qualification
+  and competitive rules clearly and preserve unlocked rewards.
+
+Map the acquisition vectors and upgrade/currency flows before publishing an
+item. Judge the portfolio by demand, retention, referral activation, voluntary
+spend and concentration; revise future supply and content from those signals
+while preserving already delivered value and edition promises.
+
+### Asset portfolio and social homes
+
+Design complementary monetizable and collectible assets across these layers,
+choosing those that fit the genre and the player's goals:
+
+| Layer | Assets and player value |
+| --- | --- |
+| Character, companions and tactical depth | Pets, skill cards, layered outfits, jewelry/accessories, tactical tools and protection items; preserve each mode's advertised rules for paid advantages |
+| Expressive presence | Emotes, voice lines, table banter, custom sound effects, gestures and interactive reactions that other players can see or hear |
+| Social identity and chat/table flair | Custom emojis, animated stickers, avatar frames, prestige titles/badges, and colored, gradient or glowing player names visible across chat, leaderboards and the table |
+| Personal home and hosted environment | Customizable rooms, furniture, tables and backgrounds that give ownership, creative expression and a social place to invite friends |
+| Collections and synthesis | Card albums, multi-tier shards, crafting recipes, coordinated sets and disclosed set bonuses that make individual finds useful toward a longer goal |
+
+Make the personal home a social display surface: an invited match takes place in
+the host's decorated room and at their chosen table, or uses that decorated space
+as the match backdrop where the genre requires another play surface. Every guest
+sees the host's choices. This creates a hypothesis to test: visible self-expression
+and peer recognition increase demand for decoration, earning and spending currency
+or gems. Expand furniture and room collections as a renewable voluntary sink;
+measure visits, invitations, repeat hosted play, decoration spend and retention.
+If guests cannot see the purchases or players do not return, revise the social
+loop instead of assuming a larger furniture catalog will monetize itself.
+
+### Excitement, synthesis and abundance
+
+Where the product and applicable market/store rules permit them, consider wheels,
+slots, lucky draws and treasure chests as varied reward presentations that create
+a festival atmosphere. Use the title's disclosed randomness and paid-outcome
+rules. Pair reveals with card albums, multi-stage shard crafting and meaningful
+set completion so rewards lead to useful goals rather than isolated inventory.
+
+Bundle the core item with generous quantities of purposeful, low-impact extras:
+small cosmetics, decorative variations, basic crafting pieces or collection
+fragments. The purchase should feel plentiful and celebratory (`買一得十`)
+without issuing excess core currency or diluting promised top-tier scarcity.
+Every extra needs a visible use or collection/crafting destination; abundance
+does not justify worthless filler. Keep these extras bound where appropriate,
+model all conversion and crafting paths, and measure their economic effect
+rather than assuming a non-currency item has zero inflation impact. Calibrate
+composition against enjoyment, conversion, repeat purchase and retention; a pile
+of unwanted scraps or faster abandonment falsifies the abundance hypothesis.
+
+### Scientific economy balance
+
+Use a source–sink model for the macro economy and telemetry to test it. Cheap
+content authoring enables generous care; it does not make every virtual asset's
+economic effect zero. The following is the chosen game-economy method, informed
+by Machinations' primary documentation for
+[sources](https://www-content.machinations.io/docs/sources/),
+[drains](https://www-content.machinations.io/docs/drains/) and
+[converters versus traders](https://www-content.machinations.io/docs/converters/)
+(read 2026-11-04).
+
+- **Faucets and drains:** Inventory sources, sinks, balances and conversion paths
+  per currency, including shop delivery, gameplay, events, protection and manual
+  gifts. Reconcile `closing balance = opening balance + issuance - consumption`
+  across the full population; player-to-player transfers redistribute value and
+  do not create aggregate currency. Set a target net issuance path from active
+  population and progression demand; equilibrium need not mean zero issuance in
+  a growing game. Add attractive voluntary sinks and new uses to absorb surplus.
+- **Dual progression loops:** Separate spendable progression resources from
+  prestige/status rewards. Extend the core upgrade path and add long-lived
+  collection, cosmetic or prestige goals so fast progress opens another useful
+  loop. Make an optional prestige reset explicit and player-chosen; never use
+  prestige to disguise an involuntary loss of purchased or earned value.
+- **Pinch-point conversion:** Model each resource bottleneck using the cohort's
+  reach rate, balance distribution, time to the next useful upgrade, offer price,
+  paid conversion and abandonment. Estimate incremental net receipts alongside
+  retention and free recovery; a bottleneck that drives players away fails even
+  if surviving payers convert more often. Test affordable acceleration and
+  generous care against the baseline rather than assuming scarcity earns more.
+- **Inflation and wealth concentration:** Track issuance/consumption by source,
+  currency balances by cohort and percentile, purchasing power for a stable
+  basket, time to progression milestones, top-holder wealth shares and a Gini
+  coefficient where meaningful. Include stockpiled bound materials: a bound item
+  can accelerate progression even when it cannot be traded. Compare complete
+  time windows, retention and net contribution before changing future grants or
+  sinks. A large grant or fast progression alone does not establish churn.
+
+Product configuration owns pre-approved budgets and server-side grant limits.
+Deliver gifts idempotently through that path, record their economic effect and
+read the result back. Escalate a larger gift through the company application
+path instead of raising a global safety cap. Recalibrate the model when live
+cohort data disproves its assumptions; preserve delivered value throughout.
+
 For randomness, difficulty, matchmaking and AI opponents:
 
 - Measure tap-to-actionable-first-hand on the serving build. Successful-match
@@ -143,17 +307,11 @@ For randomness, difficulty, matchmaking and AI opponents:
 - Define ranked fairness separately from the genre's inherent chance. Test any
   tuning or paid advantage against the advertised rules and applicable
   market/store requirements, including paid-randomness disclosures.
-- Model currency sources, sinks, balances and purchasing power. Reconcile
-  material value movements. Use a house bankroll when the game's transfer model
-  requires it; choose issuance rules from the economy model. Never grant large
-  multiples of the shop's base currency in cumulative-recharge tiers or VIP
-  care, and never raise global delivery safety caps to push an oversized grant
-  through: saturating currency or maxing progression in one grant destroys table
-  tension and causes immediate graduation churn. Cap raw currency rebates to a
-  strict marginal fraction of verified paid spend, fulfill high-tier milestones
-  with non-inflationary progression, consumable refinement sinks and status
-  cosmetics that keep the next tier in sight, and run milestone fulfillment from
-  versioned server tables rather than private scripts.
+- Use the [scientific economy model](#scientific-economy-balance) to set future
+  issuance and voluntary sinks. Fund a house bankroll when the transfer model
+  requires it, and run milestone fulfillment from versioned server tables rather
+  than private scripts. Apply [player joy and content expansion](#player-joy-and-content-expansion)
+  when growth is fast or a grant causes imbalance; expand upward and preserve gains.
 - A new player's first game starts at once. Set a maximum wait, fill seats with
   AI players, and read the fill logic end to end: a table that needs two humans,
   or adds one AI per tick with a long timer, fails this with no error. Practice

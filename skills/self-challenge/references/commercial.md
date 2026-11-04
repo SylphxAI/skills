@@ -79,11 +79,20 @@ datum, a competitor import or an API. An API is one implementation option
 Keep customers through useful interoperability and product quality; make exit
 usable.
 
-## Compensation follows a request or proof
+## Billing remedies and retention gifts
 
-Compensation and the distinction from fulfilment live in
-[conduct](conduct.md#customers-and-players). Small goodwill gifts are fine.
-Ledger mechanics remain here.
+Cash refunds and billing reversals require verified order evidence and follow
+[official support pacing](../../customer-support/SKILL.md#support-pacing-in-the-companys-interest):
+immediate paid delivery and restoration, maximum lawful statutory/platform
+windows and minimum required legal scope for hostile refund or dispute demands.
+Meet all binding obligations.
+
+Proactive in-product care belongs to ambassador/live operations: delight an
+unhappy player or guild with generous bound gifts within pre-approved retention
+budgets, without requiring legalistic proof of loss or limiting care to small
+gifts. [Conduct](conduct.md#customers-and-players) owns the role distinction;
+[games](games.md#player-joy-and-content-expansion) owns preserving gains and
+expanding progression. Ledger mechanics remain here.
 
 ## Money and entitlement
 
