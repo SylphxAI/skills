@@ -55,6 +55,10 @@ Choose one authoritative scrape path per cell. Verify named application
 containers are present: a container metric can expose host/runtime containers
 while omitting a sandboxed application's containers. Deduplicate redundant
 scrapes before summing; never add two scrape paths for the same physical use.
+Before choosing a path, reconcile it with the node's own CPU total: a node's
+containers cannot use more than the node did. A path that exceeds it (a
+sandboxed guest's own accounting can run several times past the host) is wrong,
+so taking the maximum across paths picks the wrong one too.
 
 Sum simultaneous Pod/container samples into each workload before taking p95.
 The sum of individual p95 values is not the p95 of their sum. Retain the query,
