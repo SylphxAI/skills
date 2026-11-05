@@ -70,6 +70,75 @@ approval is needed for each covered gift. A changed exposure or an exhausted
 budget is a reason for the budget holder to resize it from current evidence,
 not for inventing a universal rebate percentage or prohibiting a reward type.
 
+### Two-track legacy whale whitelist and standard ambassador cap
+
+When an existing live game faces a conflict between (a) legacy high-LTV payers
+conditioned by prior operations to expect bespoke concierge rebates and emperor
+privileges, and (b) macro-economy inflation and the need for clean unit
+economics on new user acquisition, an across-the-board cut triggers immediate
+whale loss aversion while an open-ended rebate policy permanently devalues core
+assets. Resolve the tension with a two-track architecture enforced mechanically
+in the grant service:
+
+1. **Track A — Closed Legacy Whale Snapshot Whitelist (`Frozen Cohort, Zero New Admissions`):**
+   - **Pareto Elbow Cutoff & Disconfirming Check:** Query the full settled-order
+     ledger across all-time and trailing `30d/90d` windows. Set the lifetime
+     spend cutoff at the Pareto inflection point that captures `~85%–95%` of
+     trailing revenue, and run the disconfirming check that `0` recent
+     high-ticket payers sit below that threshold. Freeze the resulting account
+     set at an immutable `snapshot_at` timestamp with no interface to add new
+     accounts.
+   - **Push-Payment Channel Arbitrage (Bank Transfer / Instant Rail):** Offer
+     1-to-1 private direct bank transfer or instant push-payment top-ups to
+     Track A whales. Because push bank transfers carry `0%` store commission
+     (vs. `15%–30%` app-store fees) and `0%` chargeback risk, the recaptured
+     margin funds generous legacy rebate tiers (`+35%` to `+100%` in bound
+     progression value) while still increasing net cash retained per dollar
+     spent. Always verify settled bank credit and deduplicate the bank reference
+     before issuing grants; never fulfill from screenshots alone.
+   - **Sink-Matched Rebate Composition, 100% Private Information Isolation &
+     Anti-Target Psychology:**
+     Structure Track A bespoke rebates strictly as (i) **standard existing
+     account-bound bottleneck progression materials** chosen via 1-to-1 private
+     concierge menu ordering, and (ii) **recipe-matched upgrade currency**
+     capped strictly at the exact progression sink requirement for the unlocked
+     levels so 100% of granted currency is immediately destroyed in progression
+     sinks rather than entering public table or market circulation. Deliver all
+     Track A grants silently via private mail with **zero public two-tier
+     badges, zero exclusive whitelist titles/frames, zero server-wide
+     broadcasts, and zero disclosure of player spend or grant records**:
+     - **Whale Self-Attribution & Anti-Target Protection:** Paying players want
+       their victories and high-level gear perceived—by opponents and by
+       themselves—as legitimate competence and earned status, never as official
+       favoritism or "cheating." Publicly broadcasting special grants or pinning
+       an unbuyable whitelist mark on a payer turns them into a resented target
+       at the table (where opponents blame losses on official rigging) and
+       cheapens their paid achievements.
+     - **Earned VIP Advocacy vs. Unprompted Handout (Effort Justification &
+       Price-Anchor Preservation):** Automatic, unframed handouts reset the
+       payer's reference price (hedonic adaptation) and make scarce progression
+       items feel printed for free. Frame every Track A bonus as a scarce,
+       specially advocated VIP privilege earned by their long-standing VIP tier
+       and direct-transfer fee savings, and use neutral commercial in-game mail
+       copy ("VIP Tier Appreciation Bonus") that remains safe even if
+       screenshotted.
+     - **New-Player & New-Whale Fairness:** Keeping all visible items and
+       prestige systems (auctions, VIP tiers, seasonal cosmetics) 100% identical
+       and earnable on the same rules ensures newly acquired players and new
+       whales never perceive a two-tier caste or rigged table.
+2. **Track B — Standard Ambassador Authority (`All Non-Whitelist & 100% of Future Players`):**
+   - **Daily Non-Order Care Floor:** Restrict non-order goodwill to a small,
+     non-inflationary item allowlist (table-relief ration or single-match
+     consumable) with a strict per-player daily and rolling 7-day cap.
+   - **Order-Backed Bonus Ceiling (`<= 10%` of Verified Cash Paid):** Require an
+     idempotent settled `order_id` binding (`1 order = 1 bonus grant`) and cap
+     the retail-equivalent value of all discretionary bonus items at `<= 8%–10%`
+     of verified cash paid—mechanically refusing any grant that exceeds the cap
+     or devalues purchased principal.
+   - **Acquisition ROAS Isolation:** Evaluate paid user-acquisition ROAS and
+     payback strictly on Track B cohorts so legacy Track A bank transfers never
+     distort new-user unit economics.
+
 ## Measure a gift's real cost
 
 A digital asset's low copying cost does not establish a low economic cost.
