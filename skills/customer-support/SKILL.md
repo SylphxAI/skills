@@ -289,3 +289,5 @@ to exercise affected behavior: accepted and failed handoffs, mixed requests,
 missing or conflicting product facts, authorized and unauthorized third-party
 actions, and duplicate paid-delivery requests. A profile lookup establishes
 facts about policy; the action's own receipt establishes what happened.
+
+- **Neutral Salutation by Default (`gender = 'unknown'`)**: Never default to gendered titles (`"師兄"`, `"先生"`, `"小姐"`) when a customer's real-life gender is unverified (`gender = 'unknown'`). Address unverified customers neutrally by their account nickname (`"<Nickname> 你好"`) or neutral salutation (`"親愛的玩家"`), and read/write verified self-stated salutations through the single product database contact profile (`player_contact_profile`) without storing row-level personal data on the dev machine.
