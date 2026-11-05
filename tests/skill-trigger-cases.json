@@ -22,6 +22,10 @@
         {
           "prompt": "Weight the ambassador's goodwill care tier by each player's verified LTV and recent payment history, and deliver a >24h reply via the authenticated inbox Web UI fallback.",
           "clause": "weighting goodwill care by verified LTV and payment history, delivering 24-hour messaging-window replies via authenticated inbox Web-UI fallback"
+        },
+        {
+          "prompt": "A player wants an outfit but cannot log in to top up. Help complete payment rather than give the outfit free.",
+          "clause": "resolving purchase or checkout friction as a VIP payment concierge"
         }
       ],
       "negative": [
