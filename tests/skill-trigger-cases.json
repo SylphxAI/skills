@@ -18,6 +18,10 @@
         {
           "prompt": "Keep the in-character ambassador warm and enthusiastic on in-game private chat and social Messenger when a player complains.",
           "clause": "engaging users or players as an in-character brand or game ambassador"
+        },
+        {
+          "prompt": "Weight the ambassador's goodwill care tier by each player's verified LTV and recent payment history, and deliver a >24h reply via the authenticated inbox Web UI fallback.",
+          "clause": "weighting goodwill care by verified LTV and payment history, delivering 24-hour messaging-window replies via authenticated inbox Web-UI fallback"
         }
       ],
       "negative": [
@@ -155,7 +159,7 @@
       "positive": [
         {
           "prompt": "A customer says a paid purchase is missing. Resolve it from verified product facts.",
-          "clause": "missing purchases, refunds, prices, invoices"
+          "clause": "missing purchases, top-up or voucher inquiries, refunds, prices, invoices"
         },
         {
           "prompt": "A user cannot sign in and requests account recovery on the official support channel.",
@@ -172,6 +176,10 @@
         {
           "prompt": "Handle a hostile refund demand on a formal support ticket using verified obligations and response deadlines.",
           "clause": "refunds"
+        },
+        {
+          "prompt": "Deliver a customer support reply through the authenticated inbox Web UI after a 24-hour messaging-window API refusal and route their voucher question to self-serve web checkout.",
+          "clause": "24-hour messaging-window Web-UI fallback replies"
         }
       ],
       "negative": [
@@ -215,6 +223,10 @@
         {
           "prompt": "Deploy the checkout bug fix and verify the affected customer journey.",
           "clause": "Carry the outcome through execution and verification at its real surface."
+        },
+        {
+          "prompt": "Ship the new web voucher channel and synthetic health probe, verifying cross-currency wallet normalization, canonical order analytics, and CDN cache bypass.",
+          "clause": "checkout or voucher channel, synthetic probe"
         }
       ],
       "negative": [
@@ -248,6 +260,10 @@
         {
           "prompt": "Two workers published different revenue totals. Inspect the original reports and raise the discrepancy.",
           "clause": "two documents or workers disagree on a number"
+        },
+        {
+          "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
+          "clause": "inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies"
         }
       ],
       "negative": [
@@ -483,6 +499,10 @@
         {
           "prompt": "Game revenue fell after an event; diagnose whether lower exposure, currency saturation or checkout failures explain it.",
           "clause": "diagnosing why game sales fell"
+        },
+        {
+          "prompt": "Choose non-positional progression items instead of leaderboard coins for a mid-tier payer retention grant so top spenders' rank is not diluted.",
+          "clause": "preventing positional leaderboard spillover from retention grants"
         }
       ],
       "negative": [

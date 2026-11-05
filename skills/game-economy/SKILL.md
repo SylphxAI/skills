@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, self-challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when choosing a game's pack contents or price, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, self-challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
 ---
 
 # Game economy
@@ -65,6 +65,17 @@ and diagnostic checks in the economy model.
 - **A player is unhappy:** attention, a real repair and an optional gift serve
   different needs. A gift can be appropriate at any point within the standing
   budget; neither a complaint nor a purchase automatically requires one.
+- **Positional Leaderboard Currency vs. Non-Positional Progression Grants (`Zero Leaderboard Spillover`):**
+  In any economy with a public wealth or power leaderboard, top spenders (`T0`)
+  purchase relative rank and visible status gaps (a positional good). Never
+  issue large grants of positional leaderboard currency to mid-tier payers
+  (`T1/T2`) in retention or goodwill flows, which compresses the rank gap and
+  dilutes top spenders' rank; instead, use non-positional progression items
+  (upgrade materials, skill cards, bound gems, cosmetics) that deliver high
+  perceived value to the recipient with zero spillover onto the positional
+  leaderboard. When a game has no public balance or wealth leaderboard, or when
+  restoring a verified paid order, evaluate the grant by progression coverage
+  and purchase displacement instead.
 
 Content generation can make expansion cheaper, but relevance, quality,
 delivery and service still cost resources. Size the road to player demand and
@@ -74,6 +85,7 @@ cannot replace that calculation.
 | ❌ Bad | ✅ Good |
 | --- | --- |
 | Reject a reward because it is a large multiple of the base pack. | Include every concurrent reward and use path, simulate time to cap, and choose an amount and content extension from measured player and sales effects. |
+| Issue a large goodwill grant of positional leaderboard currency to a mid-tier (`T1/T2`) payer in a retention flow. | Use non-positional progression items (upgrade materials, skill cards, bound gems, cosmetics) that deliver high perceived value to the recipient with zero spillover onto top spenders' (`T0`) positional leaderboard rank. |
 | Reduce an earned balance to make a leaderboard equal again. | Absorb the service mistake, preserve holdings, repair future issuance and assess additional care or new goals for affected players. |
 | Call a non-transferable item free because it creates no coins. | Measure whether it replaces purchases, accelerates exhaustion or changes competition, as well as its direct service cost. |
 

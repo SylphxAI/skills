@@ -37,3 +37,9 @@ When live user harm is occurring or the upstream engine/platform fix will take l
 If 10 minutes of investigation produce no new disconfirming evidence:
 - Change the diagnostic angle or launch parallel read-only checks across the competing hypotheses (`../swarm-fuse/SKILL.md`).
 - If an external dependency is genuinely unavailable and no workaround exists within current authority, record the exact failing endpoint, timestamp, and error receipt, and hand off or escalate with that concrete evidence.
+
+## 5. Autonomous Skill Distillation Gate (Completion / Exit Gate)
+
+Before declaring an unblocking task or incident restoration complete:
+- Check whether resolving the blocker required a **second-attempt detour** (an initial approach hit an undocumented trap and a fallback approach was needed), fixed a **post-ship defect or rework** (an existing verification checklist missed a dimension), or surfaced a **recurring cross-agent blind spot**.
+- Whenever any of the three occurred, distill the role-neutral governing mechanism into the owning skill in the shared skills repository following [`../author-skill/SKILL.md`](../author-skill/SKILL.md)—refining the existing skill in place 90% of the time rather than creating fragmented micro-skills—as part of completion, without waiting for a human prompt.
