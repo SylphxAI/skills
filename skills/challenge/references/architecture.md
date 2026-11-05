@@ -282,6 +282,27 @@ system, and revisit when its workload or costs change.
   is met. Use controlled version-pin updates and relevant validation.
 
 
+### Forward-only modernization: strangle legacy V1 paths
+
+Use the [strangler pattern](https://martinfowler.com/bliki/StranglerFigApplication.html)
+(primary source read 2026-11-05): shrink the legacy surface instead of making it
+the home of new work. Never add new features, provider adapters (such as
+product-local SMS or OAuth clients), or new identity or voucher concepts to a
+legacy V1 surface. Build each shared capability once in its owning platform
+service and consume its published contract.
+
+Bridge existing clients with zero-input signed deep links or thin compatibility
+adapters. Translate the old contract, not business logic or a second identity
+authority. Bind links to the intended account, audience and action with expiry
+and replay protection; require no credential re-entry when an authenticated
+session already supplies the required authority. Links never create authority.
+
+Retire V1 paths incrementally as callers move. Preserve live accounts, purchases,
+data and supported old-client access; verify parity and caller usage before
+removal. Compatibility repairs remain valid, but new capabilities go forward to
+the owning service. Measure remaining callers and duplicated logic: a bridge
+that grows new product behavior expands the legacy system rather than retiring it.
+
 ### Injection defence is architectural, not a prompt rule
 
 Treat an authenticated requester's instructions according to their grant.

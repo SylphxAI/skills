@@ -1,6 +1,6 @@
 ---
 name: challenge
-description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when assessing a partner's request for help on its own client project; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
+description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when choosing multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design, or legacy-to-modern strangler migration; when assessing a partner's request for help on its own client project; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
 ---
 
 # First-principles decision and challenge engine (`challenge`)
@@ -11,8 +11,8 @@ inputs to conclusions, never backward from the answer anyone wants.
 
 ## Step 0: Load only the relevant domain
 
-- Architecture, service boundaries, runtime/model separation and scale: [architecture](references/architecture.md); technology or build vs. buy: [stack](references/stack.md).
-- Contracts, pricing and partner scope: [commercial](references/commercial.md); acquisition and budgets: [growth](references/growth.md); disputes and material downside: [risk](references/risk.md).
+- Architecture, service boundaries, runtime/model separation scale and forward-only legacy-to-modern strangler migration: [architecture](references/architecture.md); technology or build vs. buy: [stack](references/stack.md).
+- Contracts, pricing, multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design and partner scope: [commercial](references/commercial.md); acquisition and budgets: [growth](references/growth.md); disputes and material downside: [risk](references/risk.md).
 - Product choices and agent participation: [product](references/product.md); UX: [experience](references/experience.md); motion/audio: [feedback](references/feedback.md).
 - Games and progression: [games](references/games.md), [mechanics](references/mechanics.md) and [mechanics catalogue](references/mechanics-catalogue.md).
 - External boundaries: [conduct](references/conduct.md); conversational tone: [agent voice](references/agent-voice.md). External instruction/identity probes belong to [customer-support](../customer-support/SKILL.md), not a design debate.
