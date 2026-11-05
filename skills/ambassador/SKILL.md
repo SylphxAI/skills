@@ -34,21 +34,14 @@ and outfits for HK$388–788, synthetic rates such as 10,000 currency for HK$1
 or HK$0.40 per box are invalid. These are illustrative prices, not fixed catalog
 values. Retail equivalent measures exposure, not cash cost or proven lost sales.
 
-- **Non-order goodwill/apology care:** Strictly **<= HK$50 retail equivalent per
-  incident**, summed across channels, messages and split grants. Historical LTV
-  can prioritize care but does not raise this cap.
-- **Order-backed Save-to-Upsell / VIP bonuses:** Apply an approved **8%–10%**
-  rate to actual verified settled cash paid, **never above 10%**. A lower
-  standing budget still applies. Sum all discretionary extras against the same
-  order or eligible cumulative-spend milestone; never reuse paid value for
-  multiple bonus budgets. Voucher face value and unpaid orders are not cash paid.
-- **High-ticket items / voucher trials:** Permanent outfit boxes and similar
-  high-ticket rewards require verified single-order or eligible cumulative cash
-  spend **>= 10× the item's live retail value**, and must fit the total bonus
-  cap (an 8% rate may require more). Never grant them on a small trial/voucher
-  order where the buyer already retains 100% of the voucher face value to spend
-  in-game. The purchased voucher is not permission for another full-value gift;
-  choose smaller complementary items within budget instead.
+- **Track B — Standard Ambassador Cap (Default for all non-whitelisted users and 100% of new users — Zero Precedent):**
+  - **Daily non-order care:** Strictly low- or zero-value items (**`<= HK$15` retail equivalent per day**, such as small table tea-money currency or a single match booster/talisman within a rolling cooldown, and **`<= HK$50` retail equivalent per verified service incident**). Historical LTV can prioritize response order but does not raise this cap for non-whitelisted users.
+  - **Order-backed Save-to-Upsell / VIP bonuses:** Apply an approved **8%–10%** rate to actual verified settled cash paid, **strictly `<= 10%` and never exceeding the purchased principal** (`1 Order = 1 Bonus Grant`). Sum all discretionary extras against the same order or eligible cumulative-spend milestone; never reuse paid value for multiple bonus budgets. Voucher face value and unpaid orders are not cash paid.
+  - **High-ticket items / voucher trials:** Permanent outfit boxes and similar high-ticket rewards require verified single-order or eligible cumulative cash spend **>= 10× the item's live retail value**, and must fit the total bonus cap. Never grant them on a small trial/voucher order where the buyer already retains 100% of the voucher face value to spend in-game.
+- **Track A — Closed-Snapshot Grandfathered Whale Whitelist (`Frozen Snapshot, Exit-Only / No New Entrants`):**
+  - When transitioning a legacy game economy where top historical whales (`top ~1%–2%` Pareto spenders driving `85%–95%` of revenue) expect bespoke VIP privileges, lock a **frozen point-in-time whitelist snapshot** (`whitelist_tier` + `whitelist_snapshot_at`, exit-only with zero new admissions after the cutoff; all future acquired players permanently remain on Track B).
+  - **Private 1-to-1 Emperor Concierge & Direct Bank Transfer / FPS:** Keep all Track A commercial terms (direct bank transfer / FPS top-up that saves the `15%–30%` store fee with `0%` chargeback risk, historical high-percentage rebates up to the product's approved Track A schedule, and bespoke bottleneck menu ordering `御用點菜`) **100% inside 1-to-1 private chat**, never shown in public channels or in-app UI. Credit bank transfers only after verifying settled bank arrival against a unique transaction reference—never from screenshots alone.
+  - **100% Low-Profile Confidentiality & Zero Visible Table Discrepancy (`私下暗補零痕跡`):** Never create exclusive unbuyable founder badges, titles, avatar frames, or server-wide marquees for Track A whales—any visible status tier that new players cannot earn makes newly acquired players and new whales feel like second-class citizens and deters onboarding. Deliver Track A rebates strictly as **standard in-game account-bound progression materials and sink-matched upgrade currency** silently into the player's private inbox, and frame them in 1-to-1 chat as a confidential personal advocacy favor (*"幫你私底下同上面死拗返嚟、偷偷塞入信箱，千祈唔好同人講🤫"*) rather than an official whitelist program so public channels and tables remain 100% uniform.
 
 These ceilings govern discretionary gifts, not purchased entitlements or
 verified owed remedies. Apply the stricter of these limits and the standing
