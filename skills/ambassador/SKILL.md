@@ -18,6 +18,45 @@ Before drafting any reply, adjudicating any user issue or rival complaint, or si
    - **Verify database ledger delta first:** Never issue currency or compensation based solely on a user's verbal claim of a larger deduction or missing amount (*"you deducted X from me"*) without first verifying the exact uncompensated delta in the authoritative database ledger.
    - **Zero fabricated mechanisms or unverified credit claims:** Never invent fictional technical mechanisms (such as claiming an account is placed under a non-existent *"whitelist protection lock"*) and never claim a top-up, voucher, or grant has already been credited before verifying the database row. If verification requires another role's read access, tell the user plainly that the ledger check is in progress and follow up once verified.
 
+## Retail valuation and discretionary grant caps
+
+Before composing, promising or granting retention, VIP care or Save-to-Upsell
+bundles, verify every item's unit retail value against the serving
+`GoodsTemplate` catalog (where used) and live direct-cash store SKUs. Match item,
+quantity, permanence, restrictions and currency. Record SKU, cash price, pack
+quantity and read time; calculate `unit retail value = cash pack price / item
+quantity` and sum `quantity × unit retail value` for the entire bundle. Resolve
+missing or conflicting comparable prices before promising the item; never
+assume zero value or use unrelated promotional packs to shrink its valuation.
+
+For example, if live packs sell 10 currency for HK$1, boxes for HK$15–18 each
+and outfits for HK$388–788, synthetic rates such as 10,000 currency for HK$1
+or HK$0.40 per box are invalid. These are illustrative prices, not fixed catalog
+values. Retail equivalent measures exposure, not cash cost or proven lost sales.
+
+- **Non-order goodwill/apology care:** Strictly **<= HK$50 retail equivalent per
+  incident**, summed across channels, messages and split grants. Historical LTV
+  can prioritize care but does not raise this cap.
+- **Order-backed Save-to-Upsell / VIP bonuses:** Apply an approved **8%–10%**
+  rate to actual verified settled cash paid, **never above 10%**. A lower
+  standing budget still applies. Sum all discretionary extras against the same
+  order or eligible cumulative-spend milestone; never reuse paid value for
+  multiple bonus budgets. Voucher face value and unpaid orders are not cash paid.
+- **High-ticket items / voucher trials:** Permanent outfit boxes and similar
+  high-ticket rewards require verified single-order or eligible cumulative cash
+  spend **>= 10× the item's live retail value**, and must fit the total bonus
+  cap (an 8% rate may require more). Never grant them on a small trial/voucher
+  order where the buyer already retains 100% of the voucher face value to spend
+  in-game. The purchased voucher is not permission for another full-value gift;
+  choose smaller complementary items within budget instead.
+
+These ceilings govern discretionary gifts, not purchased entitlements or
+verified owed remedies. Apply the stricter of these limits and the standing
+product budget; an escalation request does not itself authorize exceeding them.
+Record incident/order binding, prior grants, valuation and remaining budget
+before delivery, then verify the idempotent grant. Preserve already delivered
+and communicated value; correct future issuance, not past holdings.
+
 ## Purchase intent: VIP payment concierge
 
 When a player wants to top up, buy an outfit or purchase a pack but is frustrated

@@ -105,6 +105,11 @@ add useful content. The person serving the player chooses within that standing
 authority without asking for each case. Update the budget when its measured
 inputs change; a proposed gift outside it needs a budget decision.
 
+For ambassador retention, VIP care and Save-to-Upsell bundles, apply the
+[live retail valuation and discretionary grant caps](../ambassador/SKILL.md#retail-valuation-and-discretionary-grant-caps)
+before choosing quantities; synthetic internal conversions cannot replace
+matching direct-cash store SKUs.
+
 Keep owed fulfillment and repairs separate from optional generosity. When a
 service mistake grants too much, absorb its cost and preserve what the player
 holds. Correct future grants and fund the repair. Fraud, abuse or chargebacks
