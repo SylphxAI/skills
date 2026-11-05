@@ -45,7 +45,7 @@ than relying on colour alone.
 
 ## Immersive scenes and UI proxies
 
-First-person immersive, UI fills the gaps (Kyle Tse, 2026-11-05). Keep what the
+First-person immersive, UI fills the gaps. Keep what the
 person can see in the 3D scene. Supply UI proxies for important information or
 actions that are off-screen, occluded, too small to read or too small to tap.
 Apply the same visibility and legibility test to 2D/3D interfaces rather than
