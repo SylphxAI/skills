@@ -30,7 +30,14 @@ player value. A depleted entry tier, an inaccessible premium offer and a large
 pack that finishes all content require different repairs.
 
 Use genuine price history for savings claims, clear eligibility and real end
-times. Keep the purchased offer version with its order. The general
+times. Keep the purchased offer version with its order. On off-store or web
+top-up surfaces, keep the permanent standing baseline at 1:1 with the in-app
+storefront (`baseBonus = 0%`, with no permanent off-store discount or fixed
+weekday standing rebate); deliver promotional bonuses (`<= 12%` total stacked
+cap) strictly through truthful, time-bounded rotating named campaign
+combinations (`startsAt`/`endsAt`) whose names and percentage compositions
+genuinely rotate across calendar windows and lock immutably into the checkout
+quote at purchase initiation. The general
 [commercial standard](../../self-challenge/references/commercial.md) owns
 payment, entitlement and ledger mechanics.
 
