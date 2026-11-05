@@ -21,3 +21,24 @@ Every product surface—landing page, app store listing, onboarding, and in-app 
 ## How it is judged
 
 Measure time to first value, task completion rate, cold/warm startup latency (`../../deliver-and-verify/references/performance.md`), and side-by-side visual/behavioral parity against the category leader (`../../deliver-and-verify/references/parity.md`).
+
+## Reachable mobile checkout
+
+When a mobile purchase selection leaves the primary pay action far below the
+chosen option, use the top-up category pattern: a pinned bottom bar showing the
+selected amount and the pay button. Derive both from the same selected state so
+the amount cannot drift from the order. Test changing options, safe-area insets,
+keyboard display, loading and disabled states on a phone; reserve content space
+so the bar never hides the final option or required terms. A short checkout with
+an already reachable action does not need another bar. Apply the
+[money-copy checks](../../clear-writing/references/articles-and-copy.md#money-and-time-in-consumer-copy)
+to its labels.
+
+## Focus and error states
+
+A focus ring identifies the active control; an error colour identifies invalid
+input. Sharing the colour makes a valid focused field look broken. Give focus a
+visible neutral ring when the brand is red, reserving red for errors and the
+primary call to action (CTA). Verify keyboard focus on valid and invalid fields,
+including against the CTA background; retain text or icons for errors rather
+than relying on colour alone.

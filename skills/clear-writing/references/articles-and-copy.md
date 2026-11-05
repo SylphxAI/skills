@@ -45,3 +45,24 @@ Use enough plain language to explain the relevant facts in an error or empty sta
   > *"We are thrilled to announce a game-changing enhancement to our export module! We've completely re-architected our CSV streaming pipeline to empower you to export your data more seamlessly than ever before."*
 - ✅ **Good**:
   > *"Exporting 100,000+ rows to CSV now starts downloading immediately instead of timing out, and includes your custom tag columns."*
+
+## Money and time in consumer copy
+
+Checkout copy must match the money the person will actually use. Read the
+wallet's currency and format its amounts with the user's locale; never hardcode
+a currency symbol. If settlement uses another currency, label that real charge
+explicitly rather than silently relabeling the wallet amount. Check a second
+currency and a locale with different number formatting before publishing.
+
+Show one local time on consumer pages, with an unambiguous zone when needed;
+do not ask the reader to decode parallel times such as “HKT / UTC”. Technical
+logs can keep UTC. Read the whole rendered component: do not repeat a number
+already supplied by its badge. Keep finance-only calculations such as “effective
+price %” out of consumer purchase copy; show the actual amount and what it buys.
+
+Describe a payment check as an action, not a judgment about the payer:
+- Bad: “You are flagged high risk.”
+- Good: “Your bank may ask for an extra check (3D Secure).”
+
+Use that wording only when the payment flow supports that possibility; internal
+risk labels neither explain what to do nor establish that the bank rejected it.

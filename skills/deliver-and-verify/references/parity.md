@@ -55,6 +55,31 @@ exists does not prove the visible set is covered, so list what the frame shows
 and map every item to its source. An empty accessibility tree does not establish
 a blank page; inspect the actual frame, including canvas-rendered content.
 
+## Distinguish renderer faults from product defects
+
+Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
+Texture corruption on both WebGPU and WebGL can therefore share an environment
+cause; switching APIs alone does not establish a product defect. Before reporting
+or routing a visual defect from that environment, reproduce the same build,
+scene and assets on a hardware GPU or real device. Record the WebGPU adapter
+information or WebGL renderer string, browser, build and paired captures in the
+receipt. If renderer details are unavailable, say so; do not infer hardware
+acceleration from the API name. Without the hardware check, retain the observed
+artifact but mark product attribution OPEN. If it reproduces there, investigate
+the product with that evidence.
+
+## Mobile web orientation
+
+Open a web game in portrait on a real phone as part of parity verification;
+a landscape desktop capture cannot establish this entry state. A landscape-only
+title preserves its aspect ratio rather than squeezing the play surface into
+portrait. Put the rotate prompt and orientation handling in the shared engine,
+not a separate workaround in each title. On the first user tap, request landscape
+orientation through the supported browser API and handle rejection. Where lock
+is unavailable, including iOS browsers, keep the rotate prompt until the device
+is landscape. Verify portrait entry, first tap, rotation both ways and return
+from background; controls remain usable and the scene never looks squashed.
+
 ## Keep a screen-and-feature parity sheet
 
 Inventory every screen and feature in scope, including applicable loading,

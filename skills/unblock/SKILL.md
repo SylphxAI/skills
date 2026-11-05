@@ -1,11 +1,15 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, or a queue/review stops progressing. Use prove-it and self-challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, or an environment disappears with unpushed work. Use prove-it and self-challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
 
 Use this skill to restore a task, CI run, merge queue entry, or deployment that has actually stalled or failed.
+
+When an environment disappears or is about to be retired, preserve stranded
+work using [references/stranded-work.md](references/stranded-work.md) before
+resuming delivery or allowing cleanup.
 
 ## 1. Verify It Is Actually Blocked
 
