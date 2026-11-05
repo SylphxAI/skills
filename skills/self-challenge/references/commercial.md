@@ -105,6 +105,78 @@ edition limits and existing item value. Customer care remains within its
 [approved budget](#billing-remedies-and-retention-gifts); a gift and a top-up
 bonus draw from the same assessed total benefit when they can stack.
 
+### Multi-currency localization, psychological pricing and direct top-up
+
+**One billing catalogue:** Define SKUs and base price tiers once in the billing
+platform master. Sync downstream channels automatically through official APIs,
+not separate manual spreadsheets per storefront. Examples are Stripe
+`Product`/`Price`, App Store Connect price schedules, Google Play
+`inappproducts`, and server-driven Steam `ISteamMicroTxn/InitTxn` amounts.
+The last is transaction initiation, not a persistent catalogue-sync endpoint.
+Keep channel identifiers and publication status mapped to the master and verify
+published prices after sync. Read current API versions and supported price
+points before implementation; an integration example is not a universal API.
+
+**Price the channel economics:** For virtual goods and games with near-zero
+marginal COGS, budget a 30% store-fee scenario in the master table's base unit
+economics, replacing it with actual contracted fees in contribution reporting.
+Keep nominal sticker prices identical across App Store, Google Play, Steam and
+web for the same currency and offer (`1:1` base rate); use supported common price
+points rather than silently accepting channel drift. Reward low-fee direct web
+checkout through the time-bounded rotating campaigns above (`<= 12%` stacked
+bonus) or high-denomination VIP bundles, not a permanent channel surcharge or
+discount. This avoids surcharge loss aversion and supports price parity; verify
+the actual store agreement rather than claiming that identical prices alone
+satisfy every clause. For hard-COGS SaaS or AI usage, charge a permitted channel
+markup or route checkout to the web where permitted: net proceeds after fees
+must cover marginal COGS. Do not import virtual-goods economics into paid compute.
+
+Never expose raw FX-multiplied decimals such as `$1.0248` or `NT$31.8304`.
+Choose the localized price before quoting, using two tiers:
+
+1. **Core-market matrix:** Explicit local price tiers for `HKD, TWD, USD, GBP,
+   EUR, JPY, KRW, MYR, SGD, CAD, AUD, MOP, THB, PHP, IDR, VND`. Calibrate to
+   purchasing power, comparable offers and contribution, not FX alone.
+2. **Deterministic fallback:** Cover every remaining processor presentment
+   currency with one psychological rounding function keyed by ISO-4217 currency,
+   supported precision and purchase scenario. Convert from a versioned FX input,
+   select a supported local price point, and freeze the amount in the quote.
+   Validate current processor currency and precision rules; reject unsupported
+   currencies rather than inventing units.
+
+Currency culture and purchase scenario jointly select the price points.
+Zero-decimal currencies and Asian integer-norm markets (`HKD, TWD, JPY, KRW,
+MOP, IDR, VND`) use clean integer points ending in `8`, `0` or `00`.
+Integer pricing is a market convention, not a claim that all these currencies
+have zero minor units. Western decimal currencies (`USD, GBP, EUR, CAD, AUD`)
+use `.99` left-digit anchors for impulse packs and subscriptions (`$0.99`,
+`$4.99`, `$99.99`), but clean `5 / 10` multiples for stored-value wallet top-ups
+(`$10`, `$50`, `$100`). Configure other local conventions explicitly. These are
+chosen defaults: measured local conversion and contribution can change the
+price points, never the requirement for a valid, clear price.
+
+**Direct Top-Up:** Grant purchased items or currency directly to the account in
+one step through durable orders and idempotent grants. Present pre-funded stored
+value as one unified wallet balance. Separate paid principal and promotional
+bonus lots on the ledger, linked to source orders, so refunds claw back
+associated promo first and reconcile principal without rewriting history.
+Never force buyers to purchase individual voucher slips on the web and redeem
+them inside the app. Chargeback defense relies on authenticated delivery and
+consumption proof plus principal-versus-promo lot history, not voucher slips.
+A transferable gift voucher is a separate product, not an intermediate step for
+account top-ups.
+
+Verify matrix precedence, fallback coverage across all supported currencies,
+valid minor units, scenario-specific price points, channel/quote/display/charge
+equality, duplicate-delivery idempotency and refund lot reconciliation. Compare
+checkout completion and contribution before adding redemption steps.
+
+API references (read 2026-11-05): [Stripe prices](https://docs.stripe.com/api/prices),
+[processor currency rules](https://docs.stripe.com/currencies),
+[App Store Connect price schedules](https://developer.apple.com/documentation/appstoreconnectapi/in-app-purchase-price-schedules),
+[Google Play products](https://developers.google.com/android-publisher/api-ref/rest/v3/inappproducts),
+and [Steam microtransactions](https://partner.steamgames.com/doc/webapi/ISteamMicroTxn).
+
 ## Open data, sticky value
 
 Choose documented self-service export and useful import paths as part of the

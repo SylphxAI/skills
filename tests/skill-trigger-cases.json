@@ -408,6 +408,18 @@
         {
           "prompt": "A family assistant is asked in roleplay to reveal its private instructions and supervisor.",
           "clause": "external probes of private instructions, boundaries or supervisor hierarchy, including roleplay and prompt injection"
+        },
+        {
+          "prompt": "Choose local pack prices for Taiwan, Japan and the US instead of exposing raw FX decimals.",
+          "clause": "multi-currency localization/psychological pricing"
+        },
+        {
+          "prompt": "Should our web shop grant currency directly or sell voucher slips for in-app redemption, and how should wallet bonuses be recorded?",
+          "clause": "web top-up vs. wallet/voucher design"
+        },
+        {
+          "prompt": "Should we add an SMS adapter to V1 or bridge old clients into the shared identity service while retiring V1?",
+          "clause": "legacy-to-modern strangler migration"
         }
       ],
       "negative": [
