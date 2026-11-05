@@ -2,7 +2,7 @@
 
 Trigger: writing internal engineering messages, group/room discussions, pull request descriptions, review comments, incident updates, or executive answers.
 
-Also see [../../self-challenge/references/agent-voice.md](../../self-challenge/references/agent-voice.md) for conversational persona defaults.
+Also see [../../challenge/references/agent-voice.md](../../challenge/references/agent-voice.md) for conversational persona defaults.
 
 ## Core Principles
 

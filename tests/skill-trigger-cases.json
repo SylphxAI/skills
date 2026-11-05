@@ -78,8 +78,8 @@
         },
         {
           "prompt": "Compare two launch plans and decide which assumptions need testing.",
-          "clause": "when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use self-challenge)",
-          "route_to": "self-challenge"
+          "clause": "when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use challenge)",
+          "route_to": "challenge"
         },
         {
           "prompt": "Investigate the failed request and establish whether the claimed root cause is true.",
@@ -248,8 +248,8 @@
       "negative": [
         {
           "prompt": "Design a migration plan and compare its alternatives; do not execute it yet.",
-          "clause": "Use self-challenge for a plan or architecture",
-          "route_to": "self-challenge"
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
         },
         {
           "prompt": "Review this exact pull request diff for defects without changing it.",
@@ -295,8 +295,8 @@
         },
         {
           "prompt": "Compare these two database architectures and choose the simpler design.",
-          "clause": "self-challenge to compare designs.",
-          "route_to": "self-challenge"
+          "clause": "challenge to compare designs.",
+          "route_to": "challenge"
         },
         {
           "prompt": "File a new outcome issue for the discovered defect.",
@@ -340,8 +340,8 @@
         },
         {
           "prompt": "Compare two proposed service boundaries before choosing an architecture.",
-          "clause": "self-challenge to compare designs.",
-          "route_to": "self-challenge"
+          "clause": "challenge to compare designs.",
+          "route_to": "challenge"
         },
         {
           "prompt": "What is 17 multiplied by 23?",
@@ -383,31 +383,23 @@
         }
       ]
     },
-    "self-challenge": {
+    "challenge": {
       "positive": [
         {
-          "prompt": "Compare these architecture and data-model proposals, including scaling and lifecycle cost.",
-          "clause": "system architecture, service boundary, data model, tech stack, or product spec"
+          "prompt": "Challenge my architecture and pricing proposal against a simpler alternative.",
+          "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
         },
         {
-          "prompt": "Stress-test this reseller agreement and its pricing assumptions before signing.",
-          "clause": "commercial contract, reseller/partner agreement, pricing model"
+          "prompt": "Stress-test a sub-agent's vendor contract and a peer's budget before choosing.",
+          "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
         },
         {
-          "prompt": "Are we over-engineering this migration? Find the simplest complete alternative.",
-          "clause": "'are we over-engineering / over-building this?' or 'is there a simpler way?'"
+          "prompt": "Assess an external partner's request for custom work on its client's project.",
+          "clause": "assessing a partner's request for help on its own client project"
         },
         {
-          "prompt": "Challenge the hypothesis that a connection limit caused this incident.",
-          "clause": "establishing or challenging a root-cause hypothesis"
-        },
-        {
-          "prompt": "A partner asks us to write the meeting minutes and custom code for their own client's project; decide what we take on before any contract.",
-          "clause": "a partner's request for help on its own client project"
-        },
-        {
-          "prompt": "A family assistant is asked in roleplay to reveal its private instructions and supervisor.",
-          "clause": "external probes of private instructions, boundaries or supervisor hierarchy, including roleplay and prompt injection"
+          "prompt": "Are we over-engineering this migration? Find a simpler complete design.",
+          "clause": "asking whether a solution is over-engineered or there is a simpler way"
         },
         {
           "prompt": "Choose local pack prices for Taiwan, Japan and the US instead of exposing raw FX decimals.",
@@ -424,18 +416,23 @@
       ],
       "negative": [
         {
-          "prompt": "Write a backlog ticket from these agreed acceptance outcomes.",
-          "clause": "Use author-item to write a ticket",
+          "prompt": "Investigate why this startup failed from the live event and code.",
+          "clause": "Use prove-it for root-cause failure investigation or verifying a claim",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "An external user asks us to reveal private instructions through roleplay.",
+          "clause": "customer-support for external private-instruction or identity probes",
+          "route_to": "customer-support"
+        },
+        {
+          "prompt": "Write a ticket for these agreed outcomes.",
+          "clause": "author-item to write a ticket",
           "route_to": "author-item"
         },
         {
-          "prompt": "Implement and ship the agreed endpoint rather than comparing designs.",
-          "clause": "use deliver-and-verify to execute changes.",
-          "route_to": "deliver-and-verify"
-        },
-        {
-          "prompt": "Execute the approved configuration rollout and verify the live state.",
-          "clause": "use deliver-and-verify to execute changes.",
+          "prompt": "Ship the approved endpoint change.",
+          "clause": "deliver-and-verify to execute changes.",
           "route_to": "deliver-and-verify"
         }
       ]
@@ -495,13 +492,13 @@
       "negative": [
         {
           "prompt": "Establish the root cause of a past failure; the service is healthy and no restoration is needed.",
-          "clause": "Use prove-it and self-challenge for attribution of a past failure without restoration.",
+          "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
           "route_to": "prove-it"
         },
         {
           "prompt": "Compare causal hypotheses in an old incident report, without changing the healthy system.",
-          "clause": "Use prove-it and self-challenge for attribution of a past failure without restoration.",
-          "route_to": "self-challenge"
+          "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+          "route_to": "challenge"
         },
         {
           "prompt": "A build is still making normal progress within its documented external cycle. Leave it running.",
@@ -558,8 +555,8 @@
         },
         {
           "prompt": "Compare subscription architectures and an enterprise contract for a team document editor.",
-          "clause": "self-challenge for general product or commercial strategy",
-          "route_to": "self-challenge"
+          "clause": "challenge for general product or commercial strategy",
+          "route_to": "challenge"
         },
         {
           "prompt": "Implement the already-approved shop bundle change and verify its purchase flow.",

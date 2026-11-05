@@ -1,6 +1,6 @@
 ---
 name: patrol
-description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and self-challenge to compare designs."
+description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
 ---
 
 # Patrol

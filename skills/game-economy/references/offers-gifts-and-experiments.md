@@ -38,7 +38,7 @@ cap) strictly through truthful, time-bounded rotating named campaign
 combinations (`startsAt`/`endsAt`) whose names and percentage compositions
 genuinely rotate across calendar windows and lock immutably into the checkout
 quote at purchase initiation. The general
-[commercial standard](../../self-challenge/references/commercial.md) owns
+[commercial standard](../../challenge/references/commercial.md) owns
 payment, entitlement and ledger mechanics.
 
 ## Give attention, repair loss and budget optional care

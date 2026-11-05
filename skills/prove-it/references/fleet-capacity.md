@@ -21,7 +21,7 @@ Report these as different quantities:
 Low physical use does not prove a data store is unused, a replica is redundant,
 or a retained request envelope is safe to cut. Hardware sizing also needs
 headroom, failure domains, demand and service-level objectives; use the
-[architecture capacity method](../../self-challenge/references/architecture.md#shared-capacity-pool).
+[architecture capacity method](../../challenge/references/architecture.md#shared-capacity-pool).
 
 ## Build the census before ranking candidates
 

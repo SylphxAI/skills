@@ -27,10 +27,10 @@ Only a verified **active critical incident** pre-empts in-flight work across the
 5. **Active storefront takedown or enforcement deadline:** An app store, payment processor, or regulator has issued a live removal or an immediate statutory deadline.
 
 **What is NOT an interrupt:**
-- Unverified user rumours, single-user complaints (which follow normal support pacing), speculative compliance or third-party ToS hypotheses (`../../self-challenge/references/risk.md`), or cosmetic regressions on non-core screens. Schedule non-emergency legal or regulatory filings by their actual statutory deadline.
+- Unverified user rumours, single-user complaints (which follow normal support pacing), speculative compliance or third-party ToS hypotheses (`../../challenge/references/risk.md`), or cosmetic regressions on non-core screens. Schedule non-emergency legal or regulatory filings by their actual statutory deadline.
 
 ## Support and compensation
 
 Customer support and retention care serve long-term cohort net contribution (`../../customer-support/SKILL.md`, `../../ambassador/SKILL.md`):
-- **Never stop taking money:** Keep checkout open and record every paid order; if a grant path is temporarily degraded, reconcile and deliver the owed entitlements idempotently as soon as it recovers (`../../self-challenge/references/commercial.md#always-take-the-money`).
+- **Never stop taking money:** Keep checkout open and record every paid order; if a grant path is temporarily degraded, reconcile and deliver the owed entitlements idempotently as soon as it recovers (`../../challenge/references/commercial.md#always-take-the-money`).
 - **Pre-approved care budgets:** Fulfill verified missing purchases immediately, and use pre-approved ambassador/support retention budgets to delight frustrated users without inventing per-case approval bottlenecks (`../../game-economy/references/offers-gifts-and-experiments.md#give-attention-repair-loss-and-budget-optional-care`).

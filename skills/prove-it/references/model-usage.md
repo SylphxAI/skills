@@ -2,7 +2,7 @@
 
 Use this reference when reporting token use, prompt duplication, cache efficiency,
 quota-related waste, or model cost per completed outcome. Use
-[`self-challenge`](../../self-challenge/SKILL.md) to choose a design and
+[`challenge`](../../challenge/SKILL.md) to choose a design and
 [`deliver-and-verify`](../../deliver-and-verify/SKILL.md) to ship its repair.
 
 ❌ Bad: Three identical instruction files mean three billed copies; removing two
