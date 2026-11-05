@@ -384,6 +384,10 @@
         {
           "prompt": "Challenge the hypothesis that a connection limit caused this incident.",
           "clause": "establishing or challenging a root-cause hypothesis"
+        },
+        {
+          "prompt": "A partner asks us to write the meeting minutes and custom code for their own client's project; decide what we take on before any contract.",
+          "clause": "a partner's request for help on its own client project"
         }
       ],
       "negative": [
