@@ -75,22 +75,23 @@ price, useful paid value, included bonus and checkout effort
 (`以 App Store / Google Play 為基準，唔靠無限派福利競爭`). Record those inputs;
 a zero-bonus HK$788 pack is an example to verify, not a universal storefront
 rule. A single HK$10,000–HK$100,000+ payment removes repeated checkouts for a
-high-value buyer. That convenience plus a moderate tier bonus can be attractive
-without matching a historically over-generous manual rebate. Include other
-currently available alternatives in the comparison, but never treat historical
-over-discounting as the target for future offers. Honor already agreed terms.
+high-value buyer. Include other currently available alternatives in the
+comparison, but never treat historical over-discounting as the target for
+future offers. Honor already agreed terms.
+
+- **Zero permanent off-store discount & composable time-bounded campaign bonuses (`<= 12%`):** Keep the baseline off-store/web exchange rate at 1:1 with the in-app storefront (`baseBonus = 0%` permanent standing bonus, with no structural "weekday +X%" or permanent off-store discount claims against app stores). Deliver promotional bonuses (`<= 12%` total stacked cap) exclusively through truthful, time-bounded rotating named campaign combinations (`startsAt`/`endsAt`, `唔同名目限時活動組合，每日百分比有變化，總上限 <= 12%`) whose campaign names and percentage compositions genuinely rotate across calendar windows and lock immutably into the checkout quote at purchase initiation.
 
 Size the total benefit from first principles using the
 [cohort contribution model](#pricing-mechanism-design-and-unit-economics).
-Count base value, tier bonuses, campaigns, manual gifts and other stackable
+Count base value, time-bounded campaigns, manual gifts and other stackable
 grants together. Extra currency can displace later paid purchases and shorten
 progression; measure those effects, payment costs, retention and contribution
 instead of treating virtual currency as free because its issuance costs little.
-A bonus up to 10–12% is an illustrative moderate offer where those economics
-support it, not a mandatory floor, universal cap or proof of superior value.
-Choose the smallest funded incentive that meets the measured conversion and
-retention objective; stop escalating when additional generosity reduces expected
-contribution without achieving the chosen objective.
+A total campaign bonus up to 10–12% (`<= 12%` cap) is an illustrative moderate
+ceiling where those economics support it, not a mandatory floor or proof of
+superior value. Choose the smallest funded incentive that meets the measured
+conversion and retention objective; stop escalating when additional generosity
+reduces expected contribution without achieving the chosen objective.
 
 For virtual-resource flows, progression coverage and measured gift displacement,
 use [game-economy](../../game-economy/SKILL.md); cross-channel pricing and payment

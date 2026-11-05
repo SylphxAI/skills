@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Use when creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md): write concrete moment-based trigger descriptions, package opinionated methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
+description: "Use when creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md), or distilling a daily detour, rework, patrol blind spot, or verified reusable playbook into an auto-triggered skill: write concrete moment-based trigger descriptions so skills fire automatically without manual reminders, package opinionated methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
 ---
 
 # Author a Reusable, Opinionated Agent Skill (`author-skill`)
@@ -9,14 +9,23 @@ Apply the documentation and plain-language standards in [references/docs.md](ref
 
 A skill packages a chosen method for a recurring scenario: when to use it, why it fits, how to apply it and what result establishes success. State the evidence and conditions that would change the choice.
 
-## 1. Methodology vs. Organization State (The Hard Boundary)
+## 1. Methodology vs. Organization State & Four-Layer Guidance Architecture
 
-Before putting anything into a skill or `references/*.md` file, separate **Methodology** from **State**:
+Before putting anything into a skill or `references/*.md` file, separate **Methodology** from **State** across the four guidance layers:
 
-| Layer | What Belongs Here | Where It Lives |
+| Layer | Role | What Belongs Here |
 | --- | --- | --- |
-| **Methodology (Skill)** | Opinionated, reusable methods and standards: how to think (`self-challenge`), how to discuss (`swarm-fuse`), how to develop & ship (`deliver-and-verify`, `unblock`, `refactor`), which technology stack paradigm we use (`stack.md`), how to score risks (`risk.md`), and how to write (`clear-writing`). | `skills/<name>/SKILL.md` and `skills/<name>/references/*.md` |
-| **Organization State** | Current facts about a specific company or workspace: company size, active project roster, live server inventory, specific rows in an accepted-risk register, or workspace credentials/leases. | The workspace's own repository (`AGENTS.md`, `company/`) or the platform's **Organization Knowledge**—never inside a skill, and skills do not need special loader instructions to tell an agent to read its own workspace context. |
+| **Layer 1: Public Routing Card (`description`)** | Peer discovery | Concise domain goal and boundary so peers route work with zero overlap. |
+| **Layer 2: Private Execution Prompt (`instructions`)** | Standing role charter | Role measure, counter-metric guardrail, and standing domain duties—never temporary tasks or episodic incident logs. |
+| **Layer 3: Universal Constitution (`AGENTS.md`)** | Workspace invariants | Universal rules and organization state loaded into every session. |
+| **Layer 4: Auto-Triggered Methodology (`skills/<name>/`)** | Mistake-prevention & playbook engine | Opinionated, reusable methods (`self-challenge`, `swarm-fuse`, `deliver-and-verify`, `unblock`, `refactor`, `patrol`, `clear-writing`) loaded **automatically on demand** when the live moment matches the YAML `description`. |
+
+### Auto-Triggered Skill Architecture & Daily Mistake-to-Skill Loop
+
+A well-authored skill **never requires a human or peer reminder** (*"remember to read skill X"*). Because the agent runtime injects every skill's YAML `description` into `<skills>` at the start of every session, the model matches the live task moment directly against `"Use when <observable moment/symptom/action>..."` clauses:
+- **Diagnose any unapplied rule as a skill or trigger defect:** If a skill failed to fire or a mistake recurred, never blame the worker for "forgetting"—either (a) the governing rule is missing from the entry skill's `SKILL.md` (or unlinked from its `Step 0` reference routing), or (b) the skill's YAML `description: "Use when..."` states an abstract label instead of the concrete observable entry moment or symptom the worker actually sees before acting.
+- **Upgrade the existing entry skill in place (`90%` default):** Prefer refining the existing entry skill (`deliver-and-verify`, `self-challenge`, `patrol`, `unblock`, `customer-support`, `ambassador`, `game-economy`) in place over creating an isolated micro-skill that workers will not trigger at the start of a task.
+- **Continuous daily distillation triggers (Done Gate):** Whenever daily work hits (1) a **Detour / Retry** (tried approach A, failed, found root cause B), (2) **Rework / Correction** (missed a premise, boundary, or constraint caught during review or operations), (3) a **Patrol Blind Spot**, or (4) a **Verified Reusable Playbook** (such as a zero-token file-watch trigger daemon for webhook-less external channels), distill the general rule into the owning skill in place and verify its YAML `description: "Use when..."` covers the entry moment before declaring the task complete.
 
 ### General, reusable and future-proof skill evolution
 

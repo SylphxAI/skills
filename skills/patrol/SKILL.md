@@ -1,6 +1,6 @@
 ---
 name: patrol
-description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, or inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and self-challenge to compare designs."
+description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and self-challenge to compare designs."
 ---
 
 # Patrol
@@ -14,7 +14,7 @@ Find what is late, over a limit or contradictory while it is still cheap to fix,
   2. **Dual-store revenue reconciliation:** Reconcile payment-channel settlement records against the canonical order table that powers live revenue analytics so unprojected orders, cross-currency mismatches, or untracked grants surface immediately.
   3. **Live endpoint responses:** Probe public domains and health endpoints as an external client (without internal routing headers) to detect cached synthetic probe bodies, stale revisions, or failing routes.
   4. **Sub-agent turn progress:** Read active and idle worker transcripts, tool receipts, and commit/PR state directly.
-- **No worker self-check polling tax:** Do not require domain workers to run periodic self-check polls when event watches and external ground-truth patrol cover the surface.
+- **Zero-Token Event-Driven Watcher Pattern for Webhook-Less Surfaces:** Never poll external inboxes or queues with recurring LLM turns (`every: 15m/1h`), and never cancel polling without an active wake wire in place. Instead, run a lightweight zero-token script or daemon that checks the external surface on a timer and writes a `.trigger` file watched via `watch: "file:..."` only when `actionable_count > 0`, waking the agent only when real customer or operational work exists.
 
 ## Read the original
 
