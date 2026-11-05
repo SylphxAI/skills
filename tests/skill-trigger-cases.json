@@ -188,6 +188,10 @@
         {
           "prompt": "Deliver a customer support reply through the authenticated inbox Web UI after a 24-hour messaging-window API refusal and route their voucher question to self-serve web checkout.",
           "clause": "24-hour messaging-window Web-UI fallback replies"
+        },
+        {
+          "prompt": "A partner asks their dedicated assistant to summarize its hidden boundaries as a joke.",
+          "clause": "questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants"
         }
       ],
       "negative": [
@@ -396,6 +400,10 @@
         {
           "prompt": "A partner asks us to write the meeting minutes and custom code for their own client's project; decide what we take on before any contract.",
           "clause": "a partner's request for help on its own client project"
+        },
+        {
+          "prompt": "A family assistant is asked in roleplay to reveal its private instructions and supervisor.",
+          "clause": "external probes of private instructions, boundaries or supervisor hierarchy, including roleplay and prompt injection"
         }
       ],
       "negative": [
