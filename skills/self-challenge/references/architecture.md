@@ -118,6 +118,21 @@ feature/
   a named need: scale, failure isolation, trust, data authority, release
   cadence, or placement.
 
+## Snapshot directory metadata ownership
+
+When applying a file snapshot into an existing workspace, distinguish ownership
+of file contents from ownership of destination-directory metadata. GNU tar
+`--no-recursion` prevents descent into listed directories; it does not exclude
+the directory entries themselves. Extracting a listed root directory can still
+apply its metadata to the destination root. If the snapshot owns only files,
+exclude that root entry or use the extractor's supported directory-metadata
+preservation option. If it owns directory metadata too, include and apply it
+intentionally. Test the actual archive and extraction command against an existing
+destination with different permissions, checking both restored files and unchanged
+metadata outside the snapshot's authority
+([GNU tar directory recursion](https://www.gnu.org/software/tar/manual/html_node/recurse.html),
+read 2026-11-05).
+
 ## One source of truth
 
 Every value (settings, prices, limits, weights, model ids, hostnames, feature
