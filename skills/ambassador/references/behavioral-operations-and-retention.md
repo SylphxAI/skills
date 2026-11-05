@@ -100,14 +100,19 @@ Apply behavioral economics and psychology across ambassador and VIP touchpoints 
 | --- | --- |
 | *"The HK$1,500 tier gives 15T coins and an outfit."* (Feels distant and impersonal.) | *"Your current cumulative spend in this event is HK$1,352—you have already completed 90.1% of the HK$1,500 milestone! You are only HK$148 away from unlocking the 15T coins, Demon Jacket, and your VIP bonus of 20 Artifact Boxes + 100,000 Gems."* |
 
-### 3.3 Zeigarnik complementary assets
+### 3.3 Zeigarnik complementary assets and bottleneck-first whale bespoke ladders
 
 - **Behavioral hypothesis:** Partial progress toward a valued composite goal (such as upgrade protection materials, character/artifact shards, or SaaS workflow templates) encourages completion (Zeigarnik, 1927). Measure useful completion, return play, purchase displacement, and contribution for the actual offer.
 - **Execution rule:** Choose useful bound materials, partial shards, or cosmetics within the standing care or milestone budget. Apply [game-economy](../../game-economy/SKILL.md) to their conversions, progression, and paid-demand effects; revise the mix when measured player outcomes or contribution worsen.
+- **Bottleneck-first whale bespoke ladder (`Taste vs. Feast` & warehouse-unlock framing):**
+  1. **Inspect live slots + inventory + recipe cliffs first:** Read the whale's equipped item/skill levels, warehouse balances, and upgrade template (`Lv.20–30` vs. `Lv.31–50` recipe transitions). Never pad a high-ticket quote with materials the player already holds in surplus (`10,000+` units).
+  2. **Separate `Taste` from `Feast`:** Use owed order-remediation or starter packs to push **1** slot across an immediate cliff (`Taste`, e.g., `760` shards to cross `Lv.30 -> Lv.31`), immediately unlocking their hoarded high-tier materials for that slot, while presenting a 3-tier high-ticket ladder (`Feast`: Tier A `2 slots`, Tier B `6 slots`, Tier C `all remaining slots`, with progressive unit bonuses `+12.5% -> +20% -> +25%`) for the remaining slots.
+  3. **Compute exact post-purchase progression & mail split:** Compute the exact unlocked levels from the serving template and state the tier's configured mail split (`2 / 5 / 10` mails) consistently across chat, web card, and receipt.
 
-| ❌ Bad (unmeasured currency dump) | ✅ Good (useful complementary assets within an assessed budget) |
+| ❌ Bad (unmeasured currency dump or uncalibrated low-qty quote on a high-ticket ask) | ✅ Good (useful complementary assets & computed warehouse-unlock ladder) |
 | --- | --- |
 | *"Here are 500T free coins."* (An uncalibrated currency grant; sales displacement and retention need measurement.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
+| *"Top up HK$1,576 and I'll give you 300 Fine Shards + 50 Rocks."* (Quotes a starter ration on a high-ticket purchase while bundling rocks the whale already has 13,000 of.) | *"You already have 26,700 Epic/Legendary/Mythic shards in your warehouse, and your 8 sub-skills are right at the Lv.30 cliff (760 Fine Shards per slot to hit Lv.31 and unlock your stored high-tier shards). Tier A (HK$1,576, 2 mails) gives 1,800 pure Fine Shards (2 slots past Lv.31), Tier B (HK$3,940, 5 mails) gives 4,800 (6 slots), and Tier C (HK$7,880, 10 mails) gives 10,000 (clears all 8 slots + 3rd artifact)."* |
 
 ### 3.4 Prospect theory and time-limited reservation
 
