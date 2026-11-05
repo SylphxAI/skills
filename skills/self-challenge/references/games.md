@@ -26,8 +26,6 @@ never mixing proportions on screen, and preserve ownership of owned items.
 Prefer one repeatable batch conversion from the shared rig over remaking items
 by hand.
 
-Design direction: Kyle Tse, 2026-11-05.
-
 ## Access and economy
 
 - **Play first, sign in to save:** Let new players enter the first playable loop immediately as a guest, and preserve that exact guest account when they link an identity or make a purchase (`../../deliver-and-verify/references/auth.md#guests-and-linking-logins`).
