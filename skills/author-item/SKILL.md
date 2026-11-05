@@ -7,6 +7,10 @@ description: "Use ONLY when explicitly asked to write, file, structure, or revis
 
 An outcome item states the goal, observable acceptance tests, constraints and references. The executing agent chooses the implementation path. This applies acceptance test-driven development (ATDD) to software, product, commercial and operational work.
 
+Before drafting a client UI brief, read the executable backend contract using
+[references/client-contract.md](references/client-contract.md). This applies even
+when the request supplies a plausible screen sketch.
+
 ## 1. Stage 1 ATDD: Write Acceptance Test Cases First
 
 When authoring an item, use four fields:

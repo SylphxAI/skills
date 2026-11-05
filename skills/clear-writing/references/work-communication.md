@@ -55,3 +55,17 @@ After interruption, reload the durable state and reconcile delivery receipts
 before acting. An uncertain send result needs a status read before resending.
 Confirm capture or delivery only after reading the supporting receipt. List
 personal records only to their authorized audience.
+
+## Silence instructions for sub-agents
+
+A conditional reply instruction must specify a valid completion for both
+branches. Some agent runtimes reject a final step with neither assistant text
+nor a tool call as `empty_model_response`. “Reply only if a defect is found” can
+therefore turn a successful check into a runtime error.
+
+When no outbound message is wanted, write: “Do not call `send`; output
+`NO_REPLY`.” Keep the branch requiring a report explicit as well. For example:
+“If you find a defect, send its evidence to the owner. Otherwise, do not call
+`send`; output `NO_REPLY`.” The sentinel is local completion text, not a message
+to send to the owner. Check both branches before delegating; never require an
+empty response as the successful no-op result.

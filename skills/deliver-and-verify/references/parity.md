@@ -55,6 +55,32 @@ exists does not prove the visible set is covered, so list what the frame shows
 and map every item to its source. An empty accessibility tree does not establish
 a blank page; inspect the actual frame, including canvas-rendered content.
 
+## Distinguish renderer faults from product defects
+
+Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
+Texture corruption on both WebGPU and WebGL can therefore share an environment
+cause; switching APIs alone does not establish a product defect. Before reporting
+or routing a visual defect from that environment, reproduce the same build,
+scene and assets on a hardware GPU or real device. Record the WebGPU adapter
+information or WebGL renderer string, browser, build and paired captures in the
+receipt. If renderer details are unavailable, say so; do not infer hardware
+acceleration from the API name. Without the hardware check, retain the observed
+artifact but mark product attribution OPEN. If it reproduces there, investigate
+the product with that evidence.
+
+## Continuous aspect ratios and visibility
+
+For immersive scenes, apply the
+[visibility and UI proxy principle](../../self-challenge/references/experience.md#immersive-scenes-and-ui-proxies).
+Capture portrait phone, landscape phone, tablet, near-square foldable and desktop
+frames, including portrait entry on a real phone. Then resize live between the
+sampled ratios while retaining game or app state. Aspect ratio is continuous;
+five captures alone do not establish the transitions. Verify that important
+entities remain visible in the scene or have readable, tappable UI proxies when
+off-screen, occluded or too small. Check proxy appearance and removal around
+visibility thresholds for flicker, stale state and duplicate actions. A rotate
+prompt, a squashed scene or a fixed-orientation fit does not satisfy the check.
+
 ## Keep a screen-and-feature parity sheet
 
 Inventory every screen and feature in scope, including applicable loading,

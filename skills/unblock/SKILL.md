@@ -1,11 +1,15 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, or a queue/review stops progressing. Use prove-it and self-challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, or an environment disappears with unpushed work. Use prove-it and self-challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
 
 Use this skill to restore a task, CI run, merge queue entry, or deployment that has actually stalled or failed.
+
+When an environment disappears or is about to be retired, preserve stranded
+work using [references/stranded-work.md](references/stranded-work.md) before
+resuming delivery or allowing cleanup.
 
 ## 1. Verify It Is Actually Blocked
 
@@ -13,6 +17,14 @@ Before intervening, read the live state of the job, queue, or target resource:
 1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
 2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../self-challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
+4. **Challenge an added prerequisite:** Before repairing a refused step, reread
+   the outcome and ask whether that step is required at all. Remove an unrelated
+   dependency from this delivery rather than repeatedly repairing it; track the
+   independent outcome separately. For example, a UX change that works with the
+   current engine version should not wait on an optional version bump whose
+   migration fails. Split the bump from the UX change; retain a prerequisite
+   when the acceptance cases actually depend on it.
+
 
 ## 2. Diagnose by Failure Class
 

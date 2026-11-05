@@ -30,3 +30,12 @@ Combine responsive gameplay, rapid visible updates, and warm ambassador companio
 ## How it is judged
 
 Judge a game by live parity against its category leader (`../../deliver-and-verify/references/parity.md`), cold/warm startup and frame-time budgets (`../../deliver-and-verify/references/performance.md`), Day-1/7/30 retention, payer conversion, and cohort net contribution.
+
+## First-person immersion across aspect ratios
+
+Use the [immersive-scene and UI-proxy principle](experience.md#immersive-scenes-and-ui-proxies)
+for the game view: first-person immersion keeps visible entities in 3D, while
+engine-provided UI proxies expose important entities that cannot currently be
+seen, read or tapped. Portrait, landscape, tablet, foldable and desktop are
+frustum changes, not separate title layouts. Verify the full interaction through
+live resize using the [parity method](../../deliver-and-verify/references/parity.md#continuous-aspect-ratios-and-visibility).

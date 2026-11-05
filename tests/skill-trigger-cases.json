@@ -60,6 +60,10 @@
         {
           "prompt": "Turn this implementation checklist into an outcome brief without prescribing steps.",
           "clause": "turning a vague request or step-by-step task list into a structured WHAT-only work item or brief"
+        },
+        {
+          "prompt": "Write a client UI brief based on the actual sealed-auction backend contract.",
+          "clause": "work outcome item, issue ticket, outcome brief, or backlog entry"
         }
       ],
       "negative": [
@@ -135,6 +139,10 @@
         {
           "prompt": "Make this executive update concise without losing the decision or evidence.",
           "clause": "concise internal team/executive updates"
+        },
+        {
+          "prompt": "Write instructions for a sub-agent that should not message its owner when its check passes.",
+          "clause": "including instructions and messages to sub-agents."
         }
       ],
       "negative": [
@@ -454,6 +462,10 @@
         {
           "prompt": "The merge queue stopped making progress. Inspect the stuck job and recover it.",
           "clause": "a queue/review stops progressing"
+        },
+        {
+          "prompt": "Recover unpushed commits and dirty worktrees after the execution environment disappeared.",
+          "clause": "an environment disappears with unpushed work"
         }
       ],
       "negative": [
