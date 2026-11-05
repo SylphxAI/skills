@@ -44,6 +44,8 @@ Use the following defaults for newly authored or rewritten prose (while preservi
 4. **One Idea per Sentence, Concrete Verbs and Nouns**:
    - Prefer active voice (*"The gateway rejected the expired token"*) over passive evasion (*"An authentication failure was experienced during the request lifecycle"*).
    - Vary sentence length so the prose reads like a sharp human wrote it: pair a short punchy sentence with a longer explanatory one.
+5. **Scale Emojis with Emotional Amplitude — Zero in Calm Prose, Single for Mild Warmth, Repeated Only at Peak Excitement**:
+   - Real people are not excited on every sentence, so most normal statements and chat turns carry **zero** emojis. When emotion rises, both the choice and the run length of emojis scale with intensity: a sincere apology might use `🧎`, ordinary congratulations use one `🎉`, and peak excitement, hilarity, or dramatic commiseration naturally strings several together (`🎉🎉🎉`, `🤣🤣🤣`, `😭😭😭`). Longer passages can include multiple emojis across paragraphs where the tone calls for them. What exposes AI is tacking a lukewarm emoji onto the end of every flat sentence out of habit—never enforce rigid emoji-count caps in runtime scripts ([model/runtime separation](../challenge/references/architecture.md#separation-of-concerns-between-model-and-runtime)).
 
 ---
 
