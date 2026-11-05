@@ -243,6 +243,10 @@
         {
           "prompt": "Ship the new web voucher channel and synthetic health probe, verifying cross-currency wallet normalization, canonical order analytics, and CDN cache bypass.",
           "clause": "checkout or voucher channel, synthetic probe"
+        },
+        {
+          "prompt": "Replace the Rust HTTP transport with its published SDK and ship it; a TypeScript test reads the Rust source and fixture routes directly.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         }
       ],
       "negative": [
@@ -260,6 +264,11 @@
           "prompt": "Polish this paragraph for clarity; no implementation or publication is requested.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether a Python source-only change could affect a JavaScript test that reads its files; report the evidence without changing code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
         }
       ]
     },

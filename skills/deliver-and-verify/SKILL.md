@@ -35,6 +35,10 @@ For long builds or tests in a deadline-limited cloud session, read
 
 ## Execute and verify
 
+When selecting checks for source, SDK or transport changes, read
+[affected-test selection](references/dx.md#continuous-integration). Tests can
+depend on files across language and workspace boundaries.
+
 1. Run practical targeted checks, then publish one coherent change. State the remaining uncertainty; fix failures and rerun the affected checks on the same branch. Follow the repository's required checks and normal merge queue without force-push or bypass merge. Review depth follows the change's risk; independent review can run alongside or after delivery and does not create a separate completion stage.
 2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and retry semantics; if the result is unknown, inspect the target before a repeat. Recovered or overlapping sessions can repeat a step, so guard a one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
 3. For a blocked operational route, follow [unblock](../unblock/SKILL.md). A temporary repair stays within existing grants and has a durable fix and removal condition. Coordinate reconciliation on a GitOps-managed resource and merge the matching configuration.
@@ -60,5 +64,5 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [integration.md](references/integration.md): provider calls, webhooks and reconciliation.
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.
-- [dx.md](references/dx.md): APIs, packages, feedback loops and releases.
+- [dx.md](references/dx.md): APIs, packages, affected-test selection, feedback loops and releases.
 - [private-device-preview.md](references/private-device-preview.md): art, text or layout edits in a private real-client session without publishing content or a store build; cold/warm timing and exclusive device handoff.
