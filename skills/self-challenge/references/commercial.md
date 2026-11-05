@@ -1,6 +1,7 @@
 # Commercial standard
 
-Trigger: changing price, entitlement, billing, or a customer contract.
+Trigger: changing price, entitlement, billing, or a customer contract; or a
+partner or sister company asks for help with its own client's project.
 
 What the customer sees, pays, and gets always agree. Legal texts follow
 [conduct](conduct.md). This standard covers how prices, tiers, unit economics,
@@ -177,6 +178,30 @@ predict costs. Keep the summary consistent with the billing authority.
 Distinguish a customer-selected spend cap from a collection-risk limit. Choose
 defaults and alerts for the product's actual exposure and user-harm model, and
 explain a reached limit and its recovery path.
+
+## Advising a partner's client project
+
+A partner or sister company that sells to its own business clients owns that
+client relationship and its delivery. Our role is technical adviser and platform
+supplier, not the partner's delivery team.
+
+- Advise on technology, platform capability, architecture and pricing direction,
+  with sources. Project management, business analysis, meeting notes, client
+  documents and custom client code stay with the partner's own staff and agents.
+- Our engineers, agents, infrastructure, credentials and brand go into a
+  partner's client work only under a signed contract that prices them, such as a
+  dedicated paid environment or a fixed-fee engagement. Before signature, advice
+  stays at direction and public capability.
+- When a request crosses from advice into delivery, name the boundary once, point
+  the delivery back to the partner's own owner, and offer the paid option. Doing
+  the work unpaid "just this once" sets the expectation, spends capacity priced
+  for our own products, and blurs IP ownership and liability.
+- Keep the counterparty stance in [conduct](conduct.md#partners-and-vendors):
+  disclose the minimum, and never name internal systems, unit costs or private
+  affairs.
+
+Judged by: every client deliverable is authored by the partner, and our hours on
+a partner's client work without a signed contract are zero.
 
 ## What we say outside
 
