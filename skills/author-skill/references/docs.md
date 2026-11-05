@@ -138,13 +138,13 @@ explicit qualitative comparisons when numbers would create false precision.
   source table is useful when several methods need comparison; a short standard
   can cite the source beside the rule. Label a local formula as a chosen model.
 - **Verdict:** name the outcome or metric that establishes success. Use the
-  relevant [mechanics menu](../../self-challenge/references/mechanics-catalogue.md)
+  relevant [mechanics menu](../../challenge/references/mechanics-catalogue.md)
   when it helps the design, and compare material alternatives.
 
 State the witnessed failure or binding requirement behind a control. Keep its
 scope no tighter than that need, and remove it when it no longer earns its cost.
 Current company scale, budget and portfolio belong in workspace instructions;
-apply the reusable [conduct method](../../self-challenge/references/conduct.md)
+apply the reusable [conduct method](../../challenge/references/conduct.md)
 within that context.
 
 ## Plain language

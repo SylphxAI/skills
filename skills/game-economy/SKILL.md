@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, self-challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when choosing a game's pack contents or price, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
 ---
 
 # Game economy

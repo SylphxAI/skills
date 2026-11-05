@@ -4,7 +4,7 @@ Trigger: changing credentials, personal data or authorization, or recovering a p
 
 ## When security work happens
 
-Prioritize product behavior and measured harm. Apply existing authority, data and secret invariants during development; choose discretionary hardening through the [risk method](../../self-challenge/references/risk.md). A deferred list does not by itself create an audit or approval stage before first use.
+Prioritize product behavior and measured harm. Apply existing authority, data and secret invariants during development; choose discretionary hardening through the [risk method](../../challenge/references/risk.md). A deferred list does not by itself create an audit or approval stage before first use.
 
 ## Hard lines
 

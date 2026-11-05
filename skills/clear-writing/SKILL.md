@@ -12,7 +12,7 @@ Identify the audience, purpose and channel; read the reference relevant to the t
 - **Naming concepts or replacing internal shorthand in any document, skill, or agent instruction** → Load [references/terminology.md](references/terminology.md)
 - **Sub-agent instructions and messages, internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
 - **Public articles, blog posts, launch announcements, marketing/landing-page copy, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
-- **Agent persona and conversational voice defaults** → Load [../self-challenge/references/agent-voice.md](../self-challenge/references/agent-voice.md)
+- **Agent persona and conversational voice defaults** → Load [../challenge/references/agent-voice.md](../challenge/references/agent-voice.md)
 - *(If handling an active customer/user support ticket with case state and remedies, load [`../customer-support/SKILL.md`](../customer-support/SKILL.md) as well.)*
 
 ---

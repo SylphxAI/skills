@@ -44,7 +44,7 @@ and state as well as running the standard matrix.
 Compare what matters in use: composition, art and typography, content density,
 discoverability, controls, motion and sound, latency, accessibility, feature
 depth, failure states and recovery. Read the
-[experience standard](../../self-challenge/references/experience.md) for design
+[experience standard](../../challenge/references/experience.md) for design
 criteria and [performance method](performance.md) for journey budgets. A green
 HTTP response or an existing button does not establish a usable result.
 
@@ -71,7 +71,7 @@ the product with that evidence.
 ## Continuous aspect ratios and visibility
 
 For immersive scenes, apply the
-[visibility and UI proxy principle](../../self-challenge/references/experience.md#immersive-scenes-and-ui-proxies).
+[visibility and UI proxy principle](../../challenge/references/experience.md#immersive-scenes-and-ui-proxies).
 Capture portrait phone, landscape phone, tablet, near-square foldable and desktop
 frames, including portrait entry on a real phone. Then resize live between the
 sampled ratios while retaining game or app state. Aspect ratio is continuous;
@@ -369,7 +369,7 @@ clients immediately before sending; a preview does not prove that those users
 can see the change.
 
 Prepare the client check before creating the message. Use the existing
-[durable request method](../../self-challenge/references/architecture.md#durable-ownership-of-an-accepted-request)
+[durable request method](../../challenge/references/architecture.md#durable-ownership-of-an-accepted-request)
 for creation and uncertain responses. Confirm the rendered copy in the actual
 client; an API row, generated caption or font sample cannot establish delivery.
 Give temporary copy an expiry. If acceptance fails or a rollback makes its claim

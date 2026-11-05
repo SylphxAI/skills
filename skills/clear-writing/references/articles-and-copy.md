@@ -2,7 +2,7 @@
 
 Trigger: writing or rewriting blog posts, technical articles, product launch announcements, landing pages, ad copy, release notes, or UI microcopy.
 
-Also see [../../self-challenge/references/growth.md](../../self-challenge/references/growth.md) for growth economics and [../../self-challenge/references/experience.md](../../self-challenge/references/experience.md) for UX surface rules.
+Also see [../../challenge/references/growth.md](../../challenge/references/growth.md) for growth economics and [../../challenge/references/experience.md](../../challenge/references/experience.md) for UX surface rules.
 
 ## Core Principles (Ogilvy & High-Conversion Copywriting)
 
