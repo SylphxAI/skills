@@ -126,6 +126,19 @@ in the grant service:
        prestige systems (auctions, VIP tiers, seasonal cosmetics) 100% identical
        and earnable on the same rules ensures newly acquired players and new
        whales never perceive a two-tier caste or rigged table.
+     - **Separate Off-Book VIP Rebates (`0%` Broadcast) from In-Game Pack,
+       Gacha & Jackpot Wins (`100%` System Broadcast with Opt-Out Mystery
+       Player Masking):** Distinguish strictly between (a) off-book VIP rebates
+       or ambassador grants, which are **never** broadcast (`0%`), and (b) a
+       player's own in-game pack openings, gacha pulls, slot jackpots, or
+       auction wins, which the system **always** broadcasts (`100%`) with
+       full-screen/marquee fanfare to sustain server-wide jackpot social proof.
+       Because high-spend players split between high-profile prestige seekers
+       and low-profile stealth players, provide a user-facing broadcast-name
+       toggle (ticked by default to show their real nickname); when unticked
+       (`stealth = true`), never suppress the server-wide jackpot broadcast—fire
+       the exact same marquee and visual fanfare while masking the actor as
+       "A Mysterious Player" (`某位神秘玩家`) and disabling profile inspection.
 2. **Track B — Standard Ambassador Authority (`All Non-Whitelist & 100% of Future Players`):**
    - **Daily Non-Order Care Floor:** Restrict non-order goodwill to a small,
      non-inflationary item allowlist (table-relief ration or single-match
