@@ -9,6 +9,25 @@ Trigger: designing, building, tuning, or operating a game.
 - **Verified odds and rules:** Published gacha/draw probabilities and tournament rules match the actual server implementation (`commercial.md#legal-surface`).
 - **Category-leader craft:** Visuals, shaders, procedural meshes/3D models, animations, particle juice, camera response, and synthesized/spatial audio are built to category-leader quality (`../../deliver-and-verify/references/parity.md`), never flat placeholder boxes.
 
+## Character proportions
+
+New characters use a four-heads-tall proportion (3.8–4.5 heads), an
+international style with a light Japanese influence, and one shared rig across
+titles and apps. Shared proportions keep faces readable and the cast, clothing
+and furniture visually consistent.
+
+Check at the table on a 390×844 phone: an opponent's face must read in 3D
+without a 2D avatar frame. A full body must fit at 9:19.5, 16:9, 4:3 and 1:1.
+Size the cast, chairs and table to look right together; adjust the scene when
+these checks fail rather than masking the character with a portrait frame.
+
+One world has one proportion. Switch a game's whole cast and wardrobe together,
+never mixing proportions on screen, and preserve ownership of owned items.
+Prefer one repeatable batch conversion from the shared rig over remaking items
+by hand.
+
+Design direction: Kyle Tse, 2026-11-05.
+
 ## Access and economy
 
 - **Play first, sign in to save:** Let new players enter the first playable loop immediately as a guest, and preserve that exact guest account when they link an identity or make a purchase (`../../deliver-and-verify/references/auth.md#guests-and-linking-logins`).
