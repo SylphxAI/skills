@@ -19,6 +19,16 @@ Bound resource use and waits according to the operation's cancellation and recov
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
+With PgBouncer transaction pooling, a backend connection belongs to the client
+only for one transaction. Do not rely on session `SET`, `LISTEN`, or
+session-level advisory locks across transactions. Use transaction-local settings
+and transaction-scoped locks where appropriate; route genuinely session-bound
+work through a supported session or direct connection. Verify the deployed pool
+mode, driver and prepared-statement configuration with concurrent database-backed
+tests, not just a direct connection. Protocol-level prepared statements are not
+the same as SQL `PREPARE`; support depends on the pool configuration
+([PgBouncer feature map](https://www.pgbouncer.org/features.html), read 2026-11-05).
+
 ## Migrations
 
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.

@@ -10,6 +10,16 @@ Document the supported prerequisites/revisions, entry command, expected result, 
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
 
+For repeatedly used sandbox build environments, bake the pinned compiler, SDK
+and required system packages into a versioned build image rather than installing
+them during every task. Keep build tools separate from minimal runtime images;
+project dependencies still resolve from the project's lockfile. Verify a clean
+sandbox can compile and run a representative check without an interactive setup
+or an inherited host cache. Measure image pull/startup and build time separately;
+change the preinstalled set when measured total setup cost or toolchain needs
+change ([Docker multi-stage builds](https://docs.docker.com/build/building/multi-stage/),
+read 2026-11-05).
+
 ## Agent-native access
 
 Use supported device authorization for interactive user delegation when the client needs it, following [auth.md](auth.md#agents-clis-and-mcp-clients). Unattended agents use their own scoped machine/workload grant and an authorized secret store. The actual grants and runner/spend policy belong in the repository's instructions; a permitted existing credential does not need a new approval ritual.
