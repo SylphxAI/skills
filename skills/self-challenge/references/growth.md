@@ -38,6 +38,15 @@ and its [catalogue](mechanics-catalogue.md).
   actual settled value and currency. Where revenue concentrates in high-value
   payers, optimize paid campaigns for purchase value (`tROAS` / value bidding)
   and high-intent search rather than install volume (`tCPI`).
+  - **Auth-redirect and authenticated-checkout attribution continuity.** When an
+    acquisition or campaign link targets an authenticated conversion route (such
+    as `/account/vouchers`, `/checkout`, or `/pricing`) that redirects
+    unauthenticated visitors through `/sign-in?nextUrl=...`, client attribution
+    capture must extract campaign parameters (`utm_*`, `fbclid`, `gclid`,
+    `gbraid`, `wbraid`, `click_id`, `gameId`) embedded inside relative
+    `nextUrl`/`redirect` targets, persist browser attribution on authenticated
+    storefront mount, and attach `x-*-attribution` headers on authenticated
+    checkout or order-creation POSTs.
 - Align acquisition with behavioral psychology and platform risk isolation:
   - **Social proof before paid scale.** Never route paid traffic into an empty or
     unmoderated social page or community. Establish authentic target-market
@@ -48,6 +57,15 @@ and its [catalogue](mechanics-catalogue.md).
     playable sampler experiences) to the first 30 seconds of product experience
     with zero bait-and-switch, delivering immediate value before asking for
     sign-up or payment.
+  - **Public discovery and social card hygiene on web and game entry surfaces.**
+    Every public web storefront, referral/invite landing page (`/i/<code>`), and
+    playable web game pack (`keel.toml` `[product]` and `[web.seo]`) must strip
+    internal engineering or dogfood strings (`"rebuilt on Keel"`,
+    `"Keel dogfood"`, `"Browser Shell"`), declare `category = "game"` and
+    `schema_type = "VideoGame"` (for games), emit a valid
+    `<link rel="canonical">`, and serve an absolute `200 OK` raster
+    OpenGraph/Twitter image (`og:image` / `twitter:image`) in the target
+    market's language.
   - **Sentiment-synchronized promotion pacing.** Pause hard-sell bundle
     promotions and paid retargeting to affected cohorts during an active
     incident, rollback, or community frustration window until goodwill is
