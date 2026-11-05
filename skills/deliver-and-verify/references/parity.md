@@ -68,17 +68,18 @@ acceleration from the API name. Without the hardware check, retain the observed
 artifact but mark product attribution OPEN. If it reproduces there, investigate
 the product with that evidence.
 
-## Mobile web orientation
+## Continuous aspect ratios and visibility
 
-Open a web game in portrait on a real phone as part of parity verification;
-a landscape desktop capture cannot establish this entry state. A landscape-only
-title preserves its aspect ratio rather than squeezing the play surface into
-portrait. Put the rotate prompt and orientation handling in the shared engine,
-not a separate workaround in each title. On the first user tap, request landscape
-orientation through the supported browser API and handle rejection. Where lock
-is unavailable, including iOS browsers, keep the rotate prompt until the device
-is landscape. Verify portrait entry, first tap, rotation both ways and return
-from background; controls remain usable and the scene never looks squashed.
+For immersive scenes, apply the
+[visibility and UI proxy principle](../../self-challenge/references/experience.md#immersive-scenes-and-ui-proxies).
+Capture portrait phone, landscape phone, tablet, near-square foldable and desktop
+frames, including portrait entry on a real phone. Then resize live between the
+sampled ratios while retaining game or app state. Aspect ratio is continuous;
+five captures alone do not establish the transitions. Verify that important
+entities remain visible in the scene or have readable, tappable UI proxies when
+off-screen, occluded or too small. Check proxy appearance and removal around
+visibility thresholds for flicker, stale state and duplicate actions. A rotate
+prompt, a squashed scene or a fixed-orientation fit does not satisfy the check.
 
 ## Keep a screen-and-feature parity sheet
 

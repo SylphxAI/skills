@@ -42,3 +42,19 @@ visible neutral ring when the brand is red, reserving red for errors and the
 primary call to action (CTA). Verify keyboard focus on valid and invalid fields,
 including against the CTA background; retain text or icons for errors rather
 than relying on colour alone.
+
+## Immersive scenes and UI proxies
+
+First-person immersive, UI fills the gaps (Kyle Tse, 2026-11-05). Keep what the
+person can see in the 3D scene. Supply UI proxies for important information or
+actions that are off-screen, occluded, too small to read or too small to tap.
+Apply the same visibility and legibility test to 2D/3D interfaces rather than
+forcing a particular orientation.
+
+Aspect ratio and orientation change the camera frustum, not the interaction
+model. The shared engine projects tagged important entities, checks visibility
+and readable/tappable size, and shows their UI proxies when those checks fail.
+Use hysteresis around the thresholds so a small camera movement cannot flicker
+a proxy on and off. Titles supply entity importance and proxy content, not
+per-aspect layouts or rotate prompts. Verify state continuity and proxy actions
+through the [continuous-aspect parity check](../../deliver-and-verify/references/parity.md#continuous-aspect-ratios-and-visibility).

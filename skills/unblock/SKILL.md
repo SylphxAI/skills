@@ -17,6 +17,14 @@ Before intervening, read the live state of the job, queue, or target resource:
 1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
 2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../self-challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
+4. **Challenge an added prerequisite:** Before repairing a refused step, reread
+   the outcome and ask whether that step is required at all. Remove an unrelated
+   dependency from this delivery rather than repeatedly repairing it; track the
+   independent outcome separately. For example, a UX change that works with the
+   current engine version should not wait on an optional version bump whose
+   migration fails. Split the bump from the UX change; retain a prerequisite
+   when the acceptance cases actually depend on it.
+
 
 ## 2. Diagnose by Failure Class
 
