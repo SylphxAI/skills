@@ -18,7 +18,7 @@ outcomes, ranked by their impact and cost of delay.
   authorized path. Scrub secrets before emitting a signal
   ([security.md](../../deliver-and-verify/references/security.md)).
 - **Escalation and disclosure** follow
-  [conduct.md](../../self-challenge/references/conduct.md#customers-and-players).
+  [conduct.md](../../challenge/references/conduct.md#customers-and-players).
 
 ## Practices
 
@@ -45,7 +45,7 @@ outcomes, ranked by their impact and cost of delay.
 Own shared event shape, grouping and work-tracker routing in one platform
 capability. Products consume that pipeline where present; put a missing generic
 capability upstream
-([architecture.md](../../self-challenge/references/architecture.md)).
+([architecture.md](../../challenge/references/architecture.md)).
 
 ## How it is judged
 

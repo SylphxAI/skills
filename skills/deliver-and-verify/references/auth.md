@@ -65,7 +65,7 @@ Every product uses a single unified passwordless entry flow for both new and ret
 
 ## Guests and linking logins
 
-Where the core experience works without sign-in, provision a stable guest account bound to a device credential. Upgrading or saving progress links the verified identity directly to that guest account so zero progress or purchases are lost ([account protection](../../self-challenge/references/experience.md#account-protection)).
+Where the core experience works without sign-in, provision a stable guest account bound to a device credential. Upgrading or saving progress links the verified identity directly to that guest account so zero progress or purchases are lost ([account protection](../../challenge/references/experience.md#account-protection)).
 
 Key OIDC identities by validated `(iss, sub)`, never email alone. Auto-link by verified email only when the provider is authoritative for that address (Google for Gmail/verified Workspace domains, Apple, Microsoft for its domains, a GitHub primary verified email, or an email OTP) and the existing account's proof is valid; otherwise require authenticating the existing account first. If the chosen login already belongs to another account with progress or purchases, let the user choose which account to keep rather than silently overwriting either.
 

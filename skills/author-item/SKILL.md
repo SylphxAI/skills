@@ -1,6 +1,6 @@
 ---
 name: author-item
-description: "Use ONLY when explicitly asked to write, file, structure, or revise a work outcome item, issue ticket, outcome brief, or backlog entry (Stage 1 ATDD: defining goal, observable positive and negative acceptance test cases, constraints, and references without prescribing implementation steps), or when ranking backlog items by Cost of Delay divided by Duration (CD3 / WSJF). Use when turning a vague request or step-by-step task list into a structured WHAT-only work item or brief. Do NOT use when asked to add, build, or implement a code feature, parser capability, or export format directly (use deliver-and-verify, even if the workspace is empty), when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use self-challenge), when investigating a failure or unblocking a task (use prove-it or unblock), or when writing/translating user-facing copy (use clear-writing)."
+description: "Use ONLY when explicitly asked to write, file, structure, or revise a work outcome item, issue ticket, outcome brief, or backlog entry (Stage 1 ATDD: defining goal, observable positive and negative acceptance test cases, constraints, and references without prescribing implementation steps), or when ranking backlog items by Cost of Delay divided by Duration (CD3 / WSJF). Use when turning a vague request or step-by-step task list into a structured WHAT-only work item or brief. Do NOT use when asked to add, build, or implement a code feature, parser capability, or export format directly (use deliver-and-verify, even if the workspace is empty), when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use challenge), when investigating a failure or unblocking a task (use prove-it or unblock), or when writing/translating user-facing copy (use clear-writing)."
 ---
 
 # Author an Outcome Item (`author-item`)
@@ -25,7 +25,7 @@ When authoring an item, use four fields:
      - *Commercial / Partner*: signed/published terms, unit-economics floor, risk band, and partner-facing artifact state.
      - *Marketing / Growth*: live campaign asset, attribution/tracking event verified end-to-end, and CAC/ROAS guardrails.
      - *Operations / Support*: live runbook execution, API state read back before and after, and zero regression on active users.
-   - Pass the **Three Universal Standard Tests** from [`../self-challenge/SKILL.md`](../self-challenge/SKILL.md):
+   - Pass the **Three Universal Standard Tests** from [`../challenge/SKILL.md`](../challenge/SKILL.md):
      - **Category-Leader Benchmark**: When shaping a product feature, UX flow, commercial/growth mechanic, or platform capability, does the target acceptance match or beat the category leader? *(Skip for routine operational chores or internal bug fixes with no category benchmark.)*
      - **YAGNI (You Aren’t Gonna Need It)**: Does the acceptance avoid demanding unrequested gates, queues, or internal scaffolding?
      - **Complete Migration**: Does it require the complete end state (including caller migration and old-path removal) rather than a half-step?

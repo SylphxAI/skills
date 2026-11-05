@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and self-challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -130,6 +130,6 @@ For each finding, name the file and line or contract clause, triggering state/in
 
 Consolidate the first review across the whole change. Later rounds check the fixes and changed code. Report a newly discovered material defect with evidence and explain why it is new; avoid unrelated demands and repeated style rounds.
 
-For agent/runtime claims, use the shared [model/runtime boundary](../self-challenge/SKILL.md). Measure the affected span before changing the environment. Tool counts alone do not justify limiting reasoning or tool access; explicit user cancellation and authorized resource/spend limits remain effective.
+For agent/runtime claims, use the shared [model/runtime boundary](../challenge/SKILL.md). Measure the affected span before changing the environment. Tool counts alone do not justify limiting reasoning or tool access; explicit user cancellation and authorized resource/spend limits remain effective.
 
 When evidence overturns a claim, correct what was wrong, state the bounded verified fact and source/read time, and credit whoever caught it.

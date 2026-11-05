@@ -14,12 +14,12 @@ scope or pause instructions remain part of the outcome's constraints.
 
 A [critical incident](priority.md#interrupts) can preempt ordinary work when the
 cost of waiting exceeds the disruption. Preserve live-user accounts and paid
-value throughout the response ([games.md](../../self-challenge/references/games.md)).
+value throughout the response ([games.md](../../challenge/references/games.md)).
 
 ## Value, cost and time
 
 [priority.md](priority.md) owns the economic ranking method and interrupt criteria.
-[conduct.md](../../self-challenge/references/conduct.md#customers-and-players)
+[conduct.md](../../challenge/references/conduct.md#customers-and-players)
 owns customer remedies and communication conduct.
 
 ## Dates: computed targets, no deadlines
@@ -81,7 +81,7 @@ verifies again when acceptance fails.
 ### Category-leader benchmark and external standards
 
 For product or platform design, compare the result with the relevant category
-leader or specification using [self-challenge](../../self-challenge/SKILL.md).
+leader or specification using [challenge](../../challenge/SKILL.md).
 Use the actual requirement and affected behavior to choose checks for a routine
 operation or internal fix.
 

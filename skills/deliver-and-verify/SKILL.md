@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use self-challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
