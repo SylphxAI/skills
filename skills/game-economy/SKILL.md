@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
 ---
 
 # Game economy
@@ -96,6 +96,18 @@ as smaller packs by default. Compare identical eligibility, timing and
 restrictions; show distinct promotional terms explicitly. Use observed demand
 and cohort contribution to revise this default, without misleading reference
 prices or changing an offer already purchased.
+
+### Bottleneck-First High-Ticket VIP Bespoke Pricing & Primary-Source `ItemTemplate` Verification
+
+When pricing or structuring bespoke high-ticket packs (`HK$1,500+ / US$200+`) for high-LTV payers (`T0`):
+1. **Cross-reference live slot levels, warehouse balances, and upgrade-recipe cliffs (`ArtifactSkillTemplate` / progression tables) before choosing contents:**
+   - Never reuse a low-ticket starter/comfort ration (`100–300` units) on a high-ticket purchase ask; size quantities to clear concrete progression milestones (`2 / 6 / 10` slots across the player's actual level cliff) with progressive unit-value step-ups (`+12.5% -> +20% -> +25%`) that still leave `>= 40%` of total progression depth for subsequent repeat purchases (**Anti-Cheapening**).
+   - **Zero Overstock Dilution:** Exclude any secondary currency or material the player already holds in large surplus (`10,000+` units in inventory) and allocate 100% of the pack's budget to the specific bottleneck items blocking their next upgrade step.
+   - **Warehouse-Unlock Value Framing:** When clearing a mid-tier recipe cliff (e.g., `Lv.30 -> Lv.31`) unlocks tens of thousands of high-tier materials already sitting idle in the player's inventory, compute the exact reachable level from the serving template and present the pack as unlocking their existing warehouse hoard.
+2. **Verify `ItemTemplate` (`funType`) and schema permanence before quoting any item or gift box ID:**
+   - Read the authoritative `ItemTemplate` (`funType` JSON payload), `ArtifactTemplate` (`quality`, `skillId`), and database table schema (`day: -1` permanence vs. expiring columns) before placing any item ID into an offer config. Never assume an item is a "30-day trial card" or a top-tier item from its name alone.
+3. **1:1 Cross-Channel Price Unity & Dynamic Mail Split:**
+   - Keep price and item quantities `1:1` identical between self-serve personalized web offers and 1-to-1 VIP concierge quotes, and derive multi-mail delivery counts (`2 / 5 / 10` mails) directly from each tier's configuration rather than hardcoded labels.
 
 Before running a gift program, whoever holds its budget sets the eligible
 population, allowed reward types, per-recipient and aggregate exposure,
