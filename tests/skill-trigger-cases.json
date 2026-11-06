@@ -463,6 +463,18 @@
         {
           "prompt": "Run source generation remotely for a document API, reconcile the automatic generated commit, and ship the complete change.",
           "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship the repair for a maintenance image excluded from service-manifest discovery, proving its actual COPY inputs satisfy the existing guard.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a game server image build that failed after a new path dependency was added, including a negative guard test against its actual Dockerfile.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [

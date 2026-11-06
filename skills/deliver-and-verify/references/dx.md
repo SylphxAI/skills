@@ -31,6 +31,14 @@ entrypoint. Exclude generated build trees and unrelated caches with
 check the transferred context size ([Docker build context](https://docs.docker.com/build/building/context/),
 read 2026-11-06).
 
+Before relying on a repository-wide image-input guard, compare its discovered
+Dockerfiles, build contexts and targets with the builds invoked by CI workflows
+and service manifests. Include images built only by a workflow: a passing guard
+cannot protect a build it never discovers. For each newly covered image, exercise
+the guard against its real `COPY` set and prove that omitting a required local
+dependency fails. Keep coverage discovery and dependency validation as separate
+assertions so one cannot silently narrow the other.
+
 Before submitting a one-off probe, inspect the final rendered container spec.
 When `kubectl run --overrides` replaces the container array, include the image,
 command, arguments, environment references, stdin setting and required security
