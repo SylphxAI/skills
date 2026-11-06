@@ -359,6 +359,13 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
+Normalization used to validate an exact declaration must preserve literal values
+as interpreted by the consumer, especially when the writer applies the original
+bytes. Test permitted layout changes as accepted and meaning-changing edits
+inside strings as refused before any write. **Wrong:** remove all whitespace
+before comparing an exact ACL path; **right:** preserve the quoted path's identity
+while accepting permitted layout changes.
+
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
 Evaluate each declared trigger and inherited reusable-call context with the
