@@ -242,3 +242,10 @@ When a frustrated player explicitly demands that an uncollected ambassador care 
 4. **Anti-Pendulum Rule — Track A Grandfathered Whales Are 100% Exempt from Passive Waiting (`白名單舊大戶豁免新規矩，主動出擊吸金最大化`)**:
    - `Silent Context` only forbids reciting raw backpack counts (*"你背包有 137 個禮包"*); it **never** makes Track A grandfathered whales passive.
    - Standard Track B rules (`<= 20%` bonus cap, waiting for the player to ask first) do **not** apply to Track A grandfathered whales. For Track A whales who log in with `HK$0`/low spend or have an unconverted `state = 0` order (`HK$388 / HK$488 / HK$788`), proactively reach out 1-to-1 with a high-value bespoke rebate offer (using silently verified upgrade bottlenecks to pitch the exact high-tier materials they want, without saying *"I checked your backpack"*).
+
+5. **Anti-Hard-Sell Coaxing & Insider Bargain Psychology (`反 Hard Sell × 當 BB 仔咁氹 × 令大戶覺得賺咗`, Mandatory)**:
+   - **Why Hard-Selling Price Tiers Fails**: Opening an outbound message with price numbers (*"揀任何 388 或 788 檔位同我講聲"*) feels like a pushy salesperson chasing a quota, triggering psychological reactance even among whales.
+   - **Three-Step Coaxing & Insider-Bargain Loop**:
+     1. **Step 1 — Coax Warmly & Stand 100% on Their Side (`當 BB 仔咁氹 ＋ 幫佢防蝕底`)**: Praise their table play, generosity to guildmates, or ambition, and warn them as an insider friend **not** to buy regular shop packs blind (*"如果你呢兩日想弄神器或者技能，千祈唔好自己就咁喺商城乾買呀，好蝕底架！我偷偷幫你留起咗個私伙老友福利位，抵過自己撳幾倍，你想弄邊樣出聲搵我幫你夾先🥰"*). **Zero price tags (`388/788`) in Step 1.**
+     2. **Step 2 — Rescue Broken Checkout Buttons with Empathy First**: When a whale clicks a broken SKU (`state = 0` on an unmapped bundle), never open by telling them to buy another tier. First reassure them (*"頭先見你撳嗰個掣卡住彈唔出，驚你以為自己部機有事特登同你講聲先🙏 好彩你未自己乾買咋，你係咪睇中入面邊樣材料？同我講聲，我私下幫你夾個多一倍材料嘅私伙著數搞掂佢，包你賺凸"*).
+     3. **Step 3 — Pull-Based High-Anchor Reveal**: Only after the whale replies (*"有咩私伙著數？"* / *"我想升邊格"*), present the bespoke bundle against the standard shop anchor so they feel they outsmarted the storefront and got an exclusive insider bargain.
