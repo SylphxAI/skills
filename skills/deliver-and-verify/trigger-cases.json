@@ -760,6 +760,18 @@
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
       "clause": "editing PR titles/bodies"
+    },
+    {
+      "prompt": "Fix and ship a change feed that skips late commits when consumers resume after a sequence cursor.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a retention worker so one failed provider deletion does not starve later candidates or other tenants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run a synthetic probe with a newly issued one-time credential through delayed admission and corrected read metadata.",
+      "clause": "synthetic probe"
     }
   ],
   "negative": [
@@ -1252,6 +1264,21 @@
       "prompt": "Review whether a PR body edit caused the earlier checks to be cancelled, without changing the PR or workflows.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether sequence allocation proves commit ordering; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare atomic batches and isolated per-candidate retries for a proposed cleanup architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of credential propagation for clarity without running a probe or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }

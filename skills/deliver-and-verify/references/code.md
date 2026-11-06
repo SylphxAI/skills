@@ -138,6 +138,22 @@ final conserved state and rollback behavior as well as completion. Apply this
 audit to other transactional domains, such as stock reservation and cancellation;
 a pure formatter change needs no lock-order proof.
 
+A sequence-backed feed cursor orders allocation, not commit: a delayed writer
+can publish below a cursor already advanced past it. Where consumers resume
+strictly after that cursor, serialize every writer for the same feed before
+allocation through commit, or establish an equivalent no-skip publication
+contract. **Wrong:** assert distinct increasing IDs; **Right:** observe a second
+writer blocked behind the first in a real database fixture, then verify commit
+order and complete results through the public after-cursor read, including
+writers for different event types.
+
+Independent retention or cleanup candidates need isolated failure and retry
+state: a failed first row or provider call must not starve later rows or other
+tenants. Preserve the failed candidate's retry source until its deletion contract
+is satisfied; prove one injected candidate failure permits another's success and
+later recovery of the failed candidate. This isolation applies to independent
+work, not a batch whose declared invariant requires atomic rollback.
+
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
 In runtimes where futures advance only when polled, awaiting maintenance can
