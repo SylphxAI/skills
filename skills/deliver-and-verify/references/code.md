@@ -409,7 +409,10 @@ For example, a currency-labelled price can require `US$1.99` in `en-US` and
 identifier formatting. Assert the rendered caller too when its choice of
 formatter or options caused the defect; keep broad invariant checks alongside
 these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
-from the contract rather than freezing an incidental library output.
+from the contract rather than freezing an incidental library output. Width-dependent
+wrapping can split a required phrase without changing its words; normalize layout
+whitespace in content assertions across relevant renderer settings. Preserve exact
+whitespace when layout or bytes are the contract.
 
 A component's active provider can disagree with a global compatibility setting
 for locale, theme or account state. Exercise context-dependent output under the
