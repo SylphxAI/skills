@@ -11,7 +11,7 @@ inputs to conclusions, never backward from the answer anyone wants.
 
 ## Step 0: Load only the relevant domain
 
-- Architecture, service boundaries, runtime/model separation scale and forward-only legacy-to-modern strangler migration: [architecture](references/architecture.md); technology or build vs. buy: [stack](references/stack.md).
+- Architecture, shared-service capacity, storage, scheduled jobs, durable checkpoints, metering trust and runtime/model separation: [architecture](references/architecture.md); game simulation and networking: [games](references/games.md#simulation-and-networking-by-interaction-model); forward-only legacy-to-modern strangler migration: [architecture](references/architecture.md#forward-only-modernization-strangle-legacy-v1-paths); technology or build vs. buy: [stack](references/stack.md).
 - Contracts, pricing, multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design and partner scope: [commercial](references/commercial.md); acquisition and budgets: [growth](references/growth.md); disputes and material downside: [risk](references/risk.md).
 - Product choices and agent participation: [product](references/product.md); UX: [experience](references/experience.md); motion/audio: [feedback](references/feedback.md).
 - Games and progression: [games](references/games.md), [mechanics](references/mechanics.md) and [mechanics catalogue](references/mechanics-catalogue.md).

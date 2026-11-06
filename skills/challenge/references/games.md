@@ -4,10 +4,37 @@ Trigger: designing, building, tuning, or operating a game.
 
 ## Hard lines
 
-- **Server authority:** The server decides match state, RNG, economy balances, and rewards. The client renders state and sends player intents; it never decides whether a move, draw, or purchase succeeded (`architecture.md#hard-lines`).
+- **Server authority:** The server validates authoritative match outcomes, random seeds, economy balances and rewards. Clients may simulate under the [interaction model below](#simulation-and-networking-by-interaction-model); payouts, rankings and purchases require server verification under the [platform authority boundary](architecture.md#hard-lines).
 - **Protect purchased value and progress:** A player never loses paid currency, items, VIP status, or progression. Never claw back delivered items, levels, or guild progress to resolve an internal grant mistake or a fairness complaint; use additive remedies and upward progression expansion instead (`#player-joy-and-content-expansion`).
 - **Verified odds and rules:** Published gacha/draw probabilities and tournament rules match the actual server implementation (`commercial.md#legal-surface`).
 - **Category-leader craft:** Visuals, shaders, procedural meshes/3D models, animations, particle juice, camera response, and synthesized/spatial audio are built to category-leader quality (`../../deliver-and-verify/references/parity.md`), never flat placeholder boxes.
+
+## Simulation and networking by interaction model
+
+Choose from the interaction model and information boundary. A genre label alone
+does not establish whether a persistent simulation process is needed.
+
+| Interaction model | Decision rule | Why |
+| --- | --- | --- |
+| Turn-based play | Use per-request APIs, checkpoint state in PostgreSQL with compare-and-swap, and represent turn deadlines as durable timers. No game process remains alive between requests. | Idle turns need durable state, not reserved compute. |
+| Single-player real-time play | Run a deterministic simulation locally. Before accepting rewards or rankings, replay the input log on the server against the authorized rules, seed and input/deadline constraints. | A client-reported result does not establish an earned payout. |
+| Multiplayer frame relay (lockstep) | Use a server-clocked input relay only with no hidden gameplay information and proven deterministic simulation: integer or fixed-point arithmetic, a shared match seed and canonical ordering. Require matching replay hashes in CI across every supported target, including iOS ARM64, Android ARM64, Web WASM and the server where supported. | Divergent simulations desynchronize; distributing hidden state exposes it. |
+| Multiplayer authoritative state sync | Run simulation on the server by default whenever the relay conditions remain unproven. Keep game rules in the title or shared game engine. | Unproven determinism or hidden state requires a trusted simulation authority. |
+
+Use the shared realtime platform for logical rooms and matchmaking; verify its
+served capabilities separately from simulation hosting. Build shared per-match
+compute only for a concrete title with a launch date that needs it, as a
+game-image runtime bound to the matchmaking assignment with an authenticated
+join endpoint, active-match drain protection and release when the match ends.
+Why: a logical room or assignment receipt does not allocate a game process.
+
+Scale idle game compute to zero; retain active matches, and allow a recorded,
+traffic-driven warm replica only for live player paths during active hours.
+Measure cold activation and fix the responsible startup span; with Knative,
+verify its [aggressive readiness probing](https://knative.dev/docs/serving/services/configure-probing/)
+(read 2026-11-06) before attributing delay to the simulation or adding warm
+capacity.
+Why: permanent warm capacity hides cold-start defects and charges for idle time.
 
 ## Character proportions
 

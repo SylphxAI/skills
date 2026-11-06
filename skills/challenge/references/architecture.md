@@ -1,6 +1,7 @@
 # Architecture conventions
 
-Trigger: placing a new capability, module, boundary, or integration.
+Trigger: placing a new capability, module, boundary, or integration; designing
+shared-service capacity, storage, scheduled jobs, checkpoints or metering.
 
 Goal: one change is understood in one focused read, and a mistake stops at its
 boundary. The shape is feature-first vertical slices, a functional core inside
@@ -185,6 +186,70 @@ target design before live state makes migration expensive.
   separately, and improve the span that consumes the service's latency target.
   Compare startup improvements and retained capacity by total cost. Keep active
   sessions running through supported drain and disruption handling.
+- **Size shared dependencies explicitly.** In an on-demand system, gateways,
+  connection poolers and shared execution APIs remain common failure points;
+  size each from measured peak concurrency and memory, with headroom for bursts
+  and recovery. Alert on out-of-memory termination, restarts and saturation,
+  and verify recovery under peak load.
+  Why: one undersized shared service can stall otherwise independent workloads.
+
+## Platform data and job contracts
+
+- **Bound large-object memory.** Stream storage-to-network transfers with bounded
+  buffers so per-request memory stays independent of object size; use object
+  storage or ordered immutable chunk rows rather than repeated appends to one
+  large PostgreSQL `bytea`. Follow the storage, compression and end-to-end checks
+  in [bounded memory for large transfers](../../deliver-and-verify/references/performance.md#bounded-memory-for-large-transfers).
+  Why: an apparently streaming endpoint can still buffer or repeatedly rewrite
+  the whole object upstream.
+- **Use one transaction lock hierarchy.** Reserve the complete sorted set of
+  advisory and idempotency keys before canonical account and row locks across
+  every entry point, including batches. Enforce nested helpers' prerequisites
+  with held-lock proof types bound to the key, tenant and live transaction, and
+  verify actual concurrent interleavings using the
+  [transaction standard](../../deliver-and-verify/references/code.md#transactions-and-idempotency).
+  Why: a helper's local ordering cannot prevent a cycle created by its caller.
+- **Expand and contract rolling storage changes.** When replacing a stored
+  representation while old revisions serve, first deploy readers of both and
+  compatible dual writes or an equivalent authoritative projection. Stop old
+  writes only after old revisions and their in-flight work are gone; remove old
+  data in a later change after destination verification, following
+  [migration compatibility](../../deliver-and-verify/references/code.md#migrations).
+  Missing required data is an error rather than an empty replacement.
+  Why: mixed revisions can otherwise lose acknowledged writes or return false
+  empty state.
+- **Declare product schedules with the product.** Declare scheduled work as a
+  platform job in the product manifest and bind its database, secrets and metrics
+  access through that product's resource grants. Keep the platform scheduler
+  generic rather than creating separate infrastructure jobs with copied
+  credentials in another namespace.
+  Why: detached jobs drift from the product's deployment and permission lifecycle.
+- **Checkpoint repository state incrementally.** Record session metadata and
+  repository coordinates, referencing already-durable remote commits and storing
+  unpublished ancestry plus staged, unstaged and untracked source changes rather
+  than copying entire workspaces. Before reporting restoration, compare HEAD,
+  index/worktree status and content digests with the checkpoint, using the
+  [repository recovery procedure](../../unblock/references/stranded-work.md)
+  where unpublished work needs preservation.
+  Why: a restored directory can omit unpublished work while appearing healthy.
+
+## Metering trust boundary
+
+Put tenant-controlled typed metrics under a reserved custom-metric prefix,
+enforce that mapping after name normalization on every ingestion path, and keep
+billing-reserved metric names unreachable from tenant input. Pin each metering
+selector to its trusted producer as well as its metric name; assign provenance
+at trusted ingress and prevent tenant-supplied labels or relabeling from
+overwriting it. Verify that tenant attempts to submit a billing name or forge
+its origin cannot change billed usage, while legitimate custom metrics and
+trusted usage still work.
+
+Why: metric-name collisions or forged source labels can turn customer telemetry
+into false billing evidence. The
+[Prometheus security model](https://prometheus.io/docs/operating/security/)
+(read 2026-11-06) notes that `honor_labels` and some relabeling configurations
+can let an untrusted target impersonate another target; a label is trustworthy
+only when the ingestion path protects it.
 
 ## Real time: events first, resync as the safety net
 
