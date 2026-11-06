@@ -30,9 +30,11 @@ recoverable receipt. Verify the child survives the launching call using the
 [background-process guidance](dx.md#internal-development).
 
 On wake, read that run's receipt and the executor's current status before
-starting another attempt. Keep queue admission, dependency setup and inner test
-results distinct: a queue timeout or browser-download failure establishes no
-test verdict. Bind every artifact to the revision actually submitted, including
+starting another attempt. Keep queue admission, source transfer, dependency setup
+and inner check results distinct: a transport or authentication failure before
+execution establishes no test verdict. An alternate supported executor must run
+the same source and check, preserving required hooks and runtime boundaries.
+Bind every artifact to the revision actually submitted, including
 uncommitted fixture changes; a later branch head cannot inherit an older run's
 result. Keep earlier failures in their original run directories.
 

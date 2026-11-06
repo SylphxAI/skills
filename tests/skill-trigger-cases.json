@@ -691,6 +691,30 @@
         {
           "prompt": "Resize an API-only shared resource with no manifest, config file or GitOps owner; apply through its authoritative API and verify that API state rather than inventing a declaration.",
           "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Fix and ship a SaaS receipt store that replays one session user's response to another because both lack an API key ID.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a game reward retry fix that keeps two signed-in players isolated while preserving each player's own receipt.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Change an idempotency scope across a rolling deployment while preserving safe key retries and refusing legacy receipts with unknown owners.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement a report-worker heartbeat while generation continues, including contention with a lock held by the report writer.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a JSON checkpoint update that replaces another transaction's committed renewal deadline.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Ship concurrent stock reservation and pricing updates that preserve the fields each writer owns.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -968,6 +992,36 @@
           "prompt": "Review whether a generated API merge dropped served response fields; report findings without editing or shipping anything.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review this exact receipt-scoping diff for cross-user replay without changing or shipping code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare session-principal and credential-ID receipt designs before selecting an architecture; do not implement either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the idempotency retry explanation for customers without changing or publishing the service.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review this patch for stale snapshot writes and maintenance deadlocks without changing or shipping code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare scoped field updates and versioned snapshots for a proposed job-checkpoint architecture; do not implement either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the heartbeat renewal explanation for customers; change prose only without publishing it.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
         }
       ]
     },

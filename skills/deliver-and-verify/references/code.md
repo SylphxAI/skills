@@ -34,6 +34,11 @@ Secret and assume a completed Job reruns. **Right:** change only that input and
 verify the intended consumer uses its new revision within the declared
 propagation time, including CI, merge queue and deployment reconciliation.
 
+An automatic update can discard a temporary compatibility approval while another
+consumer still uses it. Exercise successive and unrelated updates during a
+migration; retire an old version's approval only after consumers stop selecting
+it and its active work and delayed results have drained.
+
 Verify the rendered configuration reaches the deployed process, then exercise
 the behavior that consumes it. **Wrong:** find a setting in the shared base and
 assume every region inherits it. **Right:** test each assembled target, reproduce
@@ -43,7 +48,13 @@ settings. A prose-only edit needs no deployment rendering.
 
 ## Transactions and idempotency
 
-Use transactions for atomic invariants and authority-side uniqueness/guards for retryable commands. An idempotency key identifies the logical operation. Retry a serialization or optimistic conflict as a whole read-decide-write attempt.
+Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
+
+A lock taken only when writing cannot protect a snapshot read before another
+writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
+update only owned fields, or read and merge under the same lock and ownership
+check, then prove both writers' committed fields survive the real concurrent
+entry points.
 
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local
@@ -70,6 +81,11 @@ audit to other transactional domains, such as stock reservation and cancellation
 a pure formatter change needs no lock-order proof.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
+
+In runtimes where futures advance only when polled, awaiting maintenance can
+suspend the worker holding the lock it needs. Keep that worker driven, and join
+or cancel maintenance with its lifetime; test actual contention and cancellation
+rather than eventual completion alone.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
