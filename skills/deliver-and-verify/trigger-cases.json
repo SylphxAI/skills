@@ -830,6 +830,10 @@
       "clause": "changing source checkouts"
     },
     {
+      "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
       "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
