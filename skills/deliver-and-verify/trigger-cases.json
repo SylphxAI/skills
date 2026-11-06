@@ -39,7 +39,19 @@
     },
     {
       "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run the document editor browser suite in a lease, renewing its short initial grant through the supported API after readiness.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run a long leased integration test with a detached task-scoped heartbeat, verifying the launching tool returns and qualifying activity succeeds.",
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
@@ -103,15 +115,15 @@
     },
     {
       "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Verify a game landing page in a new disposable build lease; an earlier lease installed Chromium but this one has no browser executable.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Prepare and run the checkout browser regression suite inside one fresh build lease using the pinned CI browser setup.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
@@ -431,7 +443,7 @@
     },
     {
       "prompt": "Run the changed browser fixture in a fresh build lease and keep its logs, exit status and captures available after this turn ends.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Finish implementing this feature, verify the exact source revision remotely, and preserve its result before yielding the session.",
@@ -467,11 +479,11 @@
     },
     {
       "prompt": "Run focused workspace tests in a fresh build lease; a package export resolves to generated files that are absent after installing dependencies.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Evaluate a changed alert rule in a fresh build lease with the evaluator version deployed in production.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Ship the invoice display join and update isolated database fixtures, including guest-checkout cases that do not select the customer branch.",
@@ -1263,6 +1275,21 @@
     },
     {
       "prompt": "Rewrite the heartbeat renewal explanation for customers; change prose only without publishing it.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether lease status queries qualified as activity during the earlier expiry; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare supervised sessions and detached child processes for a proposed leased test design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of lease expiry versus idle timeout without running tests or publishing changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
