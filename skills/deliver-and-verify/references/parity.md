@@ -146,14 +146,20 @@ the engine's verdict.
    preserve the original set and predeclare an **additive** matched-work follow-up
    before mutating fixtures or running it. For example, equalize shadow settings
    explicitly. Never replace the original evidence or select reruns until green.
-4. Use one observable completion predicate across engines, and test it against
-   loading, blank and wrong-content controls. Separate engine-ready events, first
-   rendered content and usable input. A positive screenshot's completion time is
-   a conservative observation upper bound, not exact onset. A negative capture's
-   completion is not an onset lower bound: its image may have been acquired much
-   earlier. Use capture-start bounds only with justified monotonic readiness, or
-   validated image-acquisition timestamps. Record real capture/analysis gaps and
-   observer overhead; a polling sleep is not the measurement's time resolution.
+4. An engine-ready marker plus one immediate screenshot can yield a dark capture
+   before visible content; GL submission does not prove paint. Use one observable
+   completion predicate and the same bounded observer for every engine, retaining
+   negative captures, capture/analysis times and hashes; validate loading, blank
+   and wrong-content controls through the real capture path. Attempt the declared
+   start population even after a timeout, and grade deadline success separately
+   from latency distributions so missing observations are never treated as fast
+   starts. Separate engine-ready events, first rendered content and usable input:
+   a positive screenshot's completion is a conservative observation upper bound,
+   whereas a negative capture's completion is not an onset lower bound because
+   acquisition may precede completion. Use capture-start bounds only with
+   justified monotonic readiness or validated image-acquisition timestamps, and
+   report actual capture/analysis gaps and observer overhead; a polling sleep is
+   not the measurement's time resolution.
 5. Separate raw export bytes, compressed export bytes, startup response-body bytes
    and actual network transfer. Name the compression settings and request census;
    a server's completed write does not prove client receipt or wire bytes. Retain
