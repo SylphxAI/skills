@@ -252,6 +252,14 @@ Keep one executable public contract and derive clients where that prevents drift
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
 
+When publication requires the selected commit to equal a live branch head, even
+documentation-only commits invalidate that identity. Coordinate every writer to
+that branch through the authoritative validation boundary, without a standing
+freeze beyond it. After a terminal prewrite validation failure, retain its receipt
+and use a distinct attempt from reviewed current source only when the executed
+steps and authoritative target state prove no publication side effect and an
+unused immutable version; never blindly rerun the retired source.
+
 Before adding a changeset, check the package's `private` field and release exclusions, and follow the repository's existing changelog convention for packages excluded from publishing.
 
 Preserve the resolver-generated lockfile bytes as the resolved dependency graph;

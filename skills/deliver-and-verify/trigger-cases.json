@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Publish the library package whose workflow requires checkout HEAD to equal live main, coordinating documentation writers until source validation completes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish the command-line client from reviewed current source after the prior attempt failed before writes, preserving its receipt and proving the immutable version is unused.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish the card game's content package under its exact-branch source check while an unrelated documentation change is ready to merge.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Implement shared email-provider quota priority so bulk campaigns yield before transactional purchase receipts, including send and delivery-poll callers.",
       "clause": "implementing or shipping a feature, bug fix"
     },
