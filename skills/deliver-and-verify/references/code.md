@@ -14,6 +14,16 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Deployment configuration
 
+A reduced-scope preview sharing a backend still needs a declared profile and a
+live, serving nonproduction target; absence fails closed, never through a
+production default. Bind every origin resolver to positive target identity in
+the intended namespace/environment: a production-host denylist misses internal
+and recovery aliases, especially when clients forward cookies on mutations.
+**Wrong:** block the public production hostname and trust another URL. **Right:**
+prove the declared nonproduction target serves, and test every independent
+resolver against missing configuration, wrong-environment targets and all
+declared production route aliases before forwarding credentials or traffic.
+
 When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
 
 When replacing a mutually exclusive configuration variant, validate the effective
@@ -191,6 +201,15 @@ clock alone cannot expose a database clock fixed at transaction start. Include
 an absolute-deadline control when that contract also exists.
 
 ## Migrations
+
+An upgrade history may depend on schema or roles predating its earliest retained
+file; before choosing a fresh preview database, prove empty-target bootstrap
+through the supported runner with its required ownership and privilege model.
+**Wrong:** replace a role-checking wrapper to make a pooled application role run
+production migrations. **Right:** verify the supported baseline and migration
+role on an empty target; if unavailable, choose a declared reduced-scope profile
+or explicit not-applicable result without weakening production role or isolation
+guards.
 
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
 
