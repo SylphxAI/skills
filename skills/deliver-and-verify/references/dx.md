@@ -322,6 +322,15 @@ not help. A healthy run already queued or executing needs no restart.
 
 Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), read 2026-11-06.
 
+Routing expressions that read `github.event` use the triggering webhook payload;
+a later label edit does not change an existing run's routing. Authorized routing
+metadata must be present in an eligible event, whose activity type is configured;
+verify the resulting run while preserving healthy work already in flight.
+**Wrong:** assume a new label moves queued jobs; **Right:** read the event and
+routing expression before choosing a supported event with the intended metadata.
+
+Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
+
 
 - Dependency installation alone does not establish test readiness: workspace
   exports may resolve to generated files, and assertions may invoke external
