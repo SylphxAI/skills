@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
+      "prompt": "Add ignored game-server save recovery tests to the existing CI runner, repairing fixture drift while retaining the fault negative.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
+      "prompt": "Enroll skipped database release tests through their existing proof modes and state the protections absent from the reduced fixture.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
       "clause": "running source generation locally or remotely"
     },
@@ -579,6 +591,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review these CI logs to determine whether ignored tests actually executed; report evidence without editing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two designs for selecting disabled tests before choosing an architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this disabled-test enrollment explanation for clarity without running or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a repeated progress event proves a missed notification; report evidence without changing or shipping the test.",
       "clause": "prove-it for a review or evidence check",
