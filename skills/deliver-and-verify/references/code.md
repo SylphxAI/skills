@@ -73,6 +73,14 @@ prose-only edit needs no runtime proof.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
+A nested admission helper that acquires a second connection from the caller's
+finite pool can starve while the outer transaction holds the available capacity;
+a larger test pool can hide this dependency. Reuse the caller's transaction
+connection and prove the public entry point completes with `max_connections=1`,
+while retaining separate multi-connection proofs for races. **Wrong:** increase
+the pool to make a nested acquisition pass; **right:** remove that acquisition
+and verify both constrained-capacity progress and concurrent correctness.
+
 A lock taken only when writing cannot protect a snapshot read before another
 writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
 update only owned fields, or read and merge under the same lock and ownership
