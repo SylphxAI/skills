@@ -14,6 +14,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
 - A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- Before citing a regression test, confirm that the exact test was discovered and executed in the intended environment. Read selected, passed and skipped counts, including ignored-test enrollment and required setup. A green command selecting zero tests proves nothing. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
 - Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
@@ -93,6 +94,30 @@ without bypassing required checks or repeatedly resubmitting an unchanged refusa
 ready to merge." **Right:** "That run passed; the replacement still expects its
 required check and has no queue entry."
 
+## Shared status projections
+
+When a dashboard or provider check conflicts with a source event, trace one
+source event through its owner, attempt, durable receipt and displayed object.
+A shared display name may combine unrelated owners. A missing exact build may
+be carried by a successor; prove that relationship before calling intake lost.
+
+Separate successful transport from completion of the business outcome. A
+published pending result can be delivered successfully while the deployment is
+still unfinished. For an overdue-outcome alert, identify active work and the
+last completed work before choosing the age clock; verify an actual firing
+instance or an evaluator case against the witnessed failure.
+
+If changing projection identity or omitting irrelevant results, check required
+status consumers and test two owners on one source revision, a second attempt
+after a terminal failure, and unknown relevance becoming known. An already
+published pending object needs a terminal result. A retry updates its attempt;
+a new attempt has distinct history. An actual operation can exist even when
+its automatic trigger would have been irrelevant.
+
+**Wrong:** "One neutral check proves no environment needed a deployment."
+**Right:** "That check belongs to this owner and attempt; inspect the affected
+owner's durable outcome before attributing the result."
+
 ## Verify effective entrypoint behavior
 
 Before inferring a runtime defect from an omitted argument, read the full callee
@@ -104,6 +129,18 @@ mock cannot establish which policy the real execution applies.
 **Wrong:** “The caller omitted the optional event argument, so the policy is
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
+
+## Resolve retained payloads before checking fields
+
+Before counting stored events with a missing field, read how the consumer loads
+the effective payload. Resolve offloaded bodies, reference records and fallback
+precedence the same way. An inline projection or offload marker establishes only
+what that representation contains. Distinguish an absent field from an unavailable
+body, and validate the query with a known event stored in the same form.
+
+**Wrong:** “The compact event row has no visibility field, so every retained event
+lost it.” **Right:** “The consumer loads the referenced body first; count missing
+visibility in those resolved bodies and report unresolved references separately.”
 
 Resolve conflicting readings with a fresh subprocess invoking the unmodified
 published entrypoint in the relevant real environment. Bind the receipt to the

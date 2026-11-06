@@ -233,6 +233,46 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
+          "clause": "running browser checks in a fresh build lease"
+        },
+        {
+          "prompt": "Verify a game landing page in a new disposable build lease; an earlier lease installed Chromium but this one has no browser executable.",
+          "clause": "running browser checks in a fresh build lease"
+        },
+        {
+          "prompt": "Prepare and run the checkout browser regression suite inside one fresh build lease using the pinned CI browser setup.",
+          "clause": "running browser checks in a fresh build lease"
+        },
+        {
+          "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship missing native headers and linker libraries in the C++ build template, with an image-time compile probe and a consumer build on the selected digest.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Update the game asset build image to include the libraries loaded by its pinned generator, then verify the ordinary remote build route.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Ship a shared service setting and verify each regional deployment overlay that replaces its environment list receives the required value.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Deploy a game-server worker setting across release profiles while preserving settings intentionally omitted by each profile.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Fix a release overlay that drops a required shared volume mount, reproduce the failure in rendered manifests and verify the deployed behavior.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship an HTTP client change whose management and object calls use different hosts, with fake-server coverage of routing and typed refusals.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
           "clause": "repairing recovery references or asynchronous reconcilers"
         },
@@ -260,10 +300,10 @@
           "prompt": "Fix database test teardown that leaves an idle session after pool close; prove a return racing shutdown with a barrier and preserve a genuinely held connection.",
           "clause": "implementing or shipping a feature, bug fix"
         },
-      {
-        "prompt": "Fix a parser helper included by two Rust workspaces with different editions, and ship one source representation that passes both formatting and lint commands.",
-        "clause": "implementing or shipping a feature, bug fix"
-      },
+        {
+          "prompt": "Fix a parser helper included by two Rust workspaces with different editions, and ship one source representation that passes both formatting and lint commands.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
         {
           "prompt": "Fix browser Tab navigation and prove that boundary presses leave the canvas while genuine window blur still pauses the application.",
           "clause": "implementing or shipping a feature, bug fix"
@@ -453,6 +493,30 @@
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         },
         {
+          "prompt": "Run the contract generator remotely and publish all generated SDK and web registry outputs back in this checkout.",
+          "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Regenerate a game protocol in a remote build and return its client bindings and downstream editor catalog before shipping.",
+          "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Run source generation remotely for a document API, reconcile the automatic generated commit, and ship the complete change.",
+          "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship the repair for a maintenance image excluded from service-manifest discovery, proving its actual COPY inputs satisfy the existing guard.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a game server image build that failed after a new path dependency was added, including a negative guard test against its actual Dockerfile.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix and ship a command runner whose actual NUL byte output fails jsonb persistence without executing the command twice.",
           "clause": "persisting process output or restoring replacement execution environments"
         },
@@ -479,11 +543,11 @@
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
         },
-      {
-        "prompt": "Review whether the shared game-test helper was checked under every including workspace's formatter and lint policy; report evidence without editing or publishing it.",
-        "clause": "prove-it for a review or evidence check",
-        "route_to": "prove-it"
-      },
+        {
+          "prompt": "Review whether the shared game-test helper was checked under every including workspace's formatter and lint policy; report evidence without editing or publishing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
         {
           "prompt": "Compare desired-state and observed-state reconciliation designs for recovery; choose an architecture without implementing it.",
           "clause": "Use challenge for a plan or architecture",
@@ -640,6 +704,21 @@
           "route_to": "prove-it"
         },
         {
+          "prompt": "Review whether this remote generator returned every output; report evidence without changing or publishing files.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare artifact transfer and shared storage for a remote generation workflow without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these remote generation instructions for clarity without running commands or publishing changes.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
           "prompt": "Review whether this stored output contains actual zero bytes or literal backslash escape text; report evidence without editing or shipping it.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
@@ -739,6 +818,30 @@
         {
           "prompt": "Check whether a license-tester purchase proves a server grant or only the old consume, local credit and save path.",
           "clause": "verifying an Android license-tester purchase"
+        },
+        {
+          "prompt": "Verify whether retained webhook events lost a routing field when their inline rows contain offload markers.",
+          "clause": "investigating a root-cause claim for a past failure"
+        },
+        {
+          "prompt": "Reconcile a document ledger reporting missing attachments with the consumer that loads referenced archive bodies.",
+          "clause": "reconciling conflicting readings"
+        },
+        {
+          "prompt": "Check whether a missing inventory attribute is truly absent or only omitted from a compact cached projection.",
+          "clause": "checking that a resource or bug is absent"
+        },
+        {
+          "prompt": "A shared deployment check says no changes, but one environment has a pending build. Reconcile the two readings before naming the cause.",
+          "clause": "reconciling conflicting readings"
+        },
+        {
+          "prompt": "Verify that the new database regression actually executed rather than being ignored by a green CI command.",
+          "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "The task ledger reports a document upload delivered, while its indexing outcome is still pending. Check the claimed completion.",
+          "clause": "reconciling conflicting readings"
         }
       ],
       "negative": [
@@ -771,6 +874,21 @@
           "prompt": "Compare two Android billing architectures before choosing an implementation.",
           "clause": "challenge to compare designs",
           "route_to": "challenge"
+        },
+        {
+          "prompt": "Restore the deployment that is currently stuck waiting for a build.",
+          "clause": "Use unblock to restore currently failing work",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Compare two proposed schemes for naming deployment attempts before choosing one.",
+          "clause": "challenge to compare designs",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Calculate how many seconds are in fifteen minutes.",
+          "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+          "route_to": null
         }
       ]
     },
@@ -943,6 +1061,14 @@
         {
           "prompt": "The rendering check times out with a generic loading message. Determine whether preparation, asset loading or completion is stuck and restore the check.",
           "clause": "CI/build run that has actually stalled or is failing"
+        },
+        {
+          "prompt": "A pull request has no CI run after a push. Restore its required workflow without blindly closing and reopening it.",
+          "clause": "a pull request has no CI run after a push"
+        },
+        {
+          "prompt": "The documentation site pull request has merge conflicts and no Actions run; resolve its CI admission failure.",
+          "clause": "a pull request has no CI run after a push"
         }
       ],
       "negative": [
@@ -965,6 +1091,16 @@
           "prompt": "Review the evidence for a past secret-scanner false positive; publication already succeeded and no restoration is needed.",
           "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Explain from the old logs why CI was absent; the conflict is already resolved and current CI is healthy. Do not change anything.",
+          "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "The pull request build is running within its expected duration; leave it running.",
+          "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+          "route_to": null
         }
       ]
     },

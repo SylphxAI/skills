@@ -1,6 +1,6 @@
 # Code conventions
 
-Trigger: writing or changing code, tests or migrations; changing recovery
+Trigger: writing or changing code, tests, deployment configuration or migrations; changing recovery
 references, rollback pins or asynchronous reconcilers.
 
 Make behavior, authority and failure handling visible. Keep one authority for each domain fact; derive clients and models where generation prevents drift.
@@ -11,6 +11,22 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Model lifecycle states explicitly and handle them exhaustively. Return expected failures as typed values and translate them at the boundary.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
+
+## Deployment configuration
+
+For a shared runtime setting, render each supported deployment overlay or
+release profile before changing live state. A base declaration does not prove
+that a consumer receives it: replacement environment lists, arguments or
+volume mounts can discard new shared entries. Assert the required effective
+values and preserve intentional target-specific omissions; changing replacement
+to merging can also import settings that belong only to another target.
+
+Verify the rendered configuration reaches the deployed process, then exercise
+the behavior that consumes it. **Wrong:** find a setting in the shared base and
+assume every region inherits it. **Right:** test each assembled target, reproduce
+the missing setting before the fix, and read back its live value and behavior.
+The same check applies to a game-server profile overriding shared worker
+settings. A prose-only edit needs no deployment rendering.
 
 ## Transactions and idempotency
 
@@ -346,7 +362,7 @@ Test runtime behavior by calling it. Never write source-grep fake tests (`std::f
 
 In Rust crates with multiple integration test modules, use a single integration test binary (`tests/integration/main.rs` with `mod <domain>;` submodules under `tests/integration/`) rather than many top-level `tests/*.rs` files, so `cargo test` links one integration binary instead of compiling and linking dozens of separate test executables.
 
-For shell evidence gates, execute the actual script with the runner's shell options and inputs larger than a pipe buffer. Include clean output, missing evidence, and failure matches both early and late. With Bash [`pipefail`](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html), a diagnostic pipeline such as `if grep ... | head -n 20 | grep .; then ...` can miss a known failure: `head` closes early, the first grep receives SIGPIPE, and the condition becomes false. Separate the decision from bounded display, or use a consuming display filter such as `sed -n '1,20p'`. Keep the failure predicate unchanged and prove that output truncation cannot reverse the verdict.
+For shell evidence gates, execute the actual script with the runner's shell options and inputs larger than a pipe buffer. Include clean output, missing evidence, and failure matches both early and late. With Bash [`pipefail`](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html), a diagnostic pipeline such as `if grep ... | head -n 20 | grep .; then ...` can miss a known failure: `head` closes early, the first grep receives SIGPIPE, and the condition becomes false. Separate the decision from bounded display, or use a consuming display filter such as `sed -n '1,20p'`. Keep the failure predicate unchanged and prove that output truncation cannot reverse the verdict. Run a negative proof through the enclosing gate as well as its native test runner. A deliberately caught panic can pass the test framework yet fail a log-based gate. Assert the returned error directly, so the outer failure guard stays effective.
 
 A required resource-dependent check fails clearly when the resource is unavailable rather than silently passing. Test selection covers supported configurations. An intentionally excluded or slow test records its reason and a supported execution route; choose scheduling from the workload rather than requiring a daily job or deleting useful coverage when no group exists.
 
