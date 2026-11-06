@@ -37,6 +37,11 @@ before/after latency claims, read [API latency evidence](references/api-latency.
 It covers parser and coverage controls, duplicate records versus proxy hops,
 observation boundaries, failed requests and comparable follow-up windows.
 
+For player lag on a game server whose processes share a queue bus and a
+database, or before changing that bus's durability or placement, read
+[game-server lag evidence](references/game-server-lag.md). It separates
+per-player fan-out from global freezes and lists the burst-window checks.
+
 For fleet resource censuses, idle replica floors or claimed capacity releases,
 read [fleet capacity evidence](references/fleet-capacity.md). It separates
 physical use, controller minima, admitted Pod requests, traffic evidence and
