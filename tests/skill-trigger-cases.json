@@ -379,6 +379,18 @@
         {
           "prompt": "Implement batch payout receipt normalization so partial acceptance and billed amounts survive worker restarts accurately.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Publish this dependent pull request for review while its prerequisite is pending, keeping it explicitly held on the dependency branch.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Ship a service scrape policy update and make already-created declarations converge without requiring each tenant to deploy again.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Deploy the card-game server configuration fix and update existing server declarations through their normal writer while preserving retired servers.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
         }
       ],
       "negative": [
@@ -489,6 +501,21 @@
         },
         {
           "prompt": "Rewrite these container probe instructions for clarity without executing or publishing them.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Audit this stacked pull request for whether publication enabled automatic merging; report evidence without changing its state.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare rendering only at deployment with bounded reconciliation for existing service declarations; recommend a design without implementing it.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the publication help text to explain automatic merge defaults; do not publish or change repository configuration.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
         }
