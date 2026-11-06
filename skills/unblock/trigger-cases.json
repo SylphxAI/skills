@@ -68,6 +68,10 @@
     {
       "prompt": "Restore an operational identity read refused because a full resource includes unrelated credentials, while preserving the secret guard.",
       "clause": "a call is refused"
+    },
+    {
+      "prompt": "The merge queue ejected a pull request after runner loss. Its old merge-group retry now passes, but the pull request is still outside the queue. Restore admission at its unchanged current head.",
+      "clause": "a queue/review stops progressing"
     }
   ],
   "negative": [
@@ -115,6 +119,11 @@
       "prompt": "Explain why a historical metadata read was refused; current reads work and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "The pull request has a live merge-queue entry and its merge-group build is progressing within its expected duration. Leave it running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
     }
   ]
 }

@@ -485,10 +485,9 @@ Use the normal queue with its required checks and existing incident-priority rul
   **Right:** "The publisher enables auto-merge; I submitted an explicit hold and
   verified that the PR remains open on the intended base."
 
-- **Forecasting and lost jobs:** Account for the queue's parallel-build concurrency when estimating wait times. If a required job is marked lost by the runner host (`self-hosted runner lost communication`) or an aggregate gate times out with zero failed child checks, inspect the run first: if no rerun is already in flight, the PR's writer reruns only that lost job once for the current head SHA. A real test failure is fixed or quarantined, never retried.
+- **Forecasting and lost jobs:** Account for the queue's parallel-build concurrency when estimating wait times. Restore a lost job or ejected entry according to the [current parent-operation lifecycle](../../unblock/SKILL.md#parent-operation-recovery); a successful retry of a retired merge group does not establish queue recovery. A real test failure is fixed or quarantined, never retried.
 - **Branch reuse and queue state:** Match workflow runs by exact head SHA rather than branch name alone. Converting a PR to draft does not automatically remove an active merge-queue entry; inspect and dequeue the queue entry explicitly if needed.
 - **Avoid redundant branch updates:** Because the merge queue tests each entry against the latest base automatically, do not merge `main` into a conflict-free PR branch—doing so invalidates completed CI checks and restarts the queue wait. Update a branch only to resolve a merge conflict or pull in a newly required base file.
-- **Timeline-based ejection diagnosis:** When a PR is ejected from the merge queue, read the `removed_from_merge_queue` event reason in the PR timeline before acting; for a `checks_timed_out` ejection on an unchanged green head, re-enqueue once through the normal path.
 
 ## How it is judged
 
