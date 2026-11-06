@@ -700,6 +700,10 @@
     {
       "prompt": "Ship a quota reservation change that preserves defaulted resource quantities across the actual execution boundary.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a CI bug fix by restoring a historical shared action; verify its retained unit tests and the current configuration schema and action registry contracts.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
