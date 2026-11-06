@@ -114,6 +114,16 @@ parts succeed; retain partial acceptance and account for accepted parts once.
 Retry only parts that the provider contract proves were not accepted, using
 its supported idempotency and recovery semantics.
 
+When a workflow can finish with partial knowledge, distinguish transport
+availability, domain completion and validated partial results through aggregation
+and final publication: an exhausted work bound is not a provider outage, and a
+successful HTTP response is not proof of complete work. Preserve earlier
+validated results unless later domain evidence revises them; derive the
+published outcome from the operation's contract rather than treating all
+unfinished work as either success or provider failure. Contrast an
+available-but-incomplete response with a true outage at the public entry point,
+both with partial results present.
+
 Verify a queued intent after eligible configuration is removed, both with and
 without an existing spend reservation: no provider call, new reservation,
 submission marker or accepted-usage event; payload and identity preserved.
