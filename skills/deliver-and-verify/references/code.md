@@ -191,6 +191,16 @@ an absolute-deadline control when that contract also exists.
 
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
 
+Before copying an older migration, read the currently pinned guard and the actual
+runner's transaction, timeout and partial-resume contract. A resumed file can
+skip earlier `SET` or `DROP` statements on a fresh connection, losing session
+settings or cleanup. `CREATE INDEX CONCURRENTLY IF NOT EXISTS` can also accept
+an invalid leftover index. Use the repository's supported recovery and validity
+contract. Where supported, pair concurrent creation with a later assertion that
+fails if the index is missing, unready or invalid; do not invent a guard exemption
+or assume one SQL pattern works with every runner. Verify clean apply, interrupted
+resume and missing/invalid-index cases through that runner.
+
 Choose one final representation and authority. An additive schema change may need no backfill; when existing data must change, transform it in bounded, resumable batches with semantic validation. Where serving continues, expand compatibly, switch readers/writers in a declared order, backfill, retire old consumers and remove the predecessor. Contract changes run after revisions that still need the removed representation are gone.
 
 Pre-deploy migrations acquire locks while the old revision still serves.
@@ -213,7 +223,13 @@ rather than an empty replacement. Before contract, verify actual serving
 revisions and drain old in-flight requests; zero assigned traffic alone does
 not establish that a previous writer has finished.
 
-A new migration's version sorts above the newest migration on the target branch at merge time, not only above its neighbours in the change. Check it again after every refresh from the target, and have a reviewer compare it with the target's newest migration: a merge queue can test later entries on top of an earlier entry, so a version below the base can pass by accident. When the version must move, rename only your own unreleased migration, upward, and update every reference and checksum.
+A new migration's version sorts above the newest migration on the target branch at merge time, not only above its neighbours in the change. Check it again after every refresh from the target, and have a reviewer compare it with the target's newest migration: a merge queue can test later entries on top of an earlier entry, so a version below the base can pass by accident. When the version must move, rename only your own unreleased migration, upward, and update its references and the checksums owned by that migration store.
+
+Determine checksum ownership from `git ls-files`, `git check-ignore`, generation
+rules and the actual verifier. Regenerate with the store's supported command;
+commit checksums only where its source contract requires them. A generated,
+ignored checksum can belong to the build rather than version control. Verify
+that contract before treating an absent checksum diff as stale output.
 
 Readiness checks compatibility with the serving revision rather than demanding the newest schema head. Verify live schema after applying a change; the migration ledger alone does not establish that the intended objects exist.
 
