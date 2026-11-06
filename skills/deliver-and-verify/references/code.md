@@ -61,12 +61,13 @@ consumer still uses it. Exercise successive and unrelated updates during a
 migration; retire an old version's approval only after consumers stop selecting
 it and its active work and delayed results have drained.
 
-Verify the rendered configuration reaches the deployed process, then exercise
-the behavior that consumes it. **Wrong:** find a setting in the shared base and
-assume every region inherits it. **Right:** test each assembled target, reproduce
-the missing setting before the fix, and read back its live value and behavior.
-The same check applies to a game-server profile overriding shared worker
-settings. A prose-only edit needs no deployment rendering.
+A correct helper can receive altered arguments or environment through an
+upstream interpreter or PATH selection; verify effective configuration, executable
+resolution and process status through the real consumer. **Wrong:** find a setting
+in a shared base or pass a helper test and infer the deployed path works.
+**Right:** reproduce through each supported assembled target, read back its
+deployed values, then prove behavior through the same executable chain; a
+prose-only edit needs no runtime proof.
 
 ## Transactions and idempotency
 
