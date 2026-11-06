@@ -276,12 +276,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 
 ## Source generation
 
-For local or remote generation, identify every generation entrypoint and its
-outputs from the repository's scripts and CI workflow. In-process tests can reuse
-cached modules and hide startup or import-path failures; exercise each changed
-generator through its actual entrypoint in a fresh process. Follow canonical
-inputs through downstream projections, including web registries, clients and
-documentation. The primary compiler may produce only part of the required output.
+Generator obligations follow changed inputs, including declarative objects,
+even when no generator code changes. Trace those inputs through the repository's
+generation and freshness checks to every affected registry, client and document.
+An alert's valid dedicated runbook, for example, can still leave its generated
+index stale. In-process tests can reuse cached modules and hide startup or
+import-path failures; exercise affected generation entrypoints in fresh processes.
 A lockfile-only install also changes source.
 
 Requiring a generator's missing output at admission creates a circular

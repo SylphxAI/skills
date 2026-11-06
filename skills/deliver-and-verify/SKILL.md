@@ -109,8 +109,9 @@ When a secret scanner refuses publication, follow
 For dependency lockfiles, package publication or registry/download mirrors, read
 [interfaces and packages](references/dx.md#interfaces-and-packages).
 
-Before running a generator locally or remotely, or a package manager through a
-remote command wrapper, read [source generation](references/dx.md#source-generation).
+When changing generator inputs, running a generator locally or remotely, or
+running a package manager through a remote command wrapper, read
+[source generation](references/dx.md#source-generation).
 
 When editing PR titles or bodies, changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can

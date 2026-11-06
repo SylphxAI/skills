@@ -828,6 +828,18 @@
     {
       "prompt": "Change a blob-filtered CI checkout and verify every graph and content read under the job's final credentials.",
       "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Add a game protocol declaration and ship every affected generated client and registry even though the generator code is unchanged.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a new API schema field and regenerate the public documentation and SDK projections selected by their freshness checks.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
