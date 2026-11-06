@@ -1,6 +1,6 @@
 # Security standard
 
-Trigger: changing credentials, personal data or authorization, maintaining tools through privileged automation, reviewing a secret-scanner refusal, or recovering a protected service.
+Trigger: changing runtime isolation, credentials, personal data or authorization, maintaining tools through privileged automation, reviewing a secret-scanner refusal, or recovering a protected service.
 
 ## When security work happens
 
@@ -38,6 +38,10 @@ are controlled by the privileged identity do not need this privilege change.
 Bound both probes and updates, including child termination, and keep network
 maintenance off the bootstrap path that establishes operator access. Test hung
 children as well as ordinary failures so maintenance cannot suspend recovery.
+
+## Runtime isolation
+
+A user's inability to traverse a protected mountpoint does not prove its contents stay unavailable through other mount or namespace views. Linux's less-privileged-mount checks inspect the mount graph rather than ancestor-directory permissions: a root-only unmasked mount can permit a new unmasked mount elsewhere. Name the actual isolation boundary (process, guest VM or host), and test that alternate view before claiming the original masks remain effective.
 
 ## Shared reader privileges
 
