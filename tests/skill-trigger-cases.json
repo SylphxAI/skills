@@ -991,6 +991,18 @@
         {
           "prompt": "The task ledger reports a document upload delivered, while its indexing outcome is still pending. Check the claimed completion.",
           "clause": "reconciling conflicting readings"
+        },
+        {
+          "prompt": "Verify whether these repeated old inventory balances prove a lost update or refer to separate instances.",
+          "clause": "investigating a root-cause claim for a past failure"
+        },
+        {
+          "prompt": "A daily reconciliation reports zero mismatches on last week’s restore. Verify whether that proves production is healthy.",
+          "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "Reconcile a ledger gap with independent consumption history before claiming that a grant disappeared.",
+          "clause": "reconciling conflicting readings"
         }
       ],
       "negative": [
