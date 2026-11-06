@@ -178,6 +178,15 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+Renewable inactivity deadlines and absolute lifetime limits are different
+contracts: timeout supervision and fresh downstream work share the current
+inactivity deadline, capped by any immutable authority horizon.
+**Wrong:** give a new command the remaining absolute lifetime while its supervisor
+can expire sooner; **right:** derive its timeout from the remaining inactivity
+window and preserve a replay's original keyed request.
+Verify that new progress advances the shared deadline, heartbeats and replay do
+not, and a fresh dispatch near expiry stays within the current window.
+
 For short-lived safety or authorization receipts, measure the complete path
 from the qualifying observation to the guarded action, including client startup
 and transport setup. Read-only setup may happen beforehand if the final
