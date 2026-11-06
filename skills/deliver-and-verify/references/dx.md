@@ -69,11 +69,33 @@ Request the endpoint's expected response format. Distinguish an explicit access 
 
 If verification fails after publication, preserve the artifacts. Repair the verifier and rerun read-only acceptance against that exact immutable version instead of republishing it.
 
+## Remote source generation
+
+Before running a generator or package manager through a remote command wrapper,
+identify every generation entrypoint and its outputs from the repository's scripts
+and CI workflow. Follow canonical inputs through downstream projections, including
+web registries, clients and documentation. The primary compiler may produce only
+part of the required output. A lockfile-only install also changes source.
+
+Establish how changed files and deletions return to the publishing checkout. Use
+the supported local mutation mode or retrieve a complete generated artifact set.
+Inspect the local diff across the expected output directories and run the affected
+generation check or consumer assertion before publishing. A successful remote exit
+establishes execution there; it does not establish complete local output. Read-only
+checks can use the ordinary remote verification path.
+
+If CI adds a generated commit, inspect that commit and fast-forward the checkout
+before further edits. Re-evaluate checks and approvals against the new head;
+results tied to the previous head do not authorize the generated delta.
+
+**Wrong:** Publish after the remote contract compiler succeeds, leaving a downstream
+web registry unchanged. **Right:** Run the complete generation chain, return its
+outputs, and verify the web consumer's generated-file assertion before publishing.
+
 ## Internal development
 
 Follow the [delivery workflow](../SKILL.md): practical targeted checks, publication, iteration on the same branch, and the repository's required merge/release path. State what remains unverified and rerun affected checks after a repair. Independent review does not manufacture a new publication/completion stage.
 
-- **Commands that produce source files:** Before running a package manager or generator through a remote command wrapper, check where its output is written and whether files return to the local checkout. A lockfile-only install still mutates source. Use the supported local mutation mode or retrieve the generated artifacts, then read the local diff before committing. A successful remote exit alone does not establish a local source change. Read-only checks can use the ordinary remote verification path.
 - **Dependency audit repairs:** Read the exact advisory ranges, every independent affected lockfile, and effective workspace overrides before choosing versions. An exact root override can keep a vulnerable resolution despite a dependency manifest bump. Update the applicable requirements and overrides together, regenerate each lockfile with its package manager, and run the audit without event-based skips. Keep a required major-version migration separate from a drop-in repair when they verify independently; report unrelated findings without suppressing them.
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
