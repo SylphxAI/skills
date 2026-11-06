@@ -96,6 +96,13 @@ formatter needs no HTTP topology fixture. Treat a missing positive control or
 wrong error envelope as a fixture defect; retain the production behavior being
 verified.
 
+Replaying exact authenticated response bytes with provenance through the real discovery,
+classifier and state-changing entry points establishes replay behavior—not live intake.
+A reconstructed envelope or an alternate registration path can miss the source's actual
+request, dispatch and completion semantics. **Bad:** call a replay or alternate-path
+probe end-to-end intake; **Good:** report replay results separately and bind any
+live-intake claim to a receipt from the actual source path.
+
 ## Final streamed output
 
 Buffered-event tests miss failures introduced during final encoding; verify the
@@ -167,3 +174,12 @@ multipart response, exercise all-success, middle-part rejection and single-part
 cases, including persisted receipts and accounting after another worker pass.
 These deferral rules apply before submission; provider acceptance or an unknown
 result requires the reconciliation path above.
+
+A stopped worker process can leave a provider job or its steps active, so expected
+refusal needs the exact attempt's terminal job and step records, expected outcome
+classification and a bounded check that recovery did not create another attempt. Where a
+capability is deliberately unavailable, distinguish native initialization refusal before
+user work from a later action failure that may still run cleanup; a kill signal or exit
+code does not establish either contract. **Bad:** declare refusal after the worker
+exits; **Good:** verify provider completion, every step's terminal state and the
+intended no-user-work or permitted-cleanup boundary.
