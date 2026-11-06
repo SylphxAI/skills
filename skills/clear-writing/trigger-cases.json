@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Rewrite this release note so a nontechnical customer can understand it.",
+      "clause": "customer-facing announcements, release notes"
+    },
+    {
+      "prompt": "Localize these UI labels into idiomatic written Cantonese.",
+      "clause": "translating/localizing support FAQs or UI copy into natural target-locale phrasing"
+    },
+    {
+      "prompt": "Make this executive update concise without losing the decision or evidence.",
+      "clause": "concise internal team/executive updates"
+    },
+    {
+      "prompt": "Write instructions for a sub-agent that should not message its owner when its check passes.",
+      "clause": "including instructions and messages to sub-agents."
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "A customer paid but received no entitlement. Investigate the case and resolve the purchase.",
+      "clause": "Use customer-support for live customer support ticket handling.",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Handle this open account-recovery support case using its existing case state.",
+      "clause": "Use customer-support for live customer support ticket handling.",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "A subscriber requests a refund. Check eligibility and carry out the authorized remedy.",
+      "clause": "Use customer-support for live customer support ticket handling.",
+      "route_to": "customer-support"
+    }
+  ]
+}

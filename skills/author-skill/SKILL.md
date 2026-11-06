@@ -102,7 +102,7 @@ prove ownership.” The mechanism survives changes of player, persona and produc
 2. **Include Concrete `❌ Bad vs ✅ Good` Contrast and Step 0 Reference Routing:**
    - Use a concrete `❌ Bad vs ✅ Good` pair when it explains a recurring mistake. Route each domain scenario to the reference it needs.
 3. **Define positive and negative trigger test cases:**
-   - Add or update the skill's entries in `tests/skill-trigger-cases.json`: at least three positive prompts and three negative controls, each quoting its applicable description clause. Negative controls name the routed skill, or `null` for an explicit no-skill/direct-work boundary.
+   - Add or update the skill's colocated `trigger-cases.json` (version 1, `positive` and `negative` lists): at least three positive prompts and three negative controls, each quoting its applicable description clause. Negative controls name the routed skill, or `null` for an explicit no-skill/direct-work boundary.
    - Compare the description against held-out positive and negative prompts. Use the runtimes and models affected by the change when available, and record which checks actually ran. Deterministic corpus checks establish coverage and text consistency, not model routing accuracy.
 
 ## 3. Stage 2: Structure `SKILL.md` and Colocated `references/`

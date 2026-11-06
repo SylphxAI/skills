@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Check worker reports for missed finish times and contradictory progress claims.",
+      "clause": "checking other workers' output for a broken rule, a late finish time"
+    },
+    {
+      "prompt": "Compare the reported grant with its written spending cap and report any breach.",
+      "clause": "judging whether a spend, grant or change stayed within its written limit"
+    },
+    {
+      "prompt": "Two workers published different revenue totals. Inspect the original reports and raise the discrepancy.",
+      "clause": "two documents or workers disagree on a number"
+    },
+    {
+      "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
+      "clause": "inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Verify whether this one deployment is serving the reported revision.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Restore the stalled deployment by fixing its confirmed configuration error.",
+      "clause": "unblock to restore stalled work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare these two database architectures and choose the simpler design.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "File a new outcome issue for the discovered defect.",
+      "clause": "author-item to file a new outcome",
+      "route_to": "author-item"
+    }
+  ]
+}

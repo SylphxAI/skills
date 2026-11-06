@@ -2,6 +2,8 @@
 import copy
 import importlib.util
 import json
+import os
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -35,8 +37,7 @@ class SkillContractTests(unittest.TestCase):
                               'clause': desc[:boundary].strip()} for i in range(3)],
                 'negative': [{'prompt': f'Negative task {i} for {name}',
                               'clause': desc[boundary:], 'route_to': route} for i in range(3)]}
-        self.corpus_path = self.root / 'tests/skill-trigger-cases.json'
-        self.corpus_path.parent.mkdir()
+        self.corpus_path = self.skill.parent / 'trigger-cases.json'
 
     def write_skill(self, frontmatter=None, body='# Instructions\n'):
         if frontmatter is None:
@@ -48,8 +49,19 @@ class SkillContractTests(unittest.TestCase):
         verifier.verify_skills_frontmatter(errors, self.root)
         return errors
 
+    def write_corpus(self, corpus=None):
+        corpus = self.corpus if corpus is None else corpus
+        for path in (self.root / 'skills').glob('*/trigger-cases.json'):
+            path.unlink()
+        for name, cases in corpus['skills'].items():
+            path = self.root / 'skills' / name / 'trigger-cases.json'
+            path.parent.mkdir(parents=True, exist_ok=True)
+            payload = ({'version': corpus['version'], **cases}
+                       if isinstance(cases, dict) else cases)
+            path.write_text(json.dumps(payload, indent=2) + '\n')
+
     def corpus_errors(self, corpus=None, descriptions=None):
-        self.corpus_path.write_text(json.dumps(self.corpus if corpus is None else corpus))
+        self.write_corpus(corpus)
         errors = []
         verifier.verify_trigger_cases(
             self.descriptions if descriptions is None else descriptions, errors, self.root)
@@ -103,13 +115,73 @@ class SkillContractTests(unittest.TestCase):
 
     def test_every_skill_loses_coverage_when_its_cases_are_removed(self):
         descriptions = verifier.verify_skills_frontmatter([])
-        original = json.loads((ROOT / 'tests/skill-trigger-cases.json').read_text())
+        original = {'version': 1, 'skills': {}}
+        for path in (ROOT / 'skills').glob('*/trigger-cases.json'):
+            cases = json.loads(path.read_text())
+            del cases['version']
+            original['skills'][path.parent.name] = cases
         for name in descriptions:
             with self.subTest(skill=name):
                 corpus = copy.deepcopy(original)
                 del corpus['skills'][name]
                 self.assertIn(f'{name}: missing trigger cases',
                               self.corpus_errors(corpus, descriptions))
+
+    def test_independent_skill_case_additions_compose_in_both_merge_orders(self):
+        repo = self.root / 'merge-fixture'
+        repo.mkdir()
+        env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
+        env.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull,
+                   GIT_AUTHOR_NAME='Kyle Tse', GIT_AUTHOR_EMAIL='hi@kylet.se',
+                   GIT_COMMITTER_NAME='Kyle Tse', GIT_COMMITTER_EMAIL='hi@kylet.se')
+
+        def git(*args):
+            return subprocess.run(['git', *args], cwd=repo, env=env,
+                                  check=True, capture_output=True).stdout
+
+        def files(corpus):
+            return {f'skills/{name}/trigger-cases.json':
+                    (json.dumps({'version': 1, **cases}, indent=2) + '\n').encode()
+                    for name, cases in corpus['skills'].items()}
+
+        def commit(snapshot, parent=None):
+            for name, content in snapshot.items():
+                path = repo / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(content)
+            git('add', '.')
+            tree = git('write-tree').decode().strip()
+            args = ['commit-tree', tree, '-m', 'trigger case fixture']
+            if parent:
+                args += ['-p', parent]
+            return git(*args).decode().strip()
+
+        base = files(self.corpus)
+        combined = copy.deepcopy(self.corpus)
+        branches = []
+        git('init', '--quiet')
+        parent = commit(base)
+        for name in self.descriptions:
+            corpus = copy.deepcopy(self.corpus)
+            case = {'prompt': f'Additional positive task for {name}',
+                    'clause': corpus['skills'][name]['positive'][0]['clause']}
+            corpus['skills'][name]['positive'].append(case)
+            combined['skills'][name]['positive'].append(case)
+            branches.append(commit(files(corpus), parent))
+        expected = files(combined)
+        for left, right in [branches, branches[::-1]]:
+            with self.subTest(left=left, right=right):
+                tree = git('merge-tree', '--write-tree', left, right).decode().strip()
+                paths = git('ls-tree', '-r', '--name-only', tree).decode().splitlines()
+                self.assertEqual(sorted(expected), paths)
+                for path in paths:
+                    content = git('show', f'{tree}:{path}')
+                    self.assertEqual(expected[path], content)
+                    (repo / path).write_bytes(content)
+                errors = []
+                counts = verifier.verify_trigger_cases(self.descriptions, errors, repo)
+                self.assertEqual([], errors)
+                self.assertEqual((8, 6), counts)
 
     def test_valid_metadata_and_corpus(self):
         # Register the neighbouring skill as a real directory, not just a case label.
@@ -222,11 +294,16 @@ class SkillContractTests(unittest.TestCase):
         self.assertIn('No skills found', self.frontmatter_errors())
 
     def test_missing_and_malformed_corpus_are_rejected(self):
-        for text in [None, '{', '[]', '{"version": true, "skills": {}}',
-                     '{"version": 2, "skills": {}}', '{"version": 1, "skills": []}',
-                     '{"version": 1, "skills": {}, "skills": {}}']:
+        for text in [None, '{', '[]', '{}',
+                     '{"version": true, "positive": [], "negative": []}',
+                     '{"version": 2, "positive": [], "negative": []}',
+                     '{"version": 1, "positive": [], "negative": [], "extra": []}',
+                     '{"version": 1, "positive": [], "positive": [], "negative": []}']:
             with self.subTest(corpus=text):
-                if text is not None:
+                self.write_corpus()
+                if text is None:
+                    self.corpus_path.unlink()
+                else:
                     self.corpus_path.write_text(text)
                 errors = []
                 verifier.verify_trigger_cases(self.descriptions, errors, self.root)

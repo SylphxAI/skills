@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Get independent architecture and commercial views because either could change this launch decision.",
+      "clause": "several independent views can change a decision"
+    },
+    {
+      "prompt": "Investigate this uncertain cause from distinct evidence angles before the owner decides.",
+      "clause": "a multi-domain design, uncertain cause, architecture tradeoff or blocker needing new evidence"
+    },
+    {
+      "prompt": "A blocker needs new evidence from independent runtime and database investigations.",
+      "clause": "Assign distinct evidence angles and let the accountable owner decide."
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Rename this local variable; the change is clear and needs no independent views.",
+      "clause": "Use direct single-agent work for a clear task",
+      "route_to": null
+    },
+    {
+      "prompt": "Restore the failing job using its confirmed fix; no additional view is needed.",
+      "clause": "unblock for restoration that needs no additional view.",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Apply the known configuration repair to the stalled deployment without organizing a discussion.",
+      "clause": "unblock for restoration that needs no additional view.",
+      "route_to": "unblock"
+    }
+  ]
+}

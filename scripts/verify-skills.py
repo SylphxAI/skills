@@ -138,28 +138,25 @@ def unique_json_mapping(pairs):
 
 
 def verify_trigger_cases(descriptions: dict[str, str], errors: list[str], root=ROOT) -> tuple[int, int]:
-    corpus_path = Path(root) / "tests/skill-trigger-cases.json"
-    try:
-        corpus = json.loads(corpus_path.read_text(encoding="utf-8"), object_pairs_hook=unique_json_mapping)
-    except (OSError, ValueError) as e:
-        fail(f"{corpus_path.name}: cannot read trigger corpus: {e}", errors)
-        return 0, 0
-    if (not isinstance(corpus, dict) or set(corpus) != {"version", "skills"}
-            or type(corpus.get("version")) is not int or corpus["version"] != 1
-            or not isinstance(corpus.get("skills"), dict)):
-        fail("Trigger corpus must have version 1 and a skills mapping", errors)
-        return 0, 0
-    skills = corpus["skills"]
-    for name in sorted(descriptions.keys() - skills.keys()):
+    paths = {p.parent.name: p for p in sorted(
+        (Path(root) / "skills").glob("*/trigger-cases.json"))}
+    for name in sorted(descriptions.keys() - paths.keys()):
         fail(f"{name}: missing trigger cases", errors)
-    for name in sorted(skills.keys() - descriptions.keys()):
+    for name in sorted(paths.keys() - descriptions.keys()):
         fail(f"{name}: trigger cases have no valid skill description", errors)
     counts = {"positive": 0, "negative": 0}
-    for name, cases in skills.items():
+    for name, path in paths.items():
         if name not in descriptions:
             continue
-        if not isinstance(cases, dict) or set(cases) != set(counts):
-            fail(f"{name}: require positive and negative trigger case lists", errors)
+        try:
+            cases = json.loads(path.read_text(encoding="utf-8"),
+                               object_pairs_hook=unique_json_mapping)
+        except (OSError, ValueError) as e:
+            fail(f"{name}: cannot read trigger cases: {e}", errors)
+            continue
+        if (not isinstance(cases, dict) or set(cases) != {"version", *counts}
+                or type(cases.get("version")) is not int or cases["version"] != 1):
+            fail(f"{name}: trigger cases require version 1 and positive and negative lists", errors)
             continue
         desc = descriptions[name]
         boundary = BOUNDARY.search(desc)

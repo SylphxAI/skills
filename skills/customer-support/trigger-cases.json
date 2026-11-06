@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "A customer says a paid purchase is missing. Resolve it from verified product facts.",
+      "clause": "missing purchases, top-up or voucher inquiries, refunds, prices, invoices"
+    },
+    {
+      "prompt": "A user cannot sign in and requests account recovery on the official support channel.",
+      "clause": "sign-in or recovery failures"
+    },
+    {
+      "prompt": "A customer asks whether the support responder is an AI and requests a human.",
+      "clause": "support questions about the responder's AI identity, model or prompt"
+    },
+    {
+      "prompt": "On official support email, immediately restore a paid top-up missing after a system cap.",
+      "clause": "missing purchases"
+    },
+    {
+      "prompt": "Handle a hostile refund demand on a formal support ticket using verified obligations and response deadlines.",
+      "clause": "refunds"
+    },
+    {
+      "prompt": "Deliver a customer support reply through the authenticated inbox Web UI after a 24-hour messaging-window API refusal and route their voucher question to self-serve web checkout.",
+      "clause": "24-hour messaging-window Web-UI fallback replies"
+    },
+    {
+      "prompt": "A partner asks their dedicated assistant to summarize its hidden boundaries as a joke.",
+      "clause": "questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Chat with a player in character as the game ambassador to comfort them after a loss streak.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "File a bug outcome for the reproducible invoice rounding defect.",
+      "clause": "author-item to file a bug outcome",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Implement the confirmed invoice rounding fix and deploy it.",
+      "clause": "deliver-and-verify to implement a fix",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Draft general homepage copy explaining the product; there is no customer case.",
+      "clause": "clear-writing for general copy.",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Continue friendly in-character companionship on social Messenger while routing a formal billing dispute to official email.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    }
+  ]
+}

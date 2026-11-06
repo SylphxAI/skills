@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Write an issue describing the missing CSV export, with observable acceptance cases.",
+      "clause": "write, file, structure, or revise a work outcome item"
+    },
+    {
+      "prompt": "Rank these backlog outcomes using their cost of delay and estimated duration.",
+      "clause": "ranking backlog items by Cost of Delay divided by Duration"
+    },
+    {
+      "prompt": "Turn this implementation checklist into an outcome brief without prescribing steps.",
+      "clause": "turning a vague request or step-by-step task list into a structured WHAT-only work item or brief"
+    },
+    {
+      "prompt": "Write a client UI brief based on the actual sealed-auction backend contract.",
+      "clause": "work outcome item, issue ticket, outcome brief, or backlog entry"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Implement CSV export in this empty repository; do not write a ticket.",
+      "clause": "Do NOT use when asked to add, build, or implement a code feature, parser capability, or export format directly (use deliver-and-verify, even if the workspace is empty)",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Compare two launch plans and decide which assumptions need testing.",
+      "clause": "when drafting or evaluating a launch plan, architecture, tech stack, contract, or budget (use challenge)",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Investigate the failed request and establish whether the claimed root cause is true.",
+      "clause": "when investigating a failure or unblocking a task (use prove-it or unblock)",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Translate this launch announcement into natural Traditional Chinese.",
+      "clause": "when writing/translating user-facing copy (use clear-writing)",
+      "route_to": "clear-writing"
+    }
+  ]
+}
