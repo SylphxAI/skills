@@ -233,6 +233,14 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix a flaky frame-versus-timer scheduling test with controlled clocks and prove a later interval still runs.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Repair the email scheduler's overlap test so callback execution time cannot change its result, then run the surrounding suite.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Add JSON Lines export to the parser and ship the working change.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         },
