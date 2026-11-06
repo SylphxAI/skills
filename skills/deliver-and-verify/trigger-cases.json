@@ -856,6 +856,18 @@
     {
       "prompt": "Switch a game analytics reader from a local socket to TLS and verify the new runtime can reach the intended server without widening its grants.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Repair a database reader whose admission and report use separate connections so backend routing cannot replace the admitted session.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Remove an operator's direct database write access while checking inherited groups and pod execution cannot recover a writer credential.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Retire an inherited container-execution route only after its billing collector works through the approved read-only client.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1421,6 +1433,21 @@
     },
     {
       "prompt": "Rewrite a note explaining that one aggregate profile does not cover the revenue report, without changing the reader.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this read-only report was admitted and executed on the same connection, without changing the implementation.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare a connection-pinned reader with a signed query service as a proposed design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Clarify the wording of an access-removal report without changing permissions or validating its claims.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
