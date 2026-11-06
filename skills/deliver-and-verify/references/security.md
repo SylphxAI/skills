@@ -63,6 +63,12 @@ reconciler runs. A role with a different proven contract can use that
 contract's supported access change; this does not impose aggregate-only
 access on every reader.
 
+A reader credential proves neither reachability from a new execution environment
+nor availability of every reporting profile. When replacing an observation path,
+bind a successful request from the actual consumer to the intended server,
+principal, transport, read-only state and required data projection; one admitted
+aggregate profile cannot establish a different report.
+
 **Wrong:** assume column-scoped SELECT is harmless because it omits secrets.
 **Right:** check the deployed admission proof and expose only the required
 report through the supported reader contract, preserving existing consumers.
