@@ -67,15 +67,15 @@
     },
     {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Run the remote contract generator and return all affected consumer projections to the publishing checkout.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Regenerate a game's local SDK bindings and editor metadata before shipping its protocol change.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Replace an incorrect async test assertion that rejects valid repeated progress events, and ship bounded terminal-result coverage.",
@@ -363,15 +363,15 @@
     },
     {
       "prompt": "Run the contract generator remotely, validate the public protocol with its actual standards checker, and publish the SDK and web registry outputs.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Regenerate a game protocol on a remote worker and return new bindings, removed obsolete bindings, and the downstream editor catalog before shipping.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Run source generation remotely for a document API, preserve generated removals, reconcile the automatic generated commit, and ship the complete change.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
@@ -487,7 +487,7 @@
     },
     {
       "prompt": "Merge conflicting generated API clients, regenerate the complete projections from canonical inputs, and preserve both parents' response guarantees before shipping.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Rotate a Secret consumed by an already-completed reconciliation Job and ship its new configuration.",
@@ -607,11 +607,11 @@
     },
     {
       "prompt": "Replace manually edited configuration workbooks with typed source and generate a compatibility release that preserves the deployed tables.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Regenerate a billing catalogue while separately proving deployed-reader compatibility and validation against current declarations.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Fix and ship an archive importer that selects a notes worksheet when ZIP members are reordered and data headers are copied.",
@@ -663,11 +663,11 @@
     },
     {
       "prompt": "Build a matched browser engine benchmark with shared texture assets and validate the independent bilinear pixel checker before timing.",
-      "clause": "building matched engine benchmarks"
+      "clause": "benchmarking engines"
     },
     {
       "prompt": "Build equal-work rendering benchmarks that count every emitted label quad and reject an intentionally shifted glyph.",
-      "clause": "building matched engine benchmarks"
+      "clause": "benchmarking engines"
     },
     {
       "prompt": "Ship a chart renderer fix with an independent known-answer color-model test and a complete label primitive census.",
@@ -711,7 +711,7 @@
     },
     {
       "prompt": "Regenerate a service manifest after changing its canonical shell script and verify both source and embedded lint populations.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
@@ -739,7 +739,7 @@
     },
     {
       "prompt": "Run the package resolver and publish its actual lockfile instead of reconstructing transitive dependencies from version logs.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Pin consumers to a package mirror after checking live metadata, canonical archive redirects and a real download.",
@@ -755,7 +755,7 @@
     },
     {
       "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Repair affected-test routing that selects every consumer but drops feature-gated server-rendering tests when packages compile separately.",
@@ -815,11 +815,11 @@
     },
     {
       "prompt": "Run the schema client generator from canonical inputs when its generated client does not yet exist, keeping post-generation contract checks strict.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Run remote asset-manifest generation without requiring the missing manifest at admission, while retaining input and routing validation.",
-      "clause": "running source generation locally or remotely"
+      "clause": "generating source"
     },
     {
       "prompt": "Change diagnostic redaction so failed sanitization of container-owned logs cannot feed an unconditional artifact upload, while retaining safe status evidence.",
@@ -892,6 +892,18 @@
     {
       "prompt": "Repair a process-lifetime test that compares raw monotonic timestamps from different runtimes, preserving bounded termination checks.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish a disposable CI probe workflow that runs a shell wrapper and an embedded Python verifier against a bounded external service.",
+      "clause": "publishing disposable CI probe workflows"
+    },
+    {
+      "prompt": "Ship a one-off CI probe that measures client fallback while retaining optional diagnostics and failed acceptance assertions.",
+      "clause": "publishing disposable CI probe workflows"
+    },
+    {
+      "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
+      "clause": "publishing disposable CI probe workflows"
     }
   ],
   "negative": [
@@ -1492,6 +1504,21 @@
     },
     {
       "prompt": "Rewrite the explanation of runtime-local monotonic timestamps for clarity without validating the trace or changing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the failed disposable workflow reached its real client; report the evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare disposable CI workflows with local test runners for a proposed probe architecture without publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of application-attempt and transport-request counts without changing or publishing a probe.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
