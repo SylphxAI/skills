@@ -147,6 +147,15 @@ mock cannot establish which policy the real execution applies.
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
 
+Response evidence also depends on request headers and API version: a default
+CLI response can differ from the failing caller's negotiated payload. Exercise
+that caller's decoder with empty and populated responses, distinguishing valid
+empty encodings from malformed envelopes.
+
+**Wrong:** "The CLI returns `items: []`, so the worker sees an empty list."
+**Right:** "The worker's `Accept` header yields `items: null`; verify its decoder
+on that response while preserving malformed-response refusal."
+
 ## Resolve retained payloads before checking fields
 
 Before counting stored events with a missing field, read how the consumer loads
