@@ -54,8 +54,9 @@ or redeploy leaves existing specifications unchanged; use the normal writer's
 bounded reconciliation or backfill, preserving exclusions and intended absence,
 and verify the served objects before reporting rollout complete.
 
-For long builds or tests in a deadline-limited cloud session, read
-[turn-boundaries.md](references/turn-boundaries.md) before starting execution.
+For long builds or tests, or resuming their results after a turn boundary, read
+[turn-boundaries.md](references/turn-boundaries.md) before starting execution or
+resubmitting work.
 
 For public social feed publishing, follow the [social post media and visual inspection checks](../clear-writing/references/articles-and-copy.md#public-social-feed-posts) before sending and verify the attached image afterward.
 
