@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a privileged shared-cache permission repair while ensuring concurrent file replacements cannot expose another user's credentials.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a root-run upload spool maintainer so a symlink swapped after enumeration cannot redirect its permission changes to a private file.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a privileged game asset-cache repair with tests that replace an enumerated directory before the repair acts on it.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
       "clause": "changing session guards"
     },

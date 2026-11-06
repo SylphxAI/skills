@@ -100,6 +100,9 @@ objects still enter repository-wide policy scans.
 When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
 
+For privileged filesystem changes under directories another principal can write,
+read [security.md](references/security.md) before choosing how to validate and change objects.
+
 Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
