@@ -43,6 +43,15 @@ Bound both probes and updates, including child termination, and keep network
 maintenance off the bootstrap path that establishes operator access. Test hung
 children as well as ordinary failures so maintenance cannot suspend recovery.
 
+Privileged filesystem maintenance beneath another principal's writable directory
+cannot rely on pathname checks or traversal flags to preserve object identity
+until a later effect. Bind validation and changes to opened descriptors with
+no-follow resolution and opened-object type/device checks, test replacement
+between enumeration and effect, and assess hard links separately through the
+effective link policy or link-count checks. **Bad:** `find -P` followed by
+pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
+permissions untouched after a deterministic symlink swap.
+
 ## Runtime isolation
 
 A user's inability to traverse a protected mountpoint does not prove its contents stay unavailable through other mount or namespace views. Linux's less-privileged-mount checks inspect the mount graph rather than ancestor-directory permissions: a root-only unmasked mount can permit a new unmasked mount elsewhere. Name the actual isolation boundary (process, guest VM or host), and test that alternate view before claiming the original masks remain effective.
