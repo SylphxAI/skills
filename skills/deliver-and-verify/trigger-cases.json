@@ -760,6 +760,10 @@
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
       "clause": "editing PR titles/bodies"
+    },
+    {
+      "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
