@@ -198,6 +198,19 @@ A published package states its API, runtimes, and license and follows its versio
 
 Before adding a changeset, check the package's `private` field and release exclusions, and follow the repository's existing changelog convention for packages excluded from publishing.
 
+Preserve the resolver-generated lockfile bytes as the resolved dependency graph;
+never reconstruct transitive dependencies from version logs. A direct requirement
+need not equal the selected version: validate it under the resolver's documented
+constraints and resolution strategy, not textual equality
+([lockfile semantics example](https://docs.unity3d.com/2022.3/Documentation/Manual/upm-conflicts-auto.html),
+read 2026-11-06).
+
+Before pinning consumers to a registry or download mirror, verify the live
+metadata response shape and canonical archive URL through every redirect to the
+final bytes. Derive requests from the actual provider contract rather than a
+guessed per-version endpoint or a test fixture's URL layout, and verify a real
+package download through the mirror.
+
 For a client failure, read the executable path and version used by the failing
 caller before adding another fix. Compare it with the first published release
 containing the relevant behavior, then trace the installer's version and checksum
