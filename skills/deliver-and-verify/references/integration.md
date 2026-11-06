@@ -139,16 +139,27 @@ while accepting a contract-equivalent permutation of unordered sibling fields.
 Admission proves that work can be queued under the configuration at that
 moment. A later worker must resolve a compatible provider for that exact
 intent before reserving new spend or recording that submission has started.
+An operational pause is complete only when independent initial and recovery
+producers and retained queued consumers all observe the effective parsed
+configuration, verified through each outer production entrypoint before any
+admission or resource acquisition the pause promises to avoid, while enabled
+unrelated work remains unchanged. Whether paused work drains or defers follows
+an explicit data-retention and acknowledgement contract: retain the original
+payload and identity for deferred work, and do not discard queued work merely
+because execution is paused.
 An empty candidate list produces a recoverable configuration-unavailable
 outcome with no provider I/O. Preserve the unsent payload and its identity so
 configuration restoration can resume the original work within its expiry and
 cancellation rules. A submission with an unknown result still needs
 reconciliation; configuration changes do not make repeating it safe.
 
-- **Bad:** a queued shipping-label job loses its compatible carrier and falls
-  through to an unconditional call to another configured carrier.
-- **Good:** the worker makes no carrier call, keeps the job pending, then
-  submits the original job after a compatible route returns.
+- **Bad:** gate only the inner dispatch turn, then let a recovery producer or
+  queued consumer reach admission and reserve capacity while the dependency is
+  unavailable.
+- **Good:** exercise queued work with the dependency unavailable through the
+  outer production entrypoints; paused producers and consumers perform no
+  execution or resource acquisition, enabled unrelated work still runs, and
+  restoring configuration submits the retained intent once.
 
 Read response cardinality from the provider contract. A logical operation can
 return one aggregate receipt or multiple part receipts. Preserve each part's
@@ -168,8 +179,10 @@ available-but-incomplete response with a true outage at the public entry point,
 both with partial results present.
 
 Verify a queued intent after eligible configuration is removed, both with and
-without an existing spend reservation: no provider call, new reservation,
-submission marker or accepted-usage event; payload and identity preserved.
+without an existing spend reservation, through each outer production entrypoint:
+no downstream admission, provider call, new reservation, submission marker or
+accepted-usage event; payload and identity are preserved while enabled unrelated
+work continues.
 Restore configuration and verify that the same intent submits once. For a
 multipart response, exercise all-success, middle-part rejection and single-part
 cases, including persisted receipts and accounting after another worker pass.
