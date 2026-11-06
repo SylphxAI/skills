@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when upgrading engine or SDK dependencies, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -12,6 +12,10 @@ assets or configuration that change the experience, or comparing engines, read
 [parity.md](references/parity.md) before defining the acceptance cases. It owns
 the screen-and-feature comparison, engine benchmarks, live evidence and automated
 release checks.
+
+For engine or SDK upgrades affecting controls, account entry or host lifecycle,
+read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
+Native tests and browser previews can exercise different input and feature paths.
 
 ## Coordinate the work
 
