@@ -81,6 +81,25 @@ For a live product, verify guest and account continuity across five distinct lay
 - **Paid value:** Verify that a test-mode purchase or authorized test entitlement survives the same transitions.
 - **Population:** Reconcile aggregate account-continuity metrics over a stated window and eligible population.
 
+For an in-place app-update check, bind both signed artifacts to their package,
+version and SHA-256, and verify signing compatibility before installing. On an
+owned synthetic guest, capture the account identity and balance, force-stop and
+cold-launch the old client, then capture them again. If the UI exposes no stable
+account ID, set a unique nickname or another persistent, non-financial marker
+through the product UI and confirm it survives that baseline cold start. A
+default name or starting balance cannot distinguish a restored guest from a new
+one. Label a marker comparison as such; it does not establish a numeric ID.
+
+Use the supported data-preserving update operation. Capture the candidate's
+first-open sign-in or restore prompt before interacting, then cold-launch it and
+compare the marker and exact balance. Avoid play, purchases and reward claims
+between captures so balance changes cannot confound the result. Retain frames
+when a canvas or game engine omits rendered text from the accessibility tree.
+Read back the installed version and APK hash; a successful installer response
+alone does not bind the client being observed. Keep the verdict scoped to the
+tested guest and transition, separate from reinstall, linked-account, paid-value
+and population checks.
+
 ## Recovery
 
 Recover accounts through a verified channel with appropriate step-up checks and offer passkey enrollment afterward. Never rely on static knowledge-based security questions. Scope support views to audited, read-only access unless an explicit recovery grant is authorized.
