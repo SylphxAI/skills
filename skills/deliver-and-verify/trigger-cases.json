@@ -660,6 +660,10 @@
     {
       "prompt": "Regenerate a service manifest after changing its canonical shell script and verify both source and embedded lint populations.",
       "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
+      "clause": "handling credentials exposed in process arguments"
     }
   ],
   "negative": [
