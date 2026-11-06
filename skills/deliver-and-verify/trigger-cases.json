@@ -3,15 +3,15 @@
   "positive": [
     {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
-      "clause": "changing session middleware or browser-origin forwarding"
+      "clause": "changing session guards"
     },
     {
       "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
-      "clause": "changing session middleware or browser-origin forwarding"
+      "clause": "changing session guards"
     },
     {
       "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
-      "clause": "changing session middleware or browser-origin forwarding"
+      "clause": "changing session guards"
     },
     {
       "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
