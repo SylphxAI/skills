@@ -21,6 +21,16 @@ Choose a stable RP ID valid for the calling origin and validate origins on the s
 
 After a rejected unknown credential, use `signalUnknownCredential()` where supported. Use `signalAllAcceptedCredentials()` only in the authenticated context appropriate to the full credential list. Feature-detect support and verify the provider's behavior; a signal does not replace the server's check or guarantee every picker updates immediately.
 
+## Risk checks and delivery cost
+
+Human or session assurance and permission to incur recurring delivery cost are
+independent: successful anti-abuse verification or a valid session never resets
+the server-side cost or conversion budget. In a risk-based step-up flow, a
+low-risk request makes no anti-abuse provider call; keep thresholds and other
+product-specific constants in product policy. **Bad:** a passed challenge unlocks
+unlimited message sends; **Good:** the request still passes delivery admission,
+while a low-risk sign-in needs no challenge provider.
+
 ## The one sign-in flow
 
 Every product uses a single unified passwordless entry flow for both new and returning users.
