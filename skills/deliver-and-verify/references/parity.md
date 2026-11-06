@@ -277,8 +277,11 @@ bounds, not its allocated container width, and measure the gap to the chevron
 in the same coordinate space on every rendered row. Check the acceptance case's
 required gap, line count and typography together; for example, an 8 CSS px gap
 is a contextual requirement, not a universal minimum. Do not shrink the font
-to hide a spacing failure. Run the guard against the old failing state before
-claiming it catches the defect, then test the repair under the same conditions.
+to hide a spacing failure. For composite controls, assert joints and endpoints in
+a shared coordinate system as well as each part's size, because a correctly sized
+segment can be anchored incorrectly. Run the guard against the old failing state
+before claiming it catches the defect, then test the repair under the same
+conditions.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
