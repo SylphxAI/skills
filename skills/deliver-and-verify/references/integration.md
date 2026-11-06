@@ -178,16 +178,17 @@ parts succeed; retain partial acceptance and account for accepted parts once.
 Retry only parts that the provider contract proves were not accepted, using
 its supported idempotency and recovery semantics.
 
-Bind each generated assessment to its exact request and scope; bounded
-corrective feedback may ask the model to resubmit, but the caller must never
-rewrite returned identity fields to make them match. Distinguish transport
-availability, domain completion and validated partial results through aggregation
-and publication: persistent malformed assessments or exhausted work bounds are
-not transport or capacity outages, and neither HTTP success nor workflow
-completion proves complete work. Preserve earlier validated results unless later
-domain evidence revises them, derive the published outcome from the operation's
-contract, and contrast malformed or incomplete assessments with true outages at
-the public entry point with partial results present.
+Bind generated assessments to the exact request and scope; authoritative request
+context owns normalized identity, while mismatched model echoes may prompt
+bounded resubmission but must never be silently rewritten to certify unchecked
+or stale content. Distinguish transport availability, domain completion and
+validated partial results through aggregation and publication: persistent
+malformed assessments or exhausted work bounds are not transport or capacity
+outages, and neither HTTP success nor workflow completion proves complete work.
+Preserve earlier validated results unless later domain evidence revises them,
+derive the published outcome from the operation's contract, and contrast
+malformed or incomplete assessments with true outages at the public entry point
+with partial results present.
 
 Verify a queued intent after eligible configuration is removed, both with and
 without an existing spend reservation, through each outer production entrypoint:
