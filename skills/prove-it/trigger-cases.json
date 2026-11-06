@@ -96,6 +96,14 @@
     {
       "prompt": "Delivery receipts report a complete inventory handoff, while the receiver recovers JSON ending mid-record. Reconcile the claimed coverage.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether raising a pending runner priority started the intended release job when workers share a dispatch label.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a remote worker class with a smaller fallback envelope before reporting how many jobs the free memory fits.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [

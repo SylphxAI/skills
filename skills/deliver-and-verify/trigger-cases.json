@@ -576,6 +576,10 @@
     {
       "prompt": "Fix both preview server origin resolvers so missing configuration and production aliases cannot receive authenticated mutations.",
       "clause": "provisioning preview environments"
+    },
+    {
+      "prompt": "Apply an authorized temporary shared-runtime setting while a parent controller reconciles the child configuration, then deploy the durable source and remove the exception.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
