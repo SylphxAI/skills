@@ -56,6 +56,9 @@ For long builds or tests in a deadline-limited cloud session, read
 
 ## Execute and verify
 
+When changing shared runtime settings or deployment overlays, read
+[deployment configuration](references/code.md#deployment-configuration).
+
 For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
