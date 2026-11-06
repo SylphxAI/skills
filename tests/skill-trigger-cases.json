@@ -380,6 +380,14 @@
         {
           "prompt": "Remove completed compatibility layers and unused dependencies after checking callers.",
           "clause": "deleting dead code or unused dependencies, removing completed compatibility layers"
+        },
+        {
+          "prompt": "Deduplicate a validator used by a desktop UI and a server while preserving both APIs and the server's dependency constraints.",
+          "clause": "deduplicating implementations across packages or runtimes"
+        },
+        {
+          "prompt": "Consolidate the duplicate input parsers so a command-line client can use the shared package without loading the desktop shell.",
+          "clause": "deduplicating implementations across packages or runtimes"
         }
       ],
       "negative": [
