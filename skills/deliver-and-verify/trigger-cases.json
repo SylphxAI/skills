@@ -762,6 +762,10 @@
       "clause": "editing PR titles/bodies"
     },
     {
+      "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, and ship the shared-cache repair.",
       "clause": "bug fix"
     },
