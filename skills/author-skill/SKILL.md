@@ -11,7 +11,7 @@ A skill is **asynchronous Agent-to-Agent (`A2A`) communication across time**: a 
 
 ## 0. The Five Laws of Modern SOTA Skill Engineering (`現代 SOTA Skill 編寫五大鐵律`)
 
-Before adding or editing any line in a skill, test it against all five laws ($\bigcap V_i$):
+Before adding or editing any line in a skill, test it against all five laws:
 
 | Law | ❌ Over-Constrained (`過分約束 / 命令式預嚼` — Kills SOTA Thinking) | ❌ Under-Constrained (`完全無約束 / 空泛口號` — Zero Protection) | ✅ SOTA Skill Sweet Spot (`鎖邊界、給變量、傳現象、解放思考`) |
 | --- | --- | --- | --- |
@@ -80,7 +80,7 @@ superseded rule and reconcile sibling skills in the same change.
   single direct check suffices, and never swing to the opposite extreme (`矯枉過正`,
   such as turning warm customer companionship into cold legalistic refusals after
   a privacy mistake). Preserve the positive business goal while cutting only the
-  failure mode ($\bigcap V_i$), and prune verbose or superseded clauses whenever
+  failure mode, and prune verbose or superseded clauses whenever
   adding a new insight.
 - **Run a cross-product transfer test** (`跨領域盲測驗證`). Remove names and
   apply the decision to a different product or domain, such as a business SaaS
