@@ -233,6 +233,18 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix the first document-editor toolbar click being lost when a new browser session receives its guest cookie and refreshes.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Make a game's lazy settings popup motion checks deterministic, covering both the first entrance and warmed entrances under reduced motion.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a visible readiness state for a server-rendered control whose early presses are not replayed after hydration.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix database test teardown that leaves an idle session after pool close; prove a return racing shutdown with a barrier and preserve a genuinely held connection.",
           "clause": "implementing or shipping a feature, bug fix"
         },
