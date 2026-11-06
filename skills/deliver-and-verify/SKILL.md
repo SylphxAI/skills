@@ -13,7 +13,8 @@ assets or configuration that change the experience, or comparing engines, read
 the screen-and-feature comparison, engine benchmarks, live evidence and automated
 release checks.
 
-For engine or SDK upgrades affecting controls, account entry or host lifecycle,
+For engine or SDK changes affecting controls, account entry or host lifecycle,
+including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
