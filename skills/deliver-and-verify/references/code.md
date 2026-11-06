@@ -184,6 +184,15 @@ For example, a SQL view containing a VOLATILE rejection function may evaluate
 it even when its output column is unused. Validate metadata-only reads and row
 locks independently before using that view to judge the production projection.
 
+For pooled-resource teardown, check client ownership and server state separately.
+A returned close future does not establish that the pool drained every resource.
+Before attributing a surviving session to a worker, read the exact driver's close
+and return ordering and measure the remaining pool size. Reproduce a return
+racing shutdown with a barrier, and retain a negative case in which a genuinely
+held connection stays usable after cleanup reports it. Keep a driver workaround
+in its version-specific adapter and remove it when the supported upgrade fixes
+the ordering; do not hide the failure by terminating unrelated sessions.
+
 ## Outbound calls
 
 - Give each remote operation an effective deadline/cancellation policy, configured on the client or request. Reuse clients by connection and security configuration and share retry/redaction policy.
