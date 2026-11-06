@@ -55,6 +55,11 @@ When a secret scanner refuses publication, follow
 When selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
+
+Before changing provider calls, queued dispatch, receipt parsing or webhooks,
+read [integration.md](references/integration.md). Admission and later dispatch
+can run under different provider configuration.
+
 For browser keyboard defaults or foreground lifecycle changes, also read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
@@ -85,7 +90,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [code.md](references/code.md): domain boundaries, transactions, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
 - [security.md](references/security.md): authority, secrets, personal data and recovery.
-- [integration.md](references/integration.md): provider calls, webhooks and reconciliation.
+- [integration.md](references/integration.md): provider calls, queued dispatch, partial acceptance, webhooks and reconciliation.
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.
 - [dx.md](references/dx.md): APIs, packages, affected-test selection, feedback loops and releases.

@@ -1,6 +1,7 @@
 # Provider integration
 
-Trigger: calling an outside service or receiving its webhooks.
+Trigger: calling an outside service, changing queued dispatch or receipt
+parsing, or receiving provider webhooks.
 
 Build the integration to survive a slow/unavailable provider and repeated or missed delivery without granting more access than the feature needs.
 
@@ -12,3 +13,35 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
 
 Verify replay, duplication, dropped delivery and timeout behavior for the affected contract. The resulting data stays correct and secrets do not appear in output.
+
+## Queued work and partial acceptance
+
+Admission proves that work can be queued under the configuration at that
+moment. A later worker must resolve a compatible provider for that exact
+intent before reserving new spend or recording that submission has started.
+An empty candidate list produces a recoverable configuration-unavailable
+outcome with no provider I/O. Preserve the unsent payload and its identity so
+configuration restoration can resume the original work within its expiry and
+cancellation rules. A submission with an unknown result still needs
+reconciliation; configuration changes do not make repeating it safe.
+
+- **Bad:** a queued shipping-label job loses its compatible carrier and falls
+  through to an unconditional call to another configured carrier.
+- **Good:** the worker makes no carrier call, keeps the job pending, then
+  submits the original job after a compatible route returns.
+
+Read response cardinality from the provider contract. A logical operation can
+return one aggregate receipt or multiple part receipts. Preserve each part's
+status, stable ID and billed amount. Report full success only when all required
+parts succeed; retain partial acceptance and account for accepted parts once.
+Retry only parts that the provider contract proves were not accepted, using
+its supported idempotency and recovery semantics.
+
+Verify a queued intent after eligible configuration is removed, both with and
+without an existing spend reservation: no provider call, new reservation,
+submission marker or accepted-usage event; payload and identity preserved.
+Restore configuration and verify that the same intent submits once. For a
+multipart response, exercise all-success, middle-part rejection and single-part
+cases, including persisted receipts and accounting after another worker pass.
+These deferral rules apply before submission; provider acceptance or an unknown
+result requires the reconciliation path above.
