@@ -39,11 +39,7 @@ reset, stash, clean or change the real index. Use a temporary index:
 
 ## Secret-scanner findings
 
-Scan the snapshot and unpublished ancestry before publishing. Inspect every
-flagged line without printing secret values. A hash, commit-pinned path or long
-identifier can be a false positive: verify its meaning and use a narrowly scoped,
-reviewed allowlist entry through the repository's supported scanner mechanism.
-Rerun the scanner and keep the reviewed reason. Never disable scanning or bypass
-a rejection. Real or uncertain secrets stay in authorized private recovery
-storage while the owner follows the credential recovery procedure; never push
-private history to a public repository.
+Scan the snapshot and unpublished ancestry before publishing. Review findings
+through the [scanner finding procedure](../../deliver-and-verify/references/security.md#secret-scanner-publication-refusals).
+Keep real or uncertain secrets in authorized private recovery storage while the
+owner follows credential recovery; never push private history to a public repository.

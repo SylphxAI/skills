@@ -28,6 +28,10 @@ Before intervening, read the live state of the job, queue, or target resource:
 
 ## 2. Diagnose by Failure Class
 
+For a secret-scanner publication refusal, use the
+[scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
+to distinguish credentials from verified false positives through the supported publisher.
+
 Read the exact failing job log, exit status, and resource metrics before choosing the action:
 
 | Failure class | Observable signal | Immediate restoration path |
