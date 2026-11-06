@@ -1512,6 +1512,18 @@
     {
       "prompt": "Change database fixture identifiers to respect the tightest seeded column bound while retaining a random suffix.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a segmented selection highlight fix and verify its subpixel cap-to-band junction without loosening paint tolerances.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a chart range highlight whose correctly sized segments leave gaps at their rounded endpoints, and retain the failing frames.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a calendar row layout fix and check every header and day column against the original defective browser fixture.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2462,6 +2474,21 @@
     },
     {
       "prompt": "Rewrite a paragraph explaining synthetic identifier length limits without changing fixtures or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this paint probe samples an antialiased edge; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare fixed-inset and geometry-derived pixel probes for a proposed UI test design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this UI verification guide for clarity without changing tests or running operations.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

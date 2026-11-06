@@ -297,11 +297,13 @@ bounds, not its allocated container width, and measure the gap to the chevron
 in the same coordinate space on every rendered row. Check the acceptance case's
 required gap, line count and typography together; for example, an 8 CSS px gap
 is a contextual requirement, not a universal minimum. Do not shrink the font
-to hide a spacing failure. For composite controls, assert joints and endpoints in
-a shared coordinate system as well as each part's size, because a correctly sized
-segment can be anchored incorrectly. Run the guard against the old failing state
-before claiming it catches the defect, then test the repair under the same
-conditions.
+to hide a spacing failure. For composite controls, check joints and endpoints in
+a shared coordinate system as well as each part's size; correct dimensions can
+still be anchored wrongly. Derive paint probes from the actual geometry and
+rasterization: a fixed inset can sample an antialiased curve instead of the
+intended junction. A corrected probe must retain the original failure and reject
+both the known defective frame and an independent missing-segment control with
+unchanged paint tolerances, then accept the repair under the same conditions.
 
 A text-hidden control comparison limited to self-reported glyph, mesh or layout
 bounds cannot detect paint outside those bounds. Account for every changed pixel
