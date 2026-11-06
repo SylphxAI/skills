@@ -72,6 +72,14 @@ references rather than exporting their values
 ([kubectl run](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_run/),
 read 2026-11-06).
 
+Admission dry runs validate a resource, but do not exercise the client's API
+requests; verify the operation under its declared identity, including any
+metadata reads before the final request. For example, granting only
+`pods/exec` creation leaves `kubectl exec <pod>` unable to read that named Pod;
+scoped Pod GET access is also required
+([kubectl v1.36.0 source](https://github.com/kubernetes/kubernetes/blob/v1.36.0/staging/src/k8s.io/kubectl/pkg/cmd/exec/exec.go),
+read 2026-11-06).
+
 Require the requested operation's output as well as its exit status. A client
 can exit successfully without receiving a query. For example, verify the
 expected metadata columns or an aggregate count; if empty output is legitimate,
