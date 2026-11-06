@@ -336,6 +336,15 @@ Keep schema migrations strictly DDL-only (`CREATE`, `ALTER`, `DROP` on tables, i
 
 ## Database boundary tests
 
+An output subset need not contain the dependencies needed to evaluate its rows:
+a timestamp filter can remove the true predecessor while leaving a plausible,
+non-null earlier row. Define adjacency from the authoritative ordering over the
+necessary history before restricting scored rows; time-based pruning needs a
+proven ordering guarantee or comparison with full-history evaluation.
+**Wrong:** trust a non-null `LAG` over a recent slice. **Right:** place an
+intermediate event outside that slice and independently assert its successor's
+predecessor, exposing both hidden violations and invented gaps.
+
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
 migrations. Use the application's effective role and verify the database version,
@@ -458,14 +467,17 @@ while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
-A safety or dependency check's predicate can pass while discovery or request
-routing never selects it; exercise alternative supported declarations, operations
-and subresources through selection and enforcement, with permitted controls and
-the intended denial. An offline evaluator that drops verb, subresource, identity
-or old-object fields proves only its modeled request, so route-dependent claims
-need the actual endpoint. **Wrong:** infer a debug-update ban from rejected
-create bodies; **right:** show the policy selects the debug-update route and
-rejects its valid request, keeping local predicate tests separate.
+A safety or dependency predicate can be correct while discovery or routing never
+selects it. Preserve each independent reason for selection: historical comparison
+coverage does not limit explicit requested assertions about objects outside that
+population. Offline tests that omit verb, subresource, identity or old-object
+fields establish only their modeled requests; verify alternative supported routes
+through actual selection and enforcement, with permitted controls and the intended
+denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
+permission change because its account is absent from the old audit sample.
+**Right:** exercise the alternate update route and requested objects inside and
+outside comparison coverage, proving fulfilled requests pass and unfulfilled
+requests fail without expanding collateral comparisons.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 

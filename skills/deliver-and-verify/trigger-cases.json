@@ -904,6 +904,18 @@
     {
       "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
       "clause": "publishing disposable CI probe workflows"
+    },
+    {
+      "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Add an inventory-history fixture where the intermediate revision has an older event clock, and ship the adjacency repair.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix an access-change verifier that skips an explicit requested change when its account is outside the old audit sample.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
