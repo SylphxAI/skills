@@ -332,6 +332,12 @@ publishing the correction.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
 
+An optional selector's omitted or empty value can be a valid mode with its own
+required outputs. Test that mode through the real entrypoint and assert those
+outputs as well as status: a swallowed error can keep the enclosing workflow
+green while forcing an expensive fallback. Keep malformed nonempty inputs as
+negative cases rather than weakening their validation.
+
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
 Evaluate each declared trigger and inherited reusable-call context with the
