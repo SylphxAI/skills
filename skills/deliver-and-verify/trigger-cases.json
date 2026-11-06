@@ -830,6 +830,10 @@
       "clause": "changing source checkouts"
     },
     {
+      "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
