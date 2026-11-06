@@ -20,6 +20,16 @@ change the preinstalled set when measured total setup cost or toolchain needs
 change ([Docker multi-stage builds](https://docs.docker.com/build/building/multi-stage/),
 read 2026-11-05).
 
+Audit native requirements in the locked transitive dependencies' build scripts
+and binding generators, including ordinary crates without a `-sys` suffix.
+Check headers, linker libraries, configuration executables and compiler-loaded
+libraries; finding a package with `pkg-config` alone may miss a later binding or
+link failure. Add an image-build probe that exercises those requirements. Then
+run the original failing command through the ordinary build route and record
+the selected image digest: a published image does not prove that new leases use
+it. Resolve the public lease name to its authoritative identifier before
+matching runtime objects, because display names and runtime labels can differ.
+
 ## Container builds and probes
 
 Verify the exact Dockerfile and build context in a clean builder. Host tests do
