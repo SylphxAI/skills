@@ -74,6 +74,9 @@ For public social feed publishing, follow the [social post media and visual insp
 
 ## Execute and verify
 
+Before bulk mutations, including cancelling CI runs, read
+[bulk mutation controls](references/dx.md#bulk-mutations).
+
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 

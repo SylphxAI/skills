@@ -391,6 +391,24 @@ frozen release binding; validate that binding where the release is selected.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
 
+## Bulk mutations
+
+Before bulk cancellation, deletion, closure, re-dispatch, labeling or overwriting,
+map each candidate to its real owning object and prove both controls: a known-live
+object classifies as **keep**, and a known-stale object as **act**.
+Dry-run the full candidate set; stop and investigate if either class takes nearly
+all candidates or **keep** is empty, rather than treating uniform agreement as proof.
+Mutate at a paced rate and log object IDs, owner mappings, prior state and outcomes
+so supported reversals or re-dispatches are possible; preserve unrecoverable data
+before destructive action.
+
+**Wrong:** cancel CI runs whose own `head_sha` is absent from open PR heads.
+**Right:** for `workflow_run`, resolve the triggering run and its PR through the
+event's `workflow_run` payload (including `workflow_run.head_sha`); the downstream
+run's own `head_sha` and `head_branch` describe the default branch, not the PR.
+
+Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run), read 2026-11-06.
+
 ## Continuous integration
 
 When an expected pull-request workflow has no run, check event eligibility before
