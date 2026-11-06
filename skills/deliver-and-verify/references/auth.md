@@ -132,6 +132,11 @@ Preserve paste and password-manager/autofill support across all authentication f
 
 Verify the unified sign-in flow (Screen 1, Screen 2 code/passkey, returning sign-in, new sign-in, in-app browser fallback, guest-to-linked upgrade, session revocation, and account deletion) on phone and desktop viewports against the live serving environment.
 
+Present-but-invalid stored credentials are unreadable, not absence that
+permits a replacement user or fallback to another saved identity. Positive
+absence and a source-documented zero-byte standalone-file fallback are distinct
+states; verify them separately from malformed bytes and invalid credential shapes.
+
 ## References
 
 Primary sources checked 2026-10-30 and 2026-11-03:
