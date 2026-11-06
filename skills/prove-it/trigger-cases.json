@@ -108,6 +108,18 @@
     {
       "prompt": "Reconcile a remote worker class with a smaller fallback envelope before reporting how many jobs the free memory fits.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "The CLI reports an empty list, but a worker rejects the same resource. Verify its content-negotiated response and decoder before attributing the failure.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Reconcile a billing dashboard showing no entries with an SDK that requests a different API version and cannot decode the empty response.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether a populated inventory probe proves the game client can decode a contract-valid empty list under its own Accept header.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [

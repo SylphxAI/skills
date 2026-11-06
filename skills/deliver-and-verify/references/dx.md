@@ -427,6 +427,17 @@ not help. A healthy run already queued or executing needs no restart.
 
 Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), read 2026-11-06.
 
+PR title/body edits can start `pull_request: edited` workflows and cancel prior
+checks through `concurrency.cancel-in-progress`; read the event types and
+concurrency before treating metadata as prose alone. While runners are starved,
+leave titles and bodies of PRs with CI unchanged and put follow-up links in one
+comment on a route without an `issue_comment` CI trigger. **Wrong:** polish a
+queued PR's wording and restart its checks; **Right:** preserve the existing run
+and comment, preparing required routing metadata before starting CI.
+
+Sources: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request)
+and [workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06.
+
 Routing expressions that read `github.event` use the triggering webhook payload;
 a later label edit does not change an existing run's routing. Authorized routing
 metadata must be present in an eligible event, whose activity type is configured;

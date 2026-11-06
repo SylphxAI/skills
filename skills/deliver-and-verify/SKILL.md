@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning preview environments, changing SQL queries or schema-backed fixtures, changing session guards, changing database privileges, changing selected-source release inputs, changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, building matched engine benchmarks, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials exposed in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning preview environments, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, editing PR titles/bodies, changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, building matched engine benchmarks, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -97,7 +97,7 @@ When changing runtime isolation, read [runtime isolation](references/security.md
 Before changing database roles or privileges, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
+When handling credentials in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
@@ -108,7 +108,7 @@ For dependency lockfiles, package publication or registry/download mirrors, read
 Before running a generator locally or remotely, or a package manager through a
 remote command wrapper, read [source generation](references/dx.md#source-generation).
 
-When changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
+When editing PR titles or bodies, changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 

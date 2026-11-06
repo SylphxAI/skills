@@ -31,12 +31,19 @@ desired state, so durability depends on the full controller ancestry and each
 controller's effective field ownership. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
-temporary exception is removed.
+temporary exception is removed. A recurring repair's field ownership and
+exclusions must hold across every automatic writer and active-operation handoff;
+one correctly guarded pass does not protect against an independent writer
+reclaiming those fields. Verify successive repair and operation transitions,
+not only the first pass.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
 Omitting the old variant in desired source may retain its defaulted fields;
 a successful render does not prove that the real reconciler can apply the change.
+A representation change, including omission becoming `null`, must remain
+consumable by every later internal operation that reads or reclaims that variant;
+producer or reconciler acceptance alone does not establish consumer compatibility.
 
 Reservation or preview objects can bypass mutations applied to the eventual
 execution object, so matching source templates does not prove they reserve the
