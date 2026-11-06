@@ -866,6 +866,10 @@
         {
           "prompt": "Separate legacy high-spend payers into a frozen private bank-transfer rebate whitelist while enforcing a strict 10% order-backed ambassador bonus cap for all new players.",
           "clause": "structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap"
+        },
+        {
+          "prompt": "Before placing existing avatar frames or wings onto new VIP 1-10 tiers, expand recursive choice-chest payloads and check which activity handlers count cash recharges.",
+          "clause": "auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic"
         }
       ],
       "negative": [
