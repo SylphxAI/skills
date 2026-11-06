@@ -904,6 +904,10 @@
     {
       "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
       "clause": "publishing disposable CI probe workflows"
+    },
+    {
+      "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
