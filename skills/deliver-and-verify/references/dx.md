@@ -6,7 +6,17 @@ Optimize time from a clean environment to a useful verified result. Make failure
 
 ## First useful success
 
-Document the supported prerequisites/revisions, entry command, expected result, and common failure/recovery paths. Keep the entry surface thin and route to deeper material. Resolve the reproducible toolchain and dependency graph from source; record generator inputs for generated output.
+Document the supported prerequisites/revisions, entry command, expected result,
+and common failure/recovery paths. Keep the entry surface thin and route to
+deeper material. A source-version change can raise the compiler minimum even
+when the files touched by local patches are unchanged. Read the selected
+source's toolchain declarations and keep CI and artifact-build compilers
+compatible; checksums and patch applicability do not establish compilability.
+Record generator inputs for generated output.
+
+**Wrong:** Update source hashes and accept a passing patch check while the
+release image still uses an older compiler. **Right:** Verify the selected
+source with the compatible compiler in both CI and the artifact build.
 
 Local setup can change a check's input population: dependency caches placed
 inside a checkout may be scanned as source even when Git ignores them. Keep
