@@ -31,6 +31,14 @@ does not help if an earlier database result or response collector holds the
 whole value. Read metadata before deciding whether output is needed; cap a
 historical replay in the database before its bytes reach the process.
 
+A shared payload can outlive its cache entry or stream, and each fan-out copy is
+another allocation: charge bytes until the last reader or transport owner releases
+them. Budget waits must observe transitions that make further allocation
+unnecessary, including terminal errors, or a memory bound can become a liveness
+failure. Prove both bounds by holding detached slow-consumer buffers through
+eviction and comparing live allocation multiplicity with charged bytes, then
+saturating the budget and exercising progress without new allocations.
+
 Measure decoded representation as well as stored bytes. A typed binary field
 such as `Vec<u8>` can serialize as a JSON integer array; decoding through a
 generic JSON value allocates a separate enum element per byte. Loading every

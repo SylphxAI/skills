@@ -32,7 +32,8 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
-For large uploads, archive restores, or stored-output replay, read
+For large transfers, shared response caches, fan-out streams, archive restores,
+or stored-output replay, read
 [bounded memory for large transfers](references/performance.md#bounded-memory-for-large-transfers)
 before choosing storage queries and transport APIs.
 
