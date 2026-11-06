@@ -120,6 +120,14 @@
     {
       "prompt": "Verify whether a populated inventory probe proves the game client can decode a contract-valid empty list under its own Accept header.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify whether replaying a missed pre-publication guard after a successful publication still scans the original input population.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "An incremental audit reports success after a checkpoint advanced; reconcile its empty replay with the original nonempty event population.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [

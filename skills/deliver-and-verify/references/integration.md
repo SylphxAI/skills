@@ -14,7 +14,15 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Expensive mutable observations need both freshness and shared-provider cost evidence: a short negative TTL can exhaust a quota, while retaining a negative answer can hide completion. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers, and evaluate completion invalidation with a bounded lost-event backstop. Verify duplicate events, in-flight reads and retained caches across ownership changes, so invalidation remains effective without multiplying provider work.
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
 
-Verify replay, duplication, dropped delivery and timeout behavior for the affected contract. The resulting data stays correct and secrets do not appear in output.
+Verify replay, duplication, dropped delivery and timeout behavior at the affected
+contract boundary, including non-empty binary writes when signing or streaming
+uses a different path from reads. A successful read does not prove write
+compatibility, and sending a precondition does not prove the provider enforces
+it: an existing-resource case needs the observed rejection or unchanged version
+that establishes the claimed guarantee. **Bad:** infer create-only uploads from
+a signed GET and a conditional header; **Good:** verify the uploaded bytes and
+repeat against an existing key, distinguishing no-write behavior from a retained
+new version. The resulting data stays correct and secrets do not appear in output.
 
 Before/after completeness comparisons use the same endpoint, request scope and
 stable key; matching counts can hide one missing object replaced by another.
