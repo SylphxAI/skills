@@ -715,6 +715,10 @@
         {
           "prompt": "Ship concurrent stock reservation and pricing updates that preserve the fields each writer owns.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix the concurrency test that counts only direct PostgreSQL blockers and misses a second operation queued behind another waiter.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -1268,6 +1272,10 @@
         {
           "prompt": "Should we add an SMS adapter to V1 or bridge old clients into the shared identity service while retiring V1?",
           "clause": "legacy-to-modern strangler migration"
+        },
+        {
+          "prompt": "Design wallet cancellation when several grants share a balance and only their current remainders are imported.",
+          "clause": "web top-up vs. wallet/voucher design"
         }
       ],
       "negative": [
