@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Expose aggregate billing reports through a shared database login without invalidating its reconciler checks.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Restore a shared analytics reader after a temporary ACL change disabled its login, using the supported role-management path.",
+      "clause": "changing database privileges"
+    },
+    {
       "prompt": "Upgrade the engine dependency from source and ship its release image after checking the new compiler minimum in both CI and the artifact builder.",
       "clause": "upgrading engine or SDK dependencies"
     },
@@ -648,6 +660,18 @@
     {
       "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
+    },
+    {
+      "prompt": "Fix and publish deployment scripts stored as shell files and generated ConfigMaps, checking both CI validators after regeneration.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game-server startup fix whose standalone launcher and generated container command are linted by different checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate a service manifest after changing its canonical shell script and verify both source and embedded lint populations.",
+      "clause": "running source generation locally or remotely"
     }
   ],
   "negative": [
@@ -1073,6 +1097,21 @@
     },
     {
       "prompt": "Rewrite the explanation of preview environment isolation without changing or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a green embedded-shell scan proves standalone scripts passed; report evidence without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare source linting and rendered-manifest validation for a proposed CI design without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of standalone and embedded script checks without running or publishing changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
