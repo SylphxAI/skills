@@ -391,6 +391,14 @@
         {
           "prompt": "Deploy the card-game server configuration fix and update existing server declarations through their normal writer while preserving retired servers.",
           "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Fix a service controller handover that leaves old generated routes serving; prove replacement membership before retiring them.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a queue-worker controller replacement that removes only obsolete subscriptions and tolerates optional cleanup permission failures.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -518,6 +526,11 @@
           "prompt": "Rewrite the publication help text to explain automatic merge defaults; do not publish or change repository configuration.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether a controller handover leaves generated routes behind; report evidence without changing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
         }
       ]
     },
