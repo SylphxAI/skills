@@ -40,6 +40,21 @@ formatter needs no HTTP topology fixture. Treat a missing positive control or
 wrong error envelope as a fixture defect; retain the production behavior being
 verified.
 
+## Final streamed output
+
+Buffered events can pass privacy and error tests while later encoding changes
+what the recipient receives; the evidence boundary is the final response in each
+supported encoding, on both sides of any irreversible commit. For streamed HTTP,
+that means status, headers and encoded terminal bytes before output, then fixed
+status/headers plus one safe, typed terminal after the client receives content;
+chunk partitioning and redundant provider fields must preserve semantic content
+exactly once.
+
+**Bad:** inspect an intermediate error buffer and infer the client contract.
+**Good:** release a provider failure only after the client receives content,
+then inspect the final encoded response for public error semantics, retry advice
+and absence of private diagnostic sentinels.
+
 ## Queued work and partial acceptance
 
 Admission proves that work can be queued under the configuration at that

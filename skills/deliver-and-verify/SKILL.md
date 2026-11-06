@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -38,9 +38,16 @@ before choosing storage queries and transport APIs.
 
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
+UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+
+When storing process/tool output in JSON or a database, read
+[binary output and text storage](references/code.md#binary-output-and-text-storage).
+For worker replacement, snapshot selection or partial checkpoints, read
+[execution environment recovery](references/code.md#execution-environment-recovery)
+before changing capture coverage or restoring user files.
 
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 
@@ -71,6 +78,9 @@ When changing shared runtime settings or deployment overlays, read
 For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
+For sandbox build templates or native compilation failures, read
+[first useful success](references/dx.md#first-useful-success).
+
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures).
 
@@ -80,12 +90,12 @@ When a secret scanner refuses publication, follow
 Before running a generator or package manager through a remote command wrapper,
 read [remote source generation](references/dx.md#remote-source-generation).
 
-When running browser checks in fresh build leases or selecting checks for source, SDK or transport changes, read
+When running tests in fresh build leases or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, HTTP test doubles, queued dispatch, receipt
-parsing or webhooks, read [integration.md](references/integration.md). Preserve
+Before changing provider calls, HTTP test doubles, streamed output, queued
+dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.
 
@@ -118,7 +128,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [parity.md](references/parity.md): verifying game, app and SaaS journeys against a category leader; remake parity, live captures, asset/table checks and automatic recovery.
 - [code.md](references/code.md): domain boundaries, transactions, recovery references, desired state, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
-- [security.md](references/security.md): authority, secrets, personal data and recovery.
+- [security.md](references/security.md): authority, privileged tool maintenance, secrets, personal data and recovery.
 - [integration.md](references/integration.md): provider calls, HTTP test doubles and routing, queued dispatch, partial acceptance, webhooks and reconciliation.
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.

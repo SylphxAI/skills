@@ -133,7 +133,12 @@ the engine's verdict.
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
    compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
-   load and instrumentation. Name unavoidable differences and the comparison they
+   load, effective process environment and instrumentation. Inherited settings can
+   change only one runtime's colors, locale or cache behavior; equal command flags
+   need rendered-output evidence, not an assumption of equal work. Bind resource
+   metrics to the measured process and lifetime: a child high-water mark may
+   include its larger pre-exec launcher, so an application-memory claim needs
+   post-exec evidence. Name unavoidable differences and the comparison they
    prevent; a software-GPU run does not establish physical-device performance.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
@@ -250,6 +255,10 @@ claiming it catches the defect, then test the repair under the same conditions.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
+- A control can submit the right values and expose an accessibility label while
+  rendering no visible label. Assert its displayed content as well as its
+  accessible name and action, and inspect the captured frame before presenting
+  it as visual proof.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
@@ -281,9 +290,11 @@ disconfirming check establishes the cause; adopt only explained, intended change
 ### Verify engine and SDK changes in the shipping host
 
 An upgrade can preserve application state while changing controls, feature flags
-or browser event handling. Verify the dependency version and enabled features in
-the tested artifact. Exercise the actual shipping configuration: an account-free
-preview cannot establish sign-in continuity for the account-enabled release.
+or browser event handling. Verify the dependency version, effective configuration
+and attempted integration path in the tested artifact: a guest result can come
+from an unset provider ID before any provider call. A skipped provider path
+leaves that failure scenario OPEN; an account-free preview also cannot establish
+sign-in continuity for the account-enabled release.
 
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is

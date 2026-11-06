@@ -21,6 +21,12 @@ volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 
+When replacing a live lookup with a shared pin, update the existing automatic
+promotion writer in the same delivery and verify it detects changes to every
+pinned member independently. State the change in propagation latency, including
+the updater's cadence, CI/merge queue and deployment reconciliation; one working
+initial pin does not prove that the next release will reach its consumers.
+
 Verify the rendered configuration reaches the deployed process, then exercise
 the behavior that consumes it. **Wrong:** find a setting in the shared base and
 assume every region inherits it. **Right:** test each assembled target, reproduce
@@ -85,82 +91,43 @@ tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
 ([PgBouncer feature map](https://www.pgbouncer.org/features.html), read 2026-11-05).
 
+## Binary output and text storage
+
+Process output is bytes. Define its text projection before publishing it to a
+text column, JSON payload, event or checkpoint. Valid UTF-8 alone is insufficient:
+PostgreSQL `jsonb` rejects `\u0000` because its text representation cannot store
+the zero code point ([PostgreSQL JSON types](https://www.postgresql.org/docs/18/datatype-json.html),
+read 2026-11-06). JSON escaping alone does not remove that character.
+
+Apply one projection contract at the durable publication boundary, including
+stdout, stderr and nested tool results. If the interface permits replacement
+text, report sanitization and replacement counts while preserving exit status,
+cancellation and truncation. Where exact bytes matter, use a bounded binary
+field/artifact or an explicit encoding such as base64. A persistence failure
+after a command completes must not cause that command to execute again.
+
+**Wrong:** decode bytes with UTF-8 replacement and assume every resulting string
+fits the database. **Right:** test the destination's character contract, publish
+the permitted projection once, and distinguish it from the original bytes.
+Execute a command emitting an actual zero byte and invalid UTF-8, verify its
+stored and returned result, then run another command. Include ordinary Unicode,
+literal backslash escape text, stderr and completed nonzero exits as controls.
+A serializer-only test cannot prove the database accepted the event.
+
+## Execution environment recovery
+
+- **Phenomenon:** A partial capture (such as a Git-only bundle) omits untracked notes, ignored files, or paths outside the repository; staging on a different filesystem fails `rename(2)` with `EXDEV`; applying capture size caps during restore blocks valid compressed archives.
+- **Invariants:** Select the newest complete recovery source by authoritative completion order and verify restored bytes against that chosen source. When advancing a full archive with a newer partial capture, preserve paths outside the partial capture's scope rather than deleting them to force a match. Stage temporaries on the destination filesystem or inside reserved metadata storage before atomic rename, and bound restore materialization by destination quota rather than capture-time per-file encoding limits.
+
 ## Controller handover
 
-When changing which controller owns a resource's generated children, inspect
-the old controller's behavior after the parent changes. A controller that stops
-reconciling may leave its children serving indefinitely; updating the parent
-does not prove that the old routing, credentials or jobs have disappeared.
-Inventory the children by authoritative ownership metadata and cover every
-writer that can cause the handover, including adoption and no-op reconciliation.
-
-For a populated serving resource, establish that the replacement carries the
-required membership and readiness before retiring the predecessor. An empty
-withdrawal may need immediate removal instead. Bound deletion to the intended
-parent and old controller; use identity/version preconditions where supported
-so a concurrent replacement is not deleted. Repeated reconciliation accepts
-already-absent children and preserves children owned by the replacement.
-
-Choose failure handling by the effect of leaving the old child. If it is optional
-hygiene, report a scoped error and counter, continue unrelated realization, and
-retry on normal reconciliation. If it continues exposing revoked access or
-unsafe traffic, preserve the required withdrawal guarantee and report failure.
-Account for permission and code rollout order rather than assuming both arrive
-together.
-
-**Wrong:** remove a parent selector and assume its former controller removes
-all generated routes. **Right:** test the transition with old routes present,
-prove replacement membership, and remove only the old controller's routes.
-Also test delayed or partial replacement, deletion failure, repeated cleanup,
-and a parent that still belongs to the old controller. A queue-worker handover
-uses the same ownership and readiness checks for generated subscriptions; a
-text-formatting change needs none of these cleanup controls.
+- **Phenomenon:** Changing a parent resource's owner selector stops the old controller from reconciling, which can leave old generated children (routes, jobs, credentials) serving indefinitely or cause concurrent deletion of replacement children.
+- **Invariants:** Inventory generated children by authoritative ownership metadata. For populated serving resources, verify replacement readiness and membership before withdrawing the old controller's children, and bind deletion preconditions (`UID`/version) to the old owner so concurrent replacements are never deleted.
 
 ## Recovery references and desired state
 
-Keep three facts separate: a target exists according to the provider, desired
-state selects that target, and observed state shows what is serving now.
-Existence does not prove readiness; a stale serving observation does not cancel
-a valid pending rollback. Read the provider's validation and convergence
-contract before choosing target selection and write order.
-
-- Validate every recovery, retention or warm-up target before adding or
-  preserving its reference. A provider can validate zero-weight or inactive
-  entries and reject the whole resource when one target is missing. A stored
-  name or desired version alone does not prove existence. Treat a failed lookup
-  as unknown, rather than missing, and use the supported retry/error path.
-- When an optional recovery target is absent, fall back only to an actual
-  serving target confirmed by provider observation and existence checks, or
-  omit the optional reference with a reason. Do not invent a target or silently
-  substitute a fallback for desired rollout or rollback intent. A required
-  target's absence is an explicit failure to resolve.
-- Preserve a valid pending desired rollback pin while served-state observations
-  lag. Reconcile toward that intent and use observations to measure convergence.
-  Clear its pending status only when the matching operation/version is observed
-  applied; replace the intent only on explicit supersession or authoritative
-  invalidation, rather than copying the currently served version over it.
-- For a new target, write the template/resource first. Add its retention or
-  warm-up reference only after a provider read confirms existence; a computed
-  name or accepted create request is insufficient. Keep incomplete creation
-  retryable without emitting a dangling reference. Promotion still requires
-  the target's separate readiness checks.
-- Search every related recovery writer, including rollback, adoption, retry and
-  no-op reconciliation paths. Apply the same rules within the owned boundary
-  and identify separately owned affected paths.
-
-**Bad:** preserve a missing target at zero weight, or replace a pending rollback
-with the version returned by a lagging status read. **Good:** verify the optional
-target before referencing it, preserve valid desired intent, and wait for the
-matching serving observation before reporting convergence.
-
-Verify missing and existing inactive targets, a valid pending rollback with stale
-served state and later convergence, explicit supersession, required-target
-absence, lookup failure, delayed creation visibility and repeat reconciliation.
-Assert provider-call order and the entire submitted
-resource, including optional references; test both an existing serving fallback
-and no eligible fallback. A SaaS deployment can retain a previous release and a
-game fleet can warm a recovery server under the same checks. A text formatter
-without provider-managed references needs none of these reconciliation controls.
+- **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
+- **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
 ## Publication time and expiry
 
@@ -237,39 +204,8 @@ Keep schema migrations strictly DDL-only (`CREATE`, `ALTER`, `DROP` on tables, i
 
 ## Recovering missing normalized state
 
-Use this procedure when a normalized child row is absent but an older saved
-representation may still contain the user's state. Absence is not authoritative
-zero, and the existence of an old save does not by itself establish data loss or
-its cause.
-
-- **Wrong:** return default zeros on load, then accept that snapshot as a save.
-  **Right:** establish whether a valid recovery source exists before presenting
-  or accepting a replacement snapshot.
-- Initialize only missing canonical rows. Existing rows, including legitimate
-  zeros or reductions, remain authoritative; fieldwise maxima are not a general
-  recovery or merge policy. Keep the original source unchanged.
-- Serialize recovery and every affected writer on the same entity within one
-  transaction. Cover load, direct save before first load, settlement and replay.
-  Read the current state and validate a submitted snapshot after acquiring that
-  lock; a comparison made before waiting can accept a stale regression.
-- Preserve the original projection contract: source types, missing/null defaults,
-  numeric conversion, finite values and destination bounds. Reject an invalid
-  source for the affected record rather than silently clamping or coercing it.
-  Require matching cycle identity before restoring daily or other expiring state.
-  Do not revive completed erasure or inactive accounts.
-- Recover history only under an explicit parsing, duplicate-key, ordering and
-  retention contract. An empty canonical history and unexplained gaps in a
-  nonempty history need different decisions; do not fill the latter by assumption.
-- Compare all protected progress and claim fields in the fresh canonical state.
-  A refused stale snapshot must leave unrelated fields unchanged; test legitimate
-  forward updates and identical replay as well as regression refusal.
-
-Verify with the actual database and two concurrent connections: observe a real
-lock wait in both operation orders, then assert the resulting state. Include
-missing rows with valid old data, existing zero rows, malformed and out-of-range
-sources, expired cycles, direct save, duplicate settlement and completed erasure.
-Keep database tests, deployed API checks and a population census as separate
-claims; none alone proves all users were repaired.
+- **Phenomenon:** When a normalized child row is absent on load while an older saved representation still holds the user's progress, returning default zeros on load and accepting a subsequent client save permanently overwrites the user's real progress with zeros.
+- **Invariants:** Absence of a normalized row is not authoritative zero. Before returning or accepting a default snapshot, check whether a valid recovery source exists and initialize only missing canonical rows within a serialized transaction (leaving existing canonical rows, including legitimate zeros or completed erasures, untouched).
 
 ## Database boundary tests
 
@@ -300,6 +236,15 @@ publishing the correction.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
 
+Concurrency assertions should distinguish the mechanism from scheduler latency: observe wake reasons, probe counts per wait and resource ownership at barriers, and keep benchmark timings separate from generous progress deadlines unless timing itself is the contract. When acknowledgements or rechecks can emit valid repeated status events, consume them until the terminal result under one deadline while preserving subsequent frames; a trace showing timely completion with extra status messages falsifies an exact-count assertion, which should be replaced rather than marked flaky. **Wrong:** require exactly one wait event and a tight shared-runner latency; **right:** accept valid repeated waits, assert the terminal outcome and test notification versus fallback through observable causes.
+
+An adapted reference executable can repeat an adapter defect even when its core source is untouched; pin source/configuration, make boundary substitutions explicit, and qualify it against independently recorded outcomes when available. Compare the same computation stage, separating later modifiers, and keep missing inputs unknown: exact known-input matches and compatibility across possible inputs support different claims. **Wrong:** infer a missing input from the expected result and count it as an exact match; **right:** report the unknown stratum separately until independent evidence resolves that input.
+
+For destructive work planned from shared references, test another live reference
+changing after discovery: a successful conditional deletion validates only the
+object removed, not the references left behind. Verify the final deletion set
+while preserving the original early-stopping behavior and measuring added I/O.
+
 For formatting regressions, type representative expected strings from the
 user-visible contract. Deriving the expectation from the formatter under test
 repeats its defect. Include the locale where an ambiguous symbol is native,
@@ -316,13 +261,15 @@ from the contract rather than freezing an incidental library output.
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
 
+Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
+
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
 In Rust crates with multiple integration test modules, use a single integration test binary (`tests/integration/main.rs` with `mod <domain>;` submodules under `tests/integration/`) rather than many top-level `tests/*.rs` files, so `cargo test` links one integration binary instead of compiling and linking dozens of separate test executables.
 
 For shell evidence gates, execute the actual script with the runner's shell options and inputs larger than a pipe buffer. Include clean output, missing evidence, and failure matches both early and late. With Bash [`pipefail`](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html), a diagnostic pipeline such as `if grep ... | head -n 20 | grep .; then ...` can miss a known failure: `head` closes early, the first grep receives SIGPIPE, and the condition becomes false. Separate the decision from bounded display, or use a consuming display filter such as `sed -n '1,20p'`. Keep the failure predicate unchanged and prove that output truncation cannot reverse the verdict. Run a negative proof through the enclosing gate as well as its native test runner. A deliberately caught panic can pass the test framework yet fail a log-based gate. Assert the returned error directly, so the outer failure guard stays effective.
 
-A required resource-dependent check fails clearly when the resource is unavailable rather than silently passing. Test selection covers supported configurations. An intentionally excluded or slow test records its reason and a supported execution route; choose scheduling from the workload rather than requiring a daily job or deleting useful coverage when no group exists.
+Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.

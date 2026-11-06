@@ -25,9 +25,11 @@ and binding generators, including ordinary crates without a `-sys` suffix.
 Check headers, linker libraries, configuration executables and compiler-loaded
 libraries; finding a package with `pkg-config` alone may miss a later binding or
 link failure. Add an image-build probe that exercises those requirements. Then
-run the original failing command through the ordinary build route and record
-the selected image digest: a published image does not prove that new leases use
-it. Resolve the public lease name to its authoritative identifier before
+run the original failing command through the ordinary build route, preserving
+its size, architecture and region, and record the selected image digest.
+Map distinct template selectors and read their effective pins; success on one
+placement does not prove another pool received the published image. Resolve
+the public lease name to its authoritative identifier before
 matching runtime objects, because display names and runtime labels can differ.
 
 ## Container builds and probes
@@ -69,19 +71,14 @@ container exit with no operation-specific evidence leaves the check unverified.
 
 ## Database test fixtures
 
-When a query gains a join, subquery or function call, update every isolated
-fixture that executes it with all referenced schema objects and columns.
-Branch-specific seed data does not remove those dependencies: PostgreSQL
-resolves a joined relation even when a `CASE` expression selects another
-branch. Derive fixture definitions from the migration-owned schema, preserving
-the types and grants described in [database boundary tests](code.md#database-boundary-tests).
-Run the existing consuming query or card test against its supported database;
-compilation and parser tests alone do not exercise schema resolution.
+An isolated database fixture needs every schema object referenced by its
+queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
+use their values. Derive those dependencies from the migration-owned schema
+([database boundary tests](code.md#database-boundary-tests)) and run the actual
+consuming database test; compilation and parser checks cannot prove resolution.
 
-**Wrong:** omit the customer table because an invoice fixture exercises guest
-checkout. **Right:** include the joined table and run the invoice projection.
-The same rule applies to a game inventory query joining optional item metadata.
-A pure formatter change with no query dependency needs no schema expansion.
+**Wrong:** omit the customer table because the invoice uses guest checkout.
+**Right:** include the joined table and execute the invoice projection.
 
 Locate the failed phase before changing a timeout: service readiness,
 connection establishment, schema setup and test execution have different
@@ -141,12 +138,27 @@ and CI workflow. Follow canonical inputs through downstream projections, includi
 web registries, clients and documentation. The primary compiler may produce only
 part of the required output. A lockfile-only install also changes source.
 
-Establish how changed files and deletions return to the publishing checkout. Use
-the supported local mutation mode or retrieve a complete generated artifact set.
+Contract conformance and generated-file freshness are separate: regeneration can
+emit consistent clients from an invalid public contract. Run the repository's
+actual standards checker as well as its generation check. When generated outputs
+include source hashes, format and validate the canonical inputs before generation;
+even a whitespace-only source edit invalidates that provenance and requires regeneration.
+
+Establish how changed files and deletions return to the publishing checkout. A tar
+of existing changed paths omits removals and leaves obsolete generated files.
+Use the supported local mutation mode, an output mirror, or a validated deletion
+manifest restricted to generator-owned paths.
 Inspect the local diff across the expected output directories and run the affected
 generation check or consumer assertion before publishing. A successful remote exit
 establishes execution there; it does not establish complete local output. Read-only
 checks can use the ordinary remote verification path.
+
+Some remote executors snapshot source when they admit a job, not when it is
+submitted. Submit from a dedicated worktree and leave it untouched until the
+executor reports that it has synced. Bind the receipt to the digest of the synced
+tree and the digest of the test script. A receipt that names only a branch or
+commit can attest a later local edit that was tested in place of the submitted
+head.
 
 If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
@@ -230,13 +242,28 @@ actual guard, and test both source-overlay and prebuilt routes when supported.
 
 ## Continuous integration
 
-- Before running a browser suite in a fresh build lease, read its CI setup and
-  resolve the browser version and required system libraries. Install them and
-  run the suite in the same lease, or use a verified image containing them;
-  package installation alone does not supply the browser executable. A missing
-  executable is a setup failure and leaves product behavior untested.
-  **Wrong:** install a browser in one disposable lease and run tests in another.
-  **Right:** prepare the pinned browser and run the affected suite together.
+When an expected pull-request workflow has no run, check event eligibility before
+changing runners: read the current head, draft/job conditions, mergeability and
+configured activity types. GitHub suppresses `pull_request` runs while the PR
+has a merge conflict; its default activity types exclude `ready_for_review`.
+Resolve a witnessed conflict or add the intended event, then verify a run bound
+to the new head. A new workflow absent from the default branch cannot yet be
+started with `workflow_dispatch`; repeating that missing-workflow request will
+not help. A healthy run already queued or executing needs no restart.
+
+Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), read 2026-11-06.
+
+
+- Dependency installation alone does not establish test readiness: workspace
+  exports may resolve to generated files, and assertions may invoke external
+  executables. The package's exports and CI setup identify those prerequisites;
+  they belong in the test's own lease, with the production version when an
+  evaluator or runtime is part of the claim. A missing module or executable
+  leaves behavior untested; source aliases or skipped assertions change the claim.
+  **Wrong:** replace a missing published export with a source alias, or install
+  a browser in one disposable lease and run its suite in another.
+  **Right:** build the exported package and prepare the pinned executables and
+  system libraries in the lease that runs the affected tests.
   See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
 - Keep the required feedback path fast enough for the workload. Name which checks run on drafts, ready PRs, merge groups, and the default branch, and where expensive/device/integration coverage runs. Concrete job names, rollout modes, and gate labels live with their implementation.
 - A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
@@ -252,7 +279,7 @@ actual guard, and test both source-overlay and prebuilt routes when supported.
 - When inserting or reordering generated collection entries, search consumers by emitted field names, including ignored integration tests and database proofs. Find entries by their stable identity when checking their values; assert positions separately when order itself is part of the contract. An ignored test still consumes the generated shape, so compile it and name the isolated CI proof that remains pending when its database is unavailable locally.
 - Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
 - Keep time/resource bounds appropriate to the job. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
-- Quarantine a known flaky test instead of retrying until green. A corrected defect or repaired infrastructure can justify rerunning the affected check; identify what changed.
+- Classify assertions by what they protect when making measurements advisory: runner load can perturb timing, while finite outputs and numerical accuracy bounds may enforce correctness. **Wrong:** remove every numeric assertion because timings are noisy; **Right:** report noisy timings while retaining correctness checks. Quarantine a demonstrated flaky case instead of retrying until green; a named defect or infrastructure repair can justify an affected rerun.
 - Before a local integration proof, read its fixture contract: an empty database
   and a migrated database are different inputs. Select the test runner's supported
   fixture before treating a relation-exists error as a product defect. Check

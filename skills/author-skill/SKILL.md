@@ -7,7 +7,19 @@ description: "Use when creating, refactoring, or auditing a reusable Agent Skill
 
 Apply the documentation and plain-language standards in [references/docs.md](references/docs.md) and [`../clear-writing/SKILL.md`](../clear-writing/SKILL.md).
 
-A skill packages a chosen method for a recurring scenario: when to use it, why it fits, how to apply it and what result establishes success. State the evidence and conditions that would change the choice.
+A skill is **asynchronous Agent-to-Agent (`A2A`) communication across time**: a past specialist sharing hard-won domain reality with a future frontier SOTA model. Just as live A2A messages between peers must never issue imperative orders or pre-chew solutions that stop the other agent from thinking, a skill must **never over-constrain a SOTA model with rigid scripts, checklists, or micro-rules that hijack its first-principles reasoning**—nor leave it with **zero boundaries** where default model priors (such as RLHF people-pleasing or `HTTP 200 OK` completion illusions) cause preventable harm.
+
+## 0. The Five Laws of Modern SOTA Skill Engineering (`現代 SOTA Skill 編寫五大鐵律`)
+
+Before adding or editing any line in a skill, test it against all five laws ($\bigcap V_i$):
+
+| Law | ❌ Over-Constrained (`過分約束 / 命令式預嚼` — Kills SOTA Thinking) | ❌ Under-Constrained (`完全無約束 / 空泛口號` — Zero Protection) | ✅ SOTA Skill Sweet Spot (`鎖邊界、給變量、傳現象、解放思考`) |
+| --- | --- | --- | --- |
+| **1. Boundary vs. Process (`鎖死硬邊界與目標，解放中間思考`)** | Scripting rigid step-by-step recipes, fixed paragraph templates, or mechanical quotas (*"use at most 1 emoji per 3 turns"*, *"always reply in 3 paragraphs"*). | Vague slogans (*"be warm to VIPs"*, *"write safe migrations"*) that leave hard limits unstated. | Lock **3 things only**: (a) **Objective & Counter-Metric** (what to maximize vs. what never to sacrifice), (b) **Mandatory Ground-Truth Inputs** (`Step 0` live data to read before deciding), and (c) **Hard Invariants** (non-negotiable red lines). Leave intermediate reasoning and expression 100% free to the SOTA model. |
+| **2. A2A Phenomenon & Lens vs. Imperative Order (`傳遞盲點現象與決策視角，唔落死命令`)** | Issuing blind imperative commands (*"Always do X, then Y, then Z"*) without explaining the underlying trap or assumptions. | Leaving the model to rediscover known platform traps or RLHF blind spots by trial and error. | Frame guidance as **counter-intuitive phenomena, causal trade-off variables, and Socratic lenses**: explain *why* default model intuition fails here (e.g., why RLHF transparency leaks third-party privacy, or why `200 OK` hides broken media rendering) and *what invariant must hold*, so the model derives the right action for any new context. |
+| **3. Pre-Training Delta Only (`預訓練差值原則`)** | Explaining textbook computer science, standard language syntax, or obvious common sense that SOTA models already know in their weights. | Omitting non-obvious domain economics, asymmetric company-interest rules, or platform-specific gotchas. | Write **only the Delta from SOTA pre-training**: counter-intuitive business truths, asymmetric payoff rules, systematic LLM blind spots, and verified failure modes where a SOTA model actually failed without the signal. |
+| **4. Ban Anonymized Bug Postmortems (`嚴禁將單一 Bug 維修步驟剝名當通用 Skill`)** | Taking a 30-line bug fix from one service (e.g., archive vs. git bundle recovery or controller child cleanup), stripping the repo name, appending a synthetic transfer line (*"a queue worker uses this; a text formatter does not"*), and dumping all 30 lines into a shared skill. | Never extracting the underlying 1-sentence verification principle. | Keep subsystem-specific procedures in that repository's tests or `docs/runbooks/`. A shared skill accepts only **universal 1–3 sentence principles or decision equations** that genuinely govern diverse domains without needing a 30-line procedural walkthrough. |
+| **5. Subtraction-First Evolution & Contrastive Examples (`減法進化與高反差例子`)** | Appending a new paragraph after every incident until `SKILL.md` or `references/*.md` balloons into a 500-line wall of text that dilutes attention. | Deleting hard-won invariants without preserving their mechanism. | **Distill & Prune (`越進化越精煉`)**: synthesize narrow rules into one deeper principle, replace long prose lectures with **one sharp `❌ Bad vs ✅ Good` contrast pair**, and state the **assumptions & falsification signal** so future agents know when to challenge and evolve the skill itself. |
 
 ## 1. Methodology vs. Organization State & Four-Layer Guidance Architecture
 
@@ -56,11 +68,20 @@ superseded rule and reconcile sibling skills in the same change.
   (`寫明背後因果理由與推翻條件`). Explain why the rule improves the objective,
   its assumptions and which measured signal changes the action. When evidence
   cannot establish the cause, label the mechanism a hypothesis.
-- **Refine the authoritative rule in place**
-  (`原地提煉升級舊規則，嚴禁疊床架屋貼膠布`). Rewrite the existing method when
-  experience reveals a flaw; remove conflicting old text and link consumers to
-  its one authoritative home. Do not append an incident-specific exception
-  beneath a contradictory rule.
+- **Refine the authoritative rule in place (`原地提煉升級舊規則，嚴禁疊床架屋貼膠布`):**
+  Rewrite the existing method when experience reveals a flaw; remove conflicting
+  old text and link consumers to its one authoritative home (`SSOT`). Do not append an
+  incident-specific exception beneath a contradictory rule, and never duplicate
+  the same block across sibling skills.
+- **Anti-over-engineering & anti-pendulum distillation (`反 Over-Engineering 與反矯枉過正`):**
+  Proactive daily reflection (`自省與持續進化`) must leave skills and systems **simpler
+  and sharper**, never more bureaucratic. Never add pre-send human/peer approval
+  gates that block real-time execution, never invent multi-daemon wrappers when a
+  single direct check suffices, and never swing to the opposite extreme (`矯枉過正`,
+  such as turning warm customer companionship into cold legalistic refusals after
+  a privacy mistake). Preserve the positive business goal while cutting only the
+  failure mode ($\bigcap V_i$), and prune verbose or superseded clauses whenever
+  adding a new insight.
 - **Run a cross-product transfer test** (`跨領域盲測驗證`). Remove names and
   apply the decision to a different product or domain, such as a business SaaS
   tool and a competitive card game. The same governing mechanism must select
