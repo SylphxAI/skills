@@ -36,7 +36,7 @@ settings. A prose-only edit needs no deployment rendering.
 
 ## Transactions and idempotency
 
-Use transactions for atomic invariants and authority-side uniqueness/guards for retryable commands. An idempotency key identifies the logical operation. Retry a serialization or optimistic conflict as a whole read-decide-write attempt.
+Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local
