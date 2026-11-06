@@ -360,6 +360,12 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
+When several implementations or adapters claim one behavioral contract, preserve
+the authoritative cases’ identities, multiplicity, units and expected outcomes
+across the changed boundaries; a locally reconstructed equivalent can erase the
+distinguishing failure. **Wrong:** deduplicate repeated transaction records before
+running a shared refusal case, then claim parity; **right:** preserve both records
+and exercise the real persistence or transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 When changing a shared eligibility or availability rule, trace its consumers
