@@ -26,6 +26,12 @@ running environment to manufacture acceptance.
 
 ## Disprove truncated-search acceptance
 
+A delivery receipt can coexist with a truncated recovery projection. For
+structured handoffs, retain the authoritative artifact's hash, record count and
+identity fields, use a supported artifact transfer or smaller complete messages
+when needed, and verify the receiver reconstructs the intended records. A partial
+reconstruction leaves the missing records unknown.
+
 Use an authorized disposable message with unique beginning and ending markers,
 a non-ASCII marker when supported, and a body longer than the relevant projection
 or index limit. Keep the fixture non-sensitive. Record its stable ID, exact

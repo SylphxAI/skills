@@ -2,6 +2,22 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Verify whether browser OAuth records mentioning a SaaS hostname prove users reached that product, or only its identity service.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A card game's zero-user report treats private forwarded IPs as internal tooling. Reconcile that claim with the parsed request authority and browser user-agent.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether a review approval is missing when Check Runs has no matching entry but the reviewer says a commit status was posted.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "The full inventory GET succeeds, but its known control record is archived. Verify whether the census is incomplete or the action eligibility changed.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Review this pull request at its exact head SHA for concrete regressions.",
       "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
     },
@@ -75,6 +91,10 @@
     },
     {
       "prompt": "Reconcile a ledger gap with independent consumption history before claiming that a grant disappeared.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Delivery receipts report a complete inventory handoff, while the receiver recovers JSON ending mid-record. Reconcile the claimed coverage.",
       "clause": "reconciling conflicting readings"
     }
   ],

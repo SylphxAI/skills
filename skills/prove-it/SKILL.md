@@ -25,7 +25,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Resolve repository aliases by the returned repository ID, full name and authoritative URL. A redirect to a legacy repository does not identify a similarly named current repository. A shared commit author does not identify the writer of a branch or its current owner.
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
-- Validate absence queries with a positive control on the same route, scope and credential. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
+- Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
 - Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,
@@ -83,6 +83,13 @@ from another pull request at the same SHA. Those results establish what ran;
 they do not by themselves establish the current pull request's merge eligibility.
 If the provider still expects a required check, preserve that refusal separately
 from the earlier passing result and follow the current required-check path.
+
+GitHub [commit statuses](https://docs.github.com/en/rest/commits/statuses) and
+[Check Runs](https://docs.github.com/en/rest/checks/runs) expose distinct
+populations: an approval absent from `commits/<sha>/check-runs` may be present
+in `commits/<sha>/status`. Resolve a named context through both surfaces at the
+same head, retaining producer and timestamp; aggregate success on either
+surface establishes neither the other's result nor the PR's merge eligibility.
 
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An advisory failure is a

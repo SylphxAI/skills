@@ -10,6 +10,12 @@ self-contained step per turn and push source before ending it; a long active too
 call does not protect unpushed work from deadline loss. Do not assume the same
 limit in a runtime with a different documented contract.
 
+A launcher found on `PATH` can derive a different child executable from `HOME`
+or a toolchain directory, so discovery or a version check does not prove the
+build will start. When a failure names a missing child executable, read that
+dispatch chain and use its supported path setting with admission controls intact;
+verify the originally failing subcommand before resubmitting a long suite.
+
 Run long builds and suites in CI. Record the submitted revision and run ID, set a
 `github:check:<owner>/<repo>@<ref>` event watch and end the turn instead of waiting
 inside it. On wake, read the actual run and continue from its receipt, without
@@ -22,9 +28,12 @@ If a build wrapper repeatedly times out before a compiler verdict, use the
 
 A process or tool-session handle can disappear between turns. Before launching
 work that can outlive the turn, create a unique run directory and record the
-source revision, target environment, command and expected artifact paths. Send
-stdout and stderr to a durable log and write the exit status when the command
-ends. Preserve reports and captures on failure as well as success. Watch the
+source revision, target environment, effective executor, its non-secret
+configuration selectors, command and expected artifact paths. Session defaults
+can change after recovery; verify that the supported wrapper resolves those
+selectors to the intended executor with admission controls intact before resuming.
+Send stdout and stderr to a durable log and write the exit status when the
+command ends. Preserve reports and captures on failure as well as success. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
 recoverable receipt. Verify the child survives the launching call using the
 [background-process guidance](dx.md#internal-development).

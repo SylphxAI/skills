@@ -181,9 +181,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 ## Source generation
 
 For local or remote generation, identify every generation entrypoint and its
-outputs from the repository's scripts and CI workflow. Follow canonical inputs through downstream projections, including
-web registries, clients and documentation. The primary compiler may produce only
-part of the required output. A lockfile-only install also changes source.
+outputs from the repository's scripts and CI workflow. In-process tests can reuse
+cached modules and hide startup or import-path failures; exercise each changed
+generator through its actual entrypoint in a fresh process. Follow canonical
+inputs through downstream projections, including web registries, clients and
+documentation. The primary compiler may produce only part of the required output.
+A lockfile-only install also changes source.
 
 When extracting generated inputs from a container, resolve logical identities
 through declared relationships and schema identifiers; archive member order,
@@ -286,6 +289,13 @@ without entering the release. Register the consumed source path in each affected
 profile, or use a reviewed exact-path exclusion with a reason. Refuse registered
 inputs that no longer exist, including paths left behind by a rename.
 
+A small selector diff can import an entire newer plan. Before merging an
+isolated release binding, compare the complete resolved candidate file list and
+per-path blobs with the serving plan, including inherited base inputs and runtime
+resources; the difference must equal only the declared change under test.
+Bind that proof to the candidate head and serving revision, and refresh it if
+either changes: matching counts or passing source tests do not establish scope.
+
 Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
 keeps other dependencies byte-identical. A direct source overlay into a compiled
@@ -332,6 +342,7 @@ Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/wo
 - Match a browser-test artifact's build configuration to the journey being claimed. A pack that deliberately omits an embedded signing key can establish offline rendering while being unable to authenticate a real guest. Read the build inputs and declared secret bindings before scheduling a live journey, and check the served source revision before creating a synthetic account. For a supported local mode, exercise its first useful action with the service deliberately disabled; separately prove that a configured but unresolved account stays blocked until its record loads. A rendered entry screen or a configuration predicate alone cannot establish either behavior. When a suitable preview is unavailable, use the normal release path and verify its deployed revision; keep offline, preview and live results distinct.
 - When a startup regression escaped compilation and unit checks, put the affected interaction into the existing merge gate using the exact candidate artifact. Require its result through the aggregate verdict on both ready PRs and merge groups; a scheduled or post-merge journey only detects damage after admission. Keep the interaction driver and its acceptance predicate shared across these paths, and retain the default-branch check as the delivered-artifact receipt.
 - Select affected checks from actual dependencies: imports, subprocesses, generated files, fixtures and direct source-file reads, including consumers in another language or workspace. Before skipping a suite on a path-only diff, search for references to the changed files and directories. A source refactor can break a test elsewhere even when the public behavior stays the same. Update all affected reader and fixture assertions together and run the consuming tests. Shared test helpers inherit each including entrypoint's lint policy, so run those consumers' lint commands too. If the dependency map is incomplete, run the enclosing suite and state its scope.
+- Passing unit tests establish only their build configuration: test-only imports or reexports (such as Rust `cfg(test)`) can hide missing symbols in production. Pair affected tests with a compile check of the shipping binary or library using its actual feature set and target. **Wrong:** infer production compilation from a green unit-test build; **Right:** verify the non-test shipping target separately.
 - For a regression selected by a library or binary target, filter or external prerequisite, inspect the effective selection and setup path. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Apply [the executed-test checks](../../prove-it/SKILL.md) before citing the result. A configured but unavailable prerequisite fails explicitly; an intentionally resource-free job is separate from the required database proof. Adjust selection at the owning package or runner boundary and verify execution there.
 - **Synchronize selective container `COPY` layers and deploy `watch_paths` when changing build script inputs:** When an installer or build script changes which files it reads (for example, switching from `Cargo.toml` to a separate pin or lock file), update every selective `COPY` layer in `Dockerfile*` that runs before that script and every service's `watch_paths` in the deployment manifest; otherwise pre-merge CI against a full checkout passes while post-merge container builds fail or skip releases.
 - Derive local formatting checks from the complete changed-file list against the PR base, including module roots, import barrels and manifests. Match CI's file selection, flags and configuration; a pass on implementation files alone leaves other changed files unverified. A formatter-only pass can omit import/export grouping, so use CI's check command to verify it. Recheck when the diff or configuration changes, and preserve CI's generated-file exclusions.

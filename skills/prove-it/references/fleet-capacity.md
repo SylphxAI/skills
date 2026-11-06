@@ -30,8 +30,13 @@ headroom, failure domains, demand and service-level objectives; use the
    are outside it. Keep exact keys, UIDs, source revisions and UTC read times.
 2. Separate parent rollups from countable descendants. Join Pod → ReplicaSet →
    Deployment and generated child → owning resource. Validate controller UIDs
-   where available. A name-based historical family association is weaker than a
-   UID or time-correct ownership join; label it.
+   where available. Labels can cover only one role: labelled sentinels do not
+   establish coverage of unlabelled primaries and replicas. Reconcile label
+   matches with candidates from authoritative binding namespaces and owner
+   relations, deduplicating by UID; namespace membership discovers a candidate
+   but does not prove ownership in a shared namespace. A name-based historical
+   family association is weaker than a UID or time-correct ownership join;
+   label it.
 3. Resolve the controller that owns the idle floor. Desired replicas can include
    demand. An HPA minimum of one can coexist with an owning event autoscaler's
    idle minimum of zero. A running generated revision is not an additional
@@ -80,7 +85,12 @@ coverage is not a fully observed seven-day p95, and cannot establish idle time.
 
 Validate traffic instruments with a known positive control in the same scope.
 Keep gateway counters, retained access records and verified business use in
-separate fields. Current route associations do not prove historical routing;
+separate fields. A hostname match anywhere in a log discovers candidate records:
+an OAuth redirect can mention a product while the request reaches an identity
+service. Attribute traffic from parsed request authority, path and client
+evidence; private proxy hops alone do not establish internal-tooling origin.
+Unresolved attribution stays unknown. Current route associations do not prove
+historical routing;
 missing HTTP routes do not rule out direct, internal, TCP/UDP or session traffic.
 Counters that include probes or retries cannot establish zero user demand.
 Extrema and sample counts alone do not establish uninterrupted ingestion.

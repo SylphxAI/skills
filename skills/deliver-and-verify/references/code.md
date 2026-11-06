@@ -14,6 +14,16 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Deployment configuration
 
+A reduced-scope preview sharing a backend still needs a declared profile and a
+live, serving nonproduction target; absence fails closed, never through a
+production default. Bind every origin resolver to positive target identity in
+the intended namespace/environment: a production-host denylist misses internal
+and recovery aliases, especially when clients forward cookies on mutations.
+**Wrong:** block the public production hostname and trust another URL. **Right:**
+prove the declared nonproduction target serves, and test every independent
+resolver against missing configuration, wrong-environment targets and all
+declared production route aliases before forwarding credentials or traffic.
+
 When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
 
 When replacing a mutually exclusive configuration variant, validate the effective
@@ -192,6 +202,15 @@ an absolute-deadline control when that contract also exists.
 
 ## Migrations
 
+An upgrade history may depend on schema or roles predating its earliest retained
+file; before choosing a fresh preview database, prove empty-target bootstrap
+through the supported runner with its required ownership and privilege model.
+**Wrong:** replace a role-checking wrapper to make a pooled application role run
+production migrations. **Right:** verify the supported baseline and migration
+role on an empty target; if unavailable, choose a declared reduced-scope profile
+or explicit not-applicable result without weakening production role or isolation
+guards.
+
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
 
 Database replay and compilation do not establish admission by a migration safety
@@ -258,6 +277,14 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+
+A successful read can be policy-filtered even when it returns no warning or
+error; counts, maxima and metadata inventories establish completeness only for
+the effective observer's proven visibility scope, including indirect dependencies.
+**Wrong:** infer no objects or missing rows from an empty privileged wrapper or a
+matching filtered count. **Right:** use a known hidden object or row to distinguish
+the limited observer from a full-scope control, and preserve an explicit unknown
+result when scope cannot be proved.
 
 Cross-engine SQL needs populated differential cases that distinguish rounding,
 NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
@@ -348,6 +375,12 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
+When several implementations or adapters claim one behavioral contract, preserve
+the authoritative cases’ identities, multiplicity, units and expected outcomes
+across the changed boundaries; a locally reconstructed equivalent can erase the
+distinguishing failure. **Wrong:** deduplicate repeated transaction records before
+running a shared refusal case, then claim parity; **right:** preserve both records
+and exercise the real persistence or transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 When changing a shared eligibility or availability rule, trace its consumers
@@ -362,16 +395,20 @@ time against the available evidence.
 
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
 
-For source included from multiple workspaces, run each consumer's exact
-formatting and lint commands. Its edition and configuration can change how
-shared bytes are checked; one direct formatter or successful Clippy run does
-not cover the others. Keep one source representation that passes every
-consumer. Put a suppression's narrow explanation in syntax the checker reads,
-such as a Rust lint's `reason` attribute.
+For source included from multiple workspaces, compatibility depends on each
+consumer's pinned dependencies, compiler configuration and ambient declarations;
+a narrowed check with substitute declarations proves only that narrower boundary.
+A passing runtime test or type assertion does not establish that its mock matches
+the host's complete type, so the consumer's exact compilation, formatting and lint
+checks remain the compatibility verdict. Keep one source representation that
+passes every consumer, with any suppression's narrow explanation in syntax the
+checker reads, such as a Rust lint's `reason` attribute.
 
-**Wrong:** assume a library's successful Clippy run also proves its formatter
-accepts a shared helper. **Right:** run both checks from every including
-workspace, with its own edition and configuration.
+**Wrong:** accept an SDK test because its fetch mock runs and compiles against a
+handwritten fetch declaration. **Right:** also compile with the consumer's real
+runtime declarations and test-library overloads; a callable global may require
+static members that the mock omitted. Likewise, one workspace's successful Clippy
+run does not prove another workspace's formatter accepts their shared source.
 
 When a fixture detects an unwanted read or side effect, prove both that a
 forbidden operation triggers it and that the allowed operation leaves it idle.
@@ -398,6 +435,8 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 ## Cleanup and review
 
 Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating data or code, establish the authoritative baseline from the selected or deployed artifact; a checked-in snapshot can already drift. Prove preservation with the pinned, checksum-verified generator, an independent decoder and the actual consuming runtime, while validating current declarations separately; an older runtime model does not justify weakening the current schema. Compare the full decoded population, including secondary records, formulas and cached values where relevant, allow only declared changes, and name representation-only differences. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+
+Recorded conflict resolutions can apply cleanly after their assumptions have changed. **Wrong:** accept a cached resolution because the file parses. **Right:** compare its behavior with both current parents, reconcile changed acceptance conditions explicitly, and run the affected checks; an obsolete assertion or helper call can survive an otherwise clean merge.
 
 Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
