@@ -44,6 +44,21 @@ Bound resource use and waits according to the operation's cancellation and recov
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
+Track failure cause separately from certainty about effects. Once a request may
+have reached its worker, a lost connection, timeout or subsequent worker death
+can explain the missing response without proving the command did not run.
+Preserve the unknown outcome, typed cause and original idempotency key. Replay
+or reconcile through the operation's supported contract without starting a
+second logical operation. Classify a failure as a rejection before dispatch
+only when dispatch was conclusively prevented. An authoritative terminal
+receipt can resolve an unknown outcome.
+
+Verify this boundary through the real transport: have the peer receive the
+request, then close the connection before response headers. Assert the typed
+cause, unknown effect and a single dispatch after replay. Include a confirmed
+terminal result and a rejection before any send as controls. A mock returning
+a prebuilt error cannot establish which side of dispatch the failure occurred.
+
 With PgBouncer transaction pooling, a backend connection belongs to the client
 only for one transaction. Do not rely on session `SET`, `LISTEN`, or
 session-level advisory locks across transactions. Use transaction-local settings
