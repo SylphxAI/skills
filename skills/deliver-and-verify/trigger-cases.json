@@ -30,6 +30,10 @@
       "clause": "upgrading engine or SDK dependencies"
     },
     {
+      "prompt": "Upgrade an Android SDK and ship the signed store artifact, checking its packaged classes and startup path after smoke-test preparation.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
     },
