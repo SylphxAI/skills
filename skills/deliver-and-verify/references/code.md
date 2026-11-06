@@ -278,6 +278,14 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+A successful read can be policy-filtered even when it returns no warning or
+error; counts, maxima and metadata inventories establish completeness only for
+the effective observer's proven visibility scope, including indirect dependencies.
+**Wrong:** infer no objects or missing rows from an empty privileged wrapper or a
+matching filtered count. **Right:** use a known hidden object or row to distinguish
+the limited observer from a full-scope control, and preserve an explicit unknown
+result when scope cannot be proved.
+
 Cross-engine SQL needs populated differential cases that distinguish rounding,
 NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
 establish output parity. Collation can arrive through a function argument before
@@ -349,6 +357,13 @@ from the contract rather than freezing an incidental library output.
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
 
+A negative test can pass for the wrong failure when setup refuses before the
+injected fault. Assert the specific typed refusal or root cause, print the full
+error chain on mismatch, and verify that substituting an unrelated fault makes
+the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
+failed”; **right:** require the changed-price refusal after a passing baseline,
+while a stale-heartbeat refusal fails that same assertion.
+
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
@@ -360,6 +375,12 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
+When several implementations or adapters claim one behavioral contract, preserve
+the authoritative cases’ identities, multiplicity, units and expected outcomes
+across the changed boundaries; a locally reconstructed equivalent can erase the
+distinguishing failure. **Wrong:** deduplicate repeated transaction records before
+running a shared refusal case, then claim parity; **right:** preserve both records
+and exercise the real persistence or transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 When changing a shared eligibility or availability rule, trace its consumers
@@ -414,6 +435,8 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 ## Cleanup and review
 
 Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating data or code, establish the authoritative baseline from the selected or deployed artifact; a checked-in snapshot can already drift. Prove preservation with the pinned, checksum-verified generator, an independent decoder and the actual consuming runtime, while validating current declarations separately; an older runtime model does not justify weakening the current schema. Compare the full decoded population, including secondary records, formulas and cached values where relevant, allow only declared changes, and name representation-only differences. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+
+Recorded conflict resolutions can apply cleanly after their assumptions have changed. **Wrong:** accept a cached resolution because the file parses. **Right:** compare its behavior with both current parents, reconcile changed acceptance conditions explicitly, and run the affected checks; an obsolete assertion or helper call can survive an otherwise clean merge.
 
 Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
