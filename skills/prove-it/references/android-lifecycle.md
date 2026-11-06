@@ -65,6 +65,11 @@ The same package ID can identify both an old engine and a replacement engine.
 - Label the inspected ABI/variant and assets. Listing the full artifact
   population is not inspecting it. A published-state receipt need not prove
   full rollout, every country's eligibility, successful installation or vitals.
+- A 16 KB page-size verdict names its ABI scope: the requirement covers
+  64-bit native libraries; report 32-bit alignment as a separate diagnostic.
+- When a hotfix deliberately keeps an installed contract (for example a
+  purchase bridge), compare its compiled modules and native registrations with
+  the live build's. Do not hold it to newer requirements it intentionally avoids.
 - Store source, read times, raw receipts, scope and unknowns with the owning
   product. Preserve evidence outside temporary leases and agent workspaces
   before they expire or are archived; read the retained copy back.
