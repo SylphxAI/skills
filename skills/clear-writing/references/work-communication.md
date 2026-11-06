@@ -10,10 +10,11 @@ Also see [../../challenge/references/agent-voice.md](../../challenge/references/
    - Every message in a shared channel costs every participant's attention. Speak only when your message changes the decision, supplies new primary evidence, answers a direct question, or corrects a false record.
    - Never post attendance noise (*"Looking into this now"*, *"I agree with X above"*, *"Standing by"*).
    - Never open with a typed sender-and-timestamp header (`01:20Z:`) or re-quote the message you are replying to—the chat platform already displays both.
-2. **Separate Observation from Hypothesis**:
-   - **Observation**: Names the exact live object, the command or source read, the value observed, and the `date -u` read time (e.g., *"`https://api.example.com/health` returned `ba85a652` at 01:19:14Z"*).
-   - **Hypothesis**: States what might explain the observation and what check will confirm or disprove it (e.g., *"Hypothesis: the 60s RSA timeout is caused by unoptimized debug keygen; testing with `opt-level = 2` on the crypto package"*).
-   - Never state an untested inference as a verified fact.
+2. **Put the answer before the evidence**:
+   - State the direct answer, decision, verified outcome, or number in sentence 1. Do not prefix it with `結論先行`, `Answer First`, `BLUF`, `結論`, `Observation`, `Action`, or `Summary` on any sentence or section; those are writing instructions, not reader-facing labels.
+   - Replace vague adjectives ("huge improvement", "much faster") and formulaic contrasts ("not just X, but Y") with measured numbers, units, and UTC timestamps; say when a measurement is unavailable.
+   - Swallow the investigation play-by-play. Give the source receipt and supporting detail only after the answer, when it helps the reader act.
+   - A verified fact names the exact live object, source read, value, and UTC read time (for example, *"`https://api.example.com/health` returned `ba85a652` at `01:19:14Z`"*). An untested explanation is naturally framed as a possibility and paired with the check that would confirm or disprove it (for example, *"The 60-second RSA timeout may come from debug key generation; testing the crypto package with `opt-level = 2` will distinguish that cause."*). Never state an inference as a fact.
 3. **One-Line Corrections Without Apology**:
    - When a claim you made is overturned by evidence, post one concise correction line immediately: **what was wrong, the verified fact with its source and read time, and who caught it**.
    - Skip performative apologies (*"I sincerely apologize for the confusion earlier..."*); accuracy and speed are the respect you owe the team.
@@ -22,6 +23,7 @@ Also see [../../challenge/references/agent-voice.md](../../challenge/references/
    - Answer an exploratory question directly. Record a standing rule or open new work only when the instruction or existing authority calls for it.
    - Use a plain description for an internal artifact; include a path or identifier when the recipient needs it to act.
    - For new unauthorized spend, a missing grant or an ambiguous request, state the exact decision, cost and recommended option. Apply authority already authorized in the session while preserving unique user data. Ask the actual decision-maker directly when a decision is needed.
+   - Match length to the information weight: a simple confirmation may take one or two natural sentences; use bullets only for multi-part evidence, decisions, or actions. Stop after the final useful point instead of adding a repeated summary or sign-off.
 
 ## Side-by-Side Contrast Examples
 
@@ -36,6 +38,12 @@ Also see [../../challenge/references/agent-voice.md](../../challenge/references/
   > *"I checked the database and ran several queries to see how many rows were affected. After analyzing the results, it appears that there are currently 2 rows with the promotional tier enabled."*
 - ✅ **Good**:
   > *"*Illustrative example:* Two plan rows currently have `promo_active = true` (`plan_starter_annual` and `plan_pro_annual`, read from `billing_plans` via read-only role at `14:05:12Z`), and both match the published pricing config from `PR #412`."*
+
+### Direct Answer Without Meta-Labels (Synthetic Example)
+- ❌ **Bad (Meta-label prefix: "結論先行（Answer First）：係...")**:
+  > *"結論先行（Answer First）：係，版本已經發布。Observation: `release/v2.4.1` is live. Action: I checked the deployment page."*
+- ✅ **Good (Direct natural answer: "係...")**:
+  > *"係，`v2.4.1` 已經發布；production `/health` 喺 `15:04:12Z` 回傳同一個版本。"*
 
 ## Personal to-dos and pending asks
 
