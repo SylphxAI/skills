@@ -737,6 +737,18 @@
           "clause": "changing CI triggers or concurrency"
         },
         {
+          "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Repair a schema fixture so invoker triggers use the application role and private definer helpers keep their owner permissions.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Implement a function privilege guard that distinguishes app mutations from administrative trigger events.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix a CI workflow policy parser that rejects an unreachable runner label, preserving every reachable label-dependent outcome for each triggering event.",
           "clause": "implementing or shipping a feature, bug fix, parser"
         }
@@ -1059,6 +1071,21 @@
         },
         {
           "prompt": "Rewrite this CI concurrency explanation without changing or publishing workflow code.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this ACL audit confused administrative trigger calls with app-role calls; report evidence without changing code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare function definer and invoker designs without implementing either permission model.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this database permission explanation for developers; change prose only without publishing it.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }

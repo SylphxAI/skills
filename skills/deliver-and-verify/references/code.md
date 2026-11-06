@@ -237,8 +237,11 @@ Keep schema migrations strictly DDL-only (`CREATE`, `ALTER`, `DROP` on tables, i
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
 migrations. Use the application's effective role and verify the database version,
-role and relevant column types in the test. Schema objects and grants are part
-of the behavior being exercised.
+role and relevant column types in the test. A migration-only privilege proof
+precedes fixture grants: copying live permissions into setup can hide missing
+migration grants. Required access follows the effective caller and reachable
+operation across invoker, definer and trigger-event boundaries; a source
+reference or table privilege alone does not establish an application-role call.
 
 Focused fixtures keep fast checks small, but preserve the real enum/domain types,
 required functions and relations. When changing a fixture's type, update and run
