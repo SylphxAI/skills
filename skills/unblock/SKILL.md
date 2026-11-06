@@ -37,6 +37,12 @@ Before intervening, read the live state of the job, queue, or target resource:
 
 ## 2. Diagnose by Failure Class
 
+A policy-scanner refusal points to a contract; removing a matched spelling can
+preserve the violation. Read the enforced check's pinned rule and inspect any
+prescribed helper's availability and behavior before changing the implementation.
+Run that exact checker and test the required semantics; a different local check
+or zero findings alone does not prove the contract is satisfied.
+
 For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
