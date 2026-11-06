@@ -1,8 +1,44 @@
 # Play purchase evidence
 
 Trigger: investigating a refunded Play purchase, missing entitlement, duplicate
-consumable grant, or a claim that server-delivered purchases work end to end.
+consumable grant, verifying an Android license-tester purchase, or a claim that
+server-delivered purchases work end to end.
 For store review and release status, use [app store state](app-store-state.md).
+
+## Establish the licensed device prerequisites
+
+Treat the credential, Console license-testing membership, device sign-in,
+installed artifact and test payment instrument as separate evidence. An internal
+track tester is not necessarily a license tester. Read the selected account's
+license-testing membership in Console; the Publisher API does not expose that
+list. Resolve passwords and OTPs in-process through authorized secret references.
+Field names and types can establish which verification methods are available
+without exposing their values. Observe the task's limits on interactive
+verification, record an excluded challenge and stop rather than attempting it.
+
+On an isolated Android lease, check both `pm path com.android.vending` and the
+package's enabled state. An installed APK can be disabled for the Android user,
+so an unresolved launcher intent does not establish that Play Store is absent.
+Read the template's reason before changing it: some test images intentionally
+disable the updater to preserve package versions. Where store testing is
+authorized, enable the package only on the owned lease with the supported
+package-manager command, then verify the visible Store sign-in screen. Preserve
+the shared image's default and release the lease after the check.
+
+Google supports sideloaded builds for license testers when the package matches
+the registered Play app. Record the actual installation route: that purchase
+test does not establish Play installation or update continuity. Before final
+submission, require the explicit test-card indication and preserve one durable
+purchase intent. An unknown response is reconciled against the same order;
+repeating Buy is another purchase. Stop if the task excludes a displayed payment
+method. A displayed price or test sheet is not a completed test purchase.
+
+Bind acceptance to the candidate's shipped purchase protocol. A historical
+consume → local credit → server save path can prove its callback, accepted save
+and balance after a cold start; it cannot prove a server-side entitlement grant.
+For a server-delivered candidate, retain the verification → durable grant →
+completion ordering below. Read the provider completion state for the same
+purchase in either case, then compare balances after a cold start.
 
 ## Separate the provider reason from the application failure
 
@@ -61,6 +97,9 @@ reference and each observed result, with private values redacted.
 
 ## Sources and replacement conditions
 
+- [Google Play Billing testing](https://developer.android.com/google/play/billing/test),
+  read 2026-11-06 UTC: license testers can sideload the registered package and
+  use test payment methods. Re-read the guide before choosing the test route.
 - [Android Publisher v3 discovery](https://androidpublisher.googleapis.com/$discovery/rest?version=v3),
   revision `20261103`, read 2026-11-03 22:59 UTC: `VoidedPurchase` defines the reason
   and initiator separately. Re-read these fields when interpreting another revision.
