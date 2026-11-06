@@ -255,6 +255,31 @@ sources, expired cycles, direct save, duplicate settlement and completed erasure
 Keep database tests, deployed API checks and a population census as separate
 claims; none alone proves all users were repaired.
 
+## Database boundary tests
+
+Execute changed SQL through the production driver, including parameter encoding
+and result decoding, against a disposable database built from the complete
+migrations. Use the application's effective role and verify the database version,
+role and relevant column types in the test. Schema objects and grants are part
+of the behavior being exercised.
+
+Focused fixtures keep fast checks small, but preserve the real enum/domain types,
+required functions and relations. When changing a fixture's type, update and run
+every affected seed, bind and decode path. Include a migrated-schema regression
+that distinguishes the original failure; a simplified fixture alone cannot
+establish compatibility with the deployed schema.
+
+**Wrong:** substitute TEXT for an enum and convert failed decoding into a business
+default. **Right:** execute the actual query under the application role, preserve
+the column type, and verify the intended typed decode or explicit SQL conversion.
+Propagate unexpected encoding and decoding errors. A contract's missing-value
+default does not make an unreadable value equivalent to absence.
+
+Sweep related projections and parameters for the same mismatch. Before removing
+a suppressed error, identify the fallback it previously supplied and which live
+decisions will change when the stored value is used. Verify that exposure before
+publishing the correction.
+
 ## Tests
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
@@ -283,7 +308,8 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 
 A required resource-dependent check fails clearly when the resource is unavailable rather than silently passing. Test selection covers supported configurations. An intentionally excluded or slow test records its reason and a supported execution route; choose scheduling from the workload rather than requiring a daily job or deleting useful coverage when no group exists.
 
-Check SQL against the migrated schema through compiler support where available, generated contracts or database-backed tests for dynamic queries. Share cohesive fixtures and table-driven cases where that improves readability. A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
+Share cohesive fixtures and table-driven cases where that improves readability.
+A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
 
