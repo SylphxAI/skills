@@ -282,6 +282,13 @@ without entering the release. Register the consumed source path in each affected
 profile, or use a reviewed exact-path exclusion with a reason. Refuse registered
 inputs that no longer exist, including paths left behind by a rename.
 
+A small selector diff can import an entire newer plan. Before merging an
+isolated release binding, compare the complete resolved candidate file list and
+per-path blobs with the serving plan, including inherited base inputs and runtime
+resources; the difference must equal only the declared change under test.
+Bind that proof to the candidate head and serving revision, and refresh it if
+either changes: matching counts or passing source tests do not establish scope.
+
 Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
 keeps other dependencies byte-identical. A direct source overlay into a compiled
