@@ -367,6 +367,18 @@
         {
           "prompt": "Ship a document conversion image and verify its clean build context, declared entrypoint and actual conversion output.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix queued document exports that submit to an incompatible provider after their configured region route is removed, and prove recovery after restoration.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship multipart message delivery that records every accepted part and handles a rejected middle part without repeating paid work.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement batch payout receipt normalization so partial acceptance and billed amounts survive worker restarts accurately.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -389,6 +401,21 @@
           "prompt": "Review whether a Python source-only change could affect a JavaScript test that reads its files; report the evidence without changing code.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review the queued shipping-label worker for missing-provider and unknown-result defects without editing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare provider failover and reconciliation designs for document exports without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this provider configuration error message for clarity; no code or publication change is requested.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
         },
         {
           "prompt": "Compare chunk-table and object-store archive designs; do not implement either.",
