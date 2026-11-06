@@ -199,7 +199,7 @@
     },
     {
       "prompt": "Deploy the checkout bug fix and verify the affected customer journey.",
-      "clause": "Carry the outcome through execution and verification at its real surface."
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Ship the new web voucher channel and synthetic health probe, verifying cross-currency wallet normalization, canonical order analytics, and CDN cache bypass.",
@@ -227,7 +227,7 @@
     },
     {
       "prompt": "Ship a game chest fix and capture a fresh authenticated guest journey; the existing CI pack intentionally omits the client's request-signing key.",
-      "clause": "Carry the outcome through execution and verification at its real surface."
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Fix a job continuation that loads every cumulative request as a generic JSON tree; prove bounded replay memory in fresh child processes for old and new encodings.",
@@ -684,6 +684,10 @@
     {
       "prompt": "Regenerate a service manifest after changing its canonical shell script and verify both source and embedded lint populations.",
       "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
+      "clause": "handling credentials exposed in process arguments"
     }
   ],
   "negative": [
