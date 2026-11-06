@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Verify whether a review approval is missing when Check Runs has no matching entry but the reviewer says a commit status was posted.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "The full inventory GET succeeds, but its known control record is archived. Verify whether the census is incomplete or the action eligibility changed.",
       "clause": "verifying a live status or metric before reporting it"
     },
