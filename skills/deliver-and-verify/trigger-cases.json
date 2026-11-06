@@ -620,6 +620,18 @@
     {
       "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
       "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Repair a migrated billing database fixture that is prepared but cannot admit charges until its guarded activation transition completes.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Update a game-server database fixture to activate its real save authority with the required role and closed legacy writers before running recovery tests.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Fix a document-worker schema fixture that bypasses its activation guard instead of satisfying the real privilege and state-transition prerequisites.",
+      "clause": "changing SQL queries or schema-backed fixtures"
     }
   ],
   "negative": [
