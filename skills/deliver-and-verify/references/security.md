@@ -45,6 +45,14 @@ children as well as ordinary failures so maintenance cannot suspend recovery.
 
 A user's inability to traverse a protected mountpoint does not prove its contents stay unavailable through other mount or namespace views. Linux's less-privileged-mount checks inspect the mount graph rather than ancestor-directory permissions: a root-only unmasked mount can permit a new unmasked mount elsewhere. Name the actual isolation boundary (process, guest VM or host), and test that alternate view before claiming the original masks remain effective.
 
+Removing a named grant does not remove access inherited from group/admin bindings
+or execution routes that can obtain a stronger credential. An access-removal
+claim covers effective permissions of the actual identity and groups across the
+in-scope replicas, with existing consumers moved and verified before removing
+their old route. **Wrong:** revoke SQL write privileges while retaining root pod
+execution; **Right:** prove the approved reader still works and the same identity
+cannot reach the writer through inherited execution, attachment or forwarding.
+
 ## Shared reader privileges
 
 Before expanding a shared database reader's access, read its deployed
@@ -62,6 +70,14 @@ output and denied raw access, then read back shared login health after the
 reconciler runs. A role with a different proven contract can use that
 contract's supported access change; this does not impose aggregate-only
 access on every reader.
+
+Admission observed on one connection does not establish the identity of a result
+obtained on another: routing, pooling or reconnects can select a different server
+or principal. Keep session-bound checks and the protected query on one connection,
+bind the result to observed server, account and connection identity at both ends,
+and refuse changed or lost sessions rather than silently reopening. **Wrong:**
+validate a subprocess then run the report in a new subprocess; **Right:** test a
+route change after admission and prove no result comes from a replacement session.
 
 A reader credential proves neither reachability from a new execution environment
 nor availability of every reporting profile. When replacing an observation path,
