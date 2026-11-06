@@ -1,6 +1,6 @@
 ---
 name: clear-writing
-description: "Use when drafting, rewriting, editing, translating, or localizing dedicated written content: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, partner/studio proposal emails, UI microcopy, documentation explanations, support FAQs or UI copy in a natural target locale (such as Traditional Chinese or written Cantonese), or concise internal team/executive updates and sub-agent instructions. For those writing tasks, put the direct answer or outcome in sentence 1 with no meta-label prefixes such as '結論先行', 'Answer First', 'BLUF', 'Observation', 'Action', or 'Summary'; absorb the process, use exact numbers and UTC timestamps instead of vague adjectives, and stop after the last useful point. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Do NOT use when merely acknowledging a routine chat turn. Use customer-support for live customer support ticket handling."
+description: "Use when drafting, rewriting, editing, translating, or localizing dedicated written content: customer-facing announcements, release notes, blog posts, articles, marketing and landing-page copy, public social posts/captions/comments/card text, partner/studio proposal emails, UI microcopy, documentation explanations, support FAQs or UI copy in a natural target locale (such as Traditional Chinese or written Cantonese), or concise internal team/executive updates and sub-agent instructions. For those writing tasks, put the direct answer or outcome in sentence 1 with no meta-label prefixes such as '結論先行', 'Answer First', 'BLUF', 'Observation', 'Action', or 'Summary'; absorb the process, use exact numbers and UTC timestamps instead of vague adjectives, and stop after the last useful point. Aligns Audience × Purpose × Channel and eliminates AI slop using concrete Bad-vs-Good examples. Do NOT use when merely acknowledging a routine chat turn. Use customer-support for live customer support ticket handling."
 ---
 
 # Clear Writing & Communication (`clear-writing`)
@@ -11,7 +11,7 @@ Identify the audience, purpose and channel; read the reference relevant to the t
 
 - **Naming concepts or replacing internal shorthand in any document, skill, or agent instruction** → Load [references/terminology.md](references/terminology.md)
 - **Sub-agent instructions and messages, internal engineering, team rooms, status updates, and executive decisions** → Load [references/work-communication.md](references/work-communication.md)
-- **Public articles, blog posts, launch announcements, marketing/landing-page copy, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
+- **Public articles, blog posts, launch announcements, marketing/landing-page copy, social posts/captions/comments/card text, and UI microcopy** → Load [references/articles-and-copy.md](references/articles-and-copy.md)
 - **Agent persona and conversational voice defaults** → Load [../challenge/references/agent-voice.md](../challenge/references/agent-voice.md)
 - *(If handling an active customer/user support ticket with case state and remedies, load [`../customer-support/SKILL.md`](../customer-support/SKILL.md) as well.)*
 
