@@ -50,6 +50,18 @@
       "clause": "enrolling disabled tests in CI"
     },
     {
+      "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Add a game protocol declaration and ship every affected generated client and registry even though the generator code is unchanged.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a new API schema field and regenerate the public documentation and SDK projections selected by their freshness checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
       "clause": "running source generation locally or remotely"
     },
@@ -834,16 +846,16 @@
       "clause": "handling credentials in process arguments"
     },
     {
-      "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
+      "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Add a game protocol declaration and ship every affected generated client and registry even though the generator code is unchanged.",
-      "clause": "implementing or shipping a feature, bug fix"
+      "prompt": "Move a SaaS billing collector onto a published read-only reporting Job and verify the revenue profile is actually enabled.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Ship a new API schema field and regenerate the public documentation and SDK projections selected by their freshness checks.",
-      "clause": "implementing or shipping a feature, bug fix"
+      "prompt": "Switch a game analytics reader from a local socket to TLS and verify the new runtime can reach the intended server without widening its grants.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1394,6 +1406,21 @@
     },
     {
       "prompt": "Rewrite this checkout benchmark explanation for clarity without changing configuration or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Check whether the new reporting client reached the intended database; report the current identity without changing its route.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare direct TCP and an in-cluster reporting Job as a proposed architecture without migrating either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a note explaining that one aggregate profile does not cover the revenue report, without changing the reader.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
