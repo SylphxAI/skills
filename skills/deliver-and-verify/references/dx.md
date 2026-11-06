@@ -188,6 +188,13 @@ inputs through downstream projections, including web registries, clients and
 documentation. The primary compiler may produce only part of the required output.
 A lockfile-only install also changes source.
 
+When byte reproducibility is required, repeated builds under one execution
+identity do not prove portable determinism; vary plausible ambient inputs and
+compare artifact bytes and embedded metadata while preserving intentional source
+metadata. Bind each proof receipt to the exact tested generator and input artifact
+digests; changes to either require rerunning the affected proof and regenerating
+its receipt, not relabelling old evidence.
+
 When extracting generated inputs from a container, resolve logical identities
 through declared relationships and schema identifiers; archive member order,
 active views and copied headers can select notes or duplicate data. Verify
