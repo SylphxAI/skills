@@ -19,6 +19,10 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 
 Use the authorized store and custody model for each product/provider. Keep reusable secrets concealed and isolate shared-machine sessions where principal/tenant separation requires it. Record security/dependency-alert outcomes accurately as fixed, rotated or dismissed with a reason.
 
+A credential container, an enabled value version and the value selected by a running consumer are separate facts: an empty or missing child collection does not prove the parent absent, and publishing a value does not refresh an already selected runtime snapshot. **Bad:** recreate a credential after a version-list 404; **Good:** inspect the parent metadata, version state and consumer's selected reference, preserving successful write receipts and changing only the missing layer.
+
+Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
+
 A redaction boundary must conceal credentials across every representation it emits: serialization can escape a value, and truncation can leave a credential fragment that no longer matches the original. **Wrong:** remove the raw token only after serializing or shortening a diagnostic, or hide the whole structured record. **Right:** verify the final consumer sees no raw or encoded credential material while retaining parseable records, actionable diagnostics and process status; exercise escaping and length boundaries alongside credential-named non-secret controls.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
@@ -34,6 +38,28 @@ are controlled by the privileged identity do not need this privilege change.
 Bound both probes and updates, including child termination, and keep network
 maintenance off the bootstrap path that establishes operator access. Test hung
 children as well as ordinary failures so maintenance cannot suspend recovery.
+
+## Shared reader privileges
+
+Before expanding a shared database reader's access, read its deployed
+reconciler and effective-privilege checks, the reason for excluded objects,
+and the consumers sharing the login. A successful narrow GRANT can still
+invalidate an aggregate-only reader's admission proof and disable every
+consumer on the next pass. Reconciliation may revoke excess privileges,
+close the login, or require an explicit supported recovery action; establish
+which behavior applies before choosing an interim repair.
+
+Preserve the verified reader contract while delivering the needed answer.
+When raw access is excluded, add product-owned aggregate or configuration
+projections through the existing declaration path. Verify both the requested
+output and denied raw access, then read back shared login health after the
+reconciler runs. A role with a different proven contract can use that
+contract's supported access change; this does not impose aggregate-only
+access on every reader.
+
+**Wrong:** assume column-scoped SELECT is harmless because it omits secrets.
+**Right:** check the deployed admission proof and expose only the required
+report through the supported reader contract, preserving existing consumers.
 
 ## Secret-scanner publication refusals
 

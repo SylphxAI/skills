@@ -58,6 +58,13 @@ a blank page; inspect the actual frame, including canvas-rendered content.
 
 ## Distinguish renderer faults from product defects
 
+Graphics state queries, clears and draws can take different validation paths,
+especially in virtualized drivers. A valid attachment query or error-free clear
+does not establish successful drawing: use a known draw whose expected pixels
+differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
+**Good:** the draw changes the expected pixels, and the failing state is retained
+as a negative control.
+
 Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
 Texture corruption on both WebGPU and WebGL can therefore share an environment
 cause; switching APIs alone does not establish a product defect. Before reporting
@@ -146,10 +153,18 @@ the engine's verdict.
    relaxing tolerances. Shared assets do not prove shared screen geometry: compare
    actual draw primitives with the independently expected complete population and
    required origins/scales, including a deliberate transform negative control.
+   A resolution control needs both the actual backing-buffer size and full-layout
+   preservation, checked against the downscaled full frame; a cropped scene is
+   not equal work. Validate an absolute cadence threshold with a no-op control in
+   the same measurement setup: if a no-rendering run fails the bar, the threshold
+   is defective.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
-   aggregation, not only a favorable median. If an unequal setting is discovered,
-   preserve the original set and predeclare an **additive** matched-work follow-up
+   aggregation, not only a favorable median. A defective grading rule does not
+   erase its original verdict: retain it verbatim and predeclare an additive
+   correction before recomputing against the unchanged data. If an unequal
+   setting is discovered, preserve the original set and predeclare an **additive**
+   matched-work follow-up
    before mutating fixtures or running it. For example, equalize shadow settings
    explicitly. Never replace the original evidence or select reruns until green.
 4. An engine-ready marker plus one immediate screenshot can yield a dark capture
@@ -262,8 +277,11 @@ bounds, not its allocated container width, and measure the gap to the chevron
 in the same coordinate space on every rendered row. Check the acceptance case's
 required gap, line count and typography together; for example, an 8 CSS px gap
 is a contextual requirement, not a universal minimum. Do not shrink the font
-to hide a spacing failure. Run the guard against the old failing state before
-claiming it catches the defect, then test the repair under the same conditions.
+to hide a spacing failure. For composite controls, assert joints and endpoints in
+a shared coordinate system as well as each part's size, because a correctly sized
+segment can be anchored incorrectly. Run the guard against the old failing state
+before claiming it catches the defect, then test the repair under the same
+conditions.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
@@ -402,6 +420,14 @@ colours or variance, not only that the file exists.
   that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
   live value and is reported. A source template can hold old values nobody chose,
   and a flag that looks like a harmless hide can remove what a user already owns.
+- Trace asset generation through export/build, package staging and runtime
+  manifest/cache/remote selection: a store build may skip a separate bundle
+  builder, packaging may only copy an export, and remote content may supersede
+  embedded assets. Bind the loaded-content evidence to prepared input hashes
+  after live-data overlays; the same source commit or a new binary proves
+  neither identical inputs nor delivery of serialized UI changes alongside
+  runtime-created UI. Establish that every required changed resource was built,
+  staged and selected.
 - Read every changed artifact with an independent reader: the actual shipped
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check

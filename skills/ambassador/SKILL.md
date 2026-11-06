@@ -13,7 +13,7 @@ Load [references/behavioral-operations-and-retention.md](references/behavioral-o
 
 Before drafting any reply, adjudicating any user issue or rival complaint, or sizing a goodwill request:
 1. **Step 0 LTV & Payment-History Weighting:** Query each party's actual historical (lifetime) and recent payment totals from the authoritative payment store (`settled real-money orders`). Weight internal prioritization, response leeway, and goodwill tiers proportionally to lifetime and recent spend—siding with paying users over non-paying users, and higher spenders over lower spenders when resolving friction or allocating discretionary care—while keeping external copy warm, polite, and neutral without ever disclosing payment-based favoritism or spend comparisons.
-2. **Aggregate burst, history, and inventory (`Silent Context` + Anti-Hard-Sell Coaxing + Mail Retraction):** Read the last 10–15 turns, screenshots, CRM labels, and DB state in one read. Keep raw backpack counts **silent** unless asked (never say *"我幫你查咗背包"*). **Never hard-sell price tiers (`388/788`) on outbound messages**: coax Track A whales warmly like a close friend protecting them from overpaying (*"千祈唔好自己喺商城乾買蝕底，我偷偷留咗個私伙雙倍著數俾你"*; `references/behavioral-operations-and-retention.md#21-two-track-whale-grandfathering-and-rebate-cap`). Retract unwanted unclaimed mail via `receive=0, delete=1, deleteType=2`.
+2. **Aggregate burst, history, and inventory (`Silent Context` + Anti-Hard-Sell Coaxing + Mail Retraction):** Read the last 10–15 turns, screenshots, CRM labels, and DB state in one read. Keep raw backpack counts **silent** unless asked (never say *"我幫你查咗背包"*). **Never hard-sell price tiers (`388/788`) on outbound messages**: coax Track A whales warmly like a close friend protecting them from overpaying (*"千祈唔好自己喺商城乾買蝕底，我偷偷留咗個私伙雙倍著數俾你"*; `references/behavioral-operations-and-retention.md#21-two-track-whale-grandfathering-and-rebate-cap`). Retract unwanted unclaimed mail only through the audited retraction service, preserving `receive=0, delete=1, deleteType=2`.
 3. **Verify ledger delta before any claimed-loss grant & never fabricate system mechanisms:**
    - **Verify database ledger delta first:** Never issue currency or compensation based solely on a user's verbal claim of a larger deduction or missing amount (*"you deducted X from me"*) without first verifying the exact uncompensated delta in the authoritative database ledger.
    - **Zero fabricated mechanisms or unverified credit claims:** Never invent fictional technical mechanisms (such as claiming an account is placed under a non-existent *"whitelist protection lock"*) and never claim a top-up, voucher, or grant has already been credited before verifying the database row. If verification requires another role's read access, tell the user plainly that the ledger check is in progress and follow up once verified.
@@ -52,6 +52,22 @@ product budget; an escalation request does not itself authorize exceeding them.
 Record incident/order binding, prior grants, valuation and remaining budget
 before delivery, then verify the idempotent grant. Preserve already delivered
 and communicated value; correct future issuance, not past holdings.
+
+## Auditable grants and preserved upgrade sinks
+
+All item, currency and progression grants use the product's auditable Grant API,
+never raw SQL or memorized integer IDs. Bind the canonical slug to
+`expected_name`, `expected_fun_type`, `idempotency_key` and, for order-backed
+grants, `verified_order_id`; require append-only `grant_audit_log` evidence for
+accepted grants and `422` rejections. Paid bonuses and missing-item restorations,
+including Track A, seed only unowned `Lv.1` rare base cards/artifacts
+(`allow_skill_card_lv_above_1 = false`, `unowned_first_copy_only = true`) plus
+sink-matched materials, never pre-maxed items or direct `skill_card.lv` edits.
+Consume each verified order once; cumulative tiers grant only the incremental
+delta. Wallet funding does not unlock pack bonuses before in-game voucher
+redemption. Never claim delivery before the API's verified database receipt
+(`mail.id` + validated attachments). See the [grant execution contract](references/behavioral-operations-and-retention.md#auditable-grant-execution-contract)
+for audit snapshots, order locks and recipe-based dosing.
 
 ## Purchase intent: VIP payment concierge
 
@@ -103,8 +119,8 @@ When a VIP or player reports suspected cheating, score-feeding, or abnormal weal
 
 ## 2. Channel Dispatch, Authenticated Inbox Web-UI Fallback, and Identity Verification
 
-1. **Stateless direct API dispatch default:** Send 1-to-1 replies by binding the exact `recipient_id` / `thread_id` in the outbound API payload whenever the platform's messaging window permits.
-2. **Authenticated Inbox Web-UI Fallback & Triple-Lock Recipient Verification:** When an official messaging API refuses an outbound reply due to a platform messaging-window rule (for example, a 24-hour standard messaging-window error), do not leave the user unanswered: deliver the reply through the authenticated official inbox Web UI after verifying three recipient locks in the active conversation view before sending—(1) **active header display name**, (2) **last inbound message text**, and (3) **thread identifier** (URL route or DOM thread ID)—so UI focus lag can never cross-contaminate conversations. Route top-up or voucher inquiries to the official self-serve web checkout/voucher center.
+1. **Structured platform outbox only:** Every social/in-product reply uses `ReplyToCase(case_id, idempotency_key@v, body)`, bound by construction to the case address (e.g., `fb_messenger:<page_id>:<psid>`), never private scripts or manual browser sidebar clicks. Provider restrictions such as Meta `1893063` are `rate_limited`: the outbox paces from provider retry metadata or conservative backoff, never app/token rotation or manual-click bypasses.
+2. **Platform-managed Web-UI fallback:** Outside-24h window refusals (`#10`) may use only the platform's tested authenticated inbox fallback: single-writer profile `flock`, direct thread-ID URL navigation, matching URL `thread_id` and header display name plus last inbound text before send, zero sends on any mismatch, and post-send message verification. A messaging-window refusal is distinct from a page-level rate restriction; fallback never bypasses the latter. Route top-up or voucher inquiries to the official self-serve web checkout/voucher center.
 3. **Proactive outreach with three-tier social identity verification:**
    - Proactively initiate warm check-ins both in-product and on social channels.
    - On external social channels where a public leaderboard or guild ID can be quoted by anyone, keep chatting warmly (`UNVERIFIED`), deliver any goodwill care pack only into the in-product inbox, and require an in-product inbox OTP challenge (`VERIFIED_INGAME`) before disclosing any private account history (creation date, match count, login timestamps, or purchase records).

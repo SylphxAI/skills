@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
-- Model lifecycle states explicitly and handle them exhaustively. Return expected failures as typed values and translate them at the boundary.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary. An intermediate transition that omits an action must preserve authenticated provenance required by later decisions separately from execution intent. Verify those decisions after real state transformations, persistence and reload, including successive transitions with unchanged or changed inputs and missing or tampered provenance.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
@@ -37,6 +37,15 @@ When replacing a mutually exclusive configuration variant, validate the effectiv
 update against an existing object with its server defaults and field ownership.
 Omitting the old variant in desired source may retain its defaulted fields;
 a successful render does not prove that the real reconciler can apply the change.
+
+Reservation or preview objects can bypass mutations applied to the eventual
+execution object, so matching source templates does not prove they reserve the
+same requirements. Bind the reservation to the target's effective admitted
+configuration and verify semantic equivalence at the consuming boundary,
+ignoring only protocol-defined generated identity. **Bad:** reserve a raw
+template, then execute a separately defaulted object; **Good:** derive from
+target-side admission and reject a changed scheduling constraint while accepting
+equivalent quantity encodings.
 
 A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
 
@@ -72,6 +81,14 @@ prose-only edit needs no runtime proof.
 ## Transactions and idempotency
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
+
+A nested admission helper that acquires a second connection from the caller's
+finite pool can starve while the outer transaction holds the available capacity;
+a larger test pool can hide this dependency. Reuse the caller's transaction
+connection and prove the public entry point completes with `max_connections=1`,
+while retaining separate multi-connection proofs for races. **Wrong:** increase
+the pool to make a nested acquisition pass; **right:** remove that acquisition
+and verify both constrained-capacity progress and concurrent correctness.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -332,6 +349,8 @@ publishing the correction.
 
 ## Tests
 
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
 An optional selector's omitted or empty value can be a valid mode with its own
@@ -377,6 +396,11 @@ formatter or options caused the defect; keep broad invariant checks alongside
 these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
 from the contract rather than freezing an incidental library output.
 
+A component's active provider can disagree with a global compatibility setting
+for locale, theme or account state. Exercise context-dependent output under the
+real provider with deliberately different global state; mocking both to agree
+hides which authority the component actually reads.
+
 **Wrong:** `expect(renderedPrice).toBe(formatPrice(amount, locale))`.
 **Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
 currency label. A date display regression similarly asserts an independently
@@ -390,6 +414,8 @@ failed”; **right:** require the changed-price refusal after a passing baseline
 while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
+
+A source-derived safety or dependency check can pass with hand-constructed dependencies while its discovery path silently misses supported syntax. Exercise alternative supported syntax through discovery and enforcement, proving the intended denial and a permitted control rather than only the downstream decision.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
