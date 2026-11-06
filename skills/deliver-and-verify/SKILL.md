@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing selected-source release inputs, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -57,6 +57,9 @@ For long builds or tests in a deadline-limited cloud session, read
 For public social feed publishing, follow the [social post media and visual inspection checks](../clear-writing/references/articles-and-copy.md#public-social-feed-posts) before sending and verify the attached image afterward.
 
 ## Execute and verify
+
+When changing selected-source release inputs or their CI guards, read
+[selected release inputs](references/dx.md#selected-release-inputs).
 
 When changing shared runtime settings or deployment overlays, read
 [deployment configuration](references/code.md#deployment-configuration).

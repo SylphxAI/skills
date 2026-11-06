@@ -515,6 +515,18 @@
         {
           "prompt": "Fix a game server image build that failed after a new path dependency was added, including a negative guard test against its actual Dockerfile.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a CI guard that refuses worker sources omitted from a historical-base release overlay.",
+          "clause": "changing selected-source release inputs"
+        },
+        {
+          "prompt": "Add a shared library fix to both game release manifests and prove the publisher compiles the mapped source path.",
+          "clause": "changing selected-source release inputs"
+        },
+        {
+          "prompt": "Change a copied prebuilt dependency in a selected-source release and verify assembly inclusion and artifact policy coverage.",
+          "clause": "changing selected-source release inputs"
         }
       ],
       "negative": [
