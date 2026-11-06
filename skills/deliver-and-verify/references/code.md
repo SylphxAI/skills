@@ -24,7 +24,14 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
-When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
+When a resource's size or tier is declaration-owned, change its owning source;
+a supported temporary live change also needs a verified reconciliation and
+cleanup path. A child's ignore rule can itself be overwritten by its parent's
+desired state, so durability depends on the full controller ancestry and each
+controller's effective field ownership. **Wrong:** add a child ignore and trust
+an immediate live read. **Right:** establish what preserves it through parent
+reconciliation, then verify the durable source adopts the value and the
+temporary exception is removed.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
@@ -177,6 +184,15 @@ capture, generation or transfer completes. Use one authoritative timestamp for
 related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
+
+Renewable inactivity deadlines and absolute lifetime limits are different
+contracts: timeout supervision and fresh downstream work share the current
+inactivity deadline, capped by any immutable authority horizon.
+**Wrong:** give a new command the remaining absolute lifetime while its supervisor
+can expire sooner; **right:** derive its timeout from the remaining inactivity
+window and preserve a replay's original keyed request.
+Verify that new progress advances the shared deadline, heartbeats and replay do
+not, and a fresh dispatch near expiry stays within the current window.
 
 For short-lived safety or authorization receipts, measure the complete path
 from the qualifying observation to the guarded action, including client startup
