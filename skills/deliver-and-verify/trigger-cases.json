@@ -716,6 +716,18 @@
     {
       "prompt": "Pin consumers to a package mirror after checking live metadata, canonical archive redirects and a real download.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "A secret scanner refuses publication of escaped asset paths; resolve the findings and publish through the unchanged scanner.",
+      "clause": "secret-scanner refusals"
+    },
+    {
+      "prompt": "Publish generated API metadata after reviewing every secret-scanner refusal, including unpublished ancestors.",
+      "clause": "secret-scanner refusals"
+    },
+    {
+      "prompt": "A scanner blocks a game source push after metadata serialization changed; investigate exact findings and complete publication.",
+      "clause": "secret-scanner refusals"
     }
   ],
   "negative": [
