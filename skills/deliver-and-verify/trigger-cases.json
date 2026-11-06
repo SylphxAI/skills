@@ -732,6 +732,14 @@
     {
       "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
       "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Repair affected-test routing that selects every consumer but drops feature-gated server-rendering tests when packages compile separately.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
+      "prompt": "Ship selective game-engine CI that retains the full suite's resolved features and fails when an expected consumer test never executes.",
+      "clause": "changing CI triggers, routing or concurrency"
     }
   ],
   "negative": [
@@ -1204,6 +1212,11 @@
       "prompt": "Rewrite the package mirror explanation for clarity without changing configuration or publishing it.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review why a passing affected-test run omitted a feature-gated consumer test, without changing CI or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
