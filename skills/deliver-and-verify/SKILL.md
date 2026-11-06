@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when provisioning preview environments, changing SQL queries or schema-backed fixtures, changing selected-source release inputs, changing CI triggers or concurrency, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when provisioning preview environments, changing SQL queries or schema-backed fixtures, changing session middleware or browser-origin forwarding, changing selected-source release inputs, changing CI triggers or concurrency, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -46,6 +46,9 @@ For preview provisioning or reduced-backend profiles, read
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+
+For session middleware or browser-origin forwarding changes, read
+[session provenance and declared effects](references/auth.md#sessions-and-sign-out).
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).

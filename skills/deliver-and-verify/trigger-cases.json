@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
+      "clause": "changing session middleware or browser-origin forwarding"
+    },
+    {
+      "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
+      "clause": "changing session middleware or browser-origin forwarding"
+    },
+    {
+      "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
+      "clause": "changing session middleware or browser-origin forwarding"
+    },
+    {
       "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -498,7 +510,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -567,6 +579,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare origin checks with synchronizer tokens for a proposed session architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the cookie-session error message for clarity without changing or publishing the application.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a repeated progress event proves a missed notification; report evidence without changing or shipping the test.",
       "clause": "prove-it for a review or evidence check",
