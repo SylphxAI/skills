@@ -93,8 +93,8 @@ When running browser checks in fresh build leases or selecting checks for source
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, HTTP test doubles, queued dispatch, receipt
-parsing or webhooks, read [integration.md](references/integration.md). Preserve
+Before changing provider calls, HTTP test doubles, streamed output, queued
+dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.
 
