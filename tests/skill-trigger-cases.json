@@ -767,6 +767,18 @@
         {
           "prompt": "Fix and ship an archive importer that selects a notes worksheet when ZIP members are reordered and data headers are copied.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Repair a payment fault-injection test that accepts an authentication refusal before reaching its intended changed-price check, and ship specific refusal coverage.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a game inventory negative test that only checks is_err, prove an unrelated stale-heartbeat fault fails its assertion, and ship the repair.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Repair database fixture readiness so a socket-only initialization server cannot satisfy the final TCP-server probe, then run the real fixture.",
+          "clause": "changing SQL queries or schema-backed fixtures"
         }
       ],
       "negative": [
@@ -1117,6 +1129,21 @@
         },
         {
           "prompt": "Rewrite the explanation of deployed-runtime and current-schema verification for clarity without running or publishing changes.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this failed test reached its intended fault or stopped at setup; report evidence without editing or running it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare typed errors and root-cause matching for a proposed test architecture without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this readiness explanation for clarity without changing or publishing any fixture.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }

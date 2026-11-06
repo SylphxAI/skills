@@ -115,6 +115,13 @@ process-per-test runner.
 **Wrong:** omit the customer table because the invoice uses guest checkout.
 **Right:** include the joined table and execute the invoice projection.
 
+Bootstrap servers can answer a local probe and then stop before the serving
+process starts. Read the entrypoint and choose a readiness signal the temporary
+process cannot satisfy; a socket-only bootstrap must fail a TCP readiness probe
+([PostgreSQL image entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh),
+read 2026-11-06). A successful socket query alone does not establish final-server
+readiness.
+
 Locate the failed phase before changing a timeout: service readiness,
 connection establishment, schema setup and test execution have different
 budgets. Give cold fixture DDL a separate bounded setup connection when it
