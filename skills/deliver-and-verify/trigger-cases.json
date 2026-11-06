@@ -788,6 +788,22 @@
     {
       "prompt": "A scanner blocks a game source push after metadata serialization changed; investigate exact findings and complete publication.",
       "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "Run the schema client generator from canonical inputs when its generated client does not yet exist, keeping post-generation contract checks strict.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Run remote asset-manifest generation without requiring the missing manifest at admission, while retaining input and routing validation.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Change diagnostic redaction so failed sanitization of container-owned logs cannot feed an unconditional artifact upload, while retaining safe status evidence.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Repair diagnostic redaction for a report produced by a different user and verify only successfully sanitized reports reach retained artifacts.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
@@ -1293,6 +1309,21 @@
     },
     {
       "prompt": "Rewrite the explanation of package-cache permissions without changing or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a generator precheck circularly requires its own output; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare sanitization-before-upload designs for a proposed diagnostic pipeline without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of sanitized diagnostic artifacts without changing or publishing the pipeline.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
