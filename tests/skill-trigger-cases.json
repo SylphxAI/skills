@@ -908,6 +908,14 @@
         {
           "prompt": "The rendering check times out with a generic loading message. Determine whether preparation, asset loading or completion is stuck and restore the check.",
           "clause": "CI/build run that has actually stalled or is failing"
+        },
+        {
+          "prompt": "A pull request has no CI run after a push. Restore its required workflow without blindly closing and reopening it.",
+          "clause": "a pull request has no CI run after a push"
+        },
+        {
+          "prompt": "The documentation site pull request has merge conflicts and no Actions run; resolve its CI admission failure.",
+          "clause": "a pull request has no CI run after a push"
         }
       ],
       "negative": [
@@ -930,6 +938,16 @@
           "prompt": "Review the evidence for a past secret-scanner false positive; publication already succeeded and no restoration is needed.",
           "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Explain from the old logs why CI was absent; the conflict is already resolved and current CI is healthy. Do not change anything.",
+          "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "The pull request build is running within its expected duration; leave it running.",
+          "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+          "route_to": null
         }
       ]
     },

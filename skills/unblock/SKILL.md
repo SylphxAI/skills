@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -60,6 +60,31 @@ sibling jobs and wait for a workflow-completion event. Then retry only the lost
 job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
+
+### Missing pull-request CI
+
+Before diagnosing an Actions outage or trying to trigger another event, read
+the current pull request's head, base, mergeability and disposition, then the
+workflow's event types and branch/path filters. Distinguish an absent run from
+an admitted run with skipped jobs. An optional preview or a completed check
+watch does not establish that the required workflow started.
+
+GitHub suppresses `pull_request` workflows while a pull request has merge
+conflicts. Resolve those conflicts through the repository's normal branch
+update path, regenerate combined projections if needed, and push normally.
+Read the resulting workflow run at the new head before claiming restored CI.
+An unknown mergeability result needs a later read, not a conflict diagnosis.
+When mergeability and event eligibility are confirmed but no run appears,
+investigate event delivery; use a documented retrigger only after reconciling
+existing runs. Switching to `pull_request_target` changes the security boundary
+and is not a conflict repair.
+
+**Bad:** repeatedly close and reopen a conflicting pull request to start CI.
+**Good:** verify mergeability, resolve the conflict, and verify the required run
+on the resulting head.
+
+Primary source checked 2026-11-06:
+[GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request).
 
 ### Missed completion events
 
