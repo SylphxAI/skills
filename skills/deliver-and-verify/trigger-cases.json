@@ -704,6 +704,18 @@
     {
       "prompt": "Ship a CI bug fix by restoring a historical shared action; verify its retained unit tests and the current configuration schema and action registry contracts.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Upgrade an editor SDK and preserve its resolver-generated lockfile even when a compatible selected version differs from the direct requirement.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Run the package resolver and publish its actual lockfile instead of reconstructing transitive dependencies from version logs.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Pin consumers to a package mirror after checking live metadata, canonical archive redirects and a real download.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1159,6 +1171,21 @@
     },
     {
       "prompt": "Rewrite the explanation of standalone and embedded script checks without running or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this dependency lockfile satisfies the resolver constraints; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare registry proxying and archive mirroring for a proposed package distribution architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the package mirror explanation for clarity without changing configuration or publishing it.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

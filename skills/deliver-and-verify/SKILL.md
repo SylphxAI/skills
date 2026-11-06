@@ -97,6 +97,9 @@ When handling credentials exposed in process arguments or changing diagnostic re
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
 
+For dependency lockfiles, package publication or registry/download mirrors, read
+[interfaces and packages](references/dx.md#interfaces-and-packages).
+
 Before running a generator locally or remotely, or a package manager through a
 remote command wrapper, read [source generation](references/dx.md#source-generation).
 
