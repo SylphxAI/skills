@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a sparse source checkout and prove that widening restores every required nested file without changing sibling selections.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Repair a source checkout installer whose successful native status hides a missing required hook.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Ship a package installer repair and verify every declared executable exists, retaining a missing-output negative control.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Publish the library package whose workflow requires checkout HEAD to equal live main, coordinating documentation writers until source validation completes.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
