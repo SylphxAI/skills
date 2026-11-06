@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Restore a hardware-constrained CI queue that admits nothing while ordinary jobs keep taking free room on its eligible hosts.",
+      "clause": "a queue/review stops progressing"
+    },
+    {
       "prompt": "The promised checkout fix still fails. Restore the affected flow.",
       "clause": "a promised fix still fails"
     },
