@@ -595,6 +595,18 @@
         {
           "prompt": "Ship a parser fix preserving arbitrary chunked text exactly once when the provider sends redundant representations.",
           "clause": "implementing or shipping a feature, bug fix, parser"
+        },
+        {
+          "prompt": "Implement a differential test using the original scoring classes and qualify its adapters against recorded production awards.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a billing export whose golden reference compares base charges with logged post-discount totals.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement a parser parity corpus while preserving missing production inputs as unknown instead of deriving them from expected outputs.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
