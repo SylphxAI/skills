@@ -728,6 +728,10 @@
     {
       "prompt": "Repair an authorization predicate whose offline tests omit the action route, and verify the shipped API rejects that alternate operation.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
+      "clause": "running source generation locally or remotely"
     }
   ],
   "negative": [
