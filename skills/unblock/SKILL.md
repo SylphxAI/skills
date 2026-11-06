@@ -65,6 +65,34 @@ repairs to their owner. Record the revision, command, exit status and inner test
 result so a completed wrapper cannot hide an incomplete check. A healthy build
 within its expected duration continues on its existing executor.
 
+### Timeouts under resource contention
+
+Split elapsed time at the boundaries the verifier actually waits for: setup,
+preparation, work submission, completion and capture. A mount or load duration
+does not measure the whole operation. Retain the last typed readiness state and
+timings on failure; a generic loading message does not identify a missing asset.
+
+Compare the same artifact and workload alone and concurrently under the failing
+runner's effective CPU quota and affinity. Record its memory limit and observed
+usage separately from resource requests or host-wide reservations. Trace the
+pending promise or completion event: work that eventually completes under a
+longer diagnostic observation differs from a wait that never resolves. Keep the
+acceptance deadline unchanged during that diagnostic comparison.
+
+If preparation stays stable while completion time grows with concurrent CPU
+workers, size concurrency from available capacity and measured per-worker cost.
+Recheck the complete workload with that default, preserving every acceptance
+case. If preparation itself dominates, measure it on supported devices and fix
+the product's startup path when it misses their budget. A software renderer
+consumes CPU; it does not establish hardware-GPU performance.
+Measure a hardware browser before claiming a delay is exclusive to software
+rendering. Increase a deadline only after legitimate completion times justify
+the headroom and the required behavior still satisfies the product's budget.
+
+**Bad:** infer a missing image from a generic timeout and increase the budget.
+**Good:** identify the pending completion condition, measure isolated and
+concurrent durations, and fix the phase or resource policy the data identifies.
+
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
 When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
