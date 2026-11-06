@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The full inventory GET succeeds, but its known control record is archived. Verify whether the census is incomplete or the action eligibility changed.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Review this pull request at its exact head SHA for concrete regressions.",
       "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
     },
