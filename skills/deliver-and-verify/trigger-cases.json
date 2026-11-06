@@ -494,6 +494,10 @@
       "clause": "downsizing or replacing shared resources"
     },
     {
+      "prompt": "Downsize an operator-managed database whose generated StatefulSet says OnDelete; verify whether the installed parent operator starts replacement automatically before activating the source change.",
+      "clause": "downsizing or replacing shared resources"
+    },
+    {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
       "clause": "downsizing or replacing shared resources"
     },

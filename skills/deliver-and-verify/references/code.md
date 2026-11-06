@@ -47,7 +47,14 @@ template, then execute a separately defaulted object; **Good:** derive from
 target-side admission and reject a changed scheduling constraint while accepting
 equivalent quantity encodings.
 
-A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
+A resource reduction can require old and replacement allocations together,
+and a parent operator may replace children despite an `OnDelete` child policy.
+Read the installed controller's rollout and availability behavior, then measure
+transition requests on eligible placements, including runtime overhead and
+preemption effects; final-state savings do not establish a safe transition.
+**Wrong:** assume the child policy leaves activation to manual restarts.
+**Right:** stage source activation against the owning controller's actual rollout
+and verify availability without racing it with another replacement mechanism.
 
 Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
 
