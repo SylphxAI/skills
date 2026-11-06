@@ -233,6 +233,10 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix database test teardown that leaves an idle session after pool close; prove a return racing shutdown with a barrier and preserve a genuinely held connection.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix browser Tab navigation and prove that boundary presses leave the canvas while genuine window blur still pauses the application.",
           "clause": "implementing or shipping a feature, bug fix"
         },
