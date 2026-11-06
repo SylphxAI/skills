@@ -688,6 +688,18 @@
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
       "clause": "handling credentials exposed in process arguments"
+    },
+    {
+      "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a deployment preview that validates a raw template while the deployed object receives extra policy constraints.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a quota reservation change that preserves defaulted resource quantities across the actual execution boundary.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [

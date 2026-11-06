@@ -38,6 +38,15 @@ update against an existing object with its server defaults and field ownership.
 Omitting the old variant in desired source may retain its defaulted fields;
 a successful render does not prove that the real reconciler can apply the change.
 
+Reservation or preview objects can bypass mutations applied to the eventual
+execution object, so matching source templates does not prove they reserve the
+same requirements. Bind the reservation to the target's effective admitted
+configuration and verify semantic equivalence at the consuming boundary,
+ignoring only protocol-defined generated identity. **Bad:** reserve a raw
+template, then execute a separately defaulted object; **Good:** derive from
+target-side admission and reject a changed scheduling constraint while accepting
+equivalent quantity encodings.
+
 A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
 
 Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
