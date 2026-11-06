@@ -286,9 +286,11 @@ disconfirming check establishes the cause; adopt only explained, intended change
 ### Verify engine and SDK changes in the shipping host
 
 An upgrade can preserve application state while changing controls, feature flags
-or browser event handling. Verify the dependency version and enabled features in
-the tested artifact. Exercise the actual shipping configuration: an account-free
-preview cannot establish sign-in continuity for the account-enabled release.
+or browser event handling. Verify the dependency version, effective configuration
+and attempted integration path in the tested artifact: a guest result can come
+from an unset provider ID before any provider call. A skipped provider path
+leaves that failure scenario OPEN; an account-free preview also cannot establish
+sign-in continuity for the account-enabled release.
 
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is
