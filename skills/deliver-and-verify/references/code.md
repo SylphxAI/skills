@@ -12,6 +12,15 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+A scoped policy waiver suppresses only its local findings: waived input still
+updates semantic state, including facts that invalidate earlier assumptions,
+while tokenization, parsing and boundary failures remain non-waivable.
+If waived input changes how later input is interpreted, model that change or
+refuse the affected scope explicitly; never silently authorize the remainder.
+Test a scoped linter ignore or validation exception with both state-establishing
+and state-invalidating input followed by unwaived input; ordinary prose with no
+waiver needs no such handling.
+
 ## Deployment configuration
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
