@@ -15,6 +15,9 @@ Run long builds and suites in CI. Record the submitted revision and run ID, set 
 inside it. On wake, read the actual run and continue from its receipt, without
 resubmitting a run whose result is unknown.
 
+If a build wrapper repeatedly times out before a compiler verdict, use the
+[build wrapper recovery procedure](../../unblock/SKILL.md#build-wrapper-timeouts).
+
 ## Temporary recovery for stalled timeout sessions
 
 Until the runtime provides automatic recovery, a parent whose child reports

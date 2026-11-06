@@ -567,6 +567,10 @@
       {
         "prompt": "A job lost its runner, but GitHub refuses its retry while sibling jobs are still running. Recover the failed check without cancelling healthy work.",
         "clause": "a call is refused"
+        },
+        {
+          "prompt": "The remote build wrapper repeatedly times out before any compiler verdict. Restore the focused check using the operator-approved local executor without changing the runtime.",
+          "clause": "CI/build run that has actually stalled or is failing"
         }
       ],
       "negative": [
