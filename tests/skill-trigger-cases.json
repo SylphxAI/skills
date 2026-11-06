@@ -527,6 +527,18 @@
         {
           "prompt": "Change a copied prebuilt dependency in a selected-source release and verify assembly inclusion and artifact policy coverage.",
           "clause": "changing selected-source release inputs"
+        },
+        {
+          "prompt": "Implement a fixture setup fix that gives cold schema DDL its own bounded connection budget while preserving request timeouts and exploit assertions.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a JDBC fixture fix that selects its catalog before constructing statements and compiles the changed block with the actual imports and driver.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix the disposable database test script to retain server logs on every failure before cleanup while preserving the original exit status.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -707,6 +719,21 @@
         },
         {
           "prompt": "Rewrite these remote generation instructions for clarity without running commands or publishing changes.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether the historical database timeout occurred during connection or schema DDL; report evidence without changing the fixture.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare separate setup connections with a shared timeout for a proposed test fixture design; do not implement either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these JDBC fixture troubleshooting instructions for clarity without changing or publishing code.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }

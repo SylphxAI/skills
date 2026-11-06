@@ -67,6 +67,29 @@ request an explicit completion marker. Keep the query within the authorized
 data scope, then delete the disposable probe and confirm its absence. A green
 container exit with no operation-specific evidence leaves the check unverified.
 
+## Database test fixtures
+
+Locate the failed phase before changing a timeout: service readiness,
+connection establishment, schema setup and test execution have different
+budgets. Give cold fixture DDL a separate bounded setup connection when it
+needs more time; derive its budget from measured setup duration and margin.
+Keep the application's connection limits, assertions and scenario timing intact.
+
+Apply connection settings before constructing objects that capture them. For
+JDBC, select the catalog before creating or preparing statements, and recreate
+statements after changing it: `Connection.setCatalog` does not affect existing
+statements ([Java JDBC contract](https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setCatalog-java.lang.String-),
+read 2026-11-06). Compile the actual changed setup block with its real imports
+and pinned dependencies; an isolated helper can miss ambiguous imported types.
+Then run the fixture against its supported database and driver to establish
+that setup completes and the existing assertions execute.
+
+Capture bounded server logs and available session diagnostics on every failure
+before destroying the disposable database. Retain the original exit status
+when diagnostics fail or time out. Exercise readiness, setup and test failures,
+plus unavailable diagnostics, and verify capture precedes cleanup. Keep this
+diagnostic access scoped to synthetic fixtures and redact credentials.
+
 ## Agent-native access
 
 Use supported device authorization for interactive user delegation when the client needs it, following [auth.md](auth.md#agents-clis-and-mcp-clients). Unattended agents use their own scoped machine/workload grant and an authorized secret store. The actual grants and runner/spend policy belong in the repository's instructions; a permitted existing credential does not need a new approval ritual.
