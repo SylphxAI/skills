@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Expose aggregate billing reports through a shared database login without invalidating its reconciler checks.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Restore a shared analytics reader after a temporary ACL change disabled its login, using the supported role-management path.",
+      "clause": "changing database privileges"
+    },
+    {
       "prompt": "Upgrade the engine dependency from source and ship its release image after checking the new compiler minimum in both CI and the artifact builder.",
       "clause": "upgrading engine or SDK dependencies"
     },
