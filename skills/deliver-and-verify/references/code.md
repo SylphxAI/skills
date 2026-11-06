@@ -363,6 +363,20 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+Revoking an owner's ordinary privileges does not prove workload immutability:
+[PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)
+look up referenced rows as that table's owner with `FOR KEY SHARE`, which
+[requires `UPDATE` privilege](https://www.postgresql.org/docs/15/sql-select.html)
+and can fail after owner self-revocation even when the workload has `INSERT`.
+Preserve owner capabilities required by internal FK/trigger paths while keeping
+`PUBLIC` revoked and the workload a separate nonowner without owner membership
+or grant options; adding a trigger or role solely to preserve owner
+self-revocation obscures the actual boundary.
+**Wrong:** infer append-only behavior from owner ACLs or successful reads.
+**Right:** retain the real FK and prove a valid nonowner `INSERT` after complete
+fresh and upgrade migrations, before fixture grants, alongside denied workload
+mutations and denied `SET ROLE` to the owner.
+
 A successful read can be policy-filtered even when it returns no warning or
 error; counts, maxima and metadata inventories establish completeness only for
 the effective observer's proven visibility scope, including indirect dependencies.
