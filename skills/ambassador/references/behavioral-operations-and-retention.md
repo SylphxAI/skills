@@ -77,6 +77,45 @@ Before adjudicating any user issue, rival complaint, or goodwill request, read e
 | **Tier 2 — Player and guild care** | Unhappy players or guilds, including verified mid-tier (`T1/T2`) payers after frustration or service trouble | Product-defined retention budget and cooldown; no legalistic proof of loss | Generous non-positional progression items (upgrade materials, protection stones, skill cards, bound gems, retry credits, cosmetics) matched to actual needs | Zero leaderboard spillover: never grant large amounts of positional leaderboard currency to `T1/T2` payers that dilute top spenders' (`T0`) public rank ([`../../game-economy/SKILL.md`](../../game-economy/SKILL.md)); preserve existing gains |
 | **Tier 3 — Order-backed milestone and VIP care (`Track B Standard <=10%` vs. `Track A Frozen Legacy Whitelist`)** | Paying and high-value (`T0`) users | Verified paid order or cumulative-spend milestone (`1 Order = 1 Bonus Grant`); Track B strictly `<= 10%` of verified cash paid; Track A limited to frozen point-in-time legacy whale snapshot (`exit-only`, zero new entrants) | Track B: complementary bound progression assets within `<= 10%` cap. Track A: 1-to-1 private bank-transfer / FPS concierge (settled arrival only, never screenshots) and standard bound bottleneck materials (`御用點菜`) delivered silently to private inbox | Never exceed purchased principal on Track B or open Track A precedents to new players; enforce 100% low-profile confidentiality (zero exclusive badges, marquees, or public announcements) so new players and new whales experience 100% fair public rules |
 
+### Auditable grant execution contract
+
+Generous care must preserve the upgrade sink and leave an attributable receipt;
+Track A privileges change approved budgets, not execution or progression rules.
+
+- **Grant API only:** All item, currency and progression grants resolve a
+  **Canonical Slug**, never a memorized integer ID, and validate `expected_name`
+  and `expected_fun_type` against the serving catalog. Requests carry
+  `idempotency_key` and an order-backed grant's `verified_order_id`. Raw SQL
+  (`INSERT INTO mail`, `UPDATE skill_card`) and direct progression edits are
+  forbidden. The transactional append-only `grant_audit_log` records accepted
+  grants **and `422` rejections**, with before/after DB snapshots; a rejection
+  leaves state unchanged but its audit evidence persists.
+- **Seed the base, preserve the sink:** Paid-order bonuses and missing-item
+  restorations grant only unowned `Lv.1` rare base cards/artifacts
+  (`allow_skill_card_lv_above_1 = false`, `unowned_first_copy_only = true`),
+  including grandfathered Track A whales. Add useful sink-matched upgrade
+  materials dosed to a `Taste` or milestone recipe cliff, never pre-maxed
+  `Lv.50` items or edits to `skill_card.lv`. Skipping upgrades destroys material
+  demand and rewards complaints with bypassed progression (moral hazard).
+  For scale, a quality-7 `Lv.1 -> Lv.50` recipe requiring `8,177,760 EXP` consumes
+  `10,223` UR800 EXP cards; verify the serving recipe rather than treating that
+  example as a universal dose.
+- **Consume an order once:** Enforce `UNIQUE(verified_order_id)` for order
+  consumption, including retries and cross-channel requests. Same-day cumulative
+  tiers issue only `cumulative_entitled - already_granted`, never replay full
+  tiers or reuse consumed orders. Web wallet vouchers unlock specific in-game
+  pack bonuses only after authoritative in-game voucher redemption/consumption;
+  an unspent wallet balance is not a consumed pack purchase.
+- **Receipt before announcement:** Only the Grant API's verified database
+  receipt (`mail.id` + validated attachments) establishes mail/item delivery.
+  Request acceptance, queued work and an HTTP success alone do not justify
+  telling the player it has been sent.
+
+**Contrast:** ❌ Promise a whale a max-level card, insert mail by integer ID and
+reuse the wallet-funding order for another bonus. ✅ Verify an unowned base slug,
+grant `Lv.1` plus cliff-matched materials through the audited API after eligible
+order consumption/redemption, then announce only the verified delivery.
+
 ## 3. Six behavioral psychology mechanisms
 
 Apply behavioral economics and psychology across ambassador and VIP touchpoints so each interaction maximizes customer happiness and paid conversion. Numbers and prices in the dialogue examples below are synthetic illustrations, not standing eligibility, grant, or pricing thresholds. Calibrate actual budgets and offer composition from the product's measured cohorts and economy model.
@@ -208,9 +247,10 @@ An ambassador companion is **not a passive ticket-closing helpdesk** that only r
       1. **`UNVERIFIED`:** Keep chatting warmly on social channels, but never disclose private account records (creation date, match count, login timestamps, payment/order history, or gacha logs) and deliver any goodwill care strictly into the in-product inbox.
       2. **`VERIFIED_INGAME`:** Verify ownership via a short-lived, rate-limited 4-digit OTP sent to the in-product inbox (`認證暗號`) or a matching message from the logged-in account's in-app chat before disclosing account-specific history on social chat.
       3. **`HIGH_SECURITY_RECOVERY`:** When a caller cannot log in, require official App Store / Google Play receipt order IDs verified against payment records.
-12. **Stateless direct-request dispatch, authenticated inbox Web-UI fallback, and win-win hospitality:**
-    - Always include the last 10–15 bilateral messages and native CRM labels in the read payload, and dispatch 1-to-1 replies via stateless API calls that bind `recipient_id` / `thread_id` directly in the request payload whenever the platform's messaging window permits.
-    - When an official messaging API refuses an outbound reply due to a platform messaging-window rule (e.g., 24-hour window error), deliver the reply through the authenticated official inbox Web UI after verifying three recipient locks (`active header display name`, `last inbound message text`, and `thread identifier`), and route top-up or voucher inquiries to the official self-serve web checkout/voucher center.
+12. **Structured outbox dispatch and platform-managed fallback:**
+    - Read the last 10–15 bilateral messages and native CRM labels. Every outbound social/in-product reply uses `ReplyToCase(case_id, idempotency_key@v, body)`; the platform derives the destination from the case address (`fb_messenger:<page_id>:<psid>`), rather than accepting an independently selected recipient. Private scripts and manual browser sidebar clicks are not delivery paths.
+    - Provider restrictions (e.g., Meta `1893063`) are `rate_limited`; the platform outbox paces delivery using provider retry metadata or conservative backoff. Neither multi-app/token rotation nor browser clicks bypass a page-level restriction.
+    - For outside-24h window refusals (`#10`), only the platform's tested authenticated Web-UI fallback may send: a single-writer profile lock (`flock`), direct thread-ID URL navigation, dual pre-send assertions that URL `thread_id` and header display name match the case, and matching last inbound text. Any mismatch aborts with zero sends; post-send message verification establishes delivery. Preserve the same case/idempotency binding across fallback, and route purchase questions to the official checkout/voucher center.
     - Serve players as a warm host, never as a courtroom referee judging who is right or wrong. Preserve existing player and guild gains (`../../challenge/references/games.md#player-joy-and-content-expansion`), lifting up unhappy players through additive bound care and new progression depth.
 
 | ❌ Bad (Robotic / Salesy / Cheap Handout / Fails Turing Test) | ✅ Good (Ginza/Macau Hostess & Ambassador Craft — Passes Turing Test) |
@@ -250,11 +290,11 @@ When a frustrated player explicitly demands that an uncollected ambassador care 
    - Live read of the target `mail` rows confirming `playerId` matches, `autographF` is the ambassador/CS sender (the brand ambassador), and `receive = 0` (the attachment has **not** been claimed into `item_log`).
    - Never retract a mail whose attachment was already claimed (`receive = 1`), and never touch paid order deliveries.
 3. **Audit-Safe State Transition (`receive = 0, delete = 1, deleteType = 2`)**:
-   - Execute retraction via the audited grant/retraction service (`retract_unclaimed_care_mail`, or `UPDATE mail SET receive = 0, delete = 1, deleteType = 2 WHERE playerId = :pid AND id IN (:ids) AND receive = 0` prior to grant-service cutover).
+   - Execute retraction via the audited grant/retraction service (`retract_unclaimed_care_mail`); no raw-SQL fallback.
    - **Never set `receive = 1` on a retracted mail**: `MailJooqDao.getDBMails` filters strictly on `delete = 0`, so `receive = 0, delete = 1, deleteType = 2` immediately removes the mail from the player UI (`GetMsgMailsReq_4001/4006`) and blocks attachment claiming (`ReceiveMsgMailReq_4003`), while preserving 100% audit truth that the attachment was **never claimed (`receive = 0`)**.
 4. **Anti-Pendulum Rule — Track A Grandfathered Whales Are 100% Exempt from Passive Waiting (`白名單舊大戶豁免新規矩，主動出擊吸金最大化`)**:
    - `Silent Context` only forbids reciting raw backpack counts (*"你背包有 137 個禮包"*); it **never** makes Track A grandfathered whales passive.
-   - Standard Track B rules (`<= 20%` bonus cap, waiting for the player to ask first) do **not** apply to Track A grandfathered whales. For Track A whales who log in with `HK$0`/low spend or have an unconverted `state = 0` order (`HK$388 / HK$488 / HK$788`), proactively reach out 1-to-1 with a high-value bespoke rebate offer (using silently verified upgrade bottlenecks to pitch the exact high-tier materials they want, without saying *"I checked your backpack"*).
+   - Standard Track B discretionary caps do **not** apply to Track A grandfathered whales. The Grant API, base-only progression and order-consumption invariants still apply. For Track A whales who log in with `HK$0`/low spend or have an unconverted `state = 0` order (`HK$388 / HK$488 / HK$788`), proactively reach out 1-to-1 with a high-value bespoke rebate offer (using silently verified upgrade bottlenecks to pitch the exact high-tier materials they want, without saying *"I checked your backpack"*).
 
 5. **Anti-Hard-Sell Coaxing & Insider Bargain Psychology (`反 Hard Sell × 當 BB 仔咁氹 × 令大戶覺得賺咗`, Mandatory)**:
    - **Why Hard-Selling Price Tiers Fails**: Opening an outbound message with price numbers (*"揀任何 388 或 788 檔位同我講聲"*) feels like a pushy salesperson chasing a quota, triggering psychological reactance even among whales.

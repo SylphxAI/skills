@@ -21,6 +21,16 @@ Choose a stable RP ID valid for the calling origin and validate origins on the s
 
 After a rejected unknown credential, use `signalUnknownCredential()` where supported. Use `signalAllAcceptedCredentials()` only in the authenticated context appropriate to the full credential list. Feature-detect support and verify the provider's behavior; a signal does not replace the server's check or guarantee every picker updates immediately.
 
+## Risk checks and delivery cost
+
+Human or session assurance and permission to incur recurring delivery cost are
+independent: successful anti-abuse verification or a valid session never resets
+the server-side cost or conversion budget. In a risk-based step-up flow, a
+low-risk request makes no anti-abuse provider call; keep thresholds and other
+product-specific constants in product policy. **Bad:** a passed challenge unlocks
+unlimited message sends; **Good:** the request still passes delivery admission,
+while a low-risk sign-in needs no challenge provider.
+
 ## The one sign-in flow
 
 Every product uses a single unified passwordless entry flow for both new and returning users.
@@ -115,6 +125,16 @@ Recover accounts through a verified channel with appropriate step-up checks and 
 
 Choose bounded access-token lifetimes and an explicit refresh/revocation profile (such as refresh-token rotation with reuse detection or sender-constrained tokens under RFC 9700). Protect web cookies with `HttpOnly`, `Secure`, and `SameSite`/CSRF controls, and store native tokens in OS keystore storage. Where Device Bound Session Credentials (DBSC) are supported, test renewal refusal without the registered key while maintaining a fallback for unsupported browsers. Provide a clear sign-out action and active-session management.
 
+With cookie-authenticated proxies, `Origin` and Fetch Metadata carry evidence
+about the initiating browser request; substituting a configured trusted origin
+or inventing `Sec-Fetch-Site` erases that provenance.
+Where a trusted server-side method contract distinguishes reads from mutations,
+enforce that effect at the API boundary rather than treating every `POST` as a
+mutation, while keeping missing, foreign and opaque origins distinct.
+Verify both permitted reads and refused mutations through the actual session
+middleware and downstream handler: a forwarding-only mock can miss a guard that
+breaks server-rendered reads or admits an unverified write.
+
 ## Agents, CLIs, and MCP clients
 
 Use OAuth 2.0 Device Authorization (RFC 8628) for interactive user delegation from browserless or CLI clients, and scoped workload identities for unattended agents. Describe delegated tokens by issuer, subject/actor, audience, scope, and expiry (RFC 8693), with optional DPoP sender constraints (RFC 9449) where selected.
@@ -147,3 +167,11 @@ Primary sources checked 2026-10-30 and 2026-11-03:
 - [DBSC draft](https://w3c.github.io/webappsec-dbsc/) and [Chrome DBSC behavior](https://blog.google/security/protecting-cookies-with-device-bound-session-credentials/).
 - [Google ID token verification](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token), [Google One Tap](https://developers.google.com/identity/gsi/web/guides/features), [OIDC Core](https://openid.net/specs/openid-connect-core-1_0.html), [Auth0 integration comparison](https://auth0.com/docs/authenticate/login/universal-vs-embedded-login), and [WorkOS AuthKit domain setup](https://workos.com/docs/custom-domains/authkit).
 - [WCAG 2.2 SC 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html), [Apple Review Guidelines](https://developer.apple.com/app-store/review/guidelines/) 4.8 & 5.1.1(v), [Apple deletion](https://developer.apple.com/news/?id=12m75xbj), and [Google Play deletion](https://support.google.com/googleplay/android-developer/answer/13327111).
+
+Primary sources checked 2026-11-06 for request provenance and method semantics:
+- [Fetch Standard, `Origin` header](https://fetch.spec.whatwg.org/#origin-header)
+  defines origin serialization, including `null`.
+- [RFC 9110, POST](https://www.rfc-editor.org/rfc/rfc9110.html#section-9.3.3)
+  leaves request processing to the target resource's semantics; a declared
+  read-only application method is an explicit server contract, not a generic
+  exemption for `POST`.

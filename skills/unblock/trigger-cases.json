@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The repository synchronization completed but historical dependencies still fail verification. Restore the missing history while retaining recovery metadata.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The replicated catalog refresh finished, but older records are still missing. Repair the incomplete recovery before clearing its degraded state.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The restore completed, but private recovery roots still point at missing data. Restore the required dependency closure.",
+      "clause": "a promised fix still fails"
+    },
+    {
       "prompt": "Restore a hardware-constrained CI queue that admits nothing while ordinary jobs keep taking free room on its eligible hosts.",
       "clause": "a queue/review stops progressing"
     },
@@ -52,9 +64,18 @@
     {
       "prompt": "The required policy scanner rejects a generator even though the local pre-push check passes. Restore CI while preserving the required contract.",
       "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
+      "prompt": "Restore an operational identity read refused because a full resource includes unrelated credentials, while preserving the secret guard.",
+      "clause": "a call is refused"
     }
   ],
   "negative": [
+    {
+      "prompt": "Audit an old recovery report for historical-dependency coverage; the current store is healthy and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Establish the root cause of a past failure; the service is healthy and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
@@ -87,6 +108,11 @@
     },
     {
       "prompt": "Review whether a merged policy-scanner fix preserved the required behavior; CI is healthy and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain why a historical metadata read was refused; current reads work and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
     }

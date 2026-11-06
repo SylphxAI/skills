@@ -2,6 +2,42 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Expose aggregate billing reports through a shared database login without invalidating its reconciler checks.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Restore a shared analytics reader after a temporary ACL change disabled its login, using the supported role-management path.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Upgrade the engine dependency from source and ship its release image after checking the new compiler minimum in both CI and the artifact builder.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
+      "clause": "running tests in a fresh build lease"
+    },
+    {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
       "clause": "enrolling disabled tests in CI"
     },
@@ -163,7 +199,7 @@
     },
     {
       "prompt": "Deploy the checkout bug fix and verify the affected customer journey.",
-      "clause": "Carry the outcome through execution and verification at its real surface."
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Ship the new web voucher channel and synthetic health probe, verifying cross-currency wallet normalization, canonical order analytics, and CDN cache bypass.",
@@ -191,7 +227,7 @@
     },
     {
       "prompt": "Ship a game chest fix and capture a fresh authenticated guest journey; the existing CI pack intentionally omits the client's request-signing key.",
-      "clause": "Carry the outcome through execution and verification at its real surface."
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Fix a job continuation that loads every cumulative request as a generic JSON tree; prove bounded replay memory in fresh child processes for old and new encodings.",
@@ -610,8 +646,60 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix and ship a streamed protocol adapter whose equivalence comparator hides reordered content by grouping text, reasoning and tool blocks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
       "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Repair a migrated billing database fixture that is prepared but cannot admit charges until its guarded activation transition completes.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Update a game-server database fixture to activate its real save authority with the required role and closed legacy writers before running recovery tests.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Fix a document-worker schema fixture that bypasses its activation guard instead of satisfying the real privilege and state-transition prerequisites.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
+      "clause": "rotating secrets consumed by Jobs"
+    },
+    {
+      "prompt": "Fix and publish deployment scripts stored as shell files and generated ConfigMaps, checking both CI validators after regeneration.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game-server startup fix whose standalone launcher and generated container command are linted by different checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate a service manifest after changing its canonical shell script and verify both source and embedded lint populations.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
+      "clause": "handling credentials exposed in process arguments"
+    },
+    {
+      "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a deployment preview that validates a raw template while the deployed object receives extra policy constraints.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a quota reservation change that preserves defaulted resource quantities across the actual execution boundary.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Ship a CI bug fix by restoring a historical shared action; verify its retained unit tests and the current configuration schema and action registry contracts.",
@@ -619,6 +707,36 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare origin checks with synchronizer tokens for a proposed session architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the cookie-session error message for clarity without changing or publishing the application.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether this UI component reads the active locale provider or a global compatibility setting; report evidence without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite this dependency-cache setup paragraph for clarity without running checks or changing repository configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review these CI logs to determine whether ignored tests actually executed; report evidence without editing or running anything.",
       "clause": "prove-it for a review or evidence check",
@@ -1026,6 +1144,21 @@
     },
     {
       "prompt": "Rewrite the explanation of preview environment isolation without changing or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a green embedded-shell scan proves standalone scripts passed; report evidence without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare source linting and rendered-manifest validation for a proposed CI design without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of standalone and embedded script checks without running or publishing changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

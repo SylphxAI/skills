@@ -6,9 +6,24 @@ Optimize time from a clean environment to a useful verified result. Make failure
 
 ## First useful success
 
-Document the supported prerequisites/revisions, entry command, expected result, and common failure/recovery paths. Keep the entry surface thin and route to deeper material. Resolve the reproducible toolchain and dependency graph from source; record generator inputs for generated output.
+Document the supported prerequisites/revisions, entry command, expected result,
+and common failure/recovery paths. Keep the entry surface thin and route to
+deeper material. A source-version change can raise the compiler minimum even
+when the files touched by local patches are unchanged. Read the selected
+source's toolchain declarations and keep CI and artifact-build compilers
+compatible; checksums and patch applicability do not establish compilability.
+Record generator inputs for generated output.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
+**Wrong:** Update source hashes and accept a passing patch check while the
+release image still uses an older compiler. **Right:** Verify the selected
+source with the compatible compiler in both CI and the artifact build.
+
+Local setup can change a check's input population: dependency caches placed
+inside a checkout may be scanned as source even when Git ignores them. Keep
+rebuildable caches outside that population, or verify the check's exclusions;
+failures naming cached third-party files call for correcting input discovery.
+
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
 Before a remote submission, verify the effective project, environment and
 credential bounds through supported configuration; checkout defaults can select
@@ -109,6 +124,12 @@ queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
 ([database boundary tests](code.md#database-boundary-tests)) and run the actual
 consuming database test; compilation and parser checks cannot prove resolution.
+Compare the test's local setup with CI's phase order: a later migration hook
+cannot prepare an earlier test phase. A migrated local database can hide missing
+fixture setup; verify the consuming test from the database state available at
+its actual CI phase. Fixture isolation must cover every namespace the real query
+resolves; a private `search_path` does not isolate schema-qualified objects, so
+choose an isolation boundary that contains them too.
 If a complete replay fails under the application role while the deployed schema
 works, compare effective privileges along the failing function call chain in
 both databases. Record each differing function, role and privilege, the live
@@ -116,6 +137,10 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
+A complete schema replay can still leave its subsystem operationally inactive.
+A fixture that needs active authority must satisfy the real role, privilege and
+state-transition preconditions with guards enabled; a small setup probe before
+an expensive suite distinguishes activation failures from behavior failures.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
@@ -371,7 +396,7 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 - For a regression selected by a target, filter, disabled marker or external prerequisite, trace the discovered inventory through the registered execution route; inventory every disabled test, whatever its stated reason, against the named tests the route actually ran in the required environment. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Adjust selection at the owning package or runner boundary and verify execution there: a configured but unavailable prerequisite fails explicitly, while an intentionally resource-free job is separate from the required database proof ([executed-test evidence](../../prove-it/SKILL.md)).
 - First execution can expose stale expectations, product defects or fixture drift: distinguish these using the asserted contract and its history, and retain a negative that detects the intended fault after any fixture repair. A reduced fixture establishes only its installed schema and protections; omitted migrations, constraints, triggers, policies and defaults remain stated limitations on the result.
 - **Synchronize selective container `COPY` layers and deploy `watch_paths` when changing build script inputs:** When an installer or build script changes which files it reads (for example, switching from `Cargo.toml` to a separate pin or lock file), update every selective `COPY` layer in `Dockerfile*` that runs before that script and every service's `watch_paths` in the deployment manifest; otherwise pre-merge CI against a full checkout passes while post-merge container builds fail or skip releases.
-- Derive local formatting checks from the complete changed-file list against the PR base, including module roots, import barrels and manifests. Match CI's file selection, flags and configuration; a pass on implementation files alone leaves other changed files unverified. A formatter-only pass can omit import/export grouping, so use CI's check command to verify it. Recheck when the diff or configuration changes, and preserve CI's generated-file exclusions.
+- Derive local lint and formatting checks from the complete changed-file list against the PR base, including generated forms, module roots, import barrels and manifests; match each CI check's input selection, flags, configuration and exclusions. Source files and embedded copies can use different validators, so a pass over one form leaves the other unverified even when their bytes match; regenerate affected copies after canonical edits and recheck when inputs change. **Wrong:** infer standalone script validity from a green embedded-shell scanner, or import grouping from a formatter-only pass; **Right:** run each applicable CI validator over its actual input population.
 - When inserting or reordering generated collection entries, search consumers by emitted field names, including ignored integration tests and database proofs. Find entries by their stable identity when checking their values; assert positions separately when order itself is part of the contract. An ignored test still consumes the generated shape, so compile it and name the isolated CI proof that remains pending when its database is unavailable locally.
 - Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
 - Size time/resource bounds to the operation being measured: an enclosing test deadline includes every sequential fixture and child command. Independent scenarios need separate fixtures and named results under the existing per-case bound; keep a shared deadline when aggregate latency is the acceptance contract. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.

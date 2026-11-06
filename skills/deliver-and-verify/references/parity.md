@@ -58,6 +58,13 @@ a blank page; inspect the actual frame, including canvas-rendered content.
 
 ## Distinguish renderer faults from product defects
 
+Graphics state queries, clears and draws can take different validation paths,
+especially in virtualized drivers. A valid attachment query or error-free clear
+does not establish successful drawing: use a known draw whose expected pixels
+differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
+**Good:** the draw changes the expected pixels, and the failing state is retained
+as a negative control.
+
 Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
 Texture corruption on both WebGPU and WebGL can therefore share an environment
 cause; switching APIs alone does not establish a product defect. Before reporting
@@ -146,10 +153,18 @@ the engine's verdict.
    relaxing tolerances. Shared assets do not prove shared screen geometry: compare
    actual draw primitives with the independently expected complete population and
    required origins/scales, including a deliberate transform negative control.
+   A resolution control needs both the actual backing-buffer size and full-layout
+   preservation, checked against the downscaled full frame; a cropped scene is
+   not equal work. Validate an absolute cadence threshold with a no-op control in
+   the same measurement setup: if a no-rendering run fails the bar, the threshold
+   is defective.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
-   aggregation, not only a favorable median. If an unequal setting is discovered,
-   preserve the original set and predeclare an **additive** matched-work follow-up
+   aggregation, not only a favorable median. A defective grading rule does not
+   erase its original verdict: retain it verbatim and predeclare an additive
+   correction before recomputing against the unchanged data. If an unequal
+   setting is discovered, preserve the original set and predeclare an **additive**
+   matched-work follow-up
    before mutating fixtures or running it. For example, equalize shadow settings
    explicitly. Never replace the original evidence or select reruns until green.
 4. An engine-ready marker plus one immediate screenshot can yield a dark capture

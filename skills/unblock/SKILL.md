@@ -43,6 +43,8 @@ prescribed helper's availability and behavior before changing the implementation
 Run that exact checker and test the required semantics; a different local check
 or zero findings alone does not prove the contract is satisfied.
 
+A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
+
 For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
@@ -157,6 +159,13 @@ the headroom and the required behavior still satisfies the product's budget.
 concurrent durations, and fix the phase or resource policy the data identifies.
 
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
+
+Incremental synchronization can preserve old gaps because it trusts the current
+baseline. When restoring incomplete state, choose a mode that can recover data
+behind already-known records and verify the required dependency closure,
+including historical or private recovery roots in scope, before clearing recovery
+metadata. **Bad:** declare recovery from a successful refresh; **good:** prove the
+required historical dependencies are present after it.
 
 When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
 1. **Apply the smallest supported reversible control now:** Use the product's API, feature flag, routing weight, or GitOps sync to restore service immediately while preserving all user data and ledger integrity.
