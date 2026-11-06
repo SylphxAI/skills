@@ -22,6 +22,37 @@ Choose a measurable target for each critical journey and define its response whe
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
 
 
+## Bounded memory for large transfers
+
+Set a peak-memory budget from concurrency and bounded buffers, independent of
+payload size. Follow bytes from storage through driver prefetch, application
+buffers, encoding, multipart framing and the receiver. A streaming HTTP type
+does not help if an earlier database result or response collector holds the
+whole value. Read metadata before deciding whether output is needed; cap a
+historical replay in the database before its bytes reach the process.
+
+Use an established streaming object store or bounded immutable chunk rows.
+Repeated appends to a large `bytea` rewrite prior content; repeated slices of
+compressed TOAST can repeat decompression. `EXTERNAL` permits out-of-line
+uncompressed storage and optimized partial reads. TOAST relation size alone
+does not establish compression ([PostgreSQL 18 TOAST](https://www.postgresql.org/docs/18/storage-toast.html),
+read 2026-11-06). Measure storage work as well as application allocation before
+calling a chunked interface scalable.
+
+Enforce capture limits as bytes arrive. Publish a manifest only after EOF,
+byte count and digest verification; cancellation or overflow preserves the
+previous committed version and source. Serialize replacement against readers
+or read immutable version references, so a stream cannot mix versions. Follow
+[migration compatibility](code.md#migrations) while old revisions still serve.
+
+Prove the actual storage-to-network path with a payload larger than an isolated
+process's memory budget. Generate the source outside that process, measure its
+peak RSS, and hash the receiver incrementally. A test fixture that collects the
+body defeats the proof. Compare source, destination and published digest;
+include interrupted streams, corruption and tenant denial. Keep that isolated
+receipt separate from deployed revision, normal-load OOM/restart counts and
+peak memory over the declared observation window.
+
 ## Startup measurements from video and queued logs
 
 Use this method when a startup event and the screen people can use disagree:

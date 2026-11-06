@@ -59,6 +59,15 @@ Keep migration history truthful: do not record an unverified migration as applie
 
 Choose one final representation and authority. An additive schema change may need no backfill; when existing data must change, transform it in bounded, resumable batches with semantic validation. Where serving continues, expand compatibly, switch readers/writers in a declared order, backfill, retire old consumers and remove the predecessor. Contract changes run after revisions that still need the removed representation are gone.
 
+Check both directions during a rolling cutover: new readers must understand old
+writes, and old readers must understand new writes. If backfill publishes a
+validity marker, an old writer must invalidate or update it. A one-time database
+projection can preserve the old representation without buffering it in the API.
+Keep source bytes until the destination is verified; missing data is an error
+rather than an empty replacement. Before contract, verify actual serving
+revisions and drain old in-flight requests; zero assigned traffic alone does
+not establish that a previous writer has finished.
+
 A new migration's version sorts above the newest migration on the target branch at merge time, not only above its neighbours in the change. Check it again after every refresh from the target, and have a reviewer compare it with the target's newest migration: a merge queue can test later entries on top of an earlier entry, so a version below the base can pass by accident. When the version must move, rename only your own unreleased migration, upward, and update every reference and checksum.
 
 Readiness checks compatibility with the serving revision rather than demanding the newest schema head. Verify live schema after applying a change; the migration ledger alone does not establish that the intended objects exist.
@@ -132,6 +141,12 @@ A required resource-dependent check fails clearly when the resource is unavailab
 Check SQL against the migrated schema through compiler support where available, generated contracts or database-backed tests for dynamic queries. Share cohesive fixtures and table-driven cases where that improves readability. A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
+
+When a fixture detects an unwanted read or side effect, prove both that a
+forbidden operation triggers it and that the allowed operation leaves it idle.
+For example, a SQL view containing a VOLATILE rejection function may evaluate
+it even when its output column is unused. Validate metadata-only reads and row
+locks independently before using that view to judge the production projection.
 
 ## Outbound calls
 

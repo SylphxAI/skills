@@ -271,6 +271,18 @@
         {
           "prompt": "Ship a game chest fix and capture a fresh authenticated guest journey; the existing CI pack intentionally omits the client's request-signing key.",
           "clause": "Carry the outcome through execution and verification at its real surface."
+        },
+        {
+          "prompt": "Fix the document API so restoring large attachment archives has bounded process memory, including during a rolling storage cutover.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement streaming capture and resumable digest-verified backfill for saved game backups without losing the previous checkpoint on cancellation.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Bound historical job-output replay before the database result reaches the API, preserve stored bytes, and deploy the fix.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -293,6 +305,21 @@
           "prompt": "Review whether a Python source-only change could affect a JavaScript test that reads its files; report the evidence without changing code.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare chunk-table and object-store archive designs; do not implement either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Check whether a red advisory check or intentionally skipped draft jobs actually prevent this pull request from merging; report the evidence only.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Rewrite this archive migration announcement for customers; do not change or publish the service.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
         }
       ]
     },
@@ -362,6 +389,10 @@
         },
         {
           "prompt": "Verify the reported Play purchase acceptance against the released native plugin, actual entitlement grant, and store completion.",
+          "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "Verify the claim that a red optional check blocks merging by reading the live required contexts, draft disposition and ready-run aggregate.",
           "clause": "verifying a live status or metric before reporting it"
         }
       ],
