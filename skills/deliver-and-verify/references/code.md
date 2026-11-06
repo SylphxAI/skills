@@ -101,6 +101,15 @@ in a shared base or pass a helper test and infer the deployed path works.
 deployed values, then prove behavior through the same executable chain; a
 prose-only edit needs no runtime proof.
 
+Before taking a device lease or starting expensive acceptance, parse each case's actual
+configuration with the production parser and compare effective values and generated/compiled
+policy with expectations declared outside the candidate. Artifact hashes establish byte
+identity, not semantic intent; flag text can survive while an unknown or misplaced key
+silently selects a default. **Bad:** find `enabled = true` in the source. **Good:** correctly
+placed true/false controls match declared modes; a misplaced or unknown flag fails
+semantic preflight even if the parser accepts it. Corrected inputs require a fresh build
+and run, preserving original failed receipts unchanged.
+
 ## Transactions and idempotency
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.

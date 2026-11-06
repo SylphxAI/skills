@@ -375,6 +375,15 @@ exercising a device, record any local compatibility overlay, and limit the
 verdict to the behavior actually exercised; verify the complete published
 combination before claiming an engine upgrade.
 
+Declare each case's expected runtime observables and required lifecycle phases
+independently of the candidate's configuration or compiled constants. A test choosing
+its assertion branch from the candidate can pass the wrong mode; PASS proves only
+that selected branch. Bind accepted configuration → generated/compiled policy →
+observed OS output, using the [semantic preflight](code.md#deployment-configuration)
+before device acceptance. Reject missing phases or mode mismatches even when artifact
+bindings match; distinct APK hashes alone cannot prove a policy changed. Correct provider
+replay can still belong to another intended operation; reject that receipt.
+
 Test instrumentation or isolation that changes production dependencies or provider
 semantics cannot establish shipped-artifact behavior; keep those outputs
 structurally separate and make production publication refuse test-only variants.
