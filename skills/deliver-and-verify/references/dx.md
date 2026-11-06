@@ -1,6 +1,6 @@
 # Developer experience
 
-Trigger: changing an API/package, a development/build workflow, or an app-store release.
+Trigger: changing an API/package, a development/build workflow, browser input or foreground lifecycle, or an app-store release.
 
 Optimize time from a clean environment to a useful verified result. Make failures diagnosable and recovery clear while staying within existing spending and authority limits.
 
@@ -105,6 +105,29 @@ Admission follows an operation's resource and effect. Publishing source does not
 - Keep time/resource bounds appropriate to the job. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
 - Quarantine a known flaky test instead of retrying until green. A corrected defect or repaired infrastructure can justify rerunning the affected check; identify what changed.
 - When testing scheduling decisions, give competing callbacks the same controlled clock, including clock reads inside the callbacks. Advance it explicitly to check both overlap suppression and a later interval that must run; suppressing every callback must fail the test. Restore replaced clocks and scheduler functions, then run the enclosing suite to expose leaked state or mismatched time sources. Use real elapsed time when latency or throughput is itself the acceptance contract.
+
+### Browser input and foreground tests
+
+Use trusted browser input when acceptance depends on a browser default action,
+such as Tab moving focus. Assert both event cancellation and the resulting
+active element; synthetic `KeyboardEvent` dispatch only checks the listener path.
+For tab visibility or window blur, change actual browser focus and verify
+`document.hidden` and `document.hasFocus()` before judging the application.
+Disable automation focus emulation for that scenario, and use a headed browser
+when the headless browser does not expose the required transition.
+
+Establish foreground focus before measuring input-induced lifecycle changes,
+so startup transitions do not contaminate the measured sequence. Check the
+workflow invocation as well as the test file: a standalone trusted-input driver
+provides no CI coverage until the workflow runs it against the compiled fixture.
+
+**Wrong:** dispatch Tab, manually focus the next button, and report that the
+browser exit works. **Right:** press Tab through the browser, check that an
+internal destination cancels it, then check that a boundary press moves focus
+outside without a manual focus call.
+
+Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
+and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).
 
 ## App-store client releases
 

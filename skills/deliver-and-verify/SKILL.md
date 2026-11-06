@@ -52,6 +52,8 @@ When a secret scanner refuses publication, follow
 When selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
+For browser keyboard defaults or foreground lifecycle changes, also read
+[browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
 For changes to transaction locks or nested transactional helpers, read
 [transactions and idempotency](references/code.md#transactions-and-idempotency)
