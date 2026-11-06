@@ -152,6 +152,24 @@ so startup transitions do not contaminate the measured sequence. Check the
 workflow invocation as well as the test file: a standalone trusted-input driver
 provides no CI coverage until the workflow runs it against the compiled fixture.
 
+For an interaction that fails after a fresh load, test fresh and returning
+browser contexts separately against the production artifact. Record whether
+the press precedes hydration or reaches a live handler. Hold and release any
+first-session admission request so its cookie write and refresh cannot race
+unobserved with the interaction. Check that the same control remains mounted
+and retains its state through that refresh; a warm session or development build
+can omit the transition entirely. If an early press does not replay, show a
+visible readiness state until the control can accept input. Run the same guard
+against the failing artifact and the repair before attributing the result.
+
+Arm animation measurement before the action and control animation time while
+waiting for lazy content to mount. Measure both the first entrance after a cold
+load and a warmed entrance: warming a media-preference effect can hide a first
+entrance defect. Require the measured node to exist, distinguish an immediate
+endpoint change from interpolation across frames, and use static and missing
+content as negative controls. See [reduced-motion acceptance](parity.md#ui-coverage-geometry-and-painted-output)
+for the product behavior that these measurements must establish.
+
 **Wrong:** dispatch Tab, manually focus the next button, and report that the
 browser exit works. **Right:** press Tab through the browser, check that an
 internal destination cancels it, then check that a boundary press moves focus
