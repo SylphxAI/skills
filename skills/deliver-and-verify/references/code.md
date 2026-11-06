@@ -14,7 +14,11 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Deployment configuration
 
+When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
+
 A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
+
+Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
 
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove

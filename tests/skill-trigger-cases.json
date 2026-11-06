@@ -683,6 +683,14 @@
         {
           "prompt": "Deploy a live configuration reload with no restart or replacement; verify that the in-place reload does not need old-plus-replacement transition room.",
           "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Resize a resource whose size is owned by a manifest; change the declaration and verify the served size after its next reconciliation rather than writing the runtime API.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Resize an API-only shared resource with no manifest, config file or GitOps owner; apply through its authoritative API and verify that API state rather than inventing a declaration.",
+          "clause": "downsizing or replacing shared resources"
         }
       ],
       "negative": [
