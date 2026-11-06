@@ -160,6 +160,13 @@ concurrent durations, and fix the phase or resource policy the data identifies.
 
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
+Incremental synchronization can preserve old gaps because it trusts the current
+baseline. When restoring incomplete state, choose a mode that can recover data
+behind already-known records and verify the required dependency closure,
+including historical or private recovery roots in scope, before clearing recovery
+metadata. **Bad:** declare recovery from a successful refresh; **good:** prove the
+required historical dependencies are present after it.
+
 When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
 1. **Apply the smallest supported reversible control now:** Use the product's API, feature flag, routing weight, or GitOps sync to restore service immediately while preserving all user data and ledger integrity.
 2. **Drive the durable fix to completion:** Open and merge the source repair in the owning repository, verify it live, and remove the temporary workaround in the same delivery cycle.
