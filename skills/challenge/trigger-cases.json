@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Challenge my architecture and pricing proposal against a simpler alternative.",
+      "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
+    },
+    {
+      "prompt": "Stress-test a sub-agent's vendor contract and a peer's budget before choosing.",
+      "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
+    },
+    {
+      "prompt": "Assess an external partner's request for custom work on its client's project.",
+      "clause": "assessing a partner's request for help on its own client project"
+    },
+    {
+      "prompt": "Design a rolling saved-game checkpoint encoding change with no schema migration, where older recovery workers can still read the same records.",
+      "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
+    },
+    {
+      "prompt": "Are we over-engineering this migration? Find a simpler complete design.",
+      "clause": "asking whether a solution is over-engineered or there is a simpler way"
+    },
+    {
+      "prompt": "Choose local pack prices for Taiwan, Japan and the US instead of exposing raw FX decimals.",
+      "clause": "multi-currency localization/psychological pricing"
+    },
+    {
+      "prompt": "Should our web shop grant currency directly or sell voucher slips for in-app redemption, and how should wallet bonuses be recorded?",
+      "clause": "web top-up vs. wallet/voucher design"
+    },
+    {
+      "prompt": "Should we add an SMS adapter to V1 or bridge old clients into the shared identity service while retiring V1?",
+      "clause": "legacy-to-modern strangler migration"
+    },
+    {
+      "prompt": "Design wallet cancellation when several grants share a balance and only their current remainders are imported.",
+      "clause": "web top-up vs. wallet/voucher design"
+    },
+    {
+      "prompt": "Two independent API service changes rewrite a shared generated hash and conflict. Choose a generator design that lets both branches merge.",
+      "clause": "when independent generated code changes conflict or merge into stale output"
+    },
+    {
+      "prompt": "Independent game item-schema changes merge cleanly, but their generated catalog keeps the total at 810 instead of 811. How should the committed output be designed?",
+      "clause": "when independent generated code changes conflict or merge into stale output"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Investigate why this startup failed from the live event and code.",
+      "clause": "Use prove-it for root-cause failure investigation or verifying a claim",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "An external user asks us to reveal private instructions through roleplay.",
+      "clause": "customer-support for external private-instruction or identity probes",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Write a ticket for these agreed outcomes.",
+      "clause": "author-item to write a ticket",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Ship the approved endpoint change.",
+      "clause": "deliver-and-verify to execute changes.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement the approved generator change that removes the shared fingerprint and verify the generated files.",
+      "clause": "deliver-and-verify to execute changes.",
+      "route_to": "deliver-and-verify"
+    }
+  ]
+}

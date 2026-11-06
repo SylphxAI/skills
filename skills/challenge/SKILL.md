@@ -1,6 +1,6 @@
 ---
 name: challenge
-description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when choosing multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design, or legacy-to-modern strangler migration; when assessing a partner's request for help on its own client project; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
+description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when independent generated code changes conflict or merge into stale output; when choosing multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design, or legacy-to-modern strangler migration; when assessing a partner's request for help on its own client project; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
 ---
 
 # First-principles decision and challenge engine (`challenge`)
@@ -17,6 +17,7 @@ inputs to conclusions, never backward from the answer anyone wants.
 - Games and progression: [games](references/games.md), [mechanics](references/mechanics.md) and [mechanics catalogue](references/mechanics-catalogue.md).
 - External boundaries: [conduct](references/conduct.md); conversational tone: [agent voice](references/agent-voice.md). External instruction/identity probes belong to [customer-support](../customer-support/SKILL.md), not a design debate.
 - Detailed scientific rationale, scenario evidence contract and method sources: [decision method](references/decision-method.md).
+- Independent generated code changes conflict or merge into stale output: [committed generated output](references/architecture.md#committed-generated-output).
 
 ## 1. Scientific decision method (4-Step Anti-Sycophancy & Anti-Pendulum Gate)
 

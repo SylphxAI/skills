@@ -60,6 +60,14 @@ containers cannot use more than the node did. A path that exceeds it (a
 sandboxed guest's own accounting can run several times past the host) is wrong,
 so taking the maximum across paths picks the wrong one too.
 
+For VM or sandbox placement, measure the host Pod/cgroup memory footprint as
+well as the guest application's working set: guest cache retained by the VM and
+runtime overhead can keep host use high after application use falls. Compare
+host and guest observations over the same population and window before reducing
+host reservations; a guest-only percentile does not establish host headroom.
+Verify that runtime processes and guest backing pages belong to the measured
+host cgroups, since a Pod label does not prove whole-VM accounting.
+
 Sum simultaneous Pod/container samples into each workload before taking p95.
 The sum of individual p95 values is not the p95 of their sum. Retain the query,
 CPU rate interval, sample step, first/last timestamps, sample counts, query

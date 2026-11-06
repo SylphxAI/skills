@@ -15,6 +15,13 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 
 Verify replay, duplication, dropped delivery and timeout behavior for the affected contract. The resulting data stays correct and secrets do not appear in output.
 
+Before/after completeness comparisons use the same endpoint, request scope and
+stable key; matching counts can hide one missing object replaced by another.
+Cross-endpoint enrichment needs an explicit shared key: array order and similar
+names do not establish identity, and unresolved joins remain incomplete.
+**Bad:** pair two catalog arrays by position; **Good:** compare each endpoint's
+stable-key set and enrich only through an authoritative key join.
+
 ## Shared dependency features and client policy
 
 Enabling a shared dependency feature can change defaults for every consumer,

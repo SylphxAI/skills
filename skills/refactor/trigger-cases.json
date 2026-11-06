@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Split this oversized test module while preserving its test behavior.",
+      "clause": "splitting an oversized module or test suite"
+    },
+    {
+      "prompt": "Consolidate duplicate parsers without changing the supported input contract.",
+      "clause": "deduplicating implementations"
+    },
+    {
+      "prompt": "Remove completed compatibility layers and unused dependencies after checking callers.",
+      "clause": "deleting dead code or unused dependencies, removing completed compatibility layers"
+    },
+    {
+      "prompt": "Deduplicate a validator used by a desktop UI and a server while preserving both APIs and the server's dependency constraints.",
+      "clause": "deduplicating implementations across packages or runtimes"
+    },
+    {
+      "prompt": "Consolidate the duplicate input parsers so a command-line client can use the shared package without loading the desktop shell.",
+      "clause": "deduplicating implementations across packages or runtimes"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Add a new search endpoint that the product does not currently support.",
+      "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Change the discount calculation to support a newly requested pricing rule.",
+      "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement an additional export format, including its new public behavior.",
+      "clause": "Use deliver-and-verify when the outcome adds features or changes product behavior.",
+      "route_to": "deliver-and-verify"
+    }
+  ]
+}

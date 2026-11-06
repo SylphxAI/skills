@@ -98,18 +98,20 @@ separately gives named results when debugging.
 
 ### Trigger cases
 
-[The trigger corpus](tests/skill-trigger-cases.json) contains at least three
-positive prompts and three negative controls per skill. Every case quotes the
-applicable clause from its current description. A negative case names the
-neighbouring skill in that clause, or uses `null` for an explicit no-skill or
+Each skill owns `skills/<skill>/trigger-cases.json`, containing version 1, a
+`positive` list and a `negative` list with at least three prompts each. Add cases
+beside the skill so independent skill changes edit separate files. Every case
+quotes the applicable clause from its current description. A negative case names
+the neighbouring skill in that clause, or uses `null` for an explicit no-skill or
 direct-work boundary. Skills may be combined for composite tasks; a negative
 control tests the named skill against the primary task, not every possible
 subtask.
 
-The verifier discovers `skills/*/SKILL.md` rather than maintaining a second skill
-list. A new skill without both case lists, an obsolete case, a wrong-polarity
-clause, a missing route, or a duplicate/conflicting prompt fails CI. Metadata
-checks reject malformed or duplicate YAML keys, non-string descriptions, invalid
+The verifier discovers `skills/*/SKILL.md` and `skills/*/trigger-cases.json`
+rather than maintaining a second skill list. A new skill without both case lists,
+an obsolete case, a wrong-polarity clause, a missing route, or a
+duplicate/conflicting prompt fails CI. Metadata checks reject malformed or
+duplicate YAML keys, non-string descriptions, invalid
 names, descriptions over 1,024 characters, and main files of 500 lines or more.
 Reference checks require each reference to be linked from its own `SKILL.md`.
 
