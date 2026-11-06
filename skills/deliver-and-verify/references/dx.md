@@ -135,6 +135,11 @@ Admission follows an operation's resource and effect. Publishing source does not
 - Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
 - Keep time/resource bounds appropriate to the job. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
 - Quarantine a known flaky test instead of retrying until green. A corrected defect or repaired infrastructure can justify rerunning the affected check; identify what changed.
+- Before a local integration proof, read its fixture contract: an empty database
+  and a migrated database are different inputs. Select the test runner's supported
+  fixture before treating a relation-exists error as a product defect. Check
+  scratch-directory ownership and Unix socket path limits; use supported
+  per-run overrides for writable, short paths instead of changing shared tools.
 - When testing scheduling decisions, give competing callbacks the same controlled clock, including clock reads inside the callbacks. Advance it explicitly to check both overlap suppression and a later interval that must run; suppressing every callback must fail the test. Restore replaced clocks and scheduler functions, then run the enclosing suite to expose leaked state or mismatched time sources. Use real elapsed time when latency or throughput is itself the acceptance contract.
 
 ### Browser input and foreground tests

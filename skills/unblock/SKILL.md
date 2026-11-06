@@ -24,6 +24,15 @@ Before intervening, read the live state of the job, queue, or target resource:
    current engine version should not wait on an optional version bump whose
    migration fails. Split the bump from the UX change; retain a prerequisite
    when the acceptance cases actually depend on it.
+5. **Verify the resource can supply the missing capability:** Before restoring
+   a credential or expanding a grant, read the selected account/workspace's
+   entitlement and access to the specific model, feature or workload. Successful
+   sign-in proves identity, not paid entitlement or usable capacity. Exclude
+   a resource with verified incompatible access from that restoration goal;
+   keep missing or stale evidence unknown. Route a required purchase to its
+   budget owner. Health reports distinguish failed probes from lost capacity
+   for the requested capability, so a broken free-tier connection does not
+   inflate a paid-capacity deficit.
 
 
 ## 2. Diagnose by Failure Class
