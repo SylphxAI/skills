@@ -719,6 +719,10 @@
         {
           "prompt": "Fix the concurrency test that counts only direct PostgreSQL blockers and misses a second operation queued behind another waiter.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
