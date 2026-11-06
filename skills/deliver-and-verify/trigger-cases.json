@@ -546,7 +546,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -670,11 +670,11 @@
       "clause": "changing SQL queries or schema-backed fixtures"
     },
     {
-      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -776,6 +776,14 @@
     {
       "prompt": "Ship a shared build-cache permission repair while keeping signing keys and configuration private, and verify it with two execution UIDs.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
+      "clause": "changing SQL queries or schema-backed fixtures"
     }
   ],
   "negative": [
@@ -1283,6 +1291,11 @@
       "prompt": "Rewrite the explanation of package-cache permissions without changing or publishing configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review why this future-dated fixture fails its expiry ordering constraint before the eligibility assertion; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
