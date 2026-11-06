@@ -65,16 +65,16 @@ differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
 **Good:** the draw changes the expected pixels, and the failing state is retained
 as a negative control.
 
-Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
-Texture corruption on both WebGPU and WebGL can therefore share an environment
-cause; switching APIs alone does not establish a product defect. Before reporting
-or routing a visual defect from that environment, reproduce the same build,
-scene and assets on a hardware GPU or real device. Record the WebGPU adapter
-information or WebGL renderer string, browser, build and paired captures in the
-receipt. If renderer details are unavailable, say so; do not infer hardware
-acceleration from the API name. Without the hardware check, retain the observed
-artifact but mark product attribution OPEN. If it reproduces there, investigate
-the product with that evidence.
+Headless browsers and virtualized native hosts may use a software GPU such as
+SwiftShader or llvmpipe; corruption or delayed presentation can therefore share
+an environment cause across graphics APIs, so switching APIs alone does not
+establish a product defect. Record the adapter or renderer, browser/native host,
+build and captures; if renderer details are unavailable, say so rather than
+inferring hardware acceleration from the API name. Reproducing the same build,
+scene and assets on a hardware GPU or physical device helps distinguish product
+from environment faults; without that comparison, retain the observed artifact
+and mark attribution and physical-device performance OPEN, while reporting
+functional acceptance separately within the tested environment and latency bound.
 
 ## Continuous aspect ratios and visibility
 
@@ -381,8 +381,11 @@ geometry cannot establish edge-to-edge paint.
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is
 absent or inactive; a test that still passes against a removed entry is not
-testing that entry. For account changes, reopen an authorized existing-session
-or guest fixture and verify the same canonical account and retained value.
+testing that entry. Exercise the full routed pointer-down and pointer-up sequence
+for missing activation and duplicate side effects; a direct callback test misses
+overlapping handlers on different phases of the same gesture. For account
+changes, reopen an authorized existing-session or guest fixture and verify the
+same canonical account and retained value.
 
 For custom-rendered browser controls, distinguish three observations:
 
@@ -551,8 +554,9 @@ against the raw pixels and measured control bounds; an observer's estimated
 coordinate is not a measurement. Colour-threshold bounds describe only the
 matching painted subset, not the full control or its hit area.
 
-If an accepted input leaves the state unchanged, first test whether it missed
-the control. Request acceptance and cursor coordinates do not establish a hit.
+If a requested input leaves the visible UI unchanged, first test whether it
+missed the control. Request acceptance and cursor coordinates do not establish
+a hit.
 Use a fresh frame and, where needed, a supported pointer-location diagnostic
 before blaming a handler, backend or input driver, patching code or replacing
 the device. Record the prior diagnostic setting, restore it and verify cleanup.
@@ -560,6 +564,11 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
+Before patching allegedly lost input, trace delivery through the handler, state
+change, paint generation and presentation: a callback or generated paint does
+not establish visible completion. Retain the unchanged early capture and any
+later transition with no new input; that transition distinguishes delayed
+completion from a dropped action, without establishing the cause of the delay.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a
