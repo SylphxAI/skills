@@ -755,6 +755,18 @@
         {
           "prompt": "Fix a CI workflow policy parser that rejects an unreachable runner label, preserving every reachable label-dependent outcome for each triggering event.",
           "clause": "implementing or shipping a feature, bug fix, parser"
+        },
+        {
+          "prompt": "Port billing aggregate views between database engines while preserving exact decimal results on repeating fractions.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Implement a support SQL function whose validated text parameter can inherit a caller-provided nondeterministic collation.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Update a card game reporting fixture to exercise NULL, scalar JSON and collation-sensitive candidate limits on the real migrated schema.",
+          "clause": "changing SQL queries or schema-backed fixtures"
         }
       ],
       "negative": [
@@ -1090,6 +1102,21 @@
         },
         {
           "prompt": "Rewrite this database permission explanation for developers; change prose only without publishing it.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review this cross-engine aggregate diff for numeric precision defects without changing or running it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare collation compatibility strategies for a proposed database migration without implementing one.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the database parity runbook for clarity without running SQL or publishing changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }
