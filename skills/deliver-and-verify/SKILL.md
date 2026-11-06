@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -72,7 +72,7 @@ For public social feed publishing, follow the [social post media and visual insp
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing shared runtime settings or deployment overlays, read
+When changing shared runtime settings or deployment overlays, or rotating secrets consumed by Jobs, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging or one-off container probes, read
@@ -83,6 +83,8 @@ For sandbox build templates or native compilation failures, read
 
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures).
+
+When changing stderr redaction, read [security.md](references/security.md) to preserve diagnostics at the consuming process.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).

@@ -21,11 +21,12 @@ volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 
-When replacing a live lookup with a shared pin, update the existing automatic
-promotion writer in the same delivery and verify it detects changes to every
-pinned member independently. State the change in propagation latency, including
-the updater's cadence, CI/merge queue and deployment reconciliation; one working
-initial pin does not prove that the next release will reach its consumers.
+Trace each pinned or referenced input through the existing automatic writer's
+change trigger, propagation latency and the consumer's read behavior; an initial
+deployment does not prove later input changes propagate. **Wrong:** rotate a
+Secret and assume a completed Job reruns. **Right:** change only that input and
+verify the intended consumer uses its new revision within the declared
+propagation time, including CI, merge queue and deployment reconciliation.
 
 Verify the rendered configuration reaches the deployed process, then exercise
 the behavior that consumes it. **Wrong:** find a setting in the shared base and

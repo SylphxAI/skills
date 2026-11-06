@@ -647,6 +647,30 @@
         {
           "prompt": "Merge conflicting generated API clients, regenerate the complete projections from canonical inputs, and preserve both parents' response guarantees before shipping.",
           "clause": "running source generation locally or remotely"
+        },
+        {
+          "prompt": "Rotate a Secret consumed by an already-completed reconciliation Job and ship its new configuration.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Change only an encrypted input used by a scheduled Job and verify the deployed consumer reads its new value.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Deliver a replacement API credential to a one-shot Job without changing the credential value in source.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
+          "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Change stderr redaction so structured worker failures stay parseable while credential values remain concealed.",
+          "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
+          "clause": "changing stderr redaction"
         }
       ],
       "negative": [
