@@ -44,6 +44,10 @@
     {
       "prompt": "The documentation site pull request has merge conflicts and no Actions run; resolve its CI admission failure.",
       "clause": "a pull request has no CI run after a push"
+    },
+    {
+      "prompt": "The required policy scanner rejects a generator even though the local pre-push check passes. Restore CI while preserving the required contract.",
+      "clause": "CI/build run that has actually stalled or is failing"
     }
   ],
   "negative": [
@@ -76,6 +80,11 @@
       "prompt": "The pull request build is running within its expected duration; leave it running.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
+    },
+    {
+      "prompt": "Review whether a merged policy-scanner fix preserved the required behavior; CI is healthy and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
     }
   ]
 }
