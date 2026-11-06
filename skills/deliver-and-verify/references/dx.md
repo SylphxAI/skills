@@ -136,6 +136,13 @@ generation check or consumer assertion before publishing. A successful remote ex
 establishes execution there; it does not establish complete local output. Read-only
 checks can use the ordinary remote verification path.
 
+Some remote executors snapshot source when they admit a job, not when it is
+submitted. Submit from a dedicated worktree and leave it untouched until the
+executor reports that it has synced. Bind the receipt to the digest of the synced
+tree and the digest of the test script. A receipt that names only a branch or
+commit can attest a later local edit that was tested in place of the submitted
+head.
+
 If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
