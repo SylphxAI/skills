@@ -473,6 +473,10 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 Use trusted browser input when acceptance depends on a browser default action,
 such as Tab moving focus. Assert both event cancellation and the resulting
 active element; synthetic `KeyboardEvent` dispatch only checks the listener path.
+Trusted delivery and an uncancelled event do not prove a native default ran:
+calibrate the input bridge against the actual effect in a minimal positive control,
+including generated character input when applicable, before attributing its absence
+to application code. Preserve the behavioral negative when repairing the bridge.
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
