@@ -233,6 +233,18 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix a document renderer that still reports ready after its child process dies, preserving uploaded files for recovery.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship device liveness checks that stop dependent work after loss without extending an idle lease.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Forward a supervised worker's diagnostics and exit result before its temporary host is removed, and verify a controlled crash.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix a flaky frame-versus-timer scheduling test with controlled clocks and prove a later interval still runs.",
           "clause": "implementing or shipping a feature, bug fix"
         },

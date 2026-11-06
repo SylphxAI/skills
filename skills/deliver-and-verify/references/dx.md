@@ -55,6 +55,33 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Client-verified readiness:** Measure service availability from the moment a real client request or sign-in succeeds, not merely when an orchestrator readiness probe turns green.
 - **Time-critical operational windows:** When an operational cutover or mitigation cannot wait for slow CI queues, apply the supported live control first, verify the dry-run and live state, and then merge the durable source change to restore automatic reconciliation.
 
+### Supervised runtime health
+
+When readiness depends on a supervised device, renderer or worker, check its
+capability after startup as well as the host process. Use a bounded probe in the
+existing active-work reconciliation; it must neither extend idle activity nor
+keep unused capacity running. A transport failure alone leaves liveness unknown.
+
+If the runtime fails while its host holds caller files or recovery state, expose
+the unavailable capability without deleting that state. Refuse new dependent
+work with a typed error before dispatch, while preserving existing file access and
+completed request replays. When relaxing a shared admission helper for recovery,
+audit every mutating caller, including setup and installation paths. Keep quota
+ownership and normal release or expiry accounting consistent with the retained
+host. A stateless host can follow its existing replacement policy.
+
+Forward the child's diagnostic output and wait result to retained logs before
+the host can disappear, filtering credentials and caller content. Record an
+exit code and a signal separately when the supervisor can distinguish them;
+label a shell's signal-like status as a convention rather than proof of cause.
+Missing logs limit the conclusion; do not substitute a resource or flag change
+for evidence of the failure.
+
+Verify with a disposable instance: terminate only the supervised runtime, then
+observe management readiness, refusal without dispatch, retained files and
+request replays, and centrally readable exit evidence. Release the instance and
+confirm cleanup through the normal path.
+
 ## Workflow admission
 
 A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
