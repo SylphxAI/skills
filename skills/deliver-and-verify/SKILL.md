@@ -44,6 +44,9 @@ UI control and renderer changes also use the [visual acceptance checks](referenc
 For preview provisioning or reduced-backend profiles, read
 [deployment configuration](references/code.md#deployment-configuration) and
 [migrations](references/code.md#migrations) before selecting a backend target.
+For a public preview or disposable service, also read
+[first useful success](references/dx.md#first-useful-success) before relying on
+an advertised creation, deployment or port-exposure operation.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).

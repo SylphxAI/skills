@@ -920,6 +920,18 @@
     {
       "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
       "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Provision a public preview from this generated create command; establish that the deployed handler admits the selected artifact and target before depending on its URL.",
+      "clause": "provisioning previews"
+    },
+    {
+      "prompt": "Deploy a disposable public webhook receiver through the supported API, exercise it from outside its instance, and confirm deletion after verification.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Expose a multiplayer preview through the generated CLI port command and verify an outside request; command help alone does not show that the deployed operation is implemented.",
+      "clause": "provisioning previews"
     }
   ],
   "negative": [
@@ -1550,6 +1562,21 @@
     },
     {
       "prompt": "Rewrite the explanation of application-attempt and transport-request counts without changing or publishing a probe.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review the claim that a generated create command proves public fixture availability; inspect the evidence without provisioning or changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare deployment designs for disposable public test services and their cleanup costs; choose an architecture without implementing it.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining why an advertised create command does not guarantee public deployment support; do not change software or run operations.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

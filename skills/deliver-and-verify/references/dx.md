@@ -28,6 +28,19 @@ splitting can change an argument even when the shell preserves it. Match the
 parsed request to the wire schema; whole-request JSON/YAML can preserve arrays
 and punctuation that flag parsing would alter.
 
+A schema entry or generated command advertises a request shape, not an
+implemented and admitted operation for the effective identity, artifact and
+target. Before relying on that route, match the deployed handler and admission
+constraints to the required outcome; a public fixture needs a request through
+its intended public address and confirmed cleanup, not just an in-instance
+response or a declared port. A refusal disproves that route under those inputs,
+not every supported route: choose another admitted path, repair the owning
+capability, or mark the dependent verification unavailable.
+
+**Wrong:** infer a usable public test service from a create command and port
+flag. **Right:** establish the supported deployment path, verify an outside
+request and confirm deletion before claiming the fixture worked.
+
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
 A temporary-directory error can originate in a separately configured package
