@@ -114,18 +114,6 @@
         {
           "prompt": "Distill a named customer incident into a reusable causal method with product-neutral examples and measured replacement conditions.",
           "clause": "creating, refactoring, or auditing a reusable Agent Skill"
-        },
-        {
-          "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
-          "clause": "implementing or shipping a feature, bug fix"
-        },
-        {
-          "prompt": "Ship the repair for a maintenance image excluded from service-manifest discovery, proving its actual COPY inputs satisfy the existing guard.",
-          "clause": "implementing or shipping a feature, bug fix"
-        },
-        {
-          "prompt": "Fix a game server image build that failed after a new path dependency was added, including a negative guard test against its actual Dockerfile.",
-          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -463,6 +451,18 @@
         {
           "prompt": "Repair the payment integration so a lost charge response preserves its original idempotency key and typed failure cause, then verify the deployed behavior.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship the repair for a maintenance image excluded from service-manifest discovery, proving its actual COPY inputs satisfy the existing guard.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a game server image build that failed after a new path dependency was added, including a negative guard test against its actual Dockerfile.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
