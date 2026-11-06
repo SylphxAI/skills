@@ -10,6 +10,12 @@ self-contained step per turn and push source before ending it; a long active too
 call does not protect unpushed work from deadline loss. Do not assume the same
 limit in a runtime with a different documented contract.
 
+A launcher found on `PATH` can derive a different child executable from `HOME`
+or a toolchain directory, so discovery or a version check does not prove the
+build will start. When a failure names a missing child executable, read that
+dispatch chain and use its supported path setting with admission controls intact;
+verify the originally failing subcommand before resubmitting a long suite.
+
 Run long builds and suites in CI. Record the submitted revision and run ID, set a
 `github:check:<owner>/<repo>@<ref>` event watch and end the turn instead of waiting
 inside it. On wake, read the actual run and continue from its receipt, without
