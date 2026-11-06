@@ -51,10 +51,16 @@ does not establish compression ([PostgreSQL 18 TOAST](https://www.postgresql.org
 read 2026-11-06). Measure storage work as well as application allocation before
 calling a chunked interface scalable.
 
-Enforce capture limits as bytes arrive. Publish a manifest only after EOF,
-byte count and digest verification; cancellation or overflow preserves the
-previous committed version and source. Serialize replacement against readers
-or read immutable version references, so a stream cannot mix versions. Follow
+Bound temporary staging at the producer before transfer; rejecting an oversized
+response cannot limit a file already written to disk. Keep one owner responsible
+for the producer and its outputs until the producer is terminal, since earlier
+cancellation cleanup can race a late write that recreates the files. Prove the
+bound and cleanup with oversized input, producer interruption and consumer
+cancellation, preserving the last committed result and source.
+
+Enforce receiving limits as bytes arrive. Publish a manifest only after EOF,
+byte count and digest verification. Serialize replacement against readers or
+read immutable version references, so a stream cannot mix versions. Follow
 [migration compatibility](code.md#migrations) while old revisions still serve.
 
 Prove the actual storage-to-network or storage-to-replay path. Use a fresh
