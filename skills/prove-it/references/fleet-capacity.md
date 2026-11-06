@@ -1,7 +1,7 @@
 # Fleet capacity and idle-workload evidence
 
-Read this when verifying a fleet resource census, an idle replica floor, or a
-claim that scaling down released capacity. The result is a measured population
+Read this when verifying a fleet resource census, historical worker concurrency,
+an idle replica floor, or a claim that scaling down released capacity. The result is a measured population
 and a separate release verdict. A requested savings target is not evidence that
 safe candidates exist.
 
@@ -66,6 +66,16 @@ when the dispatch contract binds that worker to it.
    stated. Do not turn their exclusion into an unexplained missing row.
 
 ## Measure without manufacturing zeroes
+
+For historical job concurrency, observation IDs need not identify executions:
+GitHub rerun-failed can copy successful jobs into later attempt responses under
+new job IDs while preserving their runner and timestamps. Reconcile retained
+attempts by execution identity (workflow run, job/matrix identity, assigned
+runner and start/end interval), keeping observation IDs as provenance; genuine
+reruns with different intervals remain separate. **Wrong:** sum per-attempt
+jobs. **Right:** deduplicate carried-forward observations, sweep half-open
+execution intervals and report unavailable runs or work outside the queried
+cohort as coverage gaps.
 
 Choose one authoritative scrape path per cell. Verify named application
 containers are present: a container metric can expose host/runtime containers
