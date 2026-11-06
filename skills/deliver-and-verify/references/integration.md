@@ -178,15 +178,16 @@ parts succeed; retain partial acceptance and account for accepted parts once.
 Retry only parts that the provider contract proves were not accepted, using
 its supported idempotency and recovery semantics.
 
-When a workflow can finish with partial knowledge, distinguish transport
+Bind each generated assessment to its exact request and scope; bounded
+corrective feedback may ask the model to resubmit, but the caller must never
+rewrite returned identity fields to make them match. Distinguish transport
 availability, domain completion and validated partial results through aggregation
-and final publication: an exhausted work bound is not a provider outage, and a
-successful HTTP response is not proof of complete work. Preserve earlier
-validated results unless later domain evidence revises them; derive the
-published outcome from the operation's contract rather than treating all
-unfinished work as either success or provider failure. Contrast an
-available-but-incomplete response with a true outage at the public entry point,
-both with partial results present.
+and publication: persistent malformed assessments or exhausted work bounds are
+not transport or capacity outages, and neither HTTP success nor workflow
+completion proves complete work. Preserve earlier validated results unless later
+domain evidence revises them, derive the published outcome from the operation's
+contract, and contrast malformed or incomplete assessments with true outages at
+the public entry point with partial results present.
 
 Verify a queued intent after eligible configuration is removed, both with and
 without an existing spend reservation, through each outer production entrypoint:
