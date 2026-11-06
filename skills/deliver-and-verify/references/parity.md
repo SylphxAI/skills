@@ -255,6 +255,10 @@ claiming it catches the defect, then test the repair under the same conditions.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
+- A control can submit the right values and expose an accessibility label while
+  rendering no visible label. Assert its displayed content as well as its
+  accessible name and action, and inspect the captured frame before presenting
+  it as visual proof.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
