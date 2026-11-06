@@ -1,6 +1,6 @@
 # Code conventions
 
-Trigger: writing or changing code, tests or migrations; changing recovery
+Trigger: writing or changing code, tests, deployment configuration or migrations; changing recovery
 references, rollback pins or asynchronous reconcilers.
 
 Make behavior, authority and failure handling visible. Keep one authority for each domain fact; derive clients and models where generation prevents drift.
@@ -11,6 +11,22 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Model lifecycle states explicitly and handle them exhaustively. Return expected failures as typed values and translate them at the boundary.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
+
+## Deployment configuration
+
+For a shared runtime setting, render each supported deployment overlay or
+release profile before changing live state. A base declaration does not prove
+that a consumer receives it: replacement environment lists, arguments or
+volume mounts can discard new shared entries. Assert the required effective
+values and preserve intentional target-specific omissions; changing replacement
+to merging can also import settings that belong only to another target.
+
+Verify the rendered configuration reaches the deployed process, then exercise
+the behavior that consumes it. **Wrong:** find a setting in the shared base and
+assume every region inherits it. **Right:** test each assembled target, reproduce
+the missing setting before the fix, and read back its live value and behavior.
+The same check applies to a game-server profile overriding shared worker
+settings. A prose-only edit needs no deployment rendering.
 
 ## Transactions and idempotency
 
