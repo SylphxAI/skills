@@ -255,6 +255,14 @@
         {
           "prompt": "Fix a localized price formatter that shows an ambiguous dollar sign, add independent literal-string regression cases, and ship it.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Fix the deadlock between stock reservation cancellation and expiry; audit the outer batch transaction and prove the database wait order.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Ship the database race regression and repair CI selection: the integration binary compiles but no cases execute.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         }
       ],
       "negative": [
