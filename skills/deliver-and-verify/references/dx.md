@@ -124,6 +124,12 @@ queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
 ([database boundary tests](code.md#database-boundary-tests)) and run the actual
 consuming database test; compilation and parser checks cannot prove resolution.
+Compare the test's local setup with CI's phase order: a later migration hook
+cannot prepare an earlier test phase. A migrated local database can hide missing
+fixture setup; verify the consuming test from the database state available at
+its actual CI phase. Fixture isolation must cover every namespace the real query
+resolves; a private `search_path` does not isolate schema-qualified objects, so
+choose an isolation boundary that contains them too.
 If a complete replay fails under the application role while the deployed schema
 works, compare effective privileges along the failing function call chain in
 both databases. Record each differing function, role and privilege, the live
