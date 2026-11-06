@@ -420,6 +420,14 @@ colours or variance, not only that the file exists.
   that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
   live value and is reported. A source template can hold old values nobody chose,
   and a flag that looks like a harmless hide can remove what a user already owns.
+- Trace asset generation through export/build, package staging and runtime
+  manifest/cache/remote selection: a store build may skip a separate bundle
+  builder, packaging may only copy an export, and remote content may supersede
+  embedded assets. Bind the loaded-content evidence to prepared input hashes
+  after live-data overlays; the same source commit or a new binary proves
+  neither identical inputs nor delivery of serialized UI changes alongside
+  runtime-created UI. Establish that every required changed resource was built,
+  staged and selected.
 - Read every changed artifact with an independent reader: the actual shipped
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check
