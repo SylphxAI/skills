@@ -81,6 +81,22 @@ claims; none alone proves all users were repaired.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
 
+For formatting regressions, type representative expected strings from the
+user-visible contract. Deriving the expectation from the formatter under test
+repeats its defect. Include the locale where an ambiguous symbol is native,
+another supported locale, and relevant signs, zero or grouping boundaries.
+For example, a currency-labelled price can require `US$1.99` in `en-US` and
+`-US$1.00` for a negative amount. Apply the same independence to date, unit and
+identifier formatting. Assert the rendered caller too when its choice of
+formatter or options caused the defect; keep broad invariant checks alongside
+these examples. When multiple strings are valid, derive accepted alternatives
+from the contract rather than freezing an incidental library output.
+
+**Wrong:** `expect(renderedPrice).toBe(formatPrice(amount, locale))`.
+**Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
+currency label. A date display regression similarly asserts an independently
+specified date string; a transport retry change needs no formatting cases.
+
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
 In Rust crates with multiple integration test modules, use a single integration test binary (`tests/integration/main.rs` with `mod <domain>;` submodules under `tests/integration/`) rather than many top-level `tests/*.rs` files, so `cargo test` links one integration binary instead of compiling and linking dozens of separate test executables.
