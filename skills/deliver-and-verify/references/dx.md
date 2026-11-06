@@ -23,6 +23,11 @@ inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;
 failures naming cached third-party files call for correcting input discovery.
 
+A generated CLI's repeated-string flag need not decode JSON, and delimiter
+splitting can change an argument even when the shell preserves it. Match the
+parsed request to the wire schema; whole-request JSON/YAML can preserve arrays
+and punctuation that flag parsing would alter.
+
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
 Before concluding a local-mode override is ineffective, check the mode flag's
