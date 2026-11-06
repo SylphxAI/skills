@@ -748,6 +748,18 @@
     {
       "prompt": "Apply an authorized mailing-list change through a generated CLI whose repeated string values contain commas, verifying the parsed wire request.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
+      "clause": "editing PR titles/bodies"
+    },
+    {
+      "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
+      "clause": "editing PR titles/bodies"
+    },
+    {
+      "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
+      "clause": "editing PR titles/bodies"
     }
   ],
   "negative": [
@@ -1223,6 +1235,21 @@
     },
     {
       "prompt": "Review why a passing affected-test run omitted a feature-gated consumer test, without changing CI or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Draft an offline PR description for the payment fix; do not update GitHub.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite this game patch description in a local text draft; make no repository or pull request change.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a PR body edit caused the earlier checks to be cancelled, without changing the PR or workflows.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     }
