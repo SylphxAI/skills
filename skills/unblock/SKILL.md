@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -51,6 +51,20 @@ sibling jobs and wait for a workflow-completion event. Then retry only the lost
 job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
+
+### Missed completion events
+
+A registered watch does not prove that its observer saw the terminal status or
+that its notification resumed the waiting worker. Retain the target, source
+revision, baseline, last observed status and expected completion window. For an
+unverified event source, keep a timed fallback that reads the target directly.
+
+If the target has finished but the watch still reports pending, read the final
+result and resume the remaining work. Cancel the stale watch and use a supported
+one-time follow-up; verify that the follow-up actually runs. Reconcile existing
+operation receipts before any write, so a lost notification never repeats a
+successful merge, deployment or payment. Hand the observer or dispatcher fault
+to its owner without restarting healthy work or repairing an unrelated runtime.
 
 ### Build wrapper timeouts
 
