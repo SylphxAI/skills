@@ -71,6 +71,11 @@ Treat a finding as a claim to inspect. Entropy alone cannot distinguish a
 credential from a generated identifier, asset path or digest. Review every
 finding in the publication range, including unpublished ancestor commits;
 changing only the current file does not remove a finding in that history.
+Serialization or encoding can change entropy and scanner noise without changing
+source identity: compare the decoded value with its authoritative source and
+inspect the exact scanned bytes. Avoid gratuitous serialization churn, but a
+representation change is not a security fix; encoded real secrets remain
+withheld from publication.
 
 1. Retain the scanner's exact commit, path, line and content digest without
    copying possible secret values into logs, chat or the pull request.

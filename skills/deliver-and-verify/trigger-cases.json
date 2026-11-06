@@ -383,15 +383,15 @@
     },
     {
       "prompt": "Fix a database controller whose enum result decodes only in a TEXT test fixture; ship and verify the correction.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Change the game inventory query and test it through the application role against the migrated schema.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a fixture setup fix that gives cold schema DDL its own bounded connection budget while preserving request timeouts and exploit assertions.",
@@ -531,7 +531,7 @@
     },
     {
       "prompt": "Fix a JSON checkpoint update that replaces another transaction's committed renewal deadline.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Ship concurrent stock reservation and pricing updates that preserve the fields each writer owns.",
@@ -567,11 +567,11 @@
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Repair a schema fixture so invoker triggers use the application role and private definer helpers keep their owner permissions.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a function privilege guard that distinguishes app mutations from administrative trigger events.",
@@ -595,15 +595,15 @@
     },
     {
       "prompt": "Port billing aggregate views between database engines while preserving exact decimal results on repeating fractions.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a support SQL function whose validated text parameter can inherit a caller-provided nondeterministic collation.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update a card game reporting fixture to exercise NULL, scalar JSON and collation-sensitive candidate limits on the real migrated schema.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Repair a payment fault-injection test that accepts an authentication refusal before reaching its intended changed-price check, and ship specific refusal coverage.",
@@ -615,7 +615,7 @@
     },
     {
       "prompt": "Repair database fixture readiness so a socket-only initialization server cannot satisfy the final TCP-server probe, then run the real fixture.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
@@ -659,15 +659,15 @@
     },
     {
       "prompt": "Repair a migrated billing database fixture that is prepared but cannot admit charges until its guarded activation transition completes.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update a game-server database fixture to activate its real save authority with the required role and closed legacy writers before running recovery tests.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Fix a document-worker schema fixture that bypasses its activation guard instead of satisfying the real privilege and state-transition prerequisites.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
@@ -691,7 +691,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "handling credentials exposed in process arguments"
+      "clause": "handling credentials in process arguments"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -776,6 +776,18 @@
     {
       "prompt": "Ship a shared build-cache permission repair while keeping signing keys and configuration private, and verify it with two execution UIDs.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "A secret scanner refuses publication of escaped asset paths; resolve the findings and publish through the unchanged scanner.",
+      "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "Publish generated API metadata after reviewing every secret-scanner refusal, including unpublished ancestors.",
+      "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "A scanner blocks a game source push after metadata serialization changed; investigate exact findings and complete publication.",
+      "clause": "secret scanners refuse"
     }
   ],
   "negative": [
