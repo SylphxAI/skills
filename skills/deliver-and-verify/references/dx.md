@@ -119,6 +119,10 @@ supported installer and rerun the original command. A published fix does not
 update a pinned installation. Keep the checksum pinned with the version; an
 automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
+Verify the upgraded client's default workflow with the consumer's actual
+credential path: a broader maintainer login can hide scope requirements in newly
+enabled optional endpoints. A working version command or an explicitly disabled
+feature does not establish that the default workflow still succeeds.
 
 ### Private package verification
 
