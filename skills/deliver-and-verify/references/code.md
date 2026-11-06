@@ -53,6 +53,31 @@ tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
 ([PgBouncer feature map](https://www.pgbouncer.org/features.html), read 2026-11-05).
 
+## Publication time and expiry
+
+When the contract promises a lifetime from becoming ready or being granted,
+set expiry in the same atomic update that publishes that state, after slow
+capture, generation or transfer completes. Use one authoritative timestamp for
+related fields. Keep the start of work separately when the API needs it.
+An absolute deadline or a lifetime explicitly measured from the request keeps
+that origin; publication and retries must not extend it.
+
+In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
+Moving them to the final update of a long transaction still consumes the new
+resource's retention. Use the final statement's `statement_timestamp()` or
+capture one `clock_timestamp()` value for the publication update; repeated wall
+clock calls can disagree within a statement
+([PostgreSQL 18 date/time functions](https://www.postgresql.org/docs/18/functions-datetime.html),
+read 2026-11-06).
+
+**Wrong:** set a report's download expiry before generating and storing it.
+**Right:** publish its ready state and full promised availability atomically.
+Test through the real entry point with work lasting at least the minimum
+retention. Assert that the returned resource is ready, remains gettable and
+usable, and has the full promised lifetime from publication. A mocked application
+clock alone cannot expose a database clock fixed at transaction start. Include
+an absolute-deadline control when that contract also exists.
+
 ## Migrations
 
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.

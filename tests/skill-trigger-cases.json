@@ -283,6 +283,18 @@
         {
           "prompt": "Bound historical job-output replay before the database result reaches the API, preserve stored bytes, and deploy the fix.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix generated report links that expire before becoming ready when generation outlasts the minimum retention, and deploy the regression.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a saved-game backup fix that grants the promised retention after capture and upload complete, verified through the public API.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement export publication so its ready state and expiry commit atomically while existing absolute deadlines remain unchanged.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -318,6 +330,21 @@
         },
         {
           "prompt": "Rewrite this archive migration announcement for customers; do not change or publish the service.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review this expiry SQL for transaction-clock defects and report findings without changing code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare request-time and publication-time retention contracts before choosing a design; do not implement it.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the download expiry notice for clarity without changing the service or publishing it.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
         }
