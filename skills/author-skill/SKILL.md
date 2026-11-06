@@ -56,11 +56,20 @@ superseded rule and reconcile sibling skills in the same change.
   (`寫明背後因果理由與推翻條件`). Explain why the rule improves the objective,
   its assumptions and which measured signal changes the action. When evidence
   cannot establish the cause, label the mechanism a hypothesis.
-- **Refine the authoritative rule in place**
-  (`原地提煉升級舊規則，嚴禁疊床架屋貼膠布`). Rewrite the existing method when
-  experience reveals a flaw; remove conflicting old text and link consumers to
-  its one authoritative home. Do not append an incident-specific exception
-  beneath a contradictory rule.
+- **Refine the authoritative rule in place (`原地提煉升級舊規則，嚴禁疊床架屋貼膠布`):**
+  Rewrite the existing method when experience reveals a flaw; remove conflicting
+  old text and link consumers to its one authoritative home (`SSOT`). Do not append an
+  incident-specific exception beneath a contradictory rule, and never duplicate
+  the same block across sibling skills.
+- **Anti-over-engineering & anti-pendulum distillation (`反 Over-Engineering 與反矯枉過正`):**
+  Proactive daily reflection (`自省與持續進化`) must leave skills and systems **simpler
+  and sharper**, never more bureaucratic. Never add pre-send human/peer approval
+  gates that block real-time execution, never invent multi-daemon wrappers when a
+  single direct check suffices, and never swing to the opposite extreme (`矯枉過正`,
+  such as turning warm customer companionship into cold legalistic refusals after
+  a privacy mistake). Preserve the positive business goal while cutting only the
+  failure mode ($\bigcap V_i$), and prune verbose or superseded clauses whenever
+  adding a new insight.
 - **Run a cross-product transfer test** (`跨領域盲測驗證`). Remove names and
   apply the decision to a different product or domain, such as a business SaaS
   tool and a competitive card game. The same governing mechanism must select
