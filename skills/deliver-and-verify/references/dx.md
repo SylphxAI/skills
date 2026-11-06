@@ -178,6 +178,12 @@ outputs from the repository's scripts and CI workflow. Follow canonical inputs t
 web registries, clients and documentation. The primary compiler may produce only
 part of the required output. A lockfile-only install also changes source.
 
+When extracting generated inputs from a container, resolve logical identities
+through declared relationships and schema identifiers; archive member order,
+active views and copied headers can select notes or duplicate data. Verify
+reordered members and ambiguous lookalikes without changing which logical
+records are compiled.
+
 Contract conformance and generated-file freshness are separate: regeneration can
 emit consistent clients from an invalid public contract. Run the repository's
 actual standards checker as well as its generation check. When generated outputs
