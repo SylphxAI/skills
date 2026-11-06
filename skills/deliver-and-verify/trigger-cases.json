@@ -50,6 +50,18 @@
       "clause": "enrolling disabled tests in CI"
     },
     {
+      "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Add a game protocol declaration and ship every affected generated client and registry even though the generator code is unchanged.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a new API schema field and regenerate the public documentation and SDK projections selected by their freshness checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
       "clause": "running source generation locally or remotely"
     },
