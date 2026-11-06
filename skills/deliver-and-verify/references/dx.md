@@ -158,6 +158,29 @@ A control protects a witnessed failure or a real invariant within its owning aut
 
 Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels.
 
+## Selected release inputs
+
+Before changing a release assembled from a historical base plus explicit files,
+trace the publisher's materializer and build command. List the source paths,
+assembled destinations, generated artifacts and unchanged dependencies it
+actually consumes. A source change elsewhere in the checkout can pass tests
+without entering the release. Register the consumed source path in each affected
+profile, or use a reviewed exact-path exclusion with a reason. Refuse registered
+inputs that no longer exist, including paths left behind by a rename.
+
+Read how dependency binaries reach the runtime. A copied prebuilt binary needs
+both assembly inclusion and permission in the artifact policy when that policy
+keeps other dependencies byte-identical. A direct source overlay into a compiled
+module can replace that route; require binary synchronization only while those
+binaries remain the delivery mechanism. Derive registration from the input to
+destination mapping, since their directory names can differ.
+
+Keep ordinary source registration separate from release selection. Read the
+selector and lock history before requiring every source PR to regenerate a
+frozen release binding; validate that binding where the release is selected.
+Replay a witnessed omitted-input diff and a known registered diff through the
+actual guard, and test both source-overlay and prebuilt routes when supported.
+
 ## Continuous integration
 
 - Before running a browser suite in a fresh build lease, read its CI setup and
