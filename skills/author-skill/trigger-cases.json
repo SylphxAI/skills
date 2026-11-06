@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Create a reusable skill for reviewing API compatibility.",
+      "clause": "creating, refactoring, or auditing a reusable Agent Skill"
+    },
+    {
+      "prompt": "Audit this SKILL.md description for trigger ambiguity and missing reference links.",
+      "clause": "write concrete moment-based trigger descriptions"
+    },
+    {
+      "prompt": "Add positive prompts and negative controls for this reusable skill.",
+      "clause": "validate positive/negative trigger test cases"
+    },
+    {
+      "prompt": "Distill a named customer incident into a reusable causal method with product-neutral examples and measured replacement conditions.",
+      "clause": "creating, refactoring, or auditing a reusable Agent Skill"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "File a work outcome ticket for the failing checkout flow.",
+      "clause": "Use author-item to write a work outcome ticket.",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Write an issue with positive and negative acceptance tests for a search endpoint.",
+      "clause": "Use author-item to write a work outcome ticket.",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Revise this backlog ticket so it states the result rather than implementation steps.",
+      "clause": "Use author-item to write a work outcome ticket.",
+      "route_to": "author-item"
+    }
+  ]
+}

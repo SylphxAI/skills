@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Choose the contents and price of three resource bundles for a new puzzle game.",
+      "clause": "choosing a game's pack contents or price"
+    },
+    {
+      "prompt": "Compare how many usable crystals each shop bundle delivers per dollar, including conditional bonuses.",
+      "clause": "comparing value per unit of money"
+    },
+    {
+      "prompt": "Fast-progressing players reach the last upgrade before the next release; decide whether to raise the cap or add a new mastery path.",
+      "clause": "raising a cap or adding a growth line"
+    },
+    {
+      "prompt": "Set a standing reward budget so community hosts can choose gifts without asking for every case.",
+      "clause": "setting a gift or gift budget"
+    },
+    {
+      "prompt": "Decide what optional care gift to give an unhappy player under the current program.",
+      "clause": "setting a gift or gift budget"
+    },
+    {
+      "prompt": "Coin balances are rising; check whether the game has inflation or simply more dormant savings.",
+      "clause": "checking virtual-currency inflation"
+    },
+    {
+      "prompt": "Game revenue fell after an event; diagnose whether lower exposure, currency saturation or checkout failures explain it.",
+      "clause": "diagnosing why game sales fell"
+    },
+    {
+      "prompt": "Choose non-positional progression items instead of leaderboard coins for a mid-tier payer retention grant so top spenders' rank is not diluted.",
+      "clause": "preventing positional leaderboard spillover from retention grants"
+    },
+    {
+      "prompt": "Design a bottleneck-first VIP whale bespoke offer from live slot levels, warehouse balances, and upgrade-recipe cliffs after verifying ItemTemplate funType payloads.",
+      "clause": "designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles"
+    },
+    {
+      "prompt": "Separate legacy high-spend payers into a frozen private bank-transfer rebate whitelist while enforcing a strict 10% order-backed ambassador bonus cap for all new players.",
+      "clause": "structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap"
+    },
+    {
+      "prompt": "Before placing existing avatar frames or wings onto new VIP 1-10 tiers, expand recursive choice-chest payloads and check which activity handlers count cash recharges.",
+      "clause": "auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Write a warm in-character reply to a player who just wants to vent, without changing rewards.",
+      "clause": "Use ambassador for relationship conversations",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Resolve a support ticket for a paid item that was not delivered to this customer.",
+      "clause": "customer-support for an individual entitlement or refund case",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Compare subscription architectures and an enterprise contract for a team document editor.",
+      "clause": "challenge for general product or commercial strategy",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Implement the already-approved shop bundle change and verify its purchase flow.",
+      "clause": "deliver-and-verify to implement a change",
+      "route_to": "deliver-and-verify"
+    }
+  ]
+}

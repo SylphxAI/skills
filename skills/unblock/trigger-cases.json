@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "The promised checkout fix still fails. Restore the affected flow.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The build runner hit its disk limit and the failed build must be restored.",
+      "clause": "a runner hits a resource limit"
+    },
+    {
+      "prompt": "The merge queue stopped making progress. Inspect the stuck job and recover it.",
+      "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "Recover unpushed commits and dirty worktrees after the execution environment disappeared.",
+      "clause": "an environment disappears with unpushed work"
+    },
+    {
+      "prompt": "The publisher refused a generated SDK identifier as a possible secret. Verify the finding and restore publication through its supported scanner.",
+      "clause": "a call is refused"
+    },
+    {
+      "prompt": "A job lost its runner, but GitHub refuses its retry while sibling jobs are still running. Recover the failed check without cancelling healthy work.",
+      "clause": "a call is refused"
+    },
+    {
+      "prompt": "The remote build wrapper repeatedly times out before any compiler verdict. Restore the focused check using the operator-approved local executor without changing the runtime.",
+      "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
+      "prompt": "Restore the failing browser capture job: frames complete alone but exceed the deadline when workers share the runner CPU quota.",
+      "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
+      "prompt": "The rendering check times out with a generic loading message. Determine whether preparation, asset loading or completion is stuck and restore the check.",
+      "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
+      "prompt": "A pull request has no CI run after a push. Restore its required workflow without blindly closing and reopening it.",
+      "clause": "a pull request has no CI run after a push"
+    },
+    {
+      "prompt": "The documentation site pull request has merge conflicts and no Actions run; resolve its CI admission failure.",
+      "clause": "a pull request has no CI run after a push"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Establish the root cause of a past failure; the service is healthy and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare causal hypotheses in an old incident report, without changing the healthy system.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "A build is still making normal progress within its documented external cycle. Leave it running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    },
+    {
+      "prompt": "Review the evidence for a past secret-scanner false positive; publication already succeeded and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain from the old logs why CI was absent; the conflict is already resolved and current CI is healthy. Do not change anything.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "The pull request build is running within its expected duration; leave it running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    }
+  ]
+}

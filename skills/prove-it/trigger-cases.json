@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Review this pull request at its exact head SHA for concrete regressions.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "The incident report blames the cache. Test that past root-cause claim against the failed request.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Read the live deployment and verify the reported serving revision.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "The provider refunded this Play order. Verify the claimed reason without assuming why the game checkout failed.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Review whether this Play server-delivery contract trusts provider-verified ownership rather than client-supplied markers.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Verify the reported Play purchase acceptance against the released native plugin, actual entitlement grant, and store completion.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify the claim that a red optional check blocks merging by reading the live required contexts, draft disposition and ready-run aggregate.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify this Android candidate makes one Google Play license-tester purchase without real money.",
+      "clause": "verifying an Android license-tester purchase"
+    },
+    {
+      "prompt": "The Android lease has the Play Store APK but launch fails. Verify the prerequisites for a license-tester purchase.",
+      "clause": "verifying an Android license-tester purchase"
+    },
+    {
+      "prompt": "Check whether a license-tester purchase proves a server grant or only the old consume, local credit and save path.",
+      "clause": "verifying an Android license-tester purchase"
+    },
+    {
+      "prompt": "Verify whether retained webhook events lost a routing field when their inline rows contain offload markers.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Reconcile a document ledger reporting missing attachments with the consumer that loads referenced archive bodies.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check whether a missing inventory attribute is truly absent or only omitted from a compact cached projection.",
+      "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "A shared deployment check says no changes, but one environment has a pending build. Reconcile the two readings before naming the cause.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify that the new database regression actually executed rather than being ignored by a green CI command.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "The task ledger reports a document upload delivered, while its indexing outcome is still pending. Check the claimed completion.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether these repeated old inventory balances prove a lost update or refer to separate instances.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "A daily reconciliation reports zero mismatches on last week’s restore. Verify whether that proves production is healthy.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a ledger gap with independent consumption history before claiming that a grant disappeared.",
+      "clause": "reconciling conflicting readings"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Restore the currently failing deployment, not merely explain the past outage.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two proposed service boundaries before choosing an architecture.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "What is 17 multiplied by 23?",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Calculate the total value of three packs costing two dollars each.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Restore the currently stalled Android deployment.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two Android billing architectures before choosing an implementation.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Restore the deployment that is currently stuck waiting for a build.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two proposed schemes for naming deployment attempts before choosing one.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Calculate how many seconds are in fifteen minutes.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    }
+  ]
+}

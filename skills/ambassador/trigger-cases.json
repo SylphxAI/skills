@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Reply in character as the game ambassador to a player joking that they want 1,000 upgrade chests.",
+      "clause": "engaging users or players as an in-character brand or game ambassador"
+    },
+    {
+      "prompt": "Comfort a frustrated VIP player after a tough loss streak and apply to the company for a care pack.",
+      "clause": "comforting frustrated users, running proactive retention outreach, applying to the company for pre-approved or escalated rewards"
+    },
+    {
+      "prompt": "Audit this companion chat reply against the Adversarial Turing self-test so it sounds like a real friend on WhatsApp.",
+      "clause": "running an Adversarial Turing self-test on conversational replies"
+    },
+    {
+      "prompt": "Keep the in-character ambassador warm and enthusiastic on in-game private chat and social Messenger when a player complains.",
+      "clause": "engaging users or players as an in-character brand or game ambassador"
+    },
+    {
+      "prompt": "Weight the ambassador's goodwill care tier by each player's verified LTV and recent payment history, and deliver a >24h reply via the authenticated inbox Web UI fallback.",
+      "clause": "weighting goodwill care by verified LTV and payment history, delivering 24-hour messaging-window replies via authenticated inbox Web-UI fallback"
+    },
+    {
+      "prompt": "A player wants an outfit but cannot log in to top up. Help complete payment rather than give the outfit free.",
+      "clause": "resolving purchase or checkout friction as a VIP payment concierge"
+    },
+    {
+      "prompt": "Pitch a three-tier bottleneck-first VIP bespoke offer to a top spender whose sub-skills are stuck at the Lv.30 recipe cliff while 26,000 high-tier shards sit idle in their warehouse.",
+      "clause": "pitching bottleneck-first VIP bespoke offers"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Handle an official support ticket for a missing invoice, privacy deletion request, or statutory AI disclosure.",
+      "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "File a structured bug outcome ticket for the broken event room.",
+      "clause": "author-item to file a bug outcome",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Rewrite this public press release for clarity and natural tone.",
+      "clause": "clear-writing for general copy.",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Adjudicate a formal refund dispute through the published official support email.",
+      "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+      "route_to": "customer-support"
+    }
+  ]
+}
