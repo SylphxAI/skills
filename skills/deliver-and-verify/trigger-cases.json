@@ -599,19 +599,19 @@
     },
     {
       "prompt": "Ship authorized label-based CI routing so the next eligible pull-request event selects the intended self-hosted runner pool.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Change CI concurrency so marking a draft pull request ready starts required checks without waiting for its draft report.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Update a release workflow trigger and verify its queued predecessor does not delay the new required checks.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Separate draft and ready workflow concurrency while preserving duplicate-run proof reuse.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
@@ -783,11 +783,11 @@
     },
     {
       "prompt": "Repair affected-test routing that selects every consumer but drops feature-gated server-rendering tests when packages compile separately.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Ship selective game-engine CI that retains the full suite's resolved features and fails when an expected consumer test never executes.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Run an authorized disposable-machine acceptance through the generated CLI, preserving the command array in a whole-request JSON file.",
@@ -799,15 +799,15 @@
     },
     {
       "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
@@ -952,6 +952,38 @@
     {
       "prompt": "Ship an idempotent document import and verify a repeated existing-document request preserves its version instead of silently writing again.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Upgrade an Android engine and verify enabled and disabled native policy cases against independently declared parsed modes and lifecycle observations before device acceptance.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a SaaS feature-flag configuration change with production-parser checks that reject misplaced keys even when the parser silently accepts them.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish this branch as a pull request for review while its prerequisite remains pending; keep merge disabled.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Update the already-ready pull request with the corrected game-server configuration without enabling its default auto-merge yet.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Publish the billing fix through the repository wrapper and verify the source head and merge intent at the requested review boundary.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Add a fail-fast executable prerequisite to an existing CI shell step and update the manifest tests that read its command text.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a deployment workflow command to a multiline shell block while preserving its prerequisite-order tests in another directory.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a CI reader whose exact command selector stopped finding the offline suite after a guard was added.",
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
@@ -1611,6 +1643,26 @@
       "prompt": "Rewrite a user guide explaining why an advertised create command does not guarantee public deployment support; do not change software or run operations.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether matching APK hashes and a passing candidate-selected branch establish the intended native mode; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether the workflow test still proves prerequisite ordering after its command selector was loosened; do not edit or run the workflow.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain in plain English why shell command formatting can affect an exact-text test selector; no implementation or operations.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Compare exact-text versus parsed-command workflow tests and recommend an architecture without implementing changes.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }
