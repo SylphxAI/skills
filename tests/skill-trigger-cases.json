@@ -245,6 +245,10 @@
           "clause": "implementing or shipping a feature, bug fix"
         },
         {
+          "prompt": "Ship an HTTP client change whose management and object calls use different hosts, with fake-server coverage of routing and typed refusals.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
           "clause": "repairing recovery references or asynchronous reconcilers"
         },
@@ -465,6 +469,18 @@
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         },
         {
+          "prompt": "Run the contract generator remotely and publish all generated SDK and web registry outputs back in this checkout.",
+          "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Regenerate a game protocol in a remote build and return its client bindings and downstream editor catalog before shipping.",
+          "clause": "running source generation remotely"
+        },
+        {
+          "prompt": "Run source generation remotely for a document API, reconcile the automatic generated commit, and ship the complete change.",
+          "clause": "running source generation remotely"
+        },
+        {
           "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -642,6 +658,21 @@
           "prompt": "Review whether a controller handover leaves generated routes behind; report evidence without changing it.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review whether this remote generator returned every output; report evidence without changing or publishing files.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare artifact transfer and shared storage for a remote generation workflow without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these remote generation instructions for clarity without running commands or publishing changes.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
         }
       ]
     },

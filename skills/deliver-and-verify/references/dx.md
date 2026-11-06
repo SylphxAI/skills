@@ -77,18 +77,40 @@ Request the endpoint's expected response format. Distinguish an explicit access 
 
 If verification fails after publication, preserve the artifacts. Repair the verifier and rerun read-only acceptance against that exact immutable version instead of republishing it.
 
+## Remote source generation
+
+Before running a generator or package manager through a remote command wrapper,
+identify every generation entrypoint and its outputs from the repository's scripts
+and CI workflow. Follow canonical inputs through downstream projections, including
+web registries, clients and documentation. The primary compiler may produce only
+part of the required output. A lockfile-only install also changes source.
+
+Establish how changed files and deletions return to the publishing checkout. Use
+the supported local mutation mode or retrieve a complete generated artifact set.
+Inspect the local diff across the expected output directories and run the affected
+generation check or consumer assertion before publishing. A successful remote exit
+establishes execution there; it does not establish complete local output. Read-only
+checks can use the ordinary remote verification path.
+
+If CI adds a generated commit, inspect that commit and fast-forward the checkout
+before further edits. Re-evaluate checks and approvals against the new head;
+results tied to the previous head do not authorize the generated delta.
+
+**Wrong:** Publish after the remote contract compiler succeeds, leaving a downstream
+web registry unchanged. **Right:** Run the complete generation chain, return its
+outputs, and verify the web consumer's generated-file assertion before publishing.
+
 ## Internal development
 
 Follow the [delivery workflow](../SKILL.md): practical targeted checks, publication, iteration on the same branch, and the repository's required merge/release path. State what remains unverified and rerun affected checks after a repair. Independent review does not manufacture a new publication/completion stage.
 
-- **Commands that produce source files:** Before running a package manager or generator through a remote command wrapper, check where its output is written and whether files return to the local checkout. A lockfile-only install still mutates source. Use the supported local mutation mode or retrieve the generated artifacts, then read the local diff before committing. A successful remote exit alone does not establish a local source change. Read-only checks can use the ordinary remote verification path.
 - **Dependency audit repairs:** Read the exact advisory ranges, every independent affected lockfile, and effective workspace overrides before choosing versions. An exact root override can keep a vulnerable resolution despite a dependency manifest bump. Update the applicable requirements and overrides together, regenerate each lockfile with its package manager, and run the audit without event-based skips. Keep a required major-version migration separate from a drop-in repair when they verify independently; report unrelated findings without suppressing them.
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
 - **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
-- **Backgrounding long-lived processes from agent tool calls:** In `cd dir && nohup server > log 2>&1 &`, the trailing `&` backgrounds the subshell while leaving the tool's stdout/stderr pipe open until the server exits, hanging the tool call. Redirect the outer subshell explicitly (`(cd dir && exec server) > log 2>&1 < /dev/null &`) or use a process manager. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
+- **Backgrounding long-lived processes from agent tool calls:** In `cd dir && nohup server > log 2>&1 &`, the trailing `&` backgrounds the subshell while leaving the tool's stdout/stderr pipe open until the server exits, hanging the tool call. Redirect the outer subshell explicitly (`(cd dir && exec server) > log 2>&1 < /dev/null &`) or use a supported persistent execution session or process manager. Redirection alone does not prove that a child survives the launching tool call. After that call returns, verify that the process is still running and has produced its first expected sample before reporting the watcher as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.
 - **Client-verified readiness:** Measure service availability from the moment a real client request or sign-in succeeds, not merely when an orchestrator readiness probe turns green.
 - **Time-critical operational windows:** When an operational cutover or mitigation cannot wait for slow CI queues, apply the supported live control first, verify the dry-run and live state, and then merge the durable source change to restore automatic reconciliation.

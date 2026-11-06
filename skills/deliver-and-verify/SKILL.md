@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -65,13 +65,17 @@ For container packaging or one-off container probes, read
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
 
+Before running a generator or package manager through a remote command wrapper,
+read [remote source generation](references/dx.md#remote-source-generation).
+
 When selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, queued dispatch, receipt parsing or webhooks,
-read [integration.md](references/integration.md). Admission and later dispatch
-can run under different provider configuration.
+Before changing provider calls, HTTP test doubles, queued dispatch, receipt
+parsing or webhooks, read [integration.md](references/integration.md). Preserve
+relevant endpoint and error-contract boundaries in tests. Admission and later
+dispatch can run under different provider configuration.
 
 For browser keyboard defaults or foreground lifecycle changes, also read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
@@ -103,7 +107,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [code.md](references/code.md): domain boundaries, transactions, recovery references, desired state, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
 - [security.md](references/security.md): authority, secrets, personal data and recovery.
-- [integration.md](references/integration.md): provider calls, queued dispatch, partial acceptance, webhooks and reconciliation.
+- [integration.md](references/integration.md): provider calls, HTTP test doubles and routing, queued dispatch, partial acceptance, webhooks and reconciliation.
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.
 - [dx.md](references/dx.md): APIs, packages, affected-test selection, feedback loops and releases.
