@@ -100,6 +100,13 @@ queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
 ([database boundary tests](code.md#database-boundary-tests)) and run the actual
 consuming database test; compilation and parser checks cannot prove resolution.
+If a complete replay fails under the application role while the deployed schema
+works, compare effective privileges along the failing function call chain in
+both databases. Record each differing function, role and privilege, the live
+read time and its migration source. A live-only grant is schema drift that can
+break a restore. Preserve the clean-replay failure; a separate compatibility
+proof may reproduce only the verified live grants while the schema owner fixes
+their migration source. Broad fixture grants would hide that missing contract.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
@@ -304,7 +311,7 @@ Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/wo
   **Right:** build the exported package and prepare the pinned executables and
   system libraries in the lease that runs the affected tests.
   See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
-- Keep the required feedback path fast enough for the workload. Name which checks run on drafts, ready PRs, merge groups, and the default branch, and where expensive/device/integration coverage runs. Concrete job names, rollout modes, and gate labels live with their implementation.
+- Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06).
 - A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
 - Validate workflow references and their scope. A nonexistent context property evaluates to an empty string; evaluate comparisons using the operator's documented coercion rules. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context.
 - Before editing a workflow file in a product repository, read which workflows run on a push to the default branch and what each one publishes so an infrastructure or cache edit does not unintentionally trigger a production release.
