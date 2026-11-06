@@ -82,10 +82,15 @@ checkout, while preserving caller overrides
 ([Cargo configuration discovery](https://doc.rust-lang.org/cargo/reference/config.html#hierarchical-structure),
 read 2026-11-06).
 
-A synced source snapshot can contain a synthetic commit without the original
-history. For checks that compare commits, preserve the original HEAD and base
-graphs, including a base supplied only as a SHA, and prove the requested merge
-base remotely; file-only checks keep their existing transfer scope.
+Faster source checkout or materialization must preserve the graphs and readable
+object bodies its consumers need under their final credential state: synthetic
+snapshots can lose original history, and a complete commit graph does not prove
+historical blobs remain readable. Choose acceptance cases from actual consumer
+read paths in the consuming environment, including original HEAD/base graphs,
+SHA-only bases and requested merge bases where used; file-only checks keep their
+existing transfer scope. Measure checkout or materialization step duration
+separately from queue wait, and treat mixed runner/cache samples as observations
+rather than matched causal benchmarks.
 
 For repeatedly used sandbox build environments, bake the pinned compiler, SDK
 and required system packages into a versioned build image rather than installing
