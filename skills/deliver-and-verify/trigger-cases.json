@@ -558,7 +558,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -682,11 +682,11 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
-      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
