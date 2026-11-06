@@ -22,6 +22,14 @@ names do not establish identity, and unresolved joins remain incomplete.
 **Bad:** pair two catalog arrays by position; **Good:** compare each endpoint's
 stable-key set and enrich only through an authoritative key join.
 
+Independent outputs from the same source can contain different bytes when
+packaging, signing or provenance differs; a successful export therefore does
+not establish the published object's digest or size. Bind published metadata
+to the exact publication receipt and authoritative remote object, unless the
+contract explicitly guarantees byte identity. **Bad:** register a published
+package using a parallel archive's descriptor; **Good:** resolve the descriptor
+for the returned published digest and reject a different digest.
+
 ## Shared dependency features and client policy
 
 Enabling a shared dependency feature can change defaults for every consumer,
