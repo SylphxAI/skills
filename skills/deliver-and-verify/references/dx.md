@@ -35,6 +35,16 @@ read 2026-11-06). Verify both control values in fresh child executions, an
 unrelated variable still filtered, and unchanged task hashes; cached log replay
 is not a new child observation.
 
+A dependency's generic function can be instantiated in its consumer, so a
+package-only optimization override may leave the failing machine code unchanged;
+bind the diagnosis to the emitting crate and exact linked artifact, rather than
+the global profile banner. Use a supported setting—Cargo package overrides have
+no environment-variable equivalent—and distinguish reduced stack demand from
+rendered correctness or shipping performance
+([generics](https://doc.rust-lang.org/cargo/reference/profiles.html#overrides-and-generics),
+[package configuration](https://doc.rust-lang.org/cargo/reference/config.html#profilenamepackagename),
+read 2026-11-06).
+
 Before a remote submission, verify the effective project, environment and
 credential bounds through supported configuration; checkout defaults can select
 another target. Scope credentials to that child process and use the
