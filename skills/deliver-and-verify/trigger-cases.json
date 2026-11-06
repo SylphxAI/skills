@@ -952,6 +952,14 @@
     {
       "prompt": "Ship an idempotent document import and verify a repeated existing-document request preserves its version instead of silently writing again.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Upgrade an Android engine and verify enabled and disabled native policy cases against independently declared parsed modes and lifecycle observations before device acceptance.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a SaaS feature-flag configuration change with production-parser checks that reject misplaced keys even when the parser silently accepts them.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1599,6 +1607,11 @@
       "prompt": "Rewrite a user guide explaining why an advertised create command does not guarantee public deployment support; do not change software or run operations.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether matching APK hashes and a passing candidate-selected branch establish the intended native mode; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
