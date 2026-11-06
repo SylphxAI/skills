@@ -263,6 +263,14 @@
         {
           "prompt": "Ship the database race regression and repair CI selection: the integration binary compiles but no cases execute.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Implement a transactional collection endpoint and run its database regressions on a shared development machine, with each test run owning its temporary files and socket.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Ship a game chest fix and capture a fresh authenticated guest journey; the existing CI pack intentionally omits the client's request-signing key.",
+          "clause": "Carry the outcome through execution and verification at its real surface."
         }
       ],
       "negative": [
