@@ -26,6 +26,12 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
 - Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
+  Replaying a missed pre-publication or other incremental check after a mutation
+  can silently select nothing because references, cursors or caches have advanced;
+  preserve or reconstruct the original selection boundary in an isolated verifier
+  using the unchanged supported check, without rolling back live state. A passing
+  replay needs evidence of the intended nonempty population, or a calibrated
+  control establishing that an empty population is legitimate.
 - Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,

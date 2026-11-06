@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, editing PR titles/bodies, changing CI triggers, routing or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running tests in a fresh build lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, editing PR titles/bodies, changing CI triggers, routing or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -44,6 +44,9 @@ UI control and renderer changes also use the [visual acceptance checks](referenc
 For preview provisioning or reduced-backend profiles, read
 [deployment configuration](references/code.md#deployment-configuration) and
 [migrations](references/code.md#migrations) before selecting a backend target.
+For a public preview or disposable service, also read
+[first useful success](references/dx.md#first-useful-success) before relying on
+an advertised creation, deployment or port-exposure operation.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
@@ -66,7 +69,8 @@ or redeploy leaves existing specifications unchanged; use the normal writer's
 bounded reconciliation or backfill, preserving exclusions and intended absence,
 and verify the served objects before reporting rollout complete.
 
-For long builds or tests, or resuming their results after a turn boundary, read
+For long builds or tests, work in leased environments, or results resumed after
+a turn boundary, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution or
 resubmitting work.
 
@@ -98,6 +102,9 @@ objects still enter repository-wide policy scans.
 
 When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
+
+For privileged filesystem changes under directories another principal can write,
+read [security.md](references/security.md) before choosing how to validate and change objects.
 
 Before changing database roles, privileges, reader transports or session-bound
 database checks, read

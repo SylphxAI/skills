@@ -28,6 +28,19 @@ splitting can change an argument even when the shell preserves it. Match the
 parsed request to the wire schema; whole-request JSON/YAML can preserve arrays
 and punctuation that flag parsing would alter.
 
+A schema entry or generated command advertises a request shape, not an
+implemented and admitted operation for the effective identity, artifact and
+target. Before relying on that route, match the deployed handler and admission
+constraints to the required outcome; a public fixture needs a request through
+its intended public address and confirmed cleanup, not just an in-instance
+response or a declared port. A refusal disproves that route under those inputs,
+not every supported route: choose another admitted path, repair the owning
+capability, or mark the dependent verification unavailable.
+
+**Wrong:** infer a usable public test service from a create command and port
+flag. **Right:** establish the supported deployment path, verify an outside
+request and confirm deletion before claiming the fixture worked.
+
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
 A temporary-directory error can originate in a separately configured package
@@ -358,7 +371,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
 - **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
-- **Backgrounding long-lived processes from agent tool calls:** In `cd dir && nohup server > log 2>&1 &`, the trailing `&` backgrounds the subshell while leaving the tool's stdout/stderr pipe open until the server exits, hanging the tool call. Redirect the outer subshell explicitly (`(cd dir && exec server) > log 2>&1 < /dev/null &`) or use a supported persistent execution session or process manager. Redirection alone does not prove that a child survives the launching tool call. After that call returns, verify that the process is still running and has produced its first expected sample before reporting the watcher as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
+- **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.
 - **Client-verified readiness:** Measure service availability from the moment a real client request or sign-in succeeds, not merely when an orchestrator readiness probe turns green.
 - **Time-critical operational windows:** When an operational cutover or mitigation cannot wait for slow CI queues, apply the supported live control first, verify the dry-run and live state, and then merge the durable source change to restore automatic reconciliation.

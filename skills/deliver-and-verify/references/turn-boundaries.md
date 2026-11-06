@@ -1,6 +1,6 @@
-# Delivery across cloud turn boundaries
+# Long-running work across turn and lease boundaries
 
-Trigger: starting a long build or test suite in a cloud agent session.
+Trigger: starting long work in a cloud agent session or leased environment.
 
 Read the runtime's actual execution deadline and persistence semantics before
 choosing where to run the work. Some runtimes impose a fixed 30-minute wall-clock
@@ -23,6 +23,18 @@ resubmitting a run whose result is unknown.
 
 If a build wrapper repeatedly times out before a compiler verdict, use the
 [build wrapper recovery procedure](../../unblock/SKILL.md#build-wrapper-timeouts).
+
+## Leased task lifetime
+
+A lease's maximum lifetime is not its granted expiry, and neither overrides an
+idle timeout; read the current grant, renewal rules and which activity resets
+idleness, since status queries may not qualify. If the remaining grant is
+insufficient, renew through the supported API once ready and verify the new
+expiry before long work. For a permitted heartbeat serving an active task,
+derive cadence from the idle timeout with scheduling margin, verify qualifying
+activity after the launcher returns, and bound it to task completion or deadline;
+refusal, lease end or generation change must stop it and emit a failure signal,
+and heartbeats must not bypass lifetime or capacity limits.
 
 ## Persist results before yielding
 

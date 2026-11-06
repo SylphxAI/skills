@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a privileged shared-cache permission repair while ensuring concurrent file replacements cannot expose another user's credentials.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a root-run upload spool maintainer so a symlink swapped after enumeration cannot redirect its permission changes to a private file.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a privileged game asset-cache repair with tests that replace an enumerated directory before the repair acts on it.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
       "clause": "changing session guards"
     },
@@ -39,7 +51,19 @@
     },
     {
       "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run the document editor browser suite in a lease, renewing its short initial grant through the supported API after readiness.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Run a long leased integration test with a detached task-scoped heartbeat, verifying the launching tool returns and qualifying activity succeeds.",
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
@@ -103,15 +127,15 @@
     },
     {
       "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Verify a game landing page in a new disposable build lease; an earlier lease installed Chromium but this one has no browser executable.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Prepare and run the checkout browser regression suite inside one fresh build lease using the pinned CI browser setup.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
@@ -431,7 +455,7 @@
     },
     {
       "prompt": "Run the changed browser fixture in a fresh build lease and keep its logs, exit status and captures available after this turn ends.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Finish implementing this feature, verify the exact source revision remotely, and preserve its result before yielding the session.",
@@ -467,11 +491,11 @@
     },
     {
       "prompt": "Run focused workspace tests in a fresh build lease; a package export resolves to generated files that are absent after installing dependencies.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Evaluate a changed alert rule in a fresh build lease with the evaluator version deployed in production.",
-      "clause": "running tests in a fresh build lease"
+      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Ship the invoice display join and update isolated database fixtures, including guest-checkout cases that do not select the customer branch.",
@@ -906,6 +930,30 @@
       "clause": "publishing disposable CI probe workflows"
     },
     {
+      "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Provision a public preview from this generated create command; establish that the deployed handler admits the selected artifact and target before depending on its URL.",
+      "clause": "provisioning previews"
+    },
+    {
+      "prompt": "Deploy a disposable public webhook receiver through the supported API, exercise it from outside its instance, and confirm deletion after verification.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Expose a multiplayer preview through the generated CLI port command and verify an outside request; command help alone does not show that the deployed operation is implemented.",
+      "clause": "provisioning previews"
+    },
+    {
+      "prompt": "Fix signed binary uploads whose empty-body reads work, and verify the actual non-empty streamed payload against the provider.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an idempotent document import and verify a repeated existing-document request preserves its version instead of silently writing again.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -1275,6 +1323,21 @@
       "route_to": "clear-writing"
     },
     {
+      "prompt": "Review whether lease status queries qualified as activity during the earlier expiry; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare supervised sessions and detached child processes for a proposed leased test design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of lease expiry versus idle timeout without running tests or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
       "prompt": "Review whether this queued CI run is waiting for concurrency or a runner; report evidence without changing it.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
@@ -1531,6 +1594,21 @@
     },
     {
       "prompt": "Rewrite the explanation of application-attempt and transport-request counts without changing or publishing a probe.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review the claim that a generated create command proves public fixture availability; inspect the evidence without provisioning or changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare deployment designs for disposable public test services and their cleanup costs; choose an architecture without implementing it.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining why an advertised create command does not guarantee public deployment support; do not change software or run operations.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
