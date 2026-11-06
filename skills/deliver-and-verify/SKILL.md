@@ -90,7 +90,9 @@ For generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
 
 When changing database test setup or disposable fixture cleanup, read
-[database test fixtures](references/dx.md#database-test-fixtures).
+[database test fixtures](references/dx.md#database-test-fixtures) and
+[affected-test selection](references/dx.md#continuous-integration). New fixture
+objects still enter repository-wide policy scans.
 
 When changing runtime isolation, read [runtime isolation](references/security.md#runtime-isolation).
 
