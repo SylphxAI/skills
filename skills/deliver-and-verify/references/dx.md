@@ -77,6 +77,15 @@ Keep one executable public contract and derive clients where that prevents drift
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
 
+For a client failure, read the executable path and version used by the failing
+caller before adding another fix. Compare it with the first published release
+containing the relevant behavior, then trace the installer's version and checksum
+pins. If that release already fixes the failure, update the consumer through its
+supported installer and rerun the original command. A published fix does not
+update a pinned installation. Keep the checksum pinned with the version; an
+automatic update proposal should copy both from the release's checksum artifact
+and follow normal review, rather than fetching a new checksum at install time.
+
 ### Private package verification
 
 Prove a private release from a fresh consumer with registry-read credentials only, no source checkout, dependency replacement, or populated package cache. Read the published bytes back and match version, digest, and source provenance to the consumer's resolved lockfile. Compile and run a useful consumer case; upload success or dependency resolution alone does not prove it works.
@@ -117,6 +126,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Dependency audit repairs:** Read the exact advisory ranges, every independent affected lockfile, and effective workspace overrides before choosing versions. An exact root override can keep a vulnerable resolution despite a dependency manifest bump. Update the applicable requirements and overrides together, regenerate each lockfile with its package manager, and run the audit without event-based skips. Keep a required major-version migration separate from a drop-in repair when they verify independently; report unrelated findings without suppressing them.
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
+- **Path dependency version changes:** Find every workspace that consumes the changed package, including through another path dependency. Update their lockfiles with the package manager and run locked dependency resolution for each affected workspace. The package's own workspace tests can pass while a root consumer refuses its stale lockfile before compilation.
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
 - **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
