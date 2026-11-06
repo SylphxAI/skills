@@ -723,6 +723,18 @@
         {
           "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Change CI concurrency so marking a draft pull request ready starts required checks without waiting for its draft report.",
+          "clause": "changing CI triggers or concurrency"
+        },
+        {
+          "prompt": "Update a release workflow trigger and verify its queued predecessor does not delay the new required checks.",
+          "clause": "changing CI triggers or concurrency"
+        },
+        {
+          "prompt": "Separate draft and ready workflow concurrency while preserving duplicate-run proof reuse.",
+          "clause": "changing CI triggers or concurrency"
         }
       ],
       "negative": [
@@ -1028,6 +1040,21 @@
         },
         {
           "prompt": "Rewrite the heartbeat renewal explanation for customers; change prose only without publishing it.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this queued CI run is waiting for concurrency or a runner; report evidence without changing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare cancellation and lifecycle-scoped concurrency designs without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this CI concurrency explanation without changing or publishing workflow code.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }
