@@ -70,6 +70,9 @@ When changing shared runtime settings or deployment overlays, read
 For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
+When changing database test setup or disposable fixture cleanup, read
+[database test fixtures](references/dx.md#database-test-fixtures).
+
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
 
