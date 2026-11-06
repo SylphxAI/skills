@@ -53,6 +53,37 @@ tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
 ([PgBouncer feature map](https://www.pgbouncer.org/features.html), read 2026-11-05).
 
+## Controller handover
+
+When changing which controller owns a resource's generated children, inspect
+the old controller's behavior after the parent changes. A controller that stops
+reconciling may leave its children serving indefinitely; updating the parent
+does not prove that the old routing, credentials or jobs have disappeared.
+Inventory the children by authoritative ownership metadata and cover every
+writer that can cause the handover, including adoption and no-op reconciliation.
+
+For a populated serving resource, establish that the replacement carries the
+required membership and readiness before retiring the predecessor. An empty
+withdrawal may need immediate removal instead. Bound deletion to the intended
+parent and old controller; use identity/version preconditions where supported
+so a concurrent replacement is not deleted. Repeated reconciliation accepts
+already-absent children and preserves children owned by the replacement.
+
+Choose failure handling by the effect of leaving the old child. If it is optional
+hygiene, report a scoped error and counter, continue unrelated realization, and
+retry on normal reconciliation. If it continues exposing revoked access or
+unsafe traffic, preserve the required withdrawal guarantee and report failure.
+Account for permission and code rollout order rather than assuming both arrive
+together.
+
+**Wrong:** remove a parent selector and assume its former controller removes
+all generated routes. **Right:** test the transition with old routes present,
+prove replacement membership, and remove only the old controller's routes.
+Also test delayed or partial replacement, deletion failure, repeated cleanup,
+and a parent that still belongs to the old controller. A queue-worker handover
+uses the same ownership and readiness checks for generated subscriptions; a
+text-formatting change needs none of these cleanup controls.
+
 ## Publication time and expiry
 
 When the contract promises a lifetime from becoming ready or being granted,

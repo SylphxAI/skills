@@ -419,6 +419,14 @@
         {
           "prompt": "Ship a game reward pipeline change that prepends a filter; inspect skipped persistence proofs for positional assumptions before publishing.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a service controller handover that leaves old generated routes serving; prove replacement membership before retiring them.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a queue-worker controller replacement that removes only obsolete subscriptions and tolerates optional cleanup permission failures.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -561,6 +569,11 @@
           "prompt": "Rewrite the integration-test instructions for clarity; make no code or configuration changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether a controller handover leaves generated routes behind; report evidence without changing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
         }
       ]
     },
@@ -835,10 +848,10 @@
         {
           "prompt": "The publisher refused a generated SDK identifier as a possible secret. Verify the finding and restore publication through its supported scanner.",
           "clause": "a call is refused"
-      },
-      {
-        "prompt": "A job lost its runner, but GitHub refuses its retry while sibling jobs are still running. Recover the failed check without cancelling healthy work.",
-        "clause": "a call is refused"
+        },
+        {
+          "prompt": "A job lost its runner, but GitHub refuses its retry while sibling jobs are still running. Recover the failed check without cancelling healthy work.",
+          "clause": "a call is refused"
         },
         {
           "prompt": "The remote build wrapper repeatedly times out before any compiler verdict. Restore the focused check using the operator-approved local executor without changing the runtime.",
