@@ -513,15 +513,15 @@
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         },
         {
-          "prompt": "Run the contract generator remotely and publish all generated SDK and web registry outputs back in this checkout.",
+          "prompt": "Run the contract generator remotely, validate the public protocol with its actual standards checker, and publish the SDK and web registry outputs.",
           "clause": "running source generation remotely"
         },
         {
-          "prompt": "Regenerate a game protocol in a remote build and return its client bindings and downstream editor catalog before shipping.",
+          "prompt": "Regenerate a game protocol on a remote worker and return new bindings, removed obsolete bindings, and the downstream editor catalog before shipping.",
           "clause": "running source generation remotely"
         },
         {
-          "prompt": "Run source generation remotely for a document API, reconcile the automatic generated commit, and ship the complete change.",
+          "prompt": "Run source generation remotely for a document API, preserve generated removals, reconcile the automatic generated commit, and ship the complete change.",
           "clause": "running source generation remotely"
         },
         {
