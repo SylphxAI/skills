@@ -226,3 +226,19 @@ Apply the same first-principles architecture across product categories while ada
 | **Tier 3 (Milestone & VIP care)** | Proactive architecture review, workflow templates, and volume-tier usage bonuses | Season-pass milestone celebration and complementary cosmetic badges | Verified cumulative-spend milestone delivery with a measured mix of cosmetics, shards, and upgrade boxes |
 | **Goal-Gradient / Endowed Progress trigger** | Customer approaches 80%–90% of a volume discount tier or annual upgrade | Player inspects a collection set or seasonal pass milestone | Player reaches 70%–90% of a cumulative rebate tier or asks about an active event |
 | **Public fairness / metering verification** | Usage dashboard and request-ID log verifier | Deterministic level seed or public rules FAQ | Cryptographic shuffle verifier URL and official in-game notice odds |
+
+
+### Player-Requested Unclaimed Care Mail Retraction Standard
+
+When a frustrated player explicitly demands that an uncollected ambassador care or compensation mail be removed from their in-game mail (e.g., `"拎返您信箱啲垃圾"`, `"拎走信箱啲垃圾"`):
+1. **Why Players Demand Retraction**: In-game mail systems block client-side deletion of any mail carrying an unclaimed attachment (`receive = 0` and `award != []`), leaving a persistent red dot that reminds an angry VIP of the dispute every time they enter the lobby.
+2. **Preconditions (All 3 Required Before Retraction)**:
+   - Explicit player request in 1-to-1 chat (`chat_log` or verified social thread) asking to remove/retract the mail.
+   - Live read of the target `mail` rows confirming `playerId` matches, `autographF` is the ambassador/CS sender (the brand ambassador), and `receive = 0` (the attachment has **not** been claimed into `item_log`).
+   - Never retract a mail whose attachment was already claimed (`receive = 1`), and never touch paid order deliveries.
+3. **Audit-Safe State Transition (`receive = 0, delete = 1, deleteType = 2`)**:
+   - Execute retraction via the audited grant/retraction service (`retract_unclaimed_care_mail`, or `UPDATE mail SET receive = 0, delete = 1, deleteType = 2 WHERE playerId = :pid AND id IN (:ids) AND receive = 0` prior to grant-service cutover).
+   - **Never set `receive = 1` on a retracted mail**: `MailJooqDao.getDBMails` filters strictly on `delete = 0`, so `receive = 0, delete = 1, deleteType = 2` immediately removes the mail from the player UI (`GetMsgMailsReq_4001/4006`) and blocks attachment claiming (`ReceiveMsgMailReq_4003`), while preserving 100% audit truth that the attachment was **never claimed (`receive = 0`)**.
+4. **Anti-Pendulum Rule — Track A Grandfathered Whales Are 100% Exempt from Passive Waiting (`白名單舊大戶豁免新規矩，主動出擊吸金最大化`)**:
+   - `Silent Context` only forbids reciting raw backpack counts (*"你背包有 137 個禮包"*); it **never** makes Track A grandfathered whales passive.
+   - Standard Track B rules (`<= 20%` bonus cap, waiting for the player to ask first) do **not** apply to Track A grandfathered whales. For Track A whales who log in with `HK$0`/low spend or have an unconverted `state = 0` order (`HK$388 / HK$488 / HK$788`), proactively reach out 1-to-1 with a high-value bespoke rebate offer (using silently verified upgrade bottlenecks to pitch the exact high-tier materials they want, without saying *"I checked your backpack"*).
