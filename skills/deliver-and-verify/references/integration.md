@@ -15,6 +15,16 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Expensive mutable observations need both freshness and shared-provider cost evidence: a short negative TTL can exhaust a quota, while retaining a negative answer can hide completion. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers, and evaluate completion invalidation with a bounded lost-event backstop. Verify duplicate events, in-flight reads and retained caches across ownership changes, so invalidation remains effective without multiplying provider work.
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
 
+## Destructive and conditional writes
+
+A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
+query parameter: the [API handler](https://github.com/kubernetes/kubernetes/blob/v1.36.4/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/delete.go#L95)
+decodes query options only when the body is empty (source read 2026-11-06).
+Put `dryRun: ["All"]` in that body with UID/resourceVersion preconditions,
+and prove the same identity and version remain with a GET before and after.
+**Bad:** treat a successful query-only dry-run as proof of no deletion;
+**Good:** verify the exact object still exists after the body-based dry-run.
+
 Verify replay, duplication, dropped delivery and timeout behavior at the affected
 contract boundary, including non-empty binary writes when signing or streaming
 uses a different path from reads. A successful read does not prove write
