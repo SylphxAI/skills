@@ -25,6 +25,15 @@ failures naming cached third-party files call for correcting input discovery.
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
+A caller's execution-placement choice must reach the actual task-runner child:
+strict environment filtering can discard a mode flag and silently restore a
+default. For controls that do not change task outputs, use version-matched
+pass-through configuration rather than content-hashed inputs or globally
+loosening filtering ([Turbo configuration](https://github.com/vercel/turborepo/blob/v2.11.10/apps/docs/content/docs/reference/configuration.mdx#globalpassthroughenv),
+read 2026-11-06). Verify both control values in fresh child executions, an
+unrelated variable still filtered, and unchanged task hashes; cached log replay
+is not a new child observation.
+
 Before a remote submission, verify the effective project, environment and
 credential bounds through supported configuration; checkout defaults can select
 another target. Scope credentials to that child process and use the
