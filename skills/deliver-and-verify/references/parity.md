@@ -133,7 +133,12 @@ the engine's verdict.
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
    compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
-   load and instrumentation. Name unavoidable differences and the comparison they
+   load, effective process environment and instrumentation. Inherited settings can
+   change only one runtime's colors, locale or cache behavior; equal command flags
+   need rendered-output evidence, not an assumption of equal work. Bind resource
+   metrics to the measured process and lifetime: a child high-water mark may
+   include its larger pre-exec launcher, so an application-memory claim needs
+   post-exec evidence. Name unavoidable differences and the comparison they
    prevent; a software-GPU run does not establish physical-device performance.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
