@@ -18,6 +18,12 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
+A copied entrypoint is not a complete tool: its dependency files and
+wrapper-supplied launch context are inputs too. When running outside the normal
+wrapper, derive both from the pinned launcher and verify initialization of the
+unchanged entrypoint before expensive work; an initialization refusal establishes
+no policy or product verdict.
+
 Local setup can change a check's input population: dependency caches placed
 inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;

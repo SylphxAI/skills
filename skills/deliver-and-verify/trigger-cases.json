@@ -1066,6 +1066,14 @@
       "clause": "changing source checkouts"
     },
     {
+      "prompt": "Change the source materialization for a standalone policy scanner, preserving dynamically loaded helpers and the revision context supplied by its normal launcher.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Move a game asset validator into a CI step outside its usual wrapper, retaining relative policies and required environment before running the full catalog check.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
       "clause": "handling credentials in process arguments"
     },
@@ -1385,6 +1393,11 @@
     },
     {
       "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a scanner initialization failure supports a claim about source-policy violations, without changing source, invocation, or publication.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
