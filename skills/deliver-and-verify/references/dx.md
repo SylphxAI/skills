@@ -23,7 +23,7 @@ inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;
 failures naming cached third-party files call for correcting input discovery.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
 Before a remote submission, verify the effective project, environment and
 credential bounds through supported configuration; checkout defaults can select
