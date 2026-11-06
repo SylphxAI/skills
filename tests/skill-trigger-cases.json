@@ -721,6 +721,10 @@
           "clause": "implementing or shipping a feature, bug fix"
         },
         {
+          "prompt": "Ship a new audit-table SQL migration with security policies and verify its pinned delivery guard as well as PostgreSQL.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
           "clause": "implementing or shipping a feature, bug fix"
         },

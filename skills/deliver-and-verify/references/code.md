@@ -183,8 +183,13 @@ an absolute-deadline control when that contract also exists.
 
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
 
-Before copying an older migration, read the currently pinned guard and the actual
-runner's transaction, timeout and partial-resume contract. A resumed file can
+Database replay and compilation do not establish admission by a migration safety
+guard. For new or copied SQL, read and run the delivery path's pinned guard on the
+actual candidate; explicit DDL keeps known target objects inspectable, and a
+contract reference must name a real released prerequisite.
+
+Before copying an older migration, read the actual runner's transaction, timeout
+and partial-resume contract. A resumed file can
 skip earlier `SET` or `DROP` statements on a fresh connection, losing session
 settings or cleanup. `CREATE INDEX CONCURRENTLY IF NOT EXISTS` can also accept
 an invalid leftover index. Use the repository's supported recovery and validity
