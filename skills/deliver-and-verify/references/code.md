@@ -38,6 +38,12 @@ settings. A prose-only edit needs no deployment rendering.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
+A lock taken only when writing cannot protect a snapshot read before another
+writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
+update only owned fields, or read and merge under the same lock and ownership
+check, then prove both writers' committed fields survive the real concurrent
+entry points.
+
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local
 order cannot undo an account or row lock its caller already holds. Reserve the
@@ -63,6 +69,11 @@ audit to other transactional domains, such as stock reservation and cancellation
 a pure formatter change needs no lock-order proof.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
+
+In runtimes where futures advance only when polled, awaiting maintenance can
+suspend the worker holding the lock it needs. Keep that worker driven, and join
+or cancel maintenance with its lifetime; test actual contention and cancellation
+rather than eventual completion alone.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
