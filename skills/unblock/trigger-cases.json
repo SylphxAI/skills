@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The repository synchronization completed but historical dependencies still fail verification. Restore the missing history while retaining recovery metadata.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The replicated catalog refresh finished, but older records are still missing. Repair the incomplete recovery before clearing its degraded state.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The restore completed, but private recovery roots still point at missing data. Restore the required dependency closure.",
+      "clause": "a promised fix still fails"
+    },
+    {
       "prompt": "Restore a hardware-constrained CI queue that admits nothing while ordinary jobs keep taking free room on its eligible hosts.",
       "clause": "a queue/review stops progressing"
     },
@@ -59,6 +71,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Audit an old recovery report for historical-dependency coverage; the current store is healthy and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Establish the root cause of a past failure; the service is healthy and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",

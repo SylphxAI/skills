@@ -39,6 +39,28 @@ Bound both probes and updates, including child termination, and keep network
 maintenance off the bootstrap path that establishes operator access. Test hung
 children as well as ordinary failures so maintenance cannot suspend recovery.
 
+## Shared reader privileges
+
+Before expanding a shared database reader's access, read its deployed
+reconciler and effective-privilege checks, the reason for excluded objects,
+and the consumers sharing the login. A successful narrow GRANT can still
+invalidate an aggregate-only reader's admission proof and disable every
+consumer on the next pass. Reconciliation may revoke excess privileges,
+close the login, or require an explicit supported recovery action; establish
+which behavior applies before choosing an interim repair.
+
+Preserve the verified reader contract while delivering the needed answer.
+When raw access is excluded, add product-owned aggregate or configuration
+projections through the existing declaration path. Verify both the requested
+output and denied raw access, then read back shared login health after the
+reconciler runs. A role with a different proven contract can use that
+contract's supported access change; this does not impose aggregate-only
+access on every reader.
+
+**Wrong:** assume column-scoped SELECT is harmless because it omits secrets.
+**Right:** check the deployed admission proof and expose only the required
+report through the supported reader contract, preserving existing consumers.
+
 ## Secret-scanner publication refusals
 
 Treat a finding as a claim to inspect. Entropy alone cannot distinguish a
