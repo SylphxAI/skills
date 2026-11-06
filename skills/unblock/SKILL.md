@@ -52,6 +52,19 @@ job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
 
+### Build wrapper timeouts
+
+A wrapper timeout without compiler or test output establishes no code verdict.
+Read the build lease or process status and reconcile an active attempt before
+starting another. When the runtime documents or the operator authorizes an
+alternate executor, use its supported entrypoint for the affected tests, with
+bounded concurrency and a timeout that fits the execution deadline. Check the
+shared machine's resource limits; an alternate executor does not override a
+quota, spend cap or access refusal. Keep full suites in CI and leave runtime
+repairs to their owner. Record the revision, command, exit status and inner test
+result so a completed wrapper cannot hide an incomplete check. A healthy build
+within its expected duration continues on its existing executor.
+
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
 When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
