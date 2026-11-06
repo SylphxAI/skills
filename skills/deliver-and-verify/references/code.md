@@ -14,6 +14,8 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Deployment configuration
 
+A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
+
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
 that a consumer receives it: replacement environment lists, arguments or

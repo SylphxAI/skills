@@ -671,6 +671,18 @@
         {
           "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
           "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Deploy a live configuration reload with no restart or replacement; verify that the in-place reload does not need old-plus-replacement transition room.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
         }
       ],
       "negative": [

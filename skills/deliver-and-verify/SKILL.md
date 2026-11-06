@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -72,7 +72,7 @@ For public social feed publishing, follow the [social post media and visual insp
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing shared runtime settings or deployment overlays, or rotating secrets consumed by Jobs, read
+When changing shared runtime settings or deployment overlays, rotating secrets consumed by Jobs, or downsizing or replacing shared resources, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging or one-off container probes, read
