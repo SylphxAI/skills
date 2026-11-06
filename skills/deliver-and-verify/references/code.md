@@ -47,7 +47,14 @@ template, then execute a separately defaulted object; **Good:** derive from
 target-side admission and reject a changed scheduling constraint while accepting
 equivalent quantity encodings.
 
-A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
+A resource reduction can require old and replacement allocations together,
+and a parent operator may replace children despite an `OnDelete` child policy.
+Read the installed controller's rollout and availability behavior, then measure
+transition requests on eligible placements, including runtime overhead and
+preemption effects; final-state savings do not establish a safe transition.
+**Wrong:** assume the child policy leaves activation to manual restarts.
+**Right:** stage source activation against the owning controller's actual rollout
+and verify availability without racing it with another replacement mechanism.
 
 Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
 
@@ -359,6 +366,13 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
+Normalization used to validate an exact declaration must preserve literal values
+as interpreted by the consumer, especially when the writer applies the original
+bytes. Test permitted layout changes as accepted and meaning-changing edits
+inside strings as refused before any write. **Wrong:** remove all whitespace
+before comparing an exact ACL path; **right:** preserve the quoted path's identity
+while accepting permitted layout changes.
+
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
 Evaluate each declared trigger and inherited reusable-call context with the
@@ -415,7 +429,14 @@ while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
-A source-derived safety or dependency check can pass with hand-constructed dependencies while its discovery path silently misses supported syntax. Exercise alternative supported syntax through discovery and enforcement, proving the intended denial and a permitted control rather than only the downstream decision.
+A safety or dependency check's predicate can pass while discovery or request
+routing never selects it; exercise alternative supported declarations, operations
+and subresources through selection and enforcement, with permitted controls and
+the intended denial. An offline evaluator that drops verb, subresource, identity
+or old-object fields proves only its modeled request, so route-dependent claims
+need the actual endpoint. **Wrong:** infer a debug-update ban from rejected
+create bodies; **right:** show the policy selects the debug-update route and
+rejects its valid request, keeping local predicate tests separate.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 

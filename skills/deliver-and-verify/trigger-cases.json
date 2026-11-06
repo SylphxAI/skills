@@ -494,6 +494,10 @@
       "clause": "downsizing or replacing shared resources"
     },
     {
+      "prompt": "Downsize an operator-managed database whose generated StatefulSet says OnDelete; verify whether the installed parent operator starts replacement automatically before activating the source change.",
+      "clause": "downsizing or replacing shared resources"
+    },
+    {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
       "clause": "downsizing or replacing shared resources"
     },
@@ -542,7 +546,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -666,11 +670,11 @@
       "clause": "changing SQL queries or schema-backed fixtures"
     },
     {
-      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -716,6 +720,14 @@
     {
       "prompt": "Pin consumers to a package mirror after checking live metadata, canonical archive redirects and a real download.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix an admission policy that denies unsafe pod creation but misses debug-container subresource updates; ship it with route-level verification.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an authorization predicate whose offline tests omit the action route, and verify the shipped API rejects that alternate operation.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
