@@ -391,6 +391,18 @@
         {
           "prompt": "Deploy the card-game server configuration fix and update existing server declarations through their normal writer while preserving retired servers.",
           "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Add a generated monitoring rule and ship it; update ignored database tests that locate the environment rewrite by array index.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Insert a checkout validation step and ship the change, finding its configured account entry by stable identity while retaining explicit ordering assertions.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a game reward pipeline change that prepends a filter; inspect skipped persistence proofs for positional assumptions before publishing.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -517,6 +529,21 @@
         {
           "prompt": "Rewrite the publication help text to explain automatic merge defaults; do not publish or change repository configuration.",
           "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this generated rule reorder changes evaluation semantics; do not implement it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare ordered lists and keyed maps for a proposed configuration API without changing source.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the integration-test instructions for clarity; make no code or configuration changes.",
+          "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }
       ]
