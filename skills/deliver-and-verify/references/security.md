@@ -23,6 +23,8 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
+A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.
+
 A redaction boundary must conceal credentials across emitted representations: whole-value matching alone can miss quoted, escaped, encoded or truncated fragments of effective input or output. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments and length boundaries alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: withhold those bytes while preserving independently safe evidence and the original process status.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
@@ -60,6 +62,12 @@ output and denied raw access, then read back shared login health after the
 reconciler runs. A role with a different proven contract can use that
 contract's supported access change; this does not impose aggregate-only
 access on every reader.
+
+A reader credential proves neither reachability from a new execution environment
+nor availability of every reporting profile. When replacing an observation path,
+bind a successful request from the actual consumer to the intended server,
+principal, transport, read-only state and required data projection; one admitted
+aggregate profile cannot establish a different report.
 
 **Wrong:** assume column-scoped SELECT is harmless because it omits secrets.
 **Right:** check the deployed admission proof and expose only the required

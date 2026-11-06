@@ -98,7 +98,7 @@ objects still enter repository-wide policy scans.
 
 When changing runtime isolation, read [runtime isolation](references/security.md#runtime-isolation).
 
-Before changing database roles or privileges, read
+Before changing database roles, privileges or reader transports, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
 When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.

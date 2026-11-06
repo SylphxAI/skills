@@ -386,6 +386,14 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
+      "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -546,7 +554,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -670,11 +678,11 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
-      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -830,12 +838,20 @@
       "clause": "changing source checkouts"
     },
     {
-      "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
-      "clause": "changing SQL queries or fixtures"
+      "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
+      "clause": "handling credentials in process arguments"
     },
     {
-      "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
-      "clause": "changing SQL queries or fixtures"
+      "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Move a SaaS billing collector onto a published read-only reporting Job and verify the revenue profile is actually enabled.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Switch a game analytics reader from a local socket to TLS and verify the new runtime can reach the intended server without widening its grants.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1091,6 +1107,11 @@
     },
     {
       "prompt": "Verify whether a claimed database fixture pass actually executed under the application role, without making changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review why this future-dated fixture fails its expiry ordering constraint before the eligibility assertion; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
@@ -1390,9 +1411,19 @@
       "route_to": "clear-writing"
     },
     {
-      "prompt": "Review why this future-dated fixture fails its expiry ordering constraint before the eligibility assertion; report evidence without changing code.",
+      "prompt": "Check whether the new reporting client reached the intended database; report the current identity without changing its route.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare direct TCP and an in-cluster reporting Job as a proposed architecture without migrating either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a note explaining that one aggregate profile does not cover the revenue report, without changing the reader.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
