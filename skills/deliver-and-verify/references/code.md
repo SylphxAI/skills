@@ -116,142 +116,18 @@ A serializer-only test cannot prove the database accepted the event.
 
 ## Execution environment recovery
 
-Define the protected state before choosing checkpoint scope. Repository captures
-can omit workspace notes, ignored files, local refs or writes elsewhere in the
-filesystem. A successful partial capture does not prove those writes are absent.
-Keep broader recovery until full changed-state coverage is established through
-a filesystem change record or equivalent authoritative mechanism; repository
-count and command text cannot establish it.
-
-Choose the newest complete recovery source using authoritative completion
-order, and persist its identity and digest before allocating a replacement.
-Compare a restored state with the payload actually selected. A newer complete
-archive must not fail verification against an older partial checkpoint. If a
-newer partial checkpoint must advance an older archive, preserve the archive's
-outside files and uncertain extras; report retained paths absent from the newer
-capture rather than deleting them to force a match. For Git stores, validate
-objects and preflight every repository before worktree writes, including on an
-incomplete replay. Move obstructing ignored files aside into reserved Git
-metadata storage and record their identities and backup paths before replacing
-them; preserve both versions. Restore the captured branch name and tip, keeping
-the old tip under a recovery reference when the same branch name changes. Keep
-other refs and stashes. Use disjoint namespaces for detached identities and
-named branches; a synthetic label must not collide with a valid user name.
-Missing repositories need independent base preparation
-into empty destinations.
-
-Stage publication on the destination filesystem before atomic rename; a
-temporary directory elsewhere can fail with `EXDEV`. Reserve the operation,
-destination and staging ownership before writing, validate bytes and repository
-identity, and reconcile a lost publication response before repeating it. Put
-dirty-file and symlink temporaries in operation-owned Git metadata staging, so
-an interrupted write cannot leave an extra untracked worktree path. Restart
-cleanup validates the ownership record and removes only reserved temporaries;
-unknown files remain untouched. Use an equivalent private staging location for
-other storage systems.
-
-Separate encoded-payload limits from materialized filesystem limits. A valid
-compressed bundle can contain committed files larger than its encoding cap.
-Restore materialization uses its destination quota and execution budget; it must
-not inherit capture's per-file encoding limit. Bound output separately. Include
-a compressed-large-file regression and kill the actual process between staging
-and rename, then require the retry to pass exact verification.
-
-Install current authority and verify transferred bytes, path scope, repository
-state and retained-file metadata before exposing tools. A Ready resource alone
-does not prove preparation completed. Reuse a live environment only with durable
-preparation provenance for that exact resource; an interrupted create keeps its
-original source and resumes its journal. Capture failure retains earlier complete
-sources, reports the durability gap and never replays the user's mutation.
-
-**Wrong:** remove the full backup because a session contains a repository, or
-reset an older archive until it matches a different checkpoint. **Right:** bind
-verification to the chosen source and preserve data beyond a partial capture.
-Test fresh replacements for a zero-repository file and mixed inside/outside
-files, failed partial capture followed by a newer full archive, and an older
-archive advanced by a newer partial capture. Include retained untracked files,
-ignored-path collisions, local refs, a later clone, lost acknowledgements and
-replay preserving later edits. A document worker and a saved-game worker share
-this coverage rule; a text formatter without persisted state needs no recovery
-mechanism. Live acceptance forces one disposable replacement and compares
-protected bytes before and after; keep that claim separate from fixture tests.
+- **Phenomenon:** A partial capture (such as a Git-only bundle) omits untracked notes, ignored files, or paths outside the repository; staging on a different filesystem fails `rename(2)` with `EXDEV`; applying capture size caps during restore blocks valid compressed archives.
+- **Invariants:** Select the newest complete recovery source by authoritative completion order and verify restored bytes against that chosen source. When advancing a full archive with a newer partial capture, preserve paths outside the partial capture's scope rather than deleting them to force a match. Stage temporaries on the destination filesystem or inside reserved metadata storage before atomic rename, and bound restore materialization by destination quota rather than capture-time per-file encoding limits.
 
 ## Controller handover
 
-When changing which controller owns a resource's generated children, inspect
-the old controller's behavior after the parent changes. A controller that stops
-reconciling may leave its children serving indefinitely; updating the parent
-does not prove that the old routing, credentials or jobs have disappeared.
-Inventory the children by authoritative ownership metadata and cover every
-writer that can cause the handover, including adoption and no-op reconciliation.
-
-For a populated serving resource, establish that the replacement carries the
-required membership and readiness before retiring the predecessor. An empty
-withdrawal may need immediate removal instead. Bound deletion to the intended
-parent and old controller; use identity/version preconditions where supported
-so a concurrent replacement is not deleted. Repeated reconciliation accepts
-already-absent children and preserves children owned by the replacement.
-
-Choose failure handling by the effect of leaving the old child. If it is optional
-hygiene, report a scoped error and counter, continue unrelated realization, and
-retry on normal reconciliation. If it continues exposing revoked access or
-unsafe traffic, preserve the required withdrawal guarantee and report failure.
-Account for permission and code rollout order rather than assuming both arrive
-together.
-
-**Wrong:** remove a parent selector and assume its former controller removes
-all generated routes. **Right:** test the transition with old routes present,
-prove replacement membership, and remove only the old controller's routes.
-Also test delayed or partial replacement, deletion failure, repeated cleanup,
-and a parent that still belongs to the old controller. A queue-worker handover
-uses the same ownership and readiness checks for generated subscriptions; a
-text-formatting change needs none of these cleanup controls.
+- **Phenomenon:** Changing a parent resource's owner selector stops the old controller from reconciling, which can leave old generated children (routes, jobs, credentials) serving indefinitely or cause concurrent deletion of replacement children.
+- **Invariants:** Inventory generated children by authoritative ownership metadata. For populated serving resources, verify replacement readiness and membership before withdrawing the old controller's children, and bind deletion preconditions (`UID`/version) to the old owner so concurrent replacements are never deleted.
 
 ## Recovery references and desired state
 
-Keep three facts separate: a target exists according to the provider, desired
-state selects that target, and observed state shows what is serving now.
-Existence does not prove readiness; a stale serving observation does not cancel
-a valid pending rollback. Read the provider's validation and convergence
-contract before choosing target selection and write order.
-
-- Validate every recovery, retention or warm-up target before adding or
-  preserving its reference. A provider can validate zero-weight or inactive
-  entries and reject the whole resource when one target is missing. A stored
-  name or desired version alone does not prove existence. Treat a failed lookup
-  as unknown, rather than missing, and use the supported retry/error path.
-- When an optional recovery target is absent, fall back only to an actual
-  serving target confirmed by provider observation and existence checks, or
-  omit the optional reference with a reason. Do not invent a target or silently
-  substitute a fallback for desired rollout or rollback intent. A required
-  target's absence is an explicit failure to resolve.
-- Preserve a valid pending desired rollback pin while served-state observations
-  lag. Reconcile toward that intent and use observations to measure convergence.
-  Clear its pending status only when the matching operation/version is observed
-  applied; replace the intent only on explicit supersession or authoritative
-  invalidation, rather than copying the currently served version over it.
-- For a new target, write the template/resource first. Add its retention or
-  warm-up reference only after a provider read confirms existence; a computed
-  name or accepted create request is insufficient. Keep incomplete creation
-  retryable without emitting a dangling reference. Promotion still requires
-  the target's separate readiness checks.
-- Search every related recovery writer, including rollback, adoption, retry and
-  no-op reconciliation paths. Apply the same rules within the owned boundary
-  and identify separately owned affected paths.
-
-**Bad:** preserve a missing target at zero weight, or replace a pending rollback
-with the version returned by a lagging status read. **Good:** verify the optional
-target before referencing it, preserve valid desired intent, and wait for the
-matching serving observation before reporting convergence.
-
-Verify missing and existing inactive targets, a valid pending rollback with stale
-served state and later convergence, explicit supersession, required-target
-absence, lookup failure, delayed creation visibility and repeat reconciliation.
-Assert provider-call order and the entire submitted
-resource, including optional references; test both an existing serving fallback
-and no eligible fallback. A SaaS deployment can retain a previous release and a
-game fleet can warm a recovery server under the same checks. A text formatter
-without provider-managed references needs none of these reconciliation controls.
+- **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
+- **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
 ## Publication time and expiry
 
@@ -328,39 +204,8 @@ Keep schema migrations strictly DDL-only (`CREATE`, `ALTER`, `DROP` on tables, i
 
 ## Recovering missing normalized state
 
-Use this procedure when a normalized child row is absent but an older saved
-representation may still contain the user's state. Absence is not authoritative
-zero, and the existence of an old save does not by itself establish data loss or
-its cause.
-
-- **Wrong:** return default zeros on load, then accept that snapshot as a save.
-  **Right:** establish whether a valid recovery source exists before presenting
-  or accepting a replacement snapshot.
-- Initialize only missing canonical rows. Existing rows, including legitimate
-  zeros or reductions, remain authoritative; fieldwise maxima are not a general
-  recovery or merge policy. Keep the original source unchanged.
-- Serialize recovery and every affected writer on the same entity within one
-  transaction. Cover load, direct save before first load, settlement and replay.
-  Read the current state and validate a submitted snapshot after acquiring that
-  lock; a comparison made before waiting can accept a stale regression.
-- Preserve the original projection contract: source types, missing/null defaults,
-  numeric conversion, finite values and destination bounds. Reject an invalid
-  source for the affected record rather than silently clamping or coercing it.
-  Require matching cycle identity before restoring daily or other expiring state.
-  Do not revive completed erasure or inactive accounts.
-- Recover history only under an explicit parsing, duplicate-key, ordering and
-  retention contract. An empty canonical history and unexplained gaps in a
-  nonempty history need different decisions; do not fill the latter by assumption.
-- Compare all protected progress and claim fields in the fresh canonical state.
-  A refused stale snapshot must leave unrelated fields unchanged; test legitimate
-  forward updates and identical replay as well as regression refusal.
-
-Verify with the actual database and two concurrent connections: observe a real
-lock wait in both operation orders, then assert the resulting state. Include
-missing rows with valid old data, existing zero rows, malformed and out-of-range
-sources, expired cycles, direct save, duplicate settlement and completed erasure.
-Keep database tests, deployed API checks and a population census as separate
-claims; none alone proves all users were repaired.
+- **Phenomenon:** When a normalized child row is absent on load while an older saved representation still holds the user's progress, returning default zeros on load and accepting a subsequent client save permanently overwrites the user's real progress with zeros.
+- **Invariants:** Absence of a normalized row is not authoritative zero. Before returning or accepting a default snapshot, check whether a valid recovery source exists and initialize only missing canonical rows within a serialized transaction (leaving existing canonical rows, including legitimate zeros or completed erasures, untouched).
 
 ## Database boundary tests
 
