@@ -589,8 +589,9 @@ Read the current store controls and the product's release contract. Identify the
 Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
 - **Publication and merge intent:** Read the publisher's merge defaults before
-  submitting a change that must remain held. Supply its explicit draft or hold
-  option in that submission, including for a stack opened for review while its
+  creating or updating a PR that must remain held. Omitting an activation flag
+  does not disable default auto-merge, including on an already-ready PR. Supply
+  its explicit draft or hold option in that submission, including for a stack opened for review while its
   prerequisite is pending. A feature branch may lack the integration branch's
   required checks and merge immediately when publication enables auto-merge.
   Verify the published PR's head, base, hold and actual merge state. Retain the

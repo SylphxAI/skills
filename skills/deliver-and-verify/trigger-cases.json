@@ -799,15 +799,15 @@
     },
     {
       "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
-      "clause": "editing PR titles/bodies"
+      "clause": "publishing or editing PRs"
     },
     {
       "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
@@ -960,6 +960,18 @@
     {
       "prompt": "Ship a SaaS feature-flag configuration change with production-parser checks that reject misplaced keys even when the parser silently accepts them.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish this branch as a pull request for review while its prerequisite remains pending; keep merge disabled.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Update the already-ready pull request with the corrected game-server configuration without enabling its default auto-merge yet.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Publish the billing fix through the repository wrapper and verify the source head and merge intent at the requested review boundary.",
+      "clause": "publishing or editing PRs"
     }
   ],
   "negative": [
