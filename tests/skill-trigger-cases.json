@@ -649,6 +649,50 @@
           "clause": "running source generation locally or remotely"
         },
         {
+          "prompt": "Rotate a Secret consumed by an already-completed reconciliation Job and ship its new configuration.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Change only an encrypted input used by a scheduled Job and verify the deployed consumer reads its new value.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Deliver a replacement API credential to a one-shot Job without changing the credential value in source.",
+          "clause": "rotating secrets consumed by Jobs"
+        },
+        {
+          "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
+          "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Change stderr redaction so structured worker failures stay parseable while credential values remain concealed.",
+          "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
+          "clause": "changing stderr redaction"
+        },
+        {
+          "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Deploy a live configuration reload with no restart or replacement; verify that the in-place reload does not need old-plus-replacement transition room.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Resize a resource whose size is owned by a manifest; change the declaration and verify the served size after its next reconciliation rather than writing the runtime API.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
+          "prompt": "Resize an API-only shared resource with no manifest, config file or GitOps owner; apply through its authoritative API and verify that API state rather than inventing a declaration.",
+          "clause": "downsizing or replacing shared resources"
+        },
+        {
           "prompt": "Fix and ship a SaaS receipt store that replays one session user's response to another because both lack an API key ID.",
           "clause": "implementing or shipping a feature, bug fix"
         },

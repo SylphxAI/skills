@@ -14,6 +14,12 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Deployment configuration
 
+When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
+
+A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
+
+Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
+
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
 that a consumer receives it: replacement environment lists, arguments or
@@ -21,11 +27,12 @@ volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 
-When replacing a live lookup with a shared pin, update the existing automatic
-promotion writer in the same delivery and verify it detects changes to every
-pinned member independently. State the change in propagation latency, including
-the updater's cadence, CI/merge queue and deployment reconciliation; one working
-initial pin does not prove that the next release will reach its consumers.
+Trace each pinned or referenced input through the existing automatic writer's
+change trigger, propagation latency and the consumer's read behavior; an initial
+deployment does not prove later input changes propagate. **Wrong:** rotate a
+Secret and assume a completed Job reruns. **Right:** change only that input and
+verify the intended consumer uses its new revision within the declared
+propagation time, including CI, merge queue and deployment reconciliation.
 
 An automatic update can discard a temporary compatibility approval while another
 consumer still uses it. Exercise successive and unrelated updates during a
