@@ -70,6 +70,13 @@ they do not by themselves establish the current pull request's merge eligibility
 If the provider still expects a required check, preserve that refusal separately
 from the earlier passing result and follow the current required-check path.
 
+Read the repository's live required check contexts and workflow disposition
+before attributing a blocked merge to one red check. An advisory failure is a
+defect to assess independently, not evidence that it prevents merging. A draft
+may intentionally run admission alone: skipped jobs then establish neither a
+failed ready run nor successful ready verification. Bind the verdict to the
+ready pull request's authoritative run and required aggregate.
+
 Automatic merge being enabled records intent. Read the live queue entry to
 establish enqueueing, and the pull request's merged state and merge SHA to
 establish merging. Neither a completed-check watch nor a successful enable
