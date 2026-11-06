@@ -54,7 +54,7 @@ current publication state.
 
 For guest continuity across a signed app update, read
 [guest continuity](../deliver-and-verify/references/auth.md#prove-guest-continuity).
-It binds the installed artifacts and uses a persistent identity marker when the
+It binds the installed artifacts and uses a server-backed identity marker when the
 game UI exposes no account ID; a default balance alone cannot establish continuity.
 
 For app-store rejections, policy declarations, release status or shipped-app
