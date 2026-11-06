@@ -12,6 +12,8 @@ Generate the identity at its owning authority or through the shared SDK when it 
 
 Keep another system's published identifier unchanged. Preserve customer-held IDs and accepted external forms through an explicit migration contract; moving to a new internal representation does not authorize breaking those references. A new canonical ID for a legacy format needs a mapping or completed consumer migration. Existing UUID values need not be regenerated just to gain ordering.
 
+A parseable identifier does not identify its namespace: the same value can be valid in multiple domains and select different records. For a lookup spanning namespaces, carry an explicit tagged kind (for example, `externalKey` or `localId`) and resolve only within that namespace. Tests must cover same-value collisions and reject records owned by a different principal.
+
 UUIDv4, ULID, KSUID and coordinated integer IDs have different locality, size and generator tradeoffs. ULID is 128-bit compatible with UUID storage, although it is not UUIDv7; KSUID is 160 bits and does not fit a UUID column. Choose the identifier policy for the owning schema and its consumers.
 
 ## Order is the log's, never the id's

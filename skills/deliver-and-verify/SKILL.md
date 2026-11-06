@@ -18,6 +18,12 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
+## Step 0: Route identifier lookups
+
+When an endpoint or query accepts identifiers from multiple namespaces, read
+[identifiers.md](references/identifiers.md) before defining acceptance cases;
+its namespace, collision, and ownership rules govern parsing, resolution, and tests.
+
 ## Coordinate the work
 
 - Keep one named writer per worktree, pull request, database record, or live configuration. Before building, search open PRs for the same outcome to avoid duplicate implementations; distinct outcomes may edit the same files in parallel in isolated worktrees and resolve conflicts normally. Parallel readers and writers on independent targets can proceed together.
