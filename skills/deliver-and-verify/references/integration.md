@@ -22,6 +22,14 @@ names do not establish identity, and unresolved joins remain incomplete.
 **Bad:** pair two catalog arrays by position; **Good:** compare each endpoint's
 stable-key set and enrich only through an authoritative key join.
 
+Independent outputs from the same source can contain different bytes when
+packaging, signing or provenance differs; a successful export therefore does
+not establish the published object's digest or size. Bind published metadata
+to the exact publication receipt and authoritative remote object, unless the
+contract explicitly guarantees byte identity. **Bad:** register a published
+package using a parallel archive's descriptor; **Good:** resolve the descriptor
+for the returned published digest and reject a different digest.
+
 ## Shared dependency features and client policy
 
 Enabling a shared dependency feature can change defaults for every consumer,
@@ -66,18 +74,21 @@ verified.
 
 ## Final streamed output
 
-Buffered events can pass privacy and error tests while later encoding changes
-what the recipient receives; the evidence boundary is the final response in each
-supported encoding, on both sides of any irreversible commit. For streamed HTTP,
-that means status, headers and encoded terminal bytes before output, then fixed
-status/headers plus one safe, typed terminal after the client receives content;
-chunk partitioning and redundant provider fields must preserve semantic content
-exactly once.
+Buffered-event tests miss failures introduced during final encoding; verify the
+recipient's status, headers and bytes in each supported encoding at the protocol's
+irreversible commit boundary. A complete-document contract commits success only
+after bounded receipt, transformation and validation through EOF; a protocol with
+defined partial results can stream earlier, preserving committed status/headers
+and using its safe typed error for later failure. Probe commitment itself—a test
+helper that collects the body before returning can hide headers already sent—and
+preserve semantic content exactly once across chunk partitions and redundant
+provider fields.
 
-**Bad:** inspect an intermediate error buffer and infer the client contract.
-**Good:** release a provider failure only after the client receives content,
-then inspect the final encoded response for public error semantics, retry advice
-and absence of private diagnostic sentinels.
+**Bad:** append an error to interrupted JSON after sending `200`, or infer the
+wire contract from an intermediate buffer. **Good:** hold an upstream document
+mid-body and verify response headers remain pending, then release or interrupt
+it; separately verify a partial-result protocol's final encoded error, retry
+advice and absence of private diagnostic sentinels after content has arrived.
 
 Category-wise equality can hide reordered content: equivalence preserves order,
 multiplicity and boundaries wherever the source protocol defines them, while

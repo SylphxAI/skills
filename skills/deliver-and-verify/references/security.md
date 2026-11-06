@@ -23,7 +23,7 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
-A redaction boundary must conceal credentials across every representation it emits: serialization can escape a value, and truncation can leave a credential fragment that no longer matches the original. **Wrong:** remove the raw token only after serializing or shortening a diagnostic, or hide the whole structured record. **Right:** verify the final consumer sees no raw or encoded credential material while retaining parseable records, actionable diagnostics and process status; exercise escaping and length boundaries alongside credential-named non-secret controls. Retention and publication must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: withhold those bytes while preserving independently safe evidence and the original process status.
+A redaction boundary must conceal credentials across emitted representations: whole-value matching alone can miss quoted, escaped, encoded or truncated fragments of effective input or output. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments and length boundaries alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: withhold those bytes while preserving independently safe evidence and the original process status.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
 
@@ -71,6 +71,11 @@ Treat a finding as a claim to inspect. Entropy alone cannot distinguish a
 credential from a generated identifier, asset path or digest. Review every
 finding in the publication range, including unpublished ancestor commits;
 changing only the current file does not remove a finding in that history.
+Serialization or encoding can change entropy and scanner noise without changing
+source identity: compare the decoded value with its authoritative source and
+inspect the exact scanned bytes. Avoid gratuitous serialization churn, but a
+representation change is not a security fix; encoded real secrets remain
+withheld from publication.
 
 1. Retain the scanner's exact commit, path, line and content digest without
    copying possible secret values into logs, chat or the pull request.

@@ -31,12 +31,19 @@ desired state, so durability depends on the full controller ancestry and each
 controller's effective field ownership. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
-temporary exception is removed.
+temporary exception is removed. A recurring repair's field ownership and
+exclusions must hold across every automatic writer and active-operation handoff;
+one correctly guarded pass does not protect against an independent writer
+reclaiming those fields. Verify successive repair and operation transitions,
+not only the first pass.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
 Omitting the old variant in desired source may retain its defaulted fields;
 a successful render does not prove that the real reconciler can apply the change.
+A representation change, including omission becoming `null`, must remain
+consumable by every later internal operation that reads or reclaims that variant;
+producer or reconciler acceptance alone does not establish consumer compatibility.
 
 Reservation or preview objects can bypass mutations applied to the eventual
 execution object, so matching source templates does not prove they reserve the
@@ -147,7 +154,8 @@ Preserve the unknown outcome, typed cause and original idempotency key. Replay
 or reconcile through the operation's supported contract without starting a
 second logical operation. Classify a failure as a rejection before dispatch
 only when dispatch was conclusively prevented. An authoritative terminal
-receipt can resolve an unknown outcome.
+receipt can resolve an unknown outcome; a controller's terminal status alone
+does not prove its worker exited or released its lock.
 
 Verify this boundary through the real transport: have the peer receive the
 request, then close the connection before response headers. Assert the typed
@@ -408,7 +416,10 @@ For example, a currency-labelled price can require `US$1.99` in `en-US` and
 identifier formatting. Assert the rendered caller too when its choice of
 formatter or options caused the defect; keep broad invariant checks alongside
 these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
-from the contract rather than freezing an incidental library output.
+from the contract rather than freezing an incidental library output. Width-dependent
+wrapping can split a required phrase without changing its words; normalize layout
+whitespace in content assertions across relevant renderer settings. Preserve exact
+whitespace when layout or bytes are the contract.
 
 A component's active provider can disagree with a global compatibility setting
 for locale, theme or account state. Exercise context-dependent output under the
@@ -444,7 +455,7 @@ In Rust crates with multiple integration test modules, use a single integration 
 
 For shell evidence gates, execute the actual script with the runner's shell options and inputs larger than a pipe buffer. Include clean output, missing evidence, and failure matches both early and late. With Bash [`pipefail`](https://www.gnu.org/software/bash/manual/html_node/Pipelines.html), a diagnostic pipeline such as `if grep ... | head -n 20 | grep .; then ...` can miss a known failure: `head` closes early, the first grep receives SIGPIPE, and the condition becomes false. Separate the decision from bounded display, or use a consuming display filter such as `sed -n '1,20p'`. Keep the failure predicate unchanged and prove that output truncation cannot reverse the verdict. Run a negative proof through the enclosing gate as well as its native test runner. A deliberately caught panic can pass the test framework yet fail a log-based gate. Assert the returned error directly, so the outer failure guard stays effective.
 
-Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
+Runtime fixtures must compile and lint in the repository's compile-only configurations without runtime-only setup; passing configured execution does not establish that contract. At execution, a required resource-dependent check fails clearly when setup is absent, while an optional suite retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
 When several implementations or adapters claim one behavioral contract, preserve

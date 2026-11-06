@@ -13,7 +13,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
-- A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- A passing step proves only what it checked: read the log for the inner result. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
 - Before citing a regression test, confirm that the exact test was discovered and executed in the intended environment. Read selected, passed and skipped counts, including ignored-test enrollment and required setup. A green command selecting zero tests proves nothing. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
 - Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
@@ -92,7 +92,10 @@ same head, retaining producer and timestamp; aggregate success on either
 surface establishes neither the other's result nor the PR's merge eligibility.
 
 Read the repository's live required check contexts and workflow disposition
-before attributing a blocked merge to one red check. An advisory failure is a
+before attributing a blocked merge to one red check. An installed App's empty
+queued Check Suite does not establish an active producer or a merge requirement;
+derive requirements from the branch's effective rules and PR refusal, and
+establish producer activity separately. An advisory failure is a
 defect to assess independently, not evidence that it prevents merging. A draft
 may intentionally run admission alone: skipped jobs then establish neither a
 failed ready run nor successful ready verification. Bind the verdict to the
@@ -143,6 +146,15 @@ mock cannot establish which policy the real execution applies.
 **Wrong:** “The caller omitted the optional event argument, so the policy is
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
+
+Response evidence also depends on request headers and API version: a default
+CLI response can differ from the failing caller's negotiated payload. Exercise
+that caller's decoder with empty and populated responses, distinguishing valid
+empty encodings from malformed envelopes.
+
+**Wrong:** "The CLI returns `items: []`, so the worker sees an empty list."
+**Right:** "The worker's `Accept` header yields `items: null`; verify its decoder
+on that response while preserving malformed-response refusal."
 
 ## Resolve retained payloads before checking fields
 
