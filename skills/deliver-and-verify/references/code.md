@@ -81,6 +81,8 @@ while retaining separate multi-connection proofs for races. **Wrong:** increase
 the pool to make a nested acquisition pass; **right:** remove that acquisition
 and verify both constrained-capacity progress and concurrent correctness.
 
+A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
+
 A lock taken only when writing cannot protect a snapshot read before another
 writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
 update only owned fields, or read and merge under the same lock and ownership
@@ -338,7 +340,13 @@ publishing the correction.
 
 ## Tests
 
-Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
+Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+
+An optional selector's omitted or empty value can be a valid mode with its own
+required outputs. Test that mode through the real entrypoint and assert those
+outputs as well as status: a swallowed error can keep the enclosing workflow
+green while forcing an expensive fallback. Keep malformed nonempty inputs as
+negative cases rather than weakening their validation.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.

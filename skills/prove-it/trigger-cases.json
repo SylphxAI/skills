@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Verify a seven-day release-runner concurrency count when rerun attempts return the same runner interval under different job IDs.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Verify whether browser OAuth records mentioning a SaaS hostname prove users reached that product, or only its identity service.",
       "clause": "verifying a live status or metric before reporting it"
     },
