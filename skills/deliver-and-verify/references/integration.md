@@ -35,10 +35,16 @@ the strict proxy after the dependency resolves its full feature set.
 ## HTTP test doubles and routing
 
 Before replacing a remote dependency with a fake, read its declared endpoints,
-request shape and error envelope. Preserve the boundaries relevant to the
-change. When management and data traffic use different origins, run distinct
-fake listeners and reject a request sent to the wrong one. One permissive
-listener can make a wrong production destination pass every test.
+request shape and error envelope; preserve the boundaries relevant to the change,
+including [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests)
+for browser privacy claims. A clean payload observed by a transport mock cannot
+establish whole-request privacy: verify headers and ambient identity on an actual
+browser request, with a positive control showing the fixture observes them when
+protection is absent.
+
+When management and data traffic use different origins, run distinct fake
+listeners and reject a request sent to the wrong one. One permissive listener
+can make a wrong production destination pass every test.
 
 Exercise negative cases through the same public entry point that makes the
 production decision. Return the provider's real error shape so decoding reaches
