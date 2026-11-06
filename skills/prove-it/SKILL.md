@@ -109,7 +109,10 @@ ready pull request's authoritative run and required aggregate.
 
 Automatic merge being enabled records intent. Read the live queue entry to
 establish enqueueing, and the pull request's merged state and merge SHA to
-establish merging. Neither a completed-check watch nor a successful enable
+establish merging. Failure and queue membership are independent: an
+`UNMERGEABLE` entry can remain queued and enter later combined groups. A
+removal claim needs a fresh authoritative membership check, not a failed verdict.
+Neither a completed-check watch nor a successful enable
 request proves either transition. Restore stalled work through [unblock](../unblock/SKILL.md)
 without bypassing required checks or repeatedly resubmitting an unchanged refusal.
 
@@ -157,6 +160,11 @@ Response evidence also depends on request headers and API version: a default
 CLI response can differ from the failing caller's negotiated payload. Exercise
 that caller's decoder with empty and populated responses, distinguishing valid
 empty encodings from malformed envelopes.
+
+Providers can normalize display fields while retaining different immutable or
+signed bytes. Bind integrity claims to the contract's authoritative payload,
+with a valid display transformation and a meaning-changing mutant as controls;
+trimming both sides can conceal the difference the verifier must detect.
 
 **Wrong:** "The CLI returns `items: []`, so the worker sees an empty list."
 **Right:** "The worker's `Accept` header yields `items: null`; verify its decoder
