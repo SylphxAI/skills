@@ -174,9 +174,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 ## Source generation
 
 For local or remote generation, identify every generation entrypoint and its
-outputs from the repository's scripts and CI workflow. Follow canonical inputs through downstream projections, including
-web registries, clients and documentation. The primary compiler may produce only
-part of the required output. A lockfile-only install also changes source.
+outputs from the repository's scripts and CI workflow. In-process tests can reuse
+cached modules and hide startup or import-path failures; exercise each changed
+generator through its actual entrypoint in a fresh process. Follow canonical
+inputs through downstream projections, including web registries, clients and
+documentation. The primary compiler may produce only part of the required output.
+A lockfile-only install also changes source.
 
 When extracting generated inputs from a container, resolve logical identities
 through declared relationships and schema identifiers; archive member order,
