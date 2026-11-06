@@ -259,6 +259,14 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+Cross-engine SQL needs populated differential cases that distinguish rounding,
+NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
+establish output parity. Collation can arrive through a function argument before
+any table comparison, so the effective caller context belongs in the test as
+well as the migrated column definitions. Source-version behavior determines an
+explicit conversion: accepting extra precision or adding a tolerance can change
+the contract rather than preserve it.
+
 Focused fixtures keep fast checks small, but preserve the real enum/domain types,
 required functions and relations. When changing a fixture's type, update and run
 every affected seed, bind and decode path. Include a migrated-schema regression
