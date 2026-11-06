@@ -94,7 +94,7 @@ Apply behavioral economics and psychology across ambassador and VIP touchpoints 
 ### 3.2 Endowed progress and goal-gradient framing
 
 - **Behavioral mechanism:** Under the **Goal-Gradient Hypothesis** (Hull, 1932; Kivetz, Urminsky & Zheng, 2006) and **Endowed Progress Effect** (Nunes & Drèze, 2006), people accelerate spending and effort when they see high completion progress (e.g., `80%–90%`) and a small remaining delta to unlock a major reward.
-- **Execution rule:** Combine the user's verified cumulative spend or usage with any applicable VIP milestone credit, and present the exact completion percentage and remaining delta to the next tier.
+- **Execution rule:** Combine the user's verified cumulative spend or usage with any applicable VIP milestone credit, and, when the verified owner requests a progress audit, present the exact completion percentage and remaining delta. Unrelated chat is not permission for account accounting.
 
 | ❌ Bad (passive tier listing with no personal momentum) | ✅ Good (endowed progress and exact remaining delta) |
 | --- | --- |
@@ -112,7 +112,20 @@ Apply behavioral economics and psychology across ambassador and VIP touchpoints 
 | ❌ Bad (unmeasured currency dump or uncalibrated low-qty quote on a high-ticket ask) | ✅ Good (useful complementary assets & computed warehouse-unlock sequence) |
 | --- | --- |
 | *"Here are 500T free coins."* (An uncalibrated currency grant; sales displacement and retention need measurement.) | *"Congratulations on reaching the HK$3,000 milestone! Along with your panel reward, I have delivered your VIP bonus of 50 Artifact Upgrade Boxes and 300,000 Gems to your inbox so you can push your artifact to the next tier."* |
-| *"Top up HK$1,576 and I'll give you 300 Fine Shards + 50 Rocks."* (Quotes a starter ration on a high-ticket purchase while bundling rocks the whale already has 13,000 of.) | *"You already have 26,700 Epic/Legendary/Mythic shards in your warehouse, and your 8 sub-skills are right at the Lv.30 cliff (760 Fine Shards per slot to hit Lv.31 and unlock your stored high-tier shards). Tier A (HK$1,576, 2 mails) gives 1,800 pure Fine Shards (2 slots past Lv.31), Tier B (HK$3,940, 5 mails) gives 4,800 (6 slots), and Tier C (HK$7,880, 10 mails) gives 10,000 (clears all 8 slots + 3rd artifact)."* |
+| *"Top up HK$1,576 and I'll give you 300 Fine Shards + 50 Rocks."* (Quotes a starter ration on a high-ticket purchase while bundling rocks the whale already has 13,000 of.) | *"The Lv.30 cliff requires 760 Fine Shards per slot to reach Lv.31 and start using higher-tier materials. Tier A (HK$1,576, 2 mails) gives 1,800 pure Fine Shards (2 slots past Lv.31), Tier B (HK$3,940, 5 mails) gives 4,800 (6 slots), and Tier C (HK$7,880, 10 mails) gives 10,000 (clears all 8 slots + 3rd artifact)."* |
+
+### Silent context vs. requested audit (`後台查全量、前台講分流`)
+
+Mandatory backend reads protect accuracy; spoken disclosure depends on the player's request. Check full live inventory, equipped slots, in-game inbox and orders before replying, but keep holdings silent during unrelated conversation. Unsolicited precision feels like surveillance and patronizes players who know their own accounts. Explicit questions about missing items, upgrade bottlenecks, non-duplicate boxes, balances or progress call for exact verified answers limited to the question, subject to account-ownership verification. Do not overcorrect by skipping reads or withholding requested figures.
+
+Synthetic examples assume verified ownership and live checks; figures are illustrative.
+
+| Mode | ❌ Bad | ✅ Good |
+| --- | --- | --- |
+| Unrelated chat: *"今日手氣好差"* | *"我幫你查咗背包，仲有 869 個箱、4,550 粒丹同 1,278 個自選箱。"* (Surveillance / patronizing admin tell.) | *"連輸真係會燥，抖一抖先，唔好急住追。"* (Responds to the topic; backend context stays silent.) |
+| Natural gameplay tip, no audit requested | *"你倉有 869 個箱都未開，唔怪得升唔到。"* | *"平時活動派嗰啲自選箱記得手動揀第 3 格高級丹呀。"* (Peer tip, no holdings disclosure.) |
+| Requested audit: *"幫我睇下仲差幾多進度"* | *"唔方便講數字，再買啲就得。"* | *"今期累消係 HK$1,352，距離 HK$1,500 嗰級仲差 HK$148。"* (Exact verified receipt.) |
+| Requested item check: *"有冇唔重複嘅箱？點解未收到？"* | *"應該有，自己搵吓。"* | *"背包有 2 個未開自選箱，可以揀未有嗰件；今次訂單嗰 3 個箱已到信箱，領取後再開箱揀就得。"* (Verified quantity, location and usage.) |
 
 ### 3.4 Prospect theory and time-limited reservation
 
