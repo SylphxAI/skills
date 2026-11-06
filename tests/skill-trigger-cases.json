@@ -233,6 +233,26 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix and ship a command runner whose actual NUL byte output fails jsonb persistence without executing the command twice.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement document-worker replacement that restores a dirty tracked file and an untracked attachment byte-identically before another tool runs.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship saved-game worker recovery that selects the newest complete backup while retaining files outside a narrower checkpoint.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix replacement recovery that cannot resume after SIGKILL leaves an extra temporary file in a repository, and ship the verified repair.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship archive recovery that materializes a large compressible committed file admitted by a smaller encoded-payload limit.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
           "clause": "running browser checks in a fresh build lease"
         },
@@ -566,6 +586,21 @@
         }
       ],
       "negative": [
+        {
+          "prompt": "Review whether this stored output contains actual zero bytes or literal backslash escape text; report evidence without editing or shipping it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare full-backup and partial-checkpoint recovery designs without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the worker replacement notice for clarity; do not change code or publish the service.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
         {
           "prompt": "Review whether this inactive recovery target exists and whether the rollback observation is stale; report evidence without changing anything.",
           "clause": "prove-it for a review or evidence check",

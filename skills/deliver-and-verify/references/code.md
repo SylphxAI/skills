@@ -85,6 +85,91 @@ tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
 ([PgBouncer feature map](https://www.pgbouncer.org/features.html), read 2026-11-05).
 
+## Binary output and text storage
+
+Process output is bytes. Define its text projection before publishing it to a
+text column, JSON payload, event or checkpoint. Valid UTF-8 alone is insufficient:
+PostgreSQL `jsonb` rejects `\u0000` because its text representation cannot store
+the zero code point ([PostgreSQL JSON types](https://www.postgresql.org/docs/18/datatype-json.html),
+read 2026-11-06). JSON escaping alone does not remove that character.
+
+Apply one projection contract at the durable publication boundary, including
+stdout, stderr and nested tool results. If the interface permits replacement
+text, report sanitization and replacement counts while preserving exit status,
+cancellation and truncation. Where exact bytes matter, use a bounded binary
+field/artifact or an explicit encoding such as base64. A persistence failure
+after a command completes must not cause that command to execute again.
+
+**Wrong:** decode bytes with UTF-8 replacement and assume every resulting string
+fits the database. **Right:** test the destination's character contract, publish
+the permitted projection once, and distinguish it from the original bytes.
+Execute a command emitting an actual zero byte and invalid UTF-8, verify its
+stored and returned result, then run another command. Include ordinary Unicode,
+literal backslash escape text, stderr and completed nonzero exits as controls.
+A serializer-only test cannot prove the database accepted the event.
+
+## Execution environment recovery
+
+Define the protected state before choosing checkpoint scope. Repository captures
+can omit workspace notes, ignored files, local refs or writes elsewhere in the
+filesystem. A successful partial capture does not prove those writes are absent.
+Keep broader recovery until full changed-state coverage is established through
+a filesystem change record or equivalent authoritative mechanism; repository
+count and command text cannot establish it.
+
+Choose the newest complete recovery source using authoritative completion
+order, and persist its identity and digest before allocating a replacement.
+Compare a restored state with the payload actually selected. A newer complete
+archive must not fail verification against an older partial checkpoint. If a
+newer partial checkpoint must advance an older archive, preserve the archive's
+outside files and uncertain extras; report retained paths absent from the newer
+capture rather than deleting them to force a match. For Git stores, validate
+objects and preflight every repository before worktree writes, including on an
+incomplete replay. Move obstructing ignored files aside into reserved Git
+metadata storage and record their identities and backup paths before replacing
+them; preserve both versions. Restore the captured branch name and tip, keeping
+the old tip under a recovery reference when the same branch name changes. Keep
+other refs and stashes. Use disjoint namespaces for detached identities and
+named branches; a synthetic label must not collide with a valid user name.
+Missing repositories need independent base preparation
+into empty destinations.
+
+Stage publication on the destination filesystem before atomic rename; a
+temporary directory elsewhere can fail with `EXDEV`. Reserve the operation,
+destination and staging ownership before writing, validate bytes and repository
+identity, and reconcile a lost publication response before repeating it. Put
+dirty-file and symlink temporaries in operation-owned Git metadata staging, so
+an interrupted write cannot leave an extra untracked worktree path. Restart
+cleanup validates the ownership record and removes only reserved temporaries;
+unknown files remain untouched. Use an equivalent private staging location for
+other storage systems.
+
+Separate encoded-payload limits from materialized filesystem limits. A valid
+compressed bundle can contain committed files larger than its encoding cap.
+Restore materialization uses its destination quota and execution budget; it must
+not inherit capture's per-file encoding limit. Bound output separately. Include
+a compressed-large-file regression and kill the actual process between staging
+and rename, then require the retry to pass exact verification.
+
+Install current authority and verify transferred bytes, path scope, repository
+state and retained-file metadata before exposing tools. A Ready resource alone
+does not prove preparation completed. Reuse a live environment only with durable
+preparation provenance for that exact resource; an interrupted create keeps its
+original source and resumes its journal. Capture failure retains earlier complete
+sources, reports the durability gap and never replays the user's mutation.
+
+**Wrong:** remove the full backup because a session contains a repository, or
+reset an older archive until it matches a different checkpoint. **Right:** bind
+verification to the chosen source and preserve data beyond a partial capture.
+Test fresh replacements for a zero-repository file and mixed inside/outside
+files, failed partial capture followed by a newer full archive, and an older
+archive advanced by a newer partial capture. Include retained untracked files,
+ignored-path collisions, local refs, a later clone, lost acknowledgements and
+replay preserving later edits. A document worker and a saved-game worker share
+this coverage rule; a text formatter without persisted state needs no recovery
+mechanism. Live acceptance forces one disposable replacement and compares
+protected bytes before and after; keep that claim separate from fixture tests.
+
 ## Controller handover
 
 When changing which controller owns a resource's generated children, inspect

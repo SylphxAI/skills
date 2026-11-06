@@ -42,6 +42,12 @@ need independent expected strings and cases that expose locale and sign errors.
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 
+When storing process/tool output in JSON or a database, read
+[binary output and text storage](references/code.md#binary-output-and-text-storage).
+For worker replacement, snapshot selection or partial checkpoints, read
+[execution environment recovery](references/code.md#execution-environment-recovery)
+before changing capture coverage or restoring user files.
+
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 
 For recovery references, rollback pins or asynchronous reconcilers, read
