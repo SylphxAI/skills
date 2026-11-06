@@ -28,9 +28,12 @@ If a build wrapper repeatedly times out before a compiler verdict, use the
 
 A process or tool-session handle can disappear between turns. Before launching
 work that can outlive the turn, create a unique run directory and record the
-source revision, target environment, command and expected artifact paths. Send
-stdout and stderr to a durable log and write the exit status when the command
-ends. Preserve reports and captures on failure as well as success. Watch the
+source revision, target environment, effective executor, its non-secret
+configuration selectors, command and expected artifact paths. Session defaults
+can change after recovery; verify that the supported wrapper resolves those
+selectors to the intended executor with admission controls intact before resuming.
+Send stdout and stderr to a durable log and write the exit status when the
+command ends. Preserve reports and captures on failure as well as success. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
 recoverable receipt. Verify the child survives the launching call using the
 [background-process guidance](dx.md#internal-development).
