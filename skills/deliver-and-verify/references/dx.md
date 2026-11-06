@@ -10,6 +10,12 @@ Document the supported prerequisites/revisions, entry command, expected result, 
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
 
+Before a remote submission, verify the effective project, environment and
+credential bounds through supported configuration; checkout defaults can select
+another target. Scope credentials to that child process and use the
+[run-record guidance](turn-boundaries.md#persist-results-before-yielding) for
+network policy and recoverable completion.
+
 A synced source snapshot can contain a synthetic commit without the original
 history. For checks that compare commits, preserve the original HEAD and base
 graphs, including a base supplied only as a SHA, and prove the requested merge
@@ -186,6 +192,11 @@ tree and the digest of the test script. A receipt that names only a branch or
 commit can attest a later local edit that was tested in place of the submitted
 head.
 
+When generated files conflict, combine the canonical inputs and regenerate the
+complete output set. Choosing one parent's generated file can silently discard
+the other's served guarantees. Preserve both revisions and check each parent's
+response compatibility when both changed public contracts.
+
 If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
@@ -201,7 +212,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Dependency audit repairs:** Read the exact advisory ranges, every independent affected lockfile, and effective workspace overrides before choosing versions. An exact root override can keep a vulnerable resolution despite a dependency manifest bump. Update the applicable requirements and overrides together, regenerate each lockfile with its package manager, and run the audit without event-based skips. Keep a required major-version migration separate from a drop-in repair when they verify independently; report unrelated findings without suppressing them.
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
-- **Path dependency version changes:** Find every workspace that consumes the changed package, including through another path dependency. Update their lockfiles with the package manager and run locked dependency resolution for each affected workspace. The package's own workspace tests can pass while a root consumer refuses its stale lockfile before compilation.
+- **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
 - **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
