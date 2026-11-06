@@ -124,7 +124,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 - [parity.md](references/parity.md): verifying game, app and SaaS journeys against a category leader; remake parity, live captures, asset/table checks and automatic recovery.
 - [code.md](references/code.md): domain boundaries, transactions, recovery references, desired state, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
-- [security.md](references/security.md): authority, secrets, personal data and recovery.
+- [security.md](references/security.md): authority, privileged tool maintenance, secrets, personal data and recovery.
 - [integration.md](references/integration.md): provider calls, HTTP test doubles and routing, queued dispatch, partial acceptance, webhooks and reconciliation.
 - [identifiers.md](references/identifiers.md): identity, text encodings, slugs and credentials.
 - [performance.md](references/performance.md): journey budgets, queries and measurement.
