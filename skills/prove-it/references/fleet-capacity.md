@@ -64,7 +64,10 @@ Sum simultaneous Pod/container samples into each workload before taking p95.
 The sum of individual p95 values is not the p95 of their sum. Retain the query,
 CPU rate interval, sample step, first/last timestamps, sample counts, query
 warnings and partial-response status. A sampled working set is not a peak or a
-memory limit. Missing series remain null. An observed-sample p95 with incomplete
+memory limit. A reclaim-node scope can omit the busiest primary or an older,
+heavier revision; derive a per-instance safety bound from every serving role
+and retained revision on every node, including outside the reclaim scope.
+Missing series remain null. An observed-sample p95 with incomplete
 coverage is not a fully observed seven-day p95, and cannot establish idle time.
 
 Validate traffic instruments with a known positive control in the same scope.
@@ -85,7 +88,11 @@ idle floor is two. No safe release has been established.”
 
 Rank only candidates whose request arithmetic, owning source, inactivity and
 continuity path are established. Disprove the leading false-positive explanation
-before a write. Use the owning supported source and rollout path; read the
-resulting controller, Pod assignment and affected consumer back. Report a failed
+before a write. Compare the declaration at the live Release commit, managed
+desired state and the served resource envelope; a capacity edit is durable only
+when its owning source preserves it through the next reconcile. Pending
+operations may still carry older frozen inputs, so the newest declaration alone
+does not establish what runs next. Use the owning supported source and rollout
+path; read the resulting controller, Pod assignment and affected consumer back. Report a failed
 release target plainly when no eligible candidate remains. Preserve unknowns
 and failed query receipts so the next measurement can change the decision.
