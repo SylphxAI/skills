@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
       "clause": "enrolling disabled tests in CI"
     },
