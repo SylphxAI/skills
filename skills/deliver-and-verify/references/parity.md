@@ -358,6 +358,26 @@ exercising a device, record any local compatibility overlay, and limit the
 verdict to the behavior actually exercised; verify the complete published
 combination before claiming an engine upgrade.
 
+Test instrumentation or isolation that changes production dependencies or provider
+semantics cannot establish shipped-artifact behavior; keep those outputs
+structurally separate and make production publication refuse test-only variants.
+Bind acceptance checks to the exact deployed or uploaded artifact bytes, comparing
+runtime references with packaged definitions, target-platform APIs and explicitly
+justified optional externals, with known-bad and known-good controls: declared
+versions and keep rules do not establish packaged dependency closure.
+Class presence does not prove method compatibility or device behavior; exercise
+the affected integration in the shipping host before claiming those properties.
+
+Compatibility APIs can implement policy through legacy flags or stored intent,
+so a native-only getter can disagree with working behavior; use the shipped
+wrapper's version-specific implementation and real gesture/lifecycle observations
+to distinguish a verifier defect from a host defect. Window extent, reported safe
+insets, ordinary versus hoisted control placement and painted content need separate
+evidence: gesture interception regions can create unwanted padding, while physical
+cutouts still need protected controls. Compare the same settled scene before and
+after the change, including transient overlays and their removal; full-size
+geometry cannot establish edge-to-edge paint.
+
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is
 absent or inactive; a test that still passes against a removed entry is not

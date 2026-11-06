@@ -494,6 +494,10 @@
       "clause": "downsizing or replacing shared resources"
     },
     {
+      "prompt": "Downsize an operator-managed database whose generated StatefulSet says OnDelete; verify whether the installed parent operator starts replacement automatically before activating the source change.",
+      "clause": "downsizing or replacing shared resources"
+    },
+    {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
       "clause": "downsizing or replacing shared resources"
     },
@@ -718,16 +722,44 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "Fix an admission policy that denies unsafe pod creation but misses debug-container subresource updates; ship it with route-level verification.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an authorization predicate whose offline tests omit the action route, and verify the shipped API rejects that alternate operation.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Repair affected-test routing that selects every consumer but drops feature-gated server-rendering tests when packages compile separately.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
+      "prompt": "Ship selective game-engine CI that retains the full suite's resolved features and fails when an expected consumer test never executes.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
+      "prompt": "Run an authorized disposable-machine acceptance through the generated CLI, preserving the command array in a whole-request JSON file.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Apply an authorized mailing-list change through a generated CLI whose repeated string values contain commas, verifying the parsed wire request.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "A secret scanner refuses publication of escaped asset paths; resolve the findings and publish through the unchanged scanner.",
-      "clause": "secret-scanner refusals"
+      "clause": "secret scanners refuse"
     },
     {
       "prompt": "Publish generated API metadata after reviewing every secret-scanner refusal, including unpublished ancestors.",
-      "clause": "secret-scanner refusals"
+      "clause": "secret scanners refuse"
     },
     {
       "prompt": "A scanner blocks a game source push after metadata serialization changed; investigate exact findings and complete publication.",
-      "clause": "secret-scanner refusals"
+      "clause": "secret scanners refuse"
     }
   ],
   "negative": [
@@ -1200,6 +1232,11 @@
       "prompt": "Rewrite the package mirror explanation for clarity without changing configuration or publishing it.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review why a passing affected-test run omitted a feature-gated consumer test, without changing CI or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
