@@ -732,6 +732,18 @@
     {
       "prompt": "Regenerate source projections when archive-mode copying fails to preserve metadata in a shared writable directory.",
       "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Fix the replicated permission cache and verify propagation against the deployed serving-consumer census.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement readiness verification that retains failed samples and the maximum latency across cache consumers.",
+      "clause": "implementing or shipping a feature"
     }
   ],
   "negative": [
@@ -1202,6 +1214,21 @@
     },
     {
       "prompt": "Rewrite the package mirror explanation for clarity without changing configuration or publishing it.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare notification and polling designs for a replicated cache before choosing an architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the replica-readiness explanation for clarity without changing or publishing the probe.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
