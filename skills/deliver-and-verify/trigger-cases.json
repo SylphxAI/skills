@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
+      "clause": "running tests in a fresh build lease"
+    },
+    {
       "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -567,6 +575,16 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this UI component reads the active locale provider or a global compatibility setting; report evidence without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite this dependency-cache setup paragraph for clarity without running checks or changing repository configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a repeated progress event proves a missed notification; report evidence without changing or shipping the test.",
       "clause": "prove-it for a review or evidence check",

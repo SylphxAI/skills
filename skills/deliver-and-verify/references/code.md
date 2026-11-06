@@ -344,6 +344,11 @@ formatter or options caused the defect; keep broad invariant checks alongside
 these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
 from the contract rather than freezing an incidental library output.
 
+A component's active provider can disagree with a global compatibility setting
+for locale, theme or account state. Exercise context-dependent output under the
+real provider with deliberately different global state; mocking both to agree
+hides which authority the component actually reads.
+
 **Wrong:** `expect(renderedPrice).toBe(formatPrice(amount, locale))`.
 **Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
 currency label. A date display regression similarly asserts an independently
