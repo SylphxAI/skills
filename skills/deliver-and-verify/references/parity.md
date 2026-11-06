@@ -58,6 +58,13 @@ a blank page; inspect the actual frame, including canvas-rendered content.
 
 ## Distinguish renderer faults from product defects
 
+Graphics state queries, clears and draws can take different validation paths,
+especially in virtualized drivers. A valid attachment query or error-free clear
+does not establish successful drawing: use a known draw whose expected pixels
+differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
+**Good:** the draw changes the expected pixels, and the failing state is retained
+as a negative control.
+
 Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
 Texture corruption on both WebGPU and WebGL can therefore share an environment
 cause; switching APIs alone does not establish a product defect. Before reporting
@@ -140,6 +147,12 @@ the engine's verdict.
    include its larger pre-exec launcher, so an application-memory claim needs
    post-exec evidence. Name unavoidable differences and the comparison they
    prevent; a software-GPU run does not establish physical-device performance.
+   After a declared sampling or color-model change, derive expected pixels from
+   that declaration, not captured output; known-answer synthetic inputs and a
+   rejected mismatched-model control establish the check's independence without
+   relaxing tolerances. Shared assets do not prove shared screen geometry: compare
+   actual draw primitives with the independently expected complete population and
+   required origins/scales, including a deliberate transform negative control.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
    aggregation, not only a favorable median. If an unequal setting is discovered,
@@ -269,6 +282,15 @@ Treat target size, hit testing and visible paint as separate assertions:
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
   and occlusion as well as the required hit area and action.
+- Glyph presence does not prove readability. Assert the target label's
+  visible rect and rendered glyph height against the required minimum at each
+  captured size; an undersized badge can paint every glyph and still be
+  unreadable. When checking clipping, count only enabled clipping components
+  (mask, scissor, `RectMask2D`, `overflow`, viewport) in the target's actual
+  ancestor chain, intersect the target bounds with each, and record their
+  names and bounds; a disabled or sibling mask clips nothing, and counting it
+  rejects a correct layout. Run each assertion against the defective frames
+  first, then confirm the repaired frame by eye.
 - Check the actual icon's painted fill/stroke, alpha and contrast against its
   background, not only the SVG box or parent colour. Read the captured pixels
   yourself as well as running the assertions; geometry cannot prove visible ink.

@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when provisioning preview environments, changing SQL queries or schema-backed fixtures, changing session middleware or browser-origin forwarding, changing selected-source release inputs, changing CI triggers or concurrency, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing stderr redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when provisioning preview environments, changing SQL queries or schema-backed fixtures, changing session middleware or browser-origin forwarding, changing selected-source release inputs, changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, building matched engine benchmarks, repairing recovery references or asynchronous reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -32,7 +32,8 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
-For large uploads, archive restores, or stored-output replay, read
+For large transfers, shared response caches, fan-out streams, archive restores,
+or stored-output replay, read
 [bounded memory for large transfers](references/performance.md#bounded-memory-for-large-transfers)
 before choosing storage queries and transport APIs.
 
@@ -46,9 +47,6 @@ For preview provisioning or reduced-backend profiles, read
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
-
-For session middleware or browser-origin forwarding changes, read
-[session provenance and declared effects](references/auth.md#sessions-and-sign-out).
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).
@@ -91,7 +89,7 @@ For sandbox build templates or native compilation failures, read
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures).
 
-When changing stderr redaction, read [security.md](references/security.md) to preserve diagnostics at the consuming process.
+When changing diagnostic redaction, read [security.md](references/security.md) to preserve diagnostics at the consuming process.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
@@ -99,7 +97,7 @@ When a secret scanner refuses publication, follow
 Before running a generator locally or remotely, or a package manager through a
 remote command wrapper, read [source generation](references/dx.md#source-generation).
 
-When changing CI triggers or concurrency, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
+When changing CI triggers, routing or concurrency, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 

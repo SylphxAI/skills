@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
-- Model lifecycle states explicitly and handle them exhaustively. Return expected failures as typed values and translate them at the boundary.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary. An intermediate transition that omits an action must preserve authenticated provenance required by later decisions separately from execution intent. Verify those decisions after real state transformations, persistence and reload, including successive transitions with unchanged or changed inputs and missing or tampered provenance.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
@@ -24,7 +24,14 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
-When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
+When a resource's size or tier is declaration-owned, change its owning source;
+a supported temporary live change also needs a verified reconciliation and
+cleanup path. A child's ignore rule can itself be overwritten by its parent's
+desired state, so durability depends on the full controller ancestry and each
+controller's effective field ownership. **Wrong:** add a child ignore and trust
+an immediate live read. **Right:** establish what preserves it through parent
+reconciliation, then verify the durable source adopts the value and the
+temporary exception is removed.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
@@ -54,16 +61,27 @@ consumer still uses it. Exercise successive and unrelated updates during a
 migration; retire an old version's approval only after consumers stop selecting
 it and its active work and delayed results have drained.
 
-Verify the rendered configuration reaches the deployed process, then exercise
-the behavior that consumes it. **Wrong:** find a setting in the shared base and
-assume every region inherits it. **Right:** test each assembled target, reproduce
-the missing setting before the fix, and read back its live value and behavior.
-The same check applies to a game-server profile overriding shared worker
-settings. A prose-only edit needs no deployment rendering.
+A correct helper can receive altered arguments or environment through an
+upstream interpreter or PATH selection; verify effective configuration, executable
+resolution and process status through the real consumer. **Wrong:** find a setting
+in a shared base or pass a helper test and infer the deployed path works.
+**Right:** reproduce through each supported assembled target, read back its
+deployed values, then prove behavior through the same executable chain; a
+prose-only edit needs no runtime proof.
 
 ## Transactions and idempotency
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
+
+A nested admission helper that acquires a second connection from the caller's
+finite pool can starve while the outer transaction holds the available capacity;
+a larger test pool can hide this dependency. Reuse the caller's transaction
+connection and prove the public entry point completes with `max_connections=1`,
+while retaining separate multi-connection proofs for races. **Wrong:** increase
+the pool to make a nested acquisition pass; **right:** remove that acquisition
+and verify both constrained-capacity progress and concurrent correctness.
+
+A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
 A lock taken only when writing cannot protect a snapshot read before another
 writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
@@ -178,6 +196,15 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+Renewable inactivity deadlines and absolute lifetime limits are different
+contracts: timeout supervision and fresh downstream work share the current
+inactivity deadline, capped by any immutable authority horizon.
+**Wrong:** give a new command the remaining absolute lifetime while its supervisor
+can expire sooner; **right:** derive its timeout from the remaining inactivity
+window and preserve a replay's original keyed request.
+Verify that new progress advances the shared deadline, heartbeats and replay do
+not, and a fresh dispatch near expiry stays within the current window.
+
 For short-lived safety or authorization receipts, measure the complete path
 from the qualifying observation to the guarded action, including client startup
 and transport setup. Read-only setup may happen beforehand if the final
@@ -278,6 +305,14 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+A successful read can be policy-filtered even when it returns no warning or
+error; counts, maxima and metadata inventories establish completeness only for
+the effective observer's proven visibility scope, including indirect dependencies.
+**Wrong:** infer no objects or missing rows from an empty privileged wrapper or a
+matching filtered count. **Right:** use a known hidden object or row to distinguish
+the limited observer from a full-scope control, and preserve an explicit unknown
+result when scope cannot be proved.
+
 Cross-engine SQL needs populated differential cases that distinguish rounding,
 NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
 establish output parity. Collation can arrive through a function argument before
@@ -305,7 +340,15 @@ publishing the correction.
 
 ## Tests
 
-Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+
+Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+
+An optional selector's omitted or empty value can be a valid mode with its own
+required outputs. Test that mode through the real entrypoint and assert those
+outputs as well as status: a swallowed error can keep the enclosing workflow
+green while forcing an expensive fallback. Keep malformed nonempty inputs as
+negative cases rather than weakening their validation.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
@@ -344,10 +387,22 @@ formatter or options caused the defect; keep broad invariant checks alongside
 these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
 from the contract rather than freezing an incidental library output.
 
+A component's active provider can disagree with a global compatibility setting
+for locale, theme or account state. Exercise context-dependent output under the
+real provider with deliberately different global state; mocking both to agree
+hides which authority the component actually reads.
+
 **Wrong:** `expect(renderedPrice).toBe(formatPrice(amount, locale))`.
 **Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
+
+A negative test can pass for the wrong failure when setup refuses before the
+injected fault. Assert the specific typed refusal or root cause, print the full
+error chain on mismatch, and verify that substituting an unrelated fault makes
+the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
+failed”; **right:** require the changed-price refusal after a passing baseline,
+while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
@@ -360,6 +415,12 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 Distinguish a required resource-dependent check from an optional suite: the former fails when setup is absent, while the latter retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
 Share cohesive fixtures and table-driven cases where that improves readability.
+When several implementations or adapters claim one behavioral contract, preserve
+the authoritative cases’ identities, multiplicity, units and expected outcomes
+across the changed boundaries; a locally reconstructed equivalent can erase the
+distinguishing failure. **Wrong:** deduplicate repeated transaction records before
+running a shared refusal case, then claim parity; **right:** preserve both records
+and exercise the real persistence or transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 When changing a shared eligibility or availability rule, trace its consumers
@@ -414,6 +475,8 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 ## Cleanup and review
 
 Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating data or code, establish the authoritative baseline from the selected or deployed artifact; a checked-in snapshot can already drift. Prove preservation with the pinned, checksum-verified generator, an independent decoder and the actual consuming runtime, while validating current declarations separately; an older runtime model does not justify weakening the current schema. Compare the full decoded population, including secondary records, formulas and cached values where relevant, allow only declared changes, and name representation-only differences. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+
+Recorded conflict resolutions can apply cleanly after their assumptions have changed. **Wrong:** accept a cached resolution because the file parses. **Right:** compare its behavior with both current parents, reconcile changed acceptance conditions explicitly, and run the affected checks; an obsolete assertion or helper call can survive an otherwise clean merge.
 
 Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
