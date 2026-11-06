@@ -27,6 +27,11 @@ pinned member independently. State the change in propagation latency, including
 the updater's cadence, CI/merge queue and deployment reconciliation; one working
 initial pin does not prove that the next release will reach its consumers.
 
+An automatic update can discard a temporary compatibility approval while another
+consumer still uses it. Exercise successive and unrelated updates during a
+migration; retire an old version's approval only after consumers stop selecting
+it and its active work and delayed results have drained.
+
 Verify the rendered configuration reaches the deployed process, then exercise
 the behavior that consumes it. **Wrong:** find a setting in the shared base and
 assume every region inherits it. **Right:** test each assembled target, reproduce
