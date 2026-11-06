@@ -16,6 +16,10 @@
     {
       "prompt": "Write instructions for a sub-agent that should not message its owner when its check passes.",
       "clause": "including instructions and messages to sub-agents."
+    },
+    {
+      "prompt": "Rewrite an awkward public game announcement using only verified features, without narrating internal drafting mistakes.",
+      "clause": "customer-facing announcements, release notes"
     }
   ],
   "negative": [
@@ -30,7 +34,7 @@
       "route_to": "customer-support"
     },
     {
-      "prompt": "A subscriber requests a refund. Check eligibility and carry out the authorized remedy.",
+      "prompt": "A subscriber bought a plan because of a misleading feature claim and requests a refund. Investigate and carry out the authorized remedy, rather than just rewriting the public copy.",
       "clause": "Use customer-support for live customer support ticket handling.",
       "route_to": "customer-support"
     }

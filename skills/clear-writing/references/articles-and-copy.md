@@ -25,6 +25,27 @@ Also see [../../challenge/references/growth.md](../../challenge/references/growt
 5. **One Clear Call to Action (CTA)**:
    - For an announcement or page that asks the reader to act, give **one clear primary next step** (e.g., `npx my-cli deploy`, a live interactive demo with no signup wall, or a single button naming what happens when clicked: *"Start free — no card required"*).
 
+## Correcting public copy
+
+Routine marketing cleanup should leave truthful, natural copy without narrating
+irrelevant drafting errors, internal causes or self-critical admissions. Correct
+false or misleading claims; keep material customer-impact facts, applicable
+remedies and legally or platform-required notices. Evidence that an earlier
+misleading claim materially affected a purchase or use calls for a clear
+correction and any applicable remedy, rather than a silent rewrite that hides
+the impact.
+
+Synthetic contrasts:
+
+- **Game blurb; verified features unchanged, only awkward wording needs repair.**
+  ❌ “Our writer misunderstood the feature names. Sorry about our sloppy draft.”
+  ✅ “Choose a shield and skill cards to build your match strategy.”
+- **SaaS notice; customers were charged for a plan promising unavailable exports.**
+  ❌ “We've refreshed our plan description. Enjoy the features available today.”
+  ✅ “Our plan page said PDF exports were included, but they are unavailable.
+  If you paid for that feature, contact support to request a refund.”
+  The refund route must be verified and authorized before using this wording.
+
 ## UI Microcopy (Buttons, Empty States, and Error Messages)
 
 Use enough plain language to explain the relevant facts in an error or empty state:

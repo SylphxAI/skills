@@ -443,15 +443,15 @@
     },
     {
       "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Change stderr redaction so structured worker failures stay parseable while credential values remain concealed.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
@@ -612,6 +612,10 @@
     {
       "prompt": "Fix and ship a streamed protocol adapter whose equivalence comparator hides reordered content by grouping text, reasoning and tool blocks.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
