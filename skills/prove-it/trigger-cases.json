@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Verify whether browser OAuth records mentioning a SaaS hostname prove users reached that product, or only its identity service.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A card game's zero-user report treats private forwarded IPs as internal tooling. Reconcile that claim with the parsed request authority and browser user-agent.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "Verify whether a review approval is missing when Check Runs has no matching entry but the reviewer says a commit status was posted.",
       "clause": "verifying a live status or metric before reporting it"
     },

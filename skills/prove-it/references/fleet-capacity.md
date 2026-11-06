@@ -80,7 +80,12 @@ coverage is not a fully observed seven-day p95, and cannot establish idle time.
 
 Validate traffic instruments with a known positive control in the same scope.
 Keep gateway counters, retained access records and verified business use in
-separate fields. Current route associations do not prove historical routing;
+separate fields. A hostname match anywhere in a log discovers candidate records:
+an OAuth redirect can mention a product while the request reaches an identity
+service. Attribute traffic from parsed request authority, path and client
+evidence; private proxy hops alone do not establish internal-tooling origin.
+Unresolved attribution stays unknown. Current route associations do not prove
+historical routing;
 missing HTTP routes do not rule out direct, internal, TCP/UDP or session traffic.
 Counters that include probes or retries cannot establish zero user demand.
 Extrema and sample counts alone do not establish uninterrupted ingestion.
