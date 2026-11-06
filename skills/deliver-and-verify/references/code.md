@@ -1,6 +1,7 @@
 # Code conventions
 
-Trigger: writing or changing code, tests or migrations.
+Trigger: writing or changing code, tests or migrations; changing recovery
+references, rollback pins or asynchronous reconcilers.
 
 Make behavior, authority and failure handling visible. Keep one authority for each domain fact; derive clients and models where generation prevents drift.
 
@@ -83,6 +84,52 @@ Also test delayed or partial replacement, deletion failure, repeated cleanup,
 and a parent that still belongs to the old controller. A queue-worker handover
 uses the same ownership and readiness checks for generated subscriptions; a
 text-formatting change needs none of these cleanup controls.
+
+## Recovery references and desired state
+
+Keep three facts separate: a target exists according to the provider, desired
+state selects that target, and observed state shows what is serving now.
+Existence does not prove readiness; a stale serving observation does not cancel
+a valid pending rollback. Read the provider's validation and convergence
+contract before choosing target selection and write order.
+
+- Validate every recovery, retention or warm-up target before adding or
+  preserving its reference. A provider can validate zero-weight or inactive
+  entries and reject the whole resource when one target is missing. A stored
+  name or desired version alone does not prove existence. Treat a failed lookup
+  as unknown, rather than missing, and use the supported retry/error path.
+- When an optional recovery target is absent, fall back only to an actual
+  serving target confirmed by provider observation and existence checks, or
+  omit the optional reference with a reason. Do not invent a target or silently
+  substitute a fallback for desired rollout or rollback intent. A required
+  target's absence is an explicit failure to resolve.
+- Preserve a valid pending desired rollback pin while served-state observations
+  lag. Reconcile toward that intent and use observations to measure convergence.
+  Clear its pending status only when the matching operation/version is observed
+  applied; replace the intent only on explicit supersession or authoritative
+  invalidation, rather than copying the currently served version over it.
+- For a new target, write the template/resource first. Add its retention or
+  warm-up reference only after a provider read confirms existence; a computed
+  name or accepted create request is insufficient. Keep incomplete creation
+  retryable without emitting a dangling reference. Promotion still requires
+  the target's separate readiness checks.
+- Search every related recovery writer, including rollback, adoption, retry and
+  no-op reconciliation paths. Apply the same rules within the owned boundary
+  and identify separately owned affected paths.
+
+**Bad:** preserve a missing target at zero weight, or replace a pending rollback
+with the version returned by a lagging status read. **Good:** verify the optional
+target before referencing it, preserve valid desired intent, and wait for the
+matching serving observation before reporting convergence.
+
+Verify missing and existing inactive targets, a valid pending rollback with stale
+served state and later convergence, explicit supersession, required-target
+absence, lookup failure, delayed creation visibility and repeat reconciliation.
+Assert provider-call order and the entire submitted
+resource, including optional references; test both an existing serving fallback
+and no eligible fallback. A SaaS deployment can retain a previous release and a
+game fleet can warm a recovery server under the same checks. A text formatter
+without provider-managed references needs none of these reconciliation controls.
 
 ## Publication time and expiry
 
