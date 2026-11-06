@@ -160,6 +160,14 @@ Admission follows an operation's resource and effect. Publishing source does not
 
 ## Continuous integration
 
+- Before running a browser suite in a fresh build lease, read its CI setup and
+  resolve the browser version and required system libraries. Install them and
+  run the suite in the same lease, or use a verified image containing them;
+  package installation alone does not supply the browser executable. A missing
+  executable is a setup failure and leaves product behavior untested.
+  **Wrong:** install a browser in one disposable lease and run tests in another.
+  **Right:** prepare the pinned browser and run the affected suite together.
+  See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
 - Keep the required feedback path fast enough for the workload. Name which checks run on drafts, ready PRs, merge groups, and the default branch, and where expensive/device/integration coverage runs. Concrete job names, rollout modes, and gate labels live with their implementation.
 - A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
 - Validate workflow references and their scope. A nonexistent context property evaluates to an empty string; evaluate comparisons using the operator's documented coercion rules. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context.
