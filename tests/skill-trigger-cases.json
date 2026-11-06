@@ -233,6 +233,18 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
+          "clause": "running source generation locally or remotely"
+        },
+        {
+          "prompt": "Run the remote contract generator and return all affected consumer projections to the publishing checkout.",
+          "clause": "running source generation locally or remotely"
+        },
+        {
+          "prompt": "Regenerate a game's local SDK bindings and editor metadata before shipping its protocol change.",
+          "clause": "running source generation locally or remotely"
+        },
+        {
           "prompt": "Replace an incorrect async test assertion that rejects valid repeated progress events, and ship bounded terminal-result coverage.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -518,15 +530,15 @@
         },
         {
           "prompt": "Run the contract generator remotely, validate the public protocol with its actual standards checker, and publish the SDK and web registry outputs.",
-          "clause": "running source generation remotely"
+          "clause": "running source generation locally or remotely"
         },
         {
           "prompt": "Regenerate a game protocol on a remote worker and return new bindings, removed obsolete bindings, and the downstream editor catalog before shipping.",
-          "clause": "running source generation remotely"
+          "clause": "running source generation locally or remotely"
         },
         {
           "prompt": "Run source generation remotely for a document API, preserve generated removals, reconcile the automatic generated commit, and ship the complete change.",
-          "clause": "running source generation remotely"
+          "clause": "running source generation locally or remotely"
         },
         {
           "prompt": "Fix a workflow-only worker image whose Dockerfile omits a local dependency, and extend the existing image-input guard to cover the real build.",

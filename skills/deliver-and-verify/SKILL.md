@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running tests in a fresh build lease, running source generation locally or remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -87,8 +87,8 @@ When changing database test setup or disposable fixture cleanup, read
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
 
-Before running a generator or package manager through a remote command wrapper,
-read [remote source generation](references/dx.md#remote-source-generation).
+Before running a generator locally or remotely, or a package manager through a
+remote command wrapper, read [source generation](references/dx.md#source-generation).
 
 When running tests in fresh build leases or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
