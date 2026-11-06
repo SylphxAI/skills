@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Upgrade the engine dependency from source and ship its release image after checking the new compiler minimum in both CI and the artifact builder.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -514,7 +518,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -639,6 +643,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether this UI component reads the active locale provider or a global compatibility setting; report evidence without changing or shipping code.",
       "clause": "prove-it for a review or evidence check",
