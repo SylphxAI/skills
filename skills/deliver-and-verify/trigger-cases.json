@@ -552,6 +552,18 @@
     {
       "prompt": "Update a card game reporting fixture to exercise NULL, scalar JSON and collation-sensitive candidate limits on the real migrated schema.",
       "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Provision an isolated SaaS preview database from the retained migration history and its supported role model.",
+      "clause": "provisioning preview environments"
+    },
+    {
+      "prompt": "Ship a web-only game administration preview using a verified nonproduction API rather than creating a fresh backend.",
+      "clause": "provisioning preview environments"
+    },
+    {
+      "prompt": "Fix both preview server origin resolvers so missing configuration and production aliases cannot receive authenticated mutations.",
+      "clause": "provisioning preview environments"
     }
   ],
   "negative": [
@@ -917,6 +929,21 @@
     },
     {
       "prompt": "Rewrite the database parity runbook for clarity without running SQL or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this preview bootstrap claim proves an empty database works; report evidence without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare isolated databases and a shared nonproduction backend for a preview architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of preview environment isolation without changing or publishing configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
