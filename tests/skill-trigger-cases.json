@@ -233,6 +233,18 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
+          "clause": "repairing recovery references or asynchronous reconcilers"
+        },
+        {
+          "prompt": "Fix a game fleet reconciler that overwrites a valid pending rollback target with a lagging observation of the currently served version.",
+          "clause": "repairing recovery references or asynchronous reconcilers"
+        },
+        {
+          "prompt": "Ship a queue-worker recovery fix that creates its target first and waits for provider-confirmed existence before adding the warm-up reference.",
+          "clause": "repairing recovery references or asynchronous reconcilers"
+        },
+        {
           "prompt": "Fix the first document-editor toolbar click being lost when a new browser session receives its guest cookie and refreshes.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -430,6 +442,21 @@
         }
       ],
       "negative": [
+        {
+          "prompt": "Review whether this inactive recovery target exists and whether the rollback observation is stale; report evidence without changing anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare desired-state and observed-state reconciliation designs for recovery; choose an architecture without implementing it.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this recovery-target error message for clarity without changing or publishing the service.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
         {
           "prompt": "Design a migration plan and compare its alternatives; do not execute it yet.",
           "clause": "Use challenge for a plan or architecture",

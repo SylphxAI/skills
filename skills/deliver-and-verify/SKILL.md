@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when upgrading engine or SDK dependencies, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -40,6 +40,10 @@ For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
+
+For recovery references, rollback pins or asynchronous reconcilers, read
+[recovery references and desired state](references/code.md#recovery-references-and-desired-state)
+before changing target selection or resource creation order.
 
 When a policy change must update existing resources, verify declarations created
 before the change as well as newly rendered output. Rendering only on creation
@@ -93,7 +97,7 @@ Opening or merging a pull request is a checkpoint. Completion is the acceptance 
 ## Domain references
 
 - [parity.md](references/parity.md): verifying game, app and SaaS journeys against a category leader; remake parity, live captures, asset/table checks and automatic recovery.
-- [code.md](references/code.md): domain boundaries, transactions, tests and migrations.
+- [code.md](references/code.md): domain boundaries, transactions, recovery references, desired state, tests and migrations.
 - [auth.md](references/auth.md): sign-in, sessions, recovery and delegated access.
 - [security.md](references/security.md): authority, secrets, personal data and recovery.
 - [integration.md](references/integration.md): provider calls, queued dispatch, partial acceptance, webhooks and reconciliation.
