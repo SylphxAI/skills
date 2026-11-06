@@ -16,6 +16,11 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
 
+When replacing a mutually exclusive configuration variant, validate the effective
+update against an existing object with its server defaults and field ownership.
+Omitting the old variant in desired source may retain its defaulted fields;
+a successful render does not prove that the real reconciler can apply the change.
+
 A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
 
 Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
@@ -162,6 +167,12 @@ capture, generation or transfer completes. Use one authoritative timestamp for
 related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
+
+For short-lived safety or authorization receipts, measure the complete path
+from the qualifying observation to the guarded action, including client startup
+and transport setup. Read-only setup may happen beforehand if the final
+observation still verifies the exact target and state; extending receipt validity
+to hide setup time weakens the safety contract.
 
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new
