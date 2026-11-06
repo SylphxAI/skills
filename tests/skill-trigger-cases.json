@@ -563,6 +563,10 @@
         {
           "prompt": "The publisher refused a generated SDK identifier as a possible secret. Verify the finding and restore publication through its supported scanner.",
           "clause": "a call is refused"
+      },
+      {
+        "prompt": "A job lost its runner, but GitHub refuses its retry while sibling jobs are still running. Recover the failed check without cancelling healthy work.",
+        "clause": "a call is refused"
         }
       ],
       "negative": [

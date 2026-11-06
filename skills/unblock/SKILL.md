@@ -44,6 +44,14 @@ Read the exact failing job log, exit status, and resource metrics before choosin
 
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 
+For a lost GitHub Actions job, read its check-run annotations when the log
+download is unavailable; a missing log alone does not prove runner failure. If
+the job-rerun API refuses because its workflow is still running, preserve healthy
+sibling jobs and wait for a workflow-completion event. Then retry only the lost
+job once, after reading the current head, attempt and status. Read the new job
+and dependent checks afterward. This preserves unrelated successful work while
+restoring the failed check without rerunning the whole workflow.
+
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
 When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
