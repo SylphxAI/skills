@@ -623,6 +623,14 @@
         {
           "prompt": "Ship the invoice display join and update isolated database fixtures, including guest-checkout cases that do not select the customer branch.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a shared stock-availability rule while preserving the distinct checkout, search and restock-advice contracts during depletion and recovery.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a shared export-eligibility rule and verify execution, feature discovery and retry metadata for temporary quota exhaustion and permanent revocation.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -888,6 +896,11 @@
         },
         {
           "prompt": "Review whether this new join invalidates an isolated fixture schema; report evidence without changing or running anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review whether this shared availability change makes temporarily unavailable products disappear from search; report evidence without changing code.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
         }

@@ -274,6 +274,16 @@ Distinguish a required resource-dependent check from an optional suite: the form
 Share cohesive fixtures and table-driven cases where that improves readability.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
+When changing a shared eligibility or availability rule, trace its consumers
+and verify each public contract for temporary unavailability, permanent denial
+and recovery. An execution refusal can be correct while discovery or retry
+metadata regresses; missing recovery evidence remains unknown.
+
+**Wrong:** a stock-exhaustion test blocks checkout, so assume search visibility
+and restock advice still satisfy their contracts. **Right:** exercise checkout
+and search with depleted and recovered stock, and verify any advertised restock
+time against the available evidence.
+
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
 
 For source included from multiple workspaces, run each consumer's exact
