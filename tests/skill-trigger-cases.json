@@ -1369,6 +1369,14 @@
         {
           "prompt": "Design wallet cancellation when several grants share a balance and only their current remainders are imported.",
           "clause": "web top-up vs. wallet/voucher design"
+        },
+        {
+          "prompt": "Two independent API service changes rewrite a shared generated hash and conflict. Choose a generator design that lets both branches merge.",
+          "clause": "when independent generated code changes conflict or merge into stale output"
+        },
+        {
+          "prompt": "Independent game item-schema changes merge cleanly, but their generated catalog keeps the total at 810 instead of 811. How should the committed output be designed?",
+          "clause": "when independent generated code changes conflict or merge into stale output"
         }
       ],
       "negative": [
@@ -1389,6 +1397,11 @@
         },
         {
           "prompt": "Ship the approved endpoint change.",
+          "clause": "deliver-and-verify to execute changes.",
+          "route_to": "deliver-and-verify"
+        },
+        {
+          "prompt": "Implement the approved generator change that removes the shared fingerprint and verify the generated files.",
           "clause": "deliver-and-verify to execute changes.",
           "route_to": "deliver-and-verify"
         }

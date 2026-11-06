@@ -165,6 +165,32 @@ live, what to test, or what to delete.
   business state is read from and written to the authoritative database or Admin
   API so state changes take effect without code changes or PR merges.
 
+## Committed generated output
+
+For independent input changes `A` and `B` from a common base, committed generated
+output should satisfy this composition test across every generated projection:
+
+```text
+G(A ∪ B) = merge(G(A), G(B)) = merge(G(B), G(A))
+```
+
+`G` is the real generator; both merges use its generated common base, ordinary
+Git behavior (such as [`git merge-tree`](https://git-scm.com/docs/git-merge-tree))
+and byte equality against regeneration from the combined inputs, retaining a
+negative freshness check that rejects deliberately drifted output.
+Shared global hashes, single-line snapshots and derived totals couple otherwise
+independent edits; compute provenance hashes in build/CI artifacts, format or
+partition independent entries, and derive displayed totals from those entries.
+This test targets independent edits, not competing changes to the same logical
+entry: preserve freshness rather than hiding genuine conflicts with a custom
+merge driver.
+
+**Bad:** Two branches each add a catalog entry and change the shared total from
+100 to 101; Git merges cleanly but retains 101 instead of 102.
+
+**Good:** Commit the entries without a shared total; both merge orders equal
+regeneration from the combined inputs, and the display derives 102.
+
 ## Scale
 
 Challenge a persistent design at 10x and 100x the relevant users, data and
