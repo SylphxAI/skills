@@ -31,6 +31,18 @@ does not help if an earlier database result or response collector holds the
 whole value. Read metadata before deciding whether output is needed; cap a
 historical replay in the database before its bytes reach the process.
 
+Measure decoded representation as well as stored bytes. A typed binary field
+such as `Vec<u8>` can serialize as a JSON integer array; decoding through a
+generic JSON value allocates a separate enum element per byte. Loading every
+cumulative request on each continuation multiplies this amplification across
+the whole history. Project identities, outcomes and replay dependencies in the
+storage query, then decode typed records with only the request payloads replay
+actually reads. Prove those dependencies by replaying with obsolete payloads
+removed. Compact binary or base64 writes reduce future storage cost; they do
+not repair reads of retained legacy arrays. Follow
+[rolling format compatibility](../../challenge/references/architecture.md#platform-data-and-job-contracts)
+before changing the writer.
+
 Use an established streaming object store or bounded immutable chunk rows.
 Repeated appends to a large `bytea` rewrite prior content; repeated slices of
 compressed TOAST can repeat decompression. `EXTERNAL` permits out-of-line
@@ -45,13 +57,22 @@ previous committed version and source. Serialize replacement against readers
 or read immutable version references, so a stream cannot mix versions. Follow
 [migration compatibility](code.md#migrations) while old revisions still serve.
 
-Prove the actual storage-to-network path with a payload larger than an isolated
-process's memory budget. Generate the source outside that process, measure its
-peak RSS, and hash the receiver incrementally. A test fixture that collects the
-body defeats the proof. Compare source, destination and published digest;
-include interrupted streams, corruption and tenant denial. Keep that isolated
-receipt separate from deployed revision, normal-load OOM/restart counts and
-peak memory over the declared observation window.
+Prove the actual storage-to-network or storage-to-replay path. Use a fresh
+child process for each original and repaired loader on the same fixture, so
+allocator history cannot hide peak resident set size (RSS). On Linux, record
+`VmHWM` from `/proc/self/status` ([Linux /proc documentation](https://www.kernel.org/doc/html/latest/filesystems/proc.html),
+read 2026-11-06); assert a budget derived from serving memory and concurrency.
+Exercise the production query, codec and replay fold, with
+both retained legacy records and the new encoding. Name the history count and
+payload sizes; a small single-record decode does not test whole-history loads.
+
+For transfers, use a payload larger than the isolated process's memory budget.
+Generate the source outside that process and hash the receiver incrementally;
+a fixture that collects the whole body defeats the proof. Compare source,
+destination and published digest; include interrupted streams, corruption and
+tenant denial. Keep isolated memory measurements separate from deployed
+revision, normal-load OOM/restart counts and peak memory over the declared
+observation window.
 
 ## Startup measurements from video and queued logs
 
