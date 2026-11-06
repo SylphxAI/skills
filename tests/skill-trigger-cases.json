@@ -343,6 +343,18 @@
         {
           "prompt": "Replace the SDK account control with its supported entry and ship the migration; make the browser check fail when the entry is absent.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement the parser helper module and publish the fix after formatting both the implementation and its changed module root.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a web component change that also changes an import barrel and package manifest; check the complete formatting scope.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Apply the authorized formatter configuration update and verify every changed file selected by CI.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
         }
       ],
       "negative": [
@@ -408,6 +420,21 @@
         },
         {
           "prompt": "Rewrite these SDK keyboard-navigation instructions for clarity without changing or publishing the application.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this pull request omitted a changed module root from its formatting check; report evidence without changing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare formatter configurations and propose a design without changing repository files.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite this formatter error message for clarity without changing or publishing the repository.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
         }
