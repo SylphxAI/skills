@@ -828,6 +828,10 @@
     {
       "prompt": "Change a blob-filtered CI checkout and verify every graph and content read under the job's final credentials.",
       "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
+      "clause": "handling credentials in process arguments"
     }
   ],
   "negative": [
