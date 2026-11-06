@@ -355,6 +355,18 @@
         {
           "prompt": "Apply the authorized formatter configuration update and verify every changed file selected by CI.",
           "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Ship the container packaging fix: host tests pass, but the clean builder cannot launch the Git dependency transport.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Run an authorized one-off database metadata probe in the cluster, preserving the overridden command and keeping credentials in secret references.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Ship a document conversion image and verify its clean build context, declared entrypoint and actual conversion output.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -435,6 +447,21 @@
         },
         {
           "prompt": "Rewrite this formatter error message for clarity without changing or publishing the repository.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this probe actually executed its query; report the evidence without running or changing anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare container build strategies and recommend an architecture without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these container probe instructions for clarity without executing or publishing them.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
         }

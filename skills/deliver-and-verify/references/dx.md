@@ -1,6 +1,6 @@
 # Developer experience
 
-Trigger: changing an API/package, a development/build workflow, browser input or foreground lifecycle, or an app-store release.
+Trigger: changing an API/package, a development/build workflow, browser input or foreground lifecycle, an app-store release, or running a one-off container probe.
 
 Optimize time from a clean environment to a useful verified result. Make failures diagnosable and recovery clear while staying within existing spending and authority limits.
 
@@ -19,6 +19,35 @@ or an inherited host cache. Measure image pull/startup and build time separately
 change the preinstalled set when measured total setup cost or toolchain needs
 change ([Docker multi-stage builds](https://docs.docker.com/build/building/multi-stage/),
 read 2026-11-05).
+
+## Container builds and probes
+
+Verify the exact Dockerfile and build context in a clean builder. Host tests do
+not establish that a build stage contains the tools invoked by locked
+dependencies, such as Git, compilers or generators. Install each tool in the
+stage that uses it, then boot the resulting image with its declared user and
+entrypoint. Exclude generated build trees and unrelated caches with
+`.dockerignore` at the effective context root, while retaining required inputs;
+check the transferred context size ([Docker build context](https://docs.docker.com/build/building/context/),
+read 2026-11-06).
+
+Before submitting a one-off probe, inspect the final rendered container spec.
+When `kubectl run --overrides` replaces the container array, include the image,
+command, arguments, environment references, stdin setting and required security
+and resource settings together. Check this with `--dry-run=client -o json`;
+command-line arguments alone do not establish what survived the override.
+For a noninteractive database probe, prefer the client's explicit query option
+and attach without stdin. Keep credentials in the cluster through secret
+references rather than exporting their values
+([kubectl run](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_run/),
+read 2026-11-06).
+
+Require the requested operation's output as well as its exit status. A client
+can exit successfully without receiving a query. For example, verify the
+expected metadata columns or an aggregate count; if empty output is legitimate,
+request an explicit completion marker. Keep the query within the authorized
+data scope, then delete the disposable probe and confirm its absence. A green
+container exit with no operation-specific evidence leaves the check unverified.
 
 ## Agent-native access
 
