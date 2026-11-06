@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
-- Model lifecycle states explicitly and handle them exhaustively. Return expected failures as typed values and translate them at the boundary.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary. An intermediate transition that omits an action must preserve authenticated provenance required by later decisions separately from execution intent. Verify those decisions after real state transformations, persistence and reload, including successive transitions with unchanged or changed inputs and missing or tampered provenance.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
