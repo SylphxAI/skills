@@ -16,6 +16,15 @@ another target. Scope credentials to that child process and use the
 [run-record guidance](turn-boundaries.md#persist-results-before-yielding) for
 network policy and recoverable completion.
 
+An offline dependency miss can reflect a different source or cache selected by a
+subprocess, even when the required package bytes exist. Compare the failing
+subprocess's working directory, tool home and environment with its effective
+package source before diagnosing missing artifacts; verify a configuration
+repair from that same directory, including a temporary directory outside the
+checkout, while preserving caller overrides
+([Cargo configuration discovery](https://doc.rust-lang.org/cargo/reference/config.html#hierarchical-structure),
+read 2026-11-06).
+
 A synced source snapshot can contain a synthetic commit without the original
 history. For checks that compare commits, preserve the original HEAD and base
 graphs, including a base supplied only as a SHA, and prove the requested merge
