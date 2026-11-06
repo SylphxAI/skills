@@ -86,6 +86,10 @@ queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
 ([database boundary tests](code.md#database-boundary-tests)) and run the actual
 consuming database test; compilation and parser checks cannot prove resolution.
+Fixture isolation must hold across the actual executor's processes: a shared
+database can couple independent cases through global reconciliation, even when
+their row identifiers differ. A process-local mutex does not isolate a
+process-per-test runner.
 
 **Wrong:** omit the customer table because the invoice uses guest checkout.
 **Right:** include the joined table and execute the invoice projection.
@@ -144,11 +148,10 @@ Request the endpoint's expected response format. Distinguish an explicit access 
 
 If verification fails after publication, preserve the artifacts. Repair the verifier and rerun read-only acceptance against that exact immutable version instead of republishing it.
 
-## Remote source generation
+## Source generation
 
-Before running a generator or package manager through a remote command wrapper,
-identify every generation entrypoint and its outputs from the repository's scripts
-and CI workflow. Follow canonical inputs through downstream projections, including
+For local or remote generation, identify every generation entrypoint and its
+outputs from the repository's scripts and CI workflow. Follow canonical inputs through downstream projections, including
 web registries, clients and documentation. The primary compiler may produce only
 part of the required output. A lockfile-only install also changes source.
 
@@ -158,8 +161,9 @@ actual standards checker as well as its generation check. When generated outputs
 include source hashes, format and validate the canonical inputs before generation;
 even a whitespace-only source edit invalidates that provenance and requires regeneration.
 
-Establish how changed files and deletions return to the publishing checkout. A tar
-of existing changed paths omits removals and leaves obsolete generated files.
+For a remote generator or package manager, establish how changed files and
+deletions return to the publishing checkout. A tar of existing changed paths
+omits removals and leaves obsolete generated files.
 Use the supported local mutation mode, an output mirror, or a validated deletion
 manifest restricted to generator-owned paths.
 Inspect the local diff across the expected output directories and run the affected
@@ -178,7 +182,7 @@ If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
 
-**Wrong:** Publish after the remote contract compiler succeeds, leaving a downstream
+**Wrong:** Publish after the contract compiler succeeds, leaving a downstream
 web registry unchanged. **Right:** Run the complete generation chain, return its
 outputs, and verify the web consumer's generated-file assertion before publishing.
 
