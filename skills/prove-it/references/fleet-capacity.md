@@ -23,6 +23,17 @@ or a retained request envelope is safe to cut. Hardware sizing also needs
 headroom, failure domains, demand and service-level objectives; use the
 [architecture capacity method](../../challenge/references/architecture.md#shared-capacity-pool).
 
+A resource-class name does not establish an identical envelope across routes:
+fallbacks, remote placement and runtime overhead can change the effective
+request. Compare the actual admitted shapes on eligible nodes; aggregate free
+memory can remain unusable when no node fits one request.
+
+Capacity admission and business dispatch are separate outcomes when workers are
+fungible. **Wrong:** a runner labelled for one operation became Ready, so that
+operation started. **Right:** the provider's assignment identifies the operation
+it actually picked; a priority change guarantees a particular operation only
+when the dispatch contract binds that worker to it.
+
 ## Build the census before ranking candidates
 
 1. Read the complete requested population, including system namespaces,

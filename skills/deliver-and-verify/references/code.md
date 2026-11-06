@@ -24,7 +24,14 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
-When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
+When a resource's size or tier is declaration-owned, change its owning source;
+a supported temporary live change also needs a verified reconciliation and
+cleanup path. A child's ignore rule can itself be overwritten by its parent's
+desired state, so durability depends on the full controller ancestry and each
+controller's effective field ownership. **Wrong:** add a child ignore and trust
+an immediate live read. **Right:** establish what preserves it through parent
+reconciliation, then verify the durable source adopts the value and the
+temporary exception is removed.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
