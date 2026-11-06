@@ -84,6 +84,17 @@ Keep migration history truthful: do not record an unverified migration as applie
 
 Choose one final representation and authority. An additive schema change may need no backfill; when existing data must change, transform it in bounded, resumable batches with semantic validation. Where serving continues, expand compatibly, switch readers/writers in a declared order, backfill, retire old consumers and remove the predecessor. Contract changes run after revisions that still need the removed representation are gone.
 
+Pre-deploy migrations acquire locks while the old revision still serves.
+Check that revision's transaction boundaries and lock lifetimes, including
+external calls made inside transactions. A lock-release fix shipped with the
+migration cannot make its own earlier DDL safe. If DDL depends on that fix,
+deploy and verify the fix first; otherwise document why the migration works
+independently of it. Bound lock waits using the migration system's supported
+timeout, and test contention against the old behavior when it affects safety.
+**Wrong:** justify a new column's lock with transaction code that is not deployed.
+**Right:** establish the old caller releases the conflicting lock in time, or
+ship that prerequisite separately before applying the migration.
+
 Check both directions during a rolling cutover: new readers must understand old
 writes, and old readers must understand new writes. If backfill publishes a
 validity marker, an old writer must invalidate or update it. A one-time database
