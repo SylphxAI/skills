@@ -58,6 +58,13 @@ a blank page; inspect the actual frame, including canvas-rendered content.
 
 ## Distinguish renderer faults from product defects
 
+Graphics state queries, clears and draws can take different validation paths,
+especially in virtualized drivers. A valid attachment query or error-free clear
+does not establish successful drawing: use a known draw whose expected pixels
+differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
+**Good:** the draw changes the expected pixels, and the failing state is retained
+as a negative control.
+
 Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
 Texture corruption on both WebGPU and WebGL can therefore share an environment
 cause; switching APIs alone does not establish a product defect. Before reporting
