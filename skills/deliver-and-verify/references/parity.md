@@ -1,6 +1,7 @@
 # Product parity and live verification
 
-Trigger: changing a game, app or SaaS journey; rebuilding an existing product;
+Trigger: changing a game, app or SaaS journey; upgrading engine or SDK dependencies;
+rebuilding an existing product;
 publishing assets, content or configuration that change what a person sees
 or receives; or comparing engine capabilities and performance. Apply this method
 to the affected journey or declared benchmark. A remake covers every original
@@ -276,6 +277,62 @@ An unexpected golden-image mismatch that repeats at later frames establishes
 stability, not that it is pre-existing or unrelated. Keep the committed baseline
 and strict tolerance until a same-source/environment comparison or other
 disconfirming check establishes the cause; adopt only explained, intended changes.
+
+### Verify engine and SDK changes in the shipping host
+
+An upgrade can preserve application state while changing controls, feature flags
+or browser event handling. Verify the dependency version and enabled features in
+the tested artifact. Exercise the actual shipping configuration: an account-free
+preview cannot establish sign-in continuity for the account-enabled release.
+
+Resolve each test selector to the current control and assert its identity,
+visibility and action. Keep a negative control that fails when the control is
+absent or inactive; a test that still passes against a removed entry is not
+testing that entry. For account changes, reopen an authorized existing-session
+or guest fixture and verify the same canonical account and retained value.
+
+For custom-rendered browser controls, distinguish three observations:
+
+1. **Selection:** the expected control owns the logical focus or selection state.
+2. **Paint:** the shipping theme renders the required visible focus indicator.
+3. **Host behavior:** trusted input reaches the control while the document owns
+   focus, activates it, and permits leaving and returning to the component.
+
+A native theme test establishes its tested paint behavior. It does not execute
+browser default actions. Use trusted browser keyboard input; dispatching a synthetic
+event or calling the application handler directly does not establish the full
+browser behavior. Start from a fresh pointer state so a previously painted ring
+cannot hide a failed keyboard transition. Record the visible indicator,
+`document.hasFocus()`, and canvas/document/window focus and blur events while
+exercising Tab, Shift+Tab, relevant arrow navigation, activation, exit and return.
+Verify genuine window blur still triggers the intended lifecycle behavior.
+
+When navigation works with Home or arrows but Tab blurs the document, inspect
+browser default handling and event ownership before changing styles or pixel
+tolerances. Prevent a cancelable event's default action only while the component
+handles that navigation; release ownership at its boundary so keyboard users
+can leave. Blanket Tab suppression creates a keyboard trap. If the trace instead
+shows document focus retained and the expected state reached without paint,
+investigate rendering and theme state. Keep failed captures and the original
+acceptance threshold through the diagnosis.
+
+Illustrative contrast:
+
+- ❌ **Bad:** “The engine upgrade passes,” because a native test selects Focus
+  and a browser selector exists.
+- ✅ **Good:** The account-enabled artifact retains the same fixture account;
+  trusted browser navigation paints focus, activates the control, and exits and
+  returns without pausing the application unexpectedly.
+
+Apply the same checks to a game canvas or an embedded SaaS editor. These checks
+cover the affected host interaction; they do not establish unrelated gameplay,
+account-server behavior or untested device hosts. Repair shared event handling
+at its owning engine or SDK boundary and consume the published correction.
+
+Mechanism references (read 2026-11-06):
+[event default actions](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault),
+[document focus versus active element](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus),
+and [avoiding keyboard traps](https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html).
 
 ### Before publishing assets, tables or configuration
 

@@ -303,6 +303,18 @@
         {
           "prompt": "Implement export publication so its ready state and expiry commit atomically while existing absolute deadlines remain unchanged.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Upgrade the game engine and ship it, verifying the account-enabled browser build retains the existing guest and supports keyboard entry and exit.",
+          "clause": "upgrading engine or SDK dependencies"
+        },
+        {
+          "prompt": "Bump the embedded editor SDK and deploy it; verify trusted Tab navigation, visible focus and return from the surrounding page.",
+          "clause": "upgrading engine or SDK dependencies"
+        },
+        {
+          "prompt": "Replace the SDK account control with its supported entry and ship the migration; make the browser check fail when the entry is absent.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -353,6 +365,21 @@
         },
         {
           "prompt": "Rewrite the download expiry notice for clarity without changing the service or publishing it.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this engine upgrade breaks browser focus; report evidence without changing or shipping it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare retaining the current editor SDK with replacing it; choose an architecture without implementing the upgrade.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these SDK keyboard-navigation instructions for clarity without changing or publishing the application.",
           "clause": "clear-writing for prose alone.",
           "route_to": "clear-writing"
         }
