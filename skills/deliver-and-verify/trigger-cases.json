@@ -510,16 +510,20 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Ship authorized label-based CI routing so the next eligible pull-request event selects the intended self-hosted runner pool.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
       "prompt": "Change CI concurrency so marking a draft pull request ready starts required checks without waiting for its draft report.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Update a release workflow trigger and verify its queued predecessor does not delay the new required checks.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Separate draft and ready workflow concurrency while preserving duplicate-run proof reuse.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
