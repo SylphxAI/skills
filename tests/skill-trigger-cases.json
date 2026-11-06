@@ -260,6 +260,10 @@
           "prompt": "Fix database test teardown that leaves an idle session after pool close; prove a return racing shutdown with a barrier and preserve a genuinely held connection.",
           "clause": "implementing or shipping a feature, bug fix"
         },
+      {
+        "prompt": "Fix a parser helper included by two Rust workspaces with different editions, and ship one source representation that passes both formatting and lint commands.",
+        "clause": "implementing or shipping a feature, bug fix"
+      },
         {
           "prompt": "Fix browser Tab navigation and prove that boundary presses leave the canvas while genuine window blur still pauses the application.",
           "clause": "implementing or shipping a feature, bug fix"
@@ -455,6 +459,11 @@
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
         },
+      {
+        "prompt": "Review whether the shared game-test helper was checked under every including workspace's formatter and lint policy; report evidence without editing or publishing it.",
+        "clause": "prove-it for a review or evidence check",
+        "route_to": "prove-it"
+      },
         {
           "prompt": "Compare desired-state and observed-state reconciliation designs for recovery; choose an architecture without implementing it.",
           "clause": "Use challenge for a plan or architecture",

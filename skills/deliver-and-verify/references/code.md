@@ -271,6 +271,17 @@ Check SQL against the migrated schema through compiler support where available, 
 
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
 
+For source included from multiple workspaces, run each consumer's exact
+formatting and lint commands. Its edition and configuration can change how
+shared bytes are checked; one direct formatter or successful Clippy run does
+not cover the others. Keep one source representation that passes every
+consumer. Put a suppression's narrow explanation in syntax the checker reads,
+such as a Rust lint's `reason` attribute.
+
+**Wrong:** assume a library's successful Clippy run also proves its formatter
+accepts a shared helper. **Right:** run both checks from every including
+workspace, with its own edition and configuration.
+
 When a fixture detects an unwanted read or side effect, prove both that a
 forbidden operation triggers it and that the allowed operation leaves it idle.
 For example, a SQL view containing a VOLATILE rejection function may evaluate
