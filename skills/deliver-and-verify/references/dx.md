@@ -98,6 +98,8 @@ entrypoint. Exclude generated build trees and unrelated caches with
 check the transferred context size ([Docker build context](https://docs.docker.com/build/building/context/),
 read 2026-11-06).
 
+A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
+
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
 and retain bounded daemon startup logs before that instance ends; a path inside

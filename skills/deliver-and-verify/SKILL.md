@@ -89,6 +89,8 @@ For sandbox build templates or native compilation failures, read
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures).
 
+When changing runtime isolation, read [runtime isolation](references/security.md#runtime-isolation).
+
 Before changing database roles or privileges, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
