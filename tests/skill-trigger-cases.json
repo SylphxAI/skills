@@ -301,6 +301,10 @@
           "clause": "Carry the outcome through execution and verification at its real surface."
         },
         {
+          "prompt": "Fix a job continuation that loads every cumulative request as a generic JSON tree; prove bounded replay memory in fresh child processes for old and new encodings.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix the document API so restoring large attachment archives has bounded process memory, including during a rolling storage cutover.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -577,6 +581,10 @@
         {
           "prompt": "Assess an external partner's request for custom work on its client's project.",
           "clause": "assessing a partner's request for help on its own client project"
+        },
+        {
+          "prompt": "Design a rolling saved-game checkpoint encoding change with no schema migration, where older recovery workers can still read the same records.",
+          "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
         },
         {
           "prompt": "Are we over-engineering this migration? Find a simpler complete design.",

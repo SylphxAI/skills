@@ -209,15 +209,20 @@ target design before live state makes migration expensive.
   verify actual concurrent interleavings using the
   [transaction standard](../../deliver-and-verify/references/code.md#transactions-and-idempotency).
   Why: a helper's local ordering cannot prevent a cycle created by its caller.
-- **Expand and contract rolling storage changes.** When replacing a stored
-  representation while old revisions serve, first deploy readers of both and
-  compatible dual writes or an equivalent authoritative projection. Stop old
-  writes only after old revisions and their in-flight work are gone; remove old
-  data in a later change after destination verification, following
+- **Expand and contract rolling storage changes.** Persisted serialization
+  formats inside unchanged columns follow this method too. First deploy readers
+  of both formats while retaining the old write format. Verify the expanded
+  reader serves fully and
+  retire every old reader and its in-flight work before switching writes;
+  include tagged recovery revisions and background workers in that census.
+  A storage cutover also needs compatible dual writes or an equivalent
+  authoritative projection until old consumers retire. Verify the destination
+  before removing old data in a later change, following
   [migration compatibility](../../deliver-and-verify/references/code.md#migrations).
-  Missing required data is an error rather than an empty replacement.
-  Why: mixed revisions can otherwise lose acknowledged writes or return false
-  empty state.
+  Rollback after the write switch must retain the expanded reader. Missing
+  required data is an error rather than an empty replacement.
+  Why: an older reader can fail to decode newly acknowledged writes even when
+  the database schema is unchanged, or return false empty state.
 - **Declare product schedules with the product.** Declare scheduled work as a
   platform job in the product manifest and bind its database, secrets and metrics
   access through that product's resource grants. Keep the platform scheduler
