@@ -245,6 +245,11 @@ A serializer-only test cannot prove the database accepted the event.
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
+A completion marker proves only the work and writer it identifies; a stale,
+foreign-owned or malformed marker must neither suppress required repair nor
+abort unrelated reconciliation. Exercise state left by previous writers and
+preserve unknown data or outside references when rebuilding that evidence.
+
 ## Publication time and expiry
 
 When the contract promises a lifetime from becoming ready or being granted,
