@@ -716,6 +716,14 @@
     {
       "prompt": "Pin consumers to a package mirror after checking live metadata, canonical archive redirects and a real download.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix an admission policy that denies unsafe pod creation but misses debug-container subresource updates; ship it with route-level verification.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an authorization predicate whose offline tests omit the action route, and verify the shipped API rejects that alternate operation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
