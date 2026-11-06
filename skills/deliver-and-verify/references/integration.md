@@ -15,6 +15,16 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 
 Verify replay, duplication, dropped delivery and timeout behavior for the affected contract. The resulting data stays correct and secrets do not appear in output.
 
+## Shared dependency features and client policy
+
+Enabling a shared dependency feature can change defaults for every consumer,
+including clients whose builders did not change. Verify the effective feature
+set and each client's response policy through its own entry point; make behavior
+explicit where policies differ. **Wrong:** prove automatic decoding on one
+downloader and infer that a strict proxy still sees the original encoding
+headers; **Right:** pair that success with encoded-response rejection through
+the strict proxy after the dependency resolves its full feature set.
+
 ## HTTP test doubles and routing
 
 Before replacing a remote dependency with a fake, read its declared endpoints,
