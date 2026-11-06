@@ -1,7 +1,7 @@
 # Fleet capacity and idle-workload evidence
 
-Read this when verifying a fleet resource census, an idle replica floor, or a
-claim that scaling down released capacity. The result is a measured population
+Read this when verifying a fleet resource census, historical worker concurrency,
+an idle replica floor, or a claim that scaling down released capacity. The result is a measured population
 and a separate release verdict. A requested savings target is not evidence that
 safe candidates exist.
 
@@ -22,6 +22,17 @@ Low physical use does not prove a data store is unused, a replica is redundant,
 or a retained request envelope is safe to cut. Hardware sizing also needs
 headroom, failure domains, demand and service-level objectives; use the
 [architecture capacity method](../../challenge/references/architecture.md#shared-capacity-pool).
+
+A resource-class name does not establish an identical envelope across routes:
+fallbacks, remote placement and runtime overhead can change the effective
+request. Compare the actual admitted shapes on eligible nodes; aggregate free
+memory can remain unusable when no node fits one request.
+
+Capacity admission and business dispatch are separate outcomes when workers are
+fungible. **Wrong:** a runner labelled for one operation became Ready, so that
+operation started. **Right:** the provider's assignment identifies the operation
+it actually picked; a priority change guarantees a particular operation only
+when the dispatch contract binds that worker to it.
 
 ## Build the census before ranking candidates
 
@@ -55,6 +66,16 @@ headroom, failure domains, demand and service-level objectives; use the
    stated. Do not turn their exclusion into an unexplained missing row.
 
 ## Measure without manufacturing zeroes
+
+For historical job concurrency, observation IDs need not identify executions:
+GitHub rerun-failed can copy successful jobs into later attempt responses under
+new job IDs while preserving their runner and timestamps. Reconcile retained
+attempts by execution identity (workflow run, job/matrix identity, assigned
+runner and start/end interval), keeping observation IDs as provenance; genuine
+reruns with different intervals remain separate. **Wrong:** sum per-attempt
+jobs. **Right:** deduplicate carried-forward observations, sweep half-open
+execution intervals and report unavailable runs or work outside the queried
+cohort as coverage gaps.
 
 Choose one authoritative scrape path per cell. Verify named application
 containers are present: a container metric can expose host/runtime containers

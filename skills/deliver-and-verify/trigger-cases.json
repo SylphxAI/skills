@@ -10,8 +10,16 @@
       "clause": "running tests in a fresh build lease"
     },
     {
-      "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
-      "clause": "implementing or shipping a feature, bug fix"
+      "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
+      "prompt": "Add ignored game-server save recovery tests to the existing CI runner, repairing fixture drift while retaining the fault negative.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
+      "prompt": "Enroll skipped database release tests through their existing proof modes and state the protections absent from the reduced fixture.",
+      "clause": "enrolling disabled tests in CI"
     },
     {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
@@ -443,15 +451,15 @@
     },
     {
       "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Change stderr redaction so structured worker failures stay parseable while credential values remain concealed.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
-      "clause": "changing stderr redaction"
+      "clause": "changing diagnostic redaction"
     },
     {
       "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
@@ -510,16 +518,20 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Ship authorized label-based CI routing so the next eligible pull-request event selects the intended self-hosted runner pool.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
       "prompt": "Change CI concurrency so marking a draft pull request ready starts required checks without waiting for its draft report.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Update a release workflow trigger and verify its queued predecessor does not delay the new required checks.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Separate draft and ready workflow concurrency while preserving duplicate-run proof reuse.",
-      "clause": "changing CI triggers or concurrency"
+      "clause": "changing CI triggers, routing or concurrency"
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
@@ -562,6 +574,22 @@
       "clause": "changing SQL queries or schema-backed fixtures"
     },
     {
+      "prompt": "Repair a payment fault-injection test that accepts an authentication refusal before reaching its intended changed-price check, and ship specific refusal coverage.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game inventory negative test that only checks is_err, prove an unrelated stale-heartbeat fault fails its assertion, and ship the repair.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair database fixture readiness so a socket-only initialization server cannot satisfy the final TCP-server probe, then run the real fixture.",
+      "clause": "changing SQL queries or schema-backed fixtures"
+    },
+    {
+      "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Provision an isolated SaaS preview database from the retained migration history and its supported role model.",
       "clause": "provisioning preview environments"
     },
@@ -572,6 +600,26 @@
     {
       "prompt": "Fix both preview server origin resolvers so missing configuration and production aliases cannot receive authenticated mutations.",
       "clause": "provisioning preview environments"
+    },
+    {
+      "prompt": "Apply an authorized temporary shared-runtime setting while a parent controller reconciles the child configuration, then deploy the durable source and remove the exception.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Build a matched browser engine benchmark with shared texture assets and validate the independent bilinear pixel checker before timing.",
+      "clause": "building matched engine benchmarks"
+    },
+    {
+      "prompt": "Build equal-work rendering benchmarks that count every emitted label quad and reject an intentionally shifted glyph.",
+      "clause": "building matched engine benchmarks"
+    },
+    {
+      "prompt": "Ship a chart renderer fix with an independent known-answer color-model test and a complete label primitive census.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
@@ -582,6 +630,21 @@
     },
     {
       "prompt": "Rewrite this dependency-cache setup paragraph for clarity without running checks or changing repository configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review these CI logs to determine whether ignored tests actually executed; report evidence without editing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two designs for selecting disabled tests before choosing an architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this disabled-test enrollment explanation for clarity without running or publishing changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
@@ -947,6 +1010,21 @@
     },
     {
       "prompt": "Rewrite the database parity runbook for clarity without running SQL or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this failed test reached its intended fault or stopped at setup; report evidence without editing or running it.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare typed errors and root-cause matching for a proposed test architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this readiness explanation for clarity without changing or publishing any fixture.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

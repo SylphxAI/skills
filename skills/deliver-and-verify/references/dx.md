@@ -21,6 +21,15 @@ another target. Scope credentials to that child process and use the
 [run-record guidance](turn-boundaries.md#persist-results-before-yielding) for
 network policy and recoverable completion.
 
+An offline dependency miss can reflect a different source or cache selected by a
+subprocess, even when the required package bytes exist. Compare the failing
+subprocess's working directory, tool home and environment with its effective
+package source before diagnosing missing artifacts; verify a configuration
+repair from that same directory, including a temporary directory outside the
+checkout, while preserving caller overrides
+([Cargo configuration discovery](https://doc.rust-lang.org/cargo/reference/config.html#hierarchical-structure),
+read 2026-11-06).
+
 A synced source snapshot can contain a synthetic commit without the original
 history. For checks that compare commits, preserve the original HEAD and base
 graphs, including a base supplied only as a SHA, and prove the requested merge
@@ -120,6 +129,13 @@ process-per-test runner.
 **Wrong:** omit the customer table because the invoice uses guest checkout.
 **Right:** include the joined table and execute the invoice projection.
 
+Bootstrap servers can answer a local probe and then stop before the serving
+process starts. Read the entrypoint and choose a readiness signal the temporary
+process cannot satisfy; a socket-only bootstrap must fail a TCP readiness probe
+([PostgreSQL image entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh),
+read 2026-11-06). A successful socket query alone does not establish final-server
+readiness.
+
 Locate the failed phase before changing a timeout: service readiness,
 connection establishment, schema setup and test execution have different
 budgets. Give cold fixture DDL a separate bounded setup connection when it
@@ -185,6 +201,13 @@ generator through its actual entrypoint in a fresh process. Follow canonical
 inputs through downstream projections, including web registries, clients and
 documentation. The primary compiler may produce only part of the required output.
 A lockfile-only install also changes source.
+
+When byte reproducibility is required, repeated builds under one execution
+identity do not prove portable determinism; vary plausible ambient inputs and
+compare artifact bytes and embedded metadata while preserving intentional source
+metadata. Bind each proof receipt to the exact tested generator and input artifact
+digests; changes to either require rerunning the affected proof and regenerating
+its receipt, not relabelling old evidence.
 
 When extracting generated inputs from a container, resolve logical identities
 through declared relationships and schema identifiers; archive member order,
@@ -320,6 +343,15 @@ not help. A healthy run already queued or executing needs no restart.
 
 Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), read 2026-11-06.
 
+Routing expressions that read `github.event` use the triggering webhook payload;
+a later label edit does not change an existing run's routing. Authorized routing
+metadata must be present in an eligible event, whose activity type is configured;
+verify the resulting run while preserving healthy work already in flight.
+**Wrong:** assume a new label moves queued jobs; **Right:** read the event and
+routing expression before choosing a supported event with the intended metadata.
+
+Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
+
 
 - Dependency installation alone does not establish test readiness: workspace
   exports may resolve to generated files, and assertions may invoke external
@@ -336,17 +368,18 @@ Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/wo
 - A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
 - Validate workflow references and their scope. A nonexistent context property evaluates to an empty string; evaluate comparisons using the operator's documented coercion rules. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context.
 - Before editing a workflow file in a product repository, read which workflows run on a push to the default branch and what each one publishes so an infrastructure or cache edit does not unintentionally trigger a production release.
-- Bind a verification result to the workflow path or ID, event, branch, exact commit, and run attempt. Display names can be dynamic; accepting or rejecting a run by its title alone can select the wrong execution or refuse the right one.
+- Bind each verification result to the complete source range, checks actually executed, workflow path or ID, event, branch, exact commit and run attempt; display titles can change independently. A clean last-commit diff or manual run can leave full-PR lint or event-conditional checks untested. **Wrong:** extend either result to the whole pull request; **Right:** validate the complete applicable diff and confirm required steps ran under the relevant event predicates.
 - Match a browser-test artifact's build configuration to the journey being claimed. A pack that deliberately omits an embedded signing key can establish offline rendering while being unable to authenticate a real guest. Read the build inputs and declared secret bindings before scheduling a live journey, and check the served source revision before creating a synthetic account. For a supported local mode, exercise its first useful action with the service deliberately disabled; separately prove that a configured but unresolved account stays blocked until its record loads. A rendered entry screen or a configuration predicate alone cannot establish either behavior. When a suitable preview is unavailable, use the normal release path and verify its deployed revision; keep offline, preview and live results distinct.
 - When a startup regression escaped compilation and unit checks, put the affected interaction into the existing merge gate using the exact candidate artifact. Require its result through the aggregate verdict on both ready PRs and merge groups; a scheduled or post-merge journey only detects damage after admission. Keep the interaction driver and its acceptance predicate shared across these paths, and retain the default-branch check as the delivered-artifact receipt.
 - Select affected checks from actual dependencies: imports, subprocesses, generated files, fixtures and direct source-file reads, including consumers in another language or workspace. Before skipping a suite on a path-only diff, search for references to the changed files and directories. A source refactor can break a test elsewhere even when the public behavior stays the same. Update all affected reader and fixture assertions together and run the consuming tests. Shared test helpers inherit each including entrypoint's lint policy, so run those consumers' lint commands too. If the dependency map is incomplete, run the enclosing suite and state its scope.
 - Passing unit tests establish only their build configuration: test-only imports or reexports (such as Rust `cfg(test)`) can hide missing symbols in production. Pair affected tests with a compile check of the shipping binary or library using its actual feature set and target. **Wrong:** infer production compilation from a green unit-test build; **Right:** verify the non-test shipping target separately.
-- For a regression selected by a library or binary target, filter or external prerequisite, inspect the effective selection and setup path. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Apply [the executed-test checks](../../prove-it/SKILL.md) before citing the result. A configured but unavailable prerequisite fails explicitly; an intentionally resource-free job is separate from the required database proof. Adjust selection at the owning package or runner boundary and verify execution there.
+- For a regression selected by a target, filter, disabled marker or external prerequisite, trace the discovered inventory through the registered execution route; inventory every disabled test, whatever its stated reason, against the named tests the route actually ran in the required environment. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Adjust selection at the owning package or runner boundary and verify execution there: a configured but unavailable prerequisite fails explicitly, while an intentionally resource-free job is separate from the required database proof ([executed-test evidence](../../prove-it/SKILL.md)).
+- First execution can expose stale expectations, product defects or fixture drift: distinguish these using the asserted contract and its history, and retain a negative that detects the intended fault after any fixture repair. A reduced fixture establishes only its installed schema and protections; omitted migrations, constraints, triggers, policies and defaults remain stated limitations on the result.
 - **Synchronize selective container `COPY` layers and deploy `watch_paths` when changing build script inputs:** When an installer or build script changes which files it reads (for example, switching from `Cargo.toml` to a separate pin or lock file), update every selective `COPY` layer in `Dockerfile*` that runs before that script and every service's `watch_paths` in the deployment manifest; otherwise pre-merge CI against a full checkout passes while post-merge container builds fail or skip releases.
 - Derive local formatting checks from the complete changed-file list against the PR base, including module roots, import barrels and manifests. Match CI's file selection, flags and configuration; a pass on implementation files alone leaves other changed files unverified. A formatter-only pass can omit import/export grouping, so use CI's check command to verify it. Recheck when the diff or configuration changes, and preserve CI's generated-file exclusions.
 - When inserting or reordering generated collection entries, search consumers by emitted field names, including ignored integration tests and database proofs. Find entries by their stable identity when checking their values; assert positions separately when order itself is part of the contract. An ignored test still consumes the generated shape, so compile it and name the isolated CI proof that remains pending when its database is unavailable locally.
 - Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
-- Keep time/resource bounds appropriate to the job. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
+- Size time/resource bounds to the operation being measured: an enclosing test deadline includes every sequential fixture and child command. Independent scenarios need separate fixtures and named results under the existing per-case bound; keep a shared deadline when aggregate latency is the acceptance contract. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
 - Classify assertions by what they protect when making measurements advisory: runner load can perturb timing, while finite outputs and numerical accuracy bounds may enforce correctness. **Wrong:** remove every numeric assertion because timings are noisy; **Right:** report noisy timings while retaining correctness checks. Quarantine a demonstrated flaky case instead of retrying until green; a named defect or infrastructure repair can justify an affected rerun.
 - Before a local integration proof, read its fixture contract: an empty database
   and a migrated database are different inputs. Select the test runner's supported
