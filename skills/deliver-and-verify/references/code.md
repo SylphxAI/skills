@@ -340,6 +340,8 @@ publishing the correction.
 
 ## Tests
 
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
 An optional selector's omitted or empty value can be a valid mode with its own
