@@ -14,6 +14,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
 - A passing step proves only what it checked: read the log for the inner result. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- Before citing a regression test, confirm that the exact test was discovered and executed in the intended environment. Read selected, passed and skipped counts, including ignored-test enrollment and required setup. A green command selecting zero tests proves nothing. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
 - Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
@@ -92,6 +93,30 @@ without bypassing required checks or repeatedly resubmitting an unchanged refusa
 **Wrong:** "The previous pull request passed at this SHA, so its replacement is
 ready to merge." **Right:** "That run passed; the replacement still expects its
 required check and has no queue entry."
+
+## Shared status projections
+
+When a dashboard or provider check conflicts with a source event, trace one
+source event through its owner, attempt, durable receipt and displayed object.
+A shared display name may combine unrelated owners. A missing exact build may
+be carried by a successor; prove that relationship before calling intake lost.
+
+Separate successful transport from completion of the business outcome. A
+published pending result can be delivered successfully while the deployment is
+still unfinished. For an overdue-outcome alert, identify active work and the
+last completed work before choosing the age clock; verify an actual firing
+instance or an evaluator case against the witnessed failure.
+
+If changing projection identity or omitting irrelevant results, check required
+status consumers and test two owners on one source revision, a second attempt
+after a terminal failure, and unknown relevance becoming known. An already
+published pending object needs a terminal result. A retry updates its attempt;
+a new attempt has distinct history. An actual operation can exist even when
+its automatic trigger would have been irrelevant.
+
+**Wrong:** "One neutral check proves no environment needed a deployment."
+**Right:** "That check belongs to this owner and attempt; inspect the affected
+owner's durable outcome before attributing the result."
 
 ## Verify effective entrypoint behavior
 

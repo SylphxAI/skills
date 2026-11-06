@@ -300,10 +300,10 @@
           "prompt": "Fix database test teardown that leaves an idle session after pool close; prove a return racing shutdown with a barrier and preserve a genuinely held connection.",
           "clause": "implementing or shipping a feature, bug fix"
         },
-      {
-        "prompt": "Fix a parser helper included by two Rust workspaces with different editions, and ship one source representation that passes both formatting and lint commands.",
-        "clause": "implementing or shipping a feature, bug fix"
-      },
+        {
+          "prompt": "Fix a parser helper included by two Rust workspaces with different editions, and ship one source representation that passes both formatting and lint commands.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
         {
           "prompt": "Fix browser Tab navigation and prove that boundary presses leave the canvas while genuine window blur still pauses the application.",
           "clause": "implementing or shipping a feature, bug fix"
@@ -523,11 +523,11 @@
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
         },
-      {
-        "prompt": "Review whether the shared game-test helper was checked under every including workspace's formatter and lint policy; report evidence without editing or publishing it.",
-        "clause": "prove-it for a review or evidence check",
-        "route_to": "prove-it"
-      },
+        {
+          "prompt": "Review whether the shared game-test helper was checked under every including workspace's formatter and lint policy; report evidence without editing or publishing it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
         {
           "prompt": "Compare desired-state and observed-state reconciliation designs for recovery; choose an architecture without implementing it.",
           "clause": "Use challenge for a plan or architecture",
@@ -795,6 +795,18 @@
         {
           "prompt": "Check whether a missing inventory attribute is truly absent or only omitted from a compact cached projection.",
           "clause": "checking that a resource or bug is absent"
+        },
+        {
+          "prompt": "A shared deployment check says no changes, but one environment has a pending build. Reconcile the two readings before naming the cause.",
+          "clause": "reconciling conflicting readings"
+        },
+        {
+          "prompt": "Verify that the new database regression actually executed rather than being ignored by a green CI command.",
+          "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "The task ledger reports a document upload delivered, while its indexing outcome is still pending. Check the claimed completion.",
+          "clause": "reconciling conflicting readings"
         }
       ],
       "negative": [
@@ -827,6 +839,21 @@
           "prompt": "Compare two Android billing architectures before choosing an implementation.",
           "clause": "challenge to compare designs",
           "route_to": "challenge"
+        },
+        {
+          "prompt": "Restore the deployment that is currently stuck waiting for a build.",
+          "clause": "Use unblock to restore currently failing work",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Compare two proposed schemes for naming deployment attempts before choosing one.",
+          "clause": "challenge to compare designs",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Calculate how many seconds are in fifteen minutes.",
+          "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+          "route_to": null
         }
       ]
     },
