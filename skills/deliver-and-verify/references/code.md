@@ -278,6 +278,14 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+A successful read can be policy-filtered even when it returns no warning or
+error; counts, maxima and metadata inventories establish completeness only for
+the effective observer's proven visibility scope, including indirect dependencies.
+**Wrong:** infer no objects or missing rows from an empty privileged wrapper or a
+matching filtered count. **Right:** use a known hidden object or row to distinguish
+the limited observer from a full-scope control, and preserve an explicit unknown
+result when scope cannot be proved.
+
 Cross-engine SQL needs populated differential cases that distinguish rounding,
 NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
 establish output parity. Collation can arrive through a function argument before
@@ -348,6 +356,13 @@ from the contract rather than freezing an incidental library output.
 **Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
+
+A negative test can pass for the wrong failure when setup refuses before the
+injected fault. Assert the specific typed refusal or root cause, print the full
+error chain on mismatch, and verify that substituting an unrelated fault makes
+the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
+failed”; **right:** require the changed-price refusal after a passing baseline,
+while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
