@@ -319,6 +319,12 @@ from an unset provider ID before any provider call. A skipped provider path
 leaves that failure scenario OPEN; an account-free preview also cannot establish
 sign-in continuity for the account-enabled release.
 
+Generated host sources and linked native libraries can come from different
+releases even when a package builds. Match their JNI/FFI contracts before
+exercising a device, record any local compatibility overlay, and limit the
+verdict to the behavior actually exercised; verify the complete published
+combination before claiming an engine upgrade.
+
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is
 absent or inactive; a test that still passes against a removed entry is not

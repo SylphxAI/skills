@@ -757,6 +757,18 @@
           "clause": "implementing or shipping a feature, bug fix, parser"
         },
         {
+          "prompt": "Replace manually edited configuration workbooks with typed source and generate a compatibility release that preserves the deployed tables.",
+          "clause": "running source generation locally or remotely"
+        },
+        {
+          "prompt": "Regenerate a billing catalogue while separately proving deployed-reader compatibility and validation against current declarations.",
+          "clause": "running source generation locally or remotely"
+        },
+        {
+          "prompt": "Fix and ship an archive importer that selects a notes worksheet when ZIP members are reordered and data headers are copied.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Port billing aggregate views between database engines while preserving exact decimal results on repeating fractions.",
           "clause": "changing SQL queries or schema-backed fixtures"
         },
@@ -1102,6 +1114,21 @@
         },
         {
           "prompt": "Rewrite this database permission explanation for developers; change prose only without publishing it.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this spreadsheet round-trip receipt proves cached formula values were preserved; do not edit or rerun anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare database configuration storage with typed text before choosing a migration architecture; do not implement either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the explanation of deployed-runtime and current-schema verification for clarity without running or publishing changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         },

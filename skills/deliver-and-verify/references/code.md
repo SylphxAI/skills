@@ -16,6 +16,11 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 When a resource's size or tier is owned by a declaration (manifest, config file, GitOps source), change the declaration, never the runtime API. An API write the next reconcile reapplies is not durable, and an immediate read of live state cannot prove otherwise; verify after the next reconciliation against the authoritative source. A silent re-expansion on saturated capacity can preempt unrelated workloads.
 
+When replacing a mutually exclusive configuration variant, validate the effective
+update against an existing object with its server defaults and field ownership.
+Omitting the old variant in desired source may retain its defaulted fields;
+a successful render does not prove that the real reconciler can apply the change.
+
 A resource reduction can temporarily require the old and replacement allocations together. Before a restart or rollover on saturated shared capacity, measure the transition peak on eligible placements, including runtime overhead and preemption effects; final-state savings do not prove that the change preserves other live work.
 
 Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
@@ -162,6 +167,12 @@ capture, generation or transfer completes. Use one authoritative timestamp for
 related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
+
+For short-lived safety or authorization receipts, measure the complete path
+from the qualifying observation to the guarded action, including client startup
+and transport setup. Read-only setup may happen beforehand if the final
+observation still verifies the exact target and state; extending receipt validity
+to hide setup time weakens the safety contract.
 
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new
@@ -379,7 +390,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Cleanup and review
 
-Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating checked-in generated code, reproduce the committed output unchanged with the pinned, checksum-verified generator and runtime, then change only the input and review the diff. Regenerating a whole data file or workbook to change a few fields is a population-wide change: decode the committed and regenerated tables, keep every field outside the approved change identical, and isolate any pre-existing drift as its own change rather than importing it. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating data or code, establish the authoritative baseline from the selected or deployed artifact; a checked-in snapshot can already drift. Prove preservation with the pinned, checksum-verified generator, an independent decoder and the actual consuming runtime, while validating current declarations separately; an older runtime model does not justify weakening the current schema. Compare the full decoded population, including secondary records, formulas and cached values where relevant, allow only declared changes, and name representation-only differences. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
 
 Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
