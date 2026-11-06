@@ -236,6 +236,11 @@ publishing the correction.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
 
+For destructive work planned from shared references, test another live reference
+changing after discovery: a successful conditional deletion validates only the
+object removed, not the references left behind. Verify the final deletion set
+while preserving the original early-stopping behavior and measuring added I/O.
+
 For formatting regressions, type representative expected strings from the
 user-visible contract. Deriving the expectation from the formatter under test
 repeats its defect. Include the locale where an ambiguous symbol is native,
