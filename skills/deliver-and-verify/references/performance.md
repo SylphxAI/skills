@@ -31,6 +31,12 @@ does not help if an earlier database result or response collector holds the
 whole value. Read metadata before deciding whether output is needed; cap a
 historical replay in the database before its bytes reach the process.
 
+Transport or decompressor frame sizes are not application allocation bounds: a
+transform that copies each frame can recreate a whole-document allocation despite
+chunked retained output. Derive bounded input slices and scratch space for the
+transform, test one oversized frame as well as many tiny frames, and include
+decoder-owned bytes in the end-to-end budget.
+
 A shared payload can outlive its cache entry or stream, and each fan-out copy is
 another allocation: charge bytes until the last reader or transport owner releases
 them. Budget waits must observe transitions that make further allocation
