@@ -735,6 +735,10 @@
         {
           "prompt": "Separate draft and ready workflow concurrency while preserving duplicate-run proof reuse.",
           "clause": "changing CI triggers or concurrency"
+        },
+        {
+          "prompt": "Fix a CI workflow policy parser that rejects an unreachable runner label, preserving every reachable label-dependent outcome for each triggering event.",
+          "clause": "implementing or shipping a feature, bug fix, parser"
         }
       ],
       "negative": [

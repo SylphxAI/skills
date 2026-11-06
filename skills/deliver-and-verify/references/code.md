@@ -261,6 +261,23 @@ publishing the correction.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical.
 
+Workflow policy evaluators can mistake a literal in an unreachable branch for
+an allocated runner when unsupported syntax falls back to string matching.
+Evaluate each declared trigger and inherited reusable-call context with the
+host engine's truthiness and logical operand values. Unknown labels or inputs
+represent every reachable outcome; an event field known to be absent is a
+different state. Each reachable allocation must satisfy the existing policy,
+and an unresolved selected expression needs a refusal naming the construct.
+Extending the evaluator does not authorize extending a rule to other events.
+For GitHub Actions, use the [official expression semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions)
+(read 2026-11-06). Verify exact consumer selectors with wildcard filters,
+mixed triggers, both unknown-label branches, a static forbidden allocation and
+an unsupported expression through the shipped checker entrypoint.
+
+**Wrong:** find a PR-pool literal anywhere in a selector and reject its merge
+run. **Right:** prove the merge event selects its permitted pool, and check
+both label-dependent PR outcomes under the rules that apply to PRs.
+
 Concurrency assertions should distinguish the mechanism from scheduler latency: observe wake reasons, probe counts per wait and resource ownership at barriers, and keep benchmark timings separate from generous progress deadlines unless timing itself is the contract. When acknowledgements or rechecks can emit valid repeated status events, consume them until the terminal result under one deadline while preserving subsequent frames; a trace showing timely completion with extra status messages falsifies an exact-count assertion, which should be replaced rather than marked flaky. **Wrong:** require exactly one wait event and a tight shared-runner latency; **right:** accept valid repeated waits, assert the terminal outcome and test notification versus fallback through observable causes.
 
 An adapted reference executable can repeat an adapter defect even when its core source is untouched; pin source/configuration, make boundary substitutions explicit, and qualify it against independently recorded outcomes when available. Compare the same computation stage, separating later modifiers, and keep missing inputs unknown: exact known-input matches and compatibility across possible inputs support different claims. **Wrong:** infer a missing input from the expected result and count it as an exact match; **right:** report the unknown stratum separately until independent evidence resolves that input.
