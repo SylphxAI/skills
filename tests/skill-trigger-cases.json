@@ -800,6 +800,14 @@
         {
           "prompt": "The remote build wrapper repeatedly times out before any compiler verdict. Restore the focused check using the operator-approved local executor without changing the runtime.",
           "clause": "CI/build run that has actually stalled or is failing"
+        },
+        {
+          "prompt": "Restore the failing browser capture job: frames complete alone but exceed the deadline when workers share the runner CPU quota.",
+          "clause": "CI/build run that has actually stalled or is failing"
+        },
+        {
+          "prompt": "The rendering check times out with a generic loading message. Determine whether preparation, asset loading or completion is stuck and restore the check.",
+          "clause": "CI/build run that has actually stalled or is failing"
         }
       ],
       "negative": [
