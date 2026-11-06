@@ -147,7 +147,8 @@ Preserve the unknown outcome, typed cause and original idempotency key. Replay
 or reconcile through the operation's supported contract without starting a
 second logical operation. Classify a failure as a rejection before dispatch
 only when dispatch was conclusively prevented. An authoritative terminal
-receipt can resolve an unknown outcome.
+receipt can resolve an unknown outcome; a controller's terminal status alone
+does not prove its worker exited or released its lock.
 
 Verify this boundary through the real transport: have the peer receive the
 request, then close the connection before response headers. Assert the typed
