@@ -439,6 +439,14 @@
         {
           "prompt": "Ship a queue-worker controller replacement that removes only obsolete subscriptions and tolerates optional cleanup permission failures.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix and ship the command runner: a worker can receive a command and die before response headers, so replay must preserve the unknown outcome without dispatching again.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Repair the payment integration so a lost charge response preserves its original idempotency key and typed failure cause, then verify the deployed behavior.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         }
       ],
       "negative": [
