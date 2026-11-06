@@ -94,6 +94,10 @@
       "clause": "upgrading engine or SDK dependencies"
     },
     {
+      "prompt": "Restore an app plugin to fix a missing integration and ship it, checking metadata ownership and qualified resource overrides in the merged release variant even when SDK versions and classes match.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
     },
