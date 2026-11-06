@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Regenerate clients locally after adding a schema field, including the downstream web registry and documentation.",
       "clause": "running source generation locally or remotely"
     },
