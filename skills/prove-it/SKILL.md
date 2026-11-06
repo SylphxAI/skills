@@ -92,7 +92,10 @@ same head, retaining producer and timestamp; aggregate success on either
 surface establishes neither the other's result nor the PR's merge eligibility.
 
 Read the repository's live required check contexts and workflow disposition
-before attributing a blocked merge to one red check. An advisory failure is a
+before attributing a blocked merge to one red check. An installed App's empty
+queued Check Suite does not establish an active producer or a merge requirement;
+derive requirements from the branch's effective rules and PR refusal, and
+establish producer activity separately. An advisory failure is a
 defect to assess independently, not evidence that it prevents merging. A draft
 may intentionally run admission alone: skipped jobs then establish neither a
 failed ready run nor successful ready verification. Bind the verdict to the
