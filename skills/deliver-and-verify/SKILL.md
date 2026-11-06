@@ -38,6 +38,7 @@ before choosing storage queries and transport APIs.
 
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
+UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
