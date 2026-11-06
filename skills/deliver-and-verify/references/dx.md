@@ -129,8 +129,14 @@ and CI workflow. Follow canonical inputs through downstream projections, includi
 web registries, clients and documentation. The primary compiler may produce only
 part of the required output. A lockfile-only install also changes source.
 
-Establish how changed files and deletions return to the publishing checkout. Use
-the supported local mutation mode or retrieve a complete generated artifact set.
+Contract conformance and generated-file freshness are separate: regeneration can
+emit consistent clients from an invalid public contract. Run the repository's
+actual standards checker as well as its generation check.
+
+Establish how changed files and deletions return to the publishing checkout. A tar
+of existing changed paths omits removals and leaves obsolete generated files.
+Use the supported local mutation mode, an output mirror, or a validated deletion
+manifest restricted to generator-owned paths.
 Inspect the local diff across the expected output directories and run the affected
 generation check or consumer assertion before publishing. A successful remote exit
 establishes execution there; it does not establish complete local output. Read-only
