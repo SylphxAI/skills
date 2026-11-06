@@ -15,6 +15,30 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 Use transactions for atomic invariants and authority-side uniqueness/guards for retryable commands. An idempotency key identifies the logical operation. Retry a serialization or optimistic conflict as a whole read-decide-write attempt.
 
+For a lock-order change, audit from every caller that owns the transaction,
+including batches and helpers that acquire locks implicitly. A helper's local
+order cannot undo an account or row lock its caller already holds. Reserve the
+complete set of advisory or idempotency keys in a stable sorted order before
+the dependent account and row locks; sorting each item separately can still
+deadlock across a batch. Use the same account ordering in every path. If the
+required key changes after reservation, roll back the logical operation and
+retry from discovery rather than waiting for a new key while holding row locks.
+
+When a nested helper accepts proof of a held lock, bind the proof to the key,
+tenant and current transaction's live ownership. An opaque value alone can
+outlive a commit or savepoint rollback that releases the lock. Test wrong-key,
+foreign-transaction and released-lock proofs. Keep compound state changes
+atomic when a later helper refuses; a caller must not accidentally commit an
+earlier release or partial batch after receiving an error.
+
+Prove a lock fix with concurrent connections through the actual entry points.
+Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
+which operation is blocked before releasing the competing transaction. A sleep
+or eventual success alone does not prove the intended interleaving. Assert the
+final conserved state and rollback behavior as well as completion. Apply this
+audit to other transactional domains, such as stock reservation and cancellation;
+a pure formatter change needs no lock-order proof.
+
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.

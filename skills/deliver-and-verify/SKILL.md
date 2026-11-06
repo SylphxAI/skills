@@ -42,6 +42,10 @@ When selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
+For changes to transaction locks or nested transactional helpers, read
+[transactions and idempotency](references/code.md#transactions-and-idempotency)
+before editing; the lock order starts at the outer transaction and spans a batch.
+
 1. Run practical targeted checks, then publish one coherent change. State the remaining uncertainty; fix failures and rerun the affected checks on the same branch. Follow the repository's required checks and normal merge queue without force-push or bypass merge. Review depth follows the change's risk; independent review can run alongside or after delivery and does not create a separate completion stage.
    When a CLI publishes a title, description or comment from a file, create that file in a unique directory owned by this run (`mktemp -d`) and publish only after the write succeeds. A predictable shared path can retain another run's text when your write fails. Read the published title and body back before reporting success. A structured text argument needs no temporary file.
 2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and retry semantics; if the result is unknown, inspect the target before a repeat. Recovered or overlapping sessions can repeat a step, so guard a one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
