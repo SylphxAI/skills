@@ -398,6 +398,14 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
+      "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -1123,6 +1131,11 @@
     },
     {
       "prompt": "Verify whether a claimed database fixture pass actually executed under the application role, without making changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review why this future-dated fixture fails its expiry ordering constraint before the eligibility assertion; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
