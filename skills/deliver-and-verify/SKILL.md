@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when changing selected-source release inputs, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -38,6 +38,9 @@ before choosing storage queries and transport APIs.
 
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
+
+For SQL or database fixture changes, read
+[database boundary tests](references/code.md#database-boundary-tests).
 
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 

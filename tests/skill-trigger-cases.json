@@ -529,6 +529,18 @@
           "clause": "changing selected-source release inputs"
         },
         {
+          "prompt": "Fix a database controller whose enum result decodes only in a TEXT test fixture; ship and verify the correction.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
+          "prompt": "Change the game inventory query and test it through the application role against the migrated schema.",
+          "clause": "changing SQL queries or schema-backed fixtures"
+        },
+        {
           "prompt": "Implement a fixture setup fix that gives cold schema DDL its own bounded connection budget while preserving request timeouts and exploit assertions.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -721,6 +733,21 @@
           "prompt": "Rewrite these remote generation instructions for clarity without running commands or publishing changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review the SQL enum casts in this exact diff for defects; do not change or ship code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Verify whether a claimed database fixture pass actually executed under the application role, without making changes.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare typed driver enums with SQL casts before choosing a database access design.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
         },
         {
           "prompt": "Review whether the historical database timeout occurred during connection or schema DDL; report evidence without changing the fixture.",
