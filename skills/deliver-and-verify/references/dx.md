@@ -30,6 +30,23 @@ and punctuation that flag parsing would alter.
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
 
+A temporary-directory error can originate in a separately configured package
+cache. Read the failing child's effective tool home, cache and index paths,
+including existing leaf files; writable root directories and a fresh temp path
+do not establish update access. Compare the original command under another
+execution UID, changing only the suspected path when isolating the cause.
+
+Choose cache sharing from its contents and trust on reuse. Package bytes with
+integrity checks can use a shared group; credentials, signing keys and config
+need private state. A cached executable or compiler result trusted without
+reverification needs a private cache or a trusted single writer. A writable
+mixed-home parent permits replacing its private entries even if file modes stay
+0600, so grant access only to named content leaves and retain read-only parents.
+Setgid preserves a group, not write permission; verify old contents and future
+writes under restrictive umasks, inherited ACLs and two UIDs. Preserve outside
+links and active locks. A declared tool version must either launch or fail
+clearly after an install/lock error, rather than silently running another major.
+
 Before concluding a local-mode override is ineffective, check the mode flag's
 effective value in a fresh task-runner child; exporting it in the parent shell
 does not prove propagation. Strict filtering can discard the flag and silently
