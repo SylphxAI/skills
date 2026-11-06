@@ -10,6 +10,11 @@ Document the supported prerequisites/revisions, entry command, expected result, 
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
 
+A synced source snapshot can contain a synthetic commit without the original
+history. For checks that compare commits, preserve the original HEAD and base
+graphs, including a base supplied only as a SHA, and prove the requested merge
+base remotely; file-only checks keep their existing transfer scope.
+
 For repeatedly used sandbox build environments, bake the pinned compiler, SDK
 and required system packages into a versioned build image rather than installing
 them during every task. Keep build tools separate from minimal runtime images;
@@ -42,6 +47,11 @@ entrypoint. Exclude generated build trees and unrelated caches with
 `.dockerignore` at the effective context root, while retaining required inputs;
 check the transferred context size ([Docker build context](https://docs.docker.com/build/building/context/),
 read 2026-11-06).
+
+Installed tools do not prove runtime-created devices or mounts exist. Exercise
+required capabilities in a fresh instance with its shipping entrypoint and user,
+and retain bounded daemon startup logs before that instance ends; a path inside
+a destroyed instance cannot supply the missing evidence.
 
 Before relying on a repository-wide image-input guard, compare its discovered
 Dockerfiles, build contexts and targets with the builds invoked by CI workflows
