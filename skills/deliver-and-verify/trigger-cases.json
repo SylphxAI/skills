@@ -740,6 +740,14 @@
     {
       "prompt": "Ship selective game-engine CI that retains the full suite's resolved features and fails when an expected consumer test never executes.",
       "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
+      "prompt": "Run an authorized disposable-machine acceptance through the generated CLI, preserving the command array in a whole-request JSON file.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Apply an authorized mailing-list change through a generated CLI whose repeated string values contain commas, verifying the parsed wire request.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
