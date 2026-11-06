@@ -45,7 +45,7 @@ before/after latency claims, read [API latency evidence](references/api-latency.
 It covers parser and coverage controls, duplicate records versus proxy hops,
 observation boundaries, failed requests and comparable follow-up windows.
 
-For fleet resource censuses, idle replica floors or claimed capacity releases,
+For fleet resource censuses, historical worker concurrency, idle replica floors or claimed capacity releases,
 read [fleet capacity evidence](references/fleet-capacity.md). It separates
 physical use, controller minima, admitted Pod requests, traffic evidence and
 verified release receipts.
