@@ -65,6 +65,23 @@ differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
 **Good:** the draw changes the expected pixels, and the failing state is retained
 as a negative control.
 
+Host-language compilation and software-renderer correctness can pass without
+parsing runtime-composed shaders: reserved identifiers or conditionally hidden
+helpers may break only one variant. Derive the relevant variant population from
+the actual runtime definitions and feature gates; GPU-free composition, parsing
+and semantic validation must cover it with the runtime's validator version and
+capabilities, recording expected/validated variants and
+[named test execution under intended package features](dx.md#continuous-integration).
+That check does not establish rendering: separately exercise the shipping
+renderer's adapter → pipeline → draw → mapped pixel-buffer path and pair its output
+with independent reference pixels, retaining original startup/validation failure
+logs and unchanged pixel tolerances.
+
+Mechanism references (read 2026-11-06, Naga/wgpu 30.0.1):
+[WGSL parsing](https://docs.rs/naga/30.0.1/naga/front/wgsl/fn.parse_str.html),
+[semantic validation](https://docs.rs/naga/30.0.1/naga/valid/struct.Validator.html),
+and [shader modules and pipelines](https://docs.rs/wgpu/30.0.1/wgpu/struct.Device.html#method.create_shader_module).
+
 Headless browsers and virtualized native hosts may use a software GPU such as
 SwiftShader or llvmpipe; corruption or delayed presentation can therefore share
 an environment cause across graphics APIs, so switching APIs alone does not

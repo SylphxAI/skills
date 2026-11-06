@@ -127,15 +127,15 @@
     },
     {
       "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
-      "clause": "repairing recovery references or asynchronous reconcilers"
+      "clause": "repairing recovery references or reconcilers"
     },
     {
       "prompt": "Fix a game fleet reconciler that overwrites a valid pending rollback target with a lagging observation of the currently served version.",
-      "clause": "repairing recovery references or asynchronous reconcilers"
+      "clause": "repairing recovery references or reconcilers"
     },
     {
       "prompt": "Ship a queue-worker recovery fix that creates its target first and waits for provider-confirmed existence before adding the warm-up reference.",
-      "clause": "repairing recovery references or asynchronous reconcilers"
+      "clause": "repairing recovery references or reconcilers"
     },
     {
       "prompt": "Fix the first document-editor toolbar click being lost when a new browser session receives its guest cookie and refreshes.",
@@ -383,15 +383,15 @@
     },
     {
       "prompt": "Fix a database controller whose enum result decodes only in a TEXT test fixture; ship and verify the correction.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Change the game inventory query and test it through the application role against the migrated schema.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a fixture setup fix that gives cold schema DDL its own bounded connection budget while preserving request timeouts and exploit assertions.",
@@ -531,7 +531,7 @@
     },
     {
       "prompt": "Fix a JSON checkpoint update that replaces another transaction's committed renewal deadline.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Ship concurrent stock reservation and pricing updates that preserve the fields each writer owns.",
@@ -567,11 +567,11 @@
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Repair a schema fixture so invoker triggers use the application role and private definer helpers keep their owner permissions.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a function privilege guard that distinguishes app mutations from administrative trigger events.",
@@ -595,15 +595,15 @@
     },
     {
       "prompt": "Port billing aggregate views between database engines while preserving exact decimal results on repeating fractions.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Implement a support SQL function whose validated text parameter can inherit a caller-provided nondeterministic collation.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update a card game reporting fixture to exercise NULL, scalar JSON and collation-sensitive candidate limits on the real migrated schema.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Repair a payment fault-injection test that accepts an authentication refusal before reaching its intended changed-price check, and ship specific refusal coverage.",
@@ -615,7 +615,7 @@
     },
     {
       "prompt": "Repair database fixture readiness so a socket-only initialization server cannot satisfy the final TCP-server probe, then run the real fixture.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
@@ -623,15 +623,15 @@
     },
     {
       "prompt": "Provision an isolated SaaS preview database from the retained migration history and its supported role model.",
-      "clause": "provisioning preview environments"
+      "clause": "provisioning previews"
     },
     {
       "prompt": "Ship a web-only game administration preview using a verified nonproduction API rather than creating a fresh backend.",
-      "clause": "provisioning preview environments"
+      "clause": "provisioning previews"
     },
     {
       "prompt": "Fix both preview server origin resolvers so missing configuration and production aliases cannot receive authenticated mutations.",
-      "clause": "provisioning preview environments"
+      "clause": "provisioning previews"
     },
     {
       "prompt": "Apply an authorized temporary shared-runtime setting while a parent controller reconciles the child configuration, then deploy the durable source and remove the exception.",
@@ -659,15 +659,15 @@
     },
     {
       "prompt": "Repair a migrated billing database fixture that is prepared but cannot admit charges until its guarded activation transition completes.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Update a game-server database fixture to activate its real save authority with the required role and closed legacy writers before running recovery tests.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Fix a document-worker schema fixture that bypasses its activation guard instead of satisfying the real privilege and state-transition prerequisites.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
@@ -691,7 +691,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "handling credentials exposed in process arguments"
+      "clause": "handling credentials in process arguments"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -778,12 +778,64 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "A secret scanner refuses publication of escaped asset paths; resolve the findings and publish through the unchanged scanner.",
+      "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "Publish generated API metadata after reviewing every secret-scanner refusal, including unpublished ancestors.",
+      "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "A scanner blocks a game source push after metadata serialization changed; investigate exact findings and complete publication.",
+      "clause": "secret scanners refuse"
+    },
+    {
+      "prompt": "Run the schema client generator from canonical inputs when its generated client does not yet exist, keeping post-generation contract checks strict.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Run remote asset-manifest generation without requiring the missing manifest at admission, while retaining input and routing validation.",
+      "clause": "running source generation locally or remotely"
+    },
+    {
+      "prompt": "Change diagnostic redaction so failed sanitization of container-owned logs cannot feed an unconditional artifact upload, while retaining safe status evidence.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Repair diagnostic redaction for a report produced by a different user and verify only successfully sanitized reports reach retained artifacts.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix and ship a change feed that skips late commits when consumers resume after a sequence cursor.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a retention worker so one failed provider deletion does not starve later candidates or other tenants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run a synthetic probe with a newly issued one-time credential through delayed admission and corrected read metadata.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Optimize a service's source checkout without breaking a consumer that reads historical file bodies after checkout credentials are removed.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Reduce source materialization time for a game's commit-comparison checks while preserving an explicitly supplied base commit.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Change a blob-filtered CI checkout and verify every graph and content read under the job's final credentials.",
+      "clause": "changing source checkouts"
+    },
+    {
       "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     },
     {
       "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
-      "clause": "changing SQL queries or schema-backed fixtures"
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
@@ -1289,6 +1341,51 @@
     },
     {
       "prompt": "Rewrite the explanation of package-cache permissions without changing or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a generator precheck circularly requires its own output; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare sanitization-before-upload designs for a proposed diagnostic pipeline without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of sanitized diagnostic artifacts without changing or publishing the pipeline.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether sequence allocation proves commit ordering; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare atomic batches and isolated per-candidate retries for a proposed cleanup architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of credential propagation for clarity without running a probe or publishing changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a complete commit graph proves old source blobs can be read; report evidence without changing the checkout.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare full and partial source checkout designs for a proposed build architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this checkout benchmark explanation for clarity without changing configuration or publishing changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
