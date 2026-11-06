@@ -251,6 +251,10 @@
         {
           "prompt": "Replace the Rust HTTP transport with its published SDK and ship it; a TypeScript test reads the Rust source and fixture routes directly.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Fix a localized price formatter that shows an ambiguous dollar sign, add independent literal-string regression cases, and ship it.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
         }
       ],
       "negative": [
