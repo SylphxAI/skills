@@ -476,6 +476,18 @@
         {
           "prompt": "Verify the claim that a red optional check blocks merging by reading the live required contexts, draft disposition and ready-run aggregate.",
           "clause": "verifying a live status or metric before reporting it"
+        },
+        {
+          "prompt": "Verify this Android candidate makes one Google Play license-tester purchase without real money.",
+          "clause": "verifying an Android license-tester purchase"
+        },
+        {
+          "prompt": "The Android lease has the Play Store APK but launch fails. Verify the prerequisites for a license-tester purchase.",
+          "clause": "verifying an Android license-tester purchase"
+        },
+        {
+          "prompt": "Check whether a license-tester purchase proves a server grant or only the old consume, local credit and save path.",
+          "clause": "verifying an Android license-tester purchase"
         }
       ],
       "negative": [
@@ -493,6 +505,21 @@
           "prompt": "What is 17 multiplied by 23?",
           "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
           "route_to": null
+        },
+        {
+          "prompt": "Calculate the total value of three packs costing two dollars each.",
+          "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+          "route_to": null
+        },
+        {
+          "prompt": "Restore the currently stalled Android deployment.",
+          "clause": "Use unblock to restore currently failing work",
+          "route_to": "unblock"
+        },
+        {
+          "prompt": "Compare two Android billing architectures before choosing an implementation.",
+          "clause": "challenge to compare designs",
+          "route_to": "challenge"
         }
       ]
     },

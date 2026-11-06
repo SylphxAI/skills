@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -62,7 +62,8 @@ privacy links, read [app store state](references/app-store-state.md). It
 separates event approvals, version reviews, Console declarations, public
 releases and installed-build evidence.
 
-For Play purchase refunds, missing entitlements, or server-delivery claims, read
+For Android license-tester purchases, Play refunds, missing entitlements, or
+server-delivery claims, read
 [Play purchase evidence](references/play-purchases.md). It separates the provider
 refund reason, application failure, verified ownership, grant and store completion.
 
