@@ -14,6 +14,32 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 
 Verify replay, duplication, dropped delivery and timeout behavior for the affected contract. The resulting data stays correct and secrets do not appear in output.
 
+## HTTP test doubles and routing
+
+Before replacing a remote dependency with a fake, read its declared endpoints,
+request shape and error envelope. Preserve the boundaries relevant to the
+change. When management and data traffic use different origins, run distinct
+fake listeners and reject a request sent to the wrong one. One permissive
+listener can make a wrong production destination pass every test.
+
+Exercise negative cases through the same public entry point that makes the
+production decision. Return the provider's real error shape so decoding reaches
+the intended branch. Pair a refusal with a permitted request and assert an
+observable downstream call or side effect. Also assert that a refused request
+makes none. This positive control distinguishes a working guard from a fixture
+that rejects every request before reaching it.
+
+**Bad:** one fake host accepts all paths, and a malformed missing-resource
+response makes an unrelated decoder error satisfy the expected refusal.
+**Good:** separate management and object listeners enforce their routes; a
+valid missing-resource response exercises the refusal, while a valid existing
+resource reaches the recorded downstream operation.
+
+Keep these checks scoped to the boundaries the change crosses. A local text
+formatter needs no HTTP topology fixture. Treat a missing positive control or
+wrong error envelope as a fixture defect; retain the production behavior being
+verified.
+
 ## Queued work and partial acceptance
 
 Admission proves that work can be queued under the configuration at that

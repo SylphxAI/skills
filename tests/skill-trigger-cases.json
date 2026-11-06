@@ -233,6 +233,10 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Ship an HTTP client change whose management and object calls use different hosts, with fake-server coverage of routing and typed refusals.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
           "clause": "repairing recovery references or asynchronous reconcilers"
         },
