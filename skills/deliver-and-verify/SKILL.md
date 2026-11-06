@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when persisting process output or restoring replacement execution environments, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
+description: "Use when persisting process output or restoring replacement execution environments, changing SQL queries or schema-backed fixtures, changing selected-source release inputs, running browser checks in a fresh build lease, running source generation remotely, upgrading engine or SDK dependencies, repairing recovery references or asynchronous reconcilers, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Carry the outcome through execution and verification at its real surface. Use challenge for a plan or architecture, prove-it for a review or evidence check, and clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -39,6 +39,9 @@ before choosing storage queries and transport APIs.
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 
+For SQL or database fixture changes, read
+[database boundary tests](references/code.md#database-boundary-tests).
+
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).
 For worker replacement, snapshot selection or partial checkpoints, read
@@ -64,11 +67,17 @@ For public social feed publishing, follow the [social post media and visual insp
 
 ## Execute and verify
 
+When changing selected-source release inputs or their CI guards, read
+[selected release inputs](references/dx.md#selected-release-inputs).
+
 When changing shared runtime settings or deployment overlays, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
+
+When changing database test setup or disposable fixture cleanup, read
+[database test fixtures](references/dx.md#database-test-fixtures).
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
