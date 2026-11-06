@@ -41,6 +41,12 @@ need independent expected strings and cases that expose locale and sign errors.
 
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 
+When a policy change must update existing resources, verify declarations created
+before the change as well as newly rendered output. Rendering only on creation
+or redeploy leaves existing specifications unchanged; use the normal writer's
+bounded reconciliation or backfill, preserving exclusions and intended absence,
+and verify the served objects before reporting rollout complete.
+
 For long builds or tests in a deadline-limited cloud session, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution.
 

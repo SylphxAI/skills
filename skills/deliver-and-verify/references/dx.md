@@ -173,6 +173,19 @@ Read the current store controls and the product's release contract. Identify the
 
 Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
+- **Publication and merge intent:** Read the publisher's merge defaults before
+  submitting a change that must remain held. Supply its explicit draft or hold
+  option in that submission, including for a stack opened for review while its
+  prerequisite is pending. A feature branch may lack the integration branch's
+  required checks and merge immediately when publication enables auto-merge.
+  Verify the published PR's head, base, hold and actual merge state. Retain the
+  hold until the prerequisite is merged and the PR targets its intended
+  integration branch; then follow that branch's required checks and queue.
+
+  **Wrong:** "The title says review, so publishing this stack cannot merge it."
+  **Right:** "The publisher enables auto-merge; I submitted an explicit hold and
+  verified that the PR remains open on the intended base."
+
 - **Forecasting and lost jobs:** Account for the queue's parallel-build concurrency when estimating wait times. If a required job is marked lost by the runner host (`self-hosted runner lost communication`) or an aggregate gate times out with zero failed child checks, inspect the run first: if no rerun is already in flight, the PR's writer reruns only that lost job once for the current head SHA. A real test failure is fixed or quarantined, never retried.
 - **Branch reuse and queue state:** Match workflow runs by exact head SHA rather than branch name alone. Converting a PR to draft does not automatically remove an active merge-queue entry; inspect and dequeue the queue entry explicitly if needed.
 - **Avoid redundant branch updates:** Because the merge queue tests each entry against the latest base automatically, do not merge `main` into a conflict-free PR branch—doing so invalidates completed CI checks and restarts the queue wait. Update a branch only to resolve a merge conflict or pull in a newly required base file.
