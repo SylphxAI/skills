@@ -216,6 +216,18 @@ actual guard, and test both source-overlay and prebuilt routes when supported.
 
 ## Continuous integration
 
+When an expected pull-request workflow has no run, check event eligibility before
+changing runners: read the current head, draft/job conditions, mergeability and
+configured activity types. GitHub suppresses `pull_request` runs while the PR
+has a merge conflict; its default activity types exclude `ready_for_review`.
+Resolve a witnessed conflict or add the intended event, then verify a run bound
+to the new head. A new workflow absent from the default branch cannot yet be
+started with `workflow_dispatch`; repeating that missing-workflow request will
+not help. A healthy run already queued or executing needs no restart.
+
+Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows), read 2026-11-06.
+
+
 - Before running a browser suite in a fresh build lease, read its CI setup and
   resolve the browser version and required system libraries. Install them and
   run the suite in the same lease, or use a verified image containing them;
