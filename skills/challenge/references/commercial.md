@@ -166,6 +166,14 @@ consumption proof plus principal-versus-promo lot history, not voucher slips.
 A transferable gift voucher is a separate product, not an intermediate step for
 account top-ups.
 
+When original grants share a balance, cancellation needs immutable contribution
+attribution: A=100 and B=100 followed by FIFO consumption of 150 leaves B=50, so
+canceling A removes zero and records 100 of exposure. Treat a current-remainder
+migration opening separately from historical grants and spends; historical
+consumption stays source evidence unless a supported inverse requires historical
+postings. Verify that reversing a later consumption restores only unrevoked
+attributable value.
+
 Verify matrix precedence, fallback coverage across all supported currencies,
 valid minor units, scenario-specific price points, channel/quote/display/charge
 equality, duplicate-delivery idempotency and refund lot reconciliation. Compare

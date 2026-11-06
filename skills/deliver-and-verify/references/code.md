@@ -67,7 +67,9 @@ earlier release or partial batch after receiving an error.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
-which operation is blocked before releasing the competing transaction. A sleep
+which operation is blocked before releasing the competing transaction. Follow
+indirect blockers too: a row-lock queue can place the second operation behind
+the first waiter, so counting only direct blockers can miss real contention. A sleep
 or eventual success alone does not prove the intended interleaving. Assert the
 final conserved state and rollback behavior as well as completion. Apply this
 audit to other transactional domains, such as stock reservation and cancellation;
