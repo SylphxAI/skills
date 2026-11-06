@@ -131,7 +131,9 @@ part of the required output. A lockfile-only install also changes source.
 
 Contract conformance and generated-file freshness are separate: regeneration can
 emit consistent clients from an invalid public contract. Run the repository's
-actual standards checker as well as its generation check.
+actual standards checker as well as its generation check. When generated outputs
+include source hashes, format and validate the canonical inputs before generation;
+even a whitespace-only source edit invalidates that provenance and requires regeneration.
 
 Establish how changed files and deletions return to the publishing checkout. A tar
 of existing changed paths omits removals and leaves obsolete generated files.
