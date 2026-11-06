@@ -71,6 +71,15 @@ container exit with no operation-specific evidence leaves the check unverified.
 
 ## Database test fixtures
 
+An isolated database fixture needs every schema object referenced by its
+queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
+use their values. Derive those dependencies from the migration-owned schema
+([database boundary tests](code.md#database-boundary-tests)) and run the actual
+consuming database test; compilation and parser checks cannot prove resolution.
+
+**Wrong:** omit the customer table because the invoice uses guest checkout.
+**Right:** include the joined table and execute the invoice projection.
+
 Locate the failed phase before changing a timeout: service readiness,
 connection establishment, schema setup and test execution have different
 budgets. Give cold fixture DDL a separate bounded setup connection when it
