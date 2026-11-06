@@ -25,8 +25,15 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Resolve repository aliases by the returned repository ID, full name and authoritative URL. A redirect to a legacy repository does not identify a similarly named current repository. A shared commit author does not identify the writer of a branch or its current owner.
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
-- Validate absence queries with a positive control on the same route, scope and credential. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1).
+- Validate absence queries with a positive control on the same route, scope and credential. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
 - Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
+
+Before treating a continuity mismatch as lost state, verify that entity identity,
+units and balance basis agree, including whether rows represent separate instances.
+An unlogged debit can reproduce an earlier balance, so the writer and independent
+event history must support attribution. **Wrong:** “Both grants started at zero,
+so the first was lost.” **Right:** “Each grant creates a separate inventory
+instance; the shared item type does not identify one balance chain.”
 
 For agent workspace cleanup, instruction freshness, retained/searchable history
 or uncertain tool mutations, read [agent runtime evidence](references/agent-runtime.md).
