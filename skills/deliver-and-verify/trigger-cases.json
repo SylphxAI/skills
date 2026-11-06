@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix a report backfill whose stale completion flag suppresses unfinished records after a writer handover.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Ship a game asset reconciler repair that rebuilds malformed completion evidence without following references into private files.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
       "prompt": "Change a sparse source checkout and prove that widening restores every required nested file without changing sibling selections.",
       "clause": "changing source checkouts"
     },
@@ -1687,6 +1699,21 @@
       "prompt": "Compare exact-text versus parsed-command workflow tests and recommend an architecture without implementing changes.",
       "clause": "challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether a foreign-owned completion marker caused the earlier reconciliation failure; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare completion markers and database checkpoints for a proposed backfill architecture without implementing either.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of reconciliation completion flags without changing software or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
