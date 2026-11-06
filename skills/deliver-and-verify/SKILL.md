@@ -54,6 +54,8 @@ and verify the served objects before reporting rollout complete.
 For long builds or tests in a deadline-limited cloud session, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution.
 
+For public social feed publishing, follow the [social post media and visual inspection checks](../clear-writing/references/articles-and-copy.md#public-social-feed-posts) before sending and verify the attached image afterward.
+
 ## Execute and verify
 
 When changing shared runtime settings or deployment overlays, read

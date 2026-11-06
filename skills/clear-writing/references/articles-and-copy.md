@@ -66,3 +66,26 @@ Describe a payment check as an action, not a judgment about the payer:
 
 Use that wording only when the payment flow supports that possibility; internal
 risk labels neither explain what to do nor establish that the bank rejected it.
+
+## Public social feed posts
+
+For Facebook, X and LinkedIn, never publish a text-only feed post (`media=[]`)
+or raw `https://` or `m.me/` URLs in post bodies or comments. Use native media
+uploads or native Page Share Cards; on Facebook upload photos through
+`POST /{page_id}/photos`. Keep destination links in the native card or platform
+CTA, not pasted into copy. Raw links can trigger `l.facebook.com` LinkShim
+warnings or `OAuthException 1893063`; do not retry the rejected copy unchanged.
+
+Before publishing a rendered social card (4:5 at 1080×1350, or 1:1), open the
+**final PNG with `read_file`** and visually inspect it, not just its source or
+render log. Require zero player names/IDs from world chat, sliced character
+heads/icons, legacy floating badges, or orphan punctuation wraps. Use distinct
+art per post, not the same image with a new caption. Fix and inspect the final
+PNG again after any change.
+
+After publishing, read the post through the API and verify
+`attachments.data[0].media.image` has a non-empty image URL and positive width
+and height (or the platform's equivalent native-media fields). A successful
+publish response alone does not prove the image is attached. Inspect the live
+post as well; record its identifier and media verification before reporting it
+published.
