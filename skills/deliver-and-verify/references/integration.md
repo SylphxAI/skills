@@ -55,6 +55,15 @@ When management and data traffic use different origins, run distinct fake
 listeners and reject a request sent to the wrong one. One permissive listener
 can make a wrong production destination pass every test.
 
+An application fake can also intercept requests from the test controller;
+a successful fake response does not prove delivery to the target. Verify
+controller delivery independently of application fakes and seed suspected
+leaked state inside an isolated regression, keeping the product assertions intact.
+
+**Bad:** treat the driver's HTTP 200 as delivered input and revert runtime code.
+**Good:** identify which transport received the command and reproduce the
+contamination in one test before changing product behavior.
+
 Exercise negative cases through the same public entry point that makes the
 production decision. Return the provider's real error shape so decoding reaches
 the intended branch. Pair a refusal with a permitted request and assert an
