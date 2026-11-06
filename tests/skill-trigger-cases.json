@@ -759,6 +759,18 @@
         {
           "prompt": "Check whether a license-tester purchase proves a server grant or only the old consume, local credit and save path.",
           "clause": "verifying an Android license-tester purchase"
+        },
+        {
+          "prompt": "Verify whether retained webhook events lost a routing field when their inline rows contain offload markers.",
+          "clause": "investigating a root-cause claim for a past failure"
+        },
+        {
+          "prompt": "Reconcile a document ledger reporting missing attachments with the consumer that loads referenced archive bodies.",
+          "clause": "reconciling conflicting readings"
+        },
+        {
+          "prompt": "Check whether a missing inventory attribute is truly absent or only omitted from a compact cached projection.",
+          "clause": "checking that a resource or bug is absent"
         }
       ],
       "negative": [

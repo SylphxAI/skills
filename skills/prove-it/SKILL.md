@@ -105,6 +105,18 @@ mock cannot establish which policy the real execution applies.
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
 
+## Resolve retained payloads before checking fields
+
+Before counting stored events with a missing field, read how the consumer loads
+the effective payload. Resolve offloaded bodies, reference records and fallback
+precedence the same way. An inline projection or offload marker establishes only
+what that representation contains. Distinguish an absent field from an unavailable
+body, and validate the query with a known event stored in the same form.
+
+**Wrong:** “The compact event row has no visibility field, so every retained event
+lost it.” **Right:** “The consumer loads the referenced body first; count missing
+visibility in those resolved bodies and report unresolved references separately.”
+
 Resolve conflicting readings with a fresh subprocess invoking the unmodified
 published entrypoint in the relevant real environment. Bind the receipt to the
 immutable revision and loaded artifact hash; record the command, relevant
