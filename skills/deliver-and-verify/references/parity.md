@@ -269,6 +269,13 @@ Treat target size, hit testing and visible paint as separate assertions:
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
   and occlusion as well as the required hit area and action.
+- Aggregate painted-pixel or glyph-presence checks can pass while an ancestor
+  mask, scissor, `RectMask2D`, `overflow` or viewport clips part of the target;
+  a caption can be half hidden on several frames with every glyph check green.
+  Compute the target's own text bounds in screen space, intersect them with
+  every ancestor clip in its real host hierarchy, and assert the visible rect
+  equals the full bounds at the required size. Run that assertion against the
+  clipped frames first, then confirm the repaired frame by eye.
 - Check the actual icon's painted fill/stroke, alpha and contrast against its
   background, not only the SVG box or parent colour. Read the captured pixels
   yourself as well as running the assertions; geometry cannot prove visible ink.
