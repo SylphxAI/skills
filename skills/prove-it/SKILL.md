@@ -84,6 +84,13 @@ they do not by themselves establish the current pull request's merge eligibility
 If the provider still expects a required check, preserve that refusal separately
 from the earlier passing result and follow the current required-check path.
 
+GitHub [commit statuses](https://docs.github.com/en/rest/commits/statuses) and
+[Check Runs](https://docs.github.com/en/rest/checks/runs) expose distinct
+populations: an approval absent from `commits/<sha>/check-runs` may be present
+in `commits/<sha>/status`. Resolve a named context through both surfaces at the
+same head, retaining producer and timestamp; aggregate success on either
+surface establishes neither the other's result nor the PR's merge eligibility.
+
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An advisory failure is a
 defect to assess independently, not evidence that it prevents merging. A draft
