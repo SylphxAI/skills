@@ -8,6 +8,11 @@ Optimize time from a clean environment to a useful verified result. Make failure
 
 Document the supported prerequisites/revisions, entry command, expected result, and common failure/recovery paths. Keep the entry surface thin and route to deeper material. Resolve the reproducible toolchain and dependency graph from source; record generator inputs for generated output.
 
+Local setup can change a check's input population: dependency caches placed
+inside a checkout may be scanned as source even when Git ignores them. Keep
+rebuildable caches outside that population, or verify the check's exclusions;
+failures naming cached third-party files call for correcting input discovery.
+
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs.
 
 Before a remote submission, verify the effective project, environment and

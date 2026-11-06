@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
+      "clause": "running tests in a fresh build lease"
+    },
+    {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
       "clause": "enrolling disabled tests in CI"
     },
@@ -615,6 +623,16 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this UI component reads the active locale provider or a global compatibility setting; report evidence without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite this dependency-cache setup paragraph for clarity without running checks or changing repository configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review these CI logs to determine whether ignored tests actually executed; report evidence without editing or running anything.",
       "clause": "prove-it for a review or evidence check",
