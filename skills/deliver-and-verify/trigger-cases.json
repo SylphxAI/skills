@@ -944,6 +944,14 @@
     {
       "prompt": "Expose a multiplayer preview through the generated CLI port command and verify an outside request; command help alone does not show that the deployed operation is implemented.",
       "clause": "provisioning previews"
+    },
+    {
+      "prompt": "Fix signed binary uploads whose empty-body reads work, and verify the actual non-empty streamed payload against the provider.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an idempotent document import and verify a repeated existing-document request preserves its version instead of silently writing again.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
