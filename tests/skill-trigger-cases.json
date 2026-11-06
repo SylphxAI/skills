@@ -719,6 +719,10 @@
         {
           "prompt": "Fix the concurrency test that counts only direct PostgreSQL blockers and misses a second operation queued behind another waiter.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a new audit-table SQL migration with security policies and verify its pinned delivery guard as well as PostgreSQL.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
