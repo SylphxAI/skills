@@ -583,6 +583,18 @@
         {
           "prompt": "Ship this bug fix after browser validation; configure the supported build lease to reach the download redirect host and save the failing setup result.",
           "clause": "bug fix"
+        },
+        {
+          "prompt": "Fix and ship an API stream that leaks supplier request IDs after the first content delta, proving the final customer response in both encodings.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Implement a streamed export failure contract and verify HTTP headers before commitment and terminal retry advice after the client receives bytes.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship a parser fix preserving arbitrary chunked text exactly once when the provider sends redundant representations.",
+          "clause": "implementing or shipping a feature, bug fix, parser"
         }
       ],
       "negative": [
@@ -823,6 +835,21 @@
         },
         {
           "prompt": "Rewrite these build handoff instructions for clarity without running or publishing changes.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether these intermediate stream-buffer tests prove privacy at the client boundary; report evidence without changing code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare alternative error contracts before and after HTTP stream commitment without implementing either design.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the API streaming retry instructions for clarity without changing or publishing the service.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }
