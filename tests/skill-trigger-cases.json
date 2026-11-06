@@ -747,6 +747,10 @@
         {
           "prompt": "Implement a function privilege guard that distinguishes app mutations from administrative trigger events.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Fix a CI workflow policy parser that rejects an unreachable runner label, preserving every reachable label-dependent outcome for each triggering event.",
+          "clause": "implementing or shipping a feature, bug fix, parser"
         }
       ],
       "negative": [
