@@ -79,6 +79,18 @@ exactly once.
 then inspect the final encoded response for public error semantics, retry advice
 and absence of private diagnostic sentinels.
 
+Category-wise equality can hide reordered content: equivalence preserves order,
+multiplicity and boundaries wherever the source protocol defines them, while
+unordered sibling fields follow their own contract rather than a fictitious
+global order. Feed both transformed results through the next real consuming
+decoder or compiler, retaining opaque state needed for continuation. An
+independent negative control changes a contract-defined order while preserving
+the old category buckets, so a lossy comparator cannot certify itself.
+
+**Bad:** compare text, reasoning and tool buckets and accept a reordered native
+content array. **Good:** compare decoded ordered content to reject that reorder,
+while accepting a contract-equivalent permutation of unordered sibling fields.
+
 ## Queued work and partial acceptance
 
 Admission proves that work can be queued under the configuration at that

@@ -618,6 +618,10 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix and ship a streamed protocol adapter whose equivalence comparator hides reordered content by grouping text, reasoning and tool blocks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
       "clause": "changing diagnostic redaction"
     }
