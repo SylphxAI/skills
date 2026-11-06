@@ -100,6 +100,13 @@ queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
 ([database boundary tests](code.md#database-boundary-tests)) and run the actual
 consuming database test; compilation and parser checks cannot prove resolution.
+If a complete replay fails under the application role while the deployed schema
+works, compare effective privileges along the failing function call chain in
+both databases. Record each differing function, role and privilege, the live
+read time and its migration source. A live-only grant is schema drift that can
+break a restore. Preserve the clean-replay failure; a separate compatibility
+proof may reproduce only the verified live grants while the schema owner fixes
+their migration source. Broad fixture grants would hide that missing contract.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
