@@ -612,6 +612,10 @@
     {
       "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
       "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Ship a CI bug fix by restoring a historical shared action; verify its retained unit tests and the current configuration schema and action registry contracts.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
