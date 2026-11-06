@@ -1,6 +1,6 @@
 # Security standard
 
-Trigger: changing credentials, personal data or authorization, reviewing a secret-scanner refusal, or recovering a protected service.
+Trigger: changing credentials, personal data or authorization, maintaining tools through privileged automation, reviewing a secret-scanner refusal, or recovering a protected service.
 
 ## When security work happens
 
@@ -20,6 +20,18 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 Use the authorized store and custody model for each product/provider. Keep reusable secrets concealed and isolate shared-machine sessions where principal/tenant separation requires it. Record security/dependency-alert outcomes accurately as fixed, rotated or dismissed with a reason.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
+
+For privileged tool maintenance, run executables from user-writable paths as
+that user, including version probes, health checks and post-install validation.
+A checksum at download time does not protect a subsequently replaceable binary.
+Test the identity used for both the no-op probe and the update path with a
+replacement executable that records its caller; mocking only installation misses
+the probe. **Bad:** root runs a user's `tool --version`, then drops privileges
+to update it. **Good:** both calls run as the user. System binaries whose paths
+are controlled by the privileged identity do not need this privilege change.
+Bound both probes and updates, including child termination, and keep network
+maintenance off the bootstrap path that establishes operator access. Test hung
+children as well as ordinary failures so maintenance cannot suspend recovery.
 
 ## Secret-scanner publication refusals
 
