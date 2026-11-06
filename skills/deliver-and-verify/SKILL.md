@@ -100,7 +100,7 @@ When changing runtime isolation, read [runtime isolation](references/security.md
 Before changing database roles or privileges, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
+When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
