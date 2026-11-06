@@ -140,6 +140,12 @@ the engine's verdict.
    include its larger pre-exec launcher, so an application-memory claim needs
    post-exec evidence. Name unavoidable differences and the comparison they
    prevent; a software-GPU run does not establish physical-device performance.
+   After a declared sampling or color-model change, derive expected pixels from
+   that declaration, not captured output; known-answer synthetic inputs and a
+   rejected mismatched-model control establish the check's independence without
+   relaxing tolerances. Shared assets do not prove shared screen geometry: compare
+   actual draw primitives with the independently expected complete population and
+   required origins/scales, including a deliberate transform negative control.
 3. Counterbalance engine order across trials. Retain every raw sample, failed or
    cancelled attempt, error and confound; report distributions and the exact
    aggregation, not only a favorable median. If an unequal setting is discovered,

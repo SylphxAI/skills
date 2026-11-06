@@ -510,6 +510,10 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Ship authorized label-based CI routing so the next eligible pull-request event selects the intended self-hosted runner pool.",
+      "clause": "changing CI triggers, routing or concurrency"
+    },
+    {
       "prompt": "Change CI concurrency so marking a draft pull request ready starts required checks without waiting for its draft report.",
       "clause": "changing CI triggers, routing or concurrency"
     },
@@ -594,8 +598,16 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Ship authorized label-based CI routing so the next eligible pull-request event selects the intended self-hosted runner pool.",
-      "clause": "changing CI triggers, routing or concurrency"
+      "prompt": "Build a matched browser engine benchmark with shared texture assets and validate the independent bilinear pixel checker before timing.",
+      "clause": "building matched engine benchmarks"
+    },
+    {
+      "prompt": "Build equal-work rendering benchmarks that count every emitted label quad and reject an intentionally shifted glyph.",
+      "clause": "building matched engine benchmarks"
+    },
+    {
+      "prompt": "Ship a chart renderer fix with an independent known-answer color-model test and a complete label primitive census.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
