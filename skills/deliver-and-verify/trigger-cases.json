@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement shared email-provider quota priority so bulk campaigns yield before transactional purchase receipts, including send and delivery-poll callers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game commerce API poller that spends the same installation quota needed for entitlement delivery, keeping conditional revalidation and exact priority boundaries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship per-account provider budget counters that distinguish local deferrals from charged responses and uncharged 304 revalidations through every HTTP caller.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement a privileged shared-cache permission repair while ensuring concurrent file replacements cannot expose another user's credentials.",
       "clause": "implementing or shipping a feature, bug fix"
     },
