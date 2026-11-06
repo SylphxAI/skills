@@ -38,6 +38,9 @@ For long builds or tests in a deadline-limited cloud session, read
 
 ## Execute and verify
 
+When a secret scanner refuses publication, follow
+[reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
+
 When selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.

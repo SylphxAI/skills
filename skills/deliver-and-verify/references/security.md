@@ -1,6 +1,6 @@
 # Security standard
 
-Trigger: changing credentials, personal data or authorization, or recovering a protected service.
+Trigger: changing credentials, personal data or authorization, reviewing a secret-scanner refusal, or recovering a protected service.
 
 ## When security work happens
 
@@ -20,6 +20,38 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 Use the authorized store and custody model for each product/provider. Keep reusable secrets concealed and isolate shared-machine sessions where principal/tenant separation requires it. Record security/dependency-alert outcomes accurately as fixed, rotated or dismissed with a reason.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
+
+## Secret-scanner publication refusals
+
+Treat a finding as a claim to inspect. Entropy alone cannot distinguish a
+credential from a generated identifier, asset path or digest. Review every
+finding in the publication range, including unpublished ancestor commits;
+changing only the current file does not remove a finding in that history.
+
+1. Retain the scanner's exact commit, path, line and content digest without
+   copying possible secret values into logs, chat or the pull request.
+2. Inspect the flagged source under existing access. Establish what creates and
+   consumes the value. For generated or copied source, compare it with the
+   selected historical input; for a repository path, verify the referenced asset
+   exists. A filename or a claim that the file is generated is insufficient.
+3. Withhold real or uncertain credentials from publication. Handle an actual
+   exposure through the credential procedure above. Do not classify a value as
+   harmless merely to unblock a push.
+4. For each verified false positive, use the scanner's supported exception
+   mechanism with the narrowest available identity, preferably exact commit,
+   path, line and content digest. Record the evidence-based reason. Do not
+   suppress a whole directory or disable the scanner.
+5. Follow the publisher's documented commit procedure. If it supports recording
+   an exception for an unpublished ancestor in a follow-up commit, commit that
+   entry normally and rerun the same publisher; preserve the original finding
+   rather than rewriting history or bypassing its hook.
+6. Read back the scanner verdict and published remote revision before reporting
+   success. A changed line, digest or commit requires a fresh review rather
+   than reusing an exception for different bytes.
+
+**Bad:** allowlist every finding because it came from a generated file.
+**Good:** compare each identifier with its pinned generator output, record its
+exact finding and reason, then publish through the unchanged scanner.
 
 ## Recovery procedure
 

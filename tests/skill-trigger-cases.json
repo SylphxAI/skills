@@ -520,6 +520,10 @@
         {
           "prompt": "Recover unpushed commits and dirty worktrees after the execution environment disappeared.",
           "clause": "an environment disappears with unpushed work"
+        },
+        {
+          "prompt": "The publisher refused a generated SDK identifier as a possible secret. Verify the finding and restore publication through its supported scanner.",
+          "clause": "a call is refused"
         }
       ],
       "negative": [
@@ -537,6 +541,11 @@
           "prompt": "A build is still making normal progress within its documented external cycle. Leave it running.",
           "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
           "route_to": null
+        },
+        {
+          "prompt": "Review the evidence for a past secret-scanner false positive; publication already succeeded and no restoration is needed.",
+          "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+          "route_to": "prove-it"
         }
       ]
     },
