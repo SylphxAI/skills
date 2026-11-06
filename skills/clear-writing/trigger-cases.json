@@ -24,6 +24,18 @@
     {
       "prompt": "Edit this status reply to state the result directly, remove the BLUF label, and keep only measured numbers and useful evidence.",
       "clause": "dedicated written content"
+    },
+    {
+      "prompt": "Write an English global Page caption and its first comment using the current official localized game names, not guessed translations.",
+      "clause": "public social posts/captions/comments/card text"
+    },
+    {
+      "prompt": "Localize this Taiwan game card and verify its product name, OCR text and media metadata before it is published.",
+      "clause": "public social posts/captions/comments/card text"
+    },
+    {
+      "prompt": "Draft Hong Kong social copy without blending the regional offer into the global Page announcement.",
+      "clause": "public social posts/captions/comments/card text"
     }
   ],
   "negative": [
