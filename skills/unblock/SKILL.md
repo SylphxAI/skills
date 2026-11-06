@@ -54,7 +54,7 @@ Read the exact failing job log, exit status, and resource metrics before choosin
 | Failure class | Observable signal | Immediate restoration path |
 | --- | --- | --- |
 | **1. Real code, test, or migration defect** | Deterministic compilation, test, lint, or schema failure on the candidate commit | Fix the root cause on the branch (or quarantine a proven pre-existing flaky test with its tracking issue per `../deliver-and-verify/references/dx.md#continuous-integration`). Never retry a failing test hoping for a pass. |
-| **2. Lost runner or infrastructure drop** | Runner lost communication, node OOM/disk full, or aggregate gate timed out with zero failed child checks | Inspect the runner/node health; free disk or restart the wedged daemon if needed, and rerun **only** the lost/incomplete job once for that commit SHA (`../deliver-and-verify/references/dx.md#merge-queue`). |
+| **2. Lost runner or infrastructure drop** | Runner lost communication, node OOM/disk full, or aggregate gate timed out with zero failed child checks | Inspect the runner/node health and restore the live job or parent operation according to its [current lifecycle state](#parent-operation-recovery). |
 | **3. Merge queue or bottleneck deadlock** | A fix for the broken queue/CI check is itself stuck behind the broken check or queue | Hold unrelated entries, prioritize the bottleneck's own repair PR through the queue, or apply the supported live operational control first and merge the durable source change right after. |
 | **4. Authority, credential, or session challenge** | Missing scope/grant, expired token, or interactive login/CAPTCHA challenge | Reuse existing delegated credentials from the authorized secret store (including in-process secret-reference resolution and automated TOTP), preserve persistent browser profiles (`--user-data-dir` / cookies) so authenticated sessions are never needlessly wiped, and trigger an interactive human browser takeover only after every zero-human sign-in channel is exhausted: the provider's SSO button for the agent identity, an emailed magic link or code from an inbox the agent reads, an SMS code from the company number's inbox, an API or CLI with existing keys, and a trusted persistent profile. A CAPTCHA widget under one email/password form is not a challenge while another channel on the same page avoids it. **Wrong:** see `captcha_detected` on the password form and page a person. **Right:** try "Continue with Google" or the emailed code first; ask a person only for a challenge every channel shows, or for hardware approval. |
 | **5. Quota, rate limit, or capacity ceiling** | Provider HTTP `429`, exhausted seat/API quota, or saturated build lock | Pace concurrency to the measured sustainable rate, switch to an approved fallback capacity pool within existing spend limits, or surface the exact measured capacity gap to the budget owner. |
@@ -70,6 +70,16 @@ the starvation is fixed.
 
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 
+### Parent-operation recovery
+
+Recovery must resume the authoritative parent operation; a successful child
+retry can belong to an operation already retired or replaced. For a failed
+merge-group job, the pull request's timeline, live queue entry and current head
+determine whether a job retry can restore progress or normal exact-head
+re-enqueueing is needed, because rerunning an ejected group's job does not
+re-admit the pull request. **Bad:** treat a green orphan retry as queue recovery;
+**good:** verify a live queue entry and its required checks at the current head.
+
 For a lost GitHub Actions job, read its check-run annotations when the log
 download is unavailable; a missing log alone does not prove runner failure. If
 the job-rerun API refuses because its workflow is still running, preserve healthy
@@ -77,6 +87,9 @@ sibling jobs and wait for a workflow-completion event. Then retry only the lost
 job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
+
+Primary source checked 2026-11-06:
+[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
 
 ### Missing pull-request CI
 
