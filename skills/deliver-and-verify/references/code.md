@@ -158,7 +158,7 @@ For example, a currency-labelled price can require `US$1.99` in `en-US` and
 `-US$1.00` for a negative amount. Apply the same independence to date, unit and
 identifier formatting. Assert the rendered caller too when its choice of
 formatter or options caused the defect; keep broad invariant checks alongside
-these examples. When multiple strings are valid, derive accepted alternatives
+these examples. Feed raw inputs through the production formatting and ordering code and inspect the rendered result (rows, line breaks, overlaps); a fixture pre-filled with the desired labels proves only the fixture. When multiple strings are valid, derive accepted alternatives
 from the contract rather than freezing an incidental library output.
 
 **Wrong:** `expect(renderedPrice).toBe(formatPrice(amount, locale))`.
