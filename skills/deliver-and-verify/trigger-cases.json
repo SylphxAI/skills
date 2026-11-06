@@ -1032,6 +1032,10 @@
     {
       "prompt": "Fix a CI reader whose exact command selector stopped finding the offline suite after a guard was added.",
       "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Run a Kubernetes DELETE dry-run with a DeleteOptions body and prove the same object UID and resourceVersion remain before retiring its metadata.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [

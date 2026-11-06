@@ -78,6 +78,9 @@ For public social feed publishing, follow the [social post media and visual insp
 
 ## Execute and verify
 
+For destructive or conditional API writes, read
+[destructive and conditional writes](references/integration.md#destructive-and-conditional-writes).
+
 Before bulk mutations, including cancelling CI runs, read
 [bulk mutation controls](references/dx.md#bulk-mutations).
 
