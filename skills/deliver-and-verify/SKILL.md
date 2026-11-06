@@ -86,11 +86,14 @@ When changing shared runtime settings or deployment overlays, rotating secrets c
 For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
-For generated CLI calls, sandbox build templates or native compilation failures,
+For shared-cache permission failures, pinned-tool launch failures, generated CLI
+calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
 
 When changing database test setup or disposable fixture cleanup, read
-[database test fixtures](references/dx.md#database-test-fixtures).
+[database test fixtures](references/dx.md#database-test-fixtures) and
+[affected-test selection](references/dx.md#continuous-integration). New fixture
+objects still enter repository-wide policy scans.
 
 When changing runtime isolation, read [runtime isolation](references/security.md#runtime-isolation).
 

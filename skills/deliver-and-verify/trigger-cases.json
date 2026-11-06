@@ -762,6 +762,22 @@
       "clause": "editing PR titles/bodies"
     },
     {
+      "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, and ship the shared-cache repair.",
+      "clause": "bug fix"
+    },
+    {
+      "prompt": "Repair a pinned runtime wrapper that starts another major after its shared cache lock is denied.",
+      "clause": "bug fix"
+    },
+    {
+      "prompt": "Ship a shared build-cache permission repair while keeping signing keys and configuration private, and verify it with two execution UIDs.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "A secret scanner refuses publication of escaped asset paths; resolve the findings and publish through the unchanged scanner.",
       "clause": "secret scanners refuse"
     },
@@ -1264,6 +1280,21 @@
       "prompt": "Review whether a PR body edit caused the earlier checks to be cancelled, without changing the PR or workflows.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether this cached compiler output is safe to share; report evidence without implementing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare private runtime caches and a trusted shared installer for a proposed build architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of package-cache permissions without changing or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
