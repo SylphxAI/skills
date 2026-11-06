@@ -233,6 +233,10 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Replace an incorrect async test assertion that rejects valid repeated progress events, and ship bounded terminal-result coverage.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
           "prompt": "Fix and ship a command runner whose actual NUL byte output fails jsonb persistence without executing the command twice.",
           "clause": "implementing or shipping a feature, bug fix"
         },
@@ -610,6 +614,11 @@
         }
       ],
       "negative": [
+        {
+          "prompt": "Review whether a repeated progress event proves a missed notification; report evidence without changing or shipping the test.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
         {
           "prompt": "Review whether this stored output contains actual zero bytes or literal backslash escape text; report evidence without editing or shipping it.",
           "clause": "prove-it for a review or evidence check",
