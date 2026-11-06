@@ -295,6 +295,16 @@ disconfirming check establishes the cause; adopt only explained, intended change
 
 ### Verify engine and SDK changes in the shipping host
 
+For an in-place engine replacement, compare the signed package with both current
+production and the oldest supported client, then upgrade synthetic existing
+guests without clearing app data. A Unity guest may depend on PlayerPrefs
+(Android SharedPreferences or iOS NSUserDefaults): retain key names and value
+hashes only, and prove the replacement shows the same UI account and owned value
+after a cold start; compatibility symbols alone cannot establish this. A separate
+fresh install without those preferences must produce a different guest, while
+purchase restore and consumed-item replay need their own exercised evidence;
+missing coverage stays INCOMPLETE and observed loss is FAIL.
+
 An upgrade can preserve application state while changing controls, feature flags
 or browser event handling. Verify the dependency version, effective configuration
 and attempted integration path in the tested artifact: a guest result can come
