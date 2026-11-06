@@ -876,6 +876,18 @@
     {
       "prompt": "Retire an inherited container-execution route only after its billing collector works through the approved read-only client.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Repair a signal cleanup test that waits indefinitely for an exit notification; prove actual process termination and retain a live-process refusal control.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a worker timeout test whose child-ready marker races the parent cleanup handler, and ship the readiness regression.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a process-lifetime test that compares raw monotonic timestamps from different runtimes, preserving bounded termination checks.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -1461,6 +1473,21 @@
     },
     {
       "prompt": "Clarify the wording of an access-removal report without changing permissions or validating its claims.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the recorded lifecycle trace establishes the cause of an earlier timeout, without changing tests or code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare exit notifications with operating-system process observation as a proposed test design without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of runtime-local monotonic timestamps for clarity without validating the trace or changing code.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
