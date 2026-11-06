@@ -23,6 +23,14 @@ inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;
 failures naming cached third-party files call for correcting input discovery.
 
+Expanding a parent selection can leave nested exclusions effective, so recovery
+is established by the complete required descendant inventory while unrelated
+selections remain intact. Installer success can describe only attempted actions;
+required outputs need their own completeness check, including a missing-output
+control that challenges the installer's native status. **Wrong:** accept a parent
+directory or a successful installer check as proof; **Right:** compare every
+required file or installed capability with its declared inventory.
+
 A generated CLI's repeated-string flag need not decode JSON, and delimiter
 splitting can change an argument even when the shell preserves it. Match the
 parsed request to the wire schema; whole-request JSON/YAML can preserve arrays
