@@ -451,6 +451,26 @@
         {
           "prompt": "Repair the payment integration so a lost charge response preserves its original idempotency key and typed failure cause, then verify the deployed behavior.",
           "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Fix and ship a command runner whose actual NUL byte output fails jsonb persistence without executing the command twice.",
+          "clause": "persisting process output or restoring replacement execution environments"
+        },
+        {
+          "prompt": "Implement document-worker replacement that restores a dirty tracked file and an untracked attachment byte-identically before another tool runs.",
+          "clause": "persisting process output or restoring replacement execution environments"
+        },
+        {
+          "prompt": "Ship saved-game worker recovery that selects the newest complete backup while retaining files outside a narrower checkpoint.",
+          "clause": "persisting process output or restoring replacement execution environments"
+        },
+        {
+          "prompt": "Fix replacement recovery that cannot resume after SIGKILL leaves an extra temporary file in a repository, and ship the verified repair.",
+          "clause": "persisting process output or restoring replacement execution environments"
+        },
+        {
+          "prompt": "Ship archive recovery that materializes a large compressible committed file admitted by a smaller encoded-payload limit.",
+          "clause": "persisting process output or restoring replacement execution environments"
         }
       ],
       "negative": [
@@ -618,6 +638,21 @@
           "prompt": "Review whether a controller handover leaves generated routes behind; report evidence without changing it.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review whether this stored output contains actual zero bytes or literal backslash escape text; report evidence without editing or shipping it.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare full-backup and partial-checkpoint recovery designs without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite the worker replacement notice for clarity; do not change code or publish the service.",
+          "clause": "clear-writing for prose alone.",
+          "route_to": "clear-writing"
         }
       ]
     },
