@@ -76,6 +76,10 @@
     {
       "prompt": "Reconcile a ledger gap with independent consumption history before claiming that a grant disappeared.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Delivery receipts report a complete inventory handoff, while the receiver recovers JSON ending mid-record. Reconcile the claimed coverage.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [
