@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "CI rejects customer-specific policy code in a shared platform path, and the local hook skipped its scanner. Restore the check while preserving the ownership boundary for code, tests and runbooks.",
+      "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
       "prompt": "The repository synchronization completed but historical dependencies still fail verification. Restore the missing history while retaining recovery metadata.",
       "clause": "a promised fix still fails"
     },
