@@ -254,15 +254,15 @@
         },
         {
           "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
-          "clause": "running browser checks in a fresh build lease"
+          "clause": "running tests in a fresh build lease"
         },
         {
           "prompt": "Verify a game landing page in a new disposable build lease; an earlier lease installed Chromium but this one has no browser executable.",
-          "clause": "running browser checks in a fresh build lease"
+          "clause": "running tests in a fresh build lease"
         },
         {
           "prompt": "Prepare and run the checkout browser regression suite inside one fresh build lease using the pinned CI browser setup.",
-          "clause": "running browser checks in a fresh build lease"
+          "clause": "running tests in a fresh build lease"
         },
         {
           "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
@@ -574,7 +574,7 @@
         },
         {
           "prompt": "Run the changed browser fixture in a fresh build lease and keep its logs, exit status and captures available after this turn ends.",
-          "clause": "running browser checks in a fresh build lease"
+          "clause": "running tests in a fresh build lease"
         },
         {
           "prompt": "Finish implementing this feature, verify the exact source revision remotely, and preserve its result before yielding the session.",
@@ -607,6 +607,14 @@
         {
           "prompt": "Implement a parser parity corpus while preserving missing production inputs as unknown instead of deriving them from expected outputs.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Run focused workspace tests in a fresh build lease; a package export resolves to generated files that are absent after installing dependencies.",
+          "clause": "running tests in a fresh build lease"
+        },
+        {
+          "prompt": "Evaluate a changed alert rule in a fresh build lease with the evaluator version deployed in production.",
+          "clause": "running tests in a fresh build lease"
         }
       ],
       "negative": [
