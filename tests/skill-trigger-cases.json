@@ -643,6 +643,10 @@
         {
           "prompt": "Fix a shared export-eligibility rule and verify execution, feature discovery and retry metadata for temporary quota exhaustion and permanent revocation.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Merge conflicting generated API clients, regenerate the complete projections from canonical inputs, and preserve both parents' response guarantees before shipping.",
+          "clause": "running source generation locally or remotely"
         }
       ],
       "negative": [
@@ -913,6 +917,11 @@
         },
         {
           "prompt": "Review whether this shared availability change makes temporarily unavailable products disappear from search; report evidence without changing code.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Review whether a generated API merge dropped served response fields; report findings without editing or shipping anything.",
           "clause": "prove-it for a review or evidence check",
           "route_to": "prove-it"
         }
