@@ -551,6 +551,18 @@
         {
           "prompt": "Fix the disposable database test script to retain server logs on every failure before cleanup while preserving the original exit status.",
           "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Run the changed browser fixture in a fresh build lease and keep its logs, exit status and captures available after this turn ends.",
+          "clause": "running browser checks in a fresh build lease"
+        },
+        {
+          "prompt": "Finish implementing this feature, verify the exact source revision remotely, and preserve its result before yielding the session.",
+          "clause": "implementing or shipping a feature"
+        },
+        {
+          "prompt": "Ship this bug fix after browser validation; configure the supported build lease to reach the download redirect host and save the failing setup result.",
+          "clause": "bug fix"
         }
       ],
       "negative": [
@@ -761,6 +773,21 @@
         },
         {
           "prompt": "Rewrite these JDBC fixture troubleshooting instructions for clarity without changing or publishing code.",
+          "clause": "clear-writing for prose alone",
+          "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether these recovered build logs establish that the tests ran; do not change or rerun anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
+        },
+        {
+          "prompt": "Compare durable files with operation records for a proposed remote test architecture without implementing either.",
+          "clause": "Use challenge for a plan or architecture",
+          "route_to": "challenge"
+        },
+        {
+          "prompt": "Rewrite these build handoff instructions for clarity without running or publishing changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
         }
