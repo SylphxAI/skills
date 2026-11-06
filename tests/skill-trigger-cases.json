@@ -241,6 +241,14 @@
           "clause": "authorized operational, repository, marketing, or commercial change"
         },
         {
+          "prompt": "Ship an additive billing migration whose DDL runs before the new API image; establish lock compatibility with the old serving transaction code.",
+          "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint"
+        },
+        {
+          "prompt": "Deploy a game inventory schema expansion while old servers still trade items, separating any prerequisite lock-release fix from its dependent migration.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
           "prompt": "Deploy the checkout bug fix and verify the affected customer journey.",
           "clause": "Carry the outcome through execution and verification at its real surface."
         },
