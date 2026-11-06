@@ -233,6 +233,18 @@
     "deliver-and-verify": {
       "positive": [
         {
+          "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
+          "clause": "implementing or shipping a feature, bug fix"
+        },
+        {
+          "prompt": "Ship missing native headers and linker libraries in the C++ build template, with an image-time compile probe and a consumer build on the selected digest.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
+          "prompt": "Update the game asset build image to include the libraries loaded by its pinned generator, then verify the ordinary remote build route.",
+          "clause": "authorized operational, repository, marketing, or commercial change"
+        },
+        {
           "prompt": "Ship a shared service setting and verify each regional deployment overlay that replaces its environment list receives the required value.",
           "clause": "authorized operational, repository, marketing, or commercial change"
         },
