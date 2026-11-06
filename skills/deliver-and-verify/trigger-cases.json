@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
+      "clause": "changing session guards"
+    },
+    {
+      "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
+      "clause": "changing session guards"
+    },
+    {
       "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
       "clause": "changing database privileges"
     },
@@ -675,6 +687,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare origin checks with synchronizer tokens for a proposed session architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the cookie-session error message for clarity without changing or publishing the application.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
       "clause": "prove-it for a review or evidence check",
