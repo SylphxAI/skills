@@ -37,11 +37,12 @@ Before intervening, read the live state of the job, queue, or target resource:
 
 ## 2. Diagnose by Failure Class
 
-A policy-scanner refusal points to a contract; removing a matched spelling can
-preserve the violation. Read the enforced check's pinned rule and inspect any
-prescribed helper's availability and behavior before changing the implementation.
-Run that exact checker and test the required semantics; a different local check
-or zero findings alone does not prove the contract is satisfied.
+A policy-scanner refusal points to a contract; a changed spelling or skipped
+local hook proves no compliance. Read the pinned rule, configured file scope and
+prescribed helper, then run that exact checker and verify its semantics. An
+ownership failure is repaired by keeping product-specific code, tests and
+runbooks at their owning product boundary and shared mechanisms configurable,
+without widening scanner exclusions.
 
 A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
 
