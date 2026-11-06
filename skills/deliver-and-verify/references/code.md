@@ -215,6 +215,15 @@ For example, a SQL view containing a VOLATILE rejection function may evaluate
 it even when its output column is unused. Validate metadata-only reads and row
 locks independently before using that view to judge the production projection.
 
+For pooled-resource teardown, check client ownership and server state separately.
+A returned close future does not establish that the pool drained every resource.
+Before attributing a surviving session to a worker, read the exact driver's close
+and return ordering and measure the remaining pool size. Reproduce a return
+racing shutdown with a barrier, and retain a negative case in which a genuinely
+held connection stays usable after cleanup reports it. Keep a driver workaround
+in its version-specific adapter and remove it when the supported upgrade fixes
+the ordering; do not hide the failure by terminating unrelated sessions.
+
 ## Outbound calls
 
 - Give each remote operation an effective deadline/cancellation policy, configured on the client or request. Reuse clients by connection and security configuration and share retry/redaction policy.
@@ -225,5 +234,7 @@ locks independently before using that view to judge the production projection.
 ## Cleanup and review
 
 Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating checked-in generated code, reproduce the committed output unchanged with the pinned, checksum-verified generator and runtime, then change only the input and review the diff. Regenerating a whole data file or workbook to change a few fields is a population-wide change: decode the committed and regenerated tables, keep every field outside the approved change identical, and isolate any pre-existing drift as its own change rather than importing it. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+
+Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
 Review the failure modes and checks relevant to the change through [prove-it](../../prove-it/SKILL.md). Track throughput and review latency alongside incident/revert rates on a named population and window. A metric change is a signal to investigate, not by itself proof of causation.
