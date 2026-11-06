@@ -563,6 +563,10 @@
         {
           "prompt": "Ship this bug fix after browser validation; configure the supported build lease to reach the download redirect host and save the failing setup result.",
           "clause": "bug fix"
+        },
+        {
+          "prompt": "Ship the invoice display join and update isolated database fixtures, including guest-checkout cases that do not select the customer branch.",
+          "clause": "implementing or shipping a feature, bug fix"
         }
       ],
       "negative": [
@@ -790,6 +794,11 @@
           "prompt": "Rewrite these build handoff instructions for clarity without running or publishing changes.",
           "clause": "clear-writing for prose alone",
           "route_to": "clear-writing"
+        },
+        {
+          "prompt": "Review whether this new join invalidates an isolated fixture schema; report evidence without changing or running anything.",
+          "clause": "prove-it for a review or evidence check",
+          "route_to": "prove-it"
         }
       ]
     },

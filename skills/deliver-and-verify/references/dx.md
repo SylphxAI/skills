@@ -69,6 +69,20 @@ container exit with no operation-specific evidence leaves the check unverified.
 
 ## Database test fixtures
 
+When a query gains a join, subquery or function call, update every isolated
+fixture that executes it with all referenced schema objects and columns.
+Branch-specific seed data does not remove those dependencies: PostgreSQL
+resolves a joined relation even when a `CASE` expression selects another
+branch. Derive fixture definitions from the migration-owned schema, preserving
+the types and grants described in [database boundary tests](code.md#database-boundary-tests).
+Run the existing consuming query or card test against its supported database;
+compilation and parser tests alone do not exercise schema resolution.
+
+**Wrong:** omit the customer table because an invoice fixture exercises guest
+checkout. **Right:** include the joined table and run the invoice projection.
+The same rule applies to a game inventory query joining optional item metadata.
+A pure formatter change with no query dependency needs no schema expansion.
+
 Locate the failed phase before changing a timeout: service readiness,
 connection establishment, schema setup and test execution have different
 budgets. Give cold fixture DDL a separate bounded setup connection when it
