@@ -96,6 +96,10 @@
     {
       "prompt": "A completion watch remains pending after its target finished, while per-watch REST GETs exhaust the shared API floor; restore delivery without bypassing the quota.",
       "clause": "a completion watch stays pending after its target finishes"
+    },
+    {
+      "prompt": "The emergency build is still queued after its origin-labelled worker admitted and ran a different build. Restore the target without treating provisioning metadata as exclusive assignment.",
+      "clause": "a queue/review stops progressing"
     }
   ],
   "negative": [
@@ -156,6 +160,11 @@
     },
     {
       "prompt": "Audit the past quota cost of an event-watch implementation without restoring failed work.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Audit whether an old pool intervention actually started the requested task; the queue is now healthy and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
     }

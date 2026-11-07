@@ -9,7 +9,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 
 ## Establish the evidence
 
-- Read mutable status before a new claim that something is serving, deployed, merged, fixed or blocked. Name the object, version or revision, and UTC read time. An immutable object already read in the session can be reused at that exact version and scope.
+- Before claiming something is serving, deployed, merged, fixed or blocked, read its mutable status and name the object, version/revision and UTC read time; an immutable object already read can be reused at that exact version and scope. A cache reader can exit zero while an individual result says `stale: true`; check structured freshness, object identity/version and observation time rather than equating command success or a repository-level timestamp with current evidence. A stale observation cannot establish a current value or authorize a conditional write; any documented refresh or authoritative fallback stays within existing authority and the remaining read budget, without replaying completed stages or treating a quota/access refusal as staleness.
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
@@ -21,7 +21,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
 - A blocker in a report is a claim until you open the frame or log behind it. Wording drifts as it passes between reports: a stopped attempt becomes a named obstacle, then a rule, then a request for hardware. Open the evidence before repeating it or setting a rule on it, and first when a person questions it.
 - A measurement says what that build and that route did, not what exists. Before saying something is missing or must be built, search the history for it and name which version, path or data the measurement ran on. A capability can be finished and proved while the live pointer still selects the old route.
-- For a count or metric, retain the query, window, instrument and population. A derived freshness query can change series identity or staleness handling even at the same evaluation time; establish coverage of the exact accepted series before applying its verdict, preserving retired identities separately. Rounded displays cannot establish an exact zero: use the underlying counter or receipt at the claimed unit, and read the verifier's result before reporting it. A census reaches the terminal page of every required nested list and distinguishes currently effective entries from scheduled ones; label a sample and its uncertainty. A returned total can cross-check a census where the API defines it, but is not a pagination mechanism. A cached census carries each object's observation time and unresolved stale or negative results; it is not a simultaneous live reading.
+- For a count or metric, retain the query, window, instrument and population. A derived freshness query can change series identity or staleness handling even at the same evaluation time; establish coverage of the exact accepted series before applying its verdict, preserving retired identities separately. Rounded displays cannot establish an exact zero: use the underlying counter or receipt at the claimed unit, and read the verifier's result before reporting it. A census reaches the terminal page of every required nested list and distinguishes currently effective entries from scheduled ones; label a sample and its uncertainty. A returned total can cross-check a census where the API defines it, but is not a pagination mechanism. A cached census carries each object's observation time and unresolved stale or negative results; it is not a simultaneous live reading. An expected-result file is authoritative only for its defined predicate; omissions and skips do not establish a different lifecycle or eligibility claim. For eligibility changes, derive the expected set delta from authoritative state and compare exact membership, retained full-row payloads and counts.
 - For a historical backlog, distinguish coverage of retained ledger rows, recovery of original messages, prior finite acceptance, current acceptance and execution ownership. A complete retained ledger does not establish complete historical-source recovery. Match the exact source body and time; an alias or nearby message with different content leaves the original unresolved. Overlapping source clauses can describe one outcome, and a completed finite action does not close its unfinished umbrella outcome.
 - Resolve repository aliases by the returned repository ID, full name and authoritative URL. A redirect to a legacy repository does not identify a similarly named current repository. A shared commit author does not identify the writer of a branch or its current owner.
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
@@ -228,16 +228,21 @@ may resolve it from the environment. Test the shipped path before concluding.”
 Response evidence also depends on request headers and API version: a default
 CLI response can differ from the failing caller's negotiated payload. Exercise
 that caller's decoder with empty and populated responses, distinguishing valid
-empty encodings from malformed envelopes.
+empty encodings from malformed envelopes. A transport-library non-error or
+generic `2xx` does not establish the route's terminal state: accept only its
+contract-defined status and required body fields, types and ownership, including
+a legitimate queued `202` where specified.
 
 Providers can normalize display fields while retaining different immutable or
 signed bytes. Bind integrity claims to the contract's authoritative payload,
 with a valid display transformation and a meaning-changing mutant as controls;
 trimming both sides can conceal the difference the verifier must detect.
 
-**Wrong:** "The CLI returns `items: []`, so the worker sees an empty list."
-**Right:** "The worker's `Accept` header yields `items: null`; verify its decoder
-on that response while preserving malformed-response refusal."
+**Wrong:** "Any non-error status with a valid-looking body proves success."
+**Right:** "Through the same entrypoint, pair the contract's exact accepted status
+with a complete-body control, malformed or missing-field bodies, and a plausible
+unexpected status carrying a valid body; allow a queued `202` only where the
+route specifies it."
 
 ## Resolve retained payloads before checking fields
 

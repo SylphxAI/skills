@@ -530,7 +530,9 @@ colours or variance, not only that the file exists.
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
   those exact candidate files; load every changed table and assert its consuming
-  behavior, not schema acceptance alone. For random pools or boxes, every
+  behavior, not schema acceptance alone. For reward delivery, apply the
+  [channel-specific dispatch and effective-item checks](../../game-economy/SKILL.md#1-establish-what-is-happening).
+  For random pools or boxes, every
   reachable outcome ID must resolve in the type-specific template used by the
   actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
   unknown-ID/null-grant controls, asserting durable grants and the contract's
