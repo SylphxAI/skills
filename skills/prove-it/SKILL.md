@@ -99,6 +99,19 @@ successful run at the same SHA. Rollups, `CheckRun.isRequired` and REST
 the effective rules and actual enqueue acceptance or refusal in an authorized
 fixture, separately from what ran or which result a display selected.
 
+A missing check can reflect a producer that failed before publication; use the
+[execution-versus-triggering-source distinction](../deliver-and-verify/references/dx.md#bulk-mutations)
+rather than filtering downstream runs only by the reviewed SHA. Correlate the
+triggering event or actual producer input with that SHA and read the producer's
+terminal log, keeping execution failure, published check state and merge
+eligibility separate.
+
+**Wrong:** "No downstream run has the reviewed SHA, so the producer never ran."
+**Right:** "The default-branch run's log names the reviewed SHA and fails before
+publication; the missing check does not prove producer absence."
+
+Source read 2026-11-07: [GitHub workflow_run events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run).
+
 GitHub [commit statuses](https://docs.github.com/en/rest/commits/statuses) and
 [Check Runs](https://docs.github.com/en/rest/checks/runs) expose distinct
 populations: an approval absent from `commits/<sha>/check-runs` may be present
