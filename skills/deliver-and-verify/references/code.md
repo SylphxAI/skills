@@ -199,12 +199,16 @@ A committed terminal no-op needs a durable receipt written atomically with its t
 
 An asynchronous request captures its target's stable identity and version at
 submission; check eligibility atomically at mutation rather than resolving
-mutable UI selection or equating values after an await. Cancellation or newer
-intent can prevent mutation, but after an accepted mutation, view cleanup or an
-uncommitted replacement ends obsolete presentation authority without revoking the
-obligation to complete or compensate coherent durable state and projections; only
-conflicting changes to authoritative state or authorization for that exact
-committed identity/version supersede completion. **Bad:** abandon an accepted update when its view closes
+mutable UI selection or equating values after an await. A changed object can be
+an operation's authorized asynchronous successor only when authoritative
+provenance binds it to the captured source/version; shared user identity alone
+cannot establish that continuity, including for delayed failure cleanup.
+Cancellation or newer intent can prevent mutation, but after an accepted
+mutation, view cleanup or an uncommitted replacement ends obsolete presentation
+authority without revoking the obligation to complete or compensate coherent
+durable state and projections; only conflicting changes to authoritative state or
+authorization for that exact committed identity/version supersede completion.
+**Bad:** abandon an accepted update when its view closes
 or a replacement merely starts; **Good:** verify pre-mutation refusal,
 post-mutation cleanup, a failed replacement and a newer committed replacement,
 preserving coherent state without obsolete navigation or feedback.
