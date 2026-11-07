@@ -637,20 +637,17 @@ synthetic vectors must not freeze incidental timing or internal call sequences.
 
 An overlap or uniqueness check over derived ancestry needs tests through the
 production resolver: prefilled ancestor IDs bypass traversal, and stopping at
-the first matching root cannot prove no other match exists. Where the contract
-distinguishes recursively shared payload from identity, a composed chain may
-carry a leaf payload while direct-parent identity differs from transitive-root
-identity. **Wrong:** seed two ancestors or test only a one-edge link/reducer
-and accept whichever identity survives; **Right:** derive expected outcomes
-from the contract or reference implementation, resolve overlapping roots
-through the public entrypoint, assert refusal before writes, and preserve
-independent roots as allowed positive controls plus non-matching roots or
-ancestors as negative controls; where the domain supports identity transfer,
-also distinguish the specified direct-parent and transitive-root outcomes in an
-applicable three-node case and retain a valid no-inheritance control; the same
-distinction transfers to animation timelines, inherited authorization or
-configuration, and provenance graphs, while an unrelated flat formatter is not
-a substitute for this behavioral proof.
+the first matching root cannot prove no other match exists. Flattening
+recursively shared payloads need not transfer identity: where the contract
+distinguishes a direct parent from a transitive root, one-edge tests cannot
+expose that choice, whether in inherited permissions, configuration or
+provenance. **Wrong:** prefill ancestors or test only a one-edge link/reducer;
+**Right:** derive expected outcomes from the contract or reference
+implementation and exercise the public entrypoint, proving nested matching
+roots refuse before writes while independent roots and non-matching ancestors
+remain permitted, and, where that identity distinction exists, use a
+distinguishing three-node chain with a valid no-inheritance control if
+supported.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
