@@ -1844,6 +1844,18 @@
     {
       "prompt": "Update training-workflow identity labels without enrolling batch pods in the inference service routing or metrics cohort.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a SaaS scheduler where a slow timed pass starves notification-driven continuation work that remains ready; prove bounded service across every promised work class.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a scheduler regression with one controlled clock that keeps timers overdue and notifications ready after every slow pass, preserving idle behavior and the missed-tick contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game worker fairness repair so periodic cleanup cannot starve ready player-action notifications, without inventing idle work or an undeclared catch-up burst.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3029,6 +3041,21 @@
     },
     {
       "prompt": "Rewrite the UI explanation of scheduled jobs and bound storage without changing their labels or access policy.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a scheduler fairly serves continuously-overdue timers and ready notifications; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare round-robin and deadline-based scheduling for a proposed worker architecture under continuously-overdue timers and ready notifications without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of slow-pass scheduler fairness and idle controls for clarity without changing tests or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
