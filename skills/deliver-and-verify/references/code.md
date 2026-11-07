@@ -21,6 +21,12 @@ Test a scoped linter ignore or validation exception with both state-establishing
 and state-invalidating input followed by unwaived input; ordinary prose with no
 waiver needs no such handling.
 
+Validate immutable historical records structurally and retain their findings when
+time-dependent permissions expire; expired permissions have no authority, but
+must not erase the baseline or weaken current-state validation. Test expiry
+rollover and removal through the real comparison entrypoint, and regenerate any
+registry that attests the checker source when those bytes change.
+
 ## Deployment configuration
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
@@ -40,11 +46,13 @@ desired state, so durability depends on the full controller ancestry and each
 controller's effective field ownership. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
-temporary exception is removed. A recurring repair's field ownership and
-exclusions must hold across every automatic writer and active-operation handoff;
-one correctly guarded pass does not protect against an independent writer
-reclaiming those fields. Verify successive repair and operation transitions,
-not only the first pass.
+temporary exception is removed. Unchanged declarations, generations or digests
+do not prove unchanged effective allocations: verify realized per-object state
+through every active writer and consumer, preserving field-ownership exclusions
+across successive operations. Keep pending intent separate from physical evidence;
+missing, stale, unreadable or partial observations cannot justify a
+preservation-changing write, while first creation requires authoritative proof of
+exact-identity absence and a complete inventory of retained allocations.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
@@ -460,6 +468,11 @@ bytes. Test permitted layout changes as accepted and meaning-changing edits
 inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
+
+When opening previously uninspected syntax, put a real state mutation after every
+supported control opener and exercise its allowed and forbidden forms through
+the real checker entrypoint. Cross-dialect keywords need separate controls, so a
+harmless idiom in one language cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.

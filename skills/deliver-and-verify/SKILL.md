@@ -41,6 +41,9 @@ before choosing storage queries and transport APIs.
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
+When reducing fragment-shader cost, read
+[fragment-shader hot paths](references/performance.md#fragment-shader-hot-paths)
+before choosing an optimization.
 
 For preview provisioning or reduced-backend profiles, read
 [deployment configuration](references/code.md#deployment-configuration) and
@@ -70,8 +73,8 @@ or redeploy leaves existing specifications unchanged; use the normal writer's
 bounded reconciliation or backfill, preserving exclusions and intended absence,
 and verify the served objects before reporting rollout complete.
 
-For long builds or tests, work in leased environments, or results resumed after
-a turn boundary, read
+For long builds or tests, work in leased environments, source handoffs or
+execution-placement changes, or results resumed after a turn boundary, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution or
 resubmitting work.
 

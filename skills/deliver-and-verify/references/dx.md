@@ -430,15 +430,15 @@ confirm cleanup through the normal path.
 
 ## Workflow admission
 
-Admission evidence follows the selected target's effective policy and the failure
-the gate is meant to detect; a familiar workflow name or unrelated approval stamp
-can otherwise block valid work or admit an unreviewed candidate. Passing
-prerequisite checks cannot establish an independent post-release health claim;
-remove or recalibrate a mismatched control rather than adding a bypass.
-**Wrong:** reuse admission checks as post-release health evidence or substitute a
-security stamp for a specified review check; **Right:** bind each verdict to its
-actual authority, exact candidate and claimed failure, preserving independent
-review requirements.
+A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
+
+A generic guard derives each target's contract and required verdicts from its
+authoritative declarations, distinguishing confirmed absence from failed
+discovery instead of imposing the originating target's conventions or substituting
+an unrelated approval. Exercise a permitted alternative declaration alongside a
+refusal through the real entrypoint, preserving independent exact-candidate
+review requirements so fail-closed behavior cannot hide rejection of every
+supported target.
 
 Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels.
 
@@ -454,8 +454,10 @@ inputs that no longer exist, including paths left behind by a rename.
 
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
-per-path blobs with the serving plan, including inherited base inputs and runtime
-resources; the difference must equal only the declared change under test.
+per-path blobs and file modes with the serving plan, including inherited base
+inputs and runtime resources; the difference must equal only the declared change
+under test. Resolve the serving selection from its producer's frozen approval,
+not the selected source revision's own selector.
 Bind that proof to the candidate head and serving revision, and refresh it if
 either changes: matching counts or passing source tests do not establish scope.
 
@@ -463,8 +465,10 @@ Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
 keeps other dependencies byte-identical. A direct source overlay into a compiled
 module can replace that route; require binary synchronization only while those
-binaries remain the delivery mechanism. Derive registration from the input to
-destination mapping, since their directory names can differ.
+binaries remain the delivery mechanism. Derive registration and runtime scope
+from the input-to-destination mapping and actual consumers, not plan membership:
+an assembly can retain another role's scaffolding. Shared inputs require
+registration in every consuming profile without creating false mixed scope.
 
 Keep ordinary source registration separate from release selection. Read the
 selector and lock history before requiring every source PR to regenerate a
