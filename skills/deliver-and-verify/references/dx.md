@@ -28,8 +28,7 @@ Local checks can inspect a different file population from the published artifact
 ignored required files may pass from a mutable checkout, while local caches may
 be scanned as source. Publication evidence matches every manifest entry and digest
 to the clean committed archive or final package and exercises the consuming checks
-there. Rebuildable caches stay outside that population unless the check's contract
-explicitly includes them.
+there. Check `git ls-files` covers every declared source import/module before handoff: a shared `.git/info/exclude` can silently hide new source across worktrees despite a clean status. Rebuildable caches stay outside that population unless the check's contract explicitly includes them.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated
@@ -57,7 +56,7 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Diagnostic collection failures must not replace the original outcome.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Diagnostic collection failures must not replace the original outcome.
 
 A temporary-directory error can originate in a separately configured package
 cache. Read the failing child's effective tool home, cache and index paths,
@@ -71,13 +70,7 @@ need private state. A cached executable or compiler result trusted without
 reverification needs a private cache or a trusted single writer. A writable
 mixed-home parent permits replacing its private entries even if file modes stay
 0600, so grant access only to named content leaves and retain read-only parents.
-Setgid preserves a group, not write permission. For shared Git metadata, use
-additive access and default POSIX ACLs that preserve the old effective masks and
-the original owner's access on future child-created objects; `chgrp` or setgid
-alone can revoke sibling access. Verify old contents and future writes under
-restrictive umasks with two real UIDs, and report any privilege skip explicitly—a
-skipped privileged case is not acceptance. Preserve outside links and active
-locks. A declared tool version must either launch or fail clearly after an
+Setgid preserves a group, not write permission. Scope additive access/default POSIX ACLs to named shared-content leaves, never mixed metadata parents or defaults that admit future siblings; preserve existing effective grants and the original owner's future access, judging ACL writers rather than group mode bits, which represent the ACL mask. Read-only entries also need unlink/rename protection from writable parents. Verify old contents and future writes under restrictive umasks with two real UIDs, preserve outside links and active locks, and report privilege skips rather than acceptance. Derive each shared principal grant's lifetime from all active server-owned use records under one transition lock; revoke only grants no survivor needs and read effective access back independently of dirty-file retention. A declared tool version must either launch or fail clearly after an
 install/lock error, rather than silently running another major.
 
 Identity fixtures keep the real UID and primary GID separate; one cannot be
@@ -238,8 +231,7 @@ their migration source. Broad fixture grants would hide that missing contract.
 A complete schema replay does not by itself make a fixture legal or active.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
-guard enabled; extreme values or times can break a cross-field or ordering
-constraint before the intended behavior runs. A small setup-and-transition
+guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
 control should reach the decision under test, separating invalid or inactive
 setup from a behavior failure.
 Fixture isolation must hold across the actual executor's processes: a shared
@@ -415,10 +407,10 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
-- **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
+- **Remote-tracking refs in single-branch clones:** Before comparing or publishing a checkout, materialize and verify the exact remote-tracking ref selected as its base; a readable commit or same-named local branch does not prove that the publisher can bound its history against that remote ref. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; inspect `remote.<name>.fetch` and use the repository's supported named-base fetch or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`). Restoring a missing stacked-base ref does not require retargeting the held PR or merging the default branch.
 - **Safe worktree cleanup:** Git cleanliness and pushed commits do not prove that a working directory has no unique outputs; automatic retirement can also remove non-Git directories. Safe cleanup depends on preserving unpushed commits and unique or uncertain drafts, reports, logs, captures and patches outside the entire deletion scope and reading the saved bytes back before removal. Rebuildable build trees need no preservation.
 - **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors; do not change code to appease a stale artifact.
-- **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
+- **Private test fixtures:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename; leave another run's files and permissions alone. Keep Unix socket paths within the operating system's limit and verify any short alias through both server and connection-URI parser. Isolate process-global environment and lock assertions in single-test subprocesses: an in-process mutex cannot protect them from concurrent fork/exec fixtures that inherit descriptors until exec. Launch fixture children with unrelated identity, configuration and data-directory overrides removed, retaining explicit fixture inputs; numeric identity separation alone does not isolate inherited authority.
 - **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.
 - **Client-verified readiness:** Measure service availability from the moment a real client request or sign-in succeeds, not merely when an orchestrator readiness probe turns green.
@@ -445,6 +437,15 @@ exit code and a signal separately when the supervisor can distinguish them;
 label a shell's signal-like status as a convention rather than proof of cause.
 Missing logs limit the conclusion; do not substitute a resource or flag change
 for evidence of the failure.
+
+A supervisor-only lock and deadline disappear on `SIGKILL`, while a detached
+child can continue work and overlap its replacement. Exclusion and cleanup must
+cover the whole child lifetime: a cleanup owner retaining an inherited lock and
+watching a pipe whose sole writer is the supervisor can detect EOF, terminate
+child process groups and finish cleanup before releasing the lock. In a
+disposable fixture, hard-kill only the supervisor and verify descendant
+termination, owned temporary-state cleanup and replacement exclusion until
+cleanup finishes; graceful-stop tests do not establish this contract.
 
 Verify with a disposable instance: terminate only the supervised runtime, then
 observe management readiness, refusal without dispatch, retained files and
