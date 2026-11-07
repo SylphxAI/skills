@@ -23,6 +23,15 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. Credential secrecy and payload integrity are independent: keep existing input channels usable, with a synthetic credential absent from the final spawned argv and unchanged payload and refusal bytes verified through the actual client. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
+A wrapper can select a different principal at several routing layers, including
+local credential lookup; disabling one route does not establish the connected
+user's identity. If routing alters that lookup, use the supported unwrapped
+client only for local credential retrieval, bind the result in child
+memory/environment to the guarded network client, and verify the effective
+account and required scopes on each pass, refusing mismatches. Keep credentials
+out of argv and artifacts, and retain quota and admission controls for every
+network call.
+
 A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.
 
 Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** retain an allowed status field containing an arbitrary object; **Good:** reject undeclared shapes while preserving useful validated status, timestamps and safe diagnostic detail, with positive controls proving that useful output survives.

@@ -446,6 +446,15 @@ label a shell's signal-like status as a convention rather than proof of cause.
 Missing logs limit the conclusion; do not substitute a resource or flag change
 for evidence of the failure.
 
+A supervisor-only lock and deadline disappear on `SIGKILL`, while a detached
+child can continue work and overlap its replacement. Exclusion and cleanup must
+cover the whole child lifetime: a cleanup owner retaining an inherited lock and
+watching a pipe whose sole writer is the supervisor can detect EOF, terminate
+child process groups and finish cleanup before releasing the lock. In a
+disposable fixture, hard-kill only the supervisor and verify descendant
+termination, owned temporary-state cleanup and replacement exclusion until
+cleanup finishes; graceful-stop tests do not establish this contract.
+
 Verify with a disposable instance: terminate only the supervised runtime, then
 observe management readiness, refusal without dispatch, retained files and
 request replays, and centrally readable exit evidence. Release the instance and

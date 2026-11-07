@@ -310,6 +310,13 @@ and transport setup. Read-only setup may happen beforehand if the final
 observation still verifies the exact target and state; extending receipt validity
 to hide setup time weakens the safety contract.
 
+A bounded side task can still cross into a periodic worker's narrow due window;
+a clock read from before that task is stale when choosing the next wait.
+Recompute eligibility after side work and before sleeping, preserving slot
+deduplication. Drive a side task across the window boundary with a controlled
+clock and prove the due slot runs once while an already-completed slot stays
+suppressed.
+
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new
 resource's retention. Use the final statement's `statement_timestamp()` or
