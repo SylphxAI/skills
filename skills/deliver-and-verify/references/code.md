@@ -130,6 +130,14 @@ independently; **Right:** resolve the rendered references and dry-run the effect
 update against existing objects, proving unchanged immutable templates and no
 unintended execution.
 
+Schema, admission and render checks can pass despite generated wildcard listeners
+colliding with existing listeners in a replica's actual network namespace. Verify
+the complete effective generated listener addresses, ports and protocol defaults
+across all replicas, with runtime binding and affected-caller reachability.
+Enabling TLS can also change default advertised or administrative endpoints while
+plaintext remains open; preserve their compatibility with existing callers or
+verify their migration independently of open-listener checks.
+
 Identity-label selectors depend on the producer's propagation contract, not the
 label key's apparent meaning: compare representative admitted consumers with the
 source that supplies their labels, including generated children and opaque IDs.

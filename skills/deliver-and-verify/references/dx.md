@@ -172,10 +172,11 @@ sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedd
 program executes; **Good:** the workload's exact launch chain emits the program's
 expected marker using only its declared inputs.
 
-Installed tools do not prove runtime-created devices or mounts exist. Exercise
-required capabilities in a fresh instance with its shipping entrypoint and user,
-and retain bounded daemon startup logs before that instance ends; a path inside
-a destroyed instance cannot supply the missing evidence.
+Installed tools do not prove runtime-created devices, mounts or listeners work.
+Exercise required capabilities in a fresh instance with its shipping entrypoint,
+user and network namespace, applying [listener and endpoint verification](code.md#deployment-configuration)
+for network services, and retain bounded daemon startup logs before that instance
+ends; a path inside a destroyed instance cannot supply the missing evidence.
 
 Before relying on a repository-wide image-input guard, compare its discovered
 Dockerfiles, build contexts and targets with the builds invoked by CI workflows
