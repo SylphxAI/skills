@@ -533,7 +533,13 @@ the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
 failed”; **right:** require the changed-price refusal after a passing baseline,
 while a stale-heartbeat refusal fails that same assertion.
 
-Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
+Before attributing state loss or duplicate work to product code, prove the fixture
+reached the intended state through the real lifecycle: accepted or cursor-advanced
+work may remain incomplete and legitimately trigger recovery. Use completed and
+interrupted controls that read back their distinct state before the measured
+action; repair setup without suppressing legitimate recovery. For UI retention,
+establish a present, laid-out element with accepted input before comparison; an
+absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
 selects it. Preserve each independent reason for selection: historical comparison
