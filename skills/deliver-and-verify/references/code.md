@@ -416,7 +416,7 @@ role on an empty target; if unavailable, choose a declared reduced-scope profile
 or explicit not-applicable result without weakening production role or isolation
 guards.
 
-Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
+Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism. Repairs made only to installed or generated definitions can be overwritten by regeneration from stale canonical source; reconcile all still-supported semantics in that source and a forward migration, leaving applied history unchanged. Run preserved behavioral regression cases against the final generated definition, not an older fixture copy or the migration ledger.
 
 Database replay and compilation do not establish admission by a migration safety
 guard, and a green schema-snapshot check can omit migration history: compare
