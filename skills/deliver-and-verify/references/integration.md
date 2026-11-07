@@ -221,6 +221,8 @@ configuration restoration can resume the original work within its expiry and
 cancellation rules. A submission with an unknown result still needs
 reconciliation; configuration changes do not make repeating it safe.
 
+Before a recovered queued obligation creates a new external effect, resolve its immutable retained policy revision and entry rather than today's selector, then recheck eligibility from the original cutoff against fresh authoritative inventory; contrary evidence terminally reconciles it without issuance. Already committed or unknown effects instead require read-only reconciliation first: later observations alone never authorize cancellation or reissuance.
+
 - **Bad:** gate only the inner dispatch turn, then let a recovery producer or
   queued consumer reach admission and reserve capacity while the dependency is
   unavailable.
