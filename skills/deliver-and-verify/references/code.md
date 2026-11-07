@@ -61,6 +61,15 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
+A globally documented runner label or resource tier does not prove a serving
+allocation in the target account, organization or region: match the selector,
+scope and required memory class against effective desired and served inventories.
+If a same-size isolated allocation is not served, preserve the serving allocation
+rather than inventing a selector or downsizing to obtain isolation, and state the
+remaining contention. **Wrong:** select a catalogued isolated tier that is absent
+in the target scope; **Right:** retain the served memory class until scoped
+desired and served inventories establish the isolated replacement.
+
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
@@ -105,11 +114,12 @@ and verify availability without racing it with another replacement mechanism.
 HTTP readiness success or a `Ready` pod can precede initial discovery and usable
 work; a controller may retire the predecessor on `readyReplicas` while
 `minReadySeconds` affects only availability. Bind cutover to the exact field the
-installed controller consumes and evidence that the required replacement workload
-is discovered and usable, rather than fixed delays or probe-count timing
-assumptions. Through that controller, hold discovery pending beyond any configured
-delay and verify the predecessor remains serving, then release healthy discovery
-and verify usable work permits retirement.
+installed controller consumes and evidence of completed discovery, with assigned
+work usable and legitimate empty assignments accepted, rather than fixed delays,
+probe-count timing assumptions or a nonzero-work requirement. Through that
+controller, hold startup discovery pending beyond any configured delay and verify
+the predecessor remains serving, then release discovery and verify retirement for
+both legitimate empty assignments and populated assignments with usable work.
 
 Protect co-dependent stateful and serving-path pods at a shared numeric priority
 that routine work eligible on their nodes cannot preempt; keep deliberately
@@ -235,13 +245,14 @@ earlier release or partial batch after receiving an error.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
-which operation is blocked before releasing the competing transaction. Follow
-indirect blockers too: a row-lock queue can place the second operation behind
-the first waiter, so counting only direct blockers can miss real contention. A sleep
-or eventual success alone does not prove the intended interleaving. Assert the
-final conserved state and rollback behavior as well as completion. Apply this
-audit to other transactional domains, such as stock reservation and cancellation;
-a pure formatter change needs no lock-order proof.
+which operation is blocked before releasing the competing transaction. Diagnostic
+views can refresh independently, so a cross-view join can hide a live wait;
+correlate requester, blocker and resource through the engine's own identities,
+with held-wait, no-wait and wrong-owner controls. Follow indirect blockers too:
+a row-lock queue can place the second operation behind the first waiter, so
+counting only direct blockers can miss real contention. A sleep, eventual success
+or empty uncalibrated join alone does not prove the intended interleaving. Assert
+the final conserved state and rollback behavior as well as completion.
 
 A sequence-backed feed cursor orders allocation, not commit: a delayed writer
 can publish below a cursor already advanced past it. Where consumers resume
@@ -261,6 +272,15 @@ retry source until completion or contracted deletion; atomic batches remain a
 different contract. Through the public worker or poll entrypoint, verify progress
 past those selections, effective capacity holds and completion of an already-scanned
 candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
+
+A fixed-priority selector can starve eligible notifications or other timers when
+one periodic pass exceeds its interval and is overdue again at every selection;
+burst-then-idle tests never sustain that contention. Where progress is promised
+for every ready work class, verify bounded service across the outer timer and
+notification/continuation selection, not just rotation within one branch. Use one
+controlled clock to keep all classes ready across slow passes, with idle and
+missed-tick controls proving that advancing time neither invents pending
+notification work nor creates an undeclared catch-up burst.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -596,11 +616,13 @@ publishing the correction.
 
 ## Tests
 
+Tightening lexical match boundaries can remove accidental matches in opaque data while also losing meaningful compound names or aliases; acceptance needs both false-positive rejection and false-negative preservation cases drawn from the supported vocabulary. **Wrong:** prove only standalone words still match and embedded noise does not; **Right:** also exercise supported compounds and aliases as complete names, with adjacent-alphanumeric noise controls. Restoring a known compound does not justify accepting arbitrary prefixes, suffixes or camelCase fragments.
+
 Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
-For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
@@ -621,7 +643,7 @@ ancestors and test only the reducer. **Right:** resolve nested matching roots
 through the real entrypoint and assert refusal before writes, with independent
 roots and ancestors that fail the selection criteria as allowed controls.
 
-Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work. Failure feedback can precede the committed state that makes recovery actionable, so assert restored state and control readiness at the notification itself, then exercise the next action without an extra settling wait. **Bad:** wait for a retry control to enable after an error toast; **Good:** prove it is enabled when the toast fires, retry succeeds, and in-flight duplicates still cannot dispatch.
 
 Repeated matching reads of mutable metadata prove stability during that interval,
 not which source produced an earlier transformed artifact. **Wrong:** reread the

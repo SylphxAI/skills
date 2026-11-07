@@ -56,7 +56,7 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Diagnostic collection failures must not replace the original outcome.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
 
 A temporary-directory error can originate in a separately configured package
 cache. Read the failing child's effective tool home, cache and index paths,
@@ -328,12 +328,14 @@ read 2026-11-07). The [whole-chain deadline](code.md#outbound-calls) still bound
 all sources, attempts and server-requested delays.
 
 For a client failure, read the executable path and version used by the failing
-caller before adding another fix. Compare it with the first published release
-containing the relevant behavior, then trace the installer's version and checksum
-pins. If that release already fixes the failure, update the consumer through its
-supported installer and rerun the original command. A published fix does not
-update a pinned installation. Keep the checksum pinned with the version; an
-automatic update proposal should copy both from the release's checksum artifact
+caller and compare it with the first published release containing the required
+behavior. Installer aliases can resolve through a manifest pinned to the installer
+revision rather than the latest release; select an explicit compatible version
+supported by that manifest and trace its checksum pin. After installation, record
+the resolved path and version and prove the required capability through the actual
+consumer invocation and environment, including the next CI step when PATH changes
+apply there: a same-step version check can report a preexisting executable.
+Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
@@ -416,9 +418,14 @@ If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
 
-**Wrong:** Publish after the contract compiler succeeds, leaving a downstream
-web registry unchanged. **Right:** Run the complete generation chain, return its
-outputs, and verify the web consumer's generated-file assertion before publishing.
+**Wrong:** Publish after the contract compiler succeeds while a downstream
+consumer overrides an explicit canonical exclusion with inferred availability.
+**Right:** Run the complete generation chain with explicit canonical exclusions
+taking precedence over downstream routing or capability heuristics, while absent
+metadata follows its documented fallback and explicitly supported cases stay available.
+Verify these distinctions through real consumer assertions for visibility,
+documentation indexing and navigation, and available actions where relevant;
+successful generation or fresh bytes alone cannot establish them.
 
 ## Internal development
 
