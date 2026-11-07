@@ -1188,6 +1188,14 @@
     {
       "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
       "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game settlement worker so recovery waits behind retained player actions while a genuinely empty queue still resumes interrupted settlement.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
