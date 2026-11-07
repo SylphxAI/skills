@@ -130,13 +130,14 @@ Equal text or value after an await does not identify the same target: another en
 
 Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
-A nested admission helper that acquires a second connection from the caller's
-finite pool can starve while the outer transaction holds the available capacity;
-a larger test pool can hide this dependency. Reuse the caller's transaction
-connection and prove the public entry point completes with `max_connections=1`,
-while retaining separate multi-connection proofs for races. **Wrong:** increase
-the pool to make a nested acquisition pass; **right:** remove that acquisition
-and verify both constrained-capacity progress and concurrent correctness.
+A nested helper that acquires a second connection from the caller's finite pool
+can starve while the outer transaction holds the available capacity; a larger
+test pool or absent optional cache can hide that branch. Reuse the caller's
+transaction connection, or finish independent initialization before entering it.
+The public-entry test with `max_connections=1` needs an enabled dependency and a
+forced cache refresh, alongside separate multi-connection race tests.
+**Wrong:** pass with no cache or increase the pool; **right:** exercise the real
+refresh path and verify constrained-capacity progress and concurrent correctness.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
