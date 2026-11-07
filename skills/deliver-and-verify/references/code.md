@@ -284,11 +284,21 @@ read 2026-11-06).
 
 **Wrong:** set a report's download expiry before generating and storing it.
 **Right:** publish its ready state and full promised availability atomically.
-Test through the real entry point with work lasting at least the minimum
-retention. Assert that the returned resource is ready, remains gettable and
-usable, and has the full promised lifetime from publication. A mocked application
-clock alone cannot expose a database clock fixed at transaction start. Include
-an absolute-deadline control when that contract also exists.
+Through the real entry point, work lasting at least the minimum retention must
+still publish a ready, gettable, usable resource with its full promised lifetime;
+an absolute-deadline control keeps its original origin.
+For scheduling tests, derive effective eligibility across message, route and
+resource deadlines, anchored to the event that issued the constraint rather than
+a late assertion clock or one storage field.
+Prove refusal while the interval is still unexpired and recovery after expiry,
+with enough margin that the refusal probe cannot pass after the deadline.
+Use persistence-representable timestamps and verify encode/store/decode round
+trips separately from runtime boundaries; a mocked application clock cannot
+establish database-clock behavior.
+
+**Wrong:** require one message timestamp to remain future after slow settlement.
+**Right:** verify the effective interval from its issuing event, with a pre-expiry
+refusal and later recovery; check timestamp encoding separately.
 
 ## Migrations
 
