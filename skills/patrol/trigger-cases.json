@@ -56,6 +56,14 @@
     {
       "prompt": "Inspect card-game support inbox queues containing purchase receipts and login codes, reporting only nonsecret findings.",
       "clause": "unanswered customer inbox queues"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token watcher that distinguishes vendor notices from keyword matches inside HTML email CSS.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Patrol a card-game support inbox for purchase notices without treating template styles as account events, retaining coverage of genuine notices.",
+      "clause": "unanswered customer inbox queues"
     }
   ],
   "negative": [
