@@ -30,7 +30,7 @@ lookups or identifier-based pagination, read
 - Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
 - During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
 - Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.
-- Compare repair and replacement by total cost to a verified outcome, including migration, recovery and cleanup. When replacing a mechanism, migrate its consumers and remove the superseded path. Split a delivery where a migration or dependency must merge first.
+- Compare repair and replacement by total cost to a verified outcome, including migration, recovery, cleanup and preservation of binding constraints. Stale configuration or documentation can mix mutable assignments with independent behavioral rules: account for each retained or explicitly retired clause, because a broad replacement goal does not preserve a specific negative case. Migrate consumers before removing superseded paths; split delivery when a dependency must merge first.
 - Search related components for the same defect class. Repair affected instances within the authorized boundary and record separately owned work. Use a default, type or existing check when it proportionately prevents recurrence; a one-off ruling does not need a permanent guard.
 
 ## Establish the acceptance cases

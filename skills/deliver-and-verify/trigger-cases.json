@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Retire a SaaS pricing configuration that mixes obsolete plan identifiers with still-binding refund and spending constraints; preserve each surviving contract.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace a card-game event configuration without dropping its independent paid-entitlement and reward-value safeguards.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Implement a streamed archive mirror that withholds completion until the full digest matches while documenting early prefixes as unverified.",
       "clause": "implementing or shipping a feature, bug fix"
     },
