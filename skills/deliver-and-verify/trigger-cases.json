@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
       "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
       "clause": "changing database privileges"
     },
