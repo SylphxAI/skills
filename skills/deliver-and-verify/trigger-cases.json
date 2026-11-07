@@ -1284,6 +1284,18 @@
     {
       "prompt": "Ship a game content exporter fix that proves every approved source maps to the corresponding immutable output position, including one stable replaced input.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a service restart fixture that assumes a released TCP port stays free on a shared runner; retain the reuse and occupied-port replacement controls.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a worker lease test that releases its reservation before another process makes the allocation decision.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement deterministic resource ownership in a game-server integration fixture without changing its permitted fallback behavior.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2119,6 +2131,21 @@
     },
     {
       "prompt": "Rewrite this explanation of source-to-output equivalence for a user guide, without changing a verifier or operating a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review a flaky TCP port test and establish whether the log shows a legal replacement, without modifying or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare reservation transfer and a private resource pool as proposed test architectures, without implementation.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining TCP port allocation, without editing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
