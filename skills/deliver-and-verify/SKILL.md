@@ -174,7 +174,7 @@ For browser keyboard, clipboard, pointer, focus or foreground lifecycle changes,
 also read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
-For changes to transaction locks or nested transactional helpers, read
+For changes to transaction locks, nested transactional helpers or lock-wait probes, read
 [transactions and idempotency](references/code.md#transactions-and-idempotency)
 before editing; the lock order starts at the outer transaction and spans a batch.
 

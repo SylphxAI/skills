@@ -2,6 +2,26 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS decimal importer that preserves JSON tokens but compares value-defined duplicate keys by their spellings.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game configuration validator that accepts a decimal coefficient too large for its database column despite a legal exponent.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a numeric API boundary and prove equivalent value spellings remain equal without normalizing byte-defined identifiers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game XML configuration verifier that accepts undeclared text beside a newly added reward row while allowing blank layout whitespace.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a copied CLI distribution whose retry helper lives in a sibling source directory, and verify the staged command outside the source tree.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -47,6 +67,18 @@
     },
     {
       "prompt": "Retire a SaaS pricing configuration that mixes obsolete plan identifiers with still-binding refund and spending constraints; preserve each surviving contract.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Retire obsolete SaaS deployment settings after rollout; verify source omission removes legacy co-owned live keys and preserves retained fields.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Remove old card-game event settings through a typed configuration API where null may become an empty string; verify actual key absence and the remaining values.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace mutually exclusive worker storage settings and verify old server-defaulted fields no longer survive normal reconciliation.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
@@ -2006,50 +2038,6 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Merge a newer base into a SaaS branch: canonical API schemas changed, but retained generated clients merge without conflicts; finish the integrated source update.",
-      "clause": "changing source checkouts"
-    },
-    {
-      "prompt": "Integrate updated card-game catalogs and synthetic fixtures from the base branch while older generated validation data merges cleanly; ship the consistent result.",
-      "clause": "changing source checkouts"
-    },
-    {
-      "prompt": "Update a source checkout from its base where canonical documentation metadata changed but the generated navigation index has no textual conflicts.",
-      "clause": "changing source checkouts"
-    },
-    {
-      "prompt": "Fix a SaaS decimal importer that preserves JSON tokens but compares value-defined duplicate keys by their spellings.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Repair a card-game configuration validator that accepts a decimal coefficient too large for its database column despite a legal exponent.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Change a numeric API boundary and prove equivalent value spellings remain equal without normalizing byte-defined identifiers.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Repair a card-game XML configuration verifier that accepts undeclared text beside a newly added reward row while allowing blank layout whitespace.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Retire obsolete SaaS deployment settings after rollout; verify source omission removes legacy co-owned live keys and preserves retained fields.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
-      "prompt": "Remove old card-game event settings through a typed configuration API where null may become an empty string; verify actual key absence and the remaining values.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
-      "prompt": "Replace mutually exclusive worker storage settings and verify old server-defaulted fields no longer survive normal reconciliation.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
       "prompt": "Fix a SaaS CLI whose explicit account state is lost by sibling read and apply commands that rebuild default authentication; preserve the selected endpoint and principal through final transport overrides.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2084,9 +2072,42 @@
     {
       "prompt": "Repair a browser interaction test that calls a text-insertion API instead of exercising the user's clipboard shortcut from supported focus locations.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Merge a newer base into a SaaS branch: canonical API schemas changed, but retained generated clients merge without conflicts; finish the integrated source update.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Integrate updated card-game catalogs and synthetic fixtures from the base branch while older generated validation data merges cleanly; ship the consistent result.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Update a source checkout from its base where canonical documentation metadata changed but the generated navigation index has no textual conflicts.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Change a SaaS reporting query that passes on one database dialect but fails on another accepted backend; verify the raw SQL through production drivers and the declared engine/version CI coverage.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a card-game inventory query whose query builder embeds raw SQL rejected by another supported database; a missing CI backend job does not establish that the backend is unsupported.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair a SaaS reservation lock test that misses an independently confirmed held wait because rapid diagnostic reads suppress observer-cache refresh, without increasing the overall deadline.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a card-game trade concurrency probe whose lock view needs idle time between reads; preserve held-wait, no-wait and wrong-owner controls within the existing deadline.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review a PR claiming its copied command includes every runtime dependency; do not publish changes.",
       "clause": "prove-it for a review or evidence check",
@@ -3438,16 +3459,6 @@
       "route_to": "prove-it"
     },
     {
-      "prompt": "Rewrite unrelated prose inherited through a base merge; it is not a generator input and no source, generator, publication or runtime behavior changes are requested.",
-      "clause": "clear-writing for prose alone",
-      "route_to": "clear-writing"
-    },
-    {
-      "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
-      "clause": "prove-it for a review or evidence check",
-      "route_to": "prove-it"
-    },
-    {
       "prompt": "Review whether a constructor test proves an existing CLI preserves selected account authority across sibling dispatch and environment overrides; inspect evidence without changing code or publishing anything.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
@@ -3491,6 +3502,21 @@
       "prompt": "Rewrite the user-facing explanation of a keyboard paste shortcut without changing its behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite unrelated prose inherited through a base merge; it is not a generator input and no source, generator, publication or runtime behavior changes are requested.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite a local onboarding paragraph for shorter sentences without changing code, database support, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Compare proposed caching architectures for an image gallery without implementing either, operating a service or running probes.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }

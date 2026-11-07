@@ -261,10 +261,13 @@ earlier release or partial batch after receiving an error.
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
 which operation is blocked before releasing the competing transaction. Diagnostic
-views can refresh independently, so a cross-view join can hide a live wait;
-correlate requester, blocker and resource through the engine's own identities,
-with held-wait, no-wait and wrong-owner controls. Follow indirect blockers too:
-a row-lock queue can place the second operation behind the first waiter, so
+views can refresh independently or require idle time between reads, so tight
+polling or a cross-view join can hide a confirmed live wait. Respect the observer's
+refresh/idle contract within the unchanged overall deadline; correlate requester,
+blocker and resource through the engine's own identities, calibrated against an
+independently confirmed held wait plus no-wait and wrong-owner controls. Follow
+indirect blockers too: a row-lock queue can place the second operation behind
+the first waiter, so
 counting only direct blockers can miss real contention. A sleep, eventual success
 or empty uncalibrated join alone does not prove the intended interleaving. Assert
 the final conserved state and rollback behavior as well as completion.
@@ -538,8 +541,13 @@ intermediate event outside that slice and independently assert its successor's
 predecessor, exposing both hidden violations and invented gaps.
 
 Execute changed SQL through the production driver, including parameter encoding
-and result decoding, against a disposable database built from the complete
-migrations. Connection strings are consumer-specific protocols: acceptance by a
+and result decoding, against disposable databases built from the complete
+migrations for every engine/version accepted by the declared backend contract.
+A query builder does not guarantee raw SQL translation between dialects;
+reconcile accepted configuration and declared support with the CI jobs that
+actually executed, distinguishing rejected backends from accepted but untested ones.
+
+Connection strings are consumer-specific protocols: acceptance by a
 generic URL parser does not establish the endpoint, option precedence or decoded
 credential bytes another driver uses. **Wrong:** validate once and reuse the URL
 unchanged across clients; **right:** exercise each actual parser with independently
