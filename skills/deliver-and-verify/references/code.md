@@ -102,6 +102,13 @@ template, then execute a separately defaulted object; **Good:** derive from
 target-side admission and reject a changed scheduling constraint while accepting
 equivalent quantity encodings.
 
+Placement eligibility is the intersection of workload constraints, retained
+allocation locality and transition capacity; healthy labeled nodes alone do not
+prove that an existing stateful workload can restart there. **Wrong:** impose a
+new hard node selector on workloads whose retained volumes are bound elsewhere;
+**Right:** prove a nonempty intersection for the existing population, or preserve
+its eligibility until an admitted replacement establishes usable allocations.
+
 A resource reduction can require old and replacement allocations together,
 and a parent operator may replace children despite an `OnDelete` child policy.
 Read the installed controller's rollout and availability behavior, then measure
