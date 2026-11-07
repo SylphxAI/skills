@@ -7,7 +7,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Types and boundaries
 
-- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
+- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
 - Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence cannot turn inference or user-controlled names into privilege authority; documented provider-protocol signals may justify scheduling only within positively proven origin scope, so removing one requires an authoritative replacement available at the first actionable decision, not merely after later enrichment. Verify those decisions from real provider-shaped inputs through upstream classification, transformations, persistence, reload and every consumer—not just directly seeded records—varying event, repository/fork origin and lookalike names independently, with absent, unknown or tampered provenance alongside an authoritative positive control, explicit contradictory evidence prevailing, and successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
@@ -102,7 +102,16 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
-Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
+Protect co-dependent stateful and serving-path pods at a shared numeric priority
+that routine work eligible on their nodes cannot preempt; keep deliberately
+expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
+from evicting others, not from becoming a higher-priority pod's victim, and a new
+`globalDefault` does not change historical pods
+([Kubernetes priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/),
+read 2026-11-07). **Wrong:** declare a protected default or a non-preempting class
+and infer live protection; **Right:** update each owning template and verify every
+affected pod's admitted numeric priority after its supported replacement,
+especially node-pinned last copies.
 
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
@@ -168,7 +177,7 @@ forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
 
-Optional presentation metadata and executable fulfilment are separate contracts: missing labels may be harmless, but a valid container does not prove its executable descendants resolve. Before consuming a single-use right, resolve the complete payload recursively through the actual fulfiller's type-specific catalogues; any unresolved descendant must refuse the whole operation atomically. Test missing typed leaves at several nesting depths alongside an entirely valid nested payload and missing optional labels, so neither top-level-only checks nor blanket refusal can pass.
+A catalogue match proves identity, not fulfilment eligibility: before consuming a single-use right, admission and fulfilment share one eligibility predicate for every executable descendant, while absent optional presentation metadata remains harmless. Complete traversal needs explicit depth and work bounds with typed atomic refusal; caching a completed subtree must not hide a longer path or unbounded repeated work. Contrast existing-but-ineligible and missing descendants with valid nested payloads, optional-label omissions and graph-boundary controls, so neither top-level-only checks nor blanket refusal can pass.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -298,6 +307,14 @@ A serializer-only test cannot prove the database accepted the event.
 
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
+
+Retention based only on serving or published references can delete artifacts
+still owned by an unfinished operation; a count cap may bypass an age grace
+period. Read the deployed collector's precedence and protected states, then
+verify in-flight delivery, recovery-point availability and expiry of unreferenced
+eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
+safe retention; **Right:** the pending artifact survives publication, the rollback
+target stays usable and eligible abandoned artifacts expire.
 
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
@@ -543,9 +560,14 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. Run those vectors against the
-real implementation, asserting emitted POSTs, refusals, ordering, verdicts and
-resulting counts. Exact clock values require a declared recorder history;
+overbroad refusal proves agreement with the defect. A retryable provider outcome
+is not permission to dispatch again: after a durable submission marker, recovery
+is GET-only. A test that drives marked recovery through the unsent
+`queued`/send path can demand a duplicate POST and still pass; contrast it with
+an unmarked pre-admission throttle that remains queued and retryable. Run those
+vectors against the real implementation, asserting emitted POSTs, refusals,
+ordering, verdicts and resulting counts. Exact clock values require a declared
+recorder history;
 synthetic vectors must not freeze incidental timing or internal call sequences.
 
 An overlap or uniqueness check over derived ancestry needs tests through the
@@ -586,10 +608,30 @@ inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
 
-When opening previously uninspected syntax, put a real state mutation after every
-supported control opener and exercise its allowed and forbidden forms through
-the real checker entrypoint. Cross-dialect keywords need separate controls, so a
-harmless idiom in one language cannot exempt a destructive statement in another.
+Source-closure checks—whether every declared source exists in the published
+tree—default-deny the untracked or ignored source inventory, with exact
+per-invocation waivers, rather than accumulating syntactic exceptions. Hand-written
+cross-language declaration resolution can miss missing sources and falsely refuse
+valid code; test `.gitignore`, `info/exclude`, `core.excludesFile`, custom extensions,
+and generated-file and declared-dependency directory controls.
+
+Compiler context explains why syntactic exceptions cannot establish closure:
+
+- Module roots follow contextual rules rather than filenames; token kind and
+  preceding control/member context distinguish regex from division, a quoted
+  `"+"` from an operator, and member `.return` from control flow.
+- Binding inventories distinguish runtime writes from annotation-only bindings
+  and read/delete targets while respecting nested scopes; a refusal naming the
+  wrong unresolved target is still a resolution defect.
+- A token-tree exemption needs positive proof of the declared exempt construct;
+  a valid non-exempt form reusing its operator still contains declarations that
+  cannot be skipped.
+
+For guards enforcing syntax behavior, put a real state mutation after every
+supported control opener and exercise allowed and forbidden forms through
+[the installed checker](../../prove-it/SKILL.md#verify-installed-entrypoint-behavior).
+Cross-dialect keywords need separate controls, so a harmless idiom in one language
+cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
@@ -611,6 +653,11 @@ both label-dependent PR outcomes under the rules that apply to PRs.
 Concurrency assertions should distinguish the mechanism from scheduler latency: observe wake reasons, probe counts per wait and resource ownership at barriers, and keep benchmark timings separate from generous progress deadlines unless timing itself is the contract. A fixture that releases a resource after probing it no longer controls availability: retain ownership through the decision, or assert the permitted replacement rather than a particular resource identity. **Wrong:** require reuse of a released port on a shared runner; **right:** transfer an owned reservation for the reuse control and hold the original resource occupied for the replacement control. When acknowledgements or rechecks can emit valid repeated status events, consume them until the terminal result under one deadline while preserving subsequent frames; a trace showing timely completion with extra status messages falsifies an exact-count assertion, which should be replaced rather than marked flaky. **Wrong:** require exactly one wait event and a tight shared-runner latency; **right:** accept valid repeated waits, assert the terminal outcome and test notification versus fallback through observable causes.
 
 For process-lifetime tests, a runtime's exit notification need not be the contract: bounded observation of authoritative process state can establish termination (including a zombie if reaping is not required), with a live-process control proving the observer still refuses nontermination. A child's ready marker does not prove its parent's signal handler or cleanup region is ready; the synchronization evidence must come from the component whose behavior the test exercises. Raw monotonic timestamps from different runtimes may have different origins: correlate observations with UTC and measure durations within each clock domain, without treating a missing stage event as evidence of when or why that stage failed.
+
+A fixture's execution placement is part of its input: nested tool calls may select
+a different host or sandbox than their enclosing call. Bind placement explicitly
+through the actual nested entrypoint and verify that the child reaches the fixture's
+files or listener; an outer placement setting alone does not prove that path.
 
 A bounded retry around temporary-profile cleanup is a workaround: descendants can still write after the direct child exits. Run the child in its own process group and wait for the whole group before removing the profile; never retry a test assertion.
 
@@ -759,7 +806,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy. One wall-clock budget covers admission, every fallback source and attempt, backoff including `Retry-After`, reconciliation and durable/terminal receipts, below the shortest caller timeout with completion margin. Clamp waits and requests to the remaining budget and enforce an outer hard timeout around the whole chain; neither a per-attempt timeout nor a retry-start cutoff bounds the last in-flight unit. **Bad:** give every mirror a fresh retry budget or let a server delay extend it; **Good:** prove combined exhaustion and oversized `Retry-After` finish within the unchanged caller deadline, with cancellation resumable from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.

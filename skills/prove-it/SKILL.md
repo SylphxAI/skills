@@ -13,10 +13,11 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
-- A passing step proves only what it checked: read the log for the inner result. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- A passing step or terminal child summary proves only its scope: a restarted test process can report zero assertion failures despite an earlier crash in the same operation. Bind the enclosing verdict to run-level failures, executed-test counts and retained pre-restart diagnostics before blaming build warnings, declaring the baseline flaky or retrying. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
 - Before citing a regression test, confirm that the exact test was discovered and executed in the intended environment. Read selected, passed and skipped counts, including ignored-test enrollment and required setup. A green command selecting zero tests proves nothing. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
-- Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
+- Match the evidence to the claim: a verified witness can establish “at least this size succeeded under these conditions,” while an exact maximum or absence needs complete coverage. For a lower-bound acceptance decision, a bounded search can suffice when the relevant version, dimensions and consumer outcome match; a newly stored request is not a successful consumer result. **Wrong:** scan every historical upload to decide whether a smaller payload is supported; **Right:** verify a comparable successful upload, leaving the global maximum unknown.
+- Before a required full read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
 - A blocker in a report is a claim until you open the frame or log behind it. Wording drifts as it passes between reports: a stopped attempt becomes a named obstacle, then a rule, then a request for hardware. Open the evidence before repeating it or setting a rule on it, and first when a person questions it.
 - A measurement says what that build and that route did, not what exists. Before saying something is missing or must be built, search the history for it and name which version, path or data the measurement ran on. A capability can be finished and proved while the live pointer still selects the old route.
@@ -41,9 +42,10 @@ event history must support attribution. **Wrong:** “Both grants started at zer
 so the first was lost.” **Right:** “Each grant creates a separate inventory
 instance; the shared item type does not identify one balance chain.”
 
-For async wrong-target writes, refusal callers, source refusal versus on-disk tamper,
-contract-derived conformance, evaluate-only support claims or converging retry and
-fallback mechanisms, read [code boundary tests](../deliver-and-verify/references/code.md).
+For syntax guards, async wrong-target writes, refusal callers, source refusal
+versus on-disk tamper, contract-derived conformance, evaluate-only support claims
+or converging retry and fallback mechanisms, read
+[code boundary tests](../deliver-and-verify/references/code.md).
 For displayed-versus-actual data fixes or reward-pool grantability, read
 [asset and table verification](../deliver-and-verify/references/parity.md#before-publishing-assets-tables-or-configuration).
 For missing exports present in source or cross-UID permission fixtures, read
@@ -249,13 +251,23 @@ body, and validate the query with a known event stored in the same form.
 lost it.” **Right:** “The consumer loads the referenced body first; count missing
 visibility in those resolved bodies and report unresolved references separately.”
 
+## Verify installed entrypoint behavior
+
 Resolve conflicting readings with a fresh subprocess invoking the unmodified
-published entrypoint in the relevant real environment. Bind the receipt to the
-immutable revision and loaded artifact hash; record the command, relevant
-non-secret configuration, exit status and diagnostic output. Run a positive
+installed CLI or published entrypoint in the relevant real environment. Bind the
+receipt to the immutable revision and loaded artifact hash; record the command,
+relevant non-secret configuration, exit status and diagnostic output. Run a positive
 control and an adversarial negative through that same entrypoint, preserving
 the fallback behavior under investigation. A direct callee test or rewritten
 local copy does not establish the published entrypoint's behavior.
+
+For a syntax-guard repair, qualify syntax and resolution with independent compiler
+or runtime controls, then compare the committed pre-fix archive with the live
+candidate through the installed CLI. Each previously omitted policy-violating case
+must fail the unchanged regression assertion on the archive and pass it on the
+candidate because the intended violation is now detected; permitted constructs
+must remain accepted by both. A guard's nonzero exit alone proves neither the
+intended detection nor correct resolution.
 
 Keep unexpected success as disconfirming evidence, including when the verifier's
 own assertion expected failure. Correct the causal claim and affected decisions

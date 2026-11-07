@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -39,6 +39,9 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
+For readiness or propagation promises across replicas, read
+[replicated readiness](references/performance.md#replicated-readiness) before defining the probe population and timing boundary.
+
 For request/response limits, context compaction, agent tool outputs or low-rate
 flake comparisons, read
 [final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
@@ -61,6 +64,9 @@ For a public preview or disposable service, also read
 [first useful success](references/dx.md#first-useful-success) before relying on
 an advertised creation, deployment or port-exposure operation.
 
+For regional store SKU or price changes, read
+[regional store prices](references/integration.md#regional-store-prices).
+
 For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 Time-windowed usage or billing queries also use
@@ -74,7 +80,7 @@ before changing capture coverage or restoring user files.
 
 Preserve existing users' accounts, data and supported client workflows. For a live storage or service cutover, establish the new path, verify it and switch consumers before removing the predecessor. Keep schema migrations separate from operational record changes; [code.md](references/code.md#migrations) owns the details. A reconciler change compares affected declarations with served state and explicitly handles intended removals or revocations, so a rollout does not silently narrow the supported contract. Pre-launch work with no external consumers can change directly.
 
-For recovery references, rollback pins or asynchronous reconcilers, read
+For retention policies, recovery references, rollback pins or asynchronous reconcilers, read
 [recovery references and desired state](references/code.md#recovery-references-and-desired-state)
 before changing target selection or resource creation order.
 
@@ -106,7 +112,7 @@ Before bulk mutations, including cancelling CI runs, read
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing shared runtime settings or deployment overlays, rotating secrets consumed by Jobs, or downsizing or replacing shared resources, read
+When changing shared runtime settings or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging or one-off container probes, read
@@ -116,6 +122,8 @@ For source checkout or materialization changes, shared-cache permission failures
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
 failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
+Source publication and receipt adoption after a rewrite also use
+[source publication authority](references/security.md#source-publication-authority).
 
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures) and
@@ -126,7 +134,8 @@ When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
 
 For privileged filesystem changes under directories another principal can write,
-read [security.md](references/security.md) before choosing how to validate and change objects.
+or when filesystem or tool-resolution trust would relax inspection, read
+[security.md](references/security.md) before trusting resolution or changing objects.
 
 Before changing database roles, privileges, reader transports or session-bound
 database checks, read
@@ -152,7 +161,7 @@ When editing PR titles or bodies, changing CI workflows or concurrency, publishi
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
+Before changing server status-code/error-envelope translation, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.

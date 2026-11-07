@@ -34,9 +34,9 @@ network call.
 
 A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.
 
-Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** retain an allowed status field containing an arbitrary object; **Good:** reject undeclared shapes while preserving useful validated status, timestamps and safe diagnostic detail, with positive controls proving that useful output survives.
+Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** print an allowed operation or request-ID field containing a bearer value or a URL query credential; **Good:** validate values against an operation enum or canonical ID grammar before truncation, redact nonconforming values, and pair credential/URL sentinels with useful safe-output controls.
 
-A redaction boundary must conceal credentials across emitted representations: whole-value matching alone can miss quoted, escaped, encoded or truncated fragments of effective input or output. Sanitize complete raw output at the common ingress before truncation or fan-out, and make every storage, next-request and upload consumer use only that value; verify their actual emitted bytes, since stored-body redaction alone cannot protect another egress. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments and length boundaries alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: withhold those bytes while preserving independently safe evidence and the original process status.
+A redaction boundary must conceal credentials across emitted representations: whole-value or per-frame matching can miss quoted, escaped, encoded or truncated fragments of effective input or output, because transport chunks and frames do not delimit sensitive values. Sanitize each complete logical output stream, including representations of its concatenated content, in linear time within the failure-reporting budget at the common ingress before truncation or fan-out, and make every storage, next-request and upload consumer use only that value; verify their actual emitted bytes, since stored-body redaction alone cannot protect another egress. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments, length boundaries and growing large single-line inputs alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: when bounded sanitization cannot establish safety, withhold those bytes while preserving independently safe evidence and the original process status.
 
 Masking can rewrite structural keys as well as values, so even parseable diagnostic JSON
 is not an admission or recovery contract. Policy decisions require authoritative
@@ -46,6 +46,29 @@ disappeared; **Good:** exercise permitted and refused requests through the real 
 boundary without deriving authority from diagnostics.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
+
+A weaker inspection path requires positive trust evidence for every filesystem
+object and setting on which resolution depends; unproven inputs retain strict
+inspection. Pointer files, configuration includes and inherited environment
+overrides can redirect resolution, so a known-bad selector list cannot establish
+trust. Test each supported indirection with an untrusted target and a fully proven
+trusted control.
+
+For publication or transformation of already-local, caller-authorized source,
+a terminal-write refusal is too late when earlier reads or metadata mutations
+have effects. Complete classification, immutable-object parsing, parent-presence
+and canonical-identity decisions and the local transform before external calls;
+malformed local inputs in this scope produce zero HTTP and zero transport calls.
+Remote observations may preserve, narrow or refuse this local-source plan without
+introducing new source to it.
+
+Authorization and intent stay fixed before external calls, but authorized evidence
+acquisition may fetch and then parse and verify new bytes: signed manifests or
+artifacts, missing immutable parents and authoritative provider-origin proof are
+valid examples. Keep race and compare-and-swap guards at the write boundary, with
+a positive control preserving remote history absent from local tracking metadata,
+and inject faults at their semantic phase (such as remote object availability)
+rather than whichever low-level read happens first.
 
 For privileged tool maintenance, run executables from user-writable paths as
 that user, including version probes, health checks and post-install validation.
@@ -69,6 +92,28 @@ pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
 permissions untouched after a deterministic symlink swap.
 
 For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Atomic configuration replacement can revoke the original owner's access: preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
+
+## Source publication authority
+
+Agreement between observations of the same writable state is not independent
+verification: shared refs and group-writable Git metadata, including linked-worktree
+reflogs, cannot witness caller authorization. Push the exact full commit SHA retained
+by the publisher, with replacement refs (`refs/replace`) and grafts disabled
+process-wide, including child Git commands; a retained SHA alone cannot prevent
+resolver substitution. **Bad:** compare a shared branch with its reflog, then push
+by branch name; **Good:** prove that ref, reflog and resolver tampering cannot change
+the authorized uploaded tree, while permitted deterministic rewrites still work.
+
+A rewritten source pin advances only from the publisher's directly captured output
+after exit 0: in a receipt with `expected_head`, `source_head` and `local_head`,
+the first two must equal the previously retained full SHA, and the returned full
+`local_head` must validate as a commit. Nonzero exit, plausible JSON, partial-upload
+heads, shared refs/reflogs and predictable receipt files confer no authority.
+For an ancestry-preserving rewrite, a retained first-parent cut `original~N` maps
+to returned `local_head~N` with replacements and grafts disabled; arbitrary cut
+points need an explicit verified mapping rather than a fresh shared-ref lookup.
+
+Source read 2026-11-07: [Git replacement-object controls](https://git-scm.com/docs/git#Documentation/git.txt---no-replace-objects).
 
 ## Runtime isolation
 
