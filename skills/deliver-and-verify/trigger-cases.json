@@ -782,6 +782,18 @@
       "clause": "downsizing or replacing shared resources"
     },
     {
+      "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI, and verify existing pods after the supported owner rollout.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game-serving priority fix that verifies the live numeric priorities of historical pods rather than assuming a new globalDefault changed them.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Update a stateful workload template while keeping intentionally expendable backup workers below production and checking that a non-preempting class does not imply victim immunity.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
       "clause": "downsizing or replacing shared resources"
     },
@@ -2551,6 +2563,11 @@
     },
     {
       "prompt": "Review whether an installed application or empty check suite established producer availability during a past rollout, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Read the current pod priorities and review whether a non-preempting class proves protection, without changing source or live state.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
