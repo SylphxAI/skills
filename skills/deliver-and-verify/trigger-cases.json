@@ -1072,6 +1072,18 @@
     {
       "prompt": "Change a database-backed retry fixture to prove effective eligibility across message and shared-resource deadlines, including refusal before expiry, recovery afterward and timestamp precision across persistence.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair frozen-release fixtures that incorrectly rebind a historical assembly to the current checkout after an unrelated source change.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Change a release guard so its fixture reads the selected plan and policy from the same committed revisions as the publisher.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Ship regression coverage proving that unrelated checkout edits preserve a bound release while a changed selected input is rejected.",
+      "clause": "changing selected-source release inputs"
     }
   ],
   "negative": [
@@ -1767,6 +1779,21 @@
     },
     {
       "prompt": "Rewrite the explanation of this keyboard shortcut for a release announcement, without changing its behavior.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a historical release test accidentally proves fixture HEAD instead of the bound source; report evidence without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare historical release fixture designs and their maintenance costs without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of frozen release inputs for a user guide without changing a fixture or configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

@@ -459,6 +459,10 @@ destination mapping, since their directory names can differ.
 Keep ordinary source registration separate from release selection. Read the
 selector and lock history before requiring every source PR to regenerate a
 frozen release binding; validate that binding where the release is selected.
+Frozen-release fixtures resolve the plan, inputs and policy at the revisions the
+publisher actually consumes; rebinding them to fixture HEAD changes the release
+being proved. An unrelated later checkout edit must leave that proof passing,
+while drift in a selected input must fail it.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
 
