@@ -20,7 +20,8 @@ Native tests and browser previews can exercise different input and feature paths
 
 ## Step 0: Route identifier changes
 
-When changing multi-namespace lookups or identifier-based pagination, read
+When reconciling legacy and canonical identifiers, changing multi-namespace
+lookups or identifier-based pagination, read
 [identifiers.md](references/identifiers.md) before defining acceptance cases.
 
 ## Coordinate the work
