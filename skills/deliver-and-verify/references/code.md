@@ -102,6 +102,15 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
+HTTP readiness success or a `Ready` pod can precede initial discovery and usable
+work; a controller may retire the predecessor on `readyReplicas` while
+`minReadySeconds` affects only availability. Bind cutover to the exact field the
+installed controller consumes and evidence that the required replacement workload
+is discovered and usable, rather than fixed delays or probe-count timing
+assumptions. Through that controller, hold discovery pending beyond any configured
+delay and verify the predecessor remains serving, then release healthy discovery
+and verify usable work permits retirement.
+
 Protect co-dependent stateful and serving-path pods at a shared numeric priority
 that routine work eligible on their nodes cannot preempt; keep deliberately
 expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
@@ -138,13 +147,15 @@ Enabling TLS can also change default advertised or administrative endpoints whil
 plaintext remains open; preserve their compatibility with existing callers or
 verify their migration independently of open-listener checks.
 
-Identity-label selectors depend on the producer's propagation contract, not the
-label key's apparent meaning: compare representative admitted consumers with the
-source that supplies their labels, including generated children and opaque IDs.
-**Wrong:** use a display name as an ID, or infer that a routing label is inherited
-by a background worker; **Right:** test the actual supported label combinations
-and exclusions, then verify the deployed consumer's identity and behavior.
-A policy match proves only eligibility until that consumer exercises the path.
+Identity-label selectors depend on the producer's propagation contract and every
+consumer of the label, not the key's apparent meaning: compare admitted children
+with their source, preserving opaque IDs and intentional omissions. A label that
+grants access can also select traffic, scheduling or metrics, so verify intended
+access and exclusion from unrelated selectors before propagating it.
+**Wrong:** copy a service's labels to a worker because its access policy matches;
+**Right:** inherit declared identity while proving the worker never joins serving
+endpoints, then exercise the access path rather than treating policy eligibility
+as working connectivity.
 
 Trace changed inputs through the automatic writer's trigger, propagation time
 and consumer read behavior; a new deployment does not establish later updates.
@@ -186,7 +197,7 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Replay uses the same identity equivalence as initial admission, including database collation or canonical aliases; stricter application-string equality can reject an identical retry after its effect committed. Prove an accepted alternate spelling replays the original receipt after configuration removal, with a genuinely different identity as the refusal control. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
-A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints.
+A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints. A current read after a lock wait can observe a commit that a later snapshot validation still cannot; every decision about that newly observed receipt needs consistent visibility. Test overlapping identical retries under the effective production isolation alongside changed-body conflicts and conserved effects.
 
 An asynchronous request captures its target's stable identity (slot, item, row
 or range) in request context at submission; its continuation never resolves the
@@ -806,10 +817,12 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-When adding a guard, refusal or early return, trace every caller with side effects
-and test what each caller does after refusal, not only the guarded method.
-A correct early return does not prevent its caller from closing or discarding
-state. For shared eligibility or availability rules, verify each public contract for temporary
+When adding a guard, refusal or early return, trace public callers beyond the
+changed-file diff: an inherited generic handler can turn a new typed refusal into
+normal completion. Zero mutations proves effect fencing, not caller-visible
+rejection; exercise those boundaries for both refusal result and preserved state
+alongside permitted completion. A correct early return also does not prevent its
+caller from closing or discarding state. For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
@@ -827,7 +840,11 @@ consumer's pinned dependencies, compiler configuration and ambient declarations;
 a narrowed check with substitute declarations proves only that narrower boundary.
 A passing runtime test or type assertion does not establish that its mock matches
 the host's complete type, so the consumer's exact compilation, formatting and lint
-checks remain the compatibility verdict. Keep one source representation that
+checks remain the compatibility verdict. Capability-absence fixtures also depend
+on the host's property descriptors: a native member can be non-configurable in
+one runtime. A scoped replacement of the dependency can model absence without
+reconfiguring that member; the unchanged production fallback and a subsequent
+capability-present control establish behavior and fixture cleanup. Keep one source representation that
 passes every consumer, with any suppression's narrow explanation in syntax the
 checker reads, such as a Rust lint's `reason` attribute.
 
