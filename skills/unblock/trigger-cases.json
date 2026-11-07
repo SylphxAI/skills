@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Recover a stalled merge queue entry, checking immediately before the write whether it is still failing or has resumed normal checks.",
+      "clause": "a queue/review stops progressing"
+    },
+    {
       "prompt": "CI rejects customer-specific policy code in a shared platform path, and the local hook skipped its scanner. Restore the check while preserving the ownership boundary for code, tests and runbooks.",
       "clause": "CI/build run that has actually stalled or is failing"
     },
