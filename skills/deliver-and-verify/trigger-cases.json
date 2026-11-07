@@ -1164,6 +1164,18 @@
     {
       "prompt": "Fix a game reward retry fixture by proving completed and interrupted grants have distinct lifecycle states before testing duplicate delivery.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Implement an ETag-based catalog watcher whose CLI adapter retains its cache across process restarts, preserving pagination and quota admission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game inventory synchronizer that receives a restored body under 304 headers after only its own cache is cleared.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a SaaS status watcher repair and test cold caller recovery through the installed proxy rather than a direct HTTP fake.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
