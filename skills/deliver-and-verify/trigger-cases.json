@@ -2060,6 +2060,14 @@
     {
       "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS catalog comparison that reports unchanged products removed because only one snapshot resolves a shared supplier dependency.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game release validator whose before/after enrichment gives unchanged reward tables different dependency availability; preserve detection of real removals.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3447,6 +3455,11 @@
       "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review a before/after inventory comparison for false removals caused by one-sided enrichment, without implementing a repair or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }

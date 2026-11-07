@@ -694,6 +694,15 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
+For before/after comparisons of derived state, preserve each version's source
+inputs while giving both sides equivalent dependency availability and preparation
+policy; one-sided enrichment can fabricate changes in untouched entities.
+Exercise an unchanged entity that shares a changed entity's dependencies through
+the actual comparator, with a genuinely changed or removed entity as a
+distinguishing control. **Wrong:** enrich only one side and call the resulting
+gap lost state; **Right:** unchanged entities remain equal while real differences
+still surface.
+
 Normalization or projection used to validate an exact declaration may erase only
 contract-defined differences: removing a subtree can also erase undeclared text,
 tails or container metadata, just as stripping whitespace can change a quoted
