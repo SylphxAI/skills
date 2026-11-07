@@ -40,6 +40,14 @@
     {
       "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch daemon and verify successor and failure/exit wake coverage before ending the handoff.",
       "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a SaaS inbox with a zero-token file-watch daemon whose native watch probe cannot traverse the producer's temporary directory; preserve private inbox payloads.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a card-game support inbox with a zero-token trigger daemon and prove its watcher can observe the nonsecret signal without exposing player messages.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
     }
   ],
   "negative": [
@@ -72,6 +80,11 @@
       "prompt": "Compare persistent and one-shot notification architectures for a future support inbox without implementing either.",
       "clause": "challenge to compare designs.",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Verify whether one past file-watch probe failed because its reader could not traverse a directory, without repairing the watcher or replacing polling.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
     }
   ]
 }
