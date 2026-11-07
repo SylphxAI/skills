@@ -26,6 +26,18 @@
       "clause": "reconciling conflicting readings"
     },
     {
+      "prompt": "Verify current collector metric freshness when timestamp expressions also return retired configuration-hash label sets.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A SaaS telemetry selector and its derived age query have different label populations at the same evaluation time. Reconcile their freshness verdicts.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify that a game fleet freshness report covers the current server-version series rather than mixing retired version identities into the verdict.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Verify a seven-day release-runner concurrency count when rerun attempts return the same runner interval under different job IDs.",
       "clause": "verifying a live status or metric before reporting it"
     },
