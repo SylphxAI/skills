@@ -340,6 +340,11 @@ active views and copied headers can select notes or duplicate data. Verify
 reordered members and ambiguous lookalikes without changing which logical
 records are compiled.
 
+Generated-file freshness and sender-side round trips can pass while a generated
+receiver rejects the server's wire representation; feed canonical populated
+server response bytes through the real generated receiver, including the
+protocol's scalar encodings.
+
 Contract conformance and generated-file freshness are separate: regeneration can
 emit consistent clients from an invalid public contract. Run the repository's
 actual standards checker as well as its generation check. When generated outputs

@@ -46,6 +46,10 @@ one correctly guarded pass does not protect against an independent writer
 reclaiming those fields. Verify successive repair and operation transitions,
 not only the first pass.
 
+Server-side apply can succeed and attribute a field in `managedFields` even when
+mutating admission rewrites its value; compare the live post-apply values with
+intent before treating field ownership as authorship.
+
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
 Omitting the old variant in desired source may retain its defaulted fields;
