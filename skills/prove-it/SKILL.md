@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -106,6 +106,19 @@ defect to assess independently, not evidence that it prevents merging. A draft
 may intentionally run admission alone: skipped jobs then establish neither a
 failed ready run nor successful ready verification. Bind the verdict to the
 ready pull request's authoritative run and required aggregate.
+
+A provider can accept `neutral` or `skipped` checks while a required review has
+incomplete coverage; derive approval requirements from the repository's declared
+merge contract as well as its effective rules. When that contract requires a
+review, verify the named producer's explicit `success`, complete reported scope
+and current head; `completed`, zero findings or a separate approval do not
+substitute. Keep advisory reviews advisory.
+
+**Wrong:** "CI passed and the completed review has zero findings, so enqueue."
+**Right:** "The review is neutral with unreviewed paths; its required success is
+still missing."
+
+Source read 2026-11-07: [GitHub required status checks accept successful, skipped or neutral results](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging).
 
 Automatic merge being enabled records intent. Read the live queue entry to
 establish enqueueing, and the pull request's merged state and merge SHA to
@@ -215,7 +228,7 @@ claims; compressed files on disk do not prove negotiated network transfer sizes.
 
 ## Review a change
 
-Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
+Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review covering the requested source with no concrete defects is complete; style preferences do not create merge blockers.
 
 For each finding, name the file and line or contract clause, triggering state/input, consequence and severity. A logical counterexample can establish a defect; distinguish it from an untested hypothesis.
 
