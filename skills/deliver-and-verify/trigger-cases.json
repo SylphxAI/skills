@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS integration helper that sends API-specific Accept headers to an object service; verify the prepared requests and an authorized read-only metadata request.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game asset downloader repair that preserves same-origin authentication but removes credentials on a redirect to another origin.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a package-publication receipt whose permissive HTTP fake currently hides a real registry media-type rejection.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change CI so the full enrolled SaaS test inventory completes on its smallest supported runner without weakening per-test bounds or correctness assertions.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -1275,6 +1287,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a past API failure came from a wrong media type; inspect evidence without changing any source or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare direct HTTP and proxy adapters for a proposed cross-provider client without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of HTTP Accept and redirect authentication for a user guide without changing an integration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether this CI timeout measures aggregate latency or merely detects hangs; report evidence without changing or publishing anything.",
       "clause": "prove-it for a review or evidence check",
