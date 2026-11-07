@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
-- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary. An intermediate transition that omits an action must preserve authenticated provenance required by later decisions separately from execution intent. Verify those decisions after real state transformations, persistence and reload, including successive transitions with unchanged or changed inputs and missing or tampered provenance.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence does not turn upstream inference into authority: privilege or scheduling escalation needs authoritative source evidence, not user-controlled names or lookalikes. Verify those decisions through real upstream classification, state transformations, persistence and reload—not just directly seeded records—with absent, unknown or tampered provenance, user-controlled lookalikes and an explicit authoritative positive control, including successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
