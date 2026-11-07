@@ -41,9 +41,11 @@ event history must support attribution. **Wrong:** “Both grants started at zer
 so the first was lost.” **Right:** “Each grant creates a separate inventory
 instance; the shared item type does not identify one balance chain.”
 
-For async wrong-target writes, source refusal versus on-disk tamper,
-real-recorder conformance, evaluate-only support claims or converging retry and
+For async wrong-target writes, refusal callers, source refusal versus on-disk tamper,
+contract-derived conformance, evaluate-only support claims or converging retry and
 fallback mechanisms, read [code boundary tests](../deliver-and-verify/references/code.md).
+For displayed-versus-actual data fixes or reward-pool grantability, read
+[asset and table verification](../deliver-and-verify/references/parity.md#before-publishing-assets-tables-or-configuration).
 For missing exports present in source or cross-UID permission fixtures, read
 [build and fixture isolation](../deliver-and-verify/references/dx.md).
 
@@ -253,4 +255,4 @@ error path can break clients that depended on a fallback.
 - Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
 - Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
 - If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
-- For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; treat comments justifying a fallback as invariants.
+- For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; use the [caller refusal tests](../deliver-and-verify/references/code.md#tests) for side-effecting callers and treat comments justifying a fallback as invariants.
