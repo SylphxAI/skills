@@ -354,9 +354,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 
 ## Source generation
 
-Generator obligations follow changed inputs, including declarative objects,
-even when no generator code changes. Trace those inputs through the repository's
-generation and freshness checks to every affected registry, client and document.
+Generator obligations follow changed inputs, including declarative objects
+inherited through a base merge, even when no generator code changes or generated
+files conflict. Trace the integrated canonical inputs through the full declared
+generation chain and verify output freshness and real consumer consistency at the
+integrated head; a conflict-free merge can retain stale derived artifacts.
+Source-independent prose changes alone do not require regeneration.
 An alert's valid dedicated runbook, for example, can still leave its generated
 index stale. In-process tests can reuse cached modules and hide startup or
 import-path failures; exercise affected generation entrypoints in fresh processes.
