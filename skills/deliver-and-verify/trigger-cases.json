@@ -66,15 +66,15 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
+      "prompt": "Repair a paged payment reconciler so an undispatchable oldest receipt cannot block later work or other tenants, while an already-scanned receipt is revisited after provider settlement.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
+      "prompt": "Fix a CRM delivery worker that treats every undispatched message as a capacity hold, preserving deliberate holds while yielding ineligible messages and revisiting them when the customer becomes contactable.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
+      "prompt": "Repair a retention reconciler so failed preflight durably yields to later candidates without losing retry eligibility after a later page succeeds.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
@@ -2361,6 +2361,21 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an undispatchable oldest candidate could block other tenants; inspect source without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare typed deferral outcomes and boolean results for a proposed job admission design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of deliberate capacity holds and failed preflight without changing code or publishing a repository change.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

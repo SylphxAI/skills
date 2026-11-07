@@ -198,15 +198,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent background candidates need isolated failure and retry state, forward
-progress and revisitation: an early pending or failed row must not starve later
-work or other tenants, or become stranded when its eligibility changes after
-discovery advances. Repeated polls with unchanged
-inputs prove only idempotence; change an already-scanned candidate's inputs and
-verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the
-completion or deletion contract is satisfied; atomic batches remain a different
-contract.
+Independent background candidates need discovery and admission rules aligned with
+actual dispatch eligibility, with typed outcomes separating deliberate capacity
+holds from ineligibility, unmet prerequisites and failed attempts; otherwise an
+undispatchable winner can starve later work or other tenants. Isolate failure and
+retry state, durably yield selections blocked for other reasons and retain their
+retry source until completion or contracted deletion; atomic batches remain a
+different contract. Through the public worker or poll entrypoint, verify progress
+past those selections, effective capacity holds and completion of an already-scanned
+candidate after its inputs change, without an observing read completing the work.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
