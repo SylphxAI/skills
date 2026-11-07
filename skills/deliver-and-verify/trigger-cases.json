@@ -2,6 +2,22 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Fix a game administration tool whose read-only mode dispatches to the grant writer, testing zero effects through its real entrypoint and a misrouting mutant.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Change workload credential isolation so a verifier without an admin mount cannot retrieve the same secret through its shared API identity.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change diagnostic redaction for a privileged worker to preserve safe execution stages and error codes without inferring that a missing receipt means no effects.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
       "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
       "clause": "repairing recovery references or reconcilers"
     },

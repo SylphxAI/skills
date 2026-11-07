@@ -49,7 +49,7 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Diagnostic collection failures must not replace the original outcome.
 
 A temporary-directory error can originate in a separately configured package
 cache. Read the failing child's effective tool home, cache and index paths,
@@ -148,12 +148,14 @@ read 2026-11-06).
 
 A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
 
-A CLI can read default configuration or open runtime files before applying
-explicit connection arguments. Verify a useful command with the declared user,
-mounts, environment and filesystem restrictions, including absent default files;
-preserve the exception class and a sanitized cause. **Bad:** prove a query in an
-administrator toolbox; **Good:** the workload's own non-root image performs it
-using only its declared inputs.
+A CLI can fail in configuration or interpreter startup before the requested
+program runs; a successful transport-only probe does not establish that program's
+execution. Before relying on a privileged effect, prove a harmless operation-specific
+result through the actual interpreter, input mode, identity, mounts, environment
+and filesystem restrictions, including absent default files, while retaining a
+sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedded
+program executes; **Good:** the workload's exact launch chain emits the program's
+expected marker using only its declared inputs.
 
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,

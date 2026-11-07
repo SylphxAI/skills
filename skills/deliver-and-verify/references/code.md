@@ -534,6 +534,10 @@ permission change because its account is absent from the old audit sample.
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
 requests fail without expanding collateral comparisons.
 
+A read-only or dry-run helper can be correct while its public mode dispatch
+selects the mutating path. Exercise the assembled entrypoint with a zero-effect
+assertion and prove that redirecting that mode to the mutator fails the same test.
+
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
 In Rust crates with multiple integration test modules, use a single integration test binary (`tests/integration/main.rs` with `mod <domain>;` submodules under `tests/integration/`) rather than many top-level `tests/*.rs` files, so `cargo test` links one integration binary instead of compiling and linking dozens of separate test executables.
