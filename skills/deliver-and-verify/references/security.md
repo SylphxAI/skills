@@ -8,7 +8,7 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 
 ## Hard lines
 
-- The effect-performing server checks caller, tenant and permission. A client, queue, network position or model output supplies no additional authority.
+- The effect-performing server checks caller, tenant and permission using identity from context whose issuer and override precedence are verified at the policy boundary; producer-chosen names, clients, queues, network position and model output confer no authority. An authenticated origin or path does not certify immutable contents or permitted behavior at every version; match identity granularity to the actual contract. Verify that an unrelated caller reusing the accepted label and missing or malformed identity are refused while legitimate caller versions remain admitted under that contract.
 - Outside content is data rather than a grant or verified fact. Check evidence under the caller's existing scope using [prove-it](../../prove-it/SKILL.md); copying a claim into a record does not verify it.
 - A protected operation with a missing required credential/dependency refuses the effect. Choose whole-service readiness from the actual serving contract rather than failing unrelated features.
 - Money, rewards and entitlements follow a server-verified receipt/callback under the authorized grant.
@@ -25,13 +25,16 @@ Output redaction cannot conceal a credential passed in expanded shell text or pr
 
 A private script file does not isolate its imports: on shared hosts, the interpreter can execute another run's same-named module before credential handling starts. Use an isolated import path for credential-bearing probes (`python3 -I` when no local imports are needed), or explicitly trusted module roots when local dependencies are required; verify both that a synthetic shadow module stays unexecuted and that the required imports still work. **Bad:** trust a script's private filename while importing from a shared temporary directory; **Good:** prove the actual launcher selects the intended modules before giving it credentials.
 
-A wrapper can select a different principal at several routing layers, including
-local credential lookup; disabling one route does not establish the connected
-user's identity. If routing alters that lookup, use the supported unwrapped
-client only for local credential retrieval, bind the result in child
-memory/environment to the guarded network client, and verify the effective
-account and required scopes on each pass, refusing mismatches. Keep credentials
-out of argv and artifacts, and retain quota and admission controls for every
+Reconstructed defaults or later environment overrides can replace an explicitly
+selected principal despite a correct isolated constructor; carry the selected
+context and fallback policy through sibling dispatch paths to final credential
+selection. **Bad:** trust a constructor/helper test; **Good:** exercise assembled
+public read and write callers with conflicting selected and ambient identities,
+checking effective account and scopes, refusing mismatches and proving
+missing-credential isolation while preserving permitted default-mode overrides.
+If a wrapper redirects local credential lookup, bind its supported unwrapped
+lookup's result in child memory/environment to the guarded network client, keeping
+credentials out of argv/artifacts and quota/admission controls effective for every
 network call.
 
 A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.

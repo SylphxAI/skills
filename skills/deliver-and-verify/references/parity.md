@@ -42,6 +42,15 @@ native touch, keyboard, controller or device behavior. A fixed fixture matrix
 does not cover every state: reproduce a reported fault at its exact viewport
 and state as well as running the standard matrix.
 
+Reconcile runtime captures with offline geometry using the measured content
+viewport, origin, effective scale and anchor rules, not nominal device or screenshot
+dimensions: an inset can change both origin and available width, so differently
+anchored controls need not move equally. Each calibration row needs its actual
+measured viewport/aspect profile and model predictions recomputed for that profile
+before judging agreement. A static overlap and a successful runtime tap can both
+be valid at different profiles; neither refutes the other's profile-specific result
+or establishes behavior for every supported profile.
+
 Compare what matters in use: composition, art and typography, content density,
 discoverability, controls, motion and sound, latency, accessibility, feature
 depth, failure states and recovery. Read the
@@ -152,7 +161,9 @@ the engine's verdict.
 1. Keep a primary-source ledger for each engine: exact release/revision, official
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
-   release's limitations. Bind local builds and fixtures to immutable revisions.
+   release's limitations. Bind local builds and fixtures to immutable revisions;
+   cross-revision comparisons also use [isolated child builds](dx.md#internal-development)
+   so a clean checkout cannot stand in for the linked artifact's identity.
    Keep pinned browser/tool binaries in a location owned for the run and verify
    their hashes; an executable borrowed from another checkout can disappear
    before capture even when its version matched during setup.
@@ -338,6 +349,23 @@ Project world points into capture-derived boxes using the same temporary aspect
 ratio and projection as rendering and pixel capture; restore the camera on both
 success and rejection. Prove the check fails if aspect correction is removed.
 
+Positive hit geometry and handler ownership can still describe an unintended
+or nonfunctional control. Compare the complete candidate control inventory and
+activation states against a verified serving baseline: additions, including dormant
+controls that runtime code can activate, and inactive-to-active transitions need
+evidence of intent bound to exact identity and meaningful state. Intent approval
+never waives geometry, paint or runtime-action checks; unchanged-baseline
+self-comparison needs no new approval.
+
+An offline engine adapter can pass isolated checks while inventing symmetry or
+losing state between phases: derive each axis's contract and phase order from
+the pinned upstream source, not from the other axis. Compare a chained case
+where one phase changes the next phase's input against independent upstream
+results, alongside empty-input and unchanged fixed-constraint controls; isolated
+axis results do not establish composed behavior. A matching fixed-constraint
+baseline remains valid, but does not establish flexible or content-dependent
+behavior.
+
 Treat target size, hit testing and visible paint as separate assertions:
 
 - A control can submit the right values and expose an accessibility label while
@@ -349,10 +377,8 @@ Treat target size, hit testing and visible paint as separate assertions:
   nearest click-handler ancestor, then require the primary visible artwork
   centre to dispatch to a handler in that target's own subtree; a positive
   raycast area at a corner is not enough. Calibrate each semantic assumption
-  against mapped device taps before making the checker blocking. For example,
-  four Image-backed button families opened on the device despite `alpha: 0`
-  and cull-transparent settings, so rejecting them as untappable would be an
-  uncalibrated gate rather than a product failure.
+  against mapped device taps before making the checker blocking; serialized
+  defaults alone do not establish runtime reachability.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping

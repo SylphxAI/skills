@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -112,7 +112,7 @@ Before bulk mutations, including cancelling CI runs, read
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing shared runtime settings, identity-label selectors or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
+When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging or one-off container probes, read
@@ -120,8 +120,8 @@ For container packaging or one-off container probes, read
 
 For source checkout or materialization changes, shared-cache permission failures,
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
-failures, generated CLI calls, sandbox build templates or native compilation failures,
-read [first useful success](references/dx.md#first-useful-success).
+failures, generated CLI calls, sandbox build templates, native compilation failures,
+or diagnostic capture and cleanup failure handling, read [first useful success](references/dx.md#first-useful-success).
 Source publication and receipt adoption after a rewrite also use
 [source publication authority](references/security.md#source-publication-authority).
 
@@ -129,6 +129,9 @@ When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures) and
 [affected-test selection](references/dx.md#continuous-integration). New fixture
 objects still enter repository-wide policy scans.
+
+When changing admission or access rules or admission policies, read
+[security.md](references/security.md) for caller-identity authority and acceptance controls.
 
 When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
@@ -157,7 +160,7 @@ When changing generator inputs, running a generator locally or remotely, or
 running a package manager through a remote command wrapper, read
 [source generation](references/dx.md#source-generation).
 
-When editing PR titles or bodies, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
+When editing PR titles or bodies, changing CI workflows or concurrency, publishing CI probe workflows, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
@@ -186,7 +189,7 @@ Before publishing or updating a PR, read [publication and merge intent](referenc
    - **Auth-Redirect Attribution & Public Metadata Hygiene:** When shipping or modifying a web storefront, checkout/voucher funnel, invite landing page, or web/game pack (`keel.toml`), verify on the live HTML response (`curl -sS`) that campaign touches survive `/sign-in?nextUrl=...` redirects into authenticated checkout headers, and that public `<title>`, `<meta name="description">`, `<link rel="canonical">`, absolute `og:image` (`HTTP 200`), and JSON-LD (`VideoGame` / `SoftwareApplication`) contain zero internal or dogfood strings (`rebuilt on Keel`, `dogfood`).
 6. **Synthetic Probe CDN Cache Bypass:** When adding or modifying synthetic health, readiness, or scale-to-zero activator probes that traverse a CDN on public domains, ensure probe requests or responses carrying internal routing headers (such as `K-Network-Probe`) explicitly bypass CDN caching (`cache: false` or `Cache-Control: no-store, private`) so synthetic probe bodies never poison public page caches.
 7. For webhook-less external monitoring, use the [zero-token watcher method](../patrol/SKILL.md#external-ground-truth-patrol-vs-self-report-reading), including end-to-end wake verification and subscription handoff.
-   A slow inventory read can kill an observer precisely when independent error-rate measurements matter; keep those timestamped measurements and record the timed-out operation, deadline, elapsed time and UTC as an unknown observation. Use a per-read consecutive-failure budget bounded by the acceptable observation gap, reset it on success and keep failure/exit wake coverage; authorization refusals and writes retain their existing boundaries. Capture dependency health and resource use alongside a repeated timeout before attributing it to the monitored breach.
+   A slow inventory read can kill an observer precisely when independent error-rate measurements matter; keep those timestamped measurements and record the timed-out operation, deadline, elapsed time and UTC as an unknown observation. Use per-target failure budgets bounded by the acceptable observation gap; one unknown target need not stop independent observations, while quota, authorization and write boundaries still apply. **Wrong:** reset an unknown alert after stale `200 OK` data and wake repeatedly; **Right:** retain the alert until fresh evidence re-establishes that target's observation, with failure/exit wake coverage. Capture dependency health and resource use alongside a repeated timeout before attributing it to the monitored breach.
 8. **Autonomous Skill Distillation Gate (Completion / Exit Gate):** Before declaring an outcome complete, check whether the task or incident required a **second-attempt detour** (an initial approach hit an undocumented trap and a fallback approach was needed), fixed a **post-ship defect or rework** (an existing verification checklist missed a dimension), surfaced a **recurring cross-agent blind spot**, or produced a **verified reusable playbook** (such as a zero-token file-watch trigger daemon). When any of these occurred, distill the role-neutral governing mechanism into the owning skill in the shared skills repository following [author-skill](../author-skill/SKILL.md)—refining the existing skill in place 90% of the time and verifying its YAML `description: "Use when..."` covers the entry moment—as part of completion, without waiting for a human prompt.
 
 Size the mechanism to the harm. A reversible change to a few fields takes one conditional statement with the row read before and after, not a new role, schema and scheduler. Verify what crosses a boundary: a release, an upload, a live surface. Rehashing your own working files, auditing your own helper with another helper or tracing a queue that will drain by itself costs time and proves nothing to a user.
