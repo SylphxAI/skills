@@ -1322,11 +1322,11 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Change a redaction pipeline so duplicate enrichment, edits, redelivery under a new source key and index insertion consult current origin-bound redaction state before writing bodies.",
+      "prompt": "Change a redaction pipeline to bind the decision across merged aliases and recognize redelivery under a new source key before storing or indexing content.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Add real-recorder conformance vectors that assert POST, refusal, ordering, verdict and counts without freezing clocks or call counts outside declared recorder history.",
+      "prompt": "Add conformance vectors against a real implementation that assert POST, refusal, ordering, verdict and count outcomes, reserving exact clock values for declared recorder histories.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -1334,7 +1334,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Run a read-only census child without letting it restore source files or share a Cargo target directory with the writer, and inspect the rlib before editing a supposedly missing export.",
+      "prompt": "Fix concurrent parent and child builds that share source or Cargo target directories, inspecting the linked rlib before editing a supposedly missing export.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -1343,6 +1343,10 @@
     },
     {
       "prompt": "Fix a permission fixture that returns the UID as the primary GID, and verify the tuple against both OS identities on a runner where they differ.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a retry worker regression to use distinct effective decision keys and observe its effect before fallback repair, proving that disabling only retry fails the unchanged assertion.",
       "clause": "implementing or shipping a feature, bug fix"
     }
   ],
@@ -2201,6 +2205,11 @@
       "prompt": "Rewrite this explanation of source-to-output equivalence for a user guide, without changing a verifier or operating a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a retry regression proves the mechanism when a fallback or state-reading observer can also complete the operation; do not change or publish code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }

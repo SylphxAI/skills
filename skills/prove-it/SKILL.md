@@ -42,10 +42,10 @@ so the first was lost.” **Right:** “Each grant creates a separate inventory
 instance; the shared item type does not identify one balance chain.”
 
 For async wrong-target writes, source refusal versus on-disk tamper,
-real-recorder conformance or evaluate-only support claims, read
-[code boundary tests](../deliver-and-verify/references/code.md).
+real-recorder conformance, evaluate-only support claims or converging retry and
+fallback mechanisms, read [code boundary tests](../deliver-and-verify/references/code.md).
 For missing exports present in source or cross-UID permission fixtures, read
-[build and fixture isolation](../deliver-and-verify/references/dx.md#first-useful-success).
+[build and fixture isolation](../deliver-and-verify/references/dx.md).
 
 For agent workspace cleanup, instruction freshness, retained/searchable history
 or uncertain tool mutations, read [agent runtime evidence](references/agent-runtime.md).
