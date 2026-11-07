@@ -1708,6 +1708,10 @@
     {
       "prompt": "Implement a game match-queue policy change without removing a documented priority signal until authoritative replacement data exists at the first actionable event.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run an authorized read-only credential-bearing service probe on a shared host and prevent sibling scripts from shadowing standard-library imports.",
+      "clause": "authorized operational"
     }
   ],
   "negative": [

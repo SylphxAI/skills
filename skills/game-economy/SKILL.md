@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
 ---
 
 # Game economy
@@ -89,6 +89,7 @@ cannot replace that calculation.
 | Reduce an earned balance to make a leaderboard equal again. | Absorb the service mistake, preserve holdings, repair future issuance and assess additional care or new goals for affected players. |
 | Call a non-transferable item free because it creates no coins. | Measure whether it replaces purchases, accelerates exhaustion or changes competition, as well as its direct service cost. |
 | Treat a cosmetic or item as "never sold" after checking only direct cash SKU rows, and reuse it on new VIP or progression tiers. | Expand the full transitive reward graph (activity trigger-currency handlers + recursive chest/choice-box payloads) and live payer-cohort holdings before reusing any asset; create net-new art when prior cash-event containers already granted it. |
+| Offer `全服第一累課` recognition or a permanent `No.1-payer +20%` privilege. | Keep paid-rank analysis internal and use non-positional personal recognition such as `資深 VIP` or `感謝長期支持`, with benefits based on the verified order or personal milestone rather than paid rank. |
 
 ## 3. Set offers and gift authority in advance
 
@@ -129,6 +130,12 @@ needed. Never assume the delivery operator can sanitize an already-inserted mail
 | ❌ Bad | ✅ Good |
 | --- | --- |
 | “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Track A order <order_id> **VIP**”. | “個人專屬尊貴 VIP 禮遇”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
+
+A verified player's explicitly requested own spend **total** follows the shared
+[minimum-necessary-disclosure rule](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality);
+that total never authorizes rank or an unrequested inventory/recipe audit.
+Explicit disinterest or a spending complaint stops the outbound sales sequence
+under [ambassador's stop-sales rule](../ambassador/SKILL.md#3-emotional-care-first-and-the-adversarial-turing-self-test).
 
 ### Bottleneck-First High-Ticket VIP Bespoke Pricing & Primary-Source `ItemTemplate` Verification
 
