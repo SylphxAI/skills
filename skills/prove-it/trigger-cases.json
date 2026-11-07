@@ -248,6 +248,14 @@
     {
       "prompt": "Verify a missing review by tracing the expected workflow_run producer to its terminal log instead of filtering runs only by the reviewed SHA.",
       "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "Verify why an old App-posted success remains selected after a failing workflow rerun with a newer started_at value.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check whether source-head approval is sufficient when the current merge-group SHA has no matching producer evidence.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
@@ -360,6 +368,16 @@
       "prompt": "Compare two designs for correlating workflow_run payloads with reviewed revisions before choosing an implementation.",
       "clause": "challenge to compare designs",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Implement fresh nonterminal check publication before each external approval rerun.",
+      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore a stalled approval queue whose configured producer was never enrolled.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
     }
   ]
 }
