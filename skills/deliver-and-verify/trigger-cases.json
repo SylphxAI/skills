@@ -26,6 +26,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a SaaS status exporter whose new metadata never reaches an already-correct resource because reconciliation skips the write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game progression summary that fills a newly added field even when the saved player level has not changed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement an index metadata backfill through normal reconciliation while leaving an already-current document value unchanged.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
       "clause": "synthetic probe"
     },

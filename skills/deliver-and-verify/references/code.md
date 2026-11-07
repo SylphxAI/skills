@@ -138,12 +138,15 @@ by a background worker; **Right:** test the actual supported label combinations
 and exclusions, then verify the deployed consumer's identity and behavior.
 A policy match proves only eligibility until that consumer exercises the path.
 
-Trace each pinned or referenced input through the existing automatic writer's
-change trigger, propagation latency and the consumer's read behavior; an initial
-deployment does not prove later input changes propagate. **Wrong:** rotate a
-Secret and assume a completed Job reruns. **Right:** change only that input and
-verify the intended consumer uses its new revision within the declared
-propagation time, including CI, merge queue and deployment reconciliation.
+Trace changed inputs through the automatic writer's trigger, propagation time
+and consumer read behavior; a new deployment does not establish later updates.
+New metadata can also remain unpublished when an unchanged primary value skips
+the writer: exercise the real reconciliation entrypoint with old or absent
+metadata and an already-correct primary value, preserving that value while
+verifying the promised metadata reaches its consumer. **Wrong:** call the new
+formatter or force an unrelated state change to make the sample appear.
+**Right:** prove both changed and unchanged passes through the normal writer,
+with missing and existing metadata, within the declared publication contract.
 
 An automatic update can discard a temporary compatibility approval while another
 consumer still uses it. Exercise successive and unrelated updates during a
