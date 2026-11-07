@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a signed-download refresh loop whose permanent issuance marker lets the existing link expire after one transient provider error.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship cache-snapshot regeneration with bounded retries after a terminated request loses its response, without replaying customer charges or grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a restore command whose recursive validator refuses the missing data that the restore is intended to recover, preserving rejection of invalid recovered data.",
       "clause": "implementing or shipping a feature, bug fix"
     },
