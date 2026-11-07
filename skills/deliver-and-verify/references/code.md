@@ -245,13 +245,14 @@ earlier release or partial batch after receiving an error.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
-which operation is blocked before releasing the competing transaction. Follow
-indirect blockers too: a row-lock queue can place the second operation behind
-the first waiter, so counting only direct blockers can miss real contention. A sleep
-or eventual success alone does not prove the intended interleaving. Assert the
-final conserved state and rollback behavior as well as completion. Apply this
-audit to other transactional domains, such as stock reservation and cancellation;
-a pure formatter change needs no lock-order proof.
+which operation is blocked before releasing the competing transaction. Diagnostic
+views can refresh independently, so a cross-view join can hide a live wait;
+correlate requester, blocker and resource through the engine's own identities,
+with held-wait, no-wait and wrong-owner controls. Follow indirect blockers too:
+a row-lock queue can place the second operation behind the first waiter, so
+counting only direct blockers can miss real contention. A sleep, eventual success
+or empty uncalibrated join alone does not prove the intended interleaving. Assert
+the final conserved state and rollback behavior as well as completion.
 
 A sequence-backed feed cursor orders allocation, not commit: a delayed writer
 can publish below a cursor already advanced past it. Where consumers resume
