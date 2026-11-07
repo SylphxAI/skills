@@ -483,8 +483,13 @@ actual guard, and test both source-overlay and prebuilt routes when supported.
 ## Bulk mutations
 
 Before bulk cancellation, deletion, closure, re-dispatch, labeling or overwriting,
-map each candidate to its real owning object and prove both controls: a known-live
-object classifies as **keep**, and a known-stale object as **act**.
+map each candidate to its real owning object and derive eligibility from
+authoritative scope and lifecycle records; provider existence or a nonarchived
+search hit does not establish operational membership. Keep declared exclusions
+and unresolved mappings out of the write set, and prove both controls against
+the operation's eligibility rule: an ineligible object classifies as **keep**,
+and an eligible object as **act** (for cleanup, a live object is **keep** and a
+stale one is **act**).
 Dry-run the full candidate set; stop and investigate if either class takes nearly
 all candidates or **keep** is empty, rather than treating uniform agreement as proof.
 Mutate at a paced rate and log object IDs, owner mappings, prior state and outcomes
