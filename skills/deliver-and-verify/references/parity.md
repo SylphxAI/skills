@@ -161,7 +161,9 @@ the engine's verdict.
 1. Keep a primary-source ledger for each engine: exact release/revision, official
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
-   release's limitations. Bind local builds and fixtures to immutable revisions.
+   release's limitations. Bind local builds and fixtures to immutable revisions;
+   cross-revision comparisons also use [isolated child builds](dx.md#internal-development)
+   so a clean checkout cannot stand in for the linked artifact's identity.
    Keep pinned browser/tool binaries in a location owned for the run and verify
    their hashes; an executable borrowed from another checkout can disappear
    before capture even when its version matched during setup.

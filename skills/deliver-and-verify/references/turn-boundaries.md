@@ -49,7 +49,13 @@ supported wrapper before resuming, keeping admission controls intact.
 Send stdout and stderr to a durable log and write the exit status when the
 command ends. Preserve reports and captures on failure as well as success. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
-recoverable receipt. Verify the child survives the launching call using the
+recoverable receipt. The observer needs its own access to that completion
+signal: a writer-readable private temporary directory can still make watch
+registration fail. Keep private payloads private; expose only a secret-free
+completion marker through a supported observer-readable location, or use the
+executor's operation identity. A terminal registration baseline needs immediate
+receipt reconciliation, because no later transition may wake the worker. Verify
+the child survives the launching call using the
 [background-process guidance](dx.md#internal-development).
 
 On wake, read that run's receipt and the executor's current status before

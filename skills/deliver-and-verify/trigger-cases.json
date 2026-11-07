@@ -10,6 +10,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a copied CLI distribution whose retry helper lives in a sibling source directory, and verify the staged command outside the source tree.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a game build tool's sparse source checkout so its packaged entrypoint receives a sibling runtime dependency.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Regenerate a release adapter after fixing its incomplete shared-helper copy list, and exercise the resulting isolated distribution.",
+      "clause": "generating source"
+    },
+    {
       "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2000,6 +2012,18 @@
     {
       "prompt": "Ship a game asset-validation workflow with explicit package-launcher setup and prove the declared command runs before judging its assertions.",
       "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a SaaS CLI whose explicit account state is lost by sibling read and apply commands that rebuild default authentication; preserve the selected endpoint and principal through final transport overrides.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game administration tool whose isolated profile is bypassed by an ambient token; test saved, fallback and missing credentials through assembled public commands while preserving permitted default-mode overrides.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a resource mirror fix so unavailable credentials or malformed snapshots refuse before local writes instead of becoming authoritative emptiness; preserve the entire local tree and metadata while a genuine successful-empty snapshot still removes obsolete files.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2007,6 +2031,21 @@
       "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review a PR claiming its copied command includes every runtime dependency; do not publish changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare bundling a shared helper into each package with loading it from an installed runtime before choosing the architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explanation of sparse checkouts and package layouts without changing source or shipping configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Review whether the retained database timings establish a lock-wait cause; do not change or publish anything.",
@@ -3342,6 +3381,21 @@
       "prompt": "Review whether a passing local script proves its CI launcher exists on the selected runner; report evidence without editing or publishing workflows.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a constructor test proves an existing CLI preserves selected account authority across sibling dispatch and environment overrides; inspect evidence without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare explicit account-context propagation and ambient credential lookup as proposed architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of unavailable snapshots versus authoritative empty snapshots without changing software, running probes or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
