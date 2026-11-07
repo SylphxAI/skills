@@ -121,8 +121,14 @@ values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 Resolve generated targets and consumer references in that rendered output too:
 namespace or content-hash rewriting can leave separately valid documents
-pointing at different objects. **Wrong:** validate a template and its generator
-independently; **right:** verify the emitted consumer resolves the emitted target.
+pointing at different objects. Content-hash rewriting can also change an existing
+immutable operation's template even when no execution is intended; retention or
+prune settings do not make that update legal. Preserve its template and referenced
+generation, or authorize a distinct operation identity rather than rewriting or
+replaying the completed operation. **Wrong:** validate a template and its generator
+independently; **Right:** resolve the rendered references and dry-run the effective
+update against existing objects, proving unchanged immutable templates and no
+unintended execution.
 
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial

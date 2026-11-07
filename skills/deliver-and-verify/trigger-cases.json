@@ -1708,6 +1708,18 @@
     {
       "prompt": "Implement a game match-queue policy change without removing a documented priority signal until authoritative replacement data exists at the first actionable event.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish a SaaS batch-reader code correction whose generated configuration hash would rewrite completed Job templates; preserve the old operations and verify the effective update against their live objects.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a card-game reporting correction that gives future read operations a new code generation without replaying an old provisioning Job or changing its immutable template.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update generated runtime configuration and its rendered consumer references, proving existing immutable operations remain unchanged rather than relying on prune-disabled retention.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -2815,6 +2827,21 @@
       "prompt": "Compare producer-side enrichment with documented scheduling signals for a proposed match-queue architecture, including unknown origins and explicit contradictory events, without implementing either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether a generated configuration hash would change a completed Job's immutable template; report evidence only, without changing source or publishing.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare preserving historical operation templates with issuing distinct new operation identities for a proposed reporting architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a completed-job operations explanation for clarity without changing source, runtime configuration or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
