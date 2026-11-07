@@ -1308,6 +1308,42 @@
     {
       "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
       "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement an async clipboard write that survives an A-to-B same-text interleaving by carrying entity and version identity across the held promise.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add source-API refusal and on-disk tamper fixtures as separate routes, so a tampered count never becomes a requirement to accept a forbidden write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair shared Git metadata access across two real UIDs with additive default ACLs, preserving existing masks and reporting any privilege skip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a redaction pipeline so duplicate enrichment, edits, redelivery under a new source key and index insertion consult current origin-bound redaction state before writing bodies.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add real-recorder conformance vectors that assert POST, refusal, ordering, verdict and counts without freezing clocks or call counts outside declared recorder history.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix temporary-profile cleanup by running the child in its own process group and waiting for the group before removal instead of retrying a test assertion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run a read-only census child without letting it restore source files or share a Cargo target directory with the writer, and inspect the rlib before editing a supposedly missing export.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add a variant to an evaluate/effectful pipeline and prove schema constraints, commit, reload and downstream consumer encoding in one authorised durable round trip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a permission fixture that returns the UID as the primary GID, and verify the tuple against both OS identities on a runner where they differ.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [

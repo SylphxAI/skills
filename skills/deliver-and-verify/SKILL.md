@@ -102,8 +102,8 @@ For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
 For source checkout or materialization changes, shared-cache permission failures,
-pinned-tool launch failures, generated CLI calls, sandbox build templates or
-native compilation failures,
+child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
+failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
 
 When changing database test setup or disposable fixture cleanup, read
@@ -121,7 +121,10 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
+When handling credentials exposed in process arguments or changing diagnostic
+or stored-body redaction, read [security.md](references/security.md) to protect
+the actual launching process, preserve useful diagnostics and prevent content
+from reappearing through later writes.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
