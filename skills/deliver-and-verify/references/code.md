@@ -236,10 +236,13 @@ terminal result and a rejection before any send as controls. A mock returning
 a prebuilt error cannot establish which side of dispatch the failure occurred.
 
 With PgBouncer transaction pooling, a backend connection belongs to the client
-only for one transaction. Do not rely on session `SET`, `LISTEN`, or
-session-level advisory locks across transactions. Use transaction-local settings
-and transaction-scoped locks where appropriate; route genuinely session-bound
-work through a supported session or direct connection. Verify the deployed pool
+only for one transaction. Do not rely on session `SET`, `LISTEN`, temporary
+objects or session-level advisory locks across transactions. Post-commit
+verification resolves durable objects by stable IDs, not session-local staging;
+a missing temporary object after confirmed `COMMIT` is a verifier failure, not
+evidence of rollback or permission to resend the mutation. Use transaction-local
+settings and transaction-scoped locks where appropriate; route genuinely
+session-bound work through a supported session or direct connection. Verify the deployed pool
 mode, driver and prepared-statement configuration with concurrent database-backed
 tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
