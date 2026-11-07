@@ -79,10 +79,11 @@ locks. A declared tool version must either launch or fail clearly after an
 install/lock error, rather than silently running another major.
 
 Identity fixtures keep the real UID and primary GID separate; one cannot be
-derived from the other. Assert the returned tuple against both OS identities
-and retain a CI environment where they differ, such as macOS. **Bad:** return
-`(current_uid(), current_uid())`; **Good:** use the actual UID and primary GID
-and prove the fixture still works when they differ.
+derived from the other. Assert both OS identities, retain an environment where
+they differ, and make synthetic fixture UIDs or kinds distinct from the executor's
+real identity so the fixture cannot accidentally exercise the current-user path.
+**Bad:** return `(current_uid(), current_uid())` or use the executor as a synthetic
+other user; **Good:** verify the actual tuple and a distinct synthetic identity.
 
 Before concluding a local-mode override is ineffective, check the mode flag's
 effective value in a fresh task-runner child; exporting it in the parent shell

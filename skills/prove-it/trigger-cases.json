@@ -188,6 +188,18 @@
     {
       "prompt": "Review a retry regression where fallback repair can mask failure; check distinct effective decision keys, pre-repair observation and a target-only disabled control.",
       "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Verify a billing query conserves total time when a sample changes tier halfway through the hour.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Verify a game usage query classifies closed samples by their recorded subscription instead of the current account tier.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Check a time-windowed metering query in the real engine when an absent complementary series differs from numeric zero.",
+      "clause": "verifying time-windowed usage or billing queries"
     }
   ],
   "negative": [

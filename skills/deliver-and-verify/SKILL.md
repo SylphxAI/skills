@@ -33,6 +33,9 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
+For request/response limits, context compaction, agent tool outputs or low-rate
+flake comparisons, read
+[final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
 For large transfers, shared response caches, fan-out streams, archive restores,
 or stored-output replay, read
 [bounded memory for large transfers](references/performance.md#bounded-memory-for-large-transfers)
@@ -54,6 +57,8 @@ an advertised creation, deployment or port-exposure operation.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+Time-windowed usage or billing queries also use
+[temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).

@@ -128,7 +128,7 @@ Use transactions for atomic invariants and authority-side uniqueness for retryab
 
 Equal text or value after an await does not identify the same target: another entity or range may have replaced it. Carry stable entity/range identity across the wait and make the final identity and version check atomic with the mutation. **Bad:** hold a clipboard-write promise, replace A with same-text B, then let A's continuation mutate B; **Good:** resume against A's captured identity and refuse the changed target/version while an unchanged-target control succeeds.
 
-Exceptional terminal or preservation states, including erasure, must remain authoritative across every ordinary writer, retry, and replay path; exercise a normal writer after the transition through the real API and after persistence reopen or row aging, with an allowed nonterminal enrichment control. A historical receipt proves only the operation it records, not today's mutable state, so replay must re-read current state rather than restore it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested admission helper that acquires a second connection from the caller's
 finite pool can starve while the outer transaction holds the available capacity;
@@ -597,6 +597,8 @@ selects the mutating path. Exercise the assembled entrypoint with a zero-effect
 assertion and prove that redirecting that mode to the mutator fails the same test.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
+
+Reproduce test selection on CI's runtime version: a newer local runtime can accept selectors the deployed runner rejects. For example, `node --test tests` fails to resolve the directory on Node 22, while explicit file globs such as `node --test tests/*.test.js` work; verify discovered names/counts rather than inferring execution from an exit code ([Node 22 test runner](https://nodejs.org/docs/latest-v22.x/api/test.html#running-tests-from-the-command-line), read and reproduced 2026-11-07).
 
 In Rust crates with multiple integration test modules, use a single integration test binary (`tests/integration/main.rs` with `mod <domain>;` submodules under `tests/integration/`) rather than many top-level `tests/*.rs` files, so `cargo test` links one integration binary instead of compiling and linking dozens of separate test executables.
 

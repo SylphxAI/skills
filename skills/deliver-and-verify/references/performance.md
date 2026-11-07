@@ -42,6 +42,14 @@ vacuously. After merge, repeat [paired engine runs](parity.md#compare-engines-on
 against the category leader on the frozen fixture, preserving quality, startup
 and size limits; shader tests alone do not establish the delivered frame times.
 
+## Final encoded limits and reliability evidence
+
+A per-item limit does not bound the encoded aggregate: count the complete consumer request or response, including escaping, envelopes and reserved output, against its actual limit. Evaluate state-reduction candidates before committing them; rejection leaves the prior usable state and authoritative raw data unchanged. **Bad:** persist a smaller checkpoint that still exceeds the request window; **Good:** measure each candidate and commit only one that fits.
+
+Bound every agent tool output to 32 KiB in its final encoded form, with a continuation cursor for omitted bytes. Returning an active transcript range verbatim can duplicate the context into itself; return pointers or a summary for already-visible content, while keeping evicted raw bytes recoverable through bounded pages. Test aggregate size, oversized single records, escaping, Unicode boundaries and lossless continuation through the real tool boundary.
+
+A short green streak is weak evidence for a low-rate flake: with independent 6% failures, the probability of 16 clean runs is `0.94^16 ≈ 37%`. Near that rate, compare at least 100 runs per arm under the same conditions and use [Fisher's exact test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.fisher_exact.html) on failure/pass counts, reporting the effect and uncertainty rather than treating a nonsignificant result as equivalence (read 2026-11-07). Choose larger populations when the desired detectable improvement or observed dependence requires them.
+
 ## Bounded memory for large transfers
 
 Set a peak-memory budget from concurrency and bounded buffers, independent of
