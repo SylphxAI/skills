@@ -73,8 +73,8 @@ or redeploy leaves existing specifications unchanged; use the normal writer's
 bounded reconciliation or backfill, preserving exclusions and intended absence,
 and verify the served objects before reporting rollout complete.
 
-For long builds or tests, work in leased environments, or results resumed after
-a turn boundary, read
+For long builds or tests, work in leased environments, source handoffs or
+execution-placement changes, or results resumed after a turn boundary, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution or
 resubmitting work.
 

@@ -432,6 +432,14 @@ confirm cleanup through the normal path.
 
 A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
 
+A generic guard derives each target's contract and required verdicts from its
+authoritative declarations, distinguishing confirmed absence from failed
+discovery instead of imposing the originating target's conventions or substituting
+an unrelated approval. Exercise a permitted alternative declaration alongside a
+refusal through the real entrypoint, preserving independent exact-candidate
+review requirements so fail-closed behavior cannot hide rejection of every
+supported target.
+
 Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels.
 
 ## Selected release inputs
