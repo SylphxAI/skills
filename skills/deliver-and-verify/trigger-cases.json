@@ -770,6 +770,10 @@
       "clause": "benchmarking engines"
     },
     {
+      "prompt": "Optimize fragment-shader frame times with ablations, pixel-equivalent specialized pipelines and frozen paired engine runs.",
+      "clause": "benchmarking engines"
+    },
+    {
       "prompt": "Build equal-work rendering benchmarks that count every emitted label quad and reject an intentionally shifted glyph.",
       "clause": "benchmarking engines"
     },
@@ -1110,6 +1114,11 @@
     },
     {
       "prompt": "Compare origin checks with synchronizer tokens for a proposed session architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Compare general-purpose fragment shaders and specialized pipelines as an architecture proposal without implementing or measuring either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
     },

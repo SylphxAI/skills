@@ -153,6 +153,9 @@ the engine's verdict.
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
    release's limitations. Bind local builds and fixtures to immutable revisions.
+   Keep pinned browser/tool binaries in a location owned for the run and verify
+   their hashes; an executable borrowed from another checkout can disappear
+   before capture even when its version matched during setup.
 2. Before running, declare the equal-work set, acceptance predicate, sample count,
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record

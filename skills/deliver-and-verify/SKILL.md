@@ -41,6 +41,9 @@ before choosing storage queries and transport APIs.
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
+When reducing fragment-shader cost, read
+[fragment-shader hot paths](references/performance.md#fragment-shader-hot-paths)
+before choosing an optimization.
 
 For preview provisioning or reduced-backend profiles, read
 [deployment configuration](references/code.md#deployment-configuration) and

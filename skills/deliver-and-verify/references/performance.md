@@ -22,6 +22,26 @@ Choose a measurable target for each critical journey and define its response whe
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
 
 
+## Fragment-shader hot paths
+
+Use when a renderer misses frame-time targets despite few draw calls, or when
+specializing a general-purpose fragment shader. Model fragment work as shaded
+area, including overdraw, times per-pixel program cost; flags and early returns
+do not establish that unused features are free, especially on software rasterizers.
+
+Hold geometry, draw area and uploads fixed while comparing the original shader,
+a constant-colour fragment and an early-return variant. If constant colour is
+cheap but early returns are not, test compile-time specialized pipelines for
+common paint while retaining the general path for unsupported states; the
+ablation isolates a candidate cost, not pixel correctness or shipping speed.
+
+Require byte-exact differential pixels against the general path on every affected
+backend, with an independently expected visible-target population and a deliberately
+wrong-pipeline mutation that changes it; fully overpainted targets can pass
+vacuously. After merge, repeat [paired engine runs](parity.md#compare-engines-on-declared-equal-work)
+against the category leader on the frozen fixture, preserving quality, startup
+and size limits; shader tests alone do not establish the delivered frame times.
+
 ## Bounded memory for large transfers
 
 Set a peak-memory budget from concurrency and bounded buffers, independent of
