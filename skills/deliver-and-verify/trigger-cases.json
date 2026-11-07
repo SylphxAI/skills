@@ -998,7 +998,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error.",
+      "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error, also covering alternate public proxy response headers on success and failure while preserving internal diagnostics and ordinary public headers.",
       "clause": "changing diagnostic redaction"
     },
     {
