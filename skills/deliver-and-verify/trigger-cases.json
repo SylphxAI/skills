@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Arm a SaaS API pull request after its required automated review succeeds at the current head, preserving any existing queue entry.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Enqueue a card-game configuration change through the normal queue only after the separately required review covers every changed path.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Re-arm a dequeued pull request after its neutral review is replaced by a successful current-head review, with one guarded submission.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
       "clause": "changing database privileges"
     },
@@ -883,15 +895,15 @@
     },
     {
       "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
@@ -1047,15 +1059,15 @@
     },
     {
       "prompt": "Publish this branch as a pull request for review while its prerequisite remains pending; keep merge disabled.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update the already-ready pull request with the corrected game-server configuration without enabling its default auto-merge yet.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Publish the billing fix through the repository wrapper and verify the source head and merge intent at the requested review boundary.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a fail-fast executable prerequisite to an existing CI shell step and update the manifest tests that read its command text.",
@@ -1107,11 +1119,11 @@
     },
     {
       "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Publish a review-labelled pull request only after its exact-candidate review Check Run succeeds, without substituting an unrelated security approval.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
@@ -1119,6 +1131,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Inspect whether a neutral review with zero findings actually approved this exact commit; do not enqueue or change anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain whether the current merge rules enforce the separately required source review, using live check results only.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Verify which changed paths an automated review left uncovered before reporting its status.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
       "clause": "prove-it for a review or evidence check",

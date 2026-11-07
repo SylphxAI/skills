@@ -627,6 +627,10 @@ Read the current store controls and the product's release contract. Identify the
 
 ## Merge queue
 
+Before arming a merge, verify the repository's declared approval requirements
+through the [current-head review and check results](../../prove-it/SKILL.md#pull-request-checks-and-merge-queue-state);
+provider merge eligibility can leave a required review unenforced.
+
 Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
 
 - **Publication and merge intent:** Read the publisher's merge defaults before
