@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Align a SaaS project declaration with its live identity when the typed CLI rejects a legacy UUID but the supported raw API returns a canonical resource.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Repair a card-game account lookup client that classifies an accepted legacy account ID as a handle; preserve the existing account and verify both accepted forms.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
       "clause": "implementing or shipping a feature, bug fix"
     },
