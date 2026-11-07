@@ -326,9 +326,12 @@ guards.
 Keep migration history truthful: do not record an unverified migration as applied. Follow the repository's supported migration-history procedure; a missing schema object is repaired through the owning migration mechanism.
 
 Database replay and compilation do not establish admission by a migration safety
-guard. For new or copied SQL, read and run the delivery path's pinned guard on the
-actual candidate; explicit DDL keeps known target objects inspectable, and a
-contract reference must name a real released prerequisite.
+guard, and a green schema-snapshot check can omit migration history: compare
+guarded paths and effective per-file dialects with the actual migration runners.
+Add any missing shared-engine routing as an opt-in that preserves existing
+defaults before enrolling consumer scopes, and read and run the delivery path's
+pinned guard on the actual candidate. Explicit DDL keeps known target objects
+inspectable, and a contract reference must name a real released prerequisite.
 
 Before copying an older migration, read the actual runner's transaction, timeout
 and partial-resume contract. A resumed file can

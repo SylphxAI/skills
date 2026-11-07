@@ -702,6 +702,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Extend a SaaS migration guard from a schema snapshot to the directories used by its migration runners.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship opt-in filename-dialect routing for a game migration guard before enrolling its mixed SQL directory, preserving existing defaults.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Enroll a document service's separate PostgreSQL migration stores in CI and verify their effective guard scopes and dialects.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1308,6 +1320,21 @@
       "prompt": "Design a migration plan and compare its alternatives; do not execute it yet.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether a green migration guard selects every runner directory and the correct SQL dialect; report evidence without changing CI.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared and per-service SQL dialect routing designs without implementing or publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this migration-safety explanation for clarity without changing or publishing the guard or CI.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Review this exact pull request diff for defects without changing it.",
