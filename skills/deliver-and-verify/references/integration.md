@@ -168,20 +168,25 @@ live-intake claim to a receipt from the actual source path.
 ## Final streamed output
 
 Buffered-event tests miss failures introduced during final encoding; verify the
-recipient's status, headers and bytes in each supported encoding at the protocol's
-irreversible commit boundary. A complete-document contract commits success only
-after bounded receipt, transformation and validation through EOF; a protocol with
-defined partial results can stream earlier, preserving committed status/headers
-and using its safe typed error for later failure. Probe commitment itself—a test
-helper that collects the body before returning can hide headers already sent—and
-preserve semantic content exactly once across chunk partitions and redundant
-provider fields.
+recipient's status, headers and bytes in each supported encoding at its actual
+acceptance boundary. A protocol that cannot signal failure after headers defers
+success until bounded receipt,
+transformation and validation through EOF; a streamed download can send headers
+and **unverified prefixes** earlier only when late validation failure prevents a
+successfully completed transfer and the consumer rejects incomplete or
+digest-mismatched bytes before use. Delayed cache publication does not make those
+prefixes verified, while a protocol with defined partial results retains its safe
+typed error for later failure. Probe commitment through a real connection—a helper
+that collects the body first can hide headers already sent—and preserve semantic
+content exactly once across chunk partitions and redundant provider fields.
 
-**Bad:** append an error to interrupted JSON after sending `200`, or infer the
-wire contract from an intermediate buffer. **Good:** hold an upstream document
-mid-body and verify response headers remain pending, then release or interrupt
-it; separately verify a partial-result protocol's final encoded error, retry
-advice and absence of private diagnostic sentinels after content has arrived.
+**Bad:** append an error to interrupted JSON after sending `200`, or call streamed
+prefixes verified because nothing entered the cache. **Good:** verify a JSON
+protocol's headers remain pending until validation; for a download, force a late
+checksum mismatch after headers and assert the real receiver fails the transfer
+with no cache entry, alongside a complete matching-download control; for partial
+results, verify the final encoded error, retry advice and absence of private
+diagnostic sentinels.
 
 Category-wise equality can hide reordered content: equivalence preserves order,
 multiplicity and boundaries wherever the source protocol defines them, while

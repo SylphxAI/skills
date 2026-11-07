@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a streamed archive mirror that withholds completion until the full digest matches while documenting early prefixes as unverified.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export proxy whose tests collect the entire body and miss a successful-looking response after a late checksum mismatch.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset downloader that rejects a truncated stream before extracting or running the downloaded payload.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a shared email-provider reserve that consumes the entire quota of smaller tenant accounts, preserving transactional priority and bulk progress.",
       "clause": "implementing or shipping a feature, bug fix"
     },
