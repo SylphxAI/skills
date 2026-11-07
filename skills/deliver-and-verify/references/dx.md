@@ -446,8 +446,10 @@ inputs that no longer exist, including paths left behind by a rename.
 
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
-per-path blobs with the serving plan, including inherited base inputs and runtime
-resources; the difference must equal only the declared change under test.
+per-path blobs and file modes with the serving plan, including inherited base
+inputs and runtime resources; the difference must equal only the declared change
+under test. Resolve the serving selection from its producer's frozen approval,
+not the selected source revision's own selector.
 Bind that proof to the candidate head and serving revision, and refresh it if
 either changes: matching counts or passing source tests do not establish scope.
 
@@ -455,8 +457,10 @@ Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
 keeps other dependencies byte-identical. A direct source overlay into a compiled
 module can replace that route; require binary synchronization only while those
-binaries remain the delivery mechanism. Derive registration from the input to
-destination mapping, since their directory names can differ.
+binaries remain the delivery mechanism. Derive registration and runtime scope
+from the input-to-destination mapping and actual consumers, not plan membership:
+an assembly can retain another role's scaffolding. Shared inputs require
+registration in every consuming profile without creating false mixed scope.
 
 Keep ordinary source registration separate from release selection. Read the
 selector and lock history before requiring every source PR to regenerate a
