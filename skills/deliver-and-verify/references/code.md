@@ -74,7 +74,11 @@ When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
 desired state, so durability depends on the full controller ancestry and each
-controller's effective field ownership. **Wrong:** add a child ignore and trust
+controller's effective field ownership. Owning software or resource declarations
+does not necessarily confer authority over a separate operator's pause/hold intent;
+initialization defaults cannot silently resume an existing workload. Verify that
+intent survives repeated no-op and changed-input reconciliation while genuinely
+new enabled work can start. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
 temporary exception is removed. Unchanged declarations, generations or digests

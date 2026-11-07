@@ -2036,6 +2036,18 @@
     {
       "prompt": "Ship a resource mirror fix so unavailable credentials or malformed snapshots refuse before local writes instead of becoming authoritative emptiness; preserve the entire local tree and metadata while a genuine successful-empty snapshot still removes obsolete files.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS installer that resets an operator-paused billing export to enabled whenever it refreshes the executable.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change game event reconciliation so updating a campaign script preserves an explicit operator hold while a new enabled event can start.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3406,6 +3418,21 @@
     },
     {
       "prompt": "Rewrite a local explanation of unavailable snapshots versus authoritative empty snapshots without changing software, running probes or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a historical deployment overwrote an operator hold, without changing source or operating the service.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare declarative ownership and operator controls in a proposed scheduler architecture without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
