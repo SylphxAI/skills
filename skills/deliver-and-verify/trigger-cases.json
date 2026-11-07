@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS database reset whose catalog enumeration treats owner-managed dependents as independently removable; prove cleanup and reuse under its actual identity.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair a card-game test database cleanup that passes only when object names happen to match dependency order, preserving rollback after a late failure.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a catalog-driven cleanup regression with adversarial object ordering, verifying successful reset and subsequent writes as well as failure atomicity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1515,6 +1527,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a past cleanup rollback proves that recovery can complete; inspect evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dependency-ordered cleanup and whole-container replacement as proposed reset architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the database reset documentation for clarity without changing SQL, running tests or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
       "clause": "prove-it for a review or evidence check",

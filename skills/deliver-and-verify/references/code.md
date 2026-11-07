@@ -441,6 +441,15 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+For catalog-driven cleanup, derive independently removable objects and deletion
+order from authoritative dependency and ownership metadata; lexical names and
+enumeration order carry neither guarantee. Through that same production path
+under the actual cleanup identity, use adversarial names/order to prove completed
+cleanup and usable post-reset state, plus rollback after a late failure when
+atomicity is promised.
+**Bad:** sort every catalog entry by name and count rollback as recovery;
+**Good:** respect owner-managed dependents and prove dependency-safe completion,
+subsequent use and failure atomicity.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
