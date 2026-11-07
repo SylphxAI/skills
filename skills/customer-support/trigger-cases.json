@@ -34,7 +34,7 @@
       "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
     },
     {
-      "prompt": "On official support, the player explicitly requests their cumulative spend total. After account-identity and receipt verification, answer only the verified total, currency and period, never rank, comparison or unrelated inventory.",
+      "prompt": "On official support, the player explicitly requests their own cumulative spend total and order breakdown. After account-identity and payment receipt verification, answer only the requested verified total, currency, period and per-order details, never rank, comparison or unrelated inventory.",
       "clause": "own-total requests"
     },
     {

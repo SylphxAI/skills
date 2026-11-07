@@ -147,12 +147,13 @@ recharge totals, order numbers or top-up amounts, even when the verified owner
 asks or LTV is known internally. Warmly route those inquiries to in-game official
 support or the published support address in the product profile. Payment
 concierge help removes checkout friction; it does not authorize billing disclosure.
-Only official support may answer an explicitly requested own total after account
-identity and receipt verification, providing the verified total, currency and
-relevant period with zero rank, comparison or unrequested inventory, recipes or
-other account details. Legitimate own-order, receipt and missing-payment help
-remains available through that verified official path; own totals are private,
-never public recognition. See the [support disclosure boundary](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality).
+Only official support may answer an explicitly requested own total and explicitly
+requested order breakdown, after both account-identity and payment receipt
+verification. Provide only the requested verified total, currency and relevant
+period, or requested per-order details, with zero rank, percentile, comparison
+or unrequested inventory, recipes or other account details. Legitimate own-order,
+receipt and missing-payment help remains available through that verified official
+path; own billing records are private, never public recognition. See the [support disclosure boundary](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality).
 Explicit disinterest or a spending complaint stops the outbound sales sequence
 under [ambassador's stop-sales rule](../ambassador/SKILL.md#3-emotional-care-first-and-the-adversarial-turing-self-test).
 
