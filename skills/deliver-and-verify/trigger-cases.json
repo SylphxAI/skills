@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Update a shared CI action reference, preserving the source comments required by the dependency updater and verifying its enforced provenance check as well as parsed YAML.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Fix a payment-adapter unavailable-state test that spends its deadline on real retry backoff; keep production refusal and adapter coverage.",
       "clause": "implementing or shipping a feature, bug fix"
     },
