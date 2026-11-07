@@ -96,6 +96,10 @@
     {
       "prompt": "A completion watch remains pending after its target finished, while per-watch REST GETs exhaust the shared API floor; restore delivery without bypassing the quota.",
       "clause": "a completion watch stays pending after its target finishes"
+    },
+    {
+      "prompt": "The cleanup tool refuses a directory its owner can traverse. Restore the supported operation by comparing disposable objects with and without the required lifecycle metadata before widening access.",
+      "clause": "a call is refused"
     }
   ],
   "negative": [
