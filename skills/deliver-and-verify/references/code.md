@@ -262,6 +262,15 @@ different contract. Through the public worker or poll entrypoint, verify progres
 past those selections, effective capacity holds and completion of an already-scanned
 candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
+A fixed-priority selector can starve eligible notifications or other timers when
+one periodic pass exceeds its interval and is overdue again at every selection;
+burst-then-idle tests never sustain that contention. Where progress is promised
+for every ready work class, verify bounded service across the outer timer and
+notification/continuation selection, not just rotation within one branch. Use one
+controlled clock to keep all classes ready across slow passes, with idle and
+missed-tick controls proving that advancing time neither invents pending
+notification work nor creates an undeclared catch-up burst.
+
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
 In runtimes where futures advance only when polled, awaiting maintenance can
