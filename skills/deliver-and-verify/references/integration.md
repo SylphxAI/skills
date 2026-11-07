@@ -168,8 +168,9 @@ live-intake claim to a receipt from the actual source path.
 ## Final streamed output
 
 Buffered-event tests miss failures introduced during final encoding; verify the
-recipient's status, headers and bytes at its actual acceptance boundary. A protocol
-that cannot signal failure after headers defers success until bounded receipt,
+recipient's status, headers and bytes in each supported encoding at its actual
+acceptance boundary. A protocol that cannot signal failure after headers defers
+success until bounded receipt,
 transformation and validation through EOF; a streamed download can send headers
 and **unverified prefixes** earlier only when late validation failure prevents a
 successfully completed transfer and the consumer rejects incomplete or
