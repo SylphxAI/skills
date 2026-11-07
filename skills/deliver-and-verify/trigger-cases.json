@@ -1176,6 +1176,10 @@
     {
       "prompt": "Ship a SaaS status watcher repair and test cold caller recovery through the installed proxy rather than a direct HTTP fake.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Before fixing a publisher's base-health refusal, search open PRs for that same outcome; let an unrelated change edit the same publisher file in its own isolated worktree.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
