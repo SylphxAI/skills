@@ -128,6 +128,14 @@
     {
       "prompt": "A newly created API key is listed in the control plane but our running worker rejects it; recover the worker without duplicating keys or resetting the existing account.",
       "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "A test timeout produces no assertion output even though the fixture exists. Restore the check by comparing implicit discovery with explicit fixture or configuration selection while retaining the original deadline.",
+      "clause": "a wrapper or test timeout leaves no compiler or assertion output"
+    },
+    {
+      "prompt": "The selected configuration is present, but a build timeout may be spent in implicit startup discovery. Restore the check by separating discovery from business execution and preserving its assertions.",
+      "clause": "a wrapper or test timeout leaves no compiler or assertion output"
     }
   ],
   "negative": [
@@ -218,6 +226,16 @@
     },
     {
       "prompt": "The worker is serving the current identity and processing accepted turns within its expected window; leave the healthy recovery running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    },
+    {
+      "prompt": "Review an old fixture-discovery timeout; current tests pass and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "The test has selected its fixture and is completing within the expected duration; leave it running.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
     }
