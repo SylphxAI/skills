@@ -1180,6 +1180,14 @@
     {
       "prompt": "Before fixing a publisher's base-health refusal, search open PRs for that same outcome; let an unrelated change edit the same publisher file in its own isolated worktree.",
       "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Add a Check Runs API lookup to a shared CI action, verifying permissions for every aggregate and result-producing caller rather than only the final required job.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
+      "clause": "changing CI workflows or concurrency"
     }
   ],
   "negative": [
