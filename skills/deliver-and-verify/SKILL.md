@@ -61,6 +61,9 @@ For a public preview or disposable service, also read
 [first useful success](references/dx.md#first-useful-success) before relying on
 an advertised creation, deployment or port-exposure operation.
 
+For regional store SKU or price changes, read
+[regional store prices](references/integration.md#regional-store-prices).
+
 For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 Time-windowed usage or billing queries also use
