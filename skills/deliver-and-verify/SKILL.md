@@ -18,11 +18,10 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
-## Step 0: Route identifier lookups
+## Step 0: Route identifier changes
 
-When an endpoint or query accepts identifiers from multiple namespaces, read
-[identifiers.md](references/identifiers.md) before defining acceptance cases;
-its namespace, collision, and ownership rules govern parsing, resolution, and tests.
+When changing multi-namespace lookups or identifier-based pagination, read
+[identifiers.md](references/identifiers.md) before defining acceptance cases.
 
 ## Coordinate the work
 

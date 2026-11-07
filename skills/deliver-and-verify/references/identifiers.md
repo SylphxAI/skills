@@ -22,6 +22,8 @@ For a gap-free durable stream or change feed, use an authoritative commit/log po
 
 For ordinary list pagination, define the sort and unique tie-breaker plus snapshot/concurrency semantics. A composite `(sort_value, id)` key can support a stable list without a new serialization system. Store a separate authoritative timestamp where people need to know when an event occurred.
 
+For exclusive-cursor pagination, absence and a legal ID are distinct states: an in-range sentinel can silently exclude a valid row. Initial queries preserve the full legal ID range, explicit cursors remain exclusive, and boundary tests verify both paths and terminal completeness.
+
 ## The text form: TypeID
 
 Use [TypeID 0.3](https://github.com/jetify-com/typeid/blob/main/spec/README.md) as the default public encoding: a type prefix and a 26-character lowercase Crockford-base32 encoding of the UUID bits. The open specification allows broader prefix forms; a selected API profile can restrict them further.
