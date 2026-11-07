@@ -1892,6 +1892,18 @@
     {
       "prompt": "Ship a worker configuration change when the same-size isolated tier is not served in this account; preserve the serving allocation and report remaining contention.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a recursive parser/graph resolver that flattens linked payloads: a three-node chain must use the contract's direct-parent identity rather than a transitive-root identity, with a valid no-inheritance control through the public entrypoint.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
+      "prompt": "Repair inherited authorization or configuration resolution so a shared nested payload does not transfer the root identity; distinguish direct-parent and transitive-root outcomes through the production path and retain a non-matching root control.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
+      "prompt": "Implement provenance-graph materialization for recursively shared records, checking the reference-selected edge identity in a three-node chain while keeping unrelated flat formatting out of scope.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
     }
   ],
   "negative": [
@@ -3137,6 +3149,21 @@
     },
     {
       "prompt": "Rewrite an explanation of remaining resource contention without changing or publishing any configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a parser's recursive linked-payload tests distinguish direct-parent identity from transitive-root identity, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare direct-parent and transitive-root identity strategies for a proposed permissions graph before choosing an implementation.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of shared-payload identity semantics without changing tests, implementation or running commands.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
