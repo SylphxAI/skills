@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a signed-download refresh loop whose permanent issuance marker lets the existing link expire after one transient provider error.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship cache-snapshot regeneration with bounded retries after a terminated request loses its response, without replaying customer charges or grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a restore command whose recursive validator refuses the missing data that the restore is intended to recover, preserving rejection of invalid recovered data.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1446,6 +1458,62 @@
       "clause": "changing selected-source release inputs"
     },
     {
+      "prompt": "Extend terminal-state replay tests to resend the original payload through a discarded alias, including source-only replay and late redelivery.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a tenant-boundary fixture whose tenant and owner fields always share a value, varying them independently in permitted and refused cases.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement physical erasure across owned historical versions and verify held-reader residue without relying on text equality.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish a source change and verify every declared module is tracked despite a shared Git exclude file.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Change configuration generation so dangling reward and pool references fail compilation before publication.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Fix an adapter that maps quota shedding to permission denial, preserving the typed reason and request ID through the CLI.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair shared-content ACLs so retiring one consumer preserves grants required by another live consumer and admits no future metadata sibling.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change diagnostic redaction to sanitize the complete tool result before truncation and fan-out to storage, uploads and the next request.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a worker shutdown race where an old slot consumes a wake after durable idle but before publishing its stop.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Serialize erasure and late admission on one stable owner, proving both database lock orders through production entrypoints.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix breaker accounting so repeated reconciliation of one uncertain attempt counts once and does not deny an unrelated authorized destination.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair process-global PATH and file-lock tests with single-test subprocesses and explicit child identity configuration.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change privileged Git maintenance to use recorded metadata paths and protected per-worktree configuration without wildcard directory trust.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change database fixture identifiers to respect the tightest seeded column bound while retaining a random suffix.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Publish a SaaS reader-permission delta stacked on its held dependency branch when the commit is local but the publisher cannot find that branch's remote-tracking base.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -2377,6 +2445,31 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an erasure test covers discarded aliases and late redelivery, without modifying or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare fixture identity models for a proposed authorization architecture, without implementing tests.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether physical erasure evidence includes historical copies and held-reader residue; do not change code or operate the service.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared-principal grant lifetime designs without changing permissions or source.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a paragraph explaining synthetic identifier length limits without changing fixtures or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

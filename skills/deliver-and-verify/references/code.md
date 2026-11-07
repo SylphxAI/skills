@@ -144,7 +144,7 @@ for A, select same-text B and let A's reply mutate B; **Good:** resume against
 captured A and refuse a replaced or stale A, while unchanged A succeeds even
 after a test moves selection to B between submission and response.
 
-Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure and late admission must serialize on the same stable owner before the final eligibility snapshot and publication marker; deleting existing markers alone permits later resurrection. Prove both lock orders through real entrypoints and the database wait graph. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested helper that acquires a second connection from the caller's finite pool
 can starve while the outer transaction holds the available capacity; a larger
@@ -206,9 +206,7 @@ work or other tenants, or become stranded when its eligibility changes after
 discovery advances. Repeated polls with unchanged
 inputs prove only idempotence; change an already-scanned candidate's inputs and
 verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the
-completion or deletion contract is satisfied; atomic batches remain a different
-contract.
+a read that can itself complete the work. Preserve its retry source until the completion or deletion contract is satisfied; atomic batches remain a different contract. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -236,10 +234,13 @@ terminal result and a rejection before any send as controls. A mock returning
 a prebuilt error cannot establish which side of dispatch the failure occurred.
 
 With PgBouncer transaction pooling, a backend connection belongs to the client
-only for one transaction. Do not rely on session `SET`, `LISTEN`, or
-session-level advisory locks across transactions. Use transaction-local settings
-and transaction-scoped locks where appropriate; route genuinely session-bound
-work through a supported session or direct connection. Verify the deployed pool
+only for one transaction. Do not rely on session `SET`, `LISTEN`, temporary
+objects or session-level advisory locks across transactions. Post-commit
+verification resolves durable objects by stable IDs, not session-local staging;
+a missing temporary object after confirmed `COMMIT` is a verifier failure, not
+evidence of rollback or permission to resend the mutation. Use transaction-local
+settings and transaction-scoped locks where appropriate; route genuinely
+session-bound work through a supported session or direct connection. Verify the deployed pool
 mode, driver and prepared-statement configuration with concurrent database-backed
 tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
@@ -657,7 +658,7 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 
 Runtime fixtures must compile and lint in the repository's compile-only configurations without runtime-only setup; passing configured execution does not establish that contract. At execution, a required resource-dependent check fails clearly when setup is absent, while an optional suite retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
-Share cohesive fixtures and table-driven cases where that improves readability.
+Share cohesive fixtures and table-driven cases where that improves readability. When production treats fields independently, vary them independently in allowed and refused cases unless its contract guarantees equality; assigning the same value to tenant and owner can hide a boundary defect.
 When several implementations or adapters claim one behavioral contract, preserve
 the authoritative cases’ identities, multiplicity, units and expected outcomes
 across the changed boundaries; a locally reconstructed equivalent can erase the
