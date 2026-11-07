@@ -1482,6 +1482,18 @@
       "clause": "zero-token external inbox/queue watcher"
     },
     {
+      "prompt": "Ship a zero-token SaaS support queue watcher that keeps independent queues observed when one target becomes stale, and re-arms unknown alerts only after fresh evidence.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Repair a zero-token card-game support inbox watcher that repeatedly wakes on the same unknown state because successful requests return stale snapshots.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement per-target failure recovery in a zero-token external queue watcher, preserving healthy observations and stopping at the shared quota boundary.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
       "prompt": "Implement an async clipboard write that survives an A-to-B same-text interleaving by carrying entity and version identity across the held promise.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -3060,6 +3072,21 @@
       "prompt": "Review whether a running observer proves continued wake coverage after its one-shot subscription fires; report evidence without shipping a fix.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether stale successful responses actually restore one queue observer; report evidence without changing or shipping anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare global and per-target failure budgets for a proposed queue monitor without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the operator explanation of unknown-state alerts without changing the watcher or running any commands.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Compare one-shot and persistent subscription designs for an inbox before implementing either.",
