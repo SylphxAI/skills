@@ -346,6 +346,15 @@ evidence of intent bound to exact identity and meaningful state. Intent approval
 never waives geometry, paint or runtime-action checks; unchanged-baseline
 self-comparison needs no new approval.
 
+An offline engine adapter can pass isolated checks while inventing symmetry or
+losing state between phases: derive each axis's contract and phase order from
+the pinned upstream source, not from the other axis. Compare a chained case
+where one phase changes the next phase's input against independent upstream
+results, alongside empty-input and unchanged fixed-constraint controls; isolated
+axis results do not establish composed behavior. A matching fixed-constraint
+baseline remains valid, but does not establish flexible or content-dependent
+behavior.
+
 Treat target size, hit testing and visible paint as separate assertions:
 
 - A control can submit the right values and expose an accessibility label while

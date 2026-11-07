@@ -1948,6 +1948,14 @@
     {
       "prompt": "Regenerate a card game's client catalog and editor documentation so explicitly excluded rewards stay unavailable despite inferred expansion support, while supported rewards and documented missing-metadata fallbacks remain unchanged.",
       "clause": "generating source"
+    },
+    {
+      "prompt": "Fix a SaaS dashboard layout adapter that computes both axis inputs before horizontal sizing; compare the chained width-dependent height with pinned upstream behavior and retain empty-input and unchanged fixed-size controls.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game offline UI adapter that assumes horizontal and vertical sizing are symmetric; verify each upstream axis contract and a chained cross-axis case without changing matching fixed-constraint results.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
