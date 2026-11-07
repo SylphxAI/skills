@@ -338,12 +338,27 @@ Project world points into capture-derived boxes using the same temporary aspect
 ratio and projection as rendering and pixel capture; restore the camera on both
 success and rejection. Prove the check fails if aspect correction is removed.
 
+Positive hit geometry and handler ownership can still describe an unintended
+or nonfunctional control. Compare the complete candidate control inventory and
+activation states against a verified serving baseline: additions, including dormant
+controls that runtime code can activate, and inactive-to-active transitions need
+evidence of intent bound to exact identity and meaningful state. Intent approval
+never waives geometry, paint or runtime-action checks; unchanged-baseline
+self-comparison needs no new approval.
+
 Treat target size, hit testing and visible paint as separate assertions:
 
 - A control can submit the right values and expose an accessibility label while
   rendering no visible label. Assert its displayed content as well as its
   accessible name and action, and inspect the captured frame before presenting
   it as visual proof.
+- For runtime-activated controls that are serialized inactive, evaluate each
+  target with sibling menus still inactive. Resolve its runtime layout and
+  nearest click-handler ancestor, then require the primary visible artwork
+  centre to dispatch to a handler in that target's own subtree; a positive
+  raycast area at a corner is not enough. Calibrate each semantic assumption
+  against mapped device taps before making the checker blocking; serialized
+  defaults alone do not establish runtime reachability.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
