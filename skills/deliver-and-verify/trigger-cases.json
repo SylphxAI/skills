@@ -1190,6 +1190,18 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
+      "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
       "clause": "implementing or shipping a feature, bug fix"
     },
