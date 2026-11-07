@@ -2,7 +2,7 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Add native pull-request CI supersession without letting an always-running aggregate retain the concurrency group and block its replacement cleanup.",
+      "prompt": "Add native pull-request CI supersession so the required aggregate releases its concurrency group without turning a cancelled run into a passing skipped check.",
       "clause": "changing CI workflows or concurrency"
     },
     {
