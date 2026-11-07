@@ -121,15 +121,32 @@ values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 Resolve generated targets and consumer references in that rendered output too:
 namespace or content-hash rewriting can leave separately valid documents
-pointing at different objects. **Wrong:** validate a template and its generator
-independently; **right:** verify the emitted consumer resolves the emitted target.
+pointing at different objects. Content-hash rewriting can also change an existing
+immutable operation's template even when no execution is intended; retention or
+prune settings do not make that update legal. Preserve its template and referenced
+generation, or authorize a distinct operation identity rather than rewriting or
+replaying the completed operation. **Wrong:** validate a template and its generator
+independently; **Right:** resolve the rendered references and dry-run the effective
+update against existing objects, proving unchanged immutable templates and no
+unintended execution.
 
-Trace each pinned or referenced input through the existing automatic writer's
-change trigger, propagation latency and the consumer's read behavior; an initial
-deployment does not prove later input changes propagate. **Wrong:** rotate a
-Secret and assume a completed Job reruns. **Right:** change only that input and
-verify the intended consumer uses its new revision within the declared
-propagation time, including CI, merge queue and deployment reconciliation.
+Identity-label selectors depend on the producer's propagation contract, not the
+label key's apparent meaning: compare representative admitted consumers with the
+source that supplies their labels, including generated children and opaque IDs.
+**Wrong:** use a display name as an ID, or infer that a routing label is inherited
+by a background worker; **Right:** test the actual supported label combinations
+and exclusions, then verify the deployed consumer's identity and behavior.
+A policy match proves only eligibility until that consumer exercises the path.
+
+Trace changed inputs through the automatic writer's trigger, propagation time
+and consumer read behavior; a new deployment does not establish later updates.
+New metadata can also remain unpublished when an unchanged primary value skips
+the writer: exercise the real reconciliation entrypoint with old or absent
+metadata and an already-correct primary value, preserving that value while
+verifying the promised metadata reaches its consumer. **Wrong:** call the new
+formatter or force an unrelated state change to make the sample appear.
+**Right:** prove both changed and unchanged passes through the normal writer,
+with missing and existing metadata, within the declared publication contract.
 
 An automatic update can discard a temporary compatibility approval while another
 consumer still uses it. Exercise successive and unrelated updates during a
@@ -565,6 +582,8 @@ publishing the correction.
 
 Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check the final state after queued work settles; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
+Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
+
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Derive conformance vectors' expected outcomes from the contract or specification
@@ -739,9 +758,12 @@ permission change because its account is absent from the old audit sample.
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
 requests fail without expanding collateral comparisons.
 
-A read-only or dry-run helper can be correct while its public mode dispatch
-selects the mutating path. Exercise the assembled entrypoint with a zero-effect
-assertion and prove that redirecting that mode to the mutator fails the same test.
+A helper's refusal or dry-run guarantee can disappear in public mode dispatch or
+exit-status translation. Exercise allowed and refused cases through the assembled
+entrypoint, asserting effects, structured output and the enclosing caller's status.
+**Wrong:** count `valid: false` with exit status 0 as a rejected command; **right:**
+when the command promises rejection, refusal exits nonzero without mutation while
+a valid dry run exits 0 without mutation.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
