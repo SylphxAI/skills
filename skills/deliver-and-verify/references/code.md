@@ -12,6 +12,15 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+A configuration rewrite can corrupt untouched caller fields when a serializer
+from another format accepts different string escapes or key syntax. Verify the
+complete rewritten document with the destination consumer's parser, including
+non-ASCII and escaped keys and values, and assert that caller-owned content
+survives successive updates and removal of managed settings. **Wrong:** inspect
+only the new section or round-trip through the helper's own serializer;
+**Right:** parse the emitted configuration through its actual consumer and
+compare preserved fields.
+
 A scoped policy waiver suppresses only its local findings: waived input still
 updates semantic state, including facts that invalidate earlier assumptions,
 while tokenization, parsing and boundary failures remain non-waivable.
@@ -596,6 +605,13 @@ codes plus the intended source/API identity, never compiler English wording.
 **Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
 the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
 fails that same assertion.
+
+When a parser promises contextual errors, test invalid input through flattened
+and dynamically named maps as well as ordinary typed nesting: intermediate
+buffering can preserve values while losing the source path. Assert the offending
+section, named entry and key through the production entrypoint, with a valid entry
+as a control. **Wrong:** accept any deserialization error; **right:** an invalid
+field under a named entry identifies that entry, not only its parent table.
 
 Before attributing state loss or duplicate work to product code, prove the fixture
 reached the intended state through the real lifecycle: accepted or cursor-advanced
