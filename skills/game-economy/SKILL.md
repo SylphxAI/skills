@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when checking reward-route support, choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
 ---
 
 # Game economy
@@ -34,6 +34,17 @@ Name the decision, affected population, currency, live configuration, complete
 measurement window and next meaningful content release. Separate observations,
 assumptions and proposed changes. Read the serving offer and actual settlement
 path before blaming a price or economy.
+
+A reward type accepted by a generic helper can be silently skipped by mail,
+shop or item-use dispatch; check each entry against the selected serving channel
+and version, including whether receipt or claim status can advance after partial
+credit. Resolve item definitions through the runtime-selected baseline and override
+precedence—an empty override table does not prove absence—and include every bundled
+effect, automatic or manual use, and quantity limit before substituting a container.
+**Wrong:** treat a stored or claimed mixed-reward message as complete; **Right:**
+reconcile each promised leaf reward with its durable consumer effect, preserve
+credited entries and repair only the verified missing entitlement through a
+supported route.
 
 For each currency and progression system, collect:
 
