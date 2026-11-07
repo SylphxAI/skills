@@ -144,7 +144,7 @@ for A, select same-text B and let A's reply mutate B; **Good:** resume against
 captured A and refuse a replaced or stale A, while unchanged A succeeds even
 after a test moves selection to B between submission and response.
 
-Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure and late admission must serialize on the same stable owner before the final eligibility snapshot and publication marker; deleting existing markers alone permits later resurrection. Prove both lock orders through real entrypoints and the database wait graph. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested helper that acquires a second connection from the caller's finite pool
 can starve while the outer transaction holds the available capacity; a larger
@@ -206,9 +206,7 @@ work or other tenants, or become stranded when its eligibility changes after
 discovery advances. Repeated polls with unchanged
 inputs prove only idempotence; change an already-scanned candidate's inputs and
 verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the
-completion or deletion contract is satisfied; atomic batches remain a different
-contract.
+a read that can itself complete the work. Preserve its retry source until the completion or deletion contract is satisfied; atomic batches remain a different contract. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
