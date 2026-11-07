@@ -803,10 +803,12 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-When adding a guard, refusal or early return, trace every caller with side effects
-and test what each caller does after refusal, not only the guarded method.
-A correct early return does not prevent its caller from closing or discarding
-state. For shared eligibility or availability rules, verify each public contract for temporary
+When adding a guard, refusal or early return, trace public callers beyond the
+changed-file diff: an inherited generic handler can turn a new typed refusal into
+normal completion. Zero mutations proves effect fencing, not caller-visible
+rejection; exercise those boundaries for both refusal result and preserved state
+alongside permitted completion. A correct early return also does not prevent its
+caller from closing or discarding state. For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
