@@ -206,16 +206,14 @@ preparation, work submission, completion and capture. A mount or load duration
 does not measure the whole operation. Retain the last typed readiness state and
 timings on failure; a generic loading message does not identify a missing asset.
 
-An enclosing timeout can be spent discovering a fixture or configuration that
-exists but was never selected; little business-work CPU and no assertion output
-therefore establish neither a product hang nor a missing fixture. Compare the
-effective default route with the same run using an explicitly selected,
-known-good fixture or configuration, while keeping the original assertions and
-deadline. Attribute the delay to discovery or startup only when the phase
-timings and selection evidence support it; otherwise leave the cause open.
-The control transfers across domains: an explicit schema or profile selection
-should be tested the same way as an explicit test fixture, while an intentionally
-invalid selection must fail during setup rather than count as business success.
+An enclosing timeout can be spent on implicit discovery even when the intended
+fixture or configuration already exists; existence does not prove selection.
+When traces place the wait before business execution, compare the default route
+with the same artifact and workload using a supported explicit selector,
+preserving the original assertions and deadline. Verify effective selection and
+separate discovery/startup timings from business execution before attributing
+the failure to product code; a wait that remains in business execution needs a
+different explanation.
 
 Compare the same artifact and workload alone and concurrently under the failing
 runner's effective CPU quota and affinity. Record its memory limit and observed
