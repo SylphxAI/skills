@@ -96,14 +96,16 @@ tests; **Good:** retain the adapter cache, restart the caller, and prove complet
 revalidation and later updates without weakening authentication or quota admission.
 
 Before replacing a remote dependency with a fake, read its endpoints, media
-types, credential scope and error envelope: a shared helper can send one
-provider's headers to another, while a permissive fake still returns success.
-Verify the prepared request and redirect chain per origin, including accepted
-media types and credential removal outside the authorized origin; use an
-authorized read-only live control when the fake cannot establish provider
-acceptance. **Bad:** infer compatibility from a mocked JSON body; **Good:** the
-fixture rejects the wrong media type and cross-origin credential forwarding,
-and a real metadata read confirms the permitted request.
+types, credential scope and error envelope. A fake above request construction
+can hide an invalid default route even when populated resource routes pass:
+exercise empty/default and explicit selectors through the real adapter, with
+exact-route fixtures that reject undeclared requests. Verify prepared requests
+and redirects per origin, including accepted media types and credential removal
+outside the authorized origin; use an authorized read-only live control when
+the fake cannot establish provider acceptance. **Bad:** infer compatibility from
+a mocked client method returning JSON; **Good:** the fixture rejects the wrong
+route, media type and cross-origin credentials, and a real metadata read
+confirms the permitted request.
 
 For browser privacy claims, include [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests).
 A clean payload observed by a transport mock cannot establish whole-request
