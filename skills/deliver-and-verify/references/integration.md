@@ -51,7 +51,13 @@ repeat against an existing key, distinguishing no-write behavior from a retained
 new version. The resulting data stays correct and secrets do not appear in output.
 
 Before/after completeness comparisons use the same endpoint, request scope and
-stable key; matching counts can hide one missing object replaced by another.
+stable key; each paginated population needs distinct stable IDs and coherent
+count/version evidence before a completeness or terminal decision. With mutable
+offset pagination, a front insertion can repeat already-read IDs on later pages,
+so cumulative rows may match a rising total while omitting a new pending member.
+Verify that such a read remains incomplete or nonterminal, while a complete
+stable population still reaches its valid terminal outcome.
+
 Cross-endpoint enrichment needs an explicit shared key: array order and similar
 names do not establish identity, and unresolved joins remain incomplete.
 **Bad:** pair two catalog arrays by position; **Good:** compare each endpoint's
