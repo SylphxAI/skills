@@ -199,6 +199,11 @@ Synthetic contrasts:
     name**, (2) **last inbound message text**, and (3) **thread identifier** (URL
     route or DOM thread ID)—so UI focus lag can never send user B's reply into
     user A's thread.
+  - **Outbound email identity:** Before using an email reply helper, verify that
+    its configured email inbox and envelope sender exactly match the current
+    case's authorized support identity. A helper name or successful read access
+    does not prove send authority for that identity; a mismatch requires
+    resolving the route, never substituting another identity.
   - **Self-serve checkout and voucher routing:** Route top-up, direct-purchase,
     or voucher inquiries to the official self-serve web checkout and voucher
     center. Write like a warm, witty human who read what the customer just

@@ -62,6 +62,14 @@ Read the exact failing job log, exit status, and resource metrics before choosin
 | **4. Authority, credential, or session challenge** | Missing scope/grant, expired token, or interactive login/CAPTCHA challenge | Reuse existing delegated credentials from the authorized secret store (including in-process secret-reference resolution and automated TOTP), preserve persistent browser profiles (`--user-data-dir` / cookies) so authenticated sessions are never needlessly wiped, and trigger an interactive human browser takeover only after every zero-human sign-in channel is exhausted: the provider's SSO button for the agent identity, an emailed magic link or code from an inbox the agent reads, an SMS code from the company number's inbox, an API or CLI with existing keys, and a trusted persistent profile. A CAPTCHA widget under one email/password form is not a challenge while another channel on the same page avoids it. **Wrong:** see `captcha_detected` on the password form and page a person. **Right:** try "Continue with Google" or the emailed code first; ask a person only for a challenge every channel shows, or for hardware approval. |
 | **5. Quota, rate limit, or capacity ceiling** | Provider HTTP `429`, exhausted seat/API quota, or saturated build lock | Pace concurrency to the measured sustainable rate, switch to an approved fallback capacity pool within existing spend limits, or surface the exact measured capacity gap to the budget owner. |
 
+An identity API can acknowledge a new credential before the authenticating
+service adopts it, so an immediate consumer refusal alone does not establish a
+bad secret. Reconcile the issued identity and its actual consumer within the
+existing propagation and caller-deadline budget before replacing grants or
+resetting retained credentials. **Wrong:** create a second key after the first
+API acknowledgement and failed login; **Right:** preserve the issued key and
+establish consumer convergence or a concrete authorization error.
+
 A successful automation run can leave every update permanently ineligible: if
 an age or stability wait restarts whenever the selected target changes, a target
 that moves faster than that wait never qualifies. Compare the policy's timestamp
