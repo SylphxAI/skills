@@ -1416,6 +1416,14 @@
     {
       "prompt": "Arm a shared approval-gate adoption only after the target repository has a working producer and its current-source approval succeeds.",
       "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Fix a browser synchronization regression whose assertion yields to queued animation callbacks that can hide the defect; verify the immediate boundary and final state separately.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an optimistic order-state rollback test where a queued UI refresh restores the expected value before the assertion, masking a broken rollback.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
