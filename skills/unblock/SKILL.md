@@ -50,6 +50,13 @@ For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
 
+A lifecycle refusal can come from a missing creator–consumer contract even when
+filesystem ownership and traversal are correct. Reproduce the operation through
+the supported consumer on disposable objects with and without the required
+metadata before widening access; if metadata explains the difference, repair its
+creator and existing objects through their normal owner rather than weakening
+the refusal.
+
 Read the exact failing job log, exit status, and resource metrics before choosing the action:
 
 | Failure class | Observable signal | Immediate restoration path |
