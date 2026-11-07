@@ -293,6 +293,8 @@ Keep one executable public contract and derive clients where that prevents drift
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
 
+Verify supported external construction and call forms against the published version contract; adapting in-repository callers can hide a consumer source break. Adding even a defaulted field to an exhaustively constructible public type, or making a field private, can invalidate existing consumer construction. Within a stable contract, prefer an additive policy-aware entrypoint that preserves supported construction and legacy calls over extending that type in place.
+
 When publication requires the selected commit to equal a live branch head, even
 documentation-only commits invalidate that identity. Coordinate every writer to
 that branch through the authoritative validation boundary, without a standing
