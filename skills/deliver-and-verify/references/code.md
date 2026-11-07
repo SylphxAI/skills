@@ -870,6 +870,12 @@ it even when its output column is unused. Validate metadata-only reads and row
 locks independently before using that view to judge the production projection.
 
 For pooled-resource teardown, check client ownership and server state separately.
+Raw fixture handles can bypass the ownership wrapper's release/reset path: test
+through public checkout and drop the same lease type that callers own.
+**Bad:** infer cleanup from raw-handle timeout tests; **Good:** time out actual
+leases at physical capacity, release them, and observe physical-resource
+accounting and replacement progress, with clean and abandoned-state controls
+checking emitted cleanup operations and resource identity.
 A returned close future does not establish that the pool drained every resource.
 Before attributing a surviving session to a worker, read the exact driver's close
 and return ordering and measure the remaining pool size. Reproduce a return
