@@ -139,8 +139,10 @@ Primary source checked 2026-11-06:
 ### Missed completion events
 
 A registered watch does not prove that its observer saw the terminal status or
-that its notification resumed the waiting worker. Retain the target, source
-revision, baseline, last observed status and expected completion window. For an
+that its notification resumed the waiting worker. Its name also says nothing about
+provider cost: inspect the [observer's actual request and quota behavior](../deliver-and-verify/references/integration.md#provider-integration),
+backing off at the shared rate-limit floor rather than multiplying per-target GETs.
+Retain the target, source revision, baseline, last observed status and expected completion window. For an
 unverified event source, keep a timed fallback that reads the target directly.
 
 If the target has finished but the watch still reports pending, read the final

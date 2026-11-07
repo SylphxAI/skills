@@ -7,7 +7,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Types and boundaries
 
-- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
+- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
 - Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence does not turn upstream inference into authority: privilege or scheduling escalation needs authoritative source evidence, not user-controlled names or lookalikes. Verify those decisions through real upstream classification, state transformations, persistence and reload—not just directly seeded records—with absent, unknown or tampered provenance, user-controlled lookalikes and an explicit authoritative positive control, including successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
@@ -168,7 +168,7 @@ forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
 
-Optional presentation metadata and executable fulfilment are separate contracts: missing labels may be harmless, but a valid container does not prove its executable descendants resolve. Before consuming a single-use right, resolve the complete payload recursively through the actual fulfiller's type-specific catalogues; any unresolved descendant must refuse the whole operation atomically. Test missing typed leaves at several nesting depths alongside an entirely valid nested payload and missing optional labels, so neither top-level-only checks nor blanket refusal can pass.
+A catalogue match proves identity, not fulfilment eligibility: before consuming a single-use right, admission and fulfilment share one eligibility predicate for every executable descendant, while absent optional presentation metadata remains harmless. Complete traversal needs explicit depth and work bounds with typed atomic refusal; caching a completed subtree must not hide a longer path or unbounded repeated work. Contrast existing-but-ineligible and missing descendants with valid nested payloads, optional-label omissions and graph-boundary controls, so neither top-level-only checks nor blanket refusal can pass.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -632,6 +632,11 @@ Concurrency assertions should distinguish the mechanism from scheduler latency: 
 
 For process-lifetime tests, a runtime's exit notification need not be the contract: bounded observation of authoritative process state can establish termination (including a zombie if reaping is not required), with a live-process control proving the observer still refuses nontermination. A child's ready marker does not prove its parent's signal handler or cleanup region is ready; the synchronization evidence must come from the component whose behavior the test exercises. Raw monotonic timestamps from different runtimes may have different origins: correlate observations with UTC and measure durations within each clock domain, without treating a missing stage event as evidence of when or why that stage failed.
 
+A fixture's execution placement is part of its input: nested tool calls may select
+a different host or sandbox than their enclosing call. Bind placement explicitly
+through the actual nested entrypoint and verify that the child reaches the fixture's
+files or listener; an outer placement setting alone does not prove that path.
+
 A bounded retry around temporary-profile cleanup is a workaround: descendants can still write after the direct child exits. Run the child in its own process group and wait for the whole group before removing the profile; never retry a test assertion.
 
 An adapted reference executable can repeat an adapter defect even when its core source is untouched; pin source/configuration, make boundary substitutions explicit, and qualify it against independently recorded outcomes when available. Compare the same computation stage, separating later modifiers, and keep missing inputs unknown: exact known-input matches and compatibility across possible inputs support different claims. **Wrong:** infer a missing input from the expected result and count it as an exact match; **right:** report the unknown stratum separately until independent evidence resolves that input.
@@ -779,7 +784,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy. One wall-clock budget covers admission, every fallback source and attempt, backoff including `Retry-After`, reconciliation and durable/terminal receipts, below the shortest caller timeout with completion margin. Clamp waits and requests to the remaining budget and enforce an outer hard timeout around the whole chain; neither a per-attempt timeout nor a retry-start cutoff bounds the last in-flight unit. **Bad:** give every mirror a fresh retry budget or let a server delay extend it; **Good:** prove combined exhaustion and oversized `Retry-After` finish within the unchanged caller deadline, with cancellation resumable from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.

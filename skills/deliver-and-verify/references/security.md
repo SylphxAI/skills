@@ -34,7 +34,7 @@ network call.
 
 A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.
 
-Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** retain an allowed status field containing an arbitrary object; **Good:** reject undeclared shapes while preserving useful validated status, timestamps and safe diagnostic detail, with positive controls proving that useful output survives.
+Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** print an allowed operation or request-ID field containing a bearer value or a URL query credential; **Good:** validate values against an operation enum or canonical ID grammar before truncation, redact nonconforming values, and pair credential/URL sentinels with useful safe-output controls.
 
 A redaction boundary sanitizes the complete stream before output caps, in linear
 time within the failure-reporting budget: whole-value matching can miss quoted,
@@ -105,6 +105,28 @@ pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
 permissions untouched after a deterministic symlink swap.
 
 For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Atomic configuration replacement can revoke the original owner's access: preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
+
+## Source publication authority
+
+Agreement between observations of the same writable state is not independent
+verification: shared refs and group-writable Git metadata, including linked-worktree
+reflogs, cannot witness caller authorization. Push the exact full commit SHA retained
+by the publisher, with replacement refs (`refs/replace`) and grafts disabled
+process-wide, including child Git commands; a retained SHA alone cannot prevent
+resolver substitution. **Bad:** compare a shared branch with its reflog, then push
+by branch name; **Good:** prove that ref, reflog and resolver tampering cannot change
+the authorized uploaded tree, while permitted deterministic rewrites still work.
+
+A rewritten source pin advances only from the publisher's directly captured output
+after exit 0: in a receipt with `expected_head`, `source_head` and `local_head`,
+the first two must equal the previously retained full SHA, and the returned full
+`local_head` must validate as a commit. Nonzero exit, plausible JSON, partial-upload
+heads, shared refs/reflogs and predictable receipt files confer no authority.
+For an ancestry-preserving rewrite, a retained first-parent cut `original~N` maps
+to returned `local_head~N` with replacements and grafts disabled; arbitrary cut
+points need an explicit verified mapping rather than a fresh shared-ref lookup.
+
+Source read 2026-11-07: [Git replacement-object controls](https://git-scm.com/docs/git#Documentation/git.txt---no-replace-objects).
 
 ## Runtime isolation
 
