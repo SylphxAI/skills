@@ -20,15 +20,19 @@ A circuit breaker counts distinct attempted operations: every uncertain submitte
 
 ## Regional store prices
 
-Matching local catalogues or one home-market tier proves internal consistency,
-not equality with a store's territorial prices; the authoritative price key
-includes store, SKU, territory and currency, and a partial regional export leaves
-unobserved regions unknown. **Wrong:** normalize shared-currency countries to
-one price, or borrow another product's same-SKU price after a known territory
-contradicts that source. **Right:** bind each write to the correct product/source
-row and exact territorial observation, distinguish an explicitly authorized cache
-mirror from a store-price repair, and verify that the serving path actually
-selects the changed rows.
+Matching local catalogues, a home-market tier or shared-ID rows proves internal
+consistency, not store-price correctness: account for the complete input
+population, validate each store binding against entitlement/offer identity, and
+compare every eligible row's price fields with the authoritative store, product,
+SKU, territory and currency snapshot; unobserved regions remain unknown.
+Route flags establish explicit non-store, free or hidden exceptions—even positive
+legacy price metadata need not imply a store purchase—and historical client rows
+and intentional bindings remain supported rather than being regenerated from a
+narrower export or forced to use every authoritative product ID.
+**Wrong:** make amounts agree with a misbound SKU or check only changed/duplicate
+rows; **Right:** prove offer identity and territorial amounts across all eligible
+rows, distinguish an authorized cache mirror from a store-price repair, and
+verify that serving selects the changed rows.
 
 ## Destructive and conditional writes
 

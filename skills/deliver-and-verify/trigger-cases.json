@@ -2060,6 +2060,18 @@
     {
       "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Correct regional store prices across a mobile catalog, including single-row SKUs that have no shared-ID comparison.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix store product bindings for annual and quarterly offers without dropping historical client rows.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Update territorial SaaS store subscription prices while preserving explicit free and hidden purchase routes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -3445,6 +3457,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an existing store-price audit covers every eligible row and validates offer identity; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare proposed regional subscription pricing architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a regional price announcement without changing prices, running commands or publishing anything.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
