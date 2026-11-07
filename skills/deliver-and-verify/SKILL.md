@@ -18,6 +18,11 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
+## Step 0: Route identifier changes
+
+When changing multi-namespace lookups or identifier-based pagination, read
+[identifiers.md](references/identifiers.md) before defining acceptance cases.
+
 ## Coordinate the work
 
 - Keep one named writer per worktree, pull request, database record, or live configuration. Before building, search open PRs for the same outcome to avoid duplicate implementations; distinct outcomes may edit the same files in parallel in isolated worktrees and resolve conflicts normally. Parallel readers and writers on independent targets can proceed together.
@@ -33,6 +38,9 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
+For request/response limits, context compaction, agent tool outputs or low-rate
+flake comparisons, read
+[final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
 For large transfers, shared response caches, fan-out streams, archive restores,
 or stored-output replay, read
 [bounded memory for large transfers](references/performance.md#bounded-memory-for-large-transfers)
@@ -54,6 +62,8 @@ an advertised creation, deployment or port-exposure operation.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+Time-windowed usage or billing queries also use
+[temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).
@@ -102,8 +112,8 @@ For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
 For source checkout or materialization changes, shared-cache permission failures,
-pinned-tool launch failures, generated CLI calls, sandbox build templates or
-native compilation failures,
+child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
+failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
 
 When changing database test setup or disposable fixture cleanup, read
@@ -121,7 +131,10 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
+When handling credentials exposed in process arguments or changing diagnostic
+or stored-body redaction, read [security.md](references/security.md) to protect
+the actual launching process, preserve useful diagnostics and prevent content
+from reappearing through later writes.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).

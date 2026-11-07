@@ -12,6 +12,10 @@ will save two-thirds of tokens and subscription cost.
 compare provider usage on the same model and effort before and after the fix.
 Report bytes, tokens, cache reads and money as different measurements.
 
+## Temporal query evidence
+
+For time-windowed usage or billing queries, classify each sample by its own recorded facts, never today's metadata, which can reclassify closed history after a resize or tier change. Verify conservation of the parts against the whole in the real query engine, including a mid-window transition: complementary predicates do not guarantee complementary integrals when absent series and numeric zero differ. **Bad:** accept query-string unit tests and drop the zero-valued complement; **Good:** retain that series where range-function semantics require it and verify the independently expected total through the consuming query.
+
 ## Establish a counts-only population
 
 1. Define the UTC window, allowed agents/products, runtime/model/effort, agent

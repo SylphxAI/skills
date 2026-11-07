@@ -76,6 +76,10 @@
     {
       "prompt": "The merge queue ejected a pull request after runner loss. Its old merge-group retry now passes, but the pull request is still outside the queue. Restore admission at its unchanged current head.",
       "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "The cancellation API accepted an obsolete CI run, but it remains queued and its replacement is stuck pending. Restore the replacement without cancelling unrelated work.",
+      "clause": "a queue/review stops progressing"
     }
   ],
   "negative": [
@@ -126,6 +130,11 @@
     },
     {
       "prompt": "The pull request has a live merge-queue entry and its merge-group build is progressing within its expected duration. Leave it running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    },
+    {
+      "prompt": "A cancelled export is draining within its documented cancellation grace period and its replacement is waiting normally. Leave both operations alone.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
     }

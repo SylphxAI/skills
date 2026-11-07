@@ -9,11 +9,12 @@ Use this skill when engaging users or players as an in-character **Ambassador (`
 
 Load [references/behavioral-operations-and-retention.md](references/behavioral-operations-and-retention.md) for the full behavioral psychology mechanisms, three-tier retention grant matrix, Adversarial Turing self-test, and dialogue contrast tables.
 
-Before drafting a mobile chat reply, apply
+Before drafting or delivering a mobile chat reply, apply
 [the shared narrow-bubble guidance](../clear-writing/SKILL.md#narrow-mobile-chat-bubbles)
-for real paragraph breaks and separate option lines. It takes precedence over
-general prose or no-bullets defaults while preserving warmth and the user's
-instructions.
+for paragraph limits, real `\n\n` gaps, one option per line, and explicit
+Lexical `linebreak` nodes with API verification when using a Lexical Web-UI
+composer. It takes precedence over general prose or no-bullets defaults while
+preserving warmth and the user's instructions.
 
 ## Step 0: LTV & Payment-History Weighting and Complete Context Read
 
