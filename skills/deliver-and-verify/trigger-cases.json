@@ -714,6 +714,18 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
+      "prompt": "Publish bulk CI enrollment only for repositories included by the authoritative lifecycle and ownership inventory, including an explicitly eligible frozen target.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a bulk configuration change that excludes paused and retired services under its declared scope instead of trusting nonarchived provider search hits.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement bulk CI updates that leave repositories with unknown lifecycle or owner mappings unresolved rather than guessing they are active.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1333,6 +1345,21 @@
     },
     {
       "prompt": "Rewrite this migration-safety explanation for clarity without changing or publishing the guard or CI.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Audit whether nonarchived repository search results belong to the authorized active or frozen population, without triggering CI or changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare lifecycle catalog and provider-search designs for a proposed bulk rollout without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of excluded paused, retired and unmapped targets for clarity, without applying a bulk change.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
