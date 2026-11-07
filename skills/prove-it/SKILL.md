@@ -25,14 +25,14 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Resolve repository aliases by the returned repository ID, full name and authoritative URL. A redirect to a legacy repository does not identify a similarly named current repository. A shared commit author does not identify the writer of a branch or its current owner.
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window.
-- Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
+- An absence claim needs an authoritative full read; otherwise state what was read and what was not. Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
   Replaying a missed pre-publication or other incremental check after a mutation
   can silently select nothing because references, cursors or caches have advanced;
   preserve or reconstruct the original selection boundary in an isolated verifier
   using the unchanged supported check, without rolling back live state. A passing
   replay needs evidence of the intended nonempty population, or a calibrated
   control establishing that an empty population is legitimate.
-- Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
+- Keep source assertions, continuous integration (CI) enrollment and executed results separate. Read a worker's commit, push, test result or commercial record yourself before presenting it as verified; a writer's run remains attributed evidence, not the reviewer's own execution. An attributed report can be relayed with its unchecked status clear.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,
 units and balance basis agree, including whether rows represent separate instances.
@@ -224,3 +224,13 @@ Consolidate the first review across the whole change. Later rounds check the fix
 For agent/runtime claims, use the shared [model/runtime boundary](../challenge/SKILL.md). Measure the affected span before changing the environment. Tool counts alone do not justify limiting reasoning or tool access; explicit user cancellation and authorized resource/spend limits remain effective.
 
 When evidence overturns a claim, correct what was wrong, state the bounded verified fact and source/read time, and credit whoever caught it.
+
+### Pull request review receipts
+
+Unread automated findings can invalidate an independent PASS, and a stricter
+error path can break clients that depended on a fallback.
+
+- Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
+- Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
+- If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
+- For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; treat comments justifying a fallback as invariants.
