@@ -9,7 +9,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 
 ## Establish the evidence
 
-- Read mutable status before a new claim that something is serving, deployed, merged, fixed or blocked. Name the object, version or revision, and UTC read time. An immutable object already read in the session can be reused at that exact version and scope.
+- Before claiming something is serving, deployed, merged, fixed or blocked, read its mutable status and name the object, version/revision and UTC read time; an immutable object already read can be reused at that exact version and scope. A cache reader can exit zero while an individual result says `stale: true`; check structured freshness, object identity/version and observation time rather than equating command success or a repository-level timestamp with current evidence. A stale observation cannot establish a current value or authorize a conditional write; any documented refresh or authoritative fallback stays within existing authority and the remaining read budget, without replaying completed stages or treating a quota/access refusal as staleness.
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
