@@ -66,6 +66,20 @@ download can finish. Verify the correction by reaching the inner check before
 attributing a setup failure to product code. Use the documented admission budget
 and event watches so waiting for capacity does not occupy an agent turn.
 
+## Preserve deliverables before retirement
+
+An agent workdir is scratch, not proof of preservation: archive cleanup can
+remove finalized artifacts along with temporary files. Before archive or
+retirement, every required deliverable must be written to a durable shared
+location outside the agent workdir and read back there, verifying its schema,
+hash and required-record counts against the intended deliverable. If cleanup
+reveals a gap, mark the missing records explicitly; never invent them or claim
+original completeness from a partial reconstruction.
+
+**Bad:** “The report was finalized in my workdir, so it is preserved.”
+**Good:** “The shared copy passes schema validation and matches the expected hash
+and required-record counts; it is preserved independently of this workdir.”
+
 ## Temporary recovery for stalled timeout sessions
 
 Until the runtime provides automatic recovery, a parent whose child reports
