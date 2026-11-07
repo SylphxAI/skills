@@ -1972,6 +1972,14 @@
     {
       "prompt": "Repair a card-game offline UI adapter that assumes horizontal and vertical sizing are symmetric; verify each upstream axis contract and a chained cross-axis case without changing matching fixed-constraint results.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add a SaaS policy-test CI step using only its selected runner's declared runtime and sparse checkout, rather than a workstation-only package launcher.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a game asset-validation workflow with explicit package-launcher setup and prove the declared command runs before judging its assertions.",
+      "clause": "changing CI workflows or concurrency"
     }
   ],
   "negative": [
@@ -3289,6 +3297,11 @@
       "prompt": "Rewrite a museum visitor notice for clarity without changing code or publishing anything.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a passing local script proves its CI launcher exists on the selected runner; report evidence without editing or publishing workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
