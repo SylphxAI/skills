@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI, and verify existing pods after the supported owner rollout.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game-serving priority fix that verifies the live numeric priorities of historical pods rather than assuming a new globalDefault changed them.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Update a stateful workload template while keeping intentionally expendable backup workers below production and checking that a non-preempting class does not imply victim immunity.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Fix a restore command whose recursive validator refuses the missing data that the restore is intended to recover, preserving rejection of invalid recovered data.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1447,6 +1459,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Read the current pod priorities and review whether a non-preempting class proves protection, without changing source or live state.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
       "clause": "prove-it for a review or evidence check",
