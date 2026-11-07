@@ -303,11 +303,15 @@ documented constraints and resolution strategy, not textual equality
 ([lockfile semantics example](https://docs.unity3d.com/2022.3/Documentation/Manual/upm-conflicts-auto.html),
 read 2026-11-06).
 
-Before pinning consumers to a registry or download mirror, verify the live
-metadata response shape and canonical archive URL through every redirect to the
-final bytes. Derive requests from the actual provider contract rather than a
-guessed per-version endpoint or a test fixture's URL layout, and verify a real
-package download through the mirror.
+Before pinning consumers to a registry or download mirror, derive metadata and
+archive requests from the live provider contract and verify a real download,
+including every redirect to the final bytes. A pinned digest proves byte
+identity, not permitted transport origin or child-process authority: constrain
+redirects to the declared origins and give download and version-probe children
+only their required environment and configuration, excluding unrelated
+credentials. **Bad:** accept a matching digest as the whole boundary proof;
+**Good:** also exercise an off-origin redirect and a sentinel parent credential,
+verifying the child's effective destination and credential absence.
 
 A completed retried download does not prove resumption: interrupt after a known
 prefix, observe the next request's actual `Range` offset advance to the retained

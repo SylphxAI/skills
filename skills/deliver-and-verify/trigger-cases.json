@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Upgrade a card-game build SDK through a checksummed mirror and preserve its declared origin boundary across redirects.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a package-installer fix that rejects an off-origin redirect even when the returned archive would match the pinned digest.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
       "clause": "synthetic probe"
     },
@@ -1663,6 +1675,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare mirror-only and preinstalled-SDK architectures before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of archive integrity versus download authority without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
       "clause": "prove-it for a review or evidence check",
