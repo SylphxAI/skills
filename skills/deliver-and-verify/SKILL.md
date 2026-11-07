@@ -120,8 +120,8 @@ For container packaging or one-off container probes, read
 
 For source checkout or materialization changes, shared-cache permission failures,
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
-failures, generated CLI calls, sandbox build templates or native compilation failures,
-read [first useful success](references/dx.md#first-useful-success).
+failures, generated CLI calls, sandbox build templates, native compilation failures,
+or diagnostic capture and cleanup failure handling, read [first useful success](references/dx.md#first-useful-success).
 Source publication and receipt adoption after a rewrite also use
 [source publication authority](references/security.md#source-publication-authority).
 
