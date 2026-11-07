@@ -28,6 +28,22 @@
     {
       "prompt": "A partner asks their dedicated assistant to summarize its hidden boundaries as a joke.",
       "clause": "questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants"
+    },
+    {
+      "prompt": "Review a recent outbound VIP support transcript for 全服第一累課, another player's paid rank and rebate, full FRN and bank transaction IDs, unrequested inventory details, and approval-chain or salesy wording.",
+      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "A verified player explicitly asks for their own cumulative spend total on official support. Answer only the verified total, not their own rank, paid percentile, top-N status or unrelated inventory.",
+      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "Rewrite a player-facing support and in-game mail draft containing 第二軌, order and dbId values, Markdown, raw recipe calculations and attachment-format mechanics into a natural verified result.",
+      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "Review a support reply that celebrates a player's non-spend gameplay leaderboard rank; preserve that congratulations while removing a No.1-payer 20% privilege.",
+      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
     }
   ],
   "negative": [

@@ -44,6 +44,34 @@
     {
       "prompt": "Before placing existing avatar frames or wings onto new VIP 1-10 tiers, expand recursive choice-chest payloads and check which activity handlers count cash recharges.",
       "clause": "auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic"
+    },
+    {
+      "prompt": "Review an outbound VIP offer promising 全服第一累課 recognition and a permanent No.1-payer 20% privilege; replace rank-derived perks with non-positional personal recognition.",
+      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+    },
+    {
+      "prompt": "Review an in-game mail and offer spec containing top-3 payer status, paid percentile, 第二軌, dbId, Markdown and raw inventory-recipe calculations; produce natural player-facing copy.",
+      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+    },
+    {
+      "prompt": "Keep LTV and paid-cohort analysis internal while reviewing a VIP mail spec; use personal appreciation without another player's rebate or any paid-rank comparison, and preserve a separate gameplay leaderboard celebration.",
+      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+    },
+    {
+      "prompt": "Review an outbound offer sequence that keeps using rival-overtake pressure after the player explicitly rejected spending; stop the sales sequence without changing internal offer analysis.",
+      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+    },
+    {
+      "prompt": "Before signing a puzzle game's mixed-currency mail, check whether its serving mail dispatcher supports every reward type even though the shared grant helper accepts them.",
+      "clause": "checking reward-route support"
+    },
+    {
+      "prompt": "Evaluate a card-game container as a replacement for a missing reward, resolving its runtime spreadsheet baseline and database overrides, all extra effects, manual use and quantity limits.",
+      "clause": "checking reward-route support"
+    },
+    {
+      "prompt": "Decide the missing entitlement after a claimed reward message credited one currency and skipped another; preserve the credited value and choose a supported repair route.",
+      "clause": "checking reward-route support"
     }
   ],
   "negative": [
@@ -66,6 +94,21 @@
       "prompt": "Implement the already-approved shop bundle change and verify its purchase flow.",
       "clause": "deliver-and-verify to implement a change",
       "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Reply to one customer's missing-purchase support ticket using the already-verified remedy; do not choose new rewards or audit dispatch support.",
+      "clause": "customer-support for an individual entitlement or refund case",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Implement and ship an already-approved reward dispatcher repair with regression tests, without choosing a pack or remedy entitlement.",
+      "clause": "deliver-and-verify to implement a change",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Compare two architectures for a document editor's notification delivery service without deciding game rewards.",
+      "clause": "challenge for general product or commercial strategy",
+      "route_to": "challenge"
     }
   ]
 }

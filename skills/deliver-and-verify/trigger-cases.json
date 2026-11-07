@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a shared email-provider reserve that consumes the entire quota of smaller tenant accounts, preserving transactional priority and bulk progress.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game commerce provider cooldown that incorrectly combines a short secondary Retry-After with an unrelated hourly quota reset.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Add native pull-request CI supersession so the required aggregate releases its concurrency group without turning a cancelled run into a passing skipped check.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -1710,6 +1718,42 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Run an authorized read-only credential-bearing service probe on a shared host and prevent sibling scripts from shadowing standard-library imports.",
+      "clause": "authorized operational"
+    },
+    {
+      "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Publish a SaaS batch-reader code correction whose generated configuration hash would rewrite completed Job templates; preserve the old operations and verify the effective update against their live objects.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a card-game reporting correction that gives future read operations a new code generation without replaying an old provisioning Job or changing its immutable template.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update generated runtime configuration and its rendered consumer references, proving existing immutable operations remain unchanged rather than relying on prune-disabled retention.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a SaaS policy-validation CLI that prints a structured rejection but exits successfully, keeping valid dry runs successful and mutation-free.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game content importer whose API refusal becomes exit status zero in the shell command; test refused and accepted validation through its real entrypoint.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a package-publishing dry run that preserves transport validation failures in its command exit status without invoking publication.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS status exporter whose new metadata never reaches an already-correct resource because reconciliation skips the write.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2827,6 +2871,26 @@
       "prompt": "Compare producer-side enrichment with documented scheduling signals for a proposed match-queue architecture, including unknown origins and explicit contradictory events, without implementing either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a generated configuration hash would change a completed Job's immutable template; report evidence only, without changing source or publishing.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare preserving historical operation templates with issuing distinct new operation identities for a proposed reporting architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a completed-job operations explanation for clarity without changing source, runtime configuration or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
