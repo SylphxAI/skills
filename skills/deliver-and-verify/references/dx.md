@@ -24,11 +24,16 @@ wrapper, derive both from the pinned launcher and verify initialization of the
 unchanged entrypoint before expensive work; an initialization refusal establishes
 no policy or product verdict.
 
-Local checks can inspect a different file population from the published artifact:
-ignored required files may pass from a mutable checkout, while local caches may
-be scanned as source. Publication evidence matches every manifest entry and digest
-to the clean committed archive or final package and exercises the consuming checks
-there. Check `git ls-files` covers every declared source import/module before handoff: a shared `.git/info/exclude` can silently hide new source across worktrees despite a clean status. Rebuildable caches stay outside that population unless the check's contract explicitly includes them.
+Verify completeness and integrity against the producer's intended manifest and
+the consumer's actual enumeration, matching every required entry and digest in
+the transferred archive or final package before exercising the consuming checks
+there. Transferred files, a regenerated index or catalog, and consumer selection
+can differ under ignore/filter rules; the regenerated selector does not define
+which inputs should exist, so selection drift alone establishes neither byte
+corruption nor permission to drop intended inputs. A clean status or regenerated
+`git ls-files` inventory can omit required imports/modules under
+`.git/info/exclude` even when their bytes arrived intact; rebuildable caches stay
+outside the population unless the check's contract includes them.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated

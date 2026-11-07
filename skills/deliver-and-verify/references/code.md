@@ -74,7 +74,11 @@ When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
 desired state, so durability depends on the full controller ancestry and each
-controller's effective field ownership. **Wrong:** add a child ignore and trust
+controller's effective field ownership. Owning software or resource declarations
+does not necessarily confer authority over a separate operator's pause/hold intent;
+initialization defaults cannot silently resume an existing workload. Verify that
+intent survives repeated no-op and changed-input reconciliation while genuinely
+new enabled work can start. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
 temporary exception is removed. Unchanged declarations, generations or digests
@@ -85,13 +89,14 @@ missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
 
-When replacing a mutually exclusive configuration variant, validate the effective
-update against an existing object with its server defaults and field ownership.
-Omitting the old variant in desired source may retain its defaulted fields;
-a successful render does not prove that the real reconciler can apply the change.
-A representation change, including omission becoming `null`, must remain
-consumable by every later internal operation that reads or reclaims that variant;
-producer or reconciler acceptance alone does not establish consumer compatibility.
+When replacing a mutually exclusive configuration variant or retiring fields,
+validate the effective update against an existing object with its server defaults
+and field ownership: omission can retain another manager's value, and `null` can
+become an empty value rather than delete the key. A successful render or apply
+does not establish intended absence; verify absent and retained fields through
+the actual reconciler and typed consumer. Representation changes must also remain
+consumable by later operations that read or reclaim the configuration, not only
+by its producer.
 
 Reservation or preview objects can bypass mutations applied to the eventual
 execution object, so matching source templates does not prove they reserve the
@@ -629,7 +634,12 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. A retryable provider outcome
+overbroad refusal proves agreement with the defect. A subset parser used by a
+guard must distinguish supported grammar from unknown constructs rather than
+reinterpret unsupported structured syntax as opaque data. Exercise
+semantics-preserving representations and explicit refusal of unsupported
+constructs through the real policy consumer, with valid opaque-data controls
+that remain accepted. A retryable provider outcome
 is not permission to dispatch again: after a durable submission marker, recovery
 is GET-only. A test that drives marked recovery through the unsent
 `queued`/send path can demand a duplicate POST and still pass; contrast it with
@@ -677,12 +687,14 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
-Normalization used to validate an exact declaration must preserve literal values
-as interpreted by the consumer, especially when the writer applies the original
-bytes. Test permitted layout changes as accepted and meaning-changing edits
-inside strings as refused before any write. **Wrong:** remove all whitespace
-before comparing an exact ACL path; **right:** preserve the quoted path's identity
-while accepting permitted layout changes.
+Normalization or projection used to validate an exact declaration may erase only
+contract-defined differences: removing a subtree can also erase undeclared text,
+tails or container metadata, just as stripping whitespace can change a quoted
+literal interpreted by the consumer. Compare or independently validate that
+remaining state before removal, pairing permitted layout/delta changes with
+meaning-changing payloads at the removal boundary. **Wrong:** drop an entire
+container after checking its declared children; **right:** preserve literal
+values and undeclared surrounding state while accepting only the declared delta.
 
 Source-closure checks—whether every declared source exists in the published
 tree—default-deny the untracked or ignored source inventory, with exact
@@ -795,9 +807,13 @@ establish a present, laid-out element with accepted input before comparison; an
 absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
-selects it. Preserve each independent reason for selection: historical comparison
-coverage does not limit explicit requested assertions about objects outside that
-population. Offline tests that omit verb, subresource, identity or old-object
+selects it; differential preservation checks include reference-only identities,
+since iterating only surviving candidates hides deleted working capabilities.
+Test disappearance and retained-but-broken behavior independently; an explicit
+removal waiver suppresses only the local disappearance finding for an actually
+removed identity. Preserve each independent reason for selection: historical
+comparison coverage does not limit explicit requested assertions about objects
+outside that population. Offline tests that omit verb, subresource, identity or old-object
 fields establish only their modeled requests; verify alternative supported routes
 through actual selection and enforcement, with permitted controls and the intended
 denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested

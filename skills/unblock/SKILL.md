@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -105,6 +105,17 @@ successful continuation; reconcile uncertain effects instead of resending them.
 restart from persisted state, and verify the original work completes without
 losing pending input or repeating completed effects.
 
+A resumed scan cannot replace the accepted pre-signal work census: any
+pre-intent recensus may add stable work identity/sequence pairs without dropping
+missing entries or replacing original recovery baselines. Durable intent is not
+proof of dispatch, so reconcile actual serving identity first; redelivery is
+permitted only for an independently idempotent signal bound to the original
+immutable process identity, never for a confirmed dispatch or an unknown
+non-idempotent API mutation. **Bad:** discard unresolved accepted work or
+suppress recovery solely because intent exists; **Good:** test crashes both
+before signal dispatch and after dispatch but before its receipt, retaining the
+census and proving no repeat against a confirmed dispatch or replacement process.
+
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
 merge-group job, the pull request's timeline, live queue entry and current head
@@ -195,6 +206,15 @@ preparation, work submission, completion and capture. A mount or load duration
 does not measure the whole operation. Retain the last typed readiness state and
 timings on failure; a generic loading message does not identify a missing asset.
 
+An enclosing timeout can be spent on implicit discovery even when the intended
+fixture or configuration already exists; existence does not prove selection.
+When traces place the wait before business execution, compare the default route
+with the same artifact and workload using a supported explicit selector,
+preserving the original assertions and deadline. Verify effective selection and
+separate discovery/startup timings from business execution before attributing
+the failure to product code; a wait that remains in business execution needs a
+different explanation.
+
 Compare the same artifact and workload alone and concurrently under the failing
 runner's effective CPU quota and affinity. Record its memory limit and observed
 usage separately from resource requests or host-wide reservations. Trace the
@@ -212,9 +232,11 @@ Measure a hardware browser before claiming a delay is exclusive to software
 rendering. Increase a deadline only after legitimate completion times justify
 the headroom and the required behavior still satisfies the product's budget.
 
-**Bad:** infer a missing image from a generic timeout and increase the budget.
-**Good:** identify the pending completion condition, measure isolated and
-concurrent durations, and fix the phase or resource policy the data identifies.
+**Bad:** infer a missing fixture or product hang from a generic timeout and
+increase the budget.
+**Good:** verify effective selection, identify the pending completion condition,
+measure discovery/startup separately from business execution, and fix the phase
+or resource policy the data identifies.
 
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 

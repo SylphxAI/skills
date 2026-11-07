@@ -85,6 +85,6 @@ A live change lasts from the first write until the last reader stops using the o
 ## Read safely
 
 - Scope history searches to a named worker or conversation. A search across everything can return private chats; if it does, do not use the result, and report it.
-- A masking filter can miss a value. When reading source that may hold a credential, exclude those lines from the output.
+- Masking secret-store values or URLs alone can still expose authentication codes delivered in ordinary inbox bodies. Keep credential-bearing source fields and authentication payloads out of logs and tool stdout, including expired codes; report metadata and nonsecret security context instead. **Bad:** dump a verification email after stripping URLs; **Good:** report its sender, purpose and expiry without the code or credential-bearing link.
 - Use the store's read-only role. When a store has none, say which credential you used and file the missing role.
 - Keep personal rows off the machine you read from: compare identifiers inside the query and print counts.
