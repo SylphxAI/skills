@@ -42,6 +42,15 @@ native touch, keyboard, controller or device behavior. A fixed fixture matrix
 does not cover every state: reproduce a reported fault at its exact viewport
 and state as well as running the standard matrix.
 
+Reconcile runtime captures with offline geometry using the measured content
+viewport, origin, effective scale and anchor rules, not nominal device or screenshot
+dimensions: an inset can change both origin and available width, so differently
+anchored controls need not move equally. Each calibration row needs its actual
+measured viewport/aspect profile and model predictions recomputed for that profile
+before judging agreement. A static overlap and a successful runtime tap can both
+be valid at different profiles; neither refutes the other's profile-specific result
+or establishes behavior for every supported profile.
+
 Compare what matters in use: composition, art and typography, content density,
 discoverability, controls, motion and sound, latency, accessibility, feature
 depth, failure states and recovery. Read the
