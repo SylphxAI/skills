@@ -46,6 +46,8 @@ without widening scanner exclusions.
 
 A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
 
+A refusal of recursive directory enumeration is scoped to that operation; it does not by itself establish that explicitly named direct-file reads are unsupported. Stop the refused walk, obtain the owning boundary’s documented named-read contract, and read only the authorized exact files. Guessing aliases, traversing alternate paths or switching identities evades that boundary; declaring all reads unavailable overstates the refusal.
+
 For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
@@ -74,9 +76,13 @@ a smaller eligible host set: compare their effective requests, reservations
 and priorities with the competing jobs on those hosts before adding capacity.
 Priority orders new allocations; existing reservations and non-preempting
 occupants can still hold the required room, so a priority change alone does not
-establish bounded wait. Verify both admission and actual provider pickup under
-continued competing demand before introducing an idle reservation or claiming
-the starvation is fixed.
+establish bounded wait. In a fungible worker pool, provisioning metadata names
+why a worker was created, not which task the provider will assign; selective
+recovery needs an enforced assignment constraint or acknowledged pool-wide scope.
+**Bad:** raise an origin-labelled worker's priority and call its intended task
+unblocked; **Good:** match actual assignment and target-task start before claiming
+recovery, and verify continued progress under competing demand before reserving
+idle capacity.
 
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 

@@ -231,12 +231,17 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal or active.
+A complete schema replay does not by itself make a fixture legal, active or ready
+for CI's transport and authentication mode; permissive local trust can hide
+missing credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
-control should reach the decision under test, separating invalid or inactive
-setup from a behavior failure.
+control should reach the decision under test through a real connection as the
+intended role using CI's transport and authentication mode, separating setup from
+behavior failure. Where credentials are required, pair accepted restricted-role
+behavior with unauthenticated connection refusal, without weakening authentication
+or broadening grants.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
@@ -323,12 +328,14 @@ read 2026-11-07). The [whole-chain deadline](code.md#outbound-calls) still bound
 all sources, attempts and server-requested delays.
 
 For a client failure, read the executable path and version used by the failing
-caller before adding another fix. Compare it with the first published release
-containing the relevant behavior, then trace the installer's version and checksum
-pins. If that release already fixes the failure, update the consumer through its
-supported installer and rerun the original command. A published fix does not
-update a pinned installation. Keep the checksum pinned with the version; an
-automatic update proposal should copy both from the release's checksum artifact
+caller and compare it with the first published release containing the required
+behavior. Installer aliases can resolve through a manifest pinned to the installer
+revision rather than the latest release; select an explicit compatible version
+supported by that manifest and trace its checksum pin. After installation, record
+the resolved path and version and prove the required capability through the actual
+consumer invocation and environment, including the next CI step when PATH changes
+apply there: a same-step version check can report a preexisting executable.
+Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
@@ -498,9 +505,11 @@ inputs that no longer exist, including paths left behind by a rename.
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
 per-path blobs and file modes with the serving plan, including inherited base
-inputs and runtime resources; the difference must equal only the declared change
-under test. Resolve the serving selection from its producer's frozen approval,
-not the selected source revision's own selector.
+inputs, removals and runtime resources; the difference must equal only the
+declared change under test. An unchanged-input exemption requires identical
+pinned content and modes; a frozen provenance label cannot exclude changed
+destinations from scope checks. Resolve the serving selection from its producer's frozen approval, not
+the selected source revision's own selector.
 Include every other profile selecting a changed shared file, even if it does
 not call the new helper: an additive edit still changes its retained bytes.
 Preserve each profile's declared comparison instead of widening its expected
@@ -529,7 +538,7 @@ while drift in a selected input must fail it.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
 
-**Wrong:** Treat a pointer-only PR's empty source diff as no runtime change.
+**Wrong:** Treat an empty PR source diff or frozen input labels as no runtime change.
 **Right:** For a release limited to one runtime module, refuse a pointer-only
 selection that mixes modules and keep a single-module rebind passing.
 
@@ -590,10 +599,13 @@ routing expression before choosing a supported event with the intended metadata.
 Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
 
 
-- Dependency installation alone does not establish test readiness: package
-  exports and CI setup identify generated files and external executables needed
-  in the test's own build target, with production evaluator/runtime versions
-  when those are part of the claim. Dependency preparation and offline fixture
+- Dependency installation alone does not establish check readiness: each check
+  needs its imports, generated files and executables in its own job, stage and
+  build target, with production evaluator/runtime versions when claimed.
+  Later installation steps and incidental host packages cannot prepare an earlier
+  check; exercise its entrypoint with only the dependencies available at that
+  point, excluding undeclared user and system packages.
+  Dependency preparation and offline fixture
   compilation share the same effective executor, package source and cache;
   a wrapper can place each nested command in a fresh cold lease, so a successful
   fetch does not prepare the next command. Verify that the real fixture working
@@ -612,7 +624,7 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 - Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06). Cancellation guards alone do not protect queued work: under GitHub's default one-pending-slot behavior, a stable non-PR group can evict an older pending run even with `cancel-in-progress: false`; unique per-run non-PR groups or an explicitly supported queue preserve those runs. Reusable workflows inherit the caller's `github.workflow`, so a caller and callee sharing that group can cancel or block their own invocation; verify the resolved call graph rather than each block in isolation. GitHub accepts skipped required checks, so a required aggregate keeps job-level `always()`; moving `!cancelled()` to the job can turn cancellation into admission. Make its long-running steps cancellable and fail cancellation at a terminal step instead: verify the old aggregate's check conclusion is neither `success` nor `skipped`, and measure lock release while it is active ([workflow cancellation](https://docs.github.com/en/actions/reference/workflow-cancellation-reference) and [required-check conclusions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/troubleshooting-required-status-checks), read 2026-11-07).
 - A required aggregate verdict reflects failure of its required work and identifies the failed check, even when the inner command is silent; explicitly non-blocking cleanup and diagnostics are separate; never mask a required failure with success syntax or a missing resource. Admission uses the designated verdict bound to the exact candidate, rather than the enclosing workflow lifecycle: optional trailing work can leave the workflow active after its verdict is final. When refusal ejects durable queued work, pending evidence warrants a bounded hold with refresh, distinct from confirmed failure; expiry remains an explicit refusal, never success. A healthy-path pass or dependency edge cannot prove propagation: failure or cancellation may skip an intermediate job that a later aggregate accepts. **Wrong:** infer coverage from an all-green chain; **Right:** witness a required failure reaching a non-passing aggregate through every intermediate boundary, or prove those transitions before reducing the graph.
 - A gate requiring a producer's explicit success admits nothing until that consumer's producer is enrolled. Establish its live success path for the covered events and current source before gate activation; an installed application, empty check suite or sibling consumer's success does not suffice. Preserve refusal on missing or non-successful evidence, including after adoption: a pre-adoption rescue exception accepting `neutral` is no longer valid under that contract. **Wrong:** relax the gate to cover a rollout gap; **Right:** enroll the producer first and retain missing/neutral negative controls after activation.
-- A new API lookup in a shared action changes the authority needed by every invoking job, including intermediate aggregate jobs and result producers; granting the final required-check job does not grant its dependencies. Match each invocation to its actual token and effective job/reusable-workflow permissions, adding only missing scopes while preserving required existing grants: a job-level `permissions` map sets unlisted scopes to `none`. **Wrong:** add `checks: read` only to the final aggregate; **Right:** inventory and test every caller that now reads Check Runs under its own effective token ([GitHub permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions), read 2026-11-07).
+- A new API lookup in a shared action changes the authority needed by every invoking job, including intermediate aggregate jobs and result producers; match each invocation to its actual token and effective permissions rather than granting only the final check. Inventory every `workflow_call` edge and compare all declared callee job grants with the caller's effective permission ceiling, including jobs or steps skipped on the triggering event: a reusable workflow cannot elevate the caller's grants. Add only missing scopes while preserving required existing grants, since a job-level `permissions` map sets unlisted scopes to `none` ([GitHub permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions) and [reusable workflow permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations#access-and-permissions-for-nested-workflows), read 2026-11-07).
 - Reusable workflows inherit the caller's `github` context and hosted-runner billing: a public library does not prove a public caller. For public-only standard hosted routing, require `github.event.repository.visibility == 'public'`; **Wrong:** negate `private` or compare it with `false`, since missing properties and loose equality can admit unknown payloads. Inputs may select standard hosted labels only after that proof, never assert visibility. Verify the entire reusable library—including every `workflow_call` workflow, locally uncalled entrypoints and actions—with a named private caller requesting literal `ubuntu-latest`, a public opt-in, legacy no-input calls and missing repository payloads across PR, push, merge-group, manual and scheduled events; an evaluator that cannot model the exact context property leaves the census unresolved.
   Sources: [reusable workflow context and billing](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations), [missing context properties](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts), [expression coercion](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#operators) and [repository visibility](https://docs.github.com/en/rest/repos/repos#get-a-repository), read 2026-11-06.
 - Free runner eligibility does not authorize metered work triggered by that runner: automatic admission also depends on verified event provenance and the downstream spending grant. **Wrong:** let every fork's build start paid inference because the repository is public; **Right:** admit trusted repository events automatically under the existing budget and retain maintainer dispatch for authorized fork reviews. Verify both event sources and the explicit route; apply the same distinction to public uploads that trigger paid processing.

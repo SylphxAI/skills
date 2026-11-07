@@ -118,10 +118,11 @@ in the grant service:
        Price-Anchor Preservation):** Automatic, unframed handouts reset the
        payer's reference price (hedonic adaptation) and make scarce progression
        items feel printed for free. Frame every Track A bonus as a scarce,
-       specially advocated VIP privilege earned by their long-standing VIP tier
-       and direct-transfer fee savings, and use neutral commercial in-game mail
-       copy ("VIP Tier Appreciation Bonus") that remains safe even if
-       screenshotted.
+       personal VIP appreciation, without naming the internal cohort or implying
+       relative spending. Private mail and concierge quotes follow the
+       [spending-confidentiality and player-ready mail boundary](../SKILL.md#confidential-spending-comparisons-and-player-ready-mail);
+       verified ownership and screenshot privacy do not permit spending-rank
+       claims or rank-linked rebate labels.
      - **New-Player & New-Whale Fairness:** Keeping all visible items and
        prestige systems (auctions, VIP tiers, seasonal cosmetics) 100% identical
        and earnable on the same rules ensures newly acquired players and new

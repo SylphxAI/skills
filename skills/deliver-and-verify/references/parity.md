@@ -162,7 +162,12 @@ the engine's verdict.
    compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
    load, effective process environment and instrumentation. Inherited settings can
    change only one runtime's colors, locale or cache behavior; equal command flags
-   need rendered-output evidence, not an assumption of equal work. Bind resource
+   need rendered-output evidence, not an assumption of equal work. All-zero
+   profiler counters can indicate disabled instrumentation rather than zero work;
+   verify effective enablement with a known-positive counter control before
+   attributing a hotspot or absence of work. Keep instrumented attribution separate
+   from uninstrumented performance verdicts because instrumentation can change the
+   measured path. Bind resource
    metrics to the measured process and lifetime: a child high-water mark may
    include its larger pre-exec launcher, so an application-memory claim needs
    post-exec evidence. Name unavoidable differences and the comparison they
@@ -232,6 +237,13 @@ a journey passing only on the newest client leaves their behavior unverified.
    Compare these with the candidate. A deployment's desired revision alone does
    not prove that this browser or device received it.
 3. Exercise the journey, record assertions and capture screenshots or recordings.
+   For timed acceptance, record each capture's actual begin/end on the executing
+   device's clock; a filename or requested wait is not timing evidence. Check the
+   device shell's integer width and unit range before arithmetic; use bounded
+   monotonic deltas, not epoch nanoseconds. For example, frames named
+   `t2s`/`t10s`/`t30s` began at +2.071/+5.771/+8.555 s when signed 32-bit shell
+   arithmetic wrapped (`2000000000+2000000000=-294967296`,
+   `10*1000000000=1410065408`).
    Read the served revision again at the end. Reject mixed-version evidence;
    wait for the intended release and make a new run. Bound propagation waits
    with the release's declared timeout rather than retrying until green.
@@ -302,11 +314,13 @@ share one line band at the required readable font size across the complete
 expected population; card containment alone misses wrapped prefixes. Check
 required neighbour clearance in the same coordinate space; an 8 CSS px gap is
 contextual, not a universal minimum. Do not shrink the font
-to hide a spacing failure. For composite controls, assert joints and endpoints in
-a shared coordinate system as well as each part's size, because a correctly sized
-segment can be anchored incorrectly. Run the guard against the old failing state
-before claiming it catches the defect, then test the repair under the same
-conditions.
+to hide a spacing failure. For composite controls, check joints and endpoints in
+a shared coordinate system as well as each part's size; correct dimensions can
+still be anchored wrongly. Derive paint probes from the actual geometry and
+rasterization: a fixed inset can sample an antialiased curve instead of the
+intended junction. A corrected probe must retain the original failure and reject
+both the known defective frame and an independent missing-segment control with
+unchanged paint tolerances, then accept the repair under the same conditions.
 
 Also reject a deliberate half-width regression. Sticky headers and ordinary cells
 can have different offset parents: measure reachability with viewport rectangles,
@@ -521,14 +535,21 @@ colours or variance, not only that the file exists.
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check
   the decoded values against the intended change, including field types, units,
-  ranges, relationships, missing fields and intended removals.
+  ranges, relationships, missing fields and intended removals. At displayed
+  precision, reproduce the shipping consumer's numeric widths, cast order and
+  rounding rather than an algebraically equivalent rational formula. For
+  example, an independent consumer run can disprove equality at a rounding
+  boundary: displayed `1.00%` versus consumer-formatted actual `1.01%` at raw
+  `1.005%`.
 - Exercise assets in their consuming renderer: for example, decode a sprite
   atlas, resolve every frame and render the changed states; load a model with
   its materials and animations. Existence, file size and checksums alone cannot
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
   those exact candidate files; load every changed table and assert its consuming
-  behavior, not schema acceptance alone. For random pools or boxes, every
+  behavior, not schema acceptance alone. For reward delivery, apply the
+  [channel-specific dispatch and effective-item checks](../../game-economy/SKILL.md#1-establish-what-is-happening).
+  For random pools or boxes, every
   reachable outcome ID must resolve in the type-specific template used by the
   actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
   unknown-ID/null-grant controls, asserting durable grants and the contract's

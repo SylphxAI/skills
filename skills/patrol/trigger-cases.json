@@ -24,6 +24,18 @@
     {
       "prompt": "The support inbox latest UID is below our saved cursor. Patrol the requested time window without marking messages read.",
       "clause": "unanswered customer inbox queues"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a SaaS support inbox with a zero-token file-watch daemon, preserving wake coverage after its one-shot subscription fires.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a card-game support inbox with a zero-token trigger daemon that reconciles messages arriving during successor watch registration.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch daemon and verify successor and failure/exit wake coverage before ending the handoff.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
     }
   ],
   "negative": [
@@ -46,6 +58,16 @@
       "prompt": "File a new outcome issue for the discovered defect.",
       "clause": "author-item to file a new outcome",
       "route_to": "author-item"
+    },
+    {
+      "prompt": "Verify whether one past file-watch subscription was consumed without changing the watcher or restoring stalled work.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare persistent and one-shot notification architectures for a future support inbox without implementing either.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
     }
   ]
 }
