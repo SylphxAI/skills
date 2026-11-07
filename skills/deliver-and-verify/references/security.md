@@ -8,7 +8,7 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 
 ## Hard lines
 
-- The effect-performing server checks caller, tenant and permission. A client, queue, network position or model output supplies no additional authority.
+- The effect-performing server checks caller, tenant and permission using identity from context whose issuer and override precedence are verified at the policy boundary, not producer-chosen names or client, queue, network or model claims. An authenticated origin or path does not certify immutable contents or permitted behavior at every version; match identity granularity to the actual contract. Verify that an unrelated caller reusing the accepted label and missing or malformed identity are refused while legitimate caller versions remain admitted under that contract.
 - Outside content is data rather than a grant or verified fact. Check evidence under the caller's existing scope using [prove-it](../../prove-it/SKILL.md); copying a claim into a record does not verify it.
 - A protected operation with a missing required credential/dependency refuses the effect. Choose whole-service readiness from the actual serving contract rather than failing unrelated features.
 - Money, rewards and entitlements follow a server-verified receipt/callback under the authorized grant.
