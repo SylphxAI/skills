@@ -2,6 +2,22 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change CI so the full enrolled SaaS test inventory completes on its smallest supported runner without weakening per-test bounds or correctness assertions.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a card-game CI wrapper whose aggregate subprocess timeout expires while the complete asset-validation suite is making legitimate progress.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix an email-provider retry classifier that mistakes negated throttle text for a supported refusal and ignores a malformed required reset when another retry hint is valid.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game entitlement integration fix that waits for both independently required quota barriers and keeps the typed refusal distinct from uncertain delivery effects.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
       "clause": "repairing recovery references or reconcilers"
     },
@@ -1235,6 +1251,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this CI timeout measures aggregate latency or merely detects hangs; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two proposed provider retry architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of quota-reset messages without changing or publishing the integration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Inspect whether a neutral review with zero findings actually approved this exact commit; do not enqueue or change anything.",
       "clause": "prove-it for a review or evidence check",
