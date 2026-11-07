@@ -148,6 +148,13 @@ read 2026-11-06).
 
 A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
 
+A CLI can read default configuration or open runtime files before applying
+explicit connection arguments. Verify a useful command with the declared user,
+mounts, environment and filesystem restrictions, including absent default files;
+preserve the exception class and a sanitized cause. **Bad:** prove a query in an
+administrator toolbox; **Good:** the workload's own non-root image performs it
+using only its declared inputs.
+
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
 and retain bounded daemon startup logs before that instance ends; a path inside
