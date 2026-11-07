@@ -26,6 +26,18 @@
       "clause": "reconciling conflicting readings"
     },
     {
+      "prompt": "Verify current collector metric freshness when timestamp expressions also return retired configuration-hash label sets.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A SaaS telemetry selector and its derived age query have different label populations at the same evaluation time. Reconcile their freshness verdicts.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify that a game fleet freshness report covers the current server-version series rather than mixing retired version identities into the verdict.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Verify a seven-day release-runner concurrency count when rerun attempts return the same runner interval under different job IDs.",
       "clause": "verifying a live status or metric before reporting it"
     },
@@ -284,6 +296,18 @@
     {
       "prompt": "Review whether a missing-module refusal proves correct resolution when the compiler identifies a different contextual module root and unresolved target.",
       "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Verify whether a pull request cache that exits zero but returns stale: true establishes the current head before a conditional publication.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a SaaS status command reported successful with an individual export result whose observation timestamp is stale.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify a card game fleet availability claim when the cache has a fresh repository timestamp but stale server records.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
@@ -436,6 +460,21 @@
       "prompt": "Compare installed-CLI and embedded-library designs for a proposed guard architecture without testing either.",
       "clause": "challenge to compare designs",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Repair the stalled SaaS status collector so its cache refreshes again.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare a shared-cache architecture with per-worker reads for a card game fleet.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "What does a shell exit status of zero ordinarily mean?",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
+      "route_to": null
     }
   ]
 }
