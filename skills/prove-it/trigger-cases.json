@@ -308,6 +308,18 @@
     {
       "prompt": "Verify a card game fleet availability claim when the cache has a fresh repository timestamp but stale server records.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "HEAD succeeds while a full GET of the same immutable object version fails. Reconcile whether metadata success proves the consumer can read the body.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A SaaS export has identical authenticated bytes through an alternate endpoint, but the deployed consumer still cannot download it. Verify whether this establishes payload integrity or consumer read availability.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A card game asset downloads successfully from a newer immutable version with the same digest. Verify whether that proves the original version's failing GET recovered.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
@@ -474,6 +486,11 @@
     {
       "prompt": "What does a shell exit status of zero ordinarily mean?",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
+      "route_to": null
+    },
+    {
+      "prompt": "Explain the standard difference between HTTP HEAD and GET without checking a live service or incident.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
     }
   ]

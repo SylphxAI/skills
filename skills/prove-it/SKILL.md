@@ -225,10 +225,13 @@ mock cannot establish which policy the real execution applies.
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
 
-Response evidence also depends on request headers and API version: a default
-CLI response can differ from the failing caller's negotiated payload. Exercise
-that caller's decoder with empty and populated responses, distinguishing valid
-empty encodings from malformed envelopes. A transport-library non-error or
+Response evidence depends on HTTP method, endpoint, range, headers, API
+version and immutable object version: successful metadata reads or valid bytes
+from an alternate route do not establish the failing consumer's read availability.
+A readable newer version establishes only its own availability, even when its
+authenticated bytes are identical; it does not prove recovery of the older
+version. Exercise that caller's decoder with empty and populated responses,
+distinguishing valid empty encodings from malformed envelopes. A transport-library non-error or
 generic `2xx` does not establish the route's terminal state: accept only its
 contract-defined status and required body fields, types and ownership, including
 a legitimate queued `202` where specified.
@@ -317,3 +320,4 @@ error path can break clients that depended on a fallback.
 - Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
 - If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
 - For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; use the [caller refusal tests](../deliver-and-verify/references/code.md#tests) for side-effecting callers and treat comments justifying a fallback as invariants.
+- Treat a signed receipt as immutable once signed. Put facts learned later, such as cleanup verification or late CI, in a separately hashed addendum that names the signed receipt; editing the original invalidates every hash already relayed. For example, append a late cleanup result to the addendum rather than changing the signed receipt's original verdict.

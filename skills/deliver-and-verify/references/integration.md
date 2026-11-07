@@ -51,7 +51,13 @@ repeat against an existing key, distinguishing no-write behavior from a retained
 new version. The resulting data stays correct and secrets do not appear in output.
 
 Before/after completeness comparisons use the same endpoint, request scope and
-stable key; matching counts can hide one missing object replaced by another.
+stable key; each paginated population needs distinct stable IDs and coherent
+count/version evidence before a completeness or terminal decision. With mutable
+offset pagination, a front insertion can repeat already-read IDs on later pages,
+so cumulative rows may match a rising total while omitting a new pending member.
+Verify that such a read remains incomplete or nonterminal, while a complete
+stable population still reaches its valid terminal outcome.
+
 Cross-endpoint enrichment needs an explicit shared key: array order and similar
 names do not establish identity, and unresolved joins remain incomplete.
 **Bad:** pair two catalog arrays by position; **Good:** compare each endpoint's
@@ -96,14 +102,16 @@ tests; **Good:** retain the adapter cache, restart the caller, and prove complet
 revalidation and later updates without weakening authentication or quota admission.
 
 Before replacing a remote dependency with a fake, read its endpoints, media
-types, credential scope and error envelope: a shared helper can send one
-provider's headers to another, while a permissive fake still returns success.
-Verify the prepared request and redirect chain per origin, including accepted
-media types and credential removal outside the authorized origin; use an
-authorized read-only live control when the fake cannot establish provider
-acceptance. **Bad:** infer compatibility from a mocked JSON body; **Good:** the
-fixture rejects the wrong media type and cross-origin credential forwarding,
-and a real metadata read confirms the permitted request.
+types, credential scope and error envelope. A fake above request construction
+can hide an invalid default route even when populated resource routes pass:
+exercise empty/default and explicit selectors through the real adapter, with
+exact-route fixtures that reject undeclared requests. Verify prepared requests
+and redirects per origin, including accepted media types and credential removal
+outside the authorized origin; use an authorized read-only live control when
+the fake cannot establish provider acceptance. **Bad:** infer compatibility from
+a mocked client method returning JSON; **Good:** the fixture rejects the wrong
+route, media type and cross-origin credentials, and a real metadata read
+confirms the permitted request.
 
 For browser privacy claims, include [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests).
 A clean payload observed by a transport mock cannot establish whole-request
