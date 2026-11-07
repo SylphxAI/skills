@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Add native pull-request CI supersession so the required aggregate releases its concurrency group without turning a cancelled run into a passing skipped check.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
       "clause": "changing CI workflows or concurrency"
     },
