@@ -88,6 +88,10 @@ that a consumer receives it: replacement environment lists, arguments or
 volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
+Resolve generated targets and consumer references in that rendered output too:
+namespace or content-hash rewriting can leave separately valid documents
+pointing at different objects. **Wrong:** validate a template and its generator
+independently; **right:** verify the emitted consumer resolves the emitted target.
 
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial
