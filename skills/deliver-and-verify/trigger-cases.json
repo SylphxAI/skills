@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Fix the replicated permission cache and verify propagation against the deployed serving-consumer census.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement readiness verification that retains failed samples and the maximum latency across cache consumers.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
       "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -1090,7 +1102,7 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, and ship the shared-cache repair.",
+      "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, isolating unverified package contents in private caches.",
       "clause": "bug fix"
     },
     {
@@ -1530,7 +1542,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Change diagnostic redaction to sanitize the complete tool result before truncation and fan-out to storage, uploads and the next request.",
+      "prompt": "Change diagnostic redaction to cover encoded concatenated output across transport-frame and UTF-8 boundaries before truncation and fan-out to storage, uploads and the next request, withholding bytes when bounded sanitization cannot establish safety.",
       "clause": "changing diagnostic redaction"
     },
     {
@@ -1630,19 +1642,30 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
-      "clause": "synthetic probe"
-    },
-    {
-      "prompt": "Fix the replicated permission cache and verify propagation against the deployed serving-consumer census.",
+      "prompt": "Ship a shared artifact-cache reader that verifies every reused input against a separately trusted manifest, preserving the intended sharing boundary.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Implement readiness verification that retains failed samples and the maximum latency across cache consumers.",
-      "clause": "implementing or shipping a feature"
+      "prompt": "Repair per-user cache isolation so another UID cannot replace the cache parent through a writable ancestor.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare notification and polling designs for a replicated cache before choosing an architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the replica-readiness explanation for clarity without changing or publishing the probe.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
       "clause": "prove-it for a review or evidence check",
@@ -2670,21 +2693,6 @@
     },
     {
       "prompt": "Draft a documentation explanation of standard HTTP status meanings without changing a service.",
-      "clause": "clear-writing for prose alone",
-      "route_to": "clear-writing"
-    },
-    {
-      "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
-      "clause": "prove-it for a review or evidence check",
-      "route_to": "prove-it"
-    },
-    {
-      "prompt": "Compare notification and polling designs for a replicated cache before choosing an architecture; do not implement either.",
-      "clause": "Use challenge for a plan or architecture",
-      "route_to": "challenge"
-    },
-    {
-      "prompt": "Rewrite the replica-readiness explanation for clarity without changing or publishing the probe.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
