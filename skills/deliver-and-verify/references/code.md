@@ -589,9 +589,14 @@ Share cohesive fixtures and table-driven cases where that improves readability.
 When several implementations or adapters claim one behavioral contract, preserve
 the authoritative cases’ identities, multiplicity, units and expected outcomes
 across the changed boundaries; a locally reconstructed equivalent can erase the
-distinguishing failure. **Wrong:** deduplicate repeated transaction records before
-running a shared refusal case, then claim parity; **right:** preserve both records
-and exercise the real persistence or transport adapter as well as the pure decision.
+distinguishing failure. Shared regex text can still classify differently because
+runtimes vary in flags/defaults and matching units—Unicode code points, UTF-16
+code units or grapheme clusters—so preserve astral, combining-character and
+line-separator boundaries through actual matcher consumers; when disagreement
+would grant an inspection exemption, retain inspection. **Wrong:** deduplicate
+repeated transaction records before running a shared refusal case, then claim
+parity; **right:** preserve both records and exercise the real persistence or
+transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
 When changing a shared eligibility or availability rule, trace its consumers

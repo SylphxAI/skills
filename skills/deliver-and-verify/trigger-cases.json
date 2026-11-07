@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS policy matcher whose shared regex classifies astral characters differently in backend and browser runtimes; preserve inspection when classifications disagree.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset selector fix that carries combining-character and line-separator cases through the actual server and client matchers instead of normalizing test fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement cross-runtime matcher regression cases using effective runtime flags and the code-point, UTF-16 code-unit or grapheme-cluster contract rather than assuming identical pattern text gives parity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS integration helper that sends API-specific Accept headers to an object service; verify the prepared requests and an authorized read-only metadata request.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1287,6 +1299,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a shared regex granted an inspection exemption after runtime classifiers disagreed; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare code-point and grapheme-cluster matching approaches for a proposed asset selector without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local user-guide paragraph explaining an account settings page, without changing software or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a past API failure came from a wrong media type; inspect evidence without changing any source or configuration.",
       "clause": "prove-it for a review or evidence check",
