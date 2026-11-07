@@ -677,12 +677,14 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
-Normalization used to validate an exact declaration must preserve literal values
-as interpreted by the consumer, especially when the writer applies the original
-bytes. Test permitted layout changes as accepted and meaning-changing edits
-inside strings as refused before any write. **Wrong:** remove all whitespace
-before comparing an exact ACL path; **right:** preserve the quoted path's identity
-while accepting permitted layout changes.
+Normalization or projection used to validate an exact declaration may erase only
+contract-defined differences: removing a subtree can also erase undeclared text,
+tails or container metadata, just as stripping whitespace can change a quoted
+literal interpreted by the consumer. Compare or independently validate that
+remaining state before removal, pairing permitted layout/delta changes with
+meaning-changing payloads at the removal boundary. **Wrong:** drop an entire
+container after checking its declared children; **right:** preserve literal
+values and undeclared surrounding state while accepting only the declared delta.
 
 Source-closure checks—whether every declared source exists in the published
 tree—default-deny the untracked or ignored source inventory, with exact

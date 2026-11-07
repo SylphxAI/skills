@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game XML configuration verifier that accepts undeclared text beside a newly added reward row while allowing blank layout whitespace.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1995,6 +2003,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether the retained database timings establish a lock-wait cause; do not change or publish anything.",
       "clause": "prove-it for a review or evidence check",
