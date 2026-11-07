@@ -47,19 +47,19 @@
     },
     {
       "prompt": "Review an outbound VIP offer promising 全服第一累課 recognition and a permanent No.1-payer 20% privilege; replace rank-derived perks with non-positional personal recognition.",
-      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
     },
     {
       "prompt": "Review an in-game mail and offer spec containing top-3 payer status, paid percentile, 第二軌, dbId, Markdown and raw inventory-recipe calculations; produce natural player-facing copy.",
-      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
     },
     {
       "prompt": "Keep LTV and paid-cohort analysis internal while reviewing a VIP mail spec; use personal appreciation without another player's rebate or any paid-rank comparison, and preserve a separate gameplay leaderboard celebration.",
-      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
     },
     {
       "prompt": "Review an outbound offer sequence that keeps using rival-overtake pressure after the player explicitly rejected spending; stop the sales sequence without changing internal offer analysis.",
-      "clause": "reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing"
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
     },
     {
       "prompt": "Before signing a puzzle game's mixed-currency mail, check whether its serving mail dispatcher supports every reward type even though the shared grant helper accepts them.",
@@ -72,6 +72,18 @@
     {
       "prompt": "Decide the missing entitlement after a claimed reward message credited one currency and skipped another; preserve the credited value and choose a supported repair route.",
       "clause": "checking reward-route support"
+    },
+    {
+      "prompt": "Draft VIP thank-you mail title and body that uses personal exclusive appreciation, never the recipient's own server-wide cumulative-spend rank.",
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
+    },
+    {
+      "prompt": "Review a care policy: ambassador own-total questions redirect to official support; only official support answers requested totals after identity and receipt verification.",
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
+    },
+    {
+      "prompt": "Review exclusive-tier wording that uses top-N spending or percentile to justify benefits; keep spending analysis internal and use zero internal tier names.",
+      "clause": "drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies"
     }
   ],
   "negative": [
@@ -109,6 +121,21 @@
       "prompt": "Compare two architectures for a document editor's notification delivery service without deciding game rewards.",
       "clause": "challenge for general product or commercial strategy",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "On official support, provide only an explicitly requested verified own total, currency and period after identity and receipt checks; no economy or VIP policy design.",
+      "clause": "customer-support for an individual entitlement or refund case",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Resolve an ordinary own-receipt or missing-payment ticket on official support, without changing gifts or offer policy.",
+      "clause": "customer-support for an individual entitlement or refund case",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Write a museum opening-hours announcement unrelated to games, VIP care or billing.",
+      "clause": "clear-writing for unrelated copy",
+      "route_to": "clear-writing"
     }
   ]
 }
