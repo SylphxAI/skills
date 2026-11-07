@@ -57,7 +57,7 @@ and size limits; shader tests alone do not establish the delivered frame times.
 
 ## Final encoded limits and reliability evidence
 
-A per-item limit does not bound the encoded aggregate: count the complete consumer request or response, including escaping, envelopes and reserved output, against its actual limit. Evaluate state-reduction candidates before committing them; rejection leaves the prior usable state and authoritative raw data unchanged. **Bad:** persist a smaller checkpoint that still exceeds the request window; **Good:** measure each candidate and commit only one that fits.
+A per-item limit or compact stored input does not bound the final encoding: count the complete consumer request, response or persisted effect with the destination serializer against its actual limit, including escaping, envelopes, implicitly added entries and reserved output. Evaluate state-reduction candidates and asynchronous downstream persistence before committing state, claims or outbox entries; rejection preserves prior usable state and authoritative raw data without admitting effects. **Bad:** enqueue compact input that expands beyond the destination column's byte limit; **Good:** verify exact-limit materialization and one-byte-over refusal before durable admission.
 
 Derive behavioral-test request budgets from the serialized empty instruction/schema envelope plus a fixed source allowance, preserving the full encoded-bound assertion and original partition/omission assertions as the envelope grows.
 

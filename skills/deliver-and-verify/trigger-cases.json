@@ -2104,6 +2104,18 @@
     {
       "prompt": "Enable independently selectable SaaS deploy components without accepting missing or failed evidence from a selected component.",
       "clause": "selecting delivery subsets"
+    },
+    {
+      "prompt": "Change asynchronous export admission so a compact request is refused before its claim and outbox commit when the worker's destination serializer exceeds a database byte limit.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a card-game reward queue that accepts source JSON but exceeds the destination attachment column after serialization and a configured extra item; cover exact-limit materialization and one-byte-over refusal.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship notification admission checks that measure escaped destination bytes, accept the exact column limit and reject the next byte without creating durable work.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3539,6 +3551,21 @@
     },
     {
       "prompt": "Rewrite the explanation of an existing architecture selector without changing its behavior or publishing any configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether source JSON size proves a queued export fits the destination column, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare preflight serialization and materialization-before-admission as proposed asynchronous delivery designs without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of source and destination byte limits without changing source, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
