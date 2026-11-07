@@ -31,19 +31,31 @@
     },
     {
       "prompt": "Review a recent outbound VIP support transcript for 全服第一累課, another player's paid rank and rebate, full FRN and bank transaction IDs, unrequested inventory details, and approval-chain or salesy wording.",
-      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
     },
     {
-      "prompt": "A verified player explicitly asks for their own cumulative spend total on official support. Answer only the verified total, not their own rank, paid percentile, top-N status or unrelated inventory.",
-      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "prompt": "On official support, the player explicitly requests their cumulative spend total. After account-identity and receipt verification, answer only the verified total, currency and period, never rank, comparison or unrelated inventory.",
+      "clause": "own-total requests"
     },
     {
       "prompt": "Rewrite a player-facing support and in-game mail draft containing 第二軌, order and dbId values, Markdown, raw recipe calculations and attachment-format mechanics into a natural verified result.",
-      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
     },
     {
       "prompt": "Review a support reply that celebrates a player's non-spend gameplay leaderboard rank; preserve that congratulations while removing a No.1-payer 20% privilege.",
-      "clause": "reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
+    },
+    {
+      "prompt": "Draft official support VIP thanks with no own payment rank, percentile, top-N or care-tier explanation, even in private.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
+    },
+    {
+      "prompt": "Review an own-total response after verified identity and receipts: retain total, currency and period but remove unsolicited inventory and recipe details.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
+    },
+    {
+      "prompt": "Review care-mail titles and bodies for internal care-tier labels and top-spender claims; preserve ordinary personal appreciation.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
     }
   ],
   "negative": [
@@ -71,6 +83,21 @@
       "prompt": "Continue friendly in-character companionship on social Messenger while routing a formal billing dispute to official email.",
       "clause": "Use ambassador for in-character ambassador or playmate companionship",
       "route_to": "ambassador"
+    },
+    {
+      "prompt": "As the in-character ambassador, warmly redirect an own-total inquiry to official support without quoting recharge totals, order numbers or top-up amounts.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Draft a friendly ambassador care-mail title and body without exposing billing details or payment rank.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Edit a museum opening-hours announcement, with no customer case or game context.",
+      "clause": "clear-writing for general copy.",
+      "route_to": "clear-writing"
     }
   ]
 }

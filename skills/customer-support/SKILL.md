@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up or voucher inquiries, refunds, prices, invoices, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up or voucher inquiries, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -125,11 +125,14 @@ paid percentile, top-N payer status, or paid-rank-based comparison or privilege
 in any player-facing surface: private DM, official support, in-game mail title
 or content, offer spec, PR or social copy. This ban covers that player's own
 rank even in 1:1 and covers every other player's spend, rebate or paid-rank
-records. A payer knows their own spend: a rank claim exposes the single-whale
-LTV ceiling and revenue scale to screenshot viewers, erodes competitive suspense
-and invites cross-VIP price comparisons. Personal VIP status, never spend
-standing, frames bespoke care and bonus rates. A verified player explicitly
-requesting their own spend **total** may receive only that verified total, never a rank, percentile or top-N position.
+records. Use personal appreciation without relative spending or internal tier
+names, under the [shared economic and role-specific billing boundary](../game-economy/SKILL.md#confidential-spending-comparisons-and-player-ready-mail).
+Only official support, after an explicit own-total request plus account-identity
+and receipt verification, may provide the verified total, currency and relevant
+period. Never add rank, percentile, top-N status, comparisons or unrequested
+inventory, recipes or account details. Verified own-order, receipt and
+missing-payment help remains available; own totals are private, never public
+recognition. Ambassadors redirect billing questions rather than quote records.
 Gameplay and skill leaderboards unrelated to spend remain permitted. Use
 non-rank personal recognition such as `資深 VIP`, `個人專屬尊貴禮遇` or
 `感謝長期支持`, never paid-rank titles or rank-based extra percentages.
@@ -139,7 +142,7 @@ Synthetic contrasts:
 | Surface | ❌ Bad | ✅ Good |
 | --- | --- | --- |
 | VIP recognition or offer | `你係全服第一累課、全服前 3 payer、付費分位前 0.1%，No.1-payer 永久額外 20%。` | `多謝你長期支持，呢份係你嘅個人專屬尊貴禮遇。` |
-| Verified owner asks only for their spend total | `你累計實付 HK$12,000，全服第 1；背包有 800 箱，開 500 箱可補 120 片。` | `你查詢嘅累計實付總額係 HK$12,000。` (Only the requested, verified total; no rank or inventory audit.) |
+| Official support: explicit own-total request after identity and receipt verification | `你累計實付 HK$12,000，全服第 1；背包有 800 箱，開 500 箱可補 120 片。` | `你查詢期間 <verified_period> 嘅累計實付總額係 HK$12,000。` (Only the verified total, currency and period.) |
 | Another player's paid record | `對家全服第 2、回贈 30%，最近都好活躍。` | `其他玩家嘅付款、活動同禮遇紀錄會保密；我可以幫你查你本人嘅帳號。` |
 | Mail title/content | `**全服累課第一**<br>第二軌；order=<order_id>；dbId=<dbId>；mail=<mail_id>；額外=cap×20%` | `標題：資深 VIP 專屬禮遇`<br>`內容：多謝你長期支持，呢份個人專屬禮遇為你準備好咗。` |
 | Offer benefit vs. raw backend calculation | `倉存=13,000；760×8=6,080；recipe=<recipe_id>` | `呢份組合可令兩件珍藏突破下一級；內容同數量會清楚列喺禮包頁。` |

@@ -23,7 +23,7 @@
     },
     {
       "prompt": "A player wants an outfit but cannot log in to top up. Help complete payment rather than give the outfit free.",
-      "clause": "resolving purchase or checkout friction as a VIP payment concierge"
+      "clause": "resolving checkout friction without billing disclosure"
     },
     {
       "prompt": "Pitch a three-tier bottleneck-first VIP bespoke offer to a top spender whose sub-skills are stuck at the Lv.30 recipe cliff while 26,000 high-tier shards sit idle in their warehouse.",
@@ -31,31 +31,43 @@
     },
     {
       "prompt": "Review the last 20 outbound VIP Messenger messages for paid-rank disclosure, another player's rebate or activity, full payment references, unrequested inventory recitals, and corporate or salesy wording; rewrite only the unsafe copy.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
       "prompt": "Review this in-game mail spec titled 全服累課第一 with 第二軌, dbId, Markdown and raw recipe math; replace it with natural non-rank VIP copy.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
-      "prompt": "A verified player explicitly asks for their own lifetime spend total on Messenger. Give only the verified total without rank, percentile or inventory details, then separately congratulate their gameplay leaderboard win.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "prompt": "A verified player asks the ambassador on Messenger for their lifetime recharge total, order number and top-up amount. Warmly redirect to official support without quoting billing data; preserve a separate gameplay congratulations.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
       "prompt": "A player says 唔想再課，唔好再推包 after a three-tier offer. Review the transcript and write a caring reply with no sales pitch or rival-overtake framing.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
       "prompt": "Review a VIP reply that explains a rival got seven red books from old events or saved boxes, then promises to beat their screenshot by 80%; keep only general rules and the recipient’s own verified milestone.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
       "prompt": "Review this gift notice that recites backend balances and order counts, raw 15-digit currency, approval queues and reboot excuses; deliver a warm routine notice within 90 characters only after the inserted-mail receipt.",
-      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     },
     {
       "prompt": "Audit the ambassador sequence: an action was called technically impossible, then repeatedly pre-announced; after a closing promise the player says 嗯. Avoid a last-word filler reply and wait for verified delivery.",
       "clause": "running an Adversarial Turing self-test on conversational replies"
+    },
+    {
+      "prompt": "Draft a VIP thank-you mail title and body without saying first, top-3 spender, percentile or internal care tier; keep personal exclusive appreciation.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
+    },
+    {
+      "prompt": "An ambassador knows verified LTV and is asked for an own recharge total. Write a warm official-support redirect, not a billing answer.",
+      "clause": "as an in-character brand or game ambassador (大使), playmate companion, or VIP relationship host on social chat or in-product chat"
+    },
+    {
+      "prompt": "Review exclusive-tier wording that implies nobody else spends more; remove all relative spending while preserving the approved personal benefit.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     }
   ],
   "negative": [
@@ -78,6 +90,21 @@
       "prompt": "Adjudicate a formal refund dispute through the published official support email.",
       "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
       "route_to": "customer-support"
+    },
+    {
+      "prompt": "On official support, answer an explicitly requested own total, currency and period after verifying account identity and receipts; this is not ambassador companionship.",
+      "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Handle an ordinary own-receipt support ticket for a missing payment through official support; no rank or VIP care copy.",
+      "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
+      "route_to": "customer-support"
+    },
+    {
+      "prompt": "Write a neutral museum opening-hours announcement with no player or billing context.",
+      "clause": "clear-writing for general copy.",
+      "route_to": "clear-writing"
     }
   ]
 }
