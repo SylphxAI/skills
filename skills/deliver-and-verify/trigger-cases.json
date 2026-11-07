@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a copied CLI distribution whose retry helper lives in a sibling source directory, and verify the staged command outside the source tree.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a game build tool's sparse source checkout so its packaged entrypoint receives a sibling runtime dependency.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Regenerate a release adapter after fixing its incomplete shared-helper copy list, and exercise the resulting isolated distribution.",
+      "clause": "generating source"
+    },
+    {
       "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1995,6 +2007,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review a PR claiming its copied command includes every runtime dependency; do not publish changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare bundling a shared helper into each package with loading it from an installed runtime before choosing the architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explanation of sparse checkouts and package layouts without changing source or shipping configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether the retained database timings establish a lock-wait cause; do not change or publish anything.",
       "clause": "prove-it for a review or evidence check",
