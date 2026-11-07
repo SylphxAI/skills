@@ -317,9 +317,14 @@ intended junction. A corrected probe must retain the original failure and reject
 both the known defective frame and an independent missing-segment control with
 unchanged paint tolerances, then accept the repair under the same conditions.
 
-Also reject a deliberate half-width regression. Sticky headers and ordinary cells
-can have different offset parents: measure reachability with viewport rectangles,
-the current scroll offset and pinned-column width, never `offsetLeft`.
+Also reject a deliberate half-width regression. For scroll-dependent geometry,
+identify the actual scroll owner and measure its achievable range and reached
+offset at each fixture viewport before interpreting sticky alignment or changing
+tolerances. Slight overflow does not guarantee the requested displacement is
+reachable; repair fixture extent or bounds while retaining the original scroll
+and alignment assertions. Sticky headers and ordinary cells can have different
+offset parents: measure reachability with viewport rectangles, the current scroll
+offset and pinned-column width, never `offsetLeft`.
 
 A text-hidden control comparison limited to self-reported glyph, mesh or layout
 bounds cannot detect paint outside those bounds. Account for every changed pixel
