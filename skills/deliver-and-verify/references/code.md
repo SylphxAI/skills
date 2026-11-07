@@ -236,11 +236,12 @@ A catalogue match proves identity, not fulfilment eligibility: before consuming 
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
-A lock taken only when writing cannot protect a snapshot read before another
-writer committed. **Wrong:** lock and replace that stale snapshot. **Right:**
-update only owned fields, or read and merge under the same lock and ownership
-check, then prove both writers' committed fields survive the real concurrent
-entry points.
+A lock taken only when writing cannot protect an earlier snapshot, and atomic
+file replacement cannot serialize another writer that uses a different lock.
+**Wrong:** one writer locks and replaces its stale copy of shared configuration.
+**Right:** every writer reads and merges only its owned fields under the same
+stable transaction lock and ownership check; prove both transaction orders through
+the real concurrent entry points, preserving each writer's committed fields.
 
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local

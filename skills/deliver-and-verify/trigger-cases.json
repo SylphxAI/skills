@@ -2060,6 +2060,18 @@
     {
       "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Share two safe service-status files with an operator group while keeping the engine report private across old-grant migration and future atomic replacements.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a shared configuration lost update between an installer and operator pause command, preserving both fields in both concurrent transaction orders.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change diagnostic publication so a bounded worker report with raw provider input remains private and only a validated status projection is shared.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
@@ -3445,6 +3457,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an existing diagnostic sharing grant can expose raw configuration, without changing files or operating a service.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare locks and compare-and-swap for a proposed shared configuration architecture, without implementing or publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an operator guide explaining which reports are private, without changing permissions, source or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
