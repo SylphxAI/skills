@@ -294,10 +294,6 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
-      "clause": "running builds or tests in a lease"
-    },
-    {
       "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
       "clause": "running builds or tests in a lease"
     },
@@ -1672,6 +1668,30 @@
     {
       "prompt": "Ship media-upload retention that protects an unfinished publishing transaction and still collects expired unreferenced artifacts.",
       "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game-script syntax guard that infers module roots from filenames, confuses member keywords with control flow, and exempts nested declarations solely by a shared operator.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a publisher of already-local, caller-authorized source that contacts the remote before validating malformed local objects; prove zero HTTP or transport calls for those inputs while preserving explicitly authorized fetch-and-parse workflows for missing immutable parents.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Replace a card-game source-closure guard's module exceptions with default-deny untracked or ignored source inventory and exact per-invocation waivers; test Git ignore routes, custom extensions and allowed generated-file and declared-dependency directories.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2747,6 +2767,21 @@
     },
     {
       "prompt": "Rewrite a plain-language explanation of backup retention without changing or publishing any system configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a syntax guard refusal names the correct unresolved target, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare compiler-backed and custom-tokenizer designs for a proposed source guard without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of strict inspection for unproven tool resolution, without changing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

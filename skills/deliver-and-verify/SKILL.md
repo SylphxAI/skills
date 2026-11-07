@@ -134,7 +134,8 @@ When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
 
 For privileged filesystem changes under directories another principal can write,
-read [security.md](references/security.md) before choosing how to validate and change objects.
+or when filesystem or tool-resolution trust would relax inspection, read
+[security.md](references/security.md) before trusting resolution or changing objects.
 
 Before changing database roles, privileges, reader transports or session-bound
 database checks, read
