@@ -38,14 +38,18 @@ registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
 
-An optional capability that is intentionally unconfigured is not a configured
-capability that is unavailable: adding a shared readiness or admission condition
-can otherwise disable valid reduced-scope deployments. Where absence is a
-supported mode, preserve it without weakening configured-but-incomplete refusal
-or misreporting absence as healthy configuration. Verify behavior through every
-assembled constructor or deployment profile with the capability absent, configured
-but incomplete, and loaded, varying mandatory upstreams between healthy and
-failing; helper-only tests of configured states miss consumers that omit it.
+A shared readiness or admission check must distinguish an intentionally
+unconfigured optional capability from a configured capability that is unavailable:
+derive configured-versus-absent from the capability's own declaration before
+evaluating prerequisites, because prerequisite-gated assembly can silently turn a
+configured-but-unusable capability into absence and a false-ready success. Preserve
+intentionally absent reduced-scope deployments, but refuse construction/readiness
+for a configured capability with a missing, empty, malformed, or non-Unicode
+binding rather than treating it as absent. Verify the real environment/declaration
+parser through every production constructor or deployment profile (using isolated
+subprocess environments for process-global settings), covering absent, invalid,
+and loaded declarations plus healthy and failing mandatory upstreams; helper-only
+tests miss this boundary.
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
