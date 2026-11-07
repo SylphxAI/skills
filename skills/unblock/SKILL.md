@@ -89,8 +89,18 @@ job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
 
-Primary source checked 2026-11-06:
-[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+An accepted cancellation can leave an obsolete operation queued and holding its
+concurrency slot, so a replacement remains pending. When ordinary cancellation
+has failed to reach a terminal state, reconcile the exact obsolete operation and
+its replacement before using the provider's documented stronger cancellation;
+verify both terminal cancellation and replacement admission afterward.
+**Bad:** report capacity released from HTTP 202; **good:** observe the obsolete
+run as `completed/cancelled` and its replacement admitted, while preserving
+unrelated work.
+
+Primary sources checked 2026-11-07:
+[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+and [force cancellation after ordinary cancellation is ineffective](https://docs.github.com/en/rest/actions/workflow-runs#force-cancel-a-workflow-run).
 
 ### Missing pull-request CI
 
