@@ -418,9 +418,14 @@ If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
 
-**Wrong:** Publish after the contract compiler succeeds, leaving a downstream
-web registry unchanged. **Right:** Run the complete generation chain, return its
-outputs, and verify the web consumer's generated-file assertion before publishing.
+**Wrong:** Publish after the contract compiler succeeds while a downstream
+consumer overrides an explicit canonical exclusion with inferred availability.
+**Right:** Run the complete generation chain with explicit canonical exclusions
+taking precedence over downstream routing or capability heuristics, while absent
+metadata follows its documented fallback and explicitly supported cases stay available.
+Verify these distinctions through real consumer assertions for visibility,
+documentation indexing and navigation, and available actions where relevant;
+successful generation or fresh bytes alone cannot establish them.
 
 ## Internal development
 
