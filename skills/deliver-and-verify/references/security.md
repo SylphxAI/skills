@@ -89,6 +89,12 @@ reconciler runs. A role with a different proven contract can use that
 contract's supported access change; this does not impose aggregate-only
 access on every reader.
 
+A schema name does not establish data sensitivity or effective visibility:
+extension-owned views can live beside application tables. Match permission
+inventories to the deployed access contract and object ownership, then evaluate
+effective memberships and view/function visibility rules before classifying
+readable columns as raw application access; an exception needs a proven boundary.
+
 Admission observed on one connection does not establish the identity of a result
 obtained on another: routing, pooling or reconnects can select a different server
 or principal. Keep session-bound checks and the protected query on one connection,
