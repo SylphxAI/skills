@@ -16,10 +16,15 @@ A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
 complete rewritten document with the destination consumer's parser, including
 non-ASCII and escaped keys and values, and assert that caller-owned content
-survives successive updates and removal of managed settings. **Wrong:** inspect
-only the new section or round-trip through the helper's own serializer;
-**Right:** parse the emitted configuration through its actual consumer and
-compare preserved fields.
+survives successive updates and removal of managed settings.
+For source, configuration or CLI migrations intended to reach a stable destination,
+rewrite-table idempotence alone cannot prove full-pipeline stability: a later
+validator can reject an earlier pass's output or introduce new diagnostics.
+The emitted result must be destination-valid, and a second complete migration
+must leave it unchanged with zero new diagnostics; an already-current input is
+the no-op control.
+**Wrong:** prove only that each rewrite maps once; **Right:** run the emitted
+result through the real destination consumer and the complete migration again.
 
 A scoped policy waiver suppresses only its local findings: waived input still
 updates semantic state, including facts that invalidate earlier assumptions,
