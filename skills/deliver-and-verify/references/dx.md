@@ -661,9 +661,14 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 
 ### Browser input and foreground tests
 
-Use trusted browser input when acceptance depends on a browser default action,
-such as Tab moving focus. Assert both event cancellation and the resulting
-active element; synthetic `KeyboardEvent` dispatch only checks the listener path.
+Use trusted browser input through the shipped client/server path for focus
+ownership, native defaults such as Tab or clipboard paste, and complete pointer
+press/move/release sequences, including supported focus locations outside the main
+widget. Assert event cancellation state and the resulting active element, then
+verify ordered delivery, remote state and painted output where those boundaries
+apply. Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
+backend text insertion bypass parts of this path and cannot prove the user's
+shortcut or gesture works.
 Trusted delivery and an uncancelled event do not prove a native default ran:
 calibrate the input bridge against the actual effect in a minimal positive control,
 including generated character input when applicable, before attributing its absence
@@ -700,10 +705,12 @@ endpoint change from interpolation across frames, and use static and missing
 content as negative controls. See [reduced-motion acceptance](parity.md#ui-coverage-geometry-and-painted-output)
 for the product behavior that these measurements must establish.
 
-**Wrong:** dispatch Tab, manually focus the next button, and report that the
-browser exit works. **Right:** press Tab through the browser, check that an
-internal destination cancels it, then check that a boundary press moves focus
-outside without a manual focus call.
+**Bad:** dispatch Tab and manually focus the next button, or pre-focus one widget
+and call a backend text-insertion API to declare paste working. **Good:** press
+Tab and Cmd/Ctrl+V from supported focus locations and complete pointer
+press/move/release through the shipped path; verify internal Tab cancellation,
+boundary focus exit, pasted text and painted results without manually repairing
+the tested effect.
 
 Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
 and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).
