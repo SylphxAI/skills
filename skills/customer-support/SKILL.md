@@ -23,11 +23,12 @@ belong entirely to
 there goes to the published official support address in the product profile;
 the companion continues offering friendship without becoming the case adjudicator.
 
-Before drafting a mobile chat reply, apply
+Before drafting or delivering a mobile chat reply, apply
 [the shared narrow-bubble guidance](../clear-writing/SKILL.md#narrow-mobile-chat-bubbles)
-for real paragraph breaks and separate option lines. It takes precedence over
-general prose or no-bullets defaults while preserving warmth and the user's
-instructions.
+for paragraph limits, real `\n\n` gaps, one option per line, and explicit
+Lexical `linebreak` nodes with API verification when using a Lexical Web-UI
+composer. It takes precedence over general prose or no-bullets defaults while
+preserving warmth and the user's instructions.
 
 ## Step 0: Read case ownership, LTV & payment history, and product facts
 

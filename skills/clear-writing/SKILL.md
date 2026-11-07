@@ -30,21 +30,32 @@ Choose wording and structure from three inputs:
 ### Narrow mobile chat bubbles
 
 For mobile ambassador and support replies, keep each paragraph to no more than
-2–3 sentences and put each choice or list item on its own line. Dense options
-joined with `｜`, commas or `、` are hard to scan in a narrow bubble, even when the
-whole reply looks short on a desktop. Use actual line-feed characters (LF) for
-line breaks and two consecutive LFs for a paragraph gap; literal `\n` text and
+2–3 sentences and at most 110 CJK characters; never send a single-paragraph
+wall of text (`磚頭字`). Put every choice or list item (`1️⃣`, `2️⃣`, `3️⃣`,
+`1)`, `2)`, `•`) on its own line, never join multiple items with `｜`, commas
+or `、`: they are hard to scan even when the reply looks short on a desktop.
+Use actual line-feed characters (LF) for line breaks and two consecutive LFs for a paragraph gap; literal `\n` text and
 visual wrapping by the app do not create paragraph breaks.
 
-Calibrate density to roughly 14–18 Chinese characters of available bubble width,
-not a character quota: let the app wrap within sentences, never hard-wrap every
-14 characters or add runtime character-count limits. Keep the warm, natural
+Messenger, WhatsApp, Telegram and in-app chat bubbles are roughly 14–18 CJK
+characters wide. Let the app wrap within sentences; this width is not a
+hard-wrap interval. The paragraph ceiling is an editorial delivery boundary,
+not a reason to add runtime character-count machinery. Keep the warm, natural
 voice, the user's instructions and all necessary information; a substantive
 reply can have several short paragraphs, while a quick acknowledgment needs no
 padding. This mobile readability requirement takes precedence over general
 prose or no-bullets style defaults; it does not require headings, bullets or a
 fixed number of paragraphs. Adjust the width assumption when the actual channel
 shows different wrapping or the reader requests another format.
+
+For multi-line delivery through a Lexical-based Web-UI composer (such as Meta
+Business Suite Inbox), plain `fill` can flatten breaks or leave raw LF characters
+inside one `TextNode` instead of rendered breaks. Construct explicit Lexical
+`linebreak` nodes (rendered as `<br>`) with `ed.parseEditorState(...)` and apply
+with `ed.setEditorState(...)`; represent a paragraph gap with two line breaks.
+After sending, read the delivered message through the API and verify its `\n`
+count and placement against the intended reply; composer appearance alone does
+not establish delivery fidelity.
 
 Synthetic contrast (the Good block contains actual line breaks and blank lines):
 
