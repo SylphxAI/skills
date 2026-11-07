@@ -1200,6 +1200,14 @@
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
       "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game settlement worker so recovery waits behind retained player actions while a genuinely empty queue still resumes interrupted settlement.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
