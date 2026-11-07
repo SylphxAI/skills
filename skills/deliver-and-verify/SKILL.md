@@ -122,6 +122,8 @@ For source checkout or materialization changes, shared-cache permission failures
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
 failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
+For command-wrapper fixture isolation, also use
+[private test fixtures](references/dx.md#internal-development).
 Source publication and receipt adoption after a rewrite also use
 [source publication authority](references/security.md#source-publication-authority).
 

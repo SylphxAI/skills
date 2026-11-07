@@ -1648,6 +1648,18 @@
     {
       "prompt": "Repair per-user cache isolation so another UID cannot replace the cache parent through a writable ancestor.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a CLI wrapper test whose temporary symlink still discovers real configuration beside the source executable. Keep the child and its outputs in a private fixture.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game packaging regression test that invokes a source-adjacent deployment helper despite setting a private HOME; preserve production admission checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an export-command fixture so executable-relative helper discovery cannot reach the real publisher; prove it with a failing external-helper control.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
@@ -2693,6 +2705,21 @@
     },
     {
       "prompt": "Draft a documentation explanation of standard HTTP status meanings without changing a service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this wrapper test really isolates its executable-relative helper dependencies, without changing or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare copying a command and its helper graph with running it in a container for future fixture isolation; do not implement the design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explaining why a symlinked fixture command can load real sibling helpers; do not modify the tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
