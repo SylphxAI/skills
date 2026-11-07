@@ -46,6 +46,8 @@ without widening scanner exclusions.
 
 A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
 
+A refusal of recursive directory enumeration is scoped to that operation; it does not by itself establish that explicitly named direct-file reads are unsupported. Stop the refused walk, obtain the owning boundary’s documented named-read contract, and read only the authorized exact files. Guessing aliases, traversing alternate paths or switching identities evades that boundary; declaring all reads unavailable overstates the refusal.
+
 For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
