@@ -1740,6 +1740,18 @@
     {
       "prompt": "Update generated runtime configuration and its rendered consumer references, proving existing immutable operations remain unchanged rather than relying on prune-disabled retention.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a SaaS policy-validation CLI that prints a structured rejection but exits successfully, keeping valid dry runs successful and mutation-free.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game content importer whose API refusal becomes exit status zero in the shell command; test refused and accepted validation through its real entrypoint.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a package-publishing dry run that preserves transport validation failures in its command exit status without invoking publication.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [

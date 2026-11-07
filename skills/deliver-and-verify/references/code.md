@@ -745,9 +745,12 @@ permission change because its account is absent from the old audit sample.
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
 requests fail without expanding collateral comparisons.
 
-A read-only or dry-run helper can be correct while its public mode dispatch
-selects the mutating path. Exercise the assembled entrypoint with a zero-effect
-assertion and prove that redirecting that mode to the mutator fails the same test.
+A helper's refusal or dry-run guarantee can disappear in public mode dispatch or
+exit-status translation. Exercise allowed and refused cases through the assembled
+entrypoint, asserting effects, structured output and the enclosing caller's status.
+**Wrong:** count `valid: false` with exit status 0 as a rejected command; **right:**
+when the command promises rejection, refusal exits nonzero without mutation while
+a valid dry run exits 0 without mutation.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
