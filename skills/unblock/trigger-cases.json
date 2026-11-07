@@ -98,7 +98,7 @@
       "clause": "a promised fix still fails"
     },
     {
-      "prompt": "A restart recovery must redeliver work only when it is independently idempotent and bound to the original immutable process identity; do not replay an unknown payment mutation.",
+      "prompt": "An export worker is stuck after a saved shutdown intent with no dispatch receipt. Restore progress while keeping repeat signals tied to the original immutable process identity, without replaying an unrelated unknown payment mutation.",
       "clause": "a promised fix still fails"
     },
     {
@@ -212,9 +212,9 @@
       "route_to": "prove-it"
     },
     {
-      "prompt": "Review whether restart intent, confirmed dispatch, serving identity and accepted-work census recovery are distinguished correctly against the implementation, without changing or publishing anything.",
+      "prompt": "Compare recovery hypotheses for last month's export outage: a lost pre-signal census versus intent misclassified as dispatch. Do not restore the now-healthy worker.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
-      "route_to": "prove-it"
+      "route_to": "challenge"
     },
     {
       "prompt": "The worker is serving the current identity and processing accepted turns within its expected window; leave the healthy recovery running.",
