@@ -1648,6 +1648,18 @@
     {
       "prompt": "Repair per-user cache isolation so another UID cannot replace the cache parent through a writable ancestor.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an enabled backup worker whose startup fails before its first heartbeat; verify the alert fires without a worker-created enabled marker.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement monitoring for a supervised renderer, proving absent and stale health are detected while intentionally paused capacity stays quiet.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a scheduled report service alert that cannot detect a process which never created its first health file.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [

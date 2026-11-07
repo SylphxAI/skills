@@ -430,6 +430,14 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 
 ### Supervised runtime health
 
+An observer that learns whether work is expected from that work's first
+heartbeat cannot detect failure before the heartbeat exists. Derive expected
+activity from an independent authoritative declaration, and verify never-started,
+missing and later-stale telemetry alongside healthy and intentionally inactive
+states. **Bad:** require a worker's own enabled metric to detect its absence;
+**Good:** the supervisor's declaration makes a pre-initialization failure visible
+while deliberately paused work stays quiet.
+
 When readiness depends on a supervised device, renderer or worker, check its
 capability after startup as well as the host process. Use a bounded probe in the
 existing active-work reconciliation; it must neither extend idle activity nor
