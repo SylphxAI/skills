@@ -328,12 +328,14 @@ read 2026-11-07). The [whole-chain deadline](code.md#outbound-calls) still bound
 all sources, attempts and server-requested delays.
 
 For a client failure, read the executable path and version used by the failing
-caller before adding another fix. Compare it with the first published release
-containing the relevant behavior, then trace the installer's version and checksum
-pins. If that release already fixes the failure, update the consumer through its
-supported installer and rerun the original command. A published fix does not
-update a pinned installation. Keep the checksum pinned with the version; an
-automatic update proposal should copy both from the release's checksum artifact
+caller and compare it with the first published release containing the required
+behavior. Installer aliases can resolve through a manifest pinned to the installer
+revision rather than the latest release; select an explicit compatible version
+supported by that manifest and trace its checksum pin. After installation, record
+the resolved path and version and prove the required capability through the actual
+consumer invocation and environment, including the next CI step when PATH changes
+apply there: a same-step version check can report a preexisting executable.
+Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
