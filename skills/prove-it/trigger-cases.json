@@ -258,6 +258,10 @@
       "clause": "verifying a live status or metric before reporting it"
     },
     {
+      "prompt": "A restarted test process reports zero assertion failures, but the enclosing run records a crash and a larger test count. Reconcile the operation verdict before attributing a cause or retrying.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "Verify current collector metric freshness when timestamp expressions also return retired configuration-hash label sets.",
       "clause": "verifying a live status or metric before reporting it"
     },
