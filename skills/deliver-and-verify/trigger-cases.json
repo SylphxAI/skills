@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS export client that reports completion when an immediate queued acknowledgement arrives before submission returns, even though its later status reader still waits for a terminal result.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game purchase dispatcher whose first submission ignores an immediate rejection while later status reads handle that rejection correctly; test the real response ordering without duplicating the purchase.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
       "clause": "implementing or shipping a feature, bug fix"
     },
