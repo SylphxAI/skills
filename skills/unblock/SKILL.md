@@ -178,6 +178,17 @@ preparation, work submission, completion and capture. A mount or load duration
 does not measure the whole operation. Retain the last typed readiness state and
 timings on failure; a generic loading message does not identify a missing asset.
 
+An enclosing timeout can be spent discovering a fixture or configuration that
+exists but was never selected; little business-work CPU and no assertion output
+therefore establish neither a product hang nor a missing fixture. Compare the
+effective default route with the same run using an explicitly selected,
+known-good fixture or configuration, while keeping the original assertions and
+deadline. Attribute the delay to discovery or startup only when the phase
+timings and selection evidence support it; otherwise leave the cause open.
+The control transfers across domains: an explicit schema or profile selection
+should be tested the same way as an explicit test fixture, while an intentionally
+invalid selection must fail during setup rather than count as business success.
+
 Compare the same artifact and workload alone and concurrently under the failing
 runner's effective CPU quota and affinity. Record its memory limit and observed
 usage separately from resource requests or host-wide reservations. Trace the
@@ -195,9 +206,11 @@ Measure a hardware browser before claiming a delay is exclusive to software
 rendering. Increase a deadline only after legitimate completion times justify
 the headroom and the required behavior still satisfies the product's budget.
 
-**Bad:** infer a missing image from a generic timeout and increase the budget.
-**Good:** identify the pending completion condition, measure isolated and
-concurrent durations, and fix the phase or resource policy the data identifies.
+**Bad:** infer a missing fixture or product hang from a generic timeout and
+increase the budget.
+**Good:** verify effective selection, identify the pending completion condition,
+measure discovery/startup separately from business execution, and fix the phase
+or resource policy the data identifies.
 
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 
