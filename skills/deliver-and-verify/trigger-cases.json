@@ -1072,6 +1072,10 @@
     {
       "prompt": "Change a database-backed retry fixture to prove effective eligibility across message and shared-resource deadlines, including refusal before expiry, recovery afterward and timestamp precision across persistence.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Optimize fragment-shader frame times with ablations, pixel-equivalent specialized pipelines and frozen paired engine runs.",
+      "clause": "benchmarking engines"
     }
   ],
   "negative": [
@@ -1769,6 +1773,11 @@
       "prompt": "Rewrite the explanation of this keyboard shortcut for a release announcement, without changing its behavior.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Compare general-purpose fragment shaders and specialized pipelines as an architecture proposal without implementing or measuring either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }
