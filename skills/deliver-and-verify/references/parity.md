@@ -232,6 +232,13 @@ a journey passing only on the newest client leaves their behavior unverified.
    Compare these with the candidate. A deployment's desired revision alone does
    not prove that this browser or device received it.
 3. Exercise the journey, record assertions and capture screenshots or recordings.
+   For timed acceptance, record each capture's actual begin/end on the executing
+   device's clock; a filename or requested wait is not timing evidence. Check the
+   device shell's integer width and unit range before arithmetic; use bounded
+   monotonic deltas, not epoch nanoseconds. For example, frames named
+   `t2s`/`t10s`/`t30s` began at +2.071/+5.771/+8.555 s when signed 32-bit shell
+   arithmetic wrapped (`2000000000+2000000000=-294967296`,
+   `10*1000000000=1410065408`).
    Read the served revision again at the end. Reject mixed-version evidence;
    wait for the intended release and make a new run. Bound propagation waits
    with the release's declared timeout rather than retrying until green.
@@ -523,7 +530,12 @@ colours or variance, not only that the file exists.
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check
   the decoded values against the intended change, including field types, units,
-  ranges, relationships, missing fields and intended removals.
+  ranges, relationships, missing fields and intended removals. At displayed
+  precision, reproduce the shipping consumer's numeric widths, cast order and
+  rounding rather than an algebraically equivalent rational formula. For
+  example, an independent consumer run can disprove equality at a rounding
+  boundary: displayed `1.00%` versus consumer-formatted actual `1.01%` at raw
+  `1.005%`.
 - Exercise assets in their consuming renderer: for example, decode a sprite
   atlas, resolve every frame and render the changed states; load a model with
   its materials and animations. Existence, file size and checksums alone cannot
