@@ -71,13 +71,20 @@ and continuation metadata. **Bad:** infer cold-start recovery from warm direct-H
 tests; **Good:** retain the adapter cache, restart the caller, and prove complete
 revalidation and later updates without weakening authentication or quota admission.
 
-Before replacing a remote dependency with a fake, read its declared endpoints,
-request shape and error envelope; preserve the boundaries relevant to the change,
-including [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests)
-for browser privacy claims. A clean payload observed by a transport mock cannot
-establish whole-request privacy: verify headers and ambient identity on an actual
-browser request, with a positive control showing the fixture observes them when
-protection is absent.
+Before replacing a remote dependency with a fake, read its endpoints, media
+types, credential scope and error envelope: a shared helper can send one
+provider's headers to another, while a permissive fake still returns success.
+Verify the prepared request and redirect chain per origin, including accepted
+media types and credential removal outside the authorized origin; use an
+authorized read-only live control when the fake cannot establish provider
+acceptance. **Bad:** infer compatibility from a mocked JSON body; **Good:** the
+fixture rejects the wrong media type and cross-origin credential forwarding,
+and a real metadata read confirms the permitted request.
+
+For browser privacy claims, include [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests).
+A clean payload observed by a transport mock cannot establish whole-request
+privacy: verify headers and ambient identity on an actual browser request, with
+a positive control showing the fixture observes them when protection is absent.
 
 When management and data traffic use different origins, run distinct fake
 listeners and reject a request sent to the wrong one. One permissive listener
