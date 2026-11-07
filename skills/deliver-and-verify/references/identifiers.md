@@ -42,6 +42,8 @@ Define rename/alias retention from the product's external contract. GitHub docum
 
 Derive internal system names from stable identity where a renameable slug would cause drift. Where underscores are legal, the compact TypeID profile can be used directly. For a DNS-compatible form replace the separator with a hyphen: the five-letter-prefix maximum is 32 characters (5 + 1 + 26). Validate the complete target grammar/length again after appending a purpose suffix.
 
+For an existing hash-derived artifact naming format, derive the expected name from the pinned producer contract and the repository or namespace recorded by an independently selected operation, not today's canonical slug or the artifact's own claims. A historical name can be valid for that operation; accepting any alias can bind another namespace's artifact. Preserve content digests, image identity, ordered lineage and execution/proof joins, testing current-name and historical-name matches plus cross-namespace rejection.
+
 Keep mutable placement separate from stable identity. A directory or routing authority can change an entity's home without embedding a second location authority in every ID. A customer-facing hostname follows the product's domain contract.
 
 ## Credentials
