@@ -130,6 +130,14 @@ independently; **Right:** resolve the rendered references and dry-run the effect
 update against existing objects, proving unchanged immutable templates and no
 unintended execution.
 
+Identity-label selectors depend on the producer's propagation contract, not the
+label key's apparent meaning: compare representative admitted consumers with the
+source that supplies their labels, including generated children and opaque IDs.
+**Wrong:** use a display name as an ID, or infer that a routing label is inherited
+by a background worker; **Right:** test the actual supported label combinations
+and exclusions, then verify the deployed consumer's identity and behavior.
+A policy match proves only eligibility until that consumer exercises the path.
+
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial
 deployment does not prove later input changes propagate. **Wrong:** rotate a
