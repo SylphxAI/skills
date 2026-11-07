@@ -1630,7 +1630,7 @@
       "clause": "changing diagnostic redaction"
     },
     {
-      "prompt": "Fix a source publisher that contacts the remote before validating malformed local objects; finalize its local plan before HTTP or transport calls, preserve remote-only history and inject faults at remote object availability.",
+      "prompt": "Fix a publisher of already-local, caller-authorized source that contacts the remote before validating malformed local objects; prove zero HTTP or transport calls for those inputs while preserving explicitly authorized fetch-and-parse workflows for missing immutable parents.",
       "clause": "publishing, editing or arming PRs"
     },
     {

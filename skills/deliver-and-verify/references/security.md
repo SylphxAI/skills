@@ -72,16 +72,21 @@ overrides can redirect resolution, so a known-bad selector list cannot establish
 trust. Test each supported indirection with an untrusted target and a fully proven
 trusted control.
 
-A terminal-write refusal is too late if earlier reads or metadata mutations
-already have effects: before any external call, seal classification, caller
-intent, immutable-object parsing, parent presence, canonical identity decisions
-and the complete local transform into a fixed authorized plan. Live remote facts
-may preserve or narrow that plan, or refuse it, but never supply new source or
-trigger new local parsing; race and compare-and-swap guards still belong at the
-write boundary. Verify malformed local inputs produce zero HTTP and zero transport
-calls, with a positive control preserving remote history absent from local
-tracking metadata, and inject faults at their semantic phase (such as remote
-object availability) rather than whichever low-level read happens first.
+For publication or transformation of already-local, caller-authorized source,
+a terminal-write refusal is too late when earlier reads or metadata mutations
+have effects. Complete classification, immutable-object parsing, parent-presence
+and canonical-identity decisions and the local transform before external calls;
+malformed local inputs in this scope produce zero HTTP and zero transport calls.
+Remote observations may preserve, narrow or refuse this local-source plan without
+introducing new source to it.
+
+Authorization and intent stay fixed before external calls, but authorized evidence
+acquisition may fetch and then parse and verify new bytes: signed manifests or
+artifacts, missing immutable parents and authoritative provider-origin proof are
+valid examples. Keep race and compare-and-swap guards at the write boundary, with
+a positive control preserving remote history absent from local tracking metadata,
+and inject faults at their semantic phase (such as remote object availability)
+rather than whichever low-level read happens first.
 
 For privileged tool maintenance, run executables from user-writable paths as
 that user, including version probes, health checks and post-install validation.
