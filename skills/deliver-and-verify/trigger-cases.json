@@ -806,15 +806,15 @@
       "clause": "changing resource sizing or retention"
     },
     {
-      "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI, and verify existing pods after the supported owner rollout.",
+      "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI; verify existing pods after the owner rollout without silently granting permission to evict production.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Ship a game-serving priority fix that verifies the live numeric priorities of historical pods rather than assuming a new globalDefault changed them.",
+      "prompt": "Ship a protection-only game-serving priority fix that retains nonpreempting behavior and verifies historical pods after replacement rather than assuming a new globalDefault changed them.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Update a stateful workload template while keeping intentionally expendable backup workers below production and checking that a non-preempting class does not imply victim immunity.",
+      "prompt": "Update a stateful workload template while leaving expendable backup workers below production and existing shared preempting classes unchanged; verify incoming protection separately from outgoing preemption authority.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {

@@ -104,14 +104,16 @@ and verify availability without racing it with another replacement mechanism.
 
 Protect co-dependent stateful and serving-path pods at a shared numeric priority
 that routine work eligible on their nodes cannot preempt; keep deliberately
-expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
-from evicting others, not from becoming a higher-priority pod's victim, and a new
-`globalDefault` does not change historical pods
-([Kubernetes priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/),
-read 2026-11-07). **Wrong:** declare a protected default or a non-preempting class
-and infer live protection; **Right:** update each owning template and verify every
-affected pod's admitted numeric priority after its supported replacement,
-especially node-pinned last copies.
+expendable batch work below that tier. `preemptionPolicy: Never` prevents outgoing
+preemption, not victim selection; raising numeric priority can silently grant
+permission to evict production, so a protection-only change retains `Never`
+without altering shared preempting classes. A new `globalDefault` does not change
+historical pods ([Kubernetes priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/),
+read 2026-11-07). **Wrong:** check only that the selected class outranks production;
+**Right:** verify each owning template and every supported replacement's admitted
+class, numeric priority and outgoing policy, especially node-pinned last copies,
+proving both protection from routine preemptors and preservation of the intended
+outgoing authority.
 
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
