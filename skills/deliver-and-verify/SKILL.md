@@ -20,7 +20,8 @@ Native tests and browser previews can exercise different input and feature paths
 
 ## Step 0: Route identifier changes
 
-When changing multi-namespace lookups or identifier-based pagination, read
+When reconciling legacy and canonical identifiers, changing multi-namespace
+lookups or identifier-based pagination, read
 [identifiers.md](references/identifiers.md) before defining acceptance cases.
 
 ## Coordinate the work
@@ -60,7 +61,7 @@ For a public preview or disposable service, also read
 [first useful success](references/dx.md#first-useful-success) before relying on
 an advertised creation, deployment or port-exposure operation.
 
-For SQL or database fixture changes, read
+For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 Time-windowed usage or billing queries also use
 [temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
@@ -132,8 +133,9 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic
-or stored-body redaction, read [security.md](references/security.md) to protect
+When changing credential routing, handling credentials exposed in process
+arguments or changing diagnostic or stored-body redaction, read
+[security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.
 
@@ -167,7 +169,7 @@ Before publishing or updating a PR, read [publication and merge intent](referenc
 
 1. Run practical targeted checks, then publish one coherent change. State the remaining uncertainty; fix failures and rerun the affected checks on the same branch. Follow the repository's required checks and normal merge queue without force-push or bypass merge. Review depth follows the change's risk; independent review can run alongside or after delivery and does not create a separate completion stage.
    When a CLI publishes a title, description or comment from a file, create that file in a unique directory owned by this run (`mktemp -d`) and publish only after the write succeeds. A predictable shared path can retain another run's text when your write fails. Read the published title and body back before reporting success. A structured text argument needs no temporary file.
-2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. A mutable target can change after that read: bind the write to the reviewed version through the provider's precondition, such as `gh pr merge --match-head-commit <sha>` or HTTP `If-Match`; a version mismatch requires a fresh read and review. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and retry semantics; if the result is unknown, inspect the target before a repeat. Recovered or overlapping sessions can repeat a step, so guard a one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
+2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. A mutable target can change after that read: bind the write to the reviewed version through the provider's precondition, such as `gh pr merge --match-head-commit <sha>` or HTTP `If-Match`; a version mismatch requires a fresh read and review. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and the [duplicate-safety recovery contract](references/integration.md#provider-integration); an unknown harmful effect needs reconciliation before a repeat. Recovered or overlapping sessions can repeat a step, so guard a duplicate-sensitive one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
 3. For a blocked operational route, follow [unblock](../unblock/SKILL.md). A temporary repair stays within existing grants and has a durable fix and removal condition. Coordinate reconciliation on a GitOps-managed resource and merge the matching configuration.
 4. Read the authoritative result back before claiming completion, following [prove-it](../prove-it/SKILL.md). A service needs its serving revision and affected acceptance cases checked; an operation needs the updated object and dependent behavior; a package, CLI or document needs its required checks and published artifact or source verified where applicable. Use a soak only when its measured behavior is part of the outcome.
 5. **Cross-Currency Entitlement Normalization & Canonical Analytics Read-Model:** When shipping or verifying a new checkout, voucher, credit, or payment channel, verify at the live surface that:

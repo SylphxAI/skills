@@ -1,6 +1,6 @@
 ---
 name: patrol
-description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
+description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
 ---
 
 # Patrol
@@ -24,6 +24,7 @@ Find what is late, over a limit or contradictory while it is still cheap to fix,
 - Read the payload, not its label. A title, a commit subject or a status line states an intent; the stored row states what happened. They can differ on the amount.
 - When a worker cites a table, a standard or an approval, open it and find the row. "According to the table" stays a claim until the row is on your screen.
 - Read the whole result before saying something is missing. A `tail`, a row limit or a keyword filter can hide the row that disproves you.
+- An empty incremental read can mean a stale cursor. Bind the cursor to the account, folder and source generation (`UIDVALIDITY` for IMAP); a changed generation, unknown cursor provenance or live high-watermark below the saved cursor calls for a bounded source read covering the requested window before claiming silence. Preserve read-only and peek semantics when recovering email coverage.
 - Judge a worker's state by its transcript and file times. A status table can show working while nothing moves, or idle while work continues.
 - Compare what runs with what is committed. A private script, a hand-edited config or a local copy can diverge from the reviewed source, and then the reviewed source tells you nothing.
 - A permission refusal on another worker's private files is a boundary. Ask for a readable copy, or read the effects in the live store.

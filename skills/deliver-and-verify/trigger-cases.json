@@ -2,6 +2,50 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Update an armed card-game release PR after review; ensure its surviving merge intent cannot admit the changed source before the new head is approved.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a generated-source correction to a queued PR with head-specific external approval, preserving the hold during the update and restoring normal queue admission afterward.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Fix a SaaS database reset whose catalog enumeration treats owner-managed dependents as independently removable; prove cleanup and reuse under its actual identity.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair a card-game test database cleanup that passes only when object names happen to match dependency order, preserving rollback after a late failure.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a catalog-driven cleanup regression with adversarial object ordering, verifying successful reset and subsequent writes as well as failure atomicity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Align a SaaS project declaration with its live identity when the typed CLI rejects a legacy UUID but the supported raw API returns a canonical resource.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Repair a card-game account lookup client that classifies an accepted legacy account ID as a handle; preserve the existing account and verify both accepted forms.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a signed-download refresh loop whose permanent issuance marker lets the existing link expire after one transient provider error.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship cache-snapshot regeneration with bounded retries after a terminated request loses its response, without replaying customer charges or grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a restore command whose recursive validator refuses the missing data that the restore is intended to recover, preserving rejection of invalid recovered data.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -74,15 +118,15 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
+      "prompt": "Repair a paged payment reconciler so an undispatchable oldest receipt cannot block later work or other tenants, while an already-scanned receipt is revisited after provider settlement.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
+      "prompt": "Fix a CRM delivery worker that treats every undispatched message as a capacity hold, preserving deliberate holds while yielding ineligible messages and revisiting them when the customer becomes contactable.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
+      "prompt": "Repair a retention reconciler so failed preflight durably yields to later candidates without losing retry eligibility after a later page succeeds.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
@@ -224,10 +268,6 @@
     {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
-      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
@@ -1446,6 +1486,86 @@
       "clause": "changing selected-source release inputs"
     },
     {
+      "prompt": "Extend terminal-state replay tests to resend the original payload through a discarded alias, including source-only replay and late redelivery.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a tenant-boundary fixture whose tenant and owner fields always share a value, varying them independently in permitted and refused cases.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement physical erasure across owned historical versions and verify held-reader residue without relying on text equality.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish a source change and verify every declared module is tracked despite a shared Git exclude file.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Change configuration generation so dangling reward and pool references fail compilation before publication.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Fix an adapter that maps quota shedding to permission denial, preserving the typed reason and request ID through the CLI.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair shared-content ACLs so retiring one consumer preserves grants required by another live consumer and admits no future metadata sibling.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change diagnostic redaction to sanitize the complete tool result before truncation and fan-out to storage, uploads and the next request.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a worker shutdown race where an old slot consumes a wake after durable idle but before publishing its stop.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Serialize erasure and late admission on one stable owner, proving both database lock orders through production entrypoints.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix breaker accounting so repeated reconciliation of one uncertain attempt counts once and does not deny an unrelated authorized destination.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair process-global PATH and file-lock tests with single-test subprocesses and explicit child identity configuration.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change privileged Git maintenance to use recorded metadata paths and protected per-worktree configuration without wildcard directory trust.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change database fixture identifiers to respect the tightest seeded column bound while retaining a random suffix.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Publish a SaaS reader-permission delta stacked on its held dependency branch when the commit is local but the publisher cannot find that branch's remote-tracking base.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a card-game balance patch for review on its prerequisite branch, verifying that the single-branch checkout materialized that exact remote base without retargeting to main.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Fix a shared readiness endpoint so a SaaS deployment without an optional search index stays ready while a configured incomplete index fails closed and mandatory upstream failures still reject readiness.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game admission fix across assembled server profiles that omit optional matchmaking, configure it incompletely, or load it successfully; preserve mandatory account-service failure behavior.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression coverage for shared readiness from the real environment/declaration parser through every production constructor: intentionally absent configuration stays valid, while configured capabilities with missing, empty, malformed, or non-Unicode prerequisite bindings cannot disappear into an absent runtime.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
       "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1467,6 +1587,36 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-enforced head approval with an external approval mechanism as architecture choices without changing a repository.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a release note explaining that an approved unchanged PR is waiting in the merge queue, without changing source or queue state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past cleanup rollback proves that recovery can complete; inspect evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dependency-ordered cleanup and whole-container replacement as proposed reset architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the database reset documentation for clarity without changing SQL, running tests or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
       "clause": "prove-it for a review or evidence check",
@@ -2389,6 +2539,61 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an erasure test covers discarded aliases and late redelivery, without modifying or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare fixture identity models for a proposed authorization architecture, without implementing tests.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether physical erasure evidence includes historical copies and held-reader residue; do not change code or operate the service.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared-principal grant lifetime designs without changing permissions or source.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a paragraph explaining synthetic identifier length limits without changing fixtures or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether past readiness tests covered intentionally unconfigured capabilities and failing mandatory upstreams, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare optional-capability admission designs for a proposed service architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of unconfigured versus unavailable capability status, without modifying or publishing software.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an undispatchable oldest candidate could block other tenants; inspect source without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare typed deferral outcomes and boolean results for a proposed job admission design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of deliberate capacity holds and failed preflight without changing code or publishing a repository change.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

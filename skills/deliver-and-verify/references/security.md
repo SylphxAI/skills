@@ -23,13 +23,26 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. Credential secrecy and payload integrity are independent: keep existing input channels usable, with a synthetic credential absent from the final spawned argv and unchanged payload and refusal bytes verified through the actual client. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
+A wrapper can select a different principal at several routing layers, including
+local credential lookup; disabling one route does not establish the connected
+user's identity. If routing alters that lookup, use the supported unwrapped
+client only for local credential retrieval, bind the result in child
+memory/environment to the guarded network client, and verify the effective
+account and required scopes on each pass, refusing mismatches. Keep credentials
+out of argv and artifacts, and retain quota and admission controls for every
+network call.
+
 A protective CLI wrapper must recognize the syntax its real client accepts. Combined short options, attached or separate values, value-consuming options and `--` can change which argument carries a credential. Verify rejected credential forms alongside legitimate values that resemble flags; treating every token as an independent option can both miss credentials and reject safe requests. **Bad:** cover `-u user:password` but miss `-su user:password`; **Good:** exercise the client's option grammar and prove output paths and other consumed values still pass unchanged.
 
 Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** retain an allowed status field containing an arbitrary object; **Good:** reject undeclared shapes while preserving useful validated status, timestamps and safe diagnostic detail, with positive controls proving that useful output survives.
 
 A redaction boundary sanitizes the complete stream before output caps, in linear
 time within the failure-reporting budget: whole-value matching can miss quoted,
-escaped, encoded or truncated credential fragments. Verify final consumers see no
+escaped, encoded or truncated credential fragments.
+Sanitize complete raw output at the common ingress before truncation or fan-out,
+and make every storage, next-request and upload consumer use only that value;
+verify their actual emitted bytes, since stored-body redaction alone cannot
+protect another egress. Verify final consumers see no
 known raw or encoded credential material while retaining parseable records,
 process status and novel short and long actionable diagnostics, including safe
 detail beyond public excerpt bounds. Exercise transformed fragments, length
@@ -90,6 +103,8 @@ between enumeration and effect, and assess hard links separately through the
 effective link policy or link-count checks. **Bad:** `find -P` followed by
 pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
 permissions untouched after a deterministic symlink swap.
+
+For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Atomic configuration replacement can revoke the original owner's access: preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
 
 ## Runtime isolation
 
@@ -203,7 +218,7 @@ exact finding and reason, then publish through the unchanged scanner.
 
 Collect what the product needs and limit exposure in logs/analytics. An opaque linkable identifier is pseudonymous and can still be personal data; it is not proof of anonymization.
 
-Implement the product's deletion contract across its relevant stores/processors, billing and credentials. Test that newly introduced personal-data stores participate. Distinguish a deletion request accepted for processing from completed deletion and report the corresponding server state.
+Implement the product's deletion contract across relevant stores/processors, billing and credentials, including newly introduced stores, and distinguish accepted processing from verified completion. For an identity-bound whole-object erasure, remove every authoritatively owned historical body/version without text-equality or containment predicates; missing legacy ownership is uncertainty, not erasure authority. Physical-erasure claims require verification of every copy and raw database/journal residue, including write-ahead logs; a held reader can prolong that residue, so measure and report its remaining window rather than claiming full erasure.
 
 Bind redaction to the stable origin across the full merged alias set, so redelivery under a new source key still resolves to the same decision before storing or indexing content. Verify both alias-merge orders and redelivery with a changed source key; checking only the original key leaves an alternate route for the body to reappear.
 

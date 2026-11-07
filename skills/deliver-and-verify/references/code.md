@@ -38,6 +38,19 @@ registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
 
+A shared readiness or admission check must distinguish an intentionally
+unconfigured optional capability from a configured capability that is unavailable:
+derive configured-versus-absent from the capability's own declaration before
+evaluating prerequisites, because prerequisite-gated assembly can silently turn a
+configured-but-unusable capability into absence and a false-ready success. Preserve
+intentionally absent reduced-scope deployments, but refuse construction/readiness
+for a configured capability with a missing, empty, malformed, or non-Unicode
+binding rather than treating it as absent. Verify the real environment/declaration
+parser through every production constructor or deployment profile (using isolated
+subprocess environments for process-global settings), covering absent, invalid,
+and loaded declarations plus healthy and failing mandatory upstreams; helper-only
+tests miss this boundary.
+
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
 production default. Bind every origin resolver to positive target identity in
@@ -144,7 +157,7 @@ for A, select same-text B and let A's reply mutate B; **Good:** resume against
 captured A and refuse a replaced or stale A, while unchanged A succeeds even
 after a test moves selection to B between submission and response.
 
-Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure and late admission must serialize on the same stable owner before the final eligibility snapshot and publication marker; deleting existing markers alone permits later resurrection. Prove both lock orders through real entrypoints and the database wait graph. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested helper that acquires a second connection from the caller's finite pool
 can starve while the outer transaction holds the available capacity; a larger
@@ -155,7 +168,7 @@ forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
 
-Optional presentation metadata and executable fulfilment are separate contracts: omitting a label cannot make an unresolved entitlement, stock item or nested bundle grantable. Before consuming a single-use right, validate the complete payload against the actual fulfiller's catalogue and supported types; a mixed valid/invalid payload must refuse atomically, while missing optional labels alone may still succeed.
+Optional presentation metadata and executable fulfilment are separate contracts: missing labels may be harmless, but a valid container does not prove its executable descendants resolve. Before consuming a single-use right, resolve the complete payload recursively through the actual fulfiller's type-specific catalogues; any unresolved descendant must refuse the whole operation atomically. Test missing typed leaves at several nesting depths alongside an entirely valid nested payload and missing optional labels, so neither top-level-only checks nor blanket refusal can pass.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -200,15 +213,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent background candidates need isolated failure and retry state, forward
-progress and revisitation: an early pending or failed row must not starve later
-work or other tenants, or become stranded when its eligibility changes after
-discovery advances. Repeated polls with unchanged
-inputs prove only idempotence; change an already-scanned candidate's inputs and
-verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the
-completion or deletion contract is satisfied; atomic batches remain a different
-contract.
+Independent background candidates need discovery and admission rules aligned with
+actual dispatch eligibility, with typed outcomes separating deliberate capacity
+holds from ineligibility, unmet prerequisites and failed attempts; otherwise an
+undispatchable winner can starve later work or other tenants. Isolate failure and
+retry state, durably yield selections blocked for other reasons and retain their
+retry source until completion or contracted deletion; atomic batches remain a
+different contract. Through the public worker or poll entrypoint, verify progress
+past those selections, effective capacity holds and completion of an already-scanned
+candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -236,10 +249,13 @@ terminal result and a rejection before any send as controls. A mock returning
 a prebuilt error cannot establish which side of dispatch the failure occurred.
 
 With PgBouncer transaction pooling, a backend connection belongs to the client
-only for one transaction. Do not rely on session `SET`, `LISTEN`, or
-session-level advisory locks across transactions. Use transaction-local settings
-and transaction-scoped locks where appropriate; route genuinely session-bound
-work through a supported session or direct connection. Verify the deployed pool
+only for one transaction. Do not rely on session `SET`, `LISTEN`, temporary
+objects or session-level advisory locks across transactions. Post-commit
+verification resolves durable objects by stable IDs, not session-local staging;
+a missing temporary object after confirmed `COMMIT` is a verifier failure, not
+evidence of rollback or permission to resend the mutation. Use transaction-local
+settings and transaction-scoped locks where appropriate; route genuinely
+session-bound work through a supported session or direct connection. Verify the deployed pool
 mode, driver and prepared-statement configuration with concurrent database-backed
 tests, not just a direct connection. Protocol-level prepared statements are not
 the same as SQL `PREPARE`; support depends on the pool configuration
@@ -319,6 +335,13 @@ from the qualifying observation to the guarded action, including client startup
 and transport setup. Read-only setup may happen beforehand if the final
 observation still verifies the exact target and state; extending receipt validity
 to hide setup time weakens the safety contract.
+
+A bounded side task can still cross into a periodic worker's narrow due window;
+a clock read from before that task is stale when choosing the next wait.
+Recompute eligibility after side work and before sleeping, preserving slot
+deduplication. Drive a side task across the window boundary with a controlled
+clock and prove the due slot runs once while an already-completed slot stays
+suppressed.
 
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new
@@ -440,6 +463,22 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+For catalog-driven cleanup, derive independently removable objects and deletion
+order from authoritative dependency and ownership metadata; lexical names and
+enumeration order carry neither guarantee. Through that same production path
+under the actual cleanup identity, use adversarial names/order to prove completed
+cleanup and usable post-reset state, plus rollback after a late failure when
+atomicity is promised.
+**Bad:** sort every catalog entry by name and count rollback as recovery;
+**Good:** respect owner-managed dependents and prove dependency-safe completion,
+subsequent use and failure atomicity.
+
+For parameterized SQL performance across broad and keyed selectors, a fast
+custom plan or empty result can hide generic-plan cardinality errors, repeated
+scans and join products. Measure populated cases through the consuming driver's
+prepared-statement behavior under the effective role and row-level security
+(RLS), comparing generic and custom execution plans where supported; inspect
+actual rows, loops and buffers as well as latency.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
@@ -458,9 +497,10 @@ Preserve owner capabilities required by internal FK/trigger paths while keeping
 or grant options; adding a trigger or role solely to preserve owner
 self-revocation obscures the actual boundary.
 **Wrong:** infer append-only behavior from owner ACLs or successful reads.
-**Right:** retain the real FK and prove a valid nonowner `INSERT` after complete
-fresh and upgrade migrations, before fixture grants, alongside denied workload
-mutations and denied `SET ROLE` to the owner.
+**Right:** retain the real FK and record the migration-only ACL result before
+fixture grants; then prove a valid nonowner `INSERT` under the declared, scoped
+workload grants after complete fresh and upgrade migrations, alongside denied
+workload mutations and denied `SET ROLE` to the owner.
 
 A successful read can be policy-filtered even when it returns no warning or
 error; counts, maxima and metadata inventories establish completeness only for
@@ -677,7 +717,7 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 
 Runtime fixtures must compile and lint in the repository's compile-only configurations without runtime-only setup; passing configured execution does not establish that contract. At execution, a required resource-dependent check fails clearly when setup is absent, while an optional suite retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
-Share cohesive fixtures and table-driven cases where that improves readability.
+Share cohesive fixtures and table-driven cases where that improves readability. When production treats fields independently, vary them independently in allowed and refused cases unless its contract guarantees equality; assigning the same value to tenant and owner can hide a boundary defect.
 When several implementations or adapters claim one behavioral contract, preserve
 the authoritative cases’ identities, multiplicity, units and expected outcomes
 across the changed boundaries; a locally reconstructed equivalent can erase the
