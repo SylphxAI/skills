@@ -22,6 +22,10 @@
       "clause": "official email notices"
     },
     {
+      "prompt": "Check a software vendor inbox with hundreds of build notices for exceptional security or account notices without marking messages read.",
+      "clause": "official email notices"
+    },
+    {
       "prompt": "The support inbox latest UID is below our saved cursor. Patrol the requested time window without marking messages read.",
       "clause": "unanswered customer inbox queues"
     },
