@@ -1788,6 +1788,14 @@
     {
       "prompt": "Fix a storage fault-injection fixture whose transport mock swallows the fixture control requests, and verify zero, one and multiple effects across repeated cases.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS network selector for scheduled export workers whose inherited service ID differs from the display name, preserving tenant isolation.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Update a card-game job access policy when the gateway routing label is not propagated to its generated reward workers; verify their effective identities and access.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
