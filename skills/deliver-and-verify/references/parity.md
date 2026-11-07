@@ -475,7 +475,10 @@ colours or variance, not only that the file exists.
   separately from root metadata; changed unowned or unverifiable payloads fail
   closed. The real publication gate must reject an undeclared change confined
   to referenced external bytes while accepting an explicitly declared complete
-  closure.
+  closure. Identical objects do not prove compatibility: validate container and
+  each serialized member’s target, runtime version and format metadata against
+  the independently selected platform/runtime, with metadata-only negative
+  controls through both the producer and an independent reader.
 - Diff the prepared change against what is mounted live, not against the source
   repository. Label every changed cell as chosen, with its decision, or as drift
   that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
