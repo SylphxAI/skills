@@ -303,6 +303,14 @@ segment can be anchored incorrectly. Run the guard against the old failing state
 before claiming it catches the defect, then test the repair under the same
 conditions.
 
+A text-hidden control comparison limited to self-reported glyph, mesh or layout
+bounds cannot detect paint outside those bounds. Account for every changed pixel
+in the full frame, assigning each to disjoint real visual regions (the label's
+plate or header and its neighbours); reject unassigned paint before checking each
+region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
+changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
+bounds; contained paint passes only with the required neighbour clearance.
+
 Treat target size, hit testing and visible paint as separate assertions:
 
 - A control can submit the right values and expose an accessibility label while

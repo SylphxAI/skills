@@ -142,7 +142,7 @@ identify the same target: another entity or range may have replaced it, so make
 the final identity and version check atomic with the mutation. **Bad:** submit
 for A, select same-text B and let A's reply mutate B; **Good:** resume against
 captured A and refuse a replaced or stale A, while unchanged A succeeds even
-after selection moves to B.
+after a test moves selection to B between submission and response.
 
 Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
@@ -662,8 +662,9 @@ transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
 When adding a guard, refusal or early return, trace every caller with side effects
-and test refusal through each caller, not only the guarded method. For shared
-eligibility or availability rules, verify each public contract for temporary
+and test what each caller does after refusal, not only the guarded method.
+A correct early return does not prevent its caller from closing or discarding
+state. For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
