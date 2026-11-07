@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Losslessly retained token spelling does not establish domain equality or
+destination representability: derive value-defined comparisons and admission from
+the contract and destination type, retaining original bytes separately where required.
+**Wrong:** compare decimal spellings or bound only the exponent; **Right:** test
+equivalent values with different spellings and combined coefficient/scale limits
+through the actual storage driver, while byte-defined identifiers remain distinct.
+
 A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
 complete rewritten document with the destination consumer's parser, including
@@ -686,6 +693,15 @@ required outputs. Test that mode through the real entrypoint and assert those
 outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
+
+For before/after comparisons of derived state, preserve each version's source
+inputs while giving both sides equivalent dependency availability and preparation
+policy; one-sided enrichment can fabricate changes in untouched entities.
+Exercise an unchanged entity that shares a changed entity's dependencies through
+the actual comparator, with a genuinely changed or removed entity as a
+distinguishing control. **Wrong:** enrich only one side and call the resulting
+gap lost state; **Right:** unchanged entities remain equal while real differences
+still surface.
 
 Normalization or projection used to validate an exact declaration may erase only
 contract-defined differences: removing a subtree can also erase undeclared text,
