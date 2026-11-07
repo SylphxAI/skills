@@ -225,10 +225,13 @@ mock cannot establish which policy the real execution applies.
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
 
-Response evidence also depends on request headers and API version: a default
-CLI response can differ from the failing caller's negotiated payload. Exercise
-that caller's decoder with empty and populated responses, distinguishing valid
-empty encodings from malformed envelopes. A transport-library non-error or
+Response evidence depends on HTTP method, endpoint, range, headers, API
+version and immutable object version: successful metadata reads or valid bytes
+from an alternate route do not establish the failing consumer's read availability.
+A readable newer version establishes only its own availability, even when its
+authenticated bytes are identical; it does not prove recovery of the older
+version. Exercise that caller's decoder with empty and populated responses,
+distinguishing valid empty encodings from malformed envelopes. A transport-library non-error or
 generic `2xx` does not establish the route's terminal state: accept only its
 contract-defined status and required body fields, types and ownership, including
 a legitimate queued `202` where specified.
