@@ -1800,6 +1800,122 @@
     {
       "prompt": "Fix recovery of a confirmed-dead SaaS export worker whose durable job remains unfinished, while preserving healthy active workers during automatic rotation.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Retire a SaaS pricing configuration that mixes obsolete plan identifiers with still-binding refund and spending constraints; preserve each surviving contract.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace a card-game event configuration without dropping its independent paid-entitlement and reward-value safeguards.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement a streamed archive mirror that withholds completion until the full digest matches while documenting early prefixes as unverified.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export proxy whose tests collect the entire body and miss a successful-looking response after a late checksum mismatch.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset downloader that rejects a truncated stream before extracting or running the downloaded payload.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS status exporter whose new metadata never reaches an already-correct resource because reconciliation skips the write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game progression summary that fills a newly added field even when the saved player level has not changed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement an index metadata backfill through normal reconciliation while leaving an already-current document value unchanged.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS network selector for scheduled export workers whose inherited service ID differs from the display name, preserving tenant isolation.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Update a card-game job access policy when the gateway routing label is not propagated to its generated reward workers; verify their effective identities and access.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Rotate a Job's credential file and ensure a FIFO at that path is refused before its open can stall unrelated jobs.",
+      "clause": "rotating secrets consumed by Jobs"
+    },
+    {
+      "prompt": "Ship a file-indexing service fix that rejects named pipes before opening them can block the shared worker.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a multiplayer server configuration reader so a malformed special-file input cannot block other worlds behind its validation mutex.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS maintenance Job identity so it reaches bound storage without joining the web service load-balancer endpoints.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game reward worker label change that preserves its resource access while keeping it outside player gateway traffic selectors.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update training-workflow identity labels without enrolling batch pods in the inference service routing or metrics cohort.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement a zero-token card-game support queue watcher that reconciles changes during successor watch registration without replaying completed work.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Repair a zero-token external inbox watcher handoff so observer failure or exit still wakes the responsible agent without recurring LLM polling.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Fix a SaaS scheduler where a slow timed pass starves notification-driven continuation work that remains ready; prove bounded service across every promised work class.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a scheduler regression with one controlled clock that keeps timers overdue and notifications ready after every slow pass, preserving idle behavior and the missed-tick contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game worker fairness repair so periodic cleanup cannot starve ready player-action notifications, without inventing idle work or an undeclared catch-up burst.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS browser-test helper that closes its session before retaining the failure screenshot and masks the original error when cleanup fails.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game native preparation helper so bounded failure evidence is retained before the owned device is released, without replaying uncertain input.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a database-fixture runner correction that keeps the original test failure primary when diagnostic capture and teardown also fail.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change CI workflow runner selectors to isolate merge builds while preserving their required memory class in the target organization.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a batch deployment to an isolated resource tier advertised globally, while retaining the required memory in its target region.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Ship a worker configuration change when the same-size isolated tier is not served in this account; preserve the serving allocation and report remaining contention.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -2975,6 +3091,96 @@
     },
     {
       "prompt": "Rewrite a local guide explaining graceful shutdown, without changing source or operating the service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a prior credential-file validation could block before it checked the opened type, without modifying or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dedicated workers and nonblocking file opens for a proposed shared configuration reader without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of why a named pipe can block, without changing source or runtime configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether copying service labels to a scheduled export would make it an HTTP endpoint; report findings without editing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare separate identity and routing labels with a shared-label design before choosing an architecture; do not implement it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the UI explanation of scheduled jobs and bound storage without changing their labels or access policy.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a running observer proves continued wake coverage after its one-shot subscription fires; report evidence without shipping a fix.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare one-shot and persistent subscription designs for an inbox before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of registration races without changing the watcher, running tests or publishing anything.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a scheduler fairly serves continuously-overdue timers and ready notifications; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare round-robin and deadline-based scheduling for a proposed worker architecture under continuously-overdue timers and ready notifications without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of slow-pass scheduler fairness and idle controls for clarity without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past browser failure lost its original cause during cleanup, without changing code or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare retaining a stateful test session and exporting a diagnostic snapshot as alternative architectures, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explanation of failure evidence and teardown without changing helpers or operating a service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a globally listed runner label has serving allocations in this organization without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared and isolated resource tiers for a proposed regional deployment architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of remaining resource contention without changing or publishing any configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

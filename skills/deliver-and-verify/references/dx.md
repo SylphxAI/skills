@@ -56,7 +56,7 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Diagnostic collection failures must not replace the original outcome.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
 
 A temporary-directory error can originate in a separately configured package
 cache. Read the failing child's effective tool home, cache and index paths,
@@ -231,12 +231,17 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal or active.
+A complete schema replay does not by itself make a fixture legal, active or ready
+for CI's transport and authentication mode; permissive local trust can hide
+missing credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
-control should reach the decision under test, separating invalid or inactive
-setup from a behavior failure.
+control should reach the decision under test through a real connection as the
+intended role using CI's transport and authentication mode, separating setup from
+behavior failure. Where credentials are required, pair accepted restricted-role
+behavior with unauthenticated connection refusal, without weakening authentication
+or broadening grants.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
@@ -323,12 +328,14 @@ read 2026-11-07). The [whole-chain deadline](code.md#outbound-calls) still bound
 all sources, attempts and server-requested delays.
 
 For a client failure, read the executable path and version used by the failing
-caller before adding another fix. Compare it with the first published release
-containing the relevant behavior, then trace the installer's version and checksum
-pins. If that release already fixes the failure, update the consumer through its
-supported installer and rerun the original command. A published fix does not
-update a pinned installation. Keep the checksum pinned with the version; an
-automatic update proposal should copy both from the release's checksum artifact
+caller and compare it with the first published release containing the required
+behavior. Installer aliases can resolve through a manifest pinned to the installer
+revision rather than the latest release; select an explicit compatible version
+supported by that manifest and trace its checksum pin. After installation, record
+the resolved path and version and prove the required capability through the actual
+consumer invocation and environment, including the next CI step when PATH changes
+apply there: a same-step version check can report a preexisting executable.
+Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
@@ -592,10 +599,13 @@ routing expression before choosing a supported event with the intended metadata.
 Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
 
 
-- Dependency installation alone does not establish test readiness: package
-  exports and CI setup identify generated files and external executables needed
-  in the test's own build target, with production evaluator/runtime versions
-  when those are part of the claim. Dependency preparation and offline fixture
+- Dependency installation alone does not establish check readiness: each check
+  needs its imports, generated files and executables in its own job, stage and
+  build target, with production evaluator/runtime versions when claimed.
+  Later installation steps and incidental host packages cannot prepare an earlier
+  check; exercise its entrypoint with only the dependencies available at that
+  point, excluding undeclared user and system packages.
+  Dependency preparation and offline fixture
   compilation share the same effective executor, package source and cache;
   a wrapper can place each nested command in a fresh cold lease, so a successful
   fetch does not prepare the next command. Verify that the real fixture working

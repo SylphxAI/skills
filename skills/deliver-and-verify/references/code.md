@@ -61,6 +61,15 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
+A globally documented runner label or resource tier does not prove a serving
+allocation in the target account, organization or region: match the selector,
+scope and required memory class against effective desired and served inventories.
+If a same-size isolated allocation is not served, preserve the serving allocation
+rather than inventing a selector or downsizing to obtain isolation, and state the
+remaining contention. **Wrong:** select a catalogued isolated tier that is absent
+in the target scope; **Right:** retain the served memory class until scoped
+desired and served inventories establish the isolated replacement.
+
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
@@ -102,6 +111,16 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
+HTTP readiness success or a `Ready` pod can precede initial discovery and usable
+work; a controller may retire the predecessor on `readyReplicas` while
+`minReadySeconds` affects only availability. Bind cutover to the exact field the
+installed controller consumes and evidence of completed discovery, with assigned
+work usable and legitimate empty assignments accepted, rather than fixed delays,
+probe-count timing assumptions or a nonzero-work requirement. Through that
+controller, hold startup discovery pending beyond any configured delay and verify
+the predecessor remains serving, then release discovery and verify retirement for
+both legitimate empty assignments and populated assignments with usable work.
+
 Protect co-dependent stateful and serving-path pods at a shared numeric priority
 that routine work eligible on their nodes cannot preempt; keep deliberately
 expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
@@ -130,12 +149,25 @@ independently; **Right:** resolve the rendered references and dry-run the effect
 update against existing objects, proving unchanged immutable templates and no
 unintended execution.
 
-Trace each pinned or referenced input through the existing automatic writer's
-change trigger, propagation latency and the consumer's read behavior; an initial
-deployment does not prove later input changes propagate. **Wrong:** rotate a
-Secret and assume a completed Job reruns. **Right:** change only that input and
-verify the intended consumer uses its new revision within the declared
-propagation time, including CI, merge queue and deployment reconciliation.
+Identity-label selectors depend on the producer's propagation contract and every
+consumer of the label, not the key's apparent meaning: compare admitted children
+with their source, preserving opaque IDs and intentional omissions. A label that
+grants access can also select traffic, scheduling or metrics, so verify intended
+access and exclusion from unrelated selectors before propagating it.
+**Wrong:** copy a service's labels to a worker because its access policy matches;
+**Right:** inherit declared identity while proving the worker never joins serving
+endpoints, then exercise the access path rather than treating policy eligibility
+as working connectivity.
+
+Trace changed inputs through the automatic writer's trigger, propagation time
+and consumer read behavior; a new deployment does not establish later updates.
+New metadata can also remain unpublished when an unchanged primary value skips
+the writer: exercise the real reconciliation entrypoint with old or absent
+metadata and an already-correct primary value, preserving that value while
+verifying the promised metadata reaches its consumer. **Wrong:** call the new
+formatter or force an unrelated state change to make the sample appear.
+**Right:** prove both changed and unchanged passes through the normal writer,
+with missing and existing metadata, within the declared publication contract.
 
 An automatic update can discard a temporary compatibility approval while another
 consumer still uses it. Exercise successive and unrelated updates during a
@@ -163,7 +195,7 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Replay uses the same identity equivalence as initial admission, including database collation or canonical aliases; stricter application-string equality can reject an identical retry after its effect committed. Prove an accepted alternate spelling replays the original receipt after configuration removal, with a genuinely different identity as the refusal control. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
-A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints.
+A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints. A current read after a lock wait can observe a commit that a later snapshot validation still cannot; every decision about that newly observed receipt needs consistent visibility. Test overlapping identical retries under the effective production isolation alongside changed-body conflicts and conserved effects.
 
 An asynchronous request captures its target's stable identity (slot, item, row
 or range) in request context at submission; its continuation never resolves the
@@ -240,6 +272,15 @@ different contract. Through the public worker or poll entrypoint, verify progres
 past those selections, effective capacity holds and completion of an already-scanned
 candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
+A fixed-priority selector can starve eligible notifications or other timers when
+one periodic pass exceeds its interval and is overdue again at every selection;
+burst-then-idle tests never sustain that contention. Where progress is promised
+for every ready work class, verify bounded service across the outer timer and
+notification/continuation selection, not just rotation within one branch. Use one
+controlled clock to keep all classes ready across slow passes, with idle and
+missed-tick controls proving that advancing time neither invents pending
+notification work nor creates an undeclared catch-up burst.
+
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
 In runtimes where futures advance only when polled, awaiting maintenance can
@@ -249,15 +290,20 @@ rather than eventual completion alone.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
-Track failure cause separately from certainty about effects. Once a request may
-have reached its worker, a lost connection, timeout or subsequent worker death
-can explain the missing response without proving the command did not run.
-Preserve the unknown outcome, typed cause and original idempotency key. Replay
-or reconcile through the operation's supported contract without starting a
-second logical operation. Classify a failure as a rejection before dispatch
-only when dispatch was conclusively prevented. An authoritative terminal
-receipt can resolve an unknown outcome; a controller's terminal status alone
-does not prove its worker exited or released its lock.
+Track failure cause separately from certainty about effects: once a request
+may have reached its worker, a lost connection, timeout or subsequent worker
+death can explain a missing response without proving the command did not run,
+and cancellation can release a waiter while noncancellable work continues.
+Preserve the unknown outcome, typed cause and original idempotency key; keep
+settlement observation attached to the unresolved operation's lifetime,
+including idle gaps, and replay or reconcile through the supported contract
+without starting a second logical operation. Apply corrective writes only
+when observed state diverges from intended state—an authoritative terminal
+receipt can resolve an unknown outcome, while a late acknowledgement of
+unchanged state must terminate rather than recursively rewrite it; classify a
+failure as pre-dispatch rejection only when dispatch was conclusively
+prevented, and a controller's terminal status alone does not prove its worker
+exited or released its lock.
 
 Verify this boundary through the real transport: have the peer receive the
 request, then close the connection before response headers. Assert the typed
@@ -569,11 +615,11 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check the final state after queued work settles; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
+Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
-For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
@@ -778,10 +824,12 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-When adding a guard, refusal or early return, trace every caller with side effects
-and test what each caller does after refusal, not only the guarded method.
-A correct early return does not prevent its caller from closing or discarding
-state. For shared eligibility or availability rules, verify each public contract for temporary
+When adding a guard, refusal or early return, trace public callers beyond the
+changed-file diff: an inherited generic handler can turn a new typed refusal into
+normal completion. Zero mutations proves effect fencing, not caller-visible
+rejection; exercise those boundaries for both refusal result and preserved state
+alongside permitted completion. A correct early return also does not prevent its
+caller from closing or discarding state. For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
@@ -799,7 +847,11 @@ consumer's pinned dependencies, compiler configuration and ambient declarations;
 a narrowed check with substitute declarations proves only that narrower boundary.
 A passing runtime test or type assertion does not establish that its mock matches
 the host's complete type, so the consumer's exact compilation, formatting and lint
-checks remain the compatibility verdict. Keep one source representation that
+checks remain the compatibility verdict. Capability-absence fixtures also depend
+on the host's property descriptors: a native member can be non-configurable in
+one runtime. A scoped replacement of the dependency can model absence without
+reconfiguring that member; the unchanged production fallback and a subsequent
+capability-present control establish behavior and fixture cleanup. Keep one source representation that
 passes every consumer, with any suppression's narrow explanation in syntax the
 checker reads, such as a Rust lint's `reason` attribute.
 

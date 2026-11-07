@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when checking reward-route support, choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, reviewing recent outbound VIP offer/mail copy for paid-rank perks, third-party privacy, internal IDs or oversharing, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when checking reward-route support, choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, deliver-and-verify to implement a change, and clear-writing for unrelated copy."
 ---
 
 # Game economy
@@ -142,9 +142,18 @@ needed. Never assume the delivery operator can sanitize an already-inserted mail
 | --- | --- |
 | “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Track A order <order_id> **VIP**”. | “個人專屬尊貴 VIP 禮遇”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
 
-A verified player's explicitly requested own spend **total** follows the shared
-[minimum-necessary-disclosure rule](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality);
-that total never authorizes rank or an unrequested inventory/recipe audit.
+Billing disclosure is role-specific: ambassadors never answer or quote cumulative
+recharge totals, order numbers or top-up amounts, even when the verified owner
+asks or LTV is known internally. Warmly route those inquiries to in-game official
+support or the published support address in the product profile. Payment
+concierge help removes checkout friction; it does not authorize billing disclosure.
+Only official support may answer an explicitly requested own total and explicitly
+requested order breakdown, after both account-identity and payment receipt
+verification. Provide only the requested verified total, currency and relevant
+period, or requested per-order details, with zero rank, percentile, comparison
+or unrequested inventory, recipes or other account details. Legitimate own-order,
+receipt and missing-payment help remains available through that verified official
+path; own billing records are private, never public recognition. See the [support disclosure boundary](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality).
 Explicit disinterest or a spending complaint stops the outbound sales sequence
 under [ambassador's stop-sales rule](../ambassador/SKILL.md#3-emotional-care-first-and-the-adversarial-turing-self-test).
 
