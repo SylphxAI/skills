@@ -36,6 +36,16 @@ evidence, not permission. **Bad:** reject permitted work because a masked key
 disappeared; **Good:** exercise permitted and refused requests through the real policy
 boundary without deriving authority from diagnostics.
 
+Agreement between two observations from the same writable state is not independent
+verification: a symbolic name and its history can both change under the same
+writer. Bind the effect to an immutable identity retained by the authorizing
+process, and verify that the effective resolver cannot substitute its contents;
+any permitted transform must derive only from that retained input. **Bad:** compare
+a shared branch with symbolic `HEAD` before pushing by branch name; **Good:**
+publish the caller-retained commit after disabling replacement objects, then test
+that another writer cannot change the uploaded tree through either the ref or
+the resolver.
+
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
 
 For privileged tool maintenance, run executables from user-writable paths as

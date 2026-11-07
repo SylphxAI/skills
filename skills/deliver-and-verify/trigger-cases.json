@@ -1436,6 +1436,18 @@
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Harden a source publisher so a second worktree cannot substitute a retained commit through shared branch or replacement refs; preserve authorized deterministic rewrites.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a release uploader to consume the digest retained by its authorizing process, not a mutable tag re-resolved at upload time, and test a tag substitution.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Fix a configuration activator that compares two records writable by the same actor; bind activation to the independently retained approved content digest.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
