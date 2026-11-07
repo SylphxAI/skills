@@ -1436,6 +1436,18 @@
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Fix a shared readiness endpoint so a SaaS deployment without an optional search index stays ready while a configured incomplete index fails closed and mandatory upstream failures still reject readiness.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game admission fix across assembled server profiles that omit optional matchmaking, configure it incompletely, or load it successfully; preserve mandatory account-service failure behavior.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression coverage for shared readiness through every assembled constructor, including intentionally absent optional capabilities rather than only configured helper states.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2361,6 +2373,21 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether past readiness tests covered intentionally unconfigured capabilities and failing mandatory upstreams, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare optional-capability admission designs for a proposed service architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of unconfigured versus unavailable capability status, without modifying or publishing software.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
