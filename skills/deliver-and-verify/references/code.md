@@ -552,9 +552,14 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. Run those vectors against the
-real implementation, asserting emitted POSTs, refusals, ordering, verdicts and
-resulting counts. Exact clock values require a declared recorder history;
+overbroad refusal proves agreement with the defect. A retryable provider outcome
+is not permission to dispatch again: after a durable submission marker, recovery
+is GET-only. A test that drives marked recovery through the unsent
+`queued`/send path can demand a duplicate POST and still pass; contrast it with
+an unmarked pre-admission throttle that remains queued and retryable. Run those
+vectors against the real implementation, asserting emitted POSTs, refusals,
+ordering, verdicts and resulting counts. Exact clock values require a declared
+recorder history;
 synthetic vectors must not freeze incidental timing or internal call sequences.
 
 An overlap or uniqueness check over derived ancestry needs tests through the
