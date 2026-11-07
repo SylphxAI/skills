@@ -626,7 +626,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.
