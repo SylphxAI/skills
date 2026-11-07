@@ -1956,6 +1956,18 @@
     {
       "prompt": "Repair a card-game offline UI adapter that assumes horizontal and vertical sizing are symmetric; verify each upstream axis contract and a chained cross-axis case without changing matching fixed-constraint results.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Resolve a registry conflict while preserving one branch's intentional deletion and the other branch's independent addition, then publish the source change.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Merge a SaaS allowlist update that adds a tenant while another branch removes a revoked grant, without resurrecting the grant.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a card-game content manifest merge that retains new rewards and preserves an independently removed ineligible entry.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -3251,6 +3263,21 @@
     },
     {
       "prompt": "Rewrite a museum visitor notice for clarity without changing code or publishing anything.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this merged registry resurrects an entry deleted relative to the common base, without editing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare parent-union and three-way reconciliation for a proposed allowlist editor without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this documentation paragraph about intentional deletions in plain language without resolving conflicts or changing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

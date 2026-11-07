@@ -892,6 +892,13 @@ Use [repository health](../../refactor/references/health.md) to verify unused pa
 
 Recorded conflict resolutions can apply cleanly after their assumptions have changed. **Wrong:** accept a cached resolution because the file parses. **Right:** compare its behavior with both current parents, reconcile changed acceptance conditions explicitly, and run the affected checks; an obsolete assertion or helper call can survive an otherwise clean merge.
 
-Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
+Resolve registry, manifest or allowlist conflicts by stable entry identity and
+compare both parents with their common base: a union of parent entries resurrects
+an entry deliberately deleted on one side but unchanged on the other. Preserve
+independent additions and deletions, explicitly reconcile competing changes to
+the same identity, and verify the complete resulting membership and mappings;
+where order has no meaning, sorted or keyed storage reduces insertion conflicts.
+**Wrong:** retain every entry from both parents; **Right:** a three-way comparison
+keeps both new entries while leaving an independently revoked grant absent.
 
 Review the failure modes and checks relevant to the change through [prove-it](../../prove-it/SKILL.md). Track throughput and review latency alongside incident/revert rates on a named population and window. A metric change is a signal to investigate, not by itself proof of causation.
