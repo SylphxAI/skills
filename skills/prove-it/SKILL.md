@@ -131,7 +131,9 @@ Source read 2026-11-07: [GitHub required status checks accept successful, skippe
 
 Automatic merge being enabled records intent. Read the live queue entry to
 establish enqueueing, and the pull request's merged state and merge SHA to
-establish merging. Failure and queue membership are independent: an
+establish merging. Evaluate the current merge-group SHA's own required evidence,
+separately from passing PR-head checks or retired groups. Failure and queue
+membership are independent: an
 `UNMERGEABLE` entry can remain queued and enter later combined groups. A
 removal claim needs a fresh authoritative membership check, not a failed verdict.
 Neither a completed-check watch nor a successful enable

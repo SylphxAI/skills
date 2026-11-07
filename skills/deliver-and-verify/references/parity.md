@@ -219,6 +219,10 @@ Capture live receipts in the **same run** as a version or revision read from the
 surface under test. A screenshot taken before the release reached serving never
 counts as evidence for that release.
 
+For a server status or error-contract change, include client versions already in
+the field using the [deployed-caller compatibility checks](integration.md#shared-dependency-features-and-client-policy);
+a journey passing only on the newest client leaves their behavior unverified.
+
 1. Start a uniquely named run directory containing UTC date/time and run ID.
    Record the target URL/environment, expected revision, device matrix, account
    fixture and journey. Keep credentials and personal data out of the record.

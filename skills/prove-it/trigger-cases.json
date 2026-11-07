@@ -216,6 +216,14 @@
     {
       "prompt": "Verify a time-windowed billing query whose combined series may replace raw sample timestamps with evaluation-grid times, using non-grid-aligned samples.",
       "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Verify why an old App-posted success remains selected after a failing workflow rerun with a newer started_at value.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check whether source-head approval is sufficient when the current merge-group SHA has no matching producer evidence.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
@@ -298,6 +306,16 @@
       "prompt": "Implement and publish a CLI fix that preserves caller configuration on the explicit-revision route.",
       "clause": "Use deliver-and-verify to publish or arm a PR",
       "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement fresh nonterminal check publication before each external approval rerun.",
+      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore a stalled approval queue whose configured producer was never enrolled.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
     }
   ]
 }
