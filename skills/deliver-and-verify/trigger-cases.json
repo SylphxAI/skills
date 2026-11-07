@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS certificate-rotation bug: existing workers must read the newly replaced file without restarting, and a retired worker must stay denied after an in-flight writer finishes.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset-cache permission fix so ordinary lock-and-rename updates preserve active clients but cannot restore a revoked client grant.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Add native pull-request CI supersession so the required aggregate releases its concurrency group without turning a cancelled run into a passing skipped check.",
       "clause": "changing CI workflows or concurrency"
     },
