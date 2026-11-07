@@ -231,12 +231,17 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal or active.
+A complete schema replay does not by itself make a fixture legal, active or ready
+for CI's transport and authentication mode; permissive local trust can hide
+missing credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
-control should reach the decision under test, separating invalid or inactive
-setup from a behavior failure.
+control should reach the decision under test through a real connection as the
+intended role using CI's transport and authentication mode, separating setup from
+behavior failure. Where credentials are required, pair accepted restricted-role
+behavior with unauthenticated connection refusal, without weakening authentication
+or broadening grants.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
