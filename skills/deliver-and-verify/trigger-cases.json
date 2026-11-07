@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a paused SaaS import worker whose persisted completion records fall back to a legacy reset path after restart.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game reward feature flag change without allowing legacy claims to consume already-dispatched entitlements.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an access-rule rollout so disabling new policy writes preserves the ownership and replay checks of existing records.",
+      "clause": "changing admission or access rules"
+    },
+    {
       "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -994,7 +1006,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -1122,11 +1134,11 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
-      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -1490,7 +1502,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
+      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job\u2019s effective token without dropping its existing artifact permissions.",
       "clause": "changing CI workflows or concurrency"
     },
     {

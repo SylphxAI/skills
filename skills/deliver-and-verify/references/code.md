@@ -174,10 +174,14 @@ formatter or force an unrelated state change to make the sample appear.
 **Right:** prove both changed and unchanged passes through the normal writer,
 with missing and existing metadata, within the declared publication contract.
 
-An automatic update can discard a temporary compatibility approval while another
-consumer still uses it. Exercise successive and unrelated updates during a
-migration; retire an old version's approval only after consumers stop selecting
-it and its active work and delayed results have drained.
+Stopping new writes does not retire durable ownership: a disabled feature or
+worker can leave records that legacy readers, resetters or fallback writers must
+still recognize. Verify pause and resume through those consumers after persistence
+reload, preserving acknowledged effects and pending obligations; compatibility
+approvals likewise remain until old consumers and delayed results have drained.
+**Wrong:** disable a writer and return its records to legacy reset/claim logic.
+**Right:** stop new admission while existing records retain their ownership and
+replay protections.
 
 A correct helper can receive altered arguments or environment through an
 upstream interpreter or PATH selection; verify effective configuration, executable
