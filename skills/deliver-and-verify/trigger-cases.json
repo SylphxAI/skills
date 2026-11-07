@@ -315,15 +315,15 @@
     },
     {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
@@ -1259,7 +1259,7 @@
     },
     {
       "prompt": "Repair a database reader whose admission and report use separate connections so backend routing cannot replace the admitted session.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Remove an operator's direct database write access while checking inherited groups and pod execution cannot recover a writer credential.",
@@ -1283,15 +1283,15 @@
     },
     {
       "prompt": "Publish a disposable CI probe workflow that runs a shell wrapper and an embedded Python verifier against a bounded external service.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Ship a one-off CI probe that measures client fallback while retaining optional diagnostics and failed acceptance assertions.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
@@ -1868,6 +1868,18 @@
     {
       "prompt": "Update training-workflow identity labels without enrolling batch pods in the inference service routing or metrics cohort.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change a work-admission policy that currently accepts any job with a matching display name; bind admission to authenticated caller context.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a SaaS import queue that accepts another tenant producer using the approved task label; verify identity cannot be overridden by the producer.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Update a game reward worker admission rule: reject another origin with the same task name and malformed identity, but retain supported versions of the authorized origin.",
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
@@ -3113,6 +3125,21 @@
     },
     {
       "prompt": "Rewrite the UI explanation of scheduled jobs and bound storage without changing their labels or access policy.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a runtime authenticates caller context after producer environment overrides, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare path-based and immutable-version workload authorization contracts before selecting an architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user-facing explanation of access policies without changing any access behavior.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
