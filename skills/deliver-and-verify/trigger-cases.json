@@ -1696,6 +1696,18 @@
     {
       "prompt": "Replace a card-game source-closure guard's module exceptions with default-deny untracked or ignored source inventory and exact per-invocation waivers; test Git ignore routes, custom extensions and allowed generated-file and declared-dependency directories.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change CI scheduling policy so its first queued source event can use a documented provider signal only after origin proof, varying fork origin independently of branch naming and event evidence.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a payment webhook policy fix whose helper tests seed settlement facts unavailable on first delivery; verify raw intake, storage reload and consumers without granting authority from display names.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a game match-queue policy change without removing a documented priority signal until authoritative replacement data exists at the first actionable event.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2788,6 +2800,21 @@
       "prompt": "Rewrite a local explanation of strict inspection for unproven tool resolution, without changing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an earlier source scheduler relied on facts first supplied by a later producer rather than its queued event; inspect initial payload and fork origin independently of branch names without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a payment webhook's first delivery supplies its authoritative eligibility inputs before storage enrichment; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare producer-side enrichment with documented scheduling signals for a proposed match-queue architecture, including unknown origins and explicit contradictory events, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }
