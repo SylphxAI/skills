@@ -545,7 +545,10 @@ establish compatibility with the deployed schema.
 default. **Right:** execute the actual query under the application role, preserve
 the column type, and verify the intended typed decode or explicit SQL conversion.
 Propagate unexpected encoding and decoding errors. A contract's missing-value
-default does not make an unreadable value equivalent to absence.
+default does not make an unreadable value equivalent to absence: a successful
+bulk read can collapse per-item type or access failures into missing values.
+Prove that distinction through the real adapter with both a corrupt/wrong-type
+item and a genuinely absent item before deriving defaults or healthy metrics.
 
 Sweep related projections and parameters for the same mismatch. Before removing
 a suppressed error, identify the fallback it previously supplied and which live
