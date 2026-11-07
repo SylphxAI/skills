@@ -139,13 +139,15 @@ independently; **Right:** resolve the rendered references and dry-run the effect
 update against existing objects, proving unchanged immutable templates and no
 unintended execution.
 
-Identity-label selectors depend on the producer's propagation contract, not the
-label key's apparent meaning: compare representative admitted consumers with the
-source that supplies their labels, including generated children and opaque IDs.
-**Wrong:** use a display name as an ID, or infer that a routing label is inherited
-by a background worker; **Right:** test the actual supported label combinations
-and exclusions, then verify the deployed consumer's identity and behavior.
-A policy match proves only eligibility until that consumer exercises the path.
+Identity-label selectors depend on the producer's propagation contract and every
+consumer of the label, not the key's apparent meaning: compare admitted children
+with their source, preserving opaque IDs and intentional omissions. A label that
+grants access can also select traffic, scheduling or metrics, so verify intended
+access and exclusion from unrelated selectors before propagating it.
+**Wrong:** copy a service's labels to a worker because its access policy matches;
+**Right:** inherit declared identity while proving the worker never joins serving
+endpoints, then exercise the access path rather than treating policy eligibility
+as working connectivity.
 
 Trace changed inputs through the automatic writer's trigger, propagation time
 and consumer read behavior; a new deployment does not establish later updates.
