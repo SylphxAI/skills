@@ -64,13 +64,16 @@ including existing leaf files; writable root directories and a fresh temp path
 do not establish update access. Compare the original command under another
 execution UID, changing only the suspected path when isolating the cause.
 
-Choose cache sharing from its contents and trust on reuse. Package bytes with
-integrity checks can use a shared group; credentials, signing keys and config
-need private state. A cached executable or compiler result trusted without
-reverification needs a private cache or a trusted single writer. A writable
+Choose cache sharing from every consumer's trust on reuse: untrusted writers can
+share package bytes only when every reuse verifies the actual inputs, including
+indexes and extracted source, against trusted integrity metadata obtained outside that
+writable tree. Otherwise use private caches or a trusted single writer with
+read-only consumers; credentials, signing keys and config remain private.
+**Wrong:** share extracted source because downloads have checksums; **Right:**
+verify each reused input against independent trusted metadata or isolate it. A writable
 mixed-home parent permits replacing its private entries even if file modes stay
 0600, so grant access only to named content leaves and retain read-only parents.
-Setgid preserves a group, not write permission. Scope additive access/default POSIX ACLs to named shared-content leaves, never mixed metadata parents or defaults that admit future siblings; preserve existing effective grants and the original owner's future access, judging ACL writers rather than group mode bits, which represent the ACL mask. Read-only entries also need unlink/rename protection from writable parents. Verify old contents and future writes under restrictive umasks with two real UIDs, preserve outside links and active locks, and report privilege skips rather than acceptance. Derive each shared principal grant's lifetime from all active server-owned use records under one transition lock; revoke only grants no survivor needs and read effective access back independently of dirty-file retention. A declared tool version must either launch or fail clearly after an
+Setgid preserves a group, not write permission. Scope additive access/default POSIX ACLs to named shared-content leaves, never mixed metadata parents or defaults that admit future siblings; preserve existing effective grants and the original owner's future access, judging ACL writers rather than group mode bits, which represent the ACL mask. Read-only entries also need unlink/rename protection through every writable ancestor. Verify old contents and future writes under restrictive umasks with two real UIDs, preserve outside links and active locks, and report privilege skips rather than acceptance. Derive each shared principal grant's lifetime from all active server-owned use records under one transition lock; revoke only grants no survivor needs and read effective access back independently of dirty-file retention. A declared tool version must either launch or fail clearly after an
 install/lock error, rather than silently running another major.
 
 Identity fixtures keep the real UID and primary GID separate; one cannot be

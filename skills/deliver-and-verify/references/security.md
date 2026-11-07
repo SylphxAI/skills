@@ -36,25 +36,7 @@ A protective CLI wrapper must recognize the syntax its real client accepts. Comb
 
 Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** print an allowed operation or request-ID field containing a bearer value or a URL query credential; **Good:** validate values against an operation enum or canonical ID grammar before truncation, redact nonconforming values, and pair credential/URL sentinels with useful safe-output controls.
 
-A redaction boundary sanitizes the complete stream before output caps, in linear
-time within the failure-reporting budget: whole-value matching can miss quoted,
-escaped, encoded or truncated credential fragments.
-Sanitize complete raw output at the common ingress before truncation or fan-out,
-and make every storage, next-request and upload consumer use only that value;
-verify their actual emitted bytes, since stored-body redaction alone cannot
-protect another egress. Verify final consumers see no
-known raw or encoded credential material while retaining parseable records,
-process status and novel short and long actionable diagnostics, including safe
-detail beyond public excerpt bounds. Exercise transformed fragments, length
-boundaries, credential-named non-secret controls and growing large single-line
-inputs; hiding the whole record or classifying unfamiliar words by length alone
-fails the useful-output contract.
-
-Diagnostic artifact retention and publication require successful sanitization
-under the actual producing and consuming identities; writable fixtures can hide
-ownership failures. An unconditional failure-artifact upload can publish raw bytes
-after cleanup fails: withhold those bytes while preserving independently safe
-evidence and the original process status.
+A redaction boundary must conceal credentials across emitted representations: whole-value or per-frame matching can miss quoted, escaped, encoded or truncated fragments of effective input or output, because transport chunks and frames do not delimit sensitive values. Sanitize each complete logical output stream, including representations of its concatenated content, in linear time within the failure-reporting budget at the common ingress before truncation or fan-out, and make every storage, next-request and upload consumer use only that value; verify their actual emitted bytes, since stored-body redaction alone cannot protect another egress. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments, length boundaries and growing large single-line inputs alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: when bounded sanitization cannot establish safety, withhold those bytes while preserving independently safe evidence and the original process status.
 
 Masking can rewrite structural keys as well as values, so even parseable diagnostic JSON
 is not an admission or recovery contract. Policy decisions require authoritative

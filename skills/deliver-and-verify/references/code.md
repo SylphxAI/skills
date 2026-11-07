@@ -102,7 +102,16 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
-Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
+Protect co-dependent stateful and serving-path pods at a shared numeric priority
+that routine work eligible on their nodes cannot preempt; keep deliberately
+expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
+from evicting others, not from becoming a higher-priority pod's victim, and a new
+`globalDefault` does not change historical pods
+([Kubernetes priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/),
+read 2026-11-07). **Wrong:** declare a protected default or a non-preempting class
+and infer live protection; **Right:** update each owning template and verify every
+affected pod's admitted numeric priority after its supported replacement,
+especially node-pinned last copies.
 
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
@@ -543,9 +552,14 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. Run those vectors against the
-real implementation, asserting emitted POSTs, refusals, ordering, verdicts and
-resulting counts. Exact clock values require a declared recorder history;
+overbroad refusal proves agreement with the defect. A retryable provider outcome
+is not permission to dispatch again: after a durable submission marker, recovery
+is GET-only. A test that drives marked recovery through the unsent
+`queued`/send path can demand a duplicate POST and still pass; contrast it with
+an unmarked pre-admission throttle that remains queued and retryable. Run those
+vectors against the real implementation, asserting emitted POSTs, refusals,
+ordering, verdicts and resulting counts. Exact clock values require a declared
+recorder history;
 synthetic vectors must not freeze incidental timing or internal call sequences.
 
 An overlap or uniqueness check over derived ancestry needs tests through the
