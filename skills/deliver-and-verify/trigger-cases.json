@@ -1368,6 +1368,14 @@
     {
       "prompt": "Change a CI test invocation to explicit file globs that discover the intended tests on the pinned runtime version.",
       "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a CI runner to use fresh build directories while preserving executable examples launched by integration tests.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a game test suite that discovers all tests but lost its runtime fixture executable when the build target was recreated.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2245,6 +2253,11 @@
       "prompt": "Rewrite a user guide explaining TCP port allocation, without editing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past missing-executable failure happened before the intended assertion, without editing or publishing the runner.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
