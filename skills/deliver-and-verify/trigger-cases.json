@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game hit-area checker that preserves a narrow-profile static overlap and a wide-profile successful tap as separate valid results rather than rejecting every supported aspect ratio.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a map app's geometry calibration so a content inset changes available width as well as origin, allowing left- and right-anchored controls to move differently in offline predictions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Move CI concurrency to individual job locks while preserving every expanded matrix child and reusable caller.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -1975,6 +1987,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether the retained database timings establish a lock-wait cause; do not change or publish anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare storage architectures for a document archive without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a password-reset help paragraph for clarity without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an existing job-ID concurrency prefix causes matrix siblings to cancel each other, without changing or publishing source.",
       "clause": "prove-it for a review or evidence check",
