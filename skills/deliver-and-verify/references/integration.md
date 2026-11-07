@@ -18,6 +18,18 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 
 A circuit breaker counts distinct attempted operations, not repeated reconciliation of one uncertain attempt, and its refusal scope follows the evidence: a stale per-request observation cannot deny an otherwise authorized shared destination. Test repeated reconciliation counting once and unrelated authorized work continuing, alongside a genuine shared-dependency failure.
 
+## Regional store prices
+
+Matching local catalogues or one home-market tier proves internal consistency,
+not equality with a store's territorial prices; the authoritative price key
+includes store, SKU, territory and currency, and a partial regional export leaves
+unobserved regions unknown. **Wrong:** normalize shared-currency countries to
+one price, or borrow another product's same-SKU price after a known territory
+contradicts that source. **Right:** bind each write to the correct product/source
+row and exact territorial observation, distinguish an explicitly authorized cache
+mirror from a store-price repair, and verify that the serving path actually
+selects the changed rows.
+
 ## Destructive and conditional writes
 
 A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`

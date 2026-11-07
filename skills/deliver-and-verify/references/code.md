@@ -308,6 +308,14 @@ A serializer-only test cannot prove the database accepted the event.
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
+Retention based only on serving or published references can delete artifacts
+still owned by an unfinished operation; a count cap may bypass an age grace
+period. Read the deployed collector's precedence and protected states, then
+verify in-flight delivery, recovery-point availability and expiry of unreferenced
+eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
+safe retention; **Right:** the pending artifact survives publication, the rollback
+target stays usable and eligible abandoned artifacts expire.
+
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
 Restore those inputs through the supported path before applying the validator

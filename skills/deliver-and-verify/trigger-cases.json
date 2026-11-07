@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Fix the replicated permission cache and verify propagation against the deployed serving-consumer census.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement readiness verification that retains failed samples and the maximum latency across cache consumers.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
       "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -771,11 +783,11 @@
     },
     {
       "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Downsize an operator-managed database whose generated StatefulSet says OnDelete; verify whether the installed parent operator starts replacement automatically before activating the source change.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI, and verify existing pods after the supported owner rollout.",
@@ -791,7 +803,7 @@
     },
     {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Deploy a live configuration reload with no restart or replacement; verify that the in-place reload does not need old-plus-replacement transition room.",
@@ -799,11 +811,11 @@
     },
     {
       "prompt": "Resize a resource whose size is owned by a manifest; change the declaration and verify the served size after its next reconciliation rather than writing the runtime API.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Resize an API-only shared resource with no manifest, config file or GitOps owner; apply through its authoritative API and verify that API state rather than inventing a declaration.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Fix and ship a SaaS receipt store that replays one session user's response to another because both lack an API key ID.",
@@ -1634,6 +1646,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Change deployment retention so a newly staged zero-traffic candidate survives promotion while obsolete revisions still expire.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Repair snapshot retention so a restore operation keeps its unregistered input without disabling expiry of abandoned backups.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Ship media-upload retention that protects an unfinished publishing transaction and still collects expired unreferenced artifacts.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
       "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
       "clause": "running builds or tests in a lease"
     },
@@ -1659,6 +1683,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare notification and polling designs for a replicated cache before choosing an architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the replica-readiness explanation for clarity without changing or publishing the probe.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
       "clause": "prove-it for a review or evidence check",
@@ -2686,6 +2725,21 @@
     },
     {
       "prompt": "Draft a documentation explanation of standard HTTP status meanings without changing a service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the current retention count cap caused a past candidate deletion, without changing the policy.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare count-based and age-based garbage-collection designs before selecting a retention architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of backup retention without changing or publishing any system configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

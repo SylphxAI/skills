@@ -258,6 +258,22 @@
       "clause": "verifying a live status or metric before reporting it"
     },
     {
+      "prompt": "A restarted test process reports zero assertion failures, but the enclosing run records a crash and a larger test count. Reconcile the operation verdict before attributing a cause or retrying.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether a bounded sample of successful uploads establishes support for this smaller payload without proving the global historical maximum.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check a game client capacity claim against historical deliveries of the same payload dimensions and client version, distinguishing stored requests from consumed rewards.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "The report needs the exact historical maximum, but a worker read only a limited time window. Reconcile that claim with its population coverage.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "Reconcile a game-script guard helper test with different behavior from the installed CLI, using independent compiler controls rather than a rewritten checker.",
       "clause": "reconciling conflicting readings"
     },
@@ -390,6 +406,21 @@
       "prompt": "Restore a stalled approval queue whose configured producer was never enrolled.",
       "clause": "Use unblock to restore currently failing work",
       "route_to": "unblock"
+    },
+    {
+      "prompt": "What is the larger of the two literal integers 8 and 13?",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Implement a configurable upload-size limit and publish the endpoint change.",
+      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Design a new attachment chunking protocol and compare its architecture with storing one large object.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
     },
     {
       "prompt": "Publish the tested syntax-guard repair as a held draft pull request.",
