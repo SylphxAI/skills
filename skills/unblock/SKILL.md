@@ -73,6 +73,15 @@ Classify from the newest run on that commit and its first exact error; an older 
 
 ### Parent-operation recovery
 
+An idle replacement process proves liveness, not recovery: same-process tests
+can retain unsaved payloads that disappear after restart. For restartable work,
+compare accepted payload identities and order, acknowledgements and completed-effect
+receipts across the failed attempt, durable state and a fresh worker's first
+successful continuation; reconcile uncertain effects instead of resending them.
+**Bad:** restart and see healthy; **Good:** inject a failure after accepting work,
+restart from persisted state, and verify the original work completes without
+losing pending input or repeating completed effects.
+
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
 merge-group job, the pull request's timeline, live queue entry and current head

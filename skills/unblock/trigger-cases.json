@@ -76,6 +76,14 @@
     {
       "prompt": "The merge queue ejected a pull request after runner loss. Its old merge-group retry now passes, but the pull request is still outside the queue. Restore admission at its unchanged current head.",
       "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "The worker restarted after a failed turn but accepted messages remain stuck. Restore their processing without resending completed operations.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "An import resumed in a healthy replacement process, but the records accepted before the crash are missing. Recover that stalled work from persisted state.",
+      "clause": "a promised fix still fails"
     }
   ],
   "negative": [
