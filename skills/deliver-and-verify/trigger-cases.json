@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a CLI wrapper test whose temporary symlink still discovers real configuration beside the source executable. Keep the child and its outputs in a private fixture.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game packaging regression test that invokes a source-adjacent deployment helper despite setting a private HOME; preserve production admission checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an export-command fixture so executable-relative helper discovery cannot reach the real publisher; prove it with a failing external-helper control.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -1695,6 +1707,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this wrapper test really isolates its executable-relative helper dependencies, without changing or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare copying a command and its helper graph with running it in a container for future fixture isolation; do not implement the design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explaining why a symlinked fixture command can load real sibling helpers; do not modify the tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
       "clause": "prove-it for a review or evidence check",
