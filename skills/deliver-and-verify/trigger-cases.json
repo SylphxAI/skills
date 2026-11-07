@@ -2060,6 +2060,18 @@
     {
       "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS editor's Cmd/Ctrl+V support when focus remains on the surrounding page, and verify native paste through its shipped client/server path.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game board drag fix and verify the complete pointer press/move/release sequence reaches server state and painted output in order.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a browser interaction test that calls a text-insertion API instead of exercising the user's clipboard shortcut from supported focus locations.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3445,6 +3457,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether passing backend paste tests prove a user's native clipboard shortcut works; report evidence without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare native clipboard forwarding and explicit paste controls as proposed browser interaction architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the user-facing explanation of a keyboard paste shortcut without changing its behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

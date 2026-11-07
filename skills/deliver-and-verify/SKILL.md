@@ -169,7 +169,8 @@ dispatch, receipt parsing or webhooks, read [integration.md](references/integrat
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.
 
-For browser keyboard defaults or foreground lifecycle changes, also read
+For browser keyboard, clipboard, pointer, focus or foreground lifecycle changes,
+also read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
 For changes to transaction locks or nested transactional helpers, read
