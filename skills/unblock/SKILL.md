@@ -15,7 +15,7 @@ resuming delivery or allowing cleanup.
 
 Before intervening, read the live state of the job, queue, or target resource:
 1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
-2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
+2. **Never resend an uncertain mutation blindly:** Follow the [duplicate-safety recovery contract](../deliver-and-verify/references/integration.md#provider-integration): reconcile potentially harmful duplicate effects, while a documented duplicate-safe refresh can recover with bounded serial retries before its output expires.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
 4. **Challenge an added prerequisite:** Before removing a refused step, compare
    its selection contract and effective input population with the acceptance
@@ -72,6 +72,15 @@ the starvation is fixed.
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 
 ### Parent-operation recovery
+
+An idle replacement process proves liveness, not recovery: same-process tests
+can retain unsaved payloads that disappear after restart. For restartable work,
+compare accepted payload identities and order, acknowledgements and completed-effect
+receipts across the failed attempt, durable state and a fresh worker's first
+successful continuation; reconcile uncertain effects instead of resending them.
+**Bad:** restart and see healthy; **Good:** inject a failure after accepting work,
+restart from persisted state, and verify the original work completes without
+losing pending input or repeating completed effects.
 
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
