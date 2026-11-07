@@ -177,12 +177,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent retention or cleanup candidates need isolated failure and retry
-state: a failed first row or provider call must not starve later rows or other
-tenants. Preserve the failed candidate's retry source until its deletion contract
-is satisfied; prove one injected candidate failure permits another's success and
-later recovery of the failed candidate. This isolation applies to independent
-work, not a batch whose declared invariant requires atomic rollback.
+Independent background candidates need isolated failure and retry state, forward
+progress and revisitation: an early pending or failed row must not starve later
+work or other tenants, or become stranded when its eligibility changes after
+discovery advances. Repeated polls with unchanged
+inputs prove only idempotence; change an already-scanned candidate's inputs and
+verify its later completion through the public worker or poll entrypoint, without
+a read that can itself complete the work. Preserve its retry source until the
+completion or deletion contract is satisfied; atomic batches remain a different
+contract.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -451,6 +454,14 @@ publishing the correction.
 Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+
+Repeated matching reads of mutable metadata prove stability during that interval,
+not which source produced an earlier transformed artifact. **Wrong:** reread the
+current source twice and authorize an older output; **right:** bind immutable
+inputs or reconstruct each authorized source's output in its immutable context
+and require equality. Test a replacement source that stays unchanged throughout
+validation, alongside unchanged-source and independently changed batch-position
+controls; churn-only tests cannot expose this gap.
 
 Cache-key or content-digest equality proves only the inputs represented by that
 key or digest; independently authoritative policy omitted from it still governs
