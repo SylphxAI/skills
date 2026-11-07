@@ -1190,6 +1190,10 @@
       "clause": "publishing, editing or arming PRs"
     },
     {
+      "prompt": "Reconcile this already-armed pull request after autoMergeRequest becomes null: verify the merge queue's entries (GraphQL mergeQueue.entries) or your queue cache before deciding whether to enable auto-merge again.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Add a fail-fast executable prerequisite to an existing CI shell step and update the manifest tests that read its command text.",
       "clause": "changing CI workflows or concurrency"
     },

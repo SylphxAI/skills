@@ -679,6 +679,12 @@ Use the normal queue with its required checks and existing incident-priority rul
   hold until the prerequisite is merged and the PR targets its intended
   integration branch; then follow that branch's required checks and queue.
 
+  GitHub clears `autoMergeRequest` when a PR enters the merge queue. Determine
+  whether it is armed from pending auto-merge intent and actual queue membership
+  (GraphQL `mergeQueue.entries` or your queue cache), never from
+  `autoMergeRequest` alone. A queued PR remains armed; preserve its existing entry
+  rather than submitting another enable request because that field is null.
+
   **Wrong:** "The title says review, so publishing this stack cannot merge it."
   **Right:** "The publisher enables auto-merge; I submitted an explicit hold and
   verified that the PR remains open on the intended base."
