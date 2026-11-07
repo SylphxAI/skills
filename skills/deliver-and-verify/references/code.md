@@ -245,13 +245,14 @@ earlier release or partial batch after receiving an error.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
-which operation is blocked before releasing the competing transaction. Follow
-indirect blockers too: a row-lock queue can place the second operation behind
-the first waiter, so counting only direct blockers can miss real contention. A sleep
-or eventual success alone does not prove the intended interleaving. Assert the
-final conserved state and rollback behavior as well as completion. Apply this
-audit to other transactional domains, such as stock reservation and cancellation;
-a pure formatter change needs no lock-order proof.
+which operation is blocked before releasing the competing transaction. Diagnostic
+views can refresh independently, so a cross-view join can hide a live wait;
+correlate requester, blocker and resource through the engine's own identities,
+with held-wait, no-wait and wrong-owner controls. Follow indirect blockers too:
+a row-lock queue can place the second operation behind the first waiter, so
+counting only direct blockers can miss real contention. A sleep, eventual success
+or empty uncalibrated join alone does not prove the intended interleaving. Assert
+the final conserved state and rollback behavior as well as completion.
 
 A sequence-backed feed cursor orders allocation, not commit: a delayed writer
 can publish below a cursor already advanced past it. Where consumers resume
@@ -642,7 +643,7 @@ ancestors and test only the reducer. **Right:** resolve nested matching roots
 through the real entrypoint and assert refusal before writes, with independent
 roots and ancestors that fail the selection criteria as allowed controls.
 
-Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work. Failure feedback can precede the committed state that makes recovery actionable, so assert restored state and control readiness at the notification itself, then exercise the next action without an extra settling wait. **Bad:** wait for a retry control to enable after an error toast; **Good:** prove it is enabled when the toast fires, retry succeeds, and in-flight duplicates still cannot dispatch.
 
 Repeated matching reads of mutable metadata prove stability during that interval,
 not which source produced an earlier transformed artifact. **Wrong:** reread the

@@ -2,6 +2,46 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Move CI concurrency to individual job locks while preserving every expanded matrix child and reusable caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a SaaS checkout whose error notice appears while the retry button is still disabled, preserving duplicate-payment prevention.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game account chooser that ignores an immediate retry after a rejected handoff because the UI transition is still pending.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an export-dialog recovery fix and test the control state at the failure notification rather than waiting for a later enabled render.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Retire a SaaS pricing configuration that mixes obsolete plan identifiers with still-binding refund and spending constraints; preserve each surviving contract.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace a card-game event configuration without dropping its independent paid-entitlement and reward-value safeguards.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement a streamed archive mirror that withholds completion until the full digest matches while documenting early prefixes as unverified.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export proxy whose tests collect the entire body and miss a successful-looking response after a late checksum mismatch.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset downloader that rejects a truncated stream before extracting or running the downloaded payload.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a shared email-provider reserve that consumes the entire quota of smaller tenant accounts, preserving transactional priority and bulk progress.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -23,6 +63,18 @@
     },
     {
       "prompt": "Ship a package-installer fix that rejects an off-origin redirect even when the returned archive would match the pinned digest.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS status exporter whose new metadata never reaches an already-correct resource because reconciliation skips the write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game progression summary that fills a newly added field even when the saved player level has not changed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement an index metadata backfill through normal reconciliation while leaving an already-current document value unchanged.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -267,15 +319,15 @@
     },
     {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
@@ -1211,7 +1263,7 @@
     },
     {
       "prompt": "Repair a database reader whose admission and report use separate connections so backend routing cannot replace the admitted session.",
-      "clause": "changing session guards"
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Remove an operator's direct database write access while checking inherited groups and pod execution cannot recover a writer credential.",
@@ -1235,15 +1287,15 @@
     },
     {
       "prompt": "Publish a disposable CI probe workflow that runs a shell wrapper and an embedded Python verifier against a bounded external service.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Ship a one-off CI probe that measures client fallback while retaining optional diagnostics and failed acceptance assertions.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
-      "clause": "publishing disposable CI probe workflows"
+      "clause": "publishing CI probe workflows"
     },
     {
       "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
@@ -1443,6 +1495,18 @@
     },
     {
       "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Ship a zero-token SaaS support queue watcher that keeps independent queues observed when one target becomes stale, and re-arms unknown alerts only after fresh evidence.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Repair a zero-token card-game support inbox watcher that repeatedly wakes on the same unknown state because successful requests return stale snapshots.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement per-target failure recovery in a zero-token external queue watcher, preserving healthy observations and stopping at the shared quota boundary.",
       "clause": "zero-token external inbox/queue watcher"
     },
     {
@@ -1778,66 +1842,6 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
-      "clause": "changing selected-source release inputs"
-    },
-    {
-      "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
-      "clause": "changing selected-source release inputs"
-    },
-    {
-      "prompt": "Implement automatic profile rotation without interrupting an active turn, retaining its load in capacity accounting.",
-      "clause": "implementing or shipping a feature"
-    },
-    {
-      "prompt": "Fix a SaaS worker configuration reload so active jobs survive the drain deadline and queued requests resume once after completion.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Ship a game-server maintenance change that defers disruptive credential rotation until a match ends while counting the running match toward load.",
-      "clause": "implementing or shipping a feature"
-    },
-    {
-      "prompt": "Fix recovery of a confirmed-dead SaaS export worker whose durable job remains unfinished, while preserving healthy active workers during automatic rotation.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
-      "prompt": "Retire a SaaS pricing configuration that mixes obsolete plan identifiers with still-binding refund and spending constraints; preserve each surviving contract.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
-      "prompt": "Replace a card-game event configuration without dropping its independent paid-entitlement and reward-value safeguards.",
-      "clause": "authorized operational, repository, marketing, or commercial change"
-    },
-    {
-      "prompt": "Implement a streamed archive mirror that withholds completion until the full digest matches while documenting early prefixes as unverified.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Fix a SaaS export proxy whose tests collect the entire body and miss a successful-looking response after a late checksum mismatch.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Ship a card-game asset downloader that rejects a truncated stream before extracting or running the downloaded payload.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Fix a SaaS status exporter whose new metadata never reaches an already-correct resource because reconciliation skips the write.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Ship a card-game progression summary that fills a newly added field even when the saved player level has not changed.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Implement an index metadata backfill through normal reconciliation while leaving an already-current document value unchanged.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
       "prompt": "Fix a SaaS network selector for scheduled export workers whose inherited service ID differs from the display name, preserving tenant isolation.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -1868,6 +1872,18 @@
     {
       "prompt": "Update training-workflow identity labels without enrolling batch pods in the inference service routing or metrics cohort.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change a work-admission policy that currently accepts any job with a matching display name; bind admission to authenticated caller context.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a SaaS import queue that accepts another tenant producer using the approved task label; verify identity cannot be overridden by the producer.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Update a game reward worker admission rule: reject another origin with the same task name and malformed identity, but retain supported versions of the authorized origin.",
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
@@ -1928,9 +1944,54 @@
     {
       "prompt": "Implement a UI inventory guard that detects added dormant controls and newly activated existing controls, but accepts unchanged-baseline self-comparison without new intent approval and still reports geometry or action failures.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate a SaaS API registry, console actions and documentation so canonical exclusions override broad routing inference, missing metadata retains its documented fallback and supported endpoints remain available.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Regenerate a card game's client catalog and editor documentation so explicitly excluded rewards stay unavailable despite inferred expansion support, while supported rewards and documented missing-metadata fallbacks remain unchanged.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Fix a SaaS dashboard layout adapter that computes both axis inputs before horizontal sizing; compare the chained width-dependent height with pinned upstream behavior and retain empty-input and unchanged fixed-size controls.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game offline UI adapter that assumes horizontal and vertical sizing are symmetric; verify each upstream axis contract and a chained cross-axis case without changing matching fixed-constraint results.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Implement automatic profile rotation without interrupting an active turn, retaining its load in capacity accounting.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Fix a SaaS worker configuration reload so active jobs survive the drain deadline and queued requests resume once after completion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game-server maintenance change that defers disruptive credential rotation until a match ends while counting the running match toward load.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Fix recovery of a confirmed-dead SaaS export worker whose durable job remains unfinished, while preserving healthy active workers during automatic rotation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an existing job-ID concurrency prefix causes matrix siblings to cancel each other, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
       "clause": "prove-it for a review or evidence check",
@@ -3087,26 +3148,6 @@
       "route_to": "clear-writing"
     },
     {
-      "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
-      "clause": "prove-it for a review or evidence check",
-      "route_to": "prove-it"
-    },
-    {
-      "prompt": "Review whether a past profile rotation killed an active child after its drain timeout, without changing or publishing anything.",
-      "clause": "prove-it for a review or evidence check",
-      "route_to": "prove-it"
-    },
-    {
-      "prompt": "Compare dynamic snapshots and rolling restarts for a proposed worker architecture without implementing either.",
-      "clause": "Use challenge for a plan or architecture",
-      "route_to": "challenge"
-    },
-    {
-      "prompt": "Rewrite a local guide explaining graceful shutdown, without changing source or operating the service.",
-      "clause": "clear-writing for prose alone",
-      "route_to": "clear-writing"
-    },
-    {
       "prompt": "Review whether a prior credential-file validation could block before it checked the opened type, without modifying or publishing source.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
@@ -3137,9 +3178,39 @@
       "route_to": "clear-writing"
     },
     {
+      "prompt": "Review whether a runtime authenticates caller context after producer environment overrides, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare path-based and immutable-version workload authorization contracts before selecting an architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user-facing explanation of access policies without changing any access behavior.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
       "prompt": "Review whether a running observer proves continued wake coverage after its one-shot subscription fires; report evidence without shipping a fix.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether stale successful responses actually restore one queue observer; report evidence without changing or shipping anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare global and per-target failure budgets for a proposed queue monitor without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the operator explanation of unknown-state alerts without changing the watcher or running any commands.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Compare one-shot and persistent subscription designs for an inbox before implementing either.",
@@ -3208,6 +3279,31 @@
     },
     {
       "prompt": "Rewrite the explanation of a dormant UI control for clarity, without changing product behavior, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite a museum visitor notice for clarity without changing code or publishing anything.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a past profile rotation killed an active child after its drain timeout, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dynamic snapshots and rolling restarts for a proposed worker architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local guide explaining graceful shutdown, without changing source or operating the service.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
