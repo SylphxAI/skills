@@ -121,11 +121,15 @@ Treat a finding as a claim to inspect. Entropy alone cannot distinguish a
 credential from a generated identifier, asset path or digest. Review every
 finding in the publication range, including unpublished ancestor commits;
 changing only the current file does not remove a finding in that history.
-Serialization or encoding can change entropy and scanner noise without changing
-source identity: compare the decoded value with its authoritative source and
-inspect the exact scanned bytes. Avoid gratuitous serialization churn, but a
-representation change is not a security fix; encoded real secrets remain
-withheld from publication.
+Serialization can change scanner noise without changing source identity: compare
+decoded values with their authoritative source and inspect the exact scanned
+bytes; encoded real secrets remain withheld from publication. For locally generated
+composite identities, persist parts as structured, typed fields and build
+comparison keys only in memory; joined numeric keys invite noisy findings and
+brittle line/digest exceptions whenever baseline entries disappear. After a
+representation change, compare the full decoded population before and after and
+exercise every consumer, including baseline additions, stale-entry detection
+and deletion.
 
 1. Retain the scanner's exact commit, path, line and content digest without
    copying possible secret values into logs, chat or the pull request.
@@ -136,9 +140,9 @@ withheld from publication.
 3. Withhold real or uncertain credentials from publication. Handle an actual
    exposure through the credential procedure above. Do not classify a value as
    harmless merely to unblock a push.
-4. For each verified false positive, use the scanner's supported exception
-   mechanism with the narrowest available identity, preferably exact commit,
-   path, line and content digest. Exception metadata can itself be scanned:
+4. If a verified false positive still needs an exception, use the scanner's
+   supported mechanism with the narrowest available identity, preferably exact
+   commit, path, line and content digest. Exception metadata can itself be scanned:
    describe the evidence-based reason in prose and bind it to the exact finding
    by content digest rather than repeating the triggering text. Do not suppress
    a whole directory or disable the scanner.

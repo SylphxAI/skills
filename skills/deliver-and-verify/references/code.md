@@ -126,7 +126,14 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
-Equal text or value after an await does not identify the same target: another entity or range may have replaced it. Carry stable entity/range identity across the wait and make the final identity and version check atomic with the mutation. **Bad:** hold a clipboard-write promise, replace A with same-text B, then let A's continuation mutate B; **Good:** resume against A's captured identity and refuse the changed target/version while an unchanged-target control succeeds.
+An asynchronous request captures its target's stable identity (slot, item, row
+or range) in request context at submission; its continuation never resolves the
+target from mutable UI selection. Equal text or value after an await does not
+identify the same target: another entity or range may have replaced it, so make
+the final identity and version check atomic with the mutation. **Bad:** submit
+for A, select same-text B and let A's reply mutate B; **Good:** resume against
+captured A and refuse a replaced or stale A, while unchanged A succeeds even
+after selection moves to B.
 
 Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
@@ -474,7 +481,12 @@ Stateful integration fixtures can interfere through shared effective decision ke
 
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
-Conformance vectors against a real implementation assert behavioral outcomes: emitted POSTs, refusals, ordering, verdicts and resulting counts. Exact clock values require a declared recorder history; synthetic vectors must not freeze incidental timing or internal call sequences.
+Derive conformance vectors' expected outcomes from the contract or specification
+before reading the implementation; a green suite whose expected outcomes copy an
+overbroad refusal proves agreement with the defect. Run those vectors against the
+real implementation, asserting emitted POSTs, refusals, ordering, verdicts and
+resulting counts. Exact clock values require a declared recorder history;
+synthetic vectors must not freeze incidental timing or internal call sequences.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
@@ -625,15 +637,16 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
 
-When changing a shared eligibility or availability rule, trace its consumers
-and verify each public contract for temporary unavailability, permanent denial
-and recovery. An execution refusal can be correct while discovery or retry
-metadata regresses; missing recovery evidence remains unknown.
+When adding a guard, refusal or early return, trace every caller with side effects
+and test refusal through each caller, not only the guarded method. For shared
+eligibility or availability rules, verify each public contract for temporary
+unavailability, permanent denial and recovery, including discovery and retry
+metadata; missing recovery evidence remains unknown.
 
-**Wrong:** a stock-exhaustion test blocks checkout, so assume search visibility
-and restock advice still satisfy their contracts. **Right:** exercise checkout
-and search with depleted and recovered stock, and verify any advertised restock
-time against the available evidence.
+**Wrong:** a save helper refuses correctly, but save-and-exit closes the editor
+and discards pending input. **Right:** exercise refusal and success through every
+side-effecting caller, preserving pending input on refusal and checking any
+advertised discovery or recovery behavior against the available evidence.
 
 Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. For Android artifacts, DEX type/string references and dependency version markers do not establish that a required class is defined; verify its definition in the shipped DEX. Static initialization (`<clinit>`, including Kotlin object initialization) can fail before a method's guard executes, so trace initialization before attributing an observed refusal to that guard. Test preparation (smoke patches, dependency stripping or stubbed clients) must not affect a store-bound build; verify the required class definitions and absence of smoke-only markers in the exact uploaded artifact rather than a separately rebuilt test artifact. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. After a preimage change, inspect and compile the final transformed consumer and verify its intended behavior; zero-context patch applicability does not establish semantic correctness. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
 

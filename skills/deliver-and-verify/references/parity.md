@@ -479,11 +479,15 @@ colours or variance, not only that the file exists.
   each serialized member’s target, runtime version and format metadata against
   the independently selected platform/runtime, with metadata-only negative
   controls through both the producer and an independent reader.
-- Diff the prepared change against what is mounted live, not against the source
-  repository. Label every changed cell as chosen, with its decision, or as drift
-  that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
-  live value and is reported. A source template can hold old values nobody chose,
-  and a flag that looks like a harmless hide can remove what a user already owns.
+- Snapshot serving inputs read-only before handoff and diff the candidate against
+  that baseline, not repository copies; for display claims, use only the bundle
+  actually served to users. For probability fixes, trace the server's reader to
+  the exact columns, report their before/after values and enumerate every row
+  whose real probability changes: `display == actual` says neither which column changed nor
+  that actual odds stayed fixed. Label each changed cell as chosen with its
+  decision or unchosen drift; ship only chosen changes and preserve/report the
+  live value for drift, since stale templates or a hiding flag can remove owned
+  value.
 - Trace asset generation through export/build, package staging and runtime
   manifest/cache/remote selection: a store build may skip a separate bundle
   builder, packaging may only copy an export, and remote content may supersede
@@ -502,9 +506,13 @@ colours or variance, not only that the file exists.
   its materials and animations. Existence, file size and checksums alone cannot
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
-  those exact candidate files. Load every changed table without error and assert
-  its relevant behavior. A schema-only check cannot establish that the shipping
-  client or server accepts the file.
+  those exact candidate files; load every changed table and assert its consuming
+  behavior, not schema acceptance alone. For random pools or boxes, every
+  reachable outcome ID must resolve in the type-specific template used by the
+  actual grant handler before deployment. Exercise single and batch draws with
+  unknown-ID/null-grant controls, asserting durable grants and the contract's
+  charge/rollback behavior: a response can list rewards even when one unknown ID
+  suppresses the whole batch after charging.
 - Emit machine-readable results bound to the candidate digest: checked artifact
   IDs, expected/actual values, assertions, failures and tool versions. Missing
   required results fail publication. Preserve the last known good release and
