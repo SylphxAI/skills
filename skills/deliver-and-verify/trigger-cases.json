@@ -1040,6 +1040,10 @@
     {
       "prompt": "Run a Kubernetes DELETE dry-run with a DeleteOptions body and prove the same object UID and resourceVersion remain before retiring its metadata.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a metrics CronJob whose vendor CLI works in an administrator toolbox but fails without default configuration in its non-root, read-only image.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
