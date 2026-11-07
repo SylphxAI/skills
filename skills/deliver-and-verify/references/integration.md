@@ -135,7 +135,11 @@ production decision. Return the provider's real error shape so decoding reaches
 the intended branch. Pair a refusal with a permitted request and assert an
 observable downstream call or side effect. Also assert that a refused request
 makes none. This positive control distinguishes a working guard from a fixture
-that rejects every request before reaching it. Zero downstream I/O does not
+that rejects every request before reaching it. A scrubbed native body does not
+establish that an alternate public proxy filters internal diagnostic headers:
+for diagnostic changes, verify status, headers and body through every supported
+public response path on success and failure, preserving internal diagnostic
+consumers and ordinary public headers. Zero downstream I/O does not
 prove a refusal is effect-free when an earlier step reserved capacity: a seeded
 reservation ID or disabled allocator skips the ownership transition under test.
 For a conservation claim, exercise the actual reservation client against a
