@@ -234,6 +234,10 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "Ship a Job mounting a generated ConfigMap and verify its rendered namespace and hashed reference resolve to the emitted object.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Deploy a game-server worker setting across release profiles while preserving settings intentionally omitted by each profile.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
