@@ -93,11 +93,11 @@ refund reason, application failure, verified ownership, grant and store completi
 ## Pull request checks and merge-queue state
 
 Bind check evidence to the current pull request, exact head, workflow run and
-required-check decision. A commit-level check list can include successful runs
-from another pull request at the same SHA. Those results establish what ran;
-they do not by themselves establish the current pull request's merge eligibility.
-If the provider still expects a required check, preserve that refusal separately
-from the earlier passing result and follow the current required-check path.
+required-check decision; a commit-level list can include another pull request's
+successful run at the same SHA. Rollups, `CheckRun.isRequired` and REST
+`filter=latest` are supporting projections, not the admission decision: preserve
+the effective rules and actual enqueue acceptance or refusal in an authorized
+fixture, separately from what ran or which result a display selected.
 
 GitHub [commit statuses](https://docs.github.com/en/rest/commits/statuses) and
 [Check Runs](https://docs.github.com/en/rest/checks/runs) expose distinct
@@ -105,6 +105,22 @@ populations: an approval absent from `commits/<sha>/check-runs` may be present
 in `commits/<sha>/status`. Resolve a named context through both surfaces at the
 same head, retaining producer and timestamp; aggregate success on either
 surface establishes neither the other's result nor the PR's merge eligibility.
+
+An App success can survive a same-SHA workflow rerun while its publisher is
+silent; witness both pending and terminal rerun windows without refreshing the
+App check. Test late updates to an old Check Run separately from delayed new
+POSTs, in both orders against newer pending and failed results: a new POST can
+supersede a logically newer generation even with an older `started_at` and reused
+`external_id`. Retain check identities and the actual admission verdict; derive
+publication-order protection from the witnessed cases, not a universal provider
+ordering promise or assumed enforcement of caller-supplied fields.
+
+Required and local workflows can share a name, path, App and target head while
+only one satisfies the rule. Establish required-workflow source and pinned
+revision from the emitting `github.workflow_ref` and `github.workflow_sha` (or
+equivalent authoritative provenance), with a same-name local success versus
+required-source failure as the refusal control; target-repository run metadata
+alone need not identify that source revision.
 
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An installed App's empty
@@ -129,14 +145,16 @@ still missing."
 
 Source read 2026-11-07: [GitHub required status checks accept successful, skipped or neutral results](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging).
 
-Automatic merge being enabled records intent. Read the live queue entry to
-establish enqueueing, and the pull request's merged state and merge SHA to
-establish merging. Failure and queue membership are independent: an
-`UNMERGEABLE` entry can remain queued and enter later combined groups. A
-removal claim needs a fresh authoritative membership check, not a failed verdict.
-Neither a completed-check watch nor a successful enable
-request proves either transition. Restore stalled work through [unblock](../unblock/SKILL.md)
-without bypassing required checks or repeatedly resubmitting an unchanged refusal.
+Automatic merge being enabled records intent; live queue membership establishes
+enqueueing, and the pull request's merged state and merge SHA establish merging.
+Evaluate the current merge-group SHA's own required evidence, separately from
+PR-head checks or retired groups: a bounded window without stale-head success
+reuse establishes neither natural ejection nor a producer-reported `merge_group`
+failure. An `UNMERGEABLE` entry can remain queued; distinguish missing results
+from failed runs, and provider removal from explicit test cleanup using fresh
+membership and timeline evidence. Restore stalled work through
+[unblock](../unblock/SKILL.md) without bypassing required checks or repeatedly
+resubmitting an unchanged refusal.
 
 **Wrong:** "The previous pull request passed at this SHA, so its replacement is
 ready to merge." **Right:** "That run passed; the replacement still expects its
