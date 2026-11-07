@@ -105,6 +105,17 @@ successful continuation; reconcile uncertain effects instead of resending them.
 restart from persisted state, and verify the original work completes without
 losing pending input or repeating completed effects.
 
+A resumed scan cannot replace the accepted pre-signal work census: any
+pre-intent recensus may add stable work identity/sequence pairs without dropping
+missing entries or replacing original recovery baselines. Durable intent is not
+proof of dispatch, so reconcile actual serving identity first; redelivery is
+permitted only for an independently idempotent signal bound to the original
+immutable process identity, never for a confirmed dispatch or an unknown
+non-idempotent API mutation. **Bad:** discard unresolved accepted work or
+suppress recovery solely because intent exists; **Good:** test crashes both
+before signal dispatch and after dispatch but before its receipt, retaining the
+census and proving no repeat against a confirmed dispatch or replacement process.
+
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
 merge-group job, the pull request's timeline, live queue entry and current head

@@ -48,6 +48,14 @@
     {
       "prompt": "Replace recurring LLM polling of a card-game support inbox with a zero-token trigger daemon and prove its watcher can observe the nonsecret signal without exposing player messages.",
       "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Patrol official SaaS email notices for actionable account events while keeping emailed verification codes out of tool output.",
+      "clause": "official email notices"
+    },
+    {
+      "prompt": "Inspect card-game support inbox queues containing purchase receipts and login codes, reporting only nonsecret findings.",
+      "clause": "unanswered customer inbox queues"
     }
   ],
   "negative": [

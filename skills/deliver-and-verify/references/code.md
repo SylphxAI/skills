@@ -629,7 +629,12 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. A retryable provider outcome
+overbroad refusal proves agreement with the defect. A subset parser used by a
+guard must distinguish supported grammar from unknown constructs rather than
+reinterpret unsupported structured syntax as opaque data. Exercise
+semantics-preserving representations and explicit refusal of unsupported
+constructs through the real policy consumer, with valid opaque-data controls
+that remain accepted. A retryable provider outcome
 is not permission to dispatch again: after a durable submission marker, recovery
 is GET-only. A test that drives marked recovery through the unsent
 `queued`/send path can demand a duplicate POST and still pass; contrast it with
@@ -677,12 +682,14 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
-Normalization used to validate an exact declaration must preserve literal values
-as interpreted by the consumer, especially when the writer applies the original
-bytes. Test permitted layout changes as accepted and meaning-changing edits
-inside strings as refused before any write. **Wrong:** remove all whitespace
-before comparing an exact ACL path; **right:** preserve the quoted path's identity
-while accepting permitted layout changes.
+Normalization or projection used to validate an exact declaration may erase only
+contract-defined differences: removing a subtree can also erase undeclared text,
+tails or container metadata, just as stripping whitespace can change a quoted
+literal interpreted by the consumer. Compare or independently validate that
+remaining state before removal, pairing permitted layout/delta changes with
+meaning-changing payloads at the removal boundary. **Wrong:** drop an entire
+container after checking its declared children; **right:** preserve literal
+values and undeclared surrounding state while accepting only the declared delta.
 
 Source-closure checks—whether every declared source exists in the published
 tree—default-deny the untracked or ignored source inventory, with exact
@@ -837,12 +844,13 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-When adding a guard, refusal or early return, trace public callers beyond the
-changed-file diff: an inherited generic handler can turn a new typed refusal into
-normal completion. Zero mutations proves effect fencing, not caller-visible
-rejection; exercise those boundaries for both refusal result and preserved state
-alongside permitted completion. A correct early return also does not prevent its
-caller from closing or discarding state. For shared eligibility or availability rules, verify each public contract for temporary
+A public caller can turn an inner typed refusal, unavailable dependency or malformed
+response into successful empty data and destructive local reconciliation; zero
+network calls do not prove refusal, unchanged local state or a nonzero enclosing
+status. Exercise the assembled entrypoint for caller-visible refusal and preservation
+of all protected data and metadata, contrasting missing/unusable input with a
+validated authoritative empty snapshot that must still perform permitted removals.
+For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
