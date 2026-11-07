@@ -1100,6 +1100,18 @@
     {
       "prompt": "Ship regression coverage proving that unrelated checkout edits preserve a bound release while a changed selected input is rejected.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Publish a review-labelled pull request only after its exact-head review Check Run succeeds, without substituting an unrelated security approval stamp.",
+      "clause": "publishing or editing PRs"
+    },
+    {
+      "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -1810,6 +1822,21 @@
     },
     {
       "prompt": "Rewrite the explanation of frozen release inputs for a user guide without changing a fixture or configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past merge used a security stamp in place of the required review check; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare a shared admission service with per-product release gates, without implementing either architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this guide explaining required and optional checks, without changing software or operating the release process.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
