@@ -157,7 +157,7 @@ exact finding and reason, then publish through the unchanged scanner.
 ## Recovery procedure
 
 1. Read the failing request/component, serving revision and data/reconciliation authority. Preserve the healthy serving path and unique or uncertain user data while choosing the repair.
-2. Use the affected service's runbook and existing supported controls. Choose rollback only when compatible with current schema/data; otherwise repair forward. An owned platform gap is repaired at its owner rather than hidden in a privileged downstream path.
+2. Use the affected service's runbook and existing supported controls. Treat executable rollback and snapshot restoration as separate operations: the old executable must serve current schema/data, while restoring a snapshot can discard later accepted writes. A backup's integrity on an idle fixture does not prove it completes under live writes; exercise a committing concurrent writer using the production journal and isolation settings. An owned platform gap is repaired at its owner rather than hidden in a privileged downstream path.
 3. A reversible operational repair stays within existing grants and spending/data boundaries. Record its durable replacement and removal condition, and coordinate reconciliation so it does not overwrite the intended repair.
    For rollback pins or inactive recovery references, follow
    [recovery references and desired state](code.md#recovery-references-and-desired-state).
