@@ -240,8 +240,13 @@ Read response cardinality from the provider contract. A logical operation can
 return one aggregate receipt or multiple part receipts. Preserve each part's
 status, stable ID and billed amount. Report full success only when all required
 parts succeed; retain partial acceptance and account for accepted parts once.
-Retry only parts that the provider contract proves were not accepted, using
-its supported idempotency and recovery semantics.
+Socket or admission acknowledgement does not attest durable commit; terminal
+receipts can explicitly report acknowledged-but-uncommitted inputs. Custody of
+the original durable payload and identity survives cancellation or restart until
+commit or safe disposition is established. Reconcile unknown side effects rather
+than silently completing or blindly replaying the work; retry only parts that the
+provider contract proves were not accepted, using its supported idempotency and
+recovery semantics.
 
 Bind generated assessments to the exact request and scope; authoritative request
 context owns normalized identity, while mismatched model echoes may prompt
