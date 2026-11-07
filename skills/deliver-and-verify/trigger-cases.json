@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a live database snapshot before a gateway upgrade, proving it completes while another connection keeps committing writes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Roll back a commerce service executable against its current migrated database while preserving orders accepted after its backup.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game server recovery path that separates executable rollback from restoring an older player-state snapshot.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
       "clause": "changing database privileges"
     },

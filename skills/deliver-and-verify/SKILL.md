@@ -67,6 +67,10 @@ For recovery references, rollback pins or asynchronous reconcilers, read
 [recovery references and desired state](references/code.md#recovery-references-and-desired-state)
 before changing target selection or resource creation order.
 
+For live database backups or service recovery, read
+[recovery procedure](references/security.md#recovery-procedure) before choosing
+snapshot and rollback verification.
+
 When a policy change must update existing resources, verify declarations created
 before the change as well as newly rendered output. Rendering only on creation
 or redeploy leaves existing specifications unchanged; use the normal writer's
