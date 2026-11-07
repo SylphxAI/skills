@@ -510,6 +510,13 @@ the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
 failed”; **right:** require the changed-price refusal after a passing baseline,
 while a stale-heartbeat refusal fails that same assertion.
 
+When a parser promises contextual errors, test invalid input through flattened
+and dynamically named maps as well as ordinary typed nesting: intermediate
+buffering can preserve values while losing the source path. Assert the offending
+section, named entry and key through the production entrypoint, with a valid entry
+as a control. **Wrong:** accept any deserialization error; **right:** an invalid
+field under a named entry identifies that entry, not only its parent table.
+
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
 A safety or dependency predicate can be correct while discovery or routing never
