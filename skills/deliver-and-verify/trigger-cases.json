@@ -1444,6 +1444,14 @@
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Publish a SaaS reader-permission delta stacked on its held dependency branch when the commit is local but the publisher cannot find that branch's remote-tracking base.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a card-game balance patch for review on its prerequisite branch, verifying that the single-branch checkout materialized that exact remote base without retargeting to main.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
