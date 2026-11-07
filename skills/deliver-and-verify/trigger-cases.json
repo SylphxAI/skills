@@ -1712,6 +1712,14 @@
     {
       "prompt": "Run an authorized read-only credential-bearing service probe on a shared host and prevent sibling scripts from shadowing standard-library imports.",
       "clause": "authorized operational"
+    },
+    {
+      "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
+      "clause": "changing selected-source release inputs"
     }
   ],
   "negative": [
@@ -2819,6 +2827,11 @@
       "prompt": "Compare producer-side enrichment with documented scheduling signals for a proposed match-queue architecture, including unknown origins and explicit contradictory events, without implementing either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }

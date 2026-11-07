@@ -517,15 +517,21 @@ from the input-to-destination mapping and actual consumers, not plan membership:
 an assembly can retain another role's scaffolding. Shared inputs require
 registration in every consuming profile without creating false mixed scope.
 
-Keep ordinary source registration separate from release selection. Read the
-selector and lock history before requiring every source PR to regenerate a
-frozen release binding; validate that binding where the release is selected.
+Keep PR filename diffs for ordinary source registration, rather than requiring
+every source PR to regenerate a frozen release binding. A pointer- or
+approval-only release change can select source merged earlier, so determine
+release scope from resolved old and new materializations using the selector
+and lock history.
 Frozen-release fixtures resolve the plan, inputs and policy at the revisions the
 publisher actually consumes; rebinding them to fixture HEAD changes the release
 being proved. An unrelated later checkout edit must leave that proof passing,
 while drift in a selected input must fail it.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
+
+**Wrong:** Treat a pointer-only PR's empty source diff as no runtime change.
+**Right:** For a release limited to one runtime module, refuse a pointer-only
+selection that mixes modules and keep a single-module rebind passing.
 
 ## Bulk mutations
 
