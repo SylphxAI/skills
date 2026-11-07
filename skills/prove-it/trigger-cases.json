@@ -144,6 +144,14 @@
     {
       "prompt": "A cleanup summary displays 0.0 GB while its receipt records a nonzero byte count. Reconcile the claimed zero before reporting reclaimed bytes.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether an inspection command refreshed an index timestamp before attributing that activity to the owner.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify the idle-data claim when the diagnostic itself may warm the cache or update access metadata.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
