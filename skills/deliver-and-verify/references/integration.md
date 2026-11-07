@@ -52,6 +52,14 @@ for the returned published digest and reject a different digest.
 
 ## Shared dependency features and client policy
 
+A server status or error envelope is also an instruction to deployed callers: a
+more precise classification can turn their retry or optional fallback into a
+terminal failure. Preserve each supported deployed caller's status-to-behavior
+mapping through its real classifier, including temporary failure, genuine denial
+and required-operation controls; a future client update cannot establish present
+compatibility. **Wrong:** test only the new server response; **Right:** prove the
+response still selects the intended behavior in deployed client versions.
+
 Enabling a shared dependency feature can change defaults for every consumer,
 including clients whose builders did not change. Verify the effective feature
 set and each client's response policy through its own entry point; make behavior

@@ -150,7 +150,7 @@ When editing PR titles or bodies, changing CI workflows or concurrency, publishi
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
+Before changing server status-code/error-envelope translation, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.
