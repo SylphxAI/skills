@@ -148,6 +148,10 @@ A policy match proves only eligibility until that consumer exercises the path.
 
 Trace changed inputs through the automatic writer's trigger, propagation time
 and consumer read behavior; a new deployment does not establish later updates.
+Publishing renewed configuration does not establish live adoption: a no-restart
+reload claim needs a fresh consumer interaction observing the new version within
+the promised interval while the original process incarnation and service
+availability remain intact.
 New metadata can also remain unpublished when an unchanged primary value skips
 the writer: exercise the real reconciliation entrypoint with old or absent
 metadata and an already-correct primary value, preserving that value while
