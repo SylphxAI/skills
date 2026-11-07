@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Update an armed card-game release PR after review; ensure its surviving merge intent cannot admit the changed source before the new head is approved.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a generated-source correction to a queued PR with head-specific external approval, preserving the hold during the update and restoring normal queue admission afterward.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Fix a SaaS database reset whose catalog enumeration treats owner-managed dependents as independently removable; prove cleanup and reuse under its actual identity.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair a card-game test database cleanup that passes only when object names happen to match dependency order, preserving rollback after a late failure.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a catalog-driven cleanup regression with adversarial object ordering, verifying successful reset and subsequent writes as well as failure atomicity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Align a SaaS project declaration with its live identity when the typed CLI rejects a legacy UUID but the supported raw API returns a canonical resource.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -94,15 +118,15 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
+      "prompt": "Repair a paged payment reconciler so an undispatchable oldest receipt cannot block later work or other tenants, while an already-scanned receipt is revisited after provider settlement.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
+      "prompt": "Fix a CRM delivery worker that treats every undispatched message as a capacity hold, preserving deliberate holds while yielding ineligible messages and revisiting them when the customer becomes contactable.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
-      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
+      "prompt": "Repair a retention reconciler so failed preflight durably yields to later candidates without losing retry eligibility after a later page succeeds.",
       "clause": "repairing recovery references or reconcilers"
     },
     {
@@ -1530,6 +1554,18 @@
       "clause": "publishing, editing or arming PRs"
     },
     {
+      "prompt": "Fix a shared readiness endpoint so a SaaS deployment without an optional search index stays ready while a configured incomplete index fails closed and mandatory upstream failures still reject readiness.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game admission fix across assembled server profiles that omit optional matchmaking, configure it incompletely, or load it successfully; preserve mandatory account-service failure behavior.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression coverage for shared readiness from the real environment/declaration parser through every production constructor: intentionally absent configuration stays valid, while configured capabilities with missing, empty, malformed, or non-Unicode prerequisite bindings cannot disappear into an absent runtime.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Harden a source publisher so a second worktree cannot substitute a retained commit through shared branch or replacement refs; preserve authorized deterministic rewrites.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1583,6 +1619,36 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-enforced head approval with an external approval mechanism as architecture choices without changing a repository.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a release note explaining that an approved unchanged PR is waiting in the merge queue, without changing source or queue state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past cleanup rollback proves that recovery can complete; inspect evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dependency-ordered cleanup and whole-container replacement as proposed reset architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the database reset documentation for clarity without changing SQL, running tests or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
       "clause": "prove-it for a review or evidence check",
@@ -2530,6 +2596,36 @@
     },
     {
       "prompt": "Rewrite a paragraph explaining synthetic identifier length limits without changing fixtures or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether past readiness tests covered intentionally unconfigured capabilities and failing mandatory upstreams, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare optional-capability admission designs for a proposed service architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of unconfigured versus unavailable capability status, without modifying or publishing software.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an undispatchable oldest candidate could block other tenants; inspect source without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare typed deferral outcomes and boolean results for a proposed job admission design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of deliberate capacity holds and failed preflight without changing code or publishing a repository change.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

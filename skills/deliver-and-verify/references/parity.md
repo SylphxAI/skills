@@ -295,17 +295,22 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
-Measure the defect's actual geometry. A single-line label at the required font
-size can still overlap a chevron. Use the text node's `Range.getClientRects()`
-bounds, not its allocated container width, and measure the gap to the chevron
-in the same coordinate space on every rendered row. Check the acceptance case's
-required gap, line count and typography together; for example, an 8 CSS px gap
-is a contextual requirement, not a universal minimum. Do not shrink the font
+Measure the defect's actual geometry. Use rendered glyph ranges
+(`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
+number and suffix), not its allocated container width. Single-line values must
+share one line band at the required readable font size across the complete
+expected population; card containment alone misses wrapped prefixes. Check
+required neighbour clearance in the same coordinate space; an 8 CSS px gap is
+contextual, not a universal minimum. Do not shrink the font
 to hide a spacing failure. For composite controls, assert joints and endpoints in
 a shared coordinate system as well as each part's size, because a correctly sized
 segment can be anchored incorrectly. Run the guard against the old failing state
 before claiming it catches the defect, then test the repair under the same
 conditions.
+
+Also reject a deliberate half-width regression. Sticky headers and ordinary cells
+can have different offset parents: measure reachability with viewport rectangles,
+the current scroll offset and pinned-column width, never `offsetLeft`.
 
 A text-hidden control comparison limited to self-reported glyph, mesh or layout
 bounds cannot detect paint outside those bounds. Account for every changed pixel
@@ -314,6 +319,10 @@ plate or header and its neighbours); reject unassigned paint before checking eac
 region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
 changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
 bounds; contained paint passes only with the required neighbour clearance.
+
+Project world points into capture-derived boxes using the same temporary aspect
+ratio and projection as rendering and pixel capture; restore the camera on both
+success and rejection. Prove the check fails if aspect correction is removed.
 
 Treat target size, hit testing and visible paint as separate assertions:
 

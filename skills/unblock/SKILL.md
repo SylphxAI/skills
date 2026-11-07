@@ -14,7 +14,7 @@ resuming delivery or allowing cleanup.
 ## 1. Verify It Is Actually Blocked
 
 Before intervening, read the live state of the job, queue, or target resource:
-1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
+1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work. Recovery eligibility belongs to the failure state, not the target ID: re-read the exact state that justified recovery immediately before the write and skip it if that state no longer holds.
 2. **Never resend an uncertain mutation blindly:** Follow the [duplicate-safety recovery contract](../deliver-and-verify/references/integration.md#provider-integration): reconcile potentially harmful duplicate effects, while a documented duplicate-safe refresh can recover with bounded serial retries before its output expires.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
 4. **Challenge an added prerequisite:** Before removing a refused step, compare
