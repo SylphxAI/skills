@@ -93,7 +93,15 @@ effective link policy or link-count checks. **Bad:** `find -P` followed by
 pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
 permissions untouched after a deterministic symlink swap.
 
-For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Atomic configuration replacement can revoke the original owner's access: preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
+Atomic lock-and-rename updates can discard required file grants or restore
+retired grants from an in-flight writer. Verify availability for every active
+consumer immediately after the ordinary writer replaces the file, before any
+repair or readmission step, and verify revocation with an already-started writer.
+**Bad:** a restart repairs access before the probe; **Good:** existing readers
+survive a rotation while the retired reader remains denied after a pending
+replacement completes.
+
+For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
 
 ## Source publication authority
 
