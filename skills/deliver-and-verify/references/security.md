@@ -91,7 +91,12 @@ no-follow resolution and opened-object type/device checks, test replacement
 between enumeration and effect, and assess hard links separately through the
 effective link policy or link-count checks. **Bad:** `find -P` followed by
 pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
-permissions untouched after a deterministic symlink swap.
+permissions untouched after a deterministic symlink swap. Opening an unvalidated
+special file can itself block before descriptor checks, so refusal also depends
+on the platform's nonblocking open semantics. Test a FIFO without a writer being
+rejected while unrelated work completes; `O_NONBLOCK` does not prove nonblocking
+regular-file or network-filesystem I/O
+([Linux open(2)](https://man7.org/linux/man-pages/man2/open.2.html), read 2026-11-07).
 
 For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths instead of rediscovering metadata through a writable `.git` pointer, and constrain hooks, fsmonitor and clean/process filters. Atomic configuration replacement can revoke the original owner's access: preserve protected common configuration, keep per-worktree identity behind an explicit `extensions.worktreeConfig` guard, and append exact `safe.directory` resets after preserved includes rather than trusting `*`.
 
