@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS decimal importer that preserves JSON tokens but compares value-defined duplicate keys by their spellings.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game configuration validator that accepts a decimal coefficient too large for its database column despite a legal exponent.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a numeric API boundary and prove equivalent value spellings remain equal without normalizing byte-defined identifiers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
       "clause": "implementing or shipping a feature, bug fix"
     },

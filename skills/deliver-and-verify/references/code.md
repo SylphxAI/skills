@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Losslessly retained token spelling does not establish domain equality or
+destination representability: derive value-defined comparisons and admission from
+the contract and destination type, retaining original bytes separately where required.
+**Wrong:** compare decimal spellings or bound only the exponent; **Right:** test
+equivalent values with different spellings and combined coefficient/scale limits
+through the actual storage driver, while byte-defined identifiers remain distinct.
+
 A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
 complete rewritten document with the destination consumer's parser, including
