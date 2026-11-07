@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a payment-adapter unavailable-state test that spends its deadline on real retry backoff; keep production refusal and adapter coverage.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game launcher offline-mode test by injecting dependency failure into its real startup decision while retaining executable startup checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS database launcher that validates a connection URL generically but the actual migration driver ignores its socket option; assert the effective endpoint through both real parsers.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1383,6 +1391,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review a past database connection refusal to determine which endpoint its driver selected, without changing code or configuration.",
       "clause": "prove-it for a review or evidence check",
