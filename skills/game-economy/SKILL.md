@@ -98,6 +98,38 @@ restrictions; show distinct promotional terms explicitly. Use observed demand
 and cohort contribution to revise this default, without misleading reference
 prices or changing an offer already purchased.
 
+### Confidential spending comparisons and player-ready mail
+
+Internal spend and LTV cohorts guide budgets; they never become player-facing
+status claims. Across grant specs, ambassador chats, support replies, in-game
+mail (`titleF` / `contentF`) and public/community copy, never disclose, confirm
+or hint at server-wide real-money spending rank, cumulative-spend standing,
+spend percentile or rank-differentiated rebate percentages, even to the verified
+account owner. Public gameplay, tournament and collection scores are distinct
+from confidential spending comparisons. Describe bespoke care solely as personal
+VIP appreciation (`個人專屬尊貴 VIP 禮遇`), without comparative hints such as
+“nobody contributes more” or “only the top few qualify.”
+
+Flattery creates a commercial leak: a payer knows their own cumulative spend;
+confirming first place reveals the single-payer LTV ceiling and gives a screenshot
+viewer a basis to estimate revenue scale. Confirming an undisputed leader can
+remove upward competitive tension and discourage challengers. Rank-linked rebate
+labels also become portable screenshot evidence for cross-player price arbitrage.
+Private delivery and verified ownership do not remove these effects.
+
+Where mail delivery is append-only, source copy is the correction boundary:
+least-privilege writers may have only `SELECT` and `INSERT`, while deleting and
+re-inserting attachment mail can enable duplicate claims. Every signed mail spec
+therefore contains final, natural player-facing `titleF` and `contentF`: no spend
+or LTV ranks, internal tier/track labels, Markdown formatting symbols (such as
+`**`), internal order/ticket IDs or raw warehouse/inventory integers. Keep audit
+metadata outside those fields; use player-readable units when a quantity is
+needed. Never assume the delivery operator can sanitize an already-inserted mail.
+
+| ❌ Bad | ✅ Good |
+| --- | --- |
+| “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Track A order <order_id> **VIP**”. | “個人專屬尊貴 VIP 禮遇”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
+
 ### Bottleneck-First High-Ticket VIP Bespoke Pricing & Primary-Source `ItemTemplate` Verification
 
 When pricing or structuring bespoke high-ticket packs (`HK$1,500+ / US$200+`) for high-LTV payers (`T0`):
