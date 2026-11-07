@@ -6,7 +6,7 @@ parsing, or receiving provider webhooks.
 Build the integration to survive a slow/unavailable provider and repeated or missed delivery without granting more access than the feature needs.
 
 - Keep secrets in an authorized store and out of source/logs, following [security.md](security.md#hard-lines). Actual gateway, connection and credential-routing choices belong with the owning product.
-- Follow [outbound-call discipline](code.md#outbound-calls): effective deadlines, a provider-supported idempotency key for a retryable create/charge, safe bounded backoff and short lock lifetimes. Identify and inspect an unknown in-flight result before creating another operation. An accepted write can precede its read projection: reconcile the intended and observed versions with bounded, read-only retries rather than replaying the mutation or treating one stale read as a conflict. On timeout or persistent conflict, preserve the successful write receipt and both versions in the reported outcome; tests distinguish delayed convergence from real conflict without increasing the mutation count.
+- Follow [outbound-call discipline](code.md#outbound-calls): effective deadlines, a provider-supported idempotency key for a retryable create/charge, safe bounded backoff and short lock lifetimes. Identify and inspect an unknown in-flight result before creating another operation. Recovery reads must survive the same client's failure controls: a shared circuit breaker can reject reconciliation locally after a write committed but its acknowledgement was lost. Verify through the production adapter that bounded recovery reaches an authoritative read and compares the intended state without another mutation; use supported recovery within the enclosing deadline, not a breaker bypass. An accepted write can precede its read projection: reconcile the intended and observed versions with bounded, read-only retries rather than replaying the mutation or treating one stale read as a conflict. On timeout or persistent conflict, preserve the successful write receipt and both versions in the reported outcome; tests distinguish delayed convergence from real conflict without increasing the mutation count.
 - A one-time credential response needs an execution lifetime long enough for its authorized probe: keep the value in-process, without logging it, across bounded admission reconciliation and corrected read requests rather than rotating merely to reacquire the bytes after a helper exits. Honor the admission contract's retry guidance and attach required request metadata to reads too; a transient admission refusal or malformed probe does not establish a bad credential. Test delayed admission followed by a successful read with the same credential and no additional credential-creation write; unknown writes still follow the reconciliation rule above.
 - Return a typed missing-permission state with a safe explanation, recovery route and correlation ID when supplied; a resource-scoped optional denial must preserve independently granted work and leave the aggregate outcome independent of resource ordering. A denied optional accelerator can warn and use an already-authorized ordinary path; required admission and explicitly requested protected operations still fail closed. Test mixed granted/denied resources in different orders with ordinary-path fallback blocked where it could mask lost authorization, alongside required-operation refusals; neither blanket failure nor blanket recovery preserves these boundaries.
 - Verify webhook authenticity using the provider's contract. Deduplicate by its stable delivery/event identity, persist accepted work before processing and acknowledge within the provider's required window.
@@ -61,6 +61,15 @@ headers; **Right:** pair that success with encoded-response rejection through
 the strict proxy after the dependency resolves its full feature set.
 
 ## HTTP test doubles and routing
+
+A direct HTTP fake can skip a CLI or proxy's persistent cache: after a process
+restart, that adapter may inject its own validator and restore cached bytes under
+304 headers even though the caller has no matching page or pagination metadata.
+Verify conditional reads through the installed adapter with independent caller
+and adapter cache lifetimes, preserving one authority for the body, validator
+and continuation metadata. **Bad:** infer cold-start recovery from warm direct-HTTP
+tests; **Good:** retain the adapter cache, restart the caller, and prove complete
+revalidation and later updates without weakening authentication or quota admission.
 
 Before replacing a remote dependency with a fake, read its declared endpoints,
 request shape and error envelope; preserve the boundaries relevant to the change,
@@ -146,6 +155,13 @@ while accepting a contract-equivalent permutation of unordered sibling fields.
 
 ## Queued work and partial acceptance
 
+An idle worker can be backpressured while durable work remains queued. Recovery
+that requires a drained queue needs authoritative emptiness, including deferred
+and non-waking entries; a failed read does not establish emptiness. **Bad:** replay
+interrupted work because a dispatch pass accepted nothing; **Good:** hold replay
+behind deferred real work, verify its identity and order after acceptance resumes,
+and retain an empty-queue control that proves legitimate recovery still runs.
+
 Admission proves that work can be queued under the configuration at that
 moment. A later worker must resolve a compatible provider for that exact
 intent before reserving new spend or recording that submission has started.
@@ -178,10 +194,12 @@ parts succeed; retain partial acceptance and account for accepted parts once.
 Retry only parts that the provider contract proves were not accepted, using
 its supported idempotency and recovery semantics.
 
-When a workflow can finish with partial knowledge, distinguish transport
-availability, domain completion and validated partial results through aggregation
-and final publication: an exhausted work bound is not a provider outage, and a
-successful HTTP response is not proof of complete work. Preserve earlier
+Bind generated assessments to the exact request and scope; authoritative request
+context owns normalized identity, while mismatched model echoes may prompt
+bounded resubmission but must never be silently rewritten to certify unchecked
+or stale content. Persistent malformed assessments and exhausted work bounds are
+distinct from genuine transport or capacity outages; neither HTTP success nor
+workflow completion proves a valid, complete assessment. Preserve earlier
 validated results unless later domain evidence revises them; derive the
 published outcome from the operation's contract rather than treating all
 unfinished work as either success or provider failure. Contrast an

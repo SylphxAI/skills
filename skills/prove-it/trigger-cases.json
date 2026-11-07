@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Verify whether a neutral automated review with zero findings and unreviewed files satisfies this pull request's declared approval requirement.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check whether the SaaS repository's green CI aggregate actually includes its separately required current-head review.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a card-game change reported approved with a completed review whose source coverage is incomplete.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "Verify a seven-day release-runner concurrency count when rerun attempts return the same runner interval under different job IDs.",
       "clause": "verifying a live status or metric before reporting it"
     },
@@ -155,6 +167,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Arm this reviewed pull request at its exact head through the normal merge queue.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Fix the broken review workflow so the stalled pull request can receive a complete verdict.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two proposed source-review architectures and choose the simpler design.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
     {
       "prompt": "Restore the currently failing deployment, not merely explain the past outage.",
       "clause": "Use unblock to restore currently failing work",

@@ -21,6 +21,12 @@ Test a scoped linter ignore or validation exception with both state-establishing
 and state-invalidating input followed by unwaived input; ordinary prose with no
 waiver needs no such handling.
 
+Validate immutable historical records structurally and retain their findings when
+time-dependent permissions expire; expired permissions have no authority, but
+must not erase the baseline or weaken current-state validation. Test expiry
+rollover and removal through the real comparison entrypoint, and regenerate any
+registry that attests the checker source when those bytes change.
+
 ## Deployment configuration
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
@@ -40,11 +46,13 @@ desired state, so durability depends on the full controller ancestry and each
 controller's effective field ownership. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
-temporary exception is removed. A recurring repair's field ownership and
-exclusions must hold across every automatic writer and active-operation handoff;
-one correctly guarded pass does not protect against an independent writer
-reclaiming those fields. Verify successive repair and operation transitions,
-not only the first pass.
+temporary exception is removed. Unchanged declarations, generations or digests
+do not prove unchanged effective allocations: verify realized per-object state
+through every active writer and consumer, preserving field-ownership exclusions
+across successive operations. Keep pending intent separate from physical evidence;
+missing, stale, unreadable or partial observations cannot justify a
+preservation-changing write, while first creation requires authoritative proof of
+exact-identity absence and a complete inventory of retained allocations.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
@@ -80,6 +88,10 @@ that a consumer receives it: replacement environment lists, arguments or
 volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
+Resolve generated targets and consumer references in that rendered output too:
+namespace or content-hash rewriting can leave separately valid documents
+pointing at different objects. **Wrong:** validate a template and its generator
+independently; **right:** verify the emitted consumer resolves the emitted target.
 
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial
@@ -165,12 +177,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent retention or cleanup candidates need isolated failure and retry
-state: a failed first row or provider call must not starve later rows or other
-tenants. Preserve the failed candidate's retry source until its deletion contract
-is satisfied; prove one injected candidate failure permits another's success and
-later recovery of the failed candidate. This isolation applies to independent
-work, not a batch whose declared invariant requires atomic rollback.
+Independent background candidates need isolated failure and retry state, forward
+progress and revisitation: an early pending or failed row must not starve later
+work or other tenants, or become stranded when its eligibility changes after
+discovery advances. Repeated polls with unchanged
+inputs prove only idempotence; change an already-scanned candidate's inputs and
+verify its later completion through the public worker or poll entrypoint, without
+a read that can itself complete the work. Preserve its retry source until the
+completion or deletion contract is satisfied; atomic batches remain a different
+contract.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -436,9 +451,17 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
+
+Repeated matching reads of mutable metadata prove stability during that interval,
+not which source produced an earlier transformed artifact. **Wrong:** reread the
+current source twice and authorize an older output; **right:** bind immutable
+inputs or reconstruct each authorized source's output in its immutable context
+and require equality. Test a replacement source that stays unchanged throughout
+validation, alongside unchanged-source and independently changed batch-position
+controls; churn-only tests cannot expose this gap.
 
 Cache-key or content-digest equality proves only the inputs represented by that
 key or digest; independently authoritative policy omitted from it still governs
@@ -460,6 +483,11 @@ bytes. Test permitted layout changes as accepted and meaning-changing edits
 inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
+
+When opening previously uninspected syntax, put a real state mutation after every
+supported control opener and exercise its allowed and forbidden forms through
+the real checker entrypoint. Cross-dialect keywords need separate controls, so a
+harmless idiom in one language cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
@@ -516,11 +544,19 @@ specified date string; a transport retry change needs no formatting cases.
 A negative test can pass for the wrong failure when setup refuses before the
 injected fault. Assert the specific typed refusal or root cause, print the full
 error chain on mismatch, and verify that substituting an unrelated fault makes
-the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
-failed”; **right:** require the changed-price refusal after a passing baseline,
-while a stale-heartbeat refusal fails that same assertion.
+the assertion fail. For expected compiler failures, match machine-readable diagnostic
+codes plus the intended source/API identity, never compiler English wording.
+**Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
+the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
+fails that same assertion.
 
-Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
+Before attributing state loss or duplicate work to product code, prove the fixture
+reached the intended state through the real lifecycle: accepted or cursor-advanced
+work may remain incomplete and legitimately trigger recovery. Use completed and
+interrupted controls that read back their distinct state before the measured
+action; repair setup without suppressing legitimate recovery. For UI retention,
+establish a present, laid-out element with accepted input before comparison; an
+absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
 selects it. Preserve each independent reason for selection: historical comparison
@@ -601,7 +637,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.

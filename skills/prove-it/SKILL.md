@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -25,14 +25,14 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Resolve repository aliases by the returned repository ID, full name and authoritative URL. A redirect to a legacy repository does not identify a similarly named current repository. A shared commit author does not identify the writer of a branch or its current owner.
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window. Inspection can itself refresh indexes, access times or caches; disable optional observer writes when those fields decide eligibility, or record their exact effects separately. **Wrong:** treat a verifier-refreshed timestamp as owner activity. **Right:** preserve the pre-inspection state and distinguish observer changes from the writer being measured.
-- Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
+- An absence claim needs an authoritative full read; otherwise state what was read and what was not. Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
   Replaying a missed pre-publication or other incremental check after a mutation
   can silently select nothing because references, cursors or caches have advanced;
   preserve or reconstruct the original selection boundary in an isolated verifier
   using the unchanged supported check, without rolling back live state. A passing
   replay needs evidence of the intended nonempty population, or a calibrated
   control establishing that an empty population is legitimate.
-- Read a worker's commit, push, test result or commercial record yourself before presenting it as verified. An attributed report can be relayed with its unchecked status clear.
+- Keep source assertions, continuous integration (CI) enrollment and executed results separate. Read a worker's commit, push, test result or commercial record yourself before presenting it as verified; a writer's run remains attributed evidence, not the reviewer's own execution. An attributed report can be relayed with its unchecked status clear.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,
 units and balance basis agree, including whether rows represent separate instances.
@@ -106,6 +106,19 @@ defect to assess independently, not evidence that it prevents merging. A draft
 may intentionally run admission alone: skipped jobs then establish neither a
 failed ready run nor successful ready verification. Bind the verdict to the
 ready pull request's authoritative run and required aggregate.
+
+A provider can accept `neutral` or `skipped` checks while a required review has
+incomplete coverage; derive approval requirements from the repository's declared
+merge contract as well as its effective rules. When that contract requires a
+review, verify the named producer's explicit `success`, complete reported scope
+and current head; `completed`, zero findings or a separate approval do not
+substitute. Keep advisory reviews advisory.
+
+**Wrong:** "CI passed and the completed review has zero findings, so enqueue."
+**Right:** "The review is neutral with unreviewed paths; its required success is
+still missing."
+
+Source read 2026-11-07: [GitHub required status checks accept successful, skipped or neutral results](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging).
 
 Automatic merge being enabled records intent. Read the live queue entry to
 establish enqueueing, and the pull request's merged state and merge SHA to
@@ -215,7 +228,7 @@ claims; compressed files on disk do not prove negotiated network transfer sizes.
 
 ## Review a change
 
-Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review with no concrete defects is complete; style preferences do not create merge blockers.
+Read the diff or document at its exact head SHA or version. Judge it against the acceptance cases, supported behavior, data continuity, authority boundaries and relevant tests. A review covering the requested source with no concrete defects is complete; style preferences do not create merge blockers.
 
 For each finding, name the file and line or contract clause, triggering state/input, consequence and severity. A logical counterexample can establish a defect; distinguish it from an untested hypothesis.
 
@@ -224,3 +237,13 @@ Consolidate the first review across the whole change. Later rounds check the fix
 For agent/runtime claims, use the shared [model/runtime boundary](../challenge/SKILL.md). Measure the affected span before changing the environment. Tool counts alone do not justify limiting reasoning or tool access; explicit user cancellation and authorized resource/spend limits remain effective.
 
 When evidence overturns a claim, correct what was wrong, state the bounded verified fact and source/read time, and credit whoever caught it.
+
+### Pull request review receipts
+
+Unread automated findings can invalidate an independent PASS, and a stricter
+error path can break clients that depended on a fallback.
+
+- Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
+- Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
+- If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
+- For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; treat comments justifying a fallback as invariants.
