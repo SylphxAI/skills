@@ -65,9 +65,13 @@ a smaller eligible host set: compare their effective requests, reservations
 and priorities with the competing jobs on those hosts before adding capacity.
 Priority orders new allocations; existing reservations and non-preempting
 occupants can still hold the required room, so a priority change alone does not
-establish bounded wait. Verify both admission and actual provider pickup under
-continued competing demand before introducing an idle reservation or claiming
-the starvation is fixed.
+establish bounded wait. In a fungible worker pool, provisioning metadata names
+why a worker was created, not which task the provider will assign; selective
+recovery needs an enforced assignment constraint or acknowledged pool-wide scope.
+**Bad:** raise an origin-labelled worker's priority and call its intended task
+unblocked; **Good:** match actual assignment and target-task start before claiming
+recovery, and verify continued progress under competing demand before reserving
+idle capacity.
 
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 
