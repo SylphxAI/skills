@@ -63,13 +63,15 @@ permissions untouched after a deterministic symlink swap.
 
 A user's inability to traverse a protected mountpoint does not prove its contents stay unavailable through other mount or namespace views. Linux's less-privileged-mount checks inspect the mount graph rather than ancestor-directory permissions: a root-only unmasked mount can permit a new unmasked mount elsewhere. Name the actual isolation boundary (process, guest VM or host), and test that alternate view before claiming the original masks remain effective.
 
-Removing a named grant does not remove access inherited from group/admin bindings
-or execution routes that can obtain a stronger credential. An access-removal
-claim covers effective permissions of the actual identity and groups across the
-in-scope replicas, with existing consumers moved and verified before removing
-their old route. **Wrong:** revoke SQL write privileges while retaining root pod
-execution; **Right:** prove the approved reader still works and the same identity
-cannot reach the writer through inherited execution, attachment or forwarding.
+Removing a named grant or separating credential mounts does not remove access
+through inherited bindings or an API identity that can retrieve secrets or execute
+as a stronger principal. An isolation or access-removal claim covers the actual
+identity's effective acquisition routes across in-scope replicas, with tokens
+available only where needed and existing consumers verified before removing their
+old route. **Wrong:** remove an admin credential mount while leaving its secret
+readable through a shared API token; **Right:** prove the approved reader works
+with only its declared identity and cannot acquire the writer credential through secret reads,
+execution, attachment or forwarding.
 
 ## Shared reader privileges
 
