@@ -24,11 +24,16 @@ wrapper, derive both from the pinned launcher and verify initialization of the
 unchanged entrypoint before expensive work; an initialization refusal establishes
 no policy or product verdict.
 
-Local checks can inspect a different file population from the published artifact:
-ignored required files may pass from a mutable checkout, while local caches may
-be scanned as source. Publication evidence matches every manifest entry and digest
-to the clean committed archive or final package and exercises the consuming checks
-there. Check `git ls-files` covers every declared source import/module before handoff: a shared `.git/info/exclude` can silently hide new source across worktrees despite a clean status. Rebuildable caches stay outside that population unless the check's contract explicitly includes them.
+Verify completeness and integrity against the producer's intended manifest and
+the consumer's actual enumeration, matching every required entry and digest in
+the transferred archive or final package before exercising the consuming checks
+there. Transferred files, a regenerated index or catalog, and consumer selection
+can differ under ignore/filter rules; the regenerated selector does not define
+which inputs should exist, so selection drift alone establishes neither byte
+corruption nor permission to drop intended inputs. A clean status or regenerated
+`git ls-files` inventory can omit required imports/modules under
+`.git/info/exclude` even when their bytes arrived intact; rebuildable caches stay
+outside the population unless the check's contract includes them.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated
@@ -288,6 +293,8 @@ Keep one executable public contract and derive clients where that prevents drift
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
 
+Verify supported external construction and call forms against the published version contract; adapting in-repository callers can hide a consumer source break. Adding even a defaulted field to an exhaustively constructible public type, or making a field private, can invalidate existing consumer construction. Within a stable contract, prefer an additive policy-aware entrypoint that preserves supported construction and legacy calls over extending that type in place.
+
 When publication requires the selected commit to equal a live branch head, even
 documentation-only commits invalidate that identity. Coordinate every writer to
 that branch through the authoritative validation boundary, without a standing
@@ -440,7 +447,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
 - **Remote-tracking refs in single-branch clones:** Before comparing or publishing a checkout, materialize and verify the exact remote-tracking ref selected as its base; a readable commit or same-named local branch does not prove that the publisher can bound its history against that remote ref. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; inspect `remote.<name>.fetch` and use the repository's supported named-base fetch or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`). Restoring a missing stacked-base ref does not require retargeting the held PR or merging the default branch.
 - **Safe worktree cleanup:** Git cleanliness and pushed commits do not prove that a working directory has no unique outputs; automatic retirement can also remove non-Git directories. Safe cleanup depends on preserving unpushed commits and unique or uncertain drafts, reports, logs, captures and patches outside the entire deletion scope and reading the saved bytes back before removal. Rebuildable build trees need no preservation.
-- **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. Exercise an exported tree archive, such as a frozen suite from `git archive`, outside the source repository using only its declared inputs: running inside the full checkout can hide sibling-path dependencies. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors; do not change code to appease a stale artifact.
+- **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. Exercise an exported tree archive, such as a frozen suite from `git archive`, outside the source repository using only its declared inputs: running inside the full checkout can hide sibling-path dependencies. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors or identical benchmark results: relative dependency paths and source mtimes older than the previous build can hide a worktree change. Bind the executed binary to its actual dependency metadata or symbols before attributing unchanged behavior to source; do not change code to appease a stale artifact.
 - **Private test fixtures:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename; leave another run's files and permissions alone. Keep Unix socket paths within the operating system's limit and verify any short alias through both server and connection-URI parser. Isolate process-global environment and lock assertions in single-test subprocesses: an in-process mutex cannot protect them from concurrent fork/exec fixtures that inherit descriptors until exec. Launch fixture children with unrelated identity, configuration and data-directory overrides removed, retaining explicit fixture inputs; numeric identity separation alone does not isolate inherited authority.
 - **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.
@@ -650,7 +657,7 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 - For a regression selected by a target, filter, disabled marker or external prerequisite, trace the discovered inventory through the registered execution route; inventory every disabled test, whatever its stated reason, against the named tests the route actually ran in the required environment. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Adjust selection at the owning package or runner boundary and verify execution there: a configured but unavailable prerequisite fails explicitly, while an intentionally resource-free job is separate from the required database proof ([executed-test evidence](../../prove-it/SKILL.md)).
 - First execution can expose stale expectations, product defects or fixture drift: distinguish these using the asserted contract and its history, and retain a negative that detects the intended fault after any fixture repair. A reduced fixture establishes only its installed schema and protections; omitted migrations, constraints, triggers, policies and defaults remain stated limitations on the result.
 - When an entrypoint's direct or transitive inputs change, align every consuming sparse checkout, copy/package rule, per-job toolchain setup and deploy `watch_paths`, including generated variants. Full-checkout tests, ambient sibling directories and leftover staged files can hide omissions; execute each assembled entrypoint from a clean isolated output using that consumer's actual materialization and runtime setup. A missing-dependency control fails on the removed input, not on unrelated setup ([Git sparse-checkout](https://git-scm.com/docs/git-sparse-checkout), read 2026-11-06).
-- Derive local lint and formatting checks from the complete changed-file list against the PR base, including generated forms, module roots, import barrels and manifests; match each CI check's input selection, flags, configuration and exclusions. Source files and embedded copies can use different validators, so a pass over one form leaves the other unverified even when their bytes match; regenerate affected copies after canonical edits and recheck when inputs change. **Wrong:** infer standalone script validity from a green embedded-shell scanner, or import grouping from a formatter-only pass; **Right:** run each applicable CI validator over its actual input population.
+- Derive local lint and formatting checks from the complete changed-file list against the PR base, including generated forms, module roots, import barrels and manifests; match each CI check's input selection, flags, configuration and exclusions. Source files and embedded copies can use different validators, so a pass over one form leaves the other unverified even when their bytes match; regenerate affected copies after canonical edits and recheck when inputs change. A successful hook may skip validators when optional dependencies are absent; the executed validator, version and input population establish coverage, not the hook's exit status. **Wrong:** infer standalone script validity from a green embedded-shell scanner, import grouping from a formatter-only pass, or formatting from a hook that skipped its formatter; **Right:** run each applicable CI validator over its actual input population.
 - When inserting or reordering generated collection entries, search consumers by emitted field names, including ignored integration tests and database proofs. Find entries by their stable identity when checking their values; assert positions separately when order itself is part of the contract. An ignored test still consumes the generated shape, so compile it and name the isolated CI proof that remains pending when its database is unavailable locally.
 - Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities. A runner-priority class derived from event metadata requires authoritative run-linked ref evidence: a branch and tag can share a name and point at the same SHA, so name or commit equality alone cannot authorize escalation. Test that collision through the real event resolver before optimizing queue cost.
 - Size time/resource bounds to the operation being measured: an enclosing hang ceiling covers the complete enrolled inventory, sequential fixtures and child commands, calibrated from measured runtime on the smallest declared runner plus margin. Preserve inner per-case bounds and correctness assertions; separate independent scenarios into fixtures with named results, but keep a shared deadline when aggregate latency is the acceptance contract. A corpus split preserves the complete input inventory and fail-closed parsing and coverage assertions; report total and slowest-case times so missing work cannot masquerade as a speedup. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
@@ -664,9 +671,14 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 
 ### Browser input and foreground tests
 
-Use trusted browser input when acceptance depends on a browser default action,
-such as Tab moving focus. Assert both event cancellation and the resulting
-active element; synthetic `KeyboardEvent` dispatch only checks the listener path.
+Use trusted browser input through the shipped client/server path for focus
+ownership, native defaults such as Tab or clipboard paste, and complete pointer
+press/move/release sequences, including supported focus locations outside the main
+widget. Assert event cancellation state and the resulting active element, then
+verify ordered delivery, remote state and painted output where those boundaries
+apply. Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
+backend text insertion bypass parts of this path and cannot prove the user's
+shortcut or gesture works.
 Trusted delivery and an uncancelled event do not prove a native default ran:
 calibrate the input bridge against the actual effect in a minimal positive control,
 including generated character input when applicable, before attributing its absence
@@ -703,10 +715,12 @@ endpoint change from interpolation across frames, and use static and missing
 content as negative controls. See [reduced-motion acceptance](parity.md#ui-coverage-geometry-and-painted-output)
 for the product behavior that these measurements must establish.
 
-**Wrong:** dispatch Tab, manually focus the next button, and report that the
-browser exit works. **Right:** press Tab through the browser, check that an
-internal destination cancels it, then check that a boundary press moves focus
-outside without a manual focus call.
+**Bad:** dispatch Tab and manually focus the next button, or pre-focus one widget
+and call a backend text-insertion API to declare paste working. **Good:** press
+Tab and Cmd/Ctrl+V from supported focus locations and complete pointer
+press/move/release through the shipped path; verify internal Tab cancellation,
+boundary focus exit, pasted text and painted results without manually repairing
+the tested effect.
 
 Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
 and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).

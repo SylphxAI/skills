@@ -2016,6 +2016,74 @@
     {
       "prompt": "Update a source checkout from its base where canonical documentation metadata changed but the generated navigation index has no textual conflicts.",
       "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Fix a SaaS decimal importer that preserves JSON tokens but compares value-defined duplicate keys by their spellings.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game configuration validator that accepts a decimal coefficient too large for its database column despite a legal exponent.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a numeric API boundary and prove equivalent value spellings remain equal without normalizing byte-defined identifiers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS import verifier that drops an entire allowed-change object before comparison and misses an undeclared sibling field.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game XML configuration verifier that accepts undeclared text beside a newly added reward row while allowing blank layout whitespace.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Retire obsolete SaaS deployment settings after rollout; verify source omission removes legacy co-owned live keys and preserves retained fields.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Remove old card-game event settings through a typed configuration API where null may become an empty string; verify actual key absence and the remaining values.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace mutually exclusive worker storage settings and verify old server-defaulted fields no longer survive normal reconciliation.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a SaaS CLI whose explicit account state is lost by sibling read and apply commands that rebuild default authentication; preserve the selected endpoint and principal through final transport overrides.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game administration tool whose isolated profile is bypassed by an ambient token; test saved, fallback and missing credentials through assembled public commands while preserving permitted default-mode overrides.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a resource mirror fix so unavailable credentials or malformed snapshots refuse before local writes instead of becoming authoritative emptiness; preserve the entire local tree and metadata while a genuine successful-empty snapshot still removes obsolete files.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS installer that resets an operator-paused billing export to enabled whenever it refreshes the executable.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change game event reconciliation so updating a campaign script preserves an explicit operator hold while a new enabled event can start.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Ship a maintenance fix that preserves pause and resume intent across repeated no-op and changed-source configuration updates.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS editor's Cmd/Ctrl+V support when focus remains on the surrounding page, and verify native paste through its shipped client/server path.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game board drag fix and verify the complete pointer press/move/release sequence reaches server state and painted output in order.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a browser interaction test that calls a text-insertion API instead of exercising the user's clipboard shortcut from supported focus locations.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3371,6 +3439,56 @@
     },
     {
       "prompt": "Rewrite unrelated prose inherited through a base merge; it is not a generator input and no source, generator, publication or runtime behavior changes are requested.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a constructor test proves an existing CLI preserves selected account authority across sibling dispatch and environment overrides; inspect evidence without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare explicit account-context propagation and ambient credential lookup as proposed architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of unavailable snapshots versus authoritative empty snapshots without changing software, running probes or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a historical deployment overwrote an operator hold, without changing source or operating the service.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare declarative ownership and operator controls in a proposed scheduler architecture without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining pause and resume without changing code or service state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether passing backend paste tests prove a user's native clipboard shortcut works; report evidence without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare native clipboard forwarding and explicit paste controls as proposed browser interaction architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the user-facing explanation of a keyboard paste shortcut without changing its behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

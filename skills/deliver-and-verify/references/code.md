@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Losslessly retained token spelling does not establish domain equality or
+destination representability: derive value-defined comparisons and admission from
+the contract and destination type, retaining original bytes separately where required.
+**Wrong:** compare decimal spellings or bound only the exponent; **Right:** test
+equivalent values with different spellings and combined coefficient/scale limits
+through the actual storage driver, while byte-defined identifiers remain distinct.
+
 A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
 complete rewritten document with the destination consumer's parser, including
@@ -74,7 +81,11 @@ When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
 desired state, so durability depends on the full controller ancestry and each
-controller's effective field ownership. **Wrong:** add a child ignore and trust
+controller's effective field ownership. Owning software or resource declarations
+does not necessarily confer authority over a separate operator's pause/hold intent;
+initialization defaults cannot silently resume an existing workload. Verify that
+intent survives repeated no-op and changed-input reconciliation while genuinely
+new enabled work can start. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
 temporary exception is removed. Unchanged declarations, generations or digests
@@ -85,13 +96,14 @@ missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
 
-When replacing a mutually exclusive configuration variant, validate the effective
-update against an existing object with its server defaults and field ownership.
-Omitting the old variant in desired source may retain its defaulted fields;
-a successful render does not prove that the real reconciler can apply the change.
-A representation change, including omission becoming `null`, must remain
-consumable by every later internal operation that reads or reclaims that variant;
-producer or reconciler acceptance alone does not establish consumer compatibility.
+When replacing a mutually exclusive configuration variant or retiring fields,
+validate the effective update against an existing object with its server defaults
+and field ownership: omission can retain another manager's value, and `null` can
+become an empty value rather than delete the key. A successful render or apply
+does not establish intended absence; verify absent and retained fields through
+the actual reconciler and typed consumer. Representation changes must also remain
+consumable by later operations that read or reclaim the configuration, not only
+by its producer.
 
 Reservation or preview objects can bypass mutations applied to the eventual
 execution object, so matching source templates does not prove they reserve the
@@ -629,7 +641,12 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. A retryable provider outcome
+overbroad refusal proves agreement with the defect. A subset parser used by a
+guard must distinguish supported grammar from unknown constructs rather than
+reinterpret unsupported structured syntax as opaque data. Exercise
+semantics-preserving representations and explicit refusal of unsupported
+constructs through the real policy consumer, with valid opaque-data controls
+that remain accepted. A retryable provider outcome
 is not permission to dispatch again: after a durable submission marker, recovery
 is GET-only. A test that drives marked recovery through the unsent
 `queued`/send path can demand a duplicate POST and still pass; contrast it with
@@ -677,12 +694,14 @@ outputs as well as status: a swallowed error can keep the enclosing workflow
 green while forcing an expensive fallback. Keep malformed nonempty inputs as
 negative cases rather than weakening their validation.
 
-Normalization used to validate an exact declaration must preserve literal values
-as interpreted by the consumer, especially when the writer applies the original
-bytes. Test permitted layout changes as accepted and meaning-changing edits
-inside strings as refused before any write. **Wrong:** remove all whitespace
-before comparing an exact ACL path; **right:** preserve the quoted path's identity
-while accepting permitted layout changes.
+Normalization or projection used to validate an exact declaration may erase only
+contract-defined differences: removing a subtree can also erase undeclared text,
+tails or container metadata, just as stripping whitespace can change a quoted
+literal interpreted by the consumer. Compare or independently validate that
+remaining state before removal, pairing permitted layout/delta changes with
+meaning-changing payloads at the removal boundary. **Wrong:** drop an entire
+container after checking its declared children; **right:** preserve literal
+values and undeclared surrounding state while accepting only the declared delta.
 
 Source-closure checks—whether every declared source exists in the published
 tree—default-deny the untracked or ignored source inventory, with exact
@@ -795,9 +814,13 @@ establish a present, laid-out element with accepted input before comparison; an
 absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
-selects it. Preserve each independent reason for selection: historical comparison
-coverage does not limit explicit requested assertions about objects outside that
-population. Offline tests that omit verb, subresource, identity or old-object
+selects it; differential preservation checks include reference-only identities,
+since iterating only surviving candidates hides deleted working capabilities.
+Test disappearance and retained-but-broken behavior independently; an explicit
+removal waiver suppresses only the local disappearance finding for an actually
+removed identity. Preserve each independent reason for selection: historical
+comparison coverage does not limit explicit requested assertions about objects
+outside that population. Offline tests that omit verb, subresource, identity or old-object
 fields establish only their modeled requests; verify alternative supported routes
 through actual selection and enforcement, with permitted controls and the intended
 denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
@@ -837,12 +860,13 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-When adding a guard, refusal or early return, trace public callers beyond the
-changed-file diff: an inherited generic handler can turn a new typed refusal into
-normal completion. Zero mutations proves effect fencing, not caller-visible
-rejection; exercise those boundaries for both refusal result and preserved state
-alongside permitted completion. A correct early return also does not prevent its
-caller from closing or discarding state. For shared eligibility or availability rules, verify each public contract for temporary
+A public caller can turn an inner typed refusal, unavailable dependency or malformed
+response into successful empty data and destructive local reconciliation; zero
+network calls do not prove refusal, unchanged local state or a nonzero enclosing
+status. Exercise the assembled entrypoint for caller-visible refusal and preservation
+of all protected data and metadata, contrasting missing/unusable input with a
+validated authoritative empty snapshot that must still perform permitted removals.
+For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata; missing recovery evidence remains unknown.
 
