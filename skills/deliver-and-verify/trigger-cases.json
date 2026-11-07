@@ -1090,7 +1090,7 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, and ship the shared-cache repair.",
+      "prompt": "Fix local package installs that report temp-directory EACCES even after replacing TMPDIR, isolating unverified package contents in private caches.",
       "clause": "bug fix"
     },
     {
@@ -1627,6 +1627,14 @@
     },
     {
       "prompt": "Fix a fixture whose nested tool call runs in a different sandbox from its local listener by binding and verifying execution placement.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a shared artifact-cache reader that verifies every reused input against a separately trusted manifest, preserving the intended sharing boundary.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair per-user cache isolation so another UID cannot replace the cache parent through a writable ancestor.",
       "clause": "implementing or shipping a feature, bug fix"
     }
   ],
