@@ -22,6 +22,19 @@ Choose a measurable target for each critical journey and define its response whe
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
 
 
+## Replicated readiness
+
+A successful load-balanced request can hide a stale replica: a readiness promise
+across replicas needs repeated agreement on every member of a stable serving
+consumer census, tied to its deployed revision, with each sample taking the
+maximum latency rather than the first success. State the clock origin, preserve
+the original source-observation time across reloads and unchanged content, retain
+failed or censored samples, and identify excluded routes or a changed census
+rather than silently shrinking or mixing the population. A measured budget uses
+that complete cohort's maximum plus a stated margin; finite acceptance does not
+establish an absolute bound under failure or a production-population tail
+percentile.
+
 ## Fragment-shader hot paths
 
 Use when a renderer misses frame-time targets despite few draw calls, or when
