@@ -21,6 +21,12 @@ Test a scoped linter ignore or validation exception with both state-establishing
 and state-invalidating input followed by unwaived input; ordinary prose with no
 waiver needs no such handling.
 
+Validate immutable historical records structurally and retain their findings when
+time-dependent permissions expire; expired permissions have no authority, but
+must not erase the baseline or weaken current-state validation. Test expiry
+rollover and removal through the real comparison entrypoint, and regenerate any
+registry that attests the checker source when those bytes change.
+
 ## Deployment configuration
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
@@ -41,13 +47,12 @@ controller's effective field ownership. **Wrong:** add a child ignore and trust
 an immediate live read. **Right:** establish what preserves it through parent
 reconciliation, then verify the durable source adopts the value and the
 temporary exception is removed. Unchanged declarations, generations or digests
-do not prove unchanged effective allocations: verify preservation against realized per-object state at
-every active mutation and consumer, preserving field-ownership exclusions across
-successive operations and independent writers. Keep pending intent and declarations separate from physical evidence;
-missing, stale, unreadable or partial evidence remains unknown and must not
-authorize a preservation-changing action. First creation requires authenticated
-proof of exact identity absence and a complete inventory of retained allocations,
-so a missing record cannot silently discard an existing allocation.
+do not prove unchanged effective allocations: verify realized per-object state
+through every active writer and consumer, preserving field-ownership exclusions
+across successive operations. Keep pending intent separate from physical evidence;
+missing, stale, unreadable or partial observations cannot justify a
+preservation-changing write, while first creation requires authoritative proof of
+exact-identity absence and a complete inventory of retained allocations.
 
 When replacing a mutually exclusive configuration variant, validate the effective
 update against an existing object with its server defaults and field ownership.
@@ -287,11 +292,21 @@ read 2026-11-06).
 
 **Wrong:** set a report's download expiry before generating and storing it.
 **Right:** publish its ready state and full promised availability atomically.
-Test through the real entry point with work lasting at least the minimum
-retention. Assert that the returned resource is ready, remains gettable and
-usable, and has the full promised lifetime from publication. A mocked application
-clock alone cannot expose a database clock fixed at transaction start. Include
-an absolute-deadline control when that contract also exists.
+Through the real entry point, work lasting at least the minimum retention must
+still publish a ready, gettable, usable resource with its full promised lifetime;
+an absolute-deadline control keeps its original origin.
+For scheduling tests, derive effective eligibility across message, route and
+resource deadlines, anchored to the event that issued the constraint rather than
+a late assertion clock or one storage field.
+Prove refusal while the interval is still unexpired and recovery after expiry,
+with enough margin that the refusal probe cannot pass after the deadline.
+Use persistence-representable timestamps and verify encode/store/decode round
+trips separately from runtime boundaries; a mocked application clock cannot
+establish database-clock behavior.
+
+**Wrong:** require one message timestamp to remain future after slow settlement.
+**Right:** verify the effective interval from its issuing event, with a pre-expiry
+refusal and later recovery; check timestamp encoding separately.
 
 ## Migrations
 
@@ -361,6 +376,15 @@ Keep schema migrations strictly DDL-only (`CREATE`, `ALTER`, `DROP` on tables, i
 - **Invariants:** Absence of a normalized row is not authoritative zero. Before returning or accepting a default snapshot, check whether a valid recovery source exists and initialize only missing canonical rows within a serialized transaction (leaving existing canonical rows, including legitimate zeros or completed erasures, untouched).
 
 ## Database boundary tests
+
+An output subset need not contain the dependencies needed to evaluate its rows:
+a timestamp filter can remove the true predecessor while leaving a plausible,
+non-null earlier row. Define adjacency from the authoritative ordering over the
+necessary history before restricting scored rows; time-based pruning needs a
+proven ordering guarantee or comparison with full-history evaluation.
+**Wrong:** trust a non-null `LAG` over a recent slice. **Right:** place an
+intermediate event outside that slice and independently assert its successor's
+predecessor, exposing both hidden violations and invented gaps.
 
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
@@ -445,6 +469,11 @@ inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
 
+When opening previously uninspected syntax, put a real state mutation after every
+supported control opener and exercise its allowed and forbidden forms through
+the real checker entrypoint. Cross-dialect keywords need separate controls, so a
+harmless idiom in one language cannot exempt a destructive statement in another.
+
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
 Evaluate each declared trigger and inherited reusable-call context with the
@@ -506,14 +535,17 @@ while a stale-heartbeat refusal fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
-A safety or dependency check's predicate can pass while discovery or request
-routing never selects it; exercise alternative supported declarations, operations
-and subresources through selection and enforcement, with permitted controls and
-the intended denial. An offline evaluator that drops verb, subresource, identity
-or old-object fields proves only its modeled request, so route-dependent claims
-need the actual endpoint. **Wrong:** infer a debug-update ban from rejected
-create bodies; **right:** show the policy selects the debug-update route and
-rejects its valid request, keeping local predicate tests separate.
+A safety or dependency predicate can be correct while discovery or routing never
+selects it. Preserve each independent reason for selection: historical comparison
+coverage does not limit explicit requested assertions about objects outside that
+population. Offline tests that omit verb, subresource, identity or old-object
+fields establish only their modeled requests; verify alternative supported routes
+through actual selection and enforcement, with permitted controls and the intended
+denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
+permission change because its account is absent from the old audit sample.
+**Right:** exercise the alternate update route and requested objects inside and
+outside comparison coverage, proving fulfilled requests pass and unfulfilled
+requests fail without expanding collateral comparisons.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 

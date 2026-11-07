@@ -17,13 +17,13 @@ Before intervening, read the live state of the job, queue, or target resource:
 1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
 2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
-4. **Challenge an added prerequisite:** Before repairing a refused step, reread
-   the outcome and ask whether that step is required at all. Remove an unrelated
-   dependency from this delivery rather than repeatedly repairing it; track the
-   independent outcome separately. For example, a UX change that works with the
-   current engine version should not wait on an optional version bump whose
-   migration fails. Split the bump from the UX change; retain a prerequisite
-   when the acceptance cases actually depend on it.
+4. **Challenge an added prerequisite:** Before removing a refused step, compare
+   its selection contract and effective input population with the acceptance
+   cases. Shared or inherited inputs alone do not show incorrect selection;
+   preserve required coverage when setup or execution fails. Track unrelated
+   dependencies separately: split an optional engine upgrade from a UX change
+   that works on the current version, but retain a required integration check
+   whose external dependency fails during setup.
 5. **Verify the resource can supply the missing capability:** Before restoring
    a credential or expanding a grant, read the selected account/workspace's
    entitlement and access to the specific model, feature or workload. Successful
