@@ -1916,6 +1916,18 @@
     {
       "prompt": "Ship a worker configuration change when the same-size isolated tier is not served in this account; preserve the serving allocation and report remaining contention.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a SaaS menu repair whose new dormant Export control has valid geometry and a handler but no intended feature; compare its identity and state with the verified serving baseline before accepting it.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish a card-game UI update that activates a previously dormant Replay control; require evidence of intended activation in that state and separately exercise its action, rather than reusing approval for the dormant state.",
+      "clause": "publishing"
+    },
+    {
+      "prompt": "Implement a UI inventory guard that detects added dormant controls and newly activated existing controls, but accepts unchanged-baseline self-comparison without new intent approval and still reports geometry or action failures.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3181,6 +3193,21 @@
     },
     {
       "prompt": "Rewrite an explanation of remaining resource contention without changing or publishing any configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this unchanged UI baseline already has evidence for its control inventory and states; report findings without changing tests or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare candidate architectures for declaring intended UI activation states without implementing a checker or publishing a change.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of a dormant UI control for clarity, without changing product behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
