@@ -12,7 +12,7 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Verify webhook authenticity using the provider's contract. Deduplicate by its stable delivery/event identity, persist accepted work before processing and acknowledge within the provider's required window.
 - For outcomes needing recovery from dropped delivery, use the provider's supported reconciliation, replay or authoritative API and choose the schedule from the workload/cost. Verify that a missed event is recovered rather than assuming the webhook is the only truth.
 - A shared provider quota follows its credential identity across HTTP methods, transports and callers; gating only reads or one adapter leaves other spend outside the reserve. Priority floors need reset-aware observations and separate local-deferral, wire-response and uncharged-revalidation counters: a conditional request still needs admission because changed data can return a charged response. Verify the lower-priority stop and higher-priority continuation through actual request entry points at the boundary, alongside provider refusals, reset recovery and credential-isolated revalidation.
-- Expensive mutable observations need both freshness and shared-provider cost evidence: a short negative TTL can exhaust a quota, while retaining a negative answer can hide completion. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers, and evaluate completion invalidation with a bounded lost-event backstop. Verify duplicate events, in-flight reads and retained caches across ownership changes, so invalidation remains effective without multiplying provider work.
+- Expensive mutable observations need both freshness and shared-provider cost evidence: an event-watch API implemented as per-watch REST GETs still polls, and a short negative TTL can exhaust a quota while retained negatives hide completion. Prefer batched queries or webhooks with a bounded lost-event backstop; conditional reads need retained ETags and cached bodies so actual revalidation occurs, not merely an `If-None-Match` option. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers. Verify completion invalidation, duplicate events, in-flight reads and retained caches across ownership changes without multiplying provider work.
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
 
 ## Destructive and conditional writes
@@ -54,10 +54,11 @@ for the returned published digest and reject a different digest.
 
 A server status or error envelope is also an instruction to deployed callers: a
 more precise classification can turn their retry or optional fallback into a
-terminal failure. Preserve each supported deployed caller's status-to-behavior
-mapping through its real classifier, including temporary failure, genuine denial
-and required-operation controls; a future client update cannot establish present
-compatibility. **Wrong:** test only the new server response; **Right:** prove the
+terminal failure. Before changing a status code or error class, inventory deployed
+caller versions and trace every status-to-behavior mapping through its real
+classifier, including fallback, retry, abort, genuine denial and required-operation
+controls; a future client update cannot establish compatibility for clients
+already in the field. **Wrong:** test only the new server response; **Right:** prove the
 response still selects the intended behavior in deployed client versions.
 
 Enabling a shared dependency feature can change defaults for every consumer,

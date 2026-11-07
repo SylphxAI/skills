@@ -36,16 +36,6 @@ evidence, not permission. **Bad:** reject permitted work because a masked key
 disappeared; **Good:** exercise permitted and refused requests through the real policy
 boundary without deriving authority from diagnostics.
 
-Agreement between two observations from the same writable state is not independent
-verification: a symbolic name and its history can both change under the same
-writer. Bind the effect to an immutable identity retained by the authorizing
-process, and verify that the effective resolver cannot substitute its contents;
-any permitted transform must derive only from that retained input. **Bad:** compare
-a shared branch with symbolic `HEAD` before pushing by branch name; **Good:**
-publish the caller-retained commit after disabling replacement objects, then test
-that another writer cannot change the uploaded tree through either the ref or
-the resolver.
-
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
 
 For privileged tool maintenance, run executables from user-writable paths as
@@ -68,6 +58,28 @@ between enumeration and effect, and assess hard links separately through the
 effective link policy or link-count checks. **Bad:** `find -P` followed by
 pathname `chmod`; **Good:** a descriptor-based change leaves an outside target's
 permissions untouched after a deterministic symlink swap.
+
+## Source publication authority
+
+Agreement between observations of the same writable state is not independent
+verification: shared refs and group-writable Git metadata, including linked-worktree
+reflogs, cannot witness caller authorization. Push the exact full commit SHA retained
+by the publisher, with replacement refs (`refs/replace`) and grafts disabled
+process-wide, including child Git commands; a retained SHA alone cannot prevent
+resolver substitution. **Bad:** compare a shared branch with its reflog, then push
+by branch name; **Good:** prove that ref, reflog and resolver tampering cannot change
+the authorized uploaded tree, while permitted deterministic rewrites still work.
+
+A rewritten source pin advances only from the publisher's directly captured output
+after exit 0: in a receipt with `expected_head`, `source_head` and `local_head`,
+the first two must equal the previously retained full SHA, and the returned full
+`local_head` must validate as a commit. Nonzero exit, plausible JSON, partial-upload
+heads, shared refs/reflogs and predictable receipt files confer no authority.
+For an ancestry-preserving rewrite, a retained first-parent cut `original~N` maps
+to returned `local_head~N` with replacements and grafts disabled; arbitrary cut
+points need an explicit verified mapping rather than a fresh shared-ref lookup.
+
+Source read 2026-11-07: [Git replacement-object controls](https://git-scm.com/docs/git#Documentation/git.txt---no-replace-objects).
 
 ## Runtime isolation
 

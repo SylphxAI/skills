@@ -106,6 +106,14 @@ in `commits/<sha>/status`. Resolve a named context through both surfaces at the
 same head, retaining producer and timestamp; aggregate success on either
 surface establishes neither the other's result nor the PR's merge eligibility.
 
+An App-posted success can outlive a failing workflow rerun unless its producer
+creates a fresh nonterminal Check Run before work starts. GitHub selects check
+freshness by creation order, not caller-supplied `started_at` or `external_id`;
+retain the selected check identity and exercise an old success followed by a
+failing rerun. For merge queues, the enforceable boundary is the current
+merge-group SHA's own required evidence, not a passing source-head check or a
+retired group's result.
+
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An installed App's empty
 queued Check Suite does not establish an active producer or a merge requirement;

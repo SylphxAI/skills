@@ -1448,6 +1448,46 @@
     {
       "prompt": "Fix a configuration activator that compares two records writable by the same actor; bind activation to the independently retained approved content digest.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change a server error class without breaking fallback, retry or abort behavior in client versions already deployed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Harden CLI diagnostic redaction so allowed operation and request-ID fields reject bearer strings, URL queries and unsafe parsed address suffixes.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Repair a resumable installer download and prove its second Range request advances beyond the retained partial prefix and the final digest matches.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Bound a mirror fallback chain across every retry and Retry-After delay beneath the shortest caller timeout.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a source publisher to advance its retained full-head pin only from directly captured successful rewrite output, with an explicit cut-point mapping.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Remove an obsolete neutral-result rescue exception after a consumer adopts a producer-success gate, without relaxing fail-closed admission.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Replace per-watch REST reads with batched queries and effective ETag revalidation while preserving event delivery and the shared quota floor.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a runner-priority resolver that confuses a branch and tag sharing both name and SHA; retain authoritative run-linked provenance.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a frozen suite archive whose test passes inside the full checkout but fails outside it because of an undeclared sibling dependency.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Fix a fixture whose nested tool call runs in a different sandbox from its local listener by binding and verifying execution placement.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2373,6 +2413,21 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review a past server error-mapping incident without changing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare alternative API error-envelope architectures before choosing a design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Draft a documentation explanation of standard HTTP status meanings without changing a service.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
