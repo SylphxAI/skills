@@ -810,7 +810,11 @@ consumer's pinned dependencies, compiler configuration and ambient declarations;
 a narrowed check with substitute declarations proves only that narrower boundary.
 A passing runtime test or type assertion does not establish that its mock matches
 the host's complete type, so the consumer's exact compilation, formatting and lint
-checks remain the compatibility verdict. Keep one source representation that
+checks remain the compatibility verdict. Capability-absence fixtures also depend
+on the host's property descriptors: a native member can be non-configurable in
+one runtime. A scoped replacement of the dependency can model absence without
+reconfiguring that member; the unchanged production fallback and a subsequent
+capability-present control establish behavior and fixture cleanup. Keep one source representation that
 passes every consumer, with any suppression's narrow explanation in syntax the
 checker reads, such as a Rust lint's `reason` attribute.
 
