@@ -643,7 +643,7 @@ would grant an inspection exemption, retain inspection. **Wrong:** deduplicate
 repeated transaction records before running a shared refusal case, then claim
 parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
-A query-cost regression asserts statements executed and rows examined, from engine statistics or the query plan, not rows returned: an existence check that returns nothing can still scan the whole table.
+A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
 When adding a guard, refusal or early return, trace every caller with side effects
 and test refusal through each caller, not only the guarded method. For shared
