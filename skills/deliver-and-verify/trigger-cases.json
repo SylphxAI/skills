@@ -1530,7 +1530,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Change diagnostic redaction to sanitize the complete tool result before truncation and fan-out to storage, uploads and the next request.",
+      "prompt": "Change diagnostic redaction to cover encoded concatenated output across transport-frame and UTF-8 boundaries before truncation and fan-out to storage, uploads and the next request, withholding bytes when bounded sanitization cannot establish safety.",
       "clause": "changing diagnostic redaction"
     },
     {
