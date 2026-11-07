@@ -1116,6 +1116,18 @@
     {
       "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change PR workflow concurrency so superseded checks cancel while every scheduled publication remains queued.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Normalize a game CI entry workflow and its reusable callees without letting a callee cancel its caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a concurrency repair that preserves pending main-branch runs even when active-run cancellation is false.",
+      "clause": "changing CI workflows or concurrency"
     }
   ],
   "negative": [
@@ -1846,6 +1858,21 @@
     },
     {
       "prompt": "Rewrite this guide explaining required and optional checks, without changing software or operating the release process.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether cancel-in-progress:false protected queued runs in a past incident; inspect evidence without changing workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare per-run groups and multi-pending queues for a proposed CI architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of reusable workflow concurrency without changing or publishing CI.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
