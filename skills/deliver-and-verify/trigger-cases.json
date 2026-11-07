@@ -1118,7 +1118,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Before repairing a shared pull-request publisher, search open PRs touching its files and route the missing delta to an existing writer instead of creating a competing implementation.",
+      "prompt": "Before fixing a publisher's base-health refusal, search open PRs for that same outcome; let an unrelated change edit the same publisher file in its own isolated worktree.",
       "clause": "publishing or editing PRs"
     }
   ],
