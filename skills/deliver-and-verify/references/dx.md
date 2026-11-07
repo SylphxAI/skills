@@ -498,9 +498,11 @@ inputs that no longer exist, including paths left behind by a rename.
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
 per-path blobs and file modes with the serving plan, including inherited base
-inputs and runtime resources; the difference must equal only the declared change
-under test. Resolve the serving selection from its producer's frozen approval,
-not the selected source revision's own selector.
+inputs, removals and runtime resources; the difference must equal only the
+declared change under test. An unchanged-input exemption requires identical
+pinned content and modes; a frozen provenance label cannot exclude changed
+destinations from scope checks. Resolve the serving selection from its producer's frozen approval, not
+the selected source revision's own selector.
 Include every other profile selecting a changed shared file, even if it does
 not call the new helper: an additive edit still changes its retained bytes.
 Preserve each profile's declared comparison instead of widening its expected
@@ -529,7 +531,7 @@ while drift in a selected input must fail it.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
 
-**Wrong:** Treat a pointer-only PR's empty source diff as no runtime change.
+**Wrong:** Treat an empty PR source diff or frozen input labels as no runtime change.
 **Right:** For a release limited to one runtime module, refuse a pointer-only
 selection that mixes modules and keep a single-module rebind passing.
 
