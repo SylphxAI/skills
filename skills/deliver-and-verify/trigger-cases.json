@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Add native pull-request CI supersession without letting an always-running aggregate retain the concurrency group and block its replacement cleanup.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
       "clause": "synthetic probe"
     },
