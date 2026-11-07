@@ -1068,6 +1068,10 @@
     {
       "prompt": "Ship a game's controller-input regression fix while preserving the complete recorded action sequence.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a database-backed retry fixture to prove effective eligibility across message and shared-resource deadlines, including refusal before expiry, recovery afterward and timestamp precision across persistence.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
