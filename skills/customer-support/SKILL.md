@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across a SaaS, AI/cloud or API service, casual game, heavy-IAP game, or consumer app: sign-in or recovery failures, missing purchases, top-up or voucher inquiries, refunds, prices, invoices, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up or voucher inquiries, refunds, prices, invoices, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, reviewing recent outbound VIP/support transcripts for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -105,6 +105,44 @@ Apply **additive-only protection (`只加唔減`)** and **commitment stability (
   does not require legalistic proof of loss.
 
 ## 1. Response composition
+
+### Minimum necessary disclosure and paid-rank confidentiality
+
+Verified backend context informs the answer; it is not an outbound disclosure
+mandate. Send only the player-facing facts needed for the request. Keep Track
+A/B, `第一軌`／`第二軌`, order/`dbId`/mail IDs, full FRN or bank transaction
+references, internal cap/ratification/approval formulas, org-chart or
+approval-chain narration, raw inventory/recipe calculations, internal defect
+mechanics, and third-party rival statistics out of customer copy. Mail titles,
+mail content and offer copy use natural prose, never Markdown syntax. When a
+verified owner explicitly requests own-account data, answer only the asked
+metric: a spend-total question does not authorize an inventory or recipe audit.
+A customer's explicit disinterest or complaint about being asked to spend ends
+the sales sequence until that customer reopens the purchase topic.
+
+Never disclose or imply any player's server-wide paid/cumulative-spend rank,
+paid percentile, top-N payer status, or paid-rank-based comparison or privilege
+in any player-facing surface: private DM, official support, in-game mail title
+or content, offer spec, PR or social copy. This ban covers that player's own
+rank even in 1:1 and covers every other player's spend, rebate or paid-rank
+records. A verified player explicitly requesting their own spend **total** may
+receive only that verified total, never a rank, percentile or top-N position.
+Gameplay and skill leaderboards unrelated to spend remain permitted. Use
+non-rank personal recognition such as `資深 VIP`, `個人專屬尊貴禮遇` or
+`感謝長期支持`, never paid-rank titles or rank-based extra percentages.
+
+Synthetic contrasts:
+
+| Surface | ❌ Bad | ✅ Good |
+| --- | --- | --- |
+| VIP recognition or offer | `你係全服第一累課、全服前 3 payer、付費分位前 0.1%，No.1-payer 永久額外 20%。` | `多謝你長期支持，呢份係你嘅個人專屬尊貴禮遇。` |
+| Verified owner asks only for their spend total | `你累計實付 HK$12,000，全服第 1；背包有 800 箱，開 500 箱可補 120 片。` | `你查詢嘅累計實付總額係 HK$12,000。` (Only the requested, verified total; no rank or inventory audit.) |
+| Another player's paid record | `對家全服第 2、回贈 30%，最近都好活躍。` | `其他玩家嘅付款、活動同禮遇紀錄會保密；我可以幫你查你本人嘅帳號。` |
+| Mail title/content | `**全服累課第一**<br>第二軌；order=<order_id>；dbId=<dbId>；mail=<mail_id>；額外=cap×20%` | `標題：資深 VIP 專屬禮遇`<br>`內容：多謝你長期支持，呢份個人專屬禮遇為你準備好咗。` |
+| Offer benefit vs. raw backend calculation | `倉存=13,000；760×8=6,080；recipe=<recipe_id>` | `呢份組合可令兩件珍藏突破下一級；內容同數量會清楚列喺禮包頁。` |
+| Payment receipt | `FRN<complete_reference>／交易 <complete_transaction_id> 已收到。` | `已收到你提供嘅轉帳資料，會用嚟核對呢筆付款；確認入帳後通知你。` (Do not echo full payment references.) |
+| Verified defect remedy | `附件格式設定錯，系統數據調整少計，技術部特批重發。` | `缺少嘅金幣已補入遊戲信箱，而家可以領取。` (Only after the verified remedy.) |
+| Gameplay leaderboard unrelated to spend | `任何全服第一都唔可以提。` | `恭喜你今季牌技榜全服第一！` |
 
 - **External answer only.** Send the verified answer, remedy or next useful
   step. Keep private reasoning, deliberation and internal narration out of the
