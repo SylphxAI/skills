@@ -153,7 +153,7 @@ from reappearing through later writes.
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
 
-For dependency lockfiles, package publication or registry/download mirrors, read
+For public API changes, dependency lockfiles, package publication or registry/download mirrors, read
 [interfaces and packages](references/dx.md#interfaces-and-packages).
 
 When changing generator inputs, running a generator locally or remotely, or
