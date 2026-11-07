@@ -570,7 +570,12 @@ custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
 prepared-statement behavior under the effective role and row-level security
 (RLS), comparing generic and custom execution plans where supported; inspect
-actual rows, loops and buffers as well as latency.
+actual rows, loops and buffers as well as latency. Empty-result distributions
+can reject every candidate upstream or reach costly downstream branches before
+later predicates reject them all; identical output cardinality does not establish
+comparable work coverage. Performance evidence includes reachable repeated scans
+and function calls, distinguishing repeated function planning from execution cost
+where applicable.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
