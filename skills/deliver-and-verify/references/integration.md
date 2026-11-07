@@ -99,6 +99,13 @@ leaked state inside an isolated regression, keeping the product assertions intac
 **Good:** identify which transport received the command and reproduce the
 contamination in one test before changing product behavior.
 
+Provider event collections can mix variants with different required fields:
+discriminate relevant variants before reading their identity or validating
+variant-specific fields. Exercise the production parser with a real heterogeneous
+response fixture containing irrelevant variants that legitimately omit those
+fields, plus a malformed relevant variant that must be rejected rather than
+silently skipped.
+
 Exercise negative cases through the same public entry point that makes the
 production decision. Return the provider's real error shape so decoding reaches
 the intended branch. Pair a refusal with a permitted request and assert an
