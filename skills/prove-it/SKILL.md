@@ -46,6 +46,8 @@ For syntax guards, async wrong-target writes, refusal callers, source refusal
 versus on-disk tamper, contract-derived conformance, evaluate-only support claims
 or converging retry and fallback mechanisms, read
 [code boundary tests](../deliver-and-verify/references/code.md).
+For candidate-controlled comparison baselines or self-consistent snapshot changes, read
+[comparison authority](../deliver-and-verify/references/code.md#cleanup-and-review).
 For displayed-versus-actual data fixes or reward-pool grantability, read
 [asset and table verification](../deliver-and-verify/references/parity.md#before-publishing-assets-tables-or-configuration).
 For missing exports present in source or cross-UID permission fixtures, read
