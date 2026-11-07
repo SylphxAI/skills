@@ -1846,6 +1846,18 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement a zero-token card-game support queue watcher that reconciles changes during successor watch registration without replaying completed work.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Repair a zero-token external inbox watcher handoff so observer failure or exit still wakes the responsible agent without recurring LLM polling.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
       "prompt": "Fix a SaaS scheduler where a slow timed pass starves notification-driven continuation work that remains ready; prove bounded service across every promised work class.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -3041,6 +3053,21 @@
     },
     {
       "prompt": "Rewrite the UI explanation of scheduled jobs and bound storage without changing their labels or access policy.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a running observer proves continued wake coverage after its one-shot subscription fires; report evidence without shipping a fix.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare one-shot and persistent subscription designs for an inbox before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of registration races without changing the watcher, running tests or publishing anything.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
