@@ -1296,6 +1296,10 @@
     {
       "prompt": "Ship a game content exporter fix that proves every approved source maps to the corresponding immutable output position, including one stable replaced input.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
+      "clause": "zero-token external inbox/queue watcher"
     }
   ],
   "negative": [
