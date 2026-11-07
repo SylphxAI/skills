@@ -1360,6 +1360,14 @@
     {
       "prompt": "Change a retry worker regression to use distinct effective decision keys and observe its effect before fallback repair, proving that disabling only retry fails the unchanged assertion.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement bounded transcript recall with continuation when a single tool output exceeds the encoded response budget.",
+      "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change a CI test invocation to explicit file globs that discover the intended tests on the pinned runtime version.",
+      "clause": "changing CI workflows or concurrency"
     }
   ],
   "negative": [

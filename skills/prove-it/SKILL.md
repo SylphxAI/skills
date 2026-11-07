@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -62,10 +62,11 @@ read [fleet capacity evidence](references/fleet-capacity.md). It separates
 physical use, controller minima, admitted Pod requests, traffic evidence and
 verified release receipts.
 
-For token-use boards, prompt duplication, cache claims or model-cost savings, read
-[model-usage.md](references/model-usage.md). It covers response deduplication,
-counter semantics, counts-only privacy, comparable before/after work and product
-economics.
+For token-use boards, prompt duplication, cache claims, model-cost savings, or
+verification of time-windowed usage or billing queries, read
+[model-usage.md](references/model-usage.md). It covers historical classification,
+query conservation, response deduplication, counter semantics, counts-only privacy,
+comparable before/after work and product economics.
 
 For Android native launch/recreation ANRs or store-build exposure claims, read
 [Android lifecycle and shipped-build evidence](references/android-lifecycle.md).
