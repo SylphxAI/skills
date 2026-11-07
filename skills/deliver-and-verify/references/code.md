@@ -373,9 +373,10 @@ Preserve owner capabilities required by internal FK/trigger paths while keeping
 or grant options; adding a trigger or role solely to preserve owner
 self-revocation obscures the actual boundary.
 **Wrong:** infer append-only behavior from owner ACLs or successful reads.
-**Right:** retain the real FK and prove a valid nonowner `INSERT` after complete
-fresh and upgrade migrations, before fixture grants, alongside denied workload
-mutations and denied `SET ROLE` to the owner.
+**Right:** retain the real FK and record the migration-only ACL result before
+fixture grants; then prove a valid nonowner `INSERT` under the declared, scoped
+workload grants after complete fresh and upgrade migrations, alongside denied
+workload mutations and denied `SET ROLE` to the owner.
 
 A successful read can be policy-filtered even when it returns no warning or
 error; counts, maxima and metadata inventories establish completeness only for
