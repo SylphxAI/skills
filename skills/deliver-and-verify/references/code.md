@@ -38,6 +38,15 @@ registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
 
+An optional capability that is intentionally unconfigured is not a configured
+capability that is unavailable: adding a shared readiness or admission condition
+can otherwise disable valid reduced-scope deployments. Where absence is a
+supported mode, preserve it without weakening configured-but-incomplete refusal
+or misreporting absence as healthy configuration. Verify behavior through every
+assembled constructor or deployment profile with the capability absent, configured
+but incomplete, and loaded, varying mandatory upstreams between healthy and
+failing; helper-only tests of configured states miss consumers that omit it.
+
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
 production default. Bind every origin resolver to positive target identity in
