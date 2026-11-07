@@ -38,14 +38,18 @@ registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
 
-An optional capability that is intentionally unconfigured is not a configured
-capability that is unavailable: adding a shared readiness or admission condition
-can otherwise disable valid reduced-scope deployments. Where absence is a
-supported mode, preserve it without weakening configured-but-incomplete refusal
-or misreporting absence as healthy configuration. Verify behavior through every
-assembled constructor or deployment profile with the capability absent, configured
-but incomplete, and loaded, varying mandatory upstreams between healthy and
-failing; helper-only tests of configured states miss consumers that omit it.
+A shared readiness or admission check must distinguish an intentionally
+unconfigured optional capability from a configured capability that is unavailable:
+derive configured-versus-absent from the capability's own declaration before
+evaluating prerequisites, because prerequisite-gated assembly can silently turn a
+configured-but-unusable capability into absence and a false-ready success. Preserve
+intentionally absent reduced-scope deployments, but refuse construction/readiness
+for a configured capability with a missing, empty, malformed, or non-Unicode
+binding rather than treating it as absent. Verify the real environment/declaration
+parser through every production constructor or deployment profile (using isolated
+subprocess environments for process-global settings), covering absent, invalid,
+and loaded declarations plus healthy and failing mandatory upstreams; helper-only
+tests miss this boundary.
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
@@ -209,13 +213,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent background candidates need isolated failure and retry state, forward
-progress and revisitation: an early pending or failed row must not starve later
-work or other tenants, or become stranded when its eligibility changes after
-discovery advances. Repeated polls with unchanged
-inputs prove only idempotence; change an already-scanned candidate's inputs and
-verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the completion or deletion contract is satisfied; atomic batches remain a different contract. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
+Independent background candidates need discovery and admission rules aligned with
+actual dispatch eligibility, with typed outcomes separating deliberate capacity
+holds from ineligibility, unmet prerequisites and failed attempts; otherwise an
+undispatchable winner can starve later work or other tenants. Isolate failure and
+retry state, durably yield selections blocked for other reasons and retain their
+retry source until completion or contracted deletion; atomic batches remain a
+different contract. Through the public worker or poll entrypoint, verify progress
+past those selections, effective capacity holds and completion of an already-scanned
+candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -466,6 +472,13 @@ atomicity is promised.
 **Bad:** sort every catalog entry by name and count rollback as recovery;
 **Good:** respect owner-managed dependents and prove dependency-safe completion,
 subsequent use and failure atomicity.
+
+For parameterized SQL performance across broad and keyed selectors, a fast
+custom plan or empty result can hide generic-plan cardinality errors, repeated
+scans and join products. Measure populated cases through the consuming driver's
+prepared-statement behavior under the effective role and row-level security
+(RLS), comparing generic and custom execution plans where supported; inspect
+actual rows, loops and buffers as well as latency.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
