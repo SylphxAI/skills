@@ -51,8 +51,9 @@ For displayed-versus-actual data fixes or reward-pool grantability, read
 For missing exports present in source or cross-UID permission fixtures, read
 [build and fixture isolation](../deliver-and-verify/references/dx.md).
 
-For agent workspace cleanup, instruction freshness, retained/searchable history
-or uncertain tool mutations, read [agent runtime evidence](references/agent-runtime.md).
+For agent workspace cleanup, instruction freshness, retained/searchable history,
+shared browser-session measurements or uncertain tool mutations, read
+[agent runtime evidence](references/agent-runtime.md).
 It separates source, generated files, session context, raw retention, search
 coverage and actual runtime execution.
 

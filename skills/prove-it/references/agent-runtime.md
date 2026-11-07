@@ -1,7 +1,8 @@
 # Agent runtime evidence
 
 Trigger: verifying workspace isolation or cleanup, shared instruction freshness,
-retained/searchable history, or a tool mutation with an incomplete response.
+retained/searchable history, shared browser-session measurements, or a tool
+mutation with an incomplete response.
 Use the runtime's supported interfaces and the caller's own credentials. Keep
 machine identities, paths and incident records in the owning workspace.
 
@@ -24,6 +25,17 @@ runtime's execution identity before naming a cause. A local explicit-directory
 success does not establish another placement route works. Record skipped and
 uninstalled runtimes as gaps; do not switch a worker's model or repair its
 running environment to manufacture acceptance.
+
+## Bind browser observations to the returned page
+
+Concurrent browser calls sharing an active tab can each observe the last
+navigation's page, even when their requested URLs differ; a measurement belongs
+to the returned URL and entity identity, not its call's input label.
+Navigation/read pairs need serialization unless the tool explicitly isolates
+their tabs; independent tabs can still run in parallel.
+**Wrong:** attribute the same returned customer page to two requested customers;
+**Right:** reject the mismatched identity, then accept each measurement only on
+its intended page through a serialized pair or an explicitly isolated tab.
 
 ## Disprove truncated-search acceptance
 

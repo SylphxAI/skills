@@ -320,6 +320,18 @@
     {
       "prompt": "A card game asset downloads successfully from a newer immutable version with the same digest. Verify whether that proves the original version's failing GET recovered.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify metrics for several social posts when concurrent browser reads share one profile and may all return the last active page.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile two SaaS customer balance reads whose requested URLs differ but whose returned browser page identifies the same customer.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify game account counters in explicitly isolated browser tabs without treating a shared profile alone as evidence of tab isolation.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
