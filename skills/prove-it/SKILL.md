@@ -133,9 +133,13 @@ ordering promise or assumed enforcement of caller-supplied fields.
 Required and local workflows can share a name, path, App and target head while
 only one satisfies the rule. Establish required-workflow source and pinned
 revision from the emitting `github.workflow_ref` and `github.workflow_sha` (or
-equivalent authoritative provenance), with a same-name local success versus
-required-source failure as the refusal control; target-repository run metadata
-alone need not identify that source revision.
+equivalent authoritative provenance): a trusted checkout does not authenticate
+candidate-controlled inline workflow code. Approval authority also depends on
+the native result type and publisher binding; challenge both a modified candidate
+entrypoint and a same-name unauthorized result, retaining actual admission
+refusal rather than inferring it from the verifier's own source assertions.
+**Wrong:** a green name plus trusted imports proves approval; **Right:** only
+the protected producer's bound result can approve the exact candidate.
 
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An installed App's empty

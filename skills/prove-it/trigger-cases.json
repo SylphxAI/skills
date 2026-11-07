@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Review a SaaS CI approval gate whose trusted checkout leaves inline workflow code editable by the pull request; report concrete defects without changing source.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Verify a card-game release approval at its exact head, distinguishing the authorized Check Run from a same-name commit status written by another publisher.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a green candidate workflow with a failed protected-source approval by checking native publisher and workflow provenance.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "A release CLI passes with default arguments, but the caller failed with an explicit revision and a different HOME. Check the claim that the failure cannot be reproduced.",
       "clause": "checking a claim that a reported failure cannot be reproduced"
     },
@@ -126,7 +138,7 @@
       "clause": "investigating a root-cause claim for a past failure"
     },
     {
-      "prompt": "A daily reconciliation reports zero mismatches on last week’s restore. Verify whether that proves production is healthy.",
+      "prompt": "A daily reconciliation reports zero mismatches on last week\u2019s restore. Verify whether that proves production is healthy.",
       "clause": "verifying a live status or metric before reporting it"
     },
     {
@@ -230,7 +242,7 @@
       "clause": "verifying time-windowed usage or billing queries"
     },
     {
-      "prompt": "Reconcile a GitHub rollup, isRequired flag and latest check list with the pull request’s actual required-check admission decision.",
+      "prompt": "Reconcile a GitHub rollup, isRequired flag and latest check list with the pull request\u2019s actual required-check admission decision.",
       "clause": "verifying a live status or metric before reporting it"
     },
     {
@@ -311,6 +323,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Publish the tested repair that binds release approvals to a protected producer.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Compare trusted reusable workflows with default-branch follow-up workflows for a proposed approval architecture, without implementing or testing either.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "What is the ordinary difference between a GitHub Check Run and a commit status?",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
+      "route_to": null
+    },
     {
       "prompt": "Arm this reviewed pull request at its exact head through the normal merge queue.",
       "clause": "Use deliver-and-verify to publish or arm a PR",
