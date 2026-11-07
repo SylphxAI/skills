@@ -84,6 +84,10 @@
     {
       "prompt": "An import resumed in a healthy replacement process, but the records accepted before the crash are missing. Recover that stalled work from persisted state.",
       "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The cancellation API accepted an obsolete CI run, but it remains queued and its replacement is stuck pending. Restore the replacement without cancelling unrelated work.",
+      "clause": "a queue/review stops progressing"
     }
   ],
   "negative": [
@@ -134,6 +138,11 @@
     },
     {
       "prompt": "The pull request has a live merge-queue entry and its merge-group build is progressing within its expected duration. Leave it running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    },
+    {
+      "prompt": "A cancelled export is draining within its documented cancellation grace period and its replacement is waiting normally. Leave both operations alone.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
     }

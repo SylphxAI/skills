@@ -153,6 +153,9 @@ the engine's verdict.
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
    release's limitations. Bind local builds and fixtures to immutable revisions.
+   Keep pinned browser/tool binaries in a location owned for the run and verify
+   their hashes; an executable borrowed from another checkout can disappear
+   before capture even when its version matched during setup.
 2. Before running, declare the equal-work set, acceptance predicate, sample count,
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
@@ -299,6 +302,14 @@ a shared coordinate system as well as each part's size, because a correctly size
 segment can be anchored incorrectly. Run the guard against the old failing state
 before claiming it catches the defect, then test the repair under the same
 conditions.
+
+A text-hidden control comparison limited to self-reported glyph, mesh or layout
+bounds cannot detect paint outside those bounds. Account for every changed pixel
+in the full frame, assigning each to disjoint real visual regions (the label's
+plate or header and its neighbours); reject unassigned paint before checking each
+region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
+changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
+bounds; contained paint passes only with the required neighbour clearance.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
@@ -466,13 +477,25 @@ A generated image a release depends on fails closed on blank output: check its
 colours or variance, not only that the file exists.
 
 - Enumerate every changed asset and table from the candidate manifest/diff,
-  including additions, removals and dependent references. Match the checked set
-  to that inventory so one successful sample cannot stand for all changed files.
-- Diff the prepared change against what is mounted live, not against the source
-  repository. Label every changed cell as chosen, with its decision, or as drift
-  that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
-  live value and is reported. A source template can hold old values nobody chose,
-  and a flag that looks like a harmless hide can remove what a user already owns.
+  including additions, removals and the complete declared dependency closure;
+  match the checked set to that inventory so one sample cannot stand for all files.
+  Artifact identity and admission include referenced payload bytes stored
+  separately from root metadata; changed unowned or unverifiable payloads fail
+  closed. The real publication gate must reject an undeclared change confined
+  to referenced external bytes while accepting an explicitly declared complete
+  closure. Identical objects do not prove compatibility: validate container and
+  each serialized member’s target, runtime version and format metadata against
+  the independently selected platform/runtime, with metadata-only negative
+  controls through both the producer and an independent reader.
+- Snapshot serving inputs read-only before handoff and diff the candidate against
+  that baseline, not repository copies; for display claims, use only the bundle
+  actually served to users. For probability fixes, trace the server's reader to
+  the exact columns, report their before/after values and enumerate every row
+  whose real probability changes: `display == actual` says neither which column changed nor
+  that actual odds stayed fixed. Label each changed cell as chosen with its
+  decision or unchosen drift; ship only chosen changes and preserve/report the
+  live value for drift, since stale templates or a hiding flag can remove owned
+  value.
 - Trace asset generation through export/build, package staging and runtime
   manifest/cache/remote selection: a store build may skip a separate bundle
   builder, packaging may only copy an export, and remote content may supersede
@@ -491,9 +514,13 @@ colours or variance, not only that the file exists.
   its materials and animations. Existence, file size and checksums alone cannot
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
-  those exact candidate files. Load every changed table without error and assert
-  its relevant behavior. A schema-only check cannot establish that the shipping
-  client or server accepts the file.
+  those exact candidate files; load every changed table and assert its consuming
+  behavior, not schema acceptance alone. For random pools or boxes, every
+  reachable outcome ID must resolve in the type-specific template used by the
+  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
+  unknown-ID/null-grant controls, asserting durable grants and the contract's
+  charge/rollback behavior: a response can list rewards even when one unknown ID
+  suppresses the whole batch after charging.
 - Emit machine-readable results bound to the candidate digest: checked artifact
   IDs, expected/actual values, assertions, failures and tool versions. Missing
   required results fail publication. Preserve the last known good release and
@@ -594,11 +621,14 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
-Before patching allegedly lost input, trace delivery through the handler, state
-change, paint generation and presentation: a callback or generated paint does
-not establish visible completion. Retain the unchanged early capture and any
-later transition with no new input; that transition distinguishes delayed
-completion from a dropped action, without establishing the cause of the delay.
+Before patching allegedly lost or duplicated input, trace the affected user/device
+and automated paths through host normalization, handler, state change, paint and
+presentation; those paths can use different protocol branches, and a callback
+still does not establish visible completion. A synthetic-path failure establishes
+neither a universal product defect nor an automation-only defect, and a changed
+stimulus must preserve the complete action workload. Retain the unchanged early
+capture and any later transition with no new input to distinguish delayed
+completion from a dropped action, without inferring its cause.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a

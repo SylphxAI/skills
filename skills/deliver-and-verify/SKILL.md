@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, publishing or editing PRs, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing session guards, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing disposable CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, downsizing or replacing shared resources, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -18,9 +18,14 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
+## Step 0: Route identifier changes
+
+When changing multi-namespace lookups or identifier-based pagination, read
+[identifiers.md](references/identifiers.md) before defining acceptance cases.
+
 ## Coordinate the work
 
-- Keep one named writer per worktree, pull request, database record, or live configuration. Parallel readers and writers on independent targets can proceed together.
+- Keep one named writer per worktree, pull request, database record, or live configuration. Before building, search open PRs for the same outcome to avoid duplicate implementations; distinct outcomes may edit the same files in parallel in isolated worktrees and resolve conflicts normally. Parallel readers and writers on independent targets can proceed together.
 - Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
 - During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
 - Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.
@@ -33,6 +38,9 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
+For request/response limits, context compaction, agent tool outputs or low-rate
+flake comparisons, read
+[final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
 For large transfers, shared response caches, fan-out streams, archive restores,
 or stored-output replay, read
 [bounded memory for large transfers](references/performance.md#bounded-memory-for-large-transfers)
@@ -41,6 +49,9 @@ before choosing storage queries and transport APIs.
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
+When reducing fragment-shader cost, read
+[fragment-shader hot paths](references/performance.md#fragment-shader-hot-paths)
+before choosing an optimization.
 
 For preview provisioning or reduced-backend profiles, read
 [deployment configuration](references/code.md#deployment-configuration) and
@@ -51,6 +62,8 @@ an advertised creation, deployment or port-exposure operation.
 
 For SQL or database fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+Time-windowed usage or billing queries also use
+[temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).
@@ -64,14 +77,18 @@ For recovery references, rollback pins or asynchronous reconcilers, read
 [recovery references and desired state](references/code.md#recovery-references-and-desired-state)
 before changing target selection or resource creation order.
 
+For live database backups or service recovery, read
+[recovery procedure](references/security.md#recovery-procedure) before choosing
+snapshot and rollback verification.
+
 When a policy change must update existing resources, verify declarations created
 before the change as well as newly rendered output. Rendering only on creation
 or redeploy leaves existing specifications unchanged; use the normal writer's
 bounded reconciliation or backfill, preserving exclusions and intended absence,
 and verify the served objects before reporting rollout complete.
 
-For long builds or tests, work in leased environments, or results resumed after
-a turn boundary, read
+For long builds or tests, work in leased environments, source handoffs or
+execution-placement changes, or results resumed after a turn boundary, read
 [turn-boundaries.md](references/turn-boundaries.md) before starting execution or
 resubmitting work.
 
@@ -95,8 +112,8 @@ For container packaging or one-off container probes, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
 For source checkout or materialization changes, shared-cache permission failures,
-pinned-tool launch failures, generated CLI calls, sandbox build templates or
-native compilation failures,
+child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
+failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
 
 When changing database test setup or disposable fixture cleanup, read
@@ -114,7 +131,10 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic redaction, read [security.md](references/security.md) to protect the actual launching process and preserve useful diagnostics.
+When handling credentials exposed in process arguments or changing diagnostic
+or stored-body redaction, read [security.md](references/security.md) to protect
+the actual launching process, preserve useful diagnostics and prevent content
+from reappearing through later writes.
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
@@ -146,7 +166,7 @@ Before publishing or updating a PR, read [publication and merge intent](referenc
 
 1. Run practical targeted checks, then publish one coherent change. State the remaining uncertainty; fix failures and rerun the affected checks on the same branch. Follow the repository's required checks and normal merge queue without force-push or bypass merge. Review depth follows the change's risk; independent review can run alongside or after delivery and does not create a separate completion stage.
    When a CLI publishes a title, description or comment from a file, create that file in a unique directory owned by this run (`mktemp -d`) and publish only after the write succeeds. A predictable shared path can retain another run's text when your write fails. Read the published title and body back before reporting success. A structured text argument needs no temporary file.
-2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. A mutable target can change after that read: bind the write to the reviewed version through the provider's precondition, such as `gh pr merge --match-head-commit <sha>` or HTTP `If-Match`; a version mismatch requires a fresh read and review. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and retry semantics; if the result is unknown, inspect the target before a repeat. Recovered or overlapping sessions can repeat a step, so guard a one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
+2. For an external mutation, identify the intended operation and read its live status/timeline before submitting. A mutable target can change after that read: bind the write to the reviewed version through the provider's precondition, such as `gh pr merge --match-head-commit <sha>` or HTTP `If-Match`; a version mismatch requires a fresh read and review. Continue from an existing receipt instead of creating another in-flight submission. On the first call, record endpoint, UTC time, response status and returned operation/resource ID. Use provider-supported idempotency and the [duplicate-safety recovery contract](references/integration.md#provider-integration); an unknown harmful effect needs reconciliation before a repeat. Recovered or overlapping sessions can repeat a step, so guard a duplicate-sensitive one-time action with a lock, a fresh read of the authoritative attempt and an exclusive marker written before the call; once the marker exists, reconcile and never resend. Keep the guard in a script, so whoever holds working execution can run it safely.
 3. For a blocked operational route, follow [unblock](../unblock/SKILL.md). A temporary repair stays within existing grants and has a durable fix and removal condition. Coordinate reconciliation on a GitOps-managed resource and merge the matching configuration.
 4. Read the authoritative result back before claiming completion, following [prove-it](../prove-it/SKILL.md). A service needs its serving revision and affected acceptance cases checked; an operation needs the updated object and dependent behavior; a package, CLI or document needs its required checks and published artifact or source verified where applicable. Use a soak only when its measured behavior is part of the outcome.
 5. **Cross-Currency Entitlement Normalization & Canonical Analytics Read-Model:** When shipping or verifying a new checkout, voucher, credit, or payment channel, verify at the live surface that:
@@ -155,6 +175,7 @@ Before publishing or updating a PR, read [publication and merge intent](referenc
    - **Auth-Redirect Attribution & Public Metadata Hygiene:** When shipping or modifying a web storefront, checkout/voucher funnel, invite landing page, or web/game pack (`keel.toml`), verify on the live HTML response (`curl -sS`) that campaign touches survive `/sign-in?nextUrl=...` redirects into authenticated checkout headers, and that public `<title>`, `<meta name="description">`, `<link rel="canonical">`, absolute `og:image` (`HTTP 200`), and JSON-LD (`VideoGame` / `SoftwareApplication`) contain zero internal or dogfood strings (`rebuilt on Keel`, `dogfood`).
 6. **Synthetic Probe CDN Cache Bypass:** When adding or modifying synthetic health, readiness, or scale-to-zero activator probes that traverse a CDN on public domains, ensure probe requests or responses carrying internal routing headers (such as `K-Network-Probe`) explicitly bypass CDN caching (`cache: false` or `Cache-Control: no-store, private`) so synthetic probe bodies never poison public page caches.
 7. **Zero-Token Event-Driven Watcher Pattern for Webhook-Less Surfaces:** When monitoring an external inbox, queue, or surface that lacks native push webhooks, never poll with recurring LLM turns (`every: 15m/1h`) and never cancel polling without an active wake wire. Run a lightweight zero-token script or daemon that checks the external surface and writes a `.trigger` file watched via `watch: "file:..."` only when `actionable_count > 0`.
+   A slow inventory read can kill an observer precisely when independent error-rate measurements matter; keep those timestamped measurements and record the timed-out operation, deadline, elapsed time and UTC as an unknown observation. Use a per-read consecutive-failure budget bounded by the acceptable observation gap, reset it on success and keep failure/exit wake coverage; authorization refusals and writes retain their existing boundaries. Capture dependency health and resource use alongside a repeated timeout before attributing it to the monitored breach.
 8. **Autonomous Skill Distillation Gate (Completion / Exit Gate):** Before declaring an outcome complete, check whether the task or incident required a **second-attempt detour** (an initial approach hit an undocumented trap and a fallback approach was needed), fixed a **post-ship defect or rework** (an existing verification checklist missed a dimension), surfaced a **recurring cross-agent blind spot**, or produced a **verified reusable playbook** (such as a zero-token file-watch trigger daemon). When any of these occurred, distill the role-neutral governing mechanism into the owning skill in the shared skills repository following [author-skill](../author-skill/SKILL.md)—refining the existing skill in place 90% of the time and verifying its YAML `description: "Use when..."` covers the entry moment—as part of completion, without waiting for a human prompt.
 
 Size the mechanism to the harm. A reversible change to a few fields takes one conditional statement with the row read before and after, not a new role, schema and scheduler. Verify what crosses a boundary: a release, an upload, a live surface. Rehashing your own working files, auditing your own helper with another helper or tracing a queue that will drain by itself costs time and proves nothing to a user.
