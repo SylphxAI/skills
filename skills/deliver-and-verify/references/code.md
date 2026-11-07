@@ -126,6 +126,8 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
+Exceptional terminal or preservation states, including erasure, must remain authoritative across every ordinary writer, retry, and replay path; exercise a normal writer after the transition through the real API and after persistence reopen or row aging, with an allowed nonterminal enrichment control. A historical receipt proves only the operation it records, not today's mutable state, so replay must re-read current state rather than restore it from the receipt.
+
 A nested admission helper that acquires a second connection from the caller's
 finite pool can starve while the outer transaction holds the available capacity;
 a larger test pool can hide this dependency. Reuse the caller's transaction
