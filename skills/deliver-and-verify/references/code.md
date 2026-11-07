@@ -85,13 +85,14 @@ missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
 
-When replacing a mutually exclusive configuration variant, validate the effective
-update against an existing object with its server defaults and field ownership.
-Omitting the old variant in desired source may retain its defaulted fields;
-a successful render does not prove that the real reconciler can apply the change.
-A representation change, including omission becoming `null`, must remain
-consumable by every later internal operation that reads or reclaims that variant;
-producer or reconciler acceptance alone does not establish consumer compatibility.
+When replacing a mutually exclusive configuration variant or retiring fields,
+validate the effective update against an existing object with its server defaults
+and field ownership: omission can retain another manager's value, and `null` can
+become an empty value rather than delete the key. A successful render or apply
+does not establish intended absence; verify absent and retained fields through
+the actual reconciler and typed consumer. Representation changes must also remain
+consumable by later operations that read or reclaim the configuration, not only
+by its producer.
 
 Reservation or preview objects can bypass mutations applied to the eventual
 execution object, so matching source templates does not prove they reserve the

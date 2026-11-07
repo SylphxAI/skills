@@ -58,6 +58,18 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "Retire obsolete SaaS deployment settings after rollout; verify source omission removes legacy co-owned live keys and preserves retained fields.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Remove old card-game event settings through a typed configuration API where null may become an empty string; verify actual key absence and the remaining values.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Replace mutually exclusive worker storage settings and verify old server-defaulted fields no longer survive normal reconciliation.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Replace a card-game event configuration without dropping its independent paid-entitlement and reward-value safeguards.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
