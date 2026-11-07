@@ -38,6 +38,15 @@ registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
 
+An optional capability that is intentionally unconfigured is not a configured
+capability that is unavailable: adding a shared readiness or admission condition
+can otherwise disable valid reduced-scope deployments. Where absence is a
+supported mode, preserve it without weakening configured-but-incomplete refusal
+or misreporting absence as healthy configuration. Verify behavior through every
+assembled constructor or deployment profile with the capability absent, configured
+but incomplete, and loaded, varying mandatory upstreams between healthy and
+failing; helper-only tests of configured states miss consumers that omit it.
+
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
 production default. Bind every origin resolver to positive target identity in
@@ -457,6 +466,15 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+For catalog-driven cleanup, derive independently removable objects and deletion
+order from authoritative dependency and ownership metadata; lexical names and
+enumeration order carry neither guarantee. Through that same production path
+under the actual cleanup identity, use adversarial names/order to prove completed
+cleanup and usable post-reset state, plus rollback after a late failure when
+atomicity is promised.
+**Bad:** sort every catalog entry by name and count rollback as recovery;
+**Good:** respect owner-managed dependents and prove dependency-safe completion,
+subsequent use and failure atomicity.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,

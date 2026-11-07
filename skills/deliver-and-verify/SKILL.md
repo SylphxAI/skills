@@ -61,7 +61,7 @@ For a public preview or disposable service, also read
 [first useful success](references/dx.md#first-useful-success) before relying on
 an advertised creation, deployment or port-exposure operation.
 
-For SQL or database fixture changes, read
+For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 Time-windowed usage or billing queries also use
 [temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
