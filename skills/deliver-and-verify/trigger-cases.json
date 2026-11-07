@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Move CI concurrency to individual job locks while preserving every expanded matrix child and reusable caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -1859,6 +1863,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an existing job-ID concurrency prefix causes matrix siblings to cancel each other, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
       "clause": "prove-it for a review or evidence check",
