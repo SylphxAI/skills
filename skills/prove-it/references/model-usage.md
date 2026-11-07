@@ -14,7 +14,7 @@ Report bytes, tokens, cache reads and money as different measurements.
 
 ## Temporal query evidence
 
-For time-windowed usage or billing queries, classify each sample by its own recorded facts, never today's metadata, which can reclassify closed history after a resize or tier change. Verify conservation of the parts against the whole in the real query engine, including a mid-window transition: complementary predicates do not guarantee complementary integrals when absent series and numeric zero differ. **Bad:** accept query-string unit tests and drop the zero-valued complement; **Good:** retain that series where range-function semantics require it and verify the independently expected total through the consuming query.
+For time-windowed usage or billing queries, classify each sample by its own recorded facts, never today's metadata, which can reclassify closed history after a resize or tier change. Verify conservation of the parts against the whole in the real query engine, including a mid-window transition: complementary predicates do not guarantee complementary integrals when absent series and numeric zero differ. **Bad:** accept query-string unit tests and drop the zero-valued complement; **Good:** retain that series where range-function semantics require it and verify the independently expected total through the consuming query. Function semantics depend on the engine and expression shape: combining series can replace raw sample timestamps with evaluation-grid times, so apply freshness tests to raw selectors before combining and use non-grid-aligned samples to expose the difference in the real engine.
 
 ## Establish a counts-only population
 

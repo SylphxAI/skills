@@ -303,6 +303,14 @@ segment can be anchored incorrectly. Run the guard against the old failing state
 before claiming it catches the defect, then test the repair under the same
 conditions.
 
+A text-hidden control comparison limited to self-reported glyph, mesh or layout
+bounds cannot detect paint outside those bounds. Account for every changed pixel
+in the full frame, assigning each to disjoint real visual regions (the label's
+plate or header and its neighbours); reject unassigned paint before checking each
+region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
+changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
+bounds; contained paint passes only with the required neighbour clearance.
+
 Treat target size, hit testing and visible paint as separate assertions:
 
 - A control can submit the right values and expose an accessibility label while
@@ -509,7 +517,7 @@ colours or variance, not only that the file exists.
   those exact candidate files; load every changed table and assert its consuming
   behavior, not schema acceptance alone. For random pools or boxes, every
   reachable outcome ID must resolve in the type-specific template used by the
-  actual grant handler before deployment. Exercise single and batch draws with
+  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
   unknown-ID/null-grant controls, asserting durable grants and the contract's
   charge/rollback behavior: a response can list rewards even when one unknown ID
   suppresses the whole batch after charging.
