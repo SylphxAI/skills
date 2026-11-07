@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a live database snapshot before a gateway upgrade, proving it completes while another connection keeps committing writes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Roll back a commerce service executable against its current migrated database while preserving orders accepted after its backup.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game server recovery path that separates executable rollback from restoring an older player-state snapshot.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Arm a SaaS API pull request after its required automated review succeeds at the current head, preserving any existing queue entry.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Enqueue a card-game configuration change through the normal queue only after the separately required review covers every changed path.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Re-arm a dequeued pull request after its neutral review is replaced by a successful current-head review, with one guarded submission.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
       "clause": "changing database privileges"
     },
@@ -219,6 +243,10 @@
     },
     {
       "prompt": "Ship a shared service setting and verify each regional deployment overlay that replaces its environment list receives the required value.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a Job mounting a generated ConfigMap and verify its rendered namespace and hashed reference resolve to the emitted object.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
@@ -883,15 +911,15 @@
     },
     {
       "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
@@ -1047,15 +1075,15 @@
     },
     {
       "prompt": "Publish this branch as a pull request for review while its prerequisite remains pending; keep merge disabled.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update the already-ready pull request with the corrected game-server configuration without enabling its default auto-merge yet.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Publish the billing fix through the repository wrapper and verify the source head and merge intent at the requested review boundary.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a fail-fast executable prerequisite to an existing CI shell step and update the manifest tests that read its command text.",
@@ -1107,22 +1135,69 @@
     },
     {
       "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Publish a review-labelled pull request only after its exact-candidate review Check Run succeeds, without substituting an unrelated security approval.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Change PR workflow concurrency so superseded checks cancel while every scheduled publication remains queued.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Normalize a game CI entry workflow and its reusable callees without letting a callee cancel its caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a concurrency repair that preserves pending main-branch runs even when active-run cancellation is false.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a SaaS worker test that mistakes accepted but unfinished setup work for completed work, so legitimate recovery races its duplicate-delivery assertion.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game reward retry fixture by proving completed and interrupted grants have distinct lifecycle states before testing duplicate delivery.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Implement an ETag-based catalog watcher whose CLI adapter retains its cache across process restarts, preserving pagination and quota admission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game inventory synchronizer that receives a restored body under 304 headers after only its own cache is cleared.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a SaaS status watcher repair and test cold caller recovery through the installed proxy rather than a direct HTTP fake.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Before fixing a publisher's base-health refusal, search open PRs for that same outcome; let an unrelated change edit the same publisher file in its own isolated worktree.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
+    {
+      "prompt": "Inspect whether a neutral review with zero findings actually approved this exact commit; do not enqueue or change anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain whether the current merge rules enforce the separately required source review, using live check results only.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Verify which changed paths an automated review left uncovered before reporting its status.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
       "clause": "prove-it for a review or evidence check",
@@ -1850,6 +1925,21 @@
     },
     {
       "prompt": "Rewrite this guide explaining required and optional checks, without changing software or operating the release process.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether cancel-in-progress:false protected queued runs in a past incident; inspect evidence without changing workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare per-run groups and multi-pending queues for a proposed CI architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of reusable workflow concurrency without changing or publishing CI.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

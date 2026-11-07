@@ -62,6 +62,15 @@ the strict proxy after the dependency resolves its full feature set.
 
 ## HTTP test doubles and routing
 
+A direct HTTP fake can skip a CLI or proxy's persistent cache: after a process
+restart, that adapter may inject its own validator and restore cached bytes under
+304 headers even though the caller has no matching page or pagination metadata.
+Verify conditional reads through the installed adapter with independent caller
+and adapter cache lifetimes, preserving one authority for the body, validator
+and continuation metadata. **Bad:** infer cold-start recovery from warm direct-HTTP
+tests; **Good:** retain the adapter cache, restart the caller, and prove complete
+revalidation and later updates without weakening authentication or quota admission.
+
 Before replacing a remote dependency with a fake, read its declared endpoints,
 request shape and error envelope; preserve the boundaries relevant to the change,
 including [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests)
@@ -178,10 +187,12 @@ parts succeed; retain partial acceptance and account for accepted parts once.
 Retry only parts that the provider contract proves were not accepted, using
 its supported idempotency and recovery semantics.
 
-When a workflow can finish with partial knowledge, distinguish transport
-availability, domain completion and validated partial results through aggregation
-and final publication: an exhausted work bound is not a provider outage, and a
-successful HTTP response is not proof of complete work. Preserve earlier
+Bind generated assessments to the exact request and scope; authoritative request
+context owns normalized identity, while mismatched model echoes may prompt
+bounded resubmission but must never be silently rewritten to certify unchecked
+or stale content. Persistent malformed assessments and exhausted work bounds are
+distinct from genuine transport or capacity outages; neither HTTP success nor
+workflow completion proves a valid, complete assessment. Preserve earlier
 validated results unless later domain evidence revises them; derive the
 published outcome from the operation's contract rather than treating all
 unfinished work as either success or provider failure. Contrast an
