@@ -629,7 +629,12 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. A retryable provider outcome
+overbroad refusal proves agreement with the defect. A subset parser used by a
+guard must distinguish supported grammar from unknown constructs rather than
+reinterpret unsupported structured syntax as opaque data. Exercise
+semantics-preserving representations and explicit refusal of unsupported
+constructs through the real policy consumer, with valid opaque-data controls
+that remain accepted. A retryable provider outcome
 is not permission to dispatch again: after a durable submission marker, recovery
 is GET-only. A test that drives marked recovery through the unsent
 `queued`/send path can demand a duplicate POST and still pass; contrast it with
