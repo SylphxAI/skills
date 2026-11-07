@@ -13,7 +13,7 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 - A protected operation with a missing required credential/dependency refuses the effect. Choose whole-service readiness from the actual serving contract rather than failing unrelated features.
 - Money, rewards and entitlements follow a server-verified receipt/callback under the authorized grant.
 - Secrets stay out of source/history, logs, chat/transcripts, URLs and third-party renderers. Read them in-process for an authorized operation and deliver replacements through an authorized secret store or encrypted sharing. Contain an exposure promptly and rotate/revoke at the provider when it reaches an unauthorized/public surface, within the existing grant; deleting the local copy does not revoke it.
-- Resource identification does not grant access. Check the actual resource's permission and keep delegated credentials isolated by tenant/principal.
+- Resource identification does not grant access: check the actual resource's permission and keep delegated credentials isolated by tenant/principal. A selected authority context and its fallback policy must reach final credential selection; sibling dispatch paths that reconstruct defaults or apply environment overrides can silently switch principals despite passing constructor tests. **Bad:** infer isolation from a credential-store helper; **Good:** exercise assembled public callers with conflicting selected and ambient identities through the transport, proving selected-mode success and policy-required missing-credential refusal while preserving permitted default-mode overrides.
 
 ## Practices
 
