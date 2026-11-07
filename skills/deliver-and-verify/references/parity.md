@@ -162,7 +162,12 @@ the engine's verdict.
    compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
    load, effective process environment and instrumentation. Inherited settings can
    change only one runtime's colors, locale or cache behavior; equal command flags
-   need rendered-output evidence, not an assumption of equal work. Bind resource
+   need rendered-output evidence, not an assumption of equal work. All-zero
+   profiler counters can indicate disabled instrumentation rather than zero work;
+   verify effective enablement with a known-positive counter control before
+   attributing a hotspot or absence of work. Keep instrumented attribution separate
+   from uninstrumented performance verdicts because instrumentation can change the
+   measured path. Bind resource
    metrics to the measured process and lifetime: a child high-water mark may
    include its larger pre-exec launcher, so an application-memory claim needs
    post-exec evidence. Name unavoidable differences and the comparison they
