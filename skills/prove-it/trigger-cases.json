@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "A release CLI passes with default arguments, but the caller failed with an explicit revision and a different HOME. Check the claim that the failure cannot be reproduced.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
+      "prompt": "A SaaS export failed under a tenant configuration, while a maintainer probe without that configuration passes. Verify whether the original failure is non-reproducible.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
+      "prompt": "A card game replay loads with default settings, but a player supplied a locale flag and a custom asset directory. Check whether the non-reproducible verdict tested the same inputs.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
       "prompt": "Verify whether a neutral automated review with zero findings and unreviewed files satisfies this pull request's declared approval requirement.",
       "clause": "verifying a live status or metric before reporting it"
     },
@@ -200,6 +212,10 @@
     {
       "prompt": "Check a time-windowed metering query in the real engine when an absent complementary series differs from numeric zero.",
       "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Verify a time-windowed billing query whose combined series may replace raw sample timestamps with evaluation-grid times, using non-grid-aligned samples.",
+      "clause": "verifying time-windowed usage or billing queries"
     }
   ],
   "negative": [
@@ -271,6 +287,16 @@
     {
       "prompt": "Implement a retry regression with distinct effective keys, observation before fallback repair and a control that disables only the target mechanism.",
       "clause": "deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement a billing freshness query fix that filters raw selectors before combining them.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement and publish a CLI fix that preserves caller configuration on the explicit-revision route.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
       "route_to": "deliver-and-verify"
     }
   ]

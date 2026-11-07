@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -168,6 +168,19 @@ its automatic trigger would have been irrelevant.
 owner's durable outcome before attributing the result."
 
 ## Verify effective entrypoint behavior
+
+Before calling a reported failure non-reproducible, run the caller's exact
+arguments and relevant effective environment through the same executable version
+and wrapper; flags, working directory, identity, `HOME` and configuration paths
+can select different code paths. Preserve the sanitized original failure and
+name any mismatched or unavailable inputs: success on a default or simplified
+route does not contradict failure on another. Once the matched case reproduces,
+vary suspected inputs independently and retain that case as regression acceptance
+for a repair.
+
+**Wrong:** "The default command passes, so the caller's failure does not reproduce."
+**Right:** "The caller supplies an explicit revision and another configuration
+home; test both before narrowing the cause."
 
 Before inferring a runtime defect from an omitted argument, read the full callee
 and relevant wrappers, including defaults, environment fallbacks and input
