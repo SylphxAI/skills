@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement shared validation for a SaaS file importer and a new API without dropping the importer's supported aliases or widening API admission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game save-file parser that lost its supported omitted-value fallback when a new purchase-request validator was shared with it.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a configuration parser update that preserves existing whitespace normalization while new request fields require canonical enum values.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS decimal importer that preserves JSON tokens but compares value-defined duplicate keys by their spellings.",
       "clause": "implementing or shipping a feature, bug fix"
     },
