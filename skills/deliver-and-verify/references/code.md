@@ -402,8 +402,13 @@ predecessor, exposing both hidden violations and invented gaps.
 
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
-migrations. Use the application's effective role and verify the database version,
-role and relevant column types in the test. A migration-only privilege proof
+migrations. Connection strings are consumer-specific protocols: acceptance by a
+generic URL parser does not establish the endpoint, option precedence or decoded
+credential bytes another driver uses. **Wrong:** validate once and reuse the URL
+unchanged across clients; **right:** exercise each actual parser with independently
+specified targets and reserved-character credentials, including raw escape-looking
+text that exposes accidental double decoding. Use the application's effective role
+and verify the database version, role and relevant column types in the test. A migration-only privilege proof
 precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source

@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS database launcher that validates a connection URL generically but the actual migration driver ignores its socket option; assert the effective endpoint through both real parsers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a mail relay client that double-decodes a password containing literal percent-escape text after transferring it between connection-string libraries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a storage client fix that preserves independently specified connection option precedence and reserved-character credentials across its runtime adapters.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS policy matcher whose shared regex classifies astral characters differently in backend and browser runtimes; preserve inspection when classifications disagree.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1371,6 +1383,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review a past database connection refusal to determine which endpoint its driver selected, without changing code or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two proposed connection-string adapter architectures without implementing or publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite user documentation explaining literal percent signs in connection passwords, with no source or configuration change.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a shared regex granted an inspection exemption after runtime classifiers disagreed; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
