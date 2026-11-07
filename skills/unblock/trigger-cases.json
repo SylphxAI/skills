@@ -78,6 +78,14 @@
       "clause": "a queue/review stops progressing"
     },
     {
+      "prompt": "The worker restarted after a failed turn but accepted messages remain stuck. Restore their processing without resending completed operations.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "An import resumed in a healthy replacement process, but the records accepted before the crash are missing. Recover that stalled work from persisted state.",
+      "clause": "a promised fix still fails"
+    },
+    {
       "prompt": "The cancellation API accepted an obsolete CI run, but it remains queued and its replacement is stuck pending. Restore the replacement without cancelling unrelated work.",
       "clause": "a queue/review stops progressing"
     }
