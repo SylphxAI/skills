@@ -1732,6 +1732,10 @@
     {
       "prompt": "Ship a game-server maintenance change that defers disruptive credential rotation until a match ends while counting the running match toward load.",
       "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Fix recovery of a confirmed-dead SaaS export worker whose durable job remains unfinished, while preserving healthy active workers during automatic rotation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
