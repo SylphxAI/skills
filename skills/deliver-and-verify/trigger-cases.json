@@ -1343,15 +1343,15 @@
     },
     {
       "prompt": "Publish a disposable CI probe workflow that runs a shell wrapper and an embedded Python verifier against a bounded external service.",
-      "clause": "publishing CI probe workflows"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Ship a one-off CI probe that measures client fallback while retaining optional diagnostics and failed acceptance assertions.",
-      "clause": "publishing CI probe workflows"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Publish a temporary CI probe workflow whose runtime acceptance distinguishes application attempts from raw transport requests.",
-      "clause": "publishing CI probe workflows"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
@@ -2080,6 +2080,18 @@
     {
       "prompt": "Repair a card-game release validator whose before/after enrichment gives unchanged reward tables different dependency availability; preserve detection of real removals.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Admit a mobile platform-only bundle through the CLI and preserve downstream packaging when the other platform build is intentionally skipped.",
+      "clause": "selecting delivery subsets"
+    },
+    {
+      "prompt": "Select only one architecture for a native SDK bundle while ensuring joins and artifact downloads do not require the omitted target.",
+      "clause": "selecting delivery subsets"
+    },
+    {
+      "prompt": "Enable independently selectable SaaS deploy components without accepting missing or failed evidence from a selected component.",
+      "clause": "selecting delivery subsets"
     }
   ],
   "negative": [
@@ -3487,6 +3499,21 @@
       "prompt": "Review a before/after inventory comparison for false removals caused by one-sided enrichment, without implementing a repair or publishing changes.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether parser and packager unit tests prove a supported subset reaches the delivery consumer, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare selectable-component and whole-application deployment architectures before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of an existing architecture selector without changing its behavior or publishing any configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
