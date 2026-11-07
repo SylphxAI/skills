@@ -467,6 +467,13 @@ atomicity is promised.
 **Good:** respect owner-managed dependents and prove dependency-safe completion,
 subsequent use and failure atomicity.
 
+For parameterized SQL performance across broad and keyed selectors, a fast
+custom plan or empty result can hide generic-plan cardinality errors, repeated
+scans and join products. Measure populated cases through the consuming driver's
+prepared-statement behavior under the effective role and row-level security
+(RLS), comparing generic and custom execution plans where supported; inspect
+actual rows, loops and buffers as well as latency.
+
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
 commit, reload and downstream consumer encoding. Evaluate-only success proves
