@@ -90,6 +90,18 @@
       "clause": "a promised fix still fails"
     },
     {
+      "prompt": "A worker's accepted-turn census was replaced by a scan taken while it resumed after SIGTERM. Restore the missing turns without dropping the original recovery baseline.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "A restart intent was persisted, but the process crashed before the SIGTERM syscall. Recover the stalled worker by reconciling its actual serving identity, without repeating a confirmed dispatch.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "A restart recovery must redeliver work only when it is independently idempotent and bound to the original immutable process identity; do not replay an unknown payment mutation.",
+      "clause": "a promised fix still fails"
+    },
+    {
       "prompt": "The cancellation API accepted an obsolete CI run, but it remains queued and its replacement is stuck pending. Restore the replacement without cancelling unrelated work.",
       "clause": "a queue/review stops progressing"
     },
@@ -193,6 +205,21 @@
       "prompt": "Explain last month’s delayed key propagation; authentication works now and no restoration or change is requested.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether restart intent, confirmed dispatch, serving identity and accepted-work census recovery are distinguished correctly; the implementation is unchanged and no restoration is requested.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether restart intent, confirmed dispatch, serving identity and accepted-work census recovery are distinguished correctly against the implementation, without changing or publishing anything.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "The worker is serving the current identity and processing accepted turns within its expected window; leave the healthy recovery running.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
     }
   ]
 }
