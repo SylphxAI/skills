@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Update an armed card-game release PR after review; ensure its surviving merge intent cannot admit the changed source before the new head is approved.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a generated-source correction to a queued PR with head-specific external approval, preserving the hold during the update and restoring normal queue admission afterward.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Fix a SaaS database reset whose catalog enumeration treats owner-managed dependents as independently removable; prove cleanup and reuse under its actual identity.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -1555,6 +1567,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-enforced head approval with an external approval mechanism as architecture choices without changing a repository.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a release note explaining that an approved unchanged PR is waiting in the merge queue, without changing source or queue state.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a past cleanup rollback proves that recovery can complete; inspect evidence without changing or publishing anything.",
       "clause": "prove-it for a review or evidence check",
