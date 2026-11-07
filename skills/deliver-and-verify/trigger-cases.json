@@ -794,22 +794,6 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
-      "clause": "repairing recovery references or reconcilers"
-    },
-    {
-      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
-      "clause": "repairing recovery references or reconcilers"
-    },
-    {
-      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
-      "clause": "repairing recovery references or reconcilers"
-    },
-    {
-      "prompt": "Implement regression coverage for shared readiness through every assembled constructor, including intentionally absent optional capabilities rather than only configured helper states.",
-      "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
       "clause": "downsizing or replacing shared resources"
     },
@@ -882,7 +866,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -1010,11 +994,11 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
-      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -1378,7 +1362,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job\u2019s effective token without dropping its existing artifact permissions.",
+      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
       "clause": "changing CI workflows or concurrency"
     },
     {
