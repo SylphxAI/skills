@@ -344,6 +344,15 @@ Treat target size, hit testing and visible paint as separate assertions:
   rendering no visible label. Assert its displayed content as well as its
   accessible name and action, and inspect the captured frame before presenting
   it as visual proof.
+- For runtime-activated controls that are serialized inactive, evaluate each
+  target with sibling menus still inactive. Resolve its runtime layout and
+  nearest click-handler ancestor, then require the primary visible artwork
+  centre to dispatch to a handler in that target's own subtree; a positive
+  raycast area at a corner is not enough. Calibrate each semantic assumption
+  against mapped device taps before making the checker blocking. For example,
+  four Image-backed button families opened on the device despite `alpha: 0`
+  and cull-transparent settings, so rejecting them as untappable would be an
+  uncalibrated gate rather than a product failure.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
