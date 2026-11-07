@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a shared email-provider reserve that consumes the entire quota of smaller tenant accounts, preserving transactional priority and bulk progress.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game commerce provider cooldown that incorrectly combines a short secondary Retry-After with an unrelated hourly quota reset.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
       "clause": "changing CI workflows or concurrency"
     },
