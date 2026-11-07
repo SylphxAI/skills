@@ -228,16 +228,21 @@ may resolve it from the environment. Test the shipped path before concluding.”
 Response evidence also depends on request headers and API version: a default
 CLI response can differ from the failing caller's negotiated payload. Exercise
 that caller's decoder with empty and populated responses, distinguishing valid
-empty encodings from malformed envelopes.
+empty encodings from malformed envelopes. A transport-library non-error or
+generic `2xx` does not establish the route's terminal state: accept only its
+contract-defined status and required body fields, types and ownership, including
+a legitimate queued `202` where specified.
 
 Providers can normalize display fields while retaining different immutable or
 signed bytes. Bind integrity claims to the contract's authoritative payload,
 with a valid display transformation and a meaning-changing mutant as controls;
 trimming both sides can conceal the difference the verifier must detect.
 
-**Wrong:** "The CLI returns `items: []`, so the worker sees an empty list."
-**Right:** "The worker's `Accept` header yields `items: null`; verify its decoder
-on that response while preserving malformed-response refusal."
+**Wrong:** "Any non-error status with a valid-looking body proves success."
+**Right:** "Through the same entrypoint, pair the contract's exact accepted status
+with a complete-body control, malformed or missing-field bodies, and a plausible
+unexpected status carrying a valid body; allow a queued `202` only where the
+route specifies it."
 
 ## Resolve retained payloads before checking fields
 
