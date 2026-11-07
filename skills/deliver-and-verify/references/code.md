@@ -308,6 +308,14 @@ A serializer-only test cannot prove the database accepted the event.
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
+Retention based only on serving or published references can delete artifacts
+still owned by an unfinished operation; a count cap may bypass an age grace
+period. Read the deployed collector's precedence and protected states, then
+verify in-flight delivery, recovery-point availability and expiry of unreferenced
+eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
+safe retention; **Right:** the pending artifact survives publication, the rollback
+target stays usable and eligible abandoned artifacts expire.
+
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
 Restore those inputs through the supported path before applying the validator
@@ -600,10 +608,30 @@ inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
 
-When opening previously uninspected syntax, put a real state mutation after every
-supported control opener and exercise its allowed and forbidden forms through
-the real checker entrypoint. Cross-dialect keywords need separate controls, so a
-harmless idiom in one language cannot exempt a destructive statement in another.
+Source-closure checks—whether every declared source exists in the published
+tree—default-deny the untracked or ignored source inventory, with exact
+per-invocation waivers, rather than accumulating syntactic exceptions. Hand-written
+cross-language declaration resolution can miss missing sources and falsely refuse
+valid code; test `.gitignore`, `info/exclude`, `core.excludesFile`, custom extensions,
+and generated-file and declared-dependency directory controls.
+
+Compiler context explains why syntactic exceptions cannot establish closure:
+
+- Module roots follow contextual rules rather than filenames; token kind and
+  preceding control/member context distinguish regex from division, a quoted
+  `"+"` from an operator, and member `.return` from control flow.
+- Binding inventories distinguish runtime writes from annotation-only bindings
+  and read/delete targets while respecting nested scopes; a refusal naming the
+  wrong unresolved target is still a resolution defect.
+- A token-tree exemption needs positive proof of the declared exempt construct;
+  a valid non-exempt form reusing its operator still contains declarations that
+  cannot be skipped.
+
+For guards enforcing syntax behavior, put a real state mutation after every
+supported control opener and exercise allowed and forbidden forms through
+[the installed checker](../../prove-it/SKILL.md#verify-installed-entrypoint-behavior).
+Cross-dialect keywords need separate controls, so a harmless idiom in one language
+cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.

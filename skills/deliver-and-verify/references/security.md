@@ -36,7 +36,7 @@ A protective CLI wrapper must recognize the syntax its real client accepts. Comb
 
 Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** print an allowed operation or request-ID field containing a bearer value or a URL query credential; **Good:** validate values against an operation enum or canonical ID grammar before truncation, redact nonconforming values, and pair credential/URL sentinels with useful safe-output controls.
 
-A redaction boundary must conceal credentials across emitted representations: whole-value or per-frame matching can miss quoted, escaped, encoded or truncated fragments of effective input or output, because transport chunks and frames do not delimit sensitive values. Sanitize each complete logical output stream, including representations of its concatenated content, at the common ingress before truncation or fan-out, and make every storage, next-request and upload consumer use only that value; verify their actual emitted bytes, since stored-body redaction alone cannot protect another egress. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments and length boundaries alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: when bounded sanitization cannot establish safety, withhold those bytes while preserving independently safe evidence and the original process status.
+A redaction boundary must conceal credentials across emitted representations: whole-value or per-frame matching can miss quoted, escaped, encoded or truncated fragments of effective input or output, because transport chunks and frames do not delimit sensitive values. Sanitize each complete logical output stream, including representations of its concatenated content, in linear time within the failure-reporting budget at the common ingress before truncation or fan-out, and make every storage, next-request and upload consumer use only that value; verify their actual emitted bytes, since stored-body redaction alone cannot protect another egress. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments, length boundaries and growing large single-line inputs alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: when bounded sanitization cannot establish safety, withhold those bytes while preserving independently safe evidence and the original process status.
 
 Masking can rewrite structural keys as well as values, so even parseable diagnostic JSON
 is not an admission or recovery contract. Policy decisions require authoritative
@@ -46,6 +46,29 @@ disappeared; **Good:** exercise permitted and refused requests through the real 
 boundary without deriving authority from diagnostics.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
+
+A weaker inspection path requires positive trust evidence for every filesystem
+object and setting on which resolution depends; unproven inputs retain strict
+inspection. Pointer files, configuration includes and inherited environment
+overrides can redirect resolution, so a known-bad selector list cannot establish
+trust. Test each supported indirection with an untrusted target and a fully proven
+trusted control.
+
+For publication or transformation of already-local, caller-authorized source,
+a terminal-write refusal is too late when earlier reads or metadata mutations
+have effects. Complete classification, immutable-object parsing, parent-presence
+and canonical-identity decisions and the local transform before external calls;
+malformed local inputs in this scope produce zero HTTP and zero transport calls.
+Remote observations may preserve, narrow or refuse this local-source plan without
+introducing new source to it.
+
+Authorization and intent stay fixed before external calls, but authorized evidence
+acquisition may fetch and then parse and verify new bytes: signed manifests or
+artifacts, missing immutable parents and authoritative provider-origin proof are
+valid examples. Keep race and compare-and-swap guards at the write boundary, with
+a positive control preserving remote history absent from local tracking metadata,
+and inject faults at their semantic phase (such as remote object availability)
+rather than whichever low-level read happens first.
 
 For privileged tool maintenance, run executables from user-writable paths as
 that user, including version probes, health checks and post-install validation.

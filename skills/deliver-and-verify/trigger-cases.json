@@ -6,6 +6,18 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
+      "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Upgrade a card-game build SDK through a checksummed mirror and preserve its declared origin boundary across redirects.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a package-installer fix that rejects an off-origin redirect even when the returned archive would match the pinned digest.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
       "clause": "synthetic probe"
     },
@@ -284,10 +296,6 @@
     {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
-      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
@@ -791,11 +799,11 @@
     },
     {
       "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Downsize an operator-managed database whose generated StatefulSet says OnDelete; verify whether the installed parent operator starts replacement automatically before activating the source change.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Change a shared Kubernetes scheduling policy so a SaaS database cannot be preempted before CI, and verify existing pods after the supported owner rollout.",
@@ -811,7 +819,7 @@
     },
     {
       "prompt": "Replace a VM flavor with a smaller allocation; measure the old-plus-replacement transition peak on eligible placements before rolling it over.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Deploy a live configuration reload with no restart or replacement; verify that the in-place reload does not need old-plus-replacement transition room.",
@@ -819,11 +827,11 @@
     },
     {
       "prompt": "Resize a resource whose size is owned by a manifest; change the declaration and verify the served size after its next reconciliation rather than writing the runtime API.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Resize an API-only shared resource with no manifest, config file or GitOps owner; apply through its authoritative API and verify that API state rather than inventing a declaration.",
-      "clause": "downsizing or replacing shared resources"
+      "clause": "changing resource sizing or retention"
     },
     {
       "prompt": "Fix and ship a SaaS receipt store that replays one session user's response to another because both lack an API key ID.",
@@ -1652,9 +1660,60 @@
     {
       "prompt": "Repair per-user cache isolation so another UID cannot replace the cache parent through a writable ancestor.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change deployment retention so a newly staged zero-traffic candidate survives promotion while obsolete revisions still expire.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Repair snapshot retention so a restore operation keeps its unregistered input without disabling expiry of abandoned backups.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Ship media-upload retention that protects an unfinished publishing transaction and still collects expired unreferenced artifacts.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
+      "clause": "running builds or tests in a lease"
+    },
+    {
+      "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game-script syntax guard that infers module roots from filenames, confuses member keywords with control flow, and exempts nested declarations solely by a shared operator.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a publisher of already-local, caller-authorized source that contacts the remote before validating malformed local objects; prove zero HTTP or transport calls for those inputs while preserving explicitly authorized fetch-and-parse workflows for missing immutable parents.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Replace a card-game source-closure guard's module exceptions with default-deny untracked or ignored source inventory and exact per-invocation waivers; test Git ignore routes, custom extensions and allowed generated-file and declared-dependency directories.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare mirror-only and preinstalled-SDK architectures before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of archive integrity versus download authority without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
       "clause": "prove-it for a review or evidence check",
@@ -2697,6 +2756,36 @@
     },
     {
       "prompt": "Draft a documentation explanation of standard HTTP status meanings without changing a service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the current retention count cap caused a past candidate deletion, without changing the policy.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare count-based and age-based garbage-collection designs before selecting a retention architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of backup retention without changing or publishing any system configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a syntax guard refusal names the correct unresolved target, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare compiler-backed and custom-tokenizer designs for a proposed source guard without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of strict inspection for unproven tool resolution, without changing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
