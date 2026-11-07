@@ -1524,6 +1524,18 @@
     {
       "prompt": "Implement a calendar row layout fix and check every header and day column against the original defective browser fixture.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a browser keyboard test whose trusted-input request is intercepted by the page fetch mock, and execute its independent cases together.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a payment webhook test counter that doubles after reset because earlier observation hooks are still installed; preserve exact delivery counts.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a storage fault-injection fixture whose transport mock swallows the fixture control requests, and verify zero, one and multiple effects across repeated cases.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2489,6 +2501,21 @@
     },
     {
       "prompt": "Rewrite this UI verification guide for clarity without changing tests or running operations.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether these two browser cases actually executed in one session; do not change or rerun the tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare isolated-process and shared-session test designs before implementation.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of mock and observer isolation without changing tests or running commands.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
