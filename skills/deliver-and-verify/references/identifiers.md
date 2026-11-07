@@ -1,6 +1,6 @@
 # Identifiers
 
-Trigger: creating or changing entity IDs, slugs, generated names, credentials or human-entered codes.
+Trigger: reconciling legacy and canonical identifiers, or creating or changing entity IDs, slugs, generated names, credentials or human-entered codes.
 
 Keep stable identity, display names, ordering and secrets distinct. Use one encoding contract and cross-language conformance vectors rather than independent definitions.
 
@@ -11,6 +11,8 @@ The default for a new persisted entity is UUIDv7, stored in a native UUID column
 Generate the identity at its owning authority or through the shared SDK when it is needed before insertion. Derive alternate text encodings from the same value. Natural lookup keys and upstream IDs are separate concepts, not automatically duplicate identity authorities.
 
 Keep another system's published identifier unchanged. Preserve customer-held IDs and accepted external forms through an explicit migration contract; moving to a new internal representation does not authorize breaking those references. A new canonical ID for a legacy format needs a mapping or completed consumer migration. Existing UUID values need not be regenerated just to gain ordering.
+
+A typed client can classify an accepted legacy ID as a slug and reject it before the API sees it; that local rejection does not establish resource absence or a different tenant. Compare a canonical-ID read with the same authorized lookup through a supported raw API, and establish the authoritative ID mapping before moving, recreating or renaming a resource. **Bad:** recreate an account after a CLI says its legacy ID is unknown; **Good:** resolve both accepted forms to the same canonical account and repair the client classification.
 
 A parseable identifier does not identify its namespace: the same value can be valid in multiple domains and select different records. For a lookup spanning namespaces, carry an explicit tagged kind (for example, `externalKey` or `localId`) and resolve only within that namespace. Tests must cover same-value collisions and reject records owned by a different principal.
 

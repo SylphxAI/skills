@@ -7,7 +7,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Types and boundaries
 
-- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types.
+- Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
 - Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence does not turn upstream inference into authority: privilege or scheduling escalation needs authoritative source evidence, not user-controlled names or lookalikes. Verify those decisions through real upstream classification, state transformations, persistence and reload—not just directly seeded records—with absent, unknown or tampered provenance, user-controlled lookalikes and an explicit authoritative positive control, including successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
@@ -37,6 +37,19 @@ rollover and removal through the real comparison entrypoint, and regenerate any
 registry that attests the checker source when those bytes change.
 
 ## Deployment configuration
+
+A shared readiness or admission check must distinguish an intentionally
+unconfigured optional capability from a configured capability that is unavailable:
+derive configured-versus-absent from the capability's own declaration before
+evaluating prerequisites, because prerequisite-gated assembly can silently turn a
+configured-but-unusable capability into absence and a false-ready success. Preserve
+intentionally absent reduced-scope deployments, but refuse construction/readiness
+for a configured capability with a missing, empty, malformed, or non-Unicode
+binding rather than treating it as absent. Verify the real environment/declaration
+parser through every production constructor or deployment profile (using isolated
+subprocess environments for process-global settings), covering absent, invalid,
+and loaded declarations plus healthy and failing mandatory upstreams; helper-only
+tests miss this boundary.
 
 A reduced-scope preview sharing a backend still needs a declared profile and a
 live, serving nonproduction target; absence fails closed, never through a
@@ -89,7 +102,16 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
-Revenue-critical pods must run at a priority above every routine workload that can be placed on their nodes, and co-dependent pods share one priority so they never pick each other as victims. A node-pinned stateful pod below that priority is one preemption away from an outage that it cannot recover from on a full node.
+Protect co-dependent stateful and serving-path pods at a shared numeric priority
+that routine work eligible on their nodes cannot preempt; keep deliberately
+expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
+from evicting others, not from becoming a higher-priority pod's victim, and a new
+`globalDefault` does not change historical pods
+([Kubernetes priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/),
+read 2026-11-07). **Wrong:** declare a protected default or a non-preempting class
+and infer live protection; **Right:** update each owning template and verify every
+affected pod's admitted numeric priority after its supported replacement,
+especially node-pinned last copies.
 
 For a shared runtime setting, render each supported deployment overlay or
 release profile before changing live state. A base declaration does not prove
@@ -155,7 +177,7 @@ forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
 
-Optional presentation metadata and executable fulfilment are separate contracts: omitting a label cannot make an unresolved entitlement, stock item or nested bundle grantable. Before consuming a single-use right, validate the complete payload against the actual fulfiller's catalogue and supported types; a mixed valid/invalid payload must refuse atomically, while missing optional labels alone may still succeed.
+A catalogue match proves identity, not fulfilment eligibility: before consuming a single-use right, admission and fulfilment share one eligibility predicate for every executable descendant, while absent optional presentation metadata remains harmless. Complete traversal needs explicit depth and work bounds with typed atomic refusal; caching a completed subtree must not hide a longer path or unbounded repeated work. Contrast existing-but-ineligible and missing descendants with valid nested payloads, optional-label omissions and graph-boundary controls, so neither top-level-only checks nor blanket refusal can pass.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -200,13 +222,15 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent background candidates need isolated failure and retry state, forward
-progress and revisitation: an early pending or failed row must not starve later
-work or other tenants, or become stranded when its eligibility changes after
-discovery advances. Repeated polls with unchanged
-inputs prove only idempotence; change an already-scanned candidate's inputs and
-verify its later completion through the public worker or poll entrypoint, without
-a read that can itself complete the work. Preserve its retry source until the completion or deletion contract is satisfied; atomic batches remain a different contract. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
+Independent background candidates need discovery and admission rules aligned with
+actual dispatch eligibility, with typed outcomes separating deliberate capacity
+holds from ineligibility, unmet prerequisites and failed attempts; otherwise an
+undispatchable winner can starve later work or other tenants. Isolate failure and
+retry state, durably yield selections blocked for other reasons and retain their
+retry source until completion or contracted deletion; atomic batches remain a
+different contract. Through the public worker or poll entrypoint, verify progress
+past those selections, effective capacity holds and completion of an already-scanned
+candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
@@ -320,6 +344,13 @@ from the qualifying observation to the guarded action, including client startup
 and transport setup. Read-only setup may happen beforehand if the final
 observation still verifies the exact target and state; extending receipt validity
 to hide setup time weakens the safety contract.
+
+A bounded side task can still cross into a periodic worker's narrow due window;
+a clock read from before that task is stale when choosing the next wait.
+Recompute eligibility after side work and before sleeping, preserving slot
+deduplication. Drive a side task across the window boundary with a controlled
+clock and prove the due slot runs once while an already-completed slot stays
+suppressed.
 
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new
@@ -441,6 +472,22 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+For catalog-driven cleanup, derive independently removable objects and deletion
+order from authoritative dependency and ownership metadata; lexical names and
+enumeration order carry neither guarantee. Through that same production path
+under the actual cleanup identity, use adversarial names/order to prove completed
+cleanup and usable post-reset state, plus rollback after a late failure when
+atomicity is promised.
+**Bad:** sort every catalog entry by name and count rollback as recovery;
+**Good:** respect owner-managed dependents and prove dependency-safe completion,
+subsequent use and failure atomicity.
+
+For parameterized SQL performance across broad and keyed selectors, a fast
+custom plan or empty result can hide generic-plan cardinality errors, repeated
+scans and join products. Measure populated cases through the consuming driver's
+prepared-statement behavior under the effective role and row-level security
+(RLS), comparing generic and custom execution plans where supported; inspect
+actual rows, loops and buffers as well as latency.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
@@ -507,9 +554,14 @@ For mutation testing, use one mutation per retained contract boundary, run the c
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
-overbroad refusal proves agreement with the defect. Run those vectors against the
-real implementation, asserting emitted POSTs, refusals, ordering, verdicts and
-resulting counts. Exact clock values require a declared recorder history;
+overbroad refusal proves agreement with the defect. A retryable provider outcome
+is not permission to dispatch again: after a durable submission marker, recovery
+is GET-only. A test that drives marked recovery through the unsent
+`queued`/send path can demand a duplicate POST and still pass; contrast it with
+an unmarked pre-admission throttle that remains queued and retryable. Run those
+vectors against the real implementation, asserting emitted POSTs, refusals,
+ordering, verdicts and resulting counts. Exact clock values require a declared
+recorder history;
 synthetic vectors must not freeze incidental timing or internal call sequences.
 
 An overlap or uniqueness check over derived ancestry needs tests through the
@@ -575,6 +627,11 @@ both label-dependent PR outcomes under the rules that apply to PRs.
 Concurrency assertions should distinguish the mechanism from scheduler latency: observe wake reasons, probe counts per wait and resource ownership at barriers, and keep benchmark timings separate from generous progress deadlines unless timing itself is the contract. A fixture that releases a resource after probing it no longer controls availability: retain ownership through the decision, or assert the permitted replacement rather than a particular resource identity. **Wrong:** require reuse of a released port on a shared runner; **right:** transfer an owned reservation for the reuse control and hold the original resource occupied for the replacement control. When acknowledgements or rechecks can emit valid repeated status events, consume them until the terminal result under one deadline while preserving subsequent frames; a trace showing timely completion with extra status messages falsifies an exact-count assertion, which should be replaced rather than marked flaky. **Wrong:** require exactly one wait event and a tight shared-runner latency; **right:** accept valid repeated waits, assert the terminal outcome and test notification versus fallback through observable causes.
 
 For process-lifetime tests, a runtime's exit notification need not be the contract: bounded observation of authoritative process state can establish termination (including a zombie if reaping is not required), with a live-process control proving the observer still refuses nontermination. A child's ready marker does not prove its parent's signal handler or cleanup region is ready; the synchronization evidence must come from the component whose behavior the test exercises. Raw monotonic timestamps from different runtimes may have different origins: correlate observations with UTC and measure durations within each clock domain, without treating a missing stage event as evidence of when or why that stage failed.
+
+A fixture's execution placement is part of its input: nested tool calls may select
+a different host or sandbox than their enclosing call. Bind placement explicitly
+through the actual nested entrypoint and verify that the child reaches the fixture's
+files or listener; an outer placement setting alone does not prove that path.
 
 A bounded retry around temporary-profile cleanup is a workaround: descendants can still write after the direct child exits. Run the child in its own process group and wait for the whole group before removing the profile; never retry a test assertion.
 
@@ -723,7 +780,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy. One wall-clock budget covers admission, every fallback source and attempt, backoff including `Retry-After`, reconciliation and durable/terminal receipts, below the shortest caller timeout with completion margin. Clamp waits and requests to the remaining budget and enforce an outer hard timeout around the whole chain; neither a per-attempt timeout nor a retry-start cutoff bounds the last in-flight unit. **Bad:** give every mirror a fresh retry budget or let a server delay extend it; **Good:** prove combined exhaustion and oversized `Retry-After` finish within the unchanged caller deadline, with cancellation resumable from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.

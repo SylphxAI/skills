@@ -219,6 +219,10 @@ Capture live receipts in the **same run** as a version or revision read from the
 surface under test. A screenshot taken before the release reached serving never
 counts as evidence for that release.
 
+For a server status or error-contract change, include client versions already in
+the field using the [deployed-caller compatibility checks](integration.md#shared-dependency-features-and-client-policy);
+a journey passing only on the newest client leaves their behavior unverified.
+
 1. Start a uniquely named run directory containing UTC date/time and run ID.
    Record the target URL/environment, expected revision, device matrix, account
    fixture and journey. Keep credentials and personal data out of the record.
@@ -291,12 +295,13 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
-Measure the defect's actual geometry. A single-line label at the required font
-size can still overlap a chevron. Use the text node's `Range.getClientRects()`
-bounds, not its allocated container width, and measure the gap to the chevron
-in the same coordinate space on every rendered row. Check the acceptance case's
-required gap, line count and typography together; for example, an 8 CSS px gap
-is a contextual requirement, not a universal minimum. Do not shrink the font
+Measure the defect's actual geometry. Use rendered glyph ranges
+(`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
+number and suffix), not its allocated container width. Single-line values must
+share one line band at the required readable font size across the complete
+expected population; card containment alone misses wrapped prefixes. Check
+required neighbour clearance in the same coordinate space; an 8 CSS px gap is
+contextual, not a universal minimum. Do not shrink the font
 to hide a spacing failure. For composite controls, check joints and endpoints in
 a shared coordinate system as well as each part's size; correct dimensions can
 still be anchored wrongly. Derive paint probes from the actual geometry and
@@ -305,6 +310,10 @@ intended junction. A corrected probe must retain the original failure and reject
 both the known defective frame and an independent missing-segment control with
 unchanged paint tolerances, then accept the repair under the same conditions.
 
+Also reject a deliberate half-width regression. Sticky headers and ordinary cells
+can have different offset parents: measure reachability with viewport rectangles,
+the current scroll offset and pinned-column width, never `offsetLeft`.
+
 A text-hidden control comparison limited to self-reported glyph, mesh or layout
 bounds cannot detect paint outside those bounds. Account for every changed pixel
 in the full frame, assigning each to disjoint real visual regions (the label's
@@ -312,6 +321,10 @@ plate or header and its neighbours); reject unassigned paint before checking eac
 region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
 changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
 bounds; contained paint passes only with the required neighbour clearance.
+
+Project world points into capture-derived boxes using the same temporary aspect
+ratio and projection as rendering and pixel capture; restore the camera on both
+success and rejection. Prove the check fails if aspect correction is removed.
 
 Treat target size, hit testing and visible paint as separate assertions:
 

@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -13,7 +13,7 @@ Support a claim with the authoritative object at the layer being claimed. Cached
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
-- A passing step proves only what it checked: read the log for the inner result. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- A passing step or terminal child summary proves only its scope: a restarted test process can report zero assertion failures despite an earlier crash in the same operation. Bind the enclosing verdict to run-level failures, executed-test counts and retained pre-restart diagnostics before blaming build warnings, declaring the baseline flaky or retrying. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep diagnostics from failed runs. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
 - Before citing a regression test, confirm that the exact test was discovered and executed in the intended environment. Read selected, passed and skipped counts, including ignored-test enrollment and required setup. A green command selecting zero tests proves nothing. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
 - Before a long read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
@@ -93,11 +93,24 @@ refund reason, application failure, verified ownership, grant and store completi
 ## Pull request checks and merge-queue state
 
 Bind check evidence to the current pull request, exact head, workflow run and
-required-check decision. A commit-level check list can include successful runs
-from another pull request at the same SHA. Those results establish what ran;
-they do not by themselves establish the current pull request's merge eligibility.
-If the provider still expects a required check, preserve that refusal separately
-from the earlier passing result and follow the current required-check path.
+required-check decision; a commit-level list can include another pull request's
+successful run at the same SHA. Rollups, `CheckRun.isRequired` and REST
+`filter=latest` are supporting projections, not the admission decision: preserve
+the effective rules and actual enqueue acceptance or refusal in an authorized
+fixture, separately from what ran or which result a display selected.
+
+A missing check can reflect a producer that failed before publication; use the
+[execution-versus-triggering-source distinction](../deliver-and-verify/references/dx.md#bulk-mutations)
+rather than filtering downstream runs only by the reviewed SHA. Correlate the
+triggering event or actual producer input with that SHA and read the producer's
+terminal log, keeping execution failure, published check state and merge
+eligibility separate.
+
+**Wrong:** "No downstream run has the reviewed SHA, so the producer never ran."
+**Right:** "The default-branch run's log names the reviewed SHA and fails before
+publication; the missing check does not prove producer absence."
+
+Source read 2026-11-07: [GitHub workflow_run events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run).
 
 GitHub [commit statuses](https://docs.github.com/en/rest/commits/statuses) and
 [Check Runs](https://docs.github.com/en/rest/checks/runs) expose distinct
@@ -105,6 +118,22 @@ populations: an approval absent from `commits/<sha>/check-runs` may be present
 in `commits/<sha>/status`. Resolve a named context through both surfaces at the
 same head, retaining producer and timestamp; aggregate success on either
 surface establishes neither the other's result nor the PR's merge eligibility.
+
+An App success can survive a same-SHA workflow rerun while its publisher is
+silent; witness both pending and terminal rerun windows without refreshing the
+App check. Test late updates to an old Check Run separately from delayed new
+POSTs, in both orders against newer pending and failed results: a new POST can
+supersede a logically newer generation even with an older `started_at` and reused
+`external_id`. Retain check identities and the actual admission verdict; derive
+publication-order protection from the witnessed cases, not a universal provider
+ordering promise or assumed enforcement of caller-supplied fields.
+
+Required and local workflows can share a name, path, App and target head while
+only one satisfies the rule. Establish required-workflow source and pinned
+revision from the emitting `github.workflow_ref` and `github.workflow_sha` (or
+equivalent authoritative provenance), with a same-name local success versus
+required-source failure as the refusal control; target-repository run metadata
+alone need not identify that source revision.
 
 Read the repository's live required check contexts and workflow disposition
 before attributing a blocked merge to one red check. An installed App's empty
@@ -129,14 +158,16 @@ still missing."
 
 Source read 2026-11-07: [GitHub required status checks accept successful, skipped or neutral results](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging).
 
-Automatic merge being enabled records intent. Read the live queue entry to
-establish enqueueing, and the pull request's merged state and merge SHA to
-establish merging. Failure and queue membership are independent: an
-`UNMERGEABLE` entry can remain queued and enter later combined groups. A
-removal claim needs a fresh authoritative membership check, not a failed verdict.
-Neither a completed-check watch nor a successful enable
-request proves either transition. Restore stalled work through [unblock](../unblock/SKILL.md)
-without bypassing required checks or repeatedly resubmitting an unchanged refusal.
+Automatic merge being enabled records intent; live queue membership establishes
+enqueueing, and the pull request's merged state and merge SHA establish merging.
+Evaluate the current merge-group SHA's own required evidence, separately from
+PR-head checks or retired groups: a bounded window without stale-head success
+reuse establishes neither natural ejection nor a producer-reported `merge_group`
+failure. An `UNMERGEABLE` entry can remain queued; distinguish missing results
+from failed runs, and provider removal from explicit test cleanup using fresh
+membership and timeline evidence. Restore stalled work through
+[unblock](../unblock/SKILL.md) without bypassing required checks or repeatedly
+resubmitting an unchanged refusal.
 
 **Wrong:** "The previous pull request passed at this SHA, so its replacement is
 ready to merge." **Right:** "That run passed; the replacement still expects its
@@ -168,6 +199,19 @@ its automatic trigger would have been irrelevant.
 owner's durable outcome before attributing the result."
 
 ## Verify effective entrypoint behavior
+
+Before calling a reported failure non-reproducible, run the caller's exact
+arguments and relevant effective environment through the same executable version
+and wrapper; flags, working directory, identity, `HOME` and configuration paths
+can select different code paths. Preserve the sanitized original failure and
+name any mismatched or unavailable inputs: success on a default or simplified
+route does not contradict failure on another. Once the matched case reproduces,
+vary suspected inputs independently and retain that case as regression acceptance
+for a repair.
+
+**Wrong:** "The default command passes, so the caller's failure does not reproduce."
+**Right:** "The caller supplies an explicit revision and another configuration
+home; test both before narrowing the cause."
 
 Before inferring a runtime defect from an omitted argument, read the full callee
 and relevant wrappers, including defaults, environment fallbacks and input

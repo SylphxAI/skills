@@ -14,7 +14,7 @@ resuming delivery or allowing cleanup.
 ## 1. Verify It Is Actually Blocked
 
 Before intervening, read the live state of the job, queue, or target resource:
-1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
+1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work. Recovery eligibility belongs to the failure state, not the target ID: re-read the exact state that justified recovery immediately before the write and skip it if that state no longer holds.
 2. **Never resend an uncertain mutation blindly:** Follow the [duplicate-safety recovery contract](../deliver-and-verify/references/integration.md#provider-integration): reconcile potentially harmful duplicate effects, while a documented duplicate-safe refresh can recover with bounded serial retries before its output expires.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
 4. **Challenge an added prerequisite:** Before removing a refused step, compare
@@ -139,8 +139,10 @@ Primary source checked 2026-11-06:
 ### Missed completion events
 
 A registered watch does not prove that its observer saw the terminal status or
-that its notification resumed the waiting worker. Retain the target, source
-revision, baseline, last observed status and expected completion window. For an
+that its notification resumed the waiting worker. Its name also says nothing about
+provider cost: inspect the [observer's actual request and quota behavior](../deliver-and-verify/references/integration.md#provider-integration),
+backing off at the shared rate-limit floor rather than multiplying per-target GETs.
+Retain the target, source revision, baseline, last observed status and expected completion window. For an
 unverified event source, keep a timed fallback that reads the target directly.
 
 If the target has finished but the watch still reports pending, read the final

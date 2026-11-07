@@ -20,7 +20,8 @@ Native tests and browser previews can exercise different input and feature paths
 
 ## Step 0: Route identifier changes
 
-When changing multi-namespace lookups or identifier-based pagination, read
+When reconciling legacy and canonical identifiers, changing multi-namespace
+lookups or identifier-based pagination, read
 [identifiers.md](references/identifiers.md) before defining acceptance cases.
 
 ## Coordinate the work
@@ -37,6 +38,9 @@ When changing multi-namespace lookups or identifier-based pagination, read
 Use read-only discovery to understand the target. Before changing it, state the observable positive cases and relevant negative or invariant cases. Use [author-item](../author-item/SKILL.md) when the brief needs clearer acceptance criteria.
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
+
+For readiness or propagation promises across replicas, read
+[replicated readiness](references/performance.md#replicated-readiness) before defining the probe population and timing boundary.
 
 For request/response limits, context compaction, agent tool outputs or low-rate
 flake comparisons, read
@@ -60,7 +64,10 @@ For a public preview or disposable service, also read
 [first useful success](references/dx.md#first-useful-success) before relying on
 an advertised creation, deployment or port-exposure operation.
 
-For SQL or database fixture changes, read
+For regional store SKU or price changes, read
+[regional store prices](references/integration.md#regional-store-prices).
+
+For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
 Time-windowed usage or billing queries also use
 [temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
@@ -115,6 +122,8 @@ For source checkout or materialization changes, shared-cache permission failures
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
 failures, generated CLI calls, sandbox build templates or native compilation failures,
 read [first useful success](references/dx.md#first-useful-success).
+Source publication and receipt adoption after a rewrite also use
+[source publication authority](references/security.md#source-publication-authority).
 
 When changing database test setup or disposable fixture cleanup, read
 [database test fixtures](references/dx.md#database-test-fixtures) and
@@ -131,8 +140,9 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic
-or stored-body redaction, read [security.md](references/security.md) to protect
+When changing credential routing, handling credentials exposed in process
+arguments or changing diagnostic or stored-body redaction, read
+[security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.
 
@@ -150,7 +160,7 @@ When editing PR titles or bodies, changing CI workflows or concurrency, publishi
 [affected-test selection](references/dx.md#continuous-integration). Tests can
 depend on files across language and workspace boundaries.
 
-Before changing provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
+Before changing server status-code/error-envelope translation, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. Admission and later
 dispatch can run under different provider configuration.
