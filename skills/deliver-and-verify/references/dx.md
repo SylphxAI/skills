@@ -671,9 +671,15 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 Use trusted browser input through the shipped client/server path for focus
 ownership, native defaults such as Tab or clipboard paste, and complete pointer
 press/move/release sequences, including supported focus locations outside the main
-widget. Assert event cancellation state and the resulting active element, then
-verify ordered delivery, remote state and painted output where those boundaries
-apply. Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
+widget. Assert event cancellation state, the resulting active element, ordered
+delivery, remote state and painted output where those boundaries apply.
+Request identity alone does not establish freshness: order observations from
+before the source read and verify that delayed older publications cannot overwrite
+newer explicit results, even after their destination write completes.
+Async separation must preserve input side-effect order (such as reading a selection
+before a later key collapses it), and invalidated explicit requests must settle
+rather than remain pending.
+Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
 backend text insertion bypass parts of this path and cannot prove the user's
 shortcut or gesture works.
 Trusted delivery and an uncancelled event do not prove a native default ran:
