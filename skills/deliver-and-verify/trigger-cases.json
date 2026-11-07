@@ -1710,6 +1710,10 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Run an authorized read-only credential-bearing service probe on a shared host and prevent sibling scripts from shadowing standard-library imports.",
+      "clause": "authorized operational"
+    },
+    {
       "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
       "clause": "changing selected-source release inputs"
     },
