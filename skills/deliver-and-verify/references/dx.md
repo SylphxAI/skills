@@ -597,10 +597,13 @@ routing expression before choosing a supported event with the intended metadata.
 Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
 
 
-- Dependency installation alone does not establish test readiness: package
-  exports and CI setup identify generated files and external executables needed
-  in the test's own build target, with production evaluator/runtime versions
-  when those are part of the claim. Dependency preparation and offline fixture
+- Dependency installation alone does not establish check readiness: each check
+  needs its imports, generated files and executables in its own job, stage and
+  build target, with production evaluator/runtime versions when claimed.
+  Later installation steps and incidental host packages cannot prepare an earlier
+  check; exercise its entrypoint with only the dependencies available at that
+  point, excluding undeclared user and system packages.
+  Dependency preparation and offline fixture
   compilation share the same effective executor, package source and cache;
   a wrapper can place each nested command in a fresh cold lease, so a successful
   fetch does not prepare the next command. Verify that the real fixture working
