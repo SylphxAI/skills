@@ -90,6 +90,28 @@ risk labels neither explain what to do nor establish that the bank rejected it.
 
 ## Public social feed posts
 
+Product names and publication locales are source facts, not prose to translate.
+Read the current canonical title roster and the target Page's language/region
+contract; never infer a localized name from an English brand word or borrow a
+neighbouring region's copy or offers. Unknown titles, Pages, language mappings
+or unavailable source documents refuse publication rather than fall back to a
+model's preferred spelling or voice.
+
+A caption-only check misses comments and text inside a card. The maintained
+publisher's executable gate must validate the complete send plan—body, every
+supplied comment, OCR and media metadata—against that current source **before
+any upload**. A request-builder helper tested in isolation is not enforcement:
+the actual sender must call it, and an old direct-API prompt or script is not an
+alternate publishing route. Use the company's maintained entrypoint recorded in
+the product's operating docs; a missing gate is an implementation task, not a
+reason to send directly.
+
+❌ Translate a product's brand word into a pleasant synonym, reuse local-language
+copy on a global Page, and approve a clean caption despite a wrong card title.
+✅ Preserve the source's exact title (including spacing), select that Page's
+approved locale, and pass the entire plan through the sender's gate. Ordinary
+prose remains free to use the same word when it is not a product-name claim.
+
 For Facebook, X and LinkedIn, never publish a text-only feed post (`media=[]`)
 or raw `https://` or `m.me/` URLs in post bodies or comments. Use native media
 uploads or native Page Share Cards; on Facebook upload photos through

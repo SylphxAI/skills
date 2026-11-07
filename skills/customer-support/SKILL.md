@@ -23,6 +23,13 @@ belong entirely to
 there goes to the published official support address in the product profile;
 the companion continues offering friendship without becoming the case adjudicator.
 
+Before drafting or delivering a mobile chat reply, apply
+[the shared narrow-bubble guidance](../clear-writing/SKILL.md#narrow-mobile-chat-bubbles)
+for paragraph limits, real `\n\n` gaps, one option per line, and explicit
+Lexical `linebreak` nodes with API verification when using a Lexical Web-UI
+composer. It takes precedence over general prose or no-bullets defaults while
+preserving warmth and the user's instructions.
+
 ## Step 0: Read case ownership, LTV & payment history, and product facts
 
 Check the case state before replying. For an open case, resolve the product from

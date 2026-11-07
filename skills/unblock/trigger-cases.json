@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Recover a stalled merge queue entry, checking immediately before the write whether it is still failing or has resumed normal checks.",
+      "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "CI rejects customer-specific policy code in a shared platform path, and the local hook skipped its scanner. Restore the check while preserving the ownership boundary for code, tests and runbooks.",
+      "clause": "CI/build run that has actually stalled or is failing"
+    },
+    {
       "prompt": "The repository synchronization completed but historical dependencies still fail verification. Restore the missing history while retaining recovery metadata.",
       "clause": "a promised fix still fails"
     },
@@ -72,6 +80,22 @@
     {
       "prompt": "The merge queue ejected a pull request after runner loss. Its old merge-group retry now passes, but the pull request is still outside the queue. Restore admission at its unchanged current head.",
       "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "The worker restarted after a failed turn but accepted messages remain stuck. Restore their processing without resending completed operations.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "An import resumed in a healthy replacement process, but the records accepted before the crash are missing. Recover that stalled work from persisted state.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "The cancellation API accepted an obsolete CI run, but it remains queued and its replacement is stuck pending. Restore the replacement without cancelling unrelated work.",
+      "clause": "a queue/review stops progressing"
+    },
+    {
+      "prompt": "A completion watch remains pending after its target finished, while per-watch REST GETs exhaust the shared API floor; restore delivery without bypassing the quota.",
+      "clause": "a completion watch stays pending after its target finishes"
     }
   ],
   "negative": [
@@ -124,6 +148,16 @@
       "prompt": "The pull request has a live merge-queue entry and its merge-group build is progressing within its expected duration. Leave it running.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
+    },
+    {
+      "prompt": "A cancelled export is draining within its documented cancellation grace period and its replacement is waiting normally. Leave both operations alone.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
+    },
+    {
+      "prompt": "Audit the past quota cost of an event-watch implementation without restoring failed work.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
     }
   ]
 }

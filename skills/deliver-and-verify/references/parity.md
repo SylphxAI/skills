@@ -65,16 +65,33 @@ differ from the clear colour. **Bad:** nonblack clear pixels prove rendering.
 **Good:** the draw changes the expected pixels, and the failing state is retained
 as a negative control.
 
-Headless browsers may use a software GPU such as SwiftShader or llvmpipe.
-Texture corruption on both WebGPU and WebGL can therefore share an environment
-cause; switching APIs alone does not establish a product defect. Before reporting
-or routing a visual defect from that environment, reproduce the same build,
-scene and assets on a hardware GPU or real device. Record the WebGPU adapter
-information or WebGL renderer string, browser, build and paired captures in the
-receipt. If renderer details are unavailable, say so; do not infer hardware
-acceleration from the API name. Without the hardware check, retain the observed
-artifact but mark product attribution OPEN. If it reproduces there, investigate
-the product with that evidence.
+Host-language compilation and software-renderer correctness can pass without
+parsing runtime-composed shaders: reserved identifiers or conditionally hidden
+helpers may break only one variant. Derive the relevant variant population from
+the actual runtime definitions and feature gates; GPU-free composition, parsing
+and semantic validation must cover it with the runtime's validator version and
+capabilities, recording expected/validated variants and
+[named test execution under intended package features](dx.md#continuous-integration).
+That check does not establish rendering: separately exercise the shipping
+renderer's adapter → pipeline → draw → mapped pixel-buffer path and pair its output
+with independent reference pixels, retaining original startup/validation failure
+logs and unchanged pixel tolerances.
+
+Mechanism references (read 2026-11-06, Naga/wgpu 30.0.1):
+[WGSL parsing](https://docs.rs/naga/30.0.1/naga/front/wgsl/fn.parse_str.html),
+[semantic validation](https://docs.rs/naga/30.0.1/naga/valid/struct.Validator.html),
+and [shader modules and pipelines](https://docs.rs/wgpu/30.0.1/wgpu/struct.Device.html#method.create_shader_module).
+
+Headless browsers and virtualized native hosts may use a software GPU such as
+SwiftShader or llvmpipe; corruption or delayed presentation can therefore share
+an environment cause across graphics APIs, so switching APIs alone does not
+establish a product defect. Record the adapter or renderer, browser/native host,
+build and captures; if renderer details are unavailable, say so rather than
+inferring hardware acceleration from the API name. Reproducing the same build,
+scene and assets on a hardware GPU or physical device helps distinguish product
+from environment faults; without that comparison, retain the observed artifact
+and mark attribution and physical-device performance OPEN, while reporting
+functional acceptance separately within the tested environment and latency bound.
 
 ## Continuous aspect ratios and visibility
 
@@ -136,6 +153,9 @@ the engine's verdict.
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
    release's limitations. Bind local builds and fixtures to immutable revisions.
+   Keep pinned browser/tool binaries in a location owned for the run and verify
+   their hashes; an executable borrowed from another checkout can disappear
+   before capture even when its version matched during setup.
 2. Before running, declare the equal-work set, acceptance predicate, sample count,
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
@@ -198,6 +218,10 @@ the engine's verdict.
 Capture live receipts in the **same run** as a version or revision read from the
 surface under test. A screenshot taken before the release reached serving never
 counts as evidence for that release.
+
+For a server status or error-contract change, include client versions already in
+the field using the [deployed-caller compatibility checks](integration.md#shared-dependency-features-and-client-policy);
+a journey passing only on the newest client leaves their behavior unverified.
 
 1. Start a uniquely named run directory containing UTC date/time and run ID.
    Record the target URL/environment, expected revision, device matrix, account
@@ -271,17 +295,34 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
-Measure the defect's actual geometry. A single-line label at the required font
-size can still overlap a chevron. Use the text node's `Range.getClientRects()`
-bounds, not its allocated container width, and measure the gap to the chevron
-in the same coordinate space on every rendered row. Check the acceptance case's
-required gap, line count and typography together; for example, an 8 CSS px gap
-is a contextual requirement, not a universal minimum. Do not shrink the font
+Measure the defect's actual geometry. Use rendered glyph ranges
+(`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
+number and suffix), not its allocated container width. Single-line values must
+share one line band at the required readable font size across the complete
+expected population; card containment alone misses wrapped prefixes. Check
+required neighbour clearance in the same coordinate space; an 8 CSS px gap is
+contextual, not a universal minimum. Do not shrink the font
 to hide a spacing failure. For composite controls, assert joints and endpoints in
 a shared coordinate system as well as each part's size, because a correctly sized
 segment can be anchored incorrectly. Run the guard against the old failing state
 before claiming it catches the defect, then test the repair under the same
 conditions.
+
+Also reject a deliberate half-width regression. Sticky headers and ordinary cells
+can have different offset parents: measure reachability with viewport rectangles,
+the current scroll offset and pinned-column width, never `offsetLeft`.
+
+A text-hidden control comparison limited to self-reported glyph, mesh or layout
+bounds cannot detect paint outside those bounds. Account for every changed pixel
+in the full frame, assigning each to disjoint real visual regions (the label's
+plate or header and its neighbours); reject unassigned paint before checking each
+region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
+changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
+bounds; contained paint passes only with the required neighbour clearance.
+
+Project world points into capture-derived boxes using the same temporary aspect
+ratio and projection as rendering and pixel capture; restore the camera on both
+success and rejection. Prove the check fails if aspect correction is removed.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
@@ -353,10 +394,23 @@ leaves that failure scenario OPEN; an account-free preview also cannot establish
 sign-in continuity for the account-enabled release.
 
 Generated host sources and linked native libraries can come from different
-releases even when a package builds. Match their JNI/FFI contracts before
-exercising a device, record any local compatibility overlay, and limit the
-verdict to the behavior actually exercised; verify the complete published
-combination before claiming an engine upgrade.
+releases even when a package builds; restoring an integration can also revive
+conflicting metadata or higher-priority configuration despite matching versions
+and classes. Before device testing, match JNI/FFI contracts, establish canonical
+ownership of shared metadata and resources, and check the effective merged release
+variant—including eligible resource qualifiers—with known-conflicting input
+controls rather than default files alone. Record local compatibility overlays,
+limit the verdict to exercised behavior, and verify the complete published
+combination before claiming an engine or SDK upgrade.
+
+Declare each case's expected runtime observables and required lifecycle phases
+independently of the candidate's configuration or compiled constants. A test choosing
+its assertion branch from the candidate can pass the wrong mode; PASS proves only
+that selected branch. Bind accepted configuration → generated/compiled policy →
+observed OS output, using the [semantic preflight](code.md#deployment-configuration)
+before device acceptance. Reject missing phases or mode mismatches even when artifact
+bindings match; distinct APK hashes alone cannot prove a policy changed. Correct provider
+replay can still belong to another intended operation; reject that receipt.
 
 Test instrumentation or isolation that changes production dependencies or provider
 semantics cannot establish shipped-artifact behavior; keep those outputs
@@ -381,8 +435,11 @@ geometry cannot establish edge-to-edge paint.
 Resolve each test selector to the current control and assert its identity,
 visibility and action. Keep a negative control that fails when the control is
 absent or inactive; a test that still passes against a removed entry is not
-testing that entry. For account changes, reopen an authorized existing-session
-or guest fixture and verify the same canonical account and retained value.
+testing that entry. Exercise the full routed pointer-down and pointer-up sequence
+for missing activation and duplicate side effects; a direct callback test misses
+overlapping handlers on different phases of the same gesture. For account
+changes, reopen an authorized existing-session or guest fixture and verify the
+same canonical account and retained value.
 
 For custom-rendered browser controls, distinguish three observations:
 
@@ -433,13 +490,25 @@ A generated image a release depends on fails closed on blank output: check its
 colours or variance, not only that the file exists.
 
 - Enumerate every changed asset and table from the candidate manifest/diff,
-  including additions, removals and dependent references. Match the checked set
-  to that inventory so one successful sample cannot stand for all changed files.
-- Diff the prepared change against what is mounted live, not against the source
-  repository. Label every changed cell as chosen, with its decision, or as drift
-  that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
-  live value and is reported. A source template can hold old values nobody chose,
-  and a flag that looks like a harmless hide can remove what a user already owns.
+  including additions, removals and the complete declared dependency closure;
+  match the checked set to that inventory so one sample cannot stand for all files.
+  Artifact identity and admission include referenced payload bytes stored
+  separately from root metadata; changed unowned or unverifiable payloads fail
+  closed. The real publication gate must reject an undeclared change confined
+  to referenced external bytes while accepting an explicitly declared complete
+  closure. Identical objects do not prove compatibility: validate container and
+  each serialized member’s target, runtime version and format metadata against
+  the independently selected platform/runtime, with metadata-only negative
+  controls through both the producer and an independent reader.
+- Snapshot serving inputs read-only before handoff and diff the candidate against
+  that baseline, not repository copies; for display claims, use only the bundle
+  actually served to users. For probability fixes, trace the server's reader to
+  the exact columns, report their before/after values and enumerate every row
+  whose real probability changes: `display == actual` says neither which column changed nor
+  that actual odds stayed fixed. Label each changed cell as chosen with its
+  decision or unchosen drift; ship only chosen changes and preserve/report the
+  live value for drift, since stale templates or a hiding flag can remove owned
+  value.
 - Trace asset generation through export/build, package staging and runtime
   manifest/cache/remote selection: a store build may skip a separate bundle
   builder, packaging may only copy an export, and remote content may supersede
@@ -458,9 +527,13 @@ colours or variance, not only that the file exists.
   its materials and animations. Existence, file size and checksums alone cannot
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
-  those exact candidate files. Load every changed table without error and assert
-  its relevant behavior. A schema-only check cannot establish that the shipping
-  client or server accepts the file.
+  those exact candidate files; load every changed table and assert its consuming
+  behavior, not schema acceptance alone. For random pools or boxes, every
+  reachable outcome ID must resolve in the type-specific template used by the
+  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
+  unknown-ID/null-grant controls, asserting durable grants and the contract's
+  charge/rollback behavior: a response can list rewards even when one unknown ID
+  suppresses the whole batch after charging.
 - Emit machine-readable results bound to the candidate digest: checked artifact
   IDs, expected/actual values, assertions, failures and tool versions. Missing
   required results fail publication. Preserve the last known good release and
@@ -551,8 +624,9 @@ against the raw pixels and measured control bounds; an observer's estimated
 coordinate is not a measurement. Colour-threshold bounds describe only the
 matching painted subset, not the full control or its hit area.
 
-If an accepted input leaves the state unchanged, first test whether it missed
-the control. Request acceptance and cursor coordinates do not establish a hit.
+If a requested input leaves the visible UI unchanged, first test whether it
+missed the control. Request acceptance and cursor coordinates do not establish
+a hit.
 Use a fresh frame and, where needed, a supported pointer-location diagnostic
 before blaming a handler, backend or input driver, patching code or replacing
 the device. Record the prior diagnostic setting, restore it and verify cleanup.
@@ -560,6 +634,14 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
+Before patching allegedly lost or duplicated input, trace the affected user/device
+and automated paths through host normalization, handler, state change, paint and
+presentation; those paths can use different protocol branches, and a callback
+still does not establish visible completion. A synthetic-path failure establishes
+neither a universal product defect nor an automation-only defect, and a changed
+stimulus must preserve the complete action workload. Retain the unchanged early
+capture and any later transition with no new input to distinguish delayed
+completion from a dropped action, without inferring its cause.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a

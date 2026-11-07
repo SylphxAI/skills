@@ -15,7 +15,15 @@
     },
     {
       "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
-      "clause": "inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies"
+      "clause": "inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies"
+    },
+    {
+      "prompt": "Check all official email inboxes since the saved cursors for banking or statutory notices.",
+      "clause": "official email notices"
+    },
+    {
+      "prompt": "The support inbox latest UID is below our saved cursor. Patrol the requested time window without marking messages read.",
+      "clause": "unanswered customer inbox queues"
     }
   ],
   "negative": [

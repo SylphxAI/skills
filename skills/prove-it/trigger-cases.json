@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "A release CLI passes with default arguments, but the caller failed with an explicit revision and a different HOME. Check the claim that the failure cannot be reproduced.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
+      "prompt": "A SaaS export failed under a tenant configuration, while a maintainer probe without that configuration passes. Verify whether the original failure is non-reproducible.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
+      "prompt": "A card game replay loads with default settings, but a player supplied a locale flag and a custom asset directory. Check whether the non-reproducible verdict tested the same inputs.",
+      "clause": "checking a claim that a reported failure cannot be reproduced"
+    },
+    {
+      "prompt": "Verify whether a neutral automated review with zero findings and unreviewed files satisfies this pull request's declared approval requirement.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check whether the SaaS repository's green CI aggregate actually includes its separately required current-head review.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Reconcile a card-game change reported approved with a completed review whose source coverage is incomplete.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
       "prompt": "Verify a seven-day release-runner concurrency count when rerun attempts return the same runner interval under different job IDs.",
       "clause": "verifying a live status or metric before reporting it"
     },
@@ -108,9 +132,148 @@
     {
       "prompt": "Reconcile a remote worker class with a smaller fallback envelope before reporting how many jobs the free memory fits.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "The CLI reports an empty list, but a worker rejects the same resource. Verify its content-negotiated response and decoder before attributing the failure.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Reconcile a billing dashboard showing no entries with an SDK that requests a different API version and cannot decode the empty response.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether a populated inventory probe proves the game client can decode a contract-valid empty list under its own Accept header.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify whether replaying a missed pre-publication guard after a successful publication still scans the original input population.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "An incremental audit reports success after a checkpoint advanced; reconcile its empty replay with the original nonempty event population.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify why a signed response fails integrity comparison when the displayed text differs only by a final newline.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check the claim that a failed, UNMERGEABLE pull request was removed from the merge queue.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A scheduled maintenance job completed safely but missed its recovery target. Verify execution health and the unresolved-outcome alert before reporting success.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A cleanup summary displays 0.0 GB while its receipt records a nonzero byte count. Reconcile the claimed zero before reporting reclaimed bytes.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify whether an inspection command refreshed an index timestamp before attributing that activity to the owner.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify the idle-data claim when the diagnostic itself may warm the cache or update access metadata.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Investigate a wrong-target async write after an A-to-B same-text interleaving; verify stable entity and version identity across the held promise.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Reconcile a source API refusal claim with an independent on-disk tamper count; verify each through its own fixture route.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Review a missing-export report when source defines the export; inspect the linked rlib and target revision before attributing it to source.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Verify a real-recorder conformance vector by behavioral POST, refusal, ordering, verdict and count outcomes rather than incidental clock or call-count equality.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check whether evaluate-only success proves a newly supported variant persisted, reloaded and encoded for its downstream consumer.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Review a retry regression where fallback repair can mask failure; check distinct effective decision keys, pre-repair observation and a target-only disabled control.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Verify a billing query conserves total time when a sample changes tier halfway through the hour.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Verify a game usage query classifies closed samples by their recorded subscription instead of the current account tier.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Check a time-windowed metering query in the real engine when an absent complementary series differs from numeric zero.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Verify a time-windowed billing query whose combined series may replace raw sample timestamps with evaluation-grid times, using non-grid-aligned samples.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Reconcile a GitHub rollup, isRequired flag and latest check list with the pull request’s actual required-check admission decision.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify whether a same-SHA failing workflow rerun invalidated an App success while its check publisher remained silent throughout pending and terminal states.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify whether a late PATCH to an old check and a delayed new POST with the same old external_id have the same admission effect against newer pending and failed checks.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify the pinned source of an organization-required workflow when a same-name local workflow passes but the required workflow fails.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check a bounded merge-queue observation: the stale PR-head success was not reused on the merge-group SHA, but the test explicitly dequeued the entry and no merge_group workflow ran.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A workflow_run review check is absent; distinguish the downstream run head_sha on the default branch from event.workflow_run.head_sha for the triggering CI before claiming producer absence.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A default-branch downstream run failed before publishing a check for a pull-request revision; reconcile its event payload, producer log and published check state.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify a missing review by tracing the expected workflow_run producer to its terminal log instead of filtering runs only by the reviewed SHA.",
+      "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "Verify why an old App-posted success remains selected after a failing workflow rerun with a newer started_at value.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check whether source-head approval is sufficient when the current merge-group SHA has no matching producer evidence.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
+    {
+      "prompt": "Arm this reviewed pull request at its exact head through the normal merge queue.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Fix the broken review workflow so the stalled pull request can receive a complete verdict.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two proposed source-review architectures and choose the simpler design.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
     {
       "prompt": "Restore the currently failing deployment, not merely explain the past outage.",
       "clause": "Use unblock to restore currently failing work",
@@ -155,6 +318,66 @@
       "prompt": "Calculate how many seconds are in fifteen minutes.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
+    },
+    {
+      "prompt": "Round 35,983,360 bytes to one decimal place in decimal gigabytes.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Implement a retry regression with distinct effective keys, observation before fallback repair and a control that disables only the target mechanism.",
+      "clause": "deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement a billing freshness query fix that filters raw selectors before combining them.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement and publish a CLI fix that preserves caller configuration on the explicit-revision route.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Publish a disposable workflow and arm a pull request to test App check selection under a ruleset.",
+      "clause": "deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore the currently stalled merge queue whose required merge_group workflow never started.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare generation-token and serialized-publication designs for a proposed check publisher without changing or testing either.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Publish a workflow_run producer and arm the reviewed pull request through the normal queue.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore the currently failing workflow_run producer so the pull request receives its required review check.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare two designs for correlating workflow_run payloads with reviewed revisions before choosing an implementation.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Implement fresh nonterminal check publication before each external approval rerun.",
+      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore a stalled approval queue whose configured producer was never enrolled.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
     }
   ]
 }

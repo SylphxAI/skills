@@ -14,16 +14,16 @@ resuming delivery or allowing cleanup.
 ## 1. Verify It Is Actually Blocked
 
 Before intervening, read the live state of the job, queue, or target resource:
-1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
-2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
+1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work. Recovery eligibility belongs to the failure state, not the target ID: re-read the exact state that justified recovery immediately before the write and skip it if that state no longer holds.
+2. **Never resend an uncertain mutation blindly:** Follow the [duplicate-safety recovery contract](../deliver-and-verify/references/integration.md#provider-integration): reconcile potentially harmful duplicate effects, while a documented duplicate-safe refresh can recover with bounded serial retries before its output expires.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
-4. **Challenge an added prerequisite:** Before repairing a refused step, reread
-   the outcome and ask whether that step is required at all. Remove an unrelated
-   dependency from this delivery rather than repeatedly repairing it; track the
-   independent outcome separately. For example, a UX change that works with the
-   current engine version should not wait on an optional version bump whose
-   migration fails. Split the bump from the UX change; retain a prerequisite
-   when the acceptance cases actually depend on it.
+4. **Challenge an added prerequisite:** Before removing a refused step, compare
+   its selection contract and effective input population with the acceptance
+   cases. Shared or inherited inputs alone do not show incorrect selection;
+   preserve required coverage when setup or execution fails. Track unrelated
+   dependencies separately: split an optional engine upgrade from a UX change
+   that works on the current version, but retain a required integration check
+   whose external dependency fails during setup.
 5. **Verify the resource can supply the missing capability:** Before restoring
    a credential or expanding a grant, read the selected account/workspace's
    entitlement and access to the specific model, feature or workload. Successful
@@ -37,11 +37,12 @@ Before intervening, read the live state of the job, queue, or target resource:
 
 ## 2. Diagnose by Failure Class
 
-A policy-scanner refusal points to a contract; removing a matched spelling can
-preserve the violation. Read the enforced check's pinned rule and inspect any
-prescribed helper's availability and behavior before changing the implementation.
-Run that exact checker and test the required semantics; a different local check
-or zero findings alone does not prove the contract is satisfied.
+A policy-scanner refusal points to a contract; a changed spelling or skipped
+local hook proves no compliance. Read the pinned rule, configured file scope and
+prescribed helper, then run that exact checker and verify its semantics. An
+ownership failure is repaired by keeping product-specific code, tests and
+runbooks at their owning product boundary and shared mechanisms configurable,
+without widening scanner exclusions.
 
 A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
 
@@ -72,6 +73,15 @@ Classify from the newest run on that commit and its first exact error; an older 
 
 ### Parent-operation recovery
 
+An idle replacement process proves liveness, not recovery: same-process tests
+can retain unsaved payloads that disappear after restart. For restartable work,
+compare accepted payload identities and order, acknowledgements and completed-effect
+receipts across the failed attempt, durable state and a fresh worker's first
+successful continuation; reconcile uncertain effects instead of resending them.
+**Bad:** restart and see healthy; **Good:** inject a failure after accepting work,
+restart from persisted state, and verify the original work completes without
+losing pending input or repeating completed effects.
+
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
 merge-group job, the pull request's timeline, live queue entry and current head
@@ -88,8 +98,18 @@ job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
 
-Primary source checked 2026-11-06:
-[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+An accepted cancellation can leave an obsolete operation queued and holding its
+concurrency slot, so a replacement remains pending. When ordinary cancellation
+has failed to reach a terminal state, reconcile the exact obsolete operation and
+its replacement before using the provider's documented stronger cancellation;
+verify both terminal cancellation and replacement admission afterward.
+**Bad:** report capacity released from HTTP 202; **good:** observe the obsolete
+run as `completed/cancelled` and its replacement admitted, while preserving
+unrelated work.
+
+Primary sources checked 2026-11-07:
+[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+and [force cancellation after ordinary cancellation is ineffective](https://docs.github.com/en/rest/actions/workflow-runs#force-cancel-a-workflow-run).
 
 ### Missing pull-request CI
 
@@ -119,8 +139,10 @@ Primary source checked 2026-11-06:
 ### Missed completion events
 
 A registered watch does not prove that its observer saw the terminal status or
-that its notification resumed the waiting worker. Retain the target, source
-revision, baseline, last observed status and expected completion window. For an
+that its notification resumed the waiting worker. Its name also says nothing about
+provider cost: inspect the [observer's actual request and quota behavior](../deliver-and-verify/references/integration.md#provider-integration),
+backing off at the shared rate-limit floor rather than multiplying per-target GETs.
+Retain the target, source revision, baseline, last observed status and expected completion window. For an
 unverified event source, keep a timed fallback that reads the target directly.
 
 If the target has finished but the watch still reports pending, read the final
