@@ -89,6 +89,12 @@ reconciler runs. A role with a different proven contract can use that
 contract's supported access change; this does not impose aggregate-only
 access on every reader.
 
+A schema name does not establish data sensitivity or effective visibility:
+extension-owned views can live beside application tables. Match permission
+inventories to the deployed access contract and object ownership, then evaluate
+effective memberships and view/function visibility rules before classifying
+readable columns as raw application access; an exception needs a proven boundary.
+
 Admission observed on one connection does not establish the identity of a result
 obtained on another: routing, pooling or reconnects can select a different server
 or principal. Keep session-bound checks and the protected query on one connection,
@@ -130,8 +136,10 @@ withheld from publication.
    harmless merely to unblock a push.
 4. For each verified false positive, use the scanner's supported exception
    mechanism with the narrowest available identity, preferably exact commit,
-   path, line and content digest. Record the evidence-based reason. Do not
-   suppress a whole directory or disable the scanner.
+   path, line and content digest. Exception metadata can itself be scanned:
+   describe the evidence-based reason in prose and bind it to the exact finding
+   by content digest rather than repeating the triggering text. Do not suppress
+   a whole directory or disable the scanner.
 5. Follow the publisher's documented commit procedure. If it supports recording
    an exception for an unpublished ancestor in a follow-up commit, commit that
    entry normally and rerun the same publisher; preserve the original finding

@@ -13,7 +13,8 @@ assets or configuration that change the experience, or comparing engines, read
 the screen-and-feature comparison, engine benchmarks, live evidence and automated
 release checks.
 
-For engine or SDK upgrades affecting controls, account entry or host lifecycle,
+For engine or SDK changes affecting controls, account entry or host lifecycle,
+including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
@@ -77,6 +78,9 @@ resubmitting work.
 For public social feed publishing, follow the [social post media and visual inspection checks](../clear-writing/references/articles-and-copy.md#public-social-feed-posts) before sending and verify the attached image afterward.
 
 ## Execute and verify
+
+For destructive or conditional API writes, read
+[destructive and conditional writes](references/integration.md#destructive-and-conditional-writes).
 
 Before bulk mutations, including cancelling CI runs, read
 [bulk mutation controls](references/dx.md#bulk-mutations).

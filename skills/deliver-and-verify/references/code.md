@@ -245,6 +245,11 @@ A serializer-only test cannot prove the database accepted the event.
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
 
+A completion marker proves only the work and writer it identifies; a stale,
+foreign-owned or malformed marker must neither suppress required repair nor
+abort unrelated reconciliation. Exercise state left by previous writers and
+preserve unknown data or outside references when rebuilding that evidence.
+
 ## Publication time and expiry
 
 When the contract promises a lifetime from becoming ready or being granted,
@@ -371,6 +376,20 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+
+Revoking an owner's ordinary privileges does not prove workload immutability:
+[PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)
+look up referenced rows as that table's owner with `FOR KEY SHARE`, which
+[requires `UPDATE` privilege](https://www.postgresql.org/docs/15/sql-select.html)
+and can fail after owner self-revocation even when the workload has `INSERT`.
+Preserve owner capabilities required by internal FK/trigger paths while keeping
+`PUBLIC` revoked and the workload a separate nonowner without owner membership
+or grant options; adding a trigger or role solely to preserve owner
+self-revocation obscures the actual boundary.
+**Wrong:** infer append-only behavior from owner ACLs or successful reads.
+**Right:** retain the real FK and prove a valid nonowner `INSERT` after complete
+fresh and upgrade migrations, before fixture grants, alongside denied workload
+mutations and denied `SET ROLE` to the owner.
 
 A successful read can be policy-filtered even when it returns no warning or
 error; counts, maxima and metadata inventories establish completeness only for

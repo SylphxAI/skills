@@ -11,8 +11,19 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Return a typed missing-permission state with a safe explanation, recovery route and correlation ID when supplied; a resource-scoped optional denial must preserve independently granted work and leave the aggregate outcome independent of resource ordering. A denied optional accelerator can warn and use an already-authorized ordinary path; required admission and explicitly requested protected operations still fail closed. Test mixed granted/denied resources in different orders with ordinary-path fallback blocked where it could mask lost authorization, alongside required-operation refusals; neither blanket failure nor blanket recovery preserves these boundaries.
 - Verify webhook authenticity using the provider's contract. Deduplicate by its stable delivery/event identity, persist accepted work before processing and acknowledge within the provider's required window.
 - For outcomes needing recovery from dropped delivery, use the provider's supported reconciliation, replay or authoritative API and choose the schedule from the workload/cost. Verify that a missed event is recovered rather than assuming the webhook is the only truth.
+- A shared provider quota follows its credential identity across HTTP methods, transports and callers; gating only reads or one adapter leaves other spend outside the reserve. Priority floors need reset-aware observations and separate local-deferral, wire-response and uncharged-revalidation counters: a conditional request still needs admission because changed data can return a charged response. Verify the lower-priority stop and higher-priority continuation through actual request entry points at the boundary, alongside provider refusals, reset recovery and credential-isolated revalidation.
 - Expensive mutable observations need both freshness and shared-provider cost evidence: a short negative TTL can exhaust a quota, while retaining a negative answer can hide completion. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers, and evaluate completion invalidation with a bounded lost-event backstop. Verify duplicate events, in-flight reads and retained caches across ownership changes, so invalidation remains effective without multiplying provider work.
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
+
+## Destructive and conditional writes
+
+A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
+query parameter: the [API handler](https://github.com/kubernetes/kubernetes/blob/v1.36.4/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/delete.go#L95)
+decodes query options only when the body is empty (source read 2026-11-06).
+Put `dryRun: ["All"]` in that body with UID/resourceVersion preconditions,
+and prove the same identity and version remain with a GET before and after.
+**Bad:** treat a successful query-only dry-run as proof of no deletion;
+**Good:** verify the exact object still exists after the body-based dry-run.
 
 Verify replay, duplication, dropped delivery and timeout behavior at the affected
 contract boundary, including non-empty binary writes when signing or streaming
@@ -138,16 +149,27 @@ while accepting a contract-equivalent permutation of unordered sibling fields.
 Admission proves that work can be queued under the configuration at that
 moment. A later worker must resolve a compatible provider for that exact
 intent before reserving new spend or recording that submission has started.
+An operational pause is complete only when independent initial and recovery
+producers and retained queued consumers all observe the effective parsed
+configuration, verified through each outer production entrypoint before any
+admission or resource acquisition the pause promises to avoid, while enabled
+unrelated work remains unchanged. Whether paused work drains or defers follows
+an explicit data-retention and acknowledgement contract: retain the original
+payload and identity for deferred work, and do not discard queued work merely
+because execution is paused.
 An empty candidate list produces a recoverable configuration-unavailable
 outcome with no provider I/O. Preserve the unsent payload and its identity so
 configuration restoration can resume the original work within its expiry and
 cancellation rules. A submission with an unknown result still needs
 reconciliation; configuration changes do not make repeating it safe.
 
-- **Bad:** a queued shipping-label job loses its compatible carrier and falls
-  through to an unconditional call to another configured carrier.
-- **Good:** the worker makes no carrier call, keeps the job pending, then
-  submits the original job after a compatible route returns.
+- **Bad:** gate only the inner dispatch turn, then let a recovery producer or
+  queued consumer reach admission and reserve capacity while the dependency is
+  unavailable.
+- **Good:** exercise queued work with the dependency unavailable through the
+  outer production entrypoints; paused producers and consumers perform no
+  execution or resource acquisition, enabled unrelated work still runs, and
+  restoring configuration submits the retained intent once.
 
 Read response cardinality from the provider contract. A logical operation can
 return one aggregate receipt or multiple part receipts. Preserve each part's
@@ -167,8 +189,10 @@ available-but-incomplete response with a true outage at the public entry point,
 both with partial results present.
 
 Verify a queued intent after eligible configuration is removed, both with and
-without an existing spend reservation: no provider call, new reservation,
-submission marker or accepted-usage event; payload and identity preserved.
+without an existing spend reservation, through each outer production entrypoint:
+no downstream admission, provider call, new reservation, submission marker or
+accepted-usage event; payload and identity are preserved while enabled unrelated
+work continues.
 Restore configuration and verify that the same intent submits once. For a
 multipart response, exercise all-success, middle-part rejection and single-part
 cases, including persisted receipts and accounting after another worker pass.

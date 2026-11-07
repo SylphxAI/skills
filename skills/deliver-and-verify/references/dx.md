@@ -23,6 +23,14 @@ inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;
 failures naming cached third-party files call for correcting input discovery.
 
+Expanding a parent selection can leave nested exclusions effective, so recovery
+is established by the complete required descendant inventory while unrelated
+selections remain intact. Installer success can describe only attempted actions;
+required outputs need their own completeness check, including a missing-output
+control that challenges the installer's native status. **Wrong:** accept a parent
+directory or a successful installer check as proof; **Right:** compare every
+required file or installed capability with its declared inventory.
+
 A generated CLI's repeated-string flag need not decode JSON, and delimiter
 splitting can change an argument even when the shell preserves it. Match the
 parsed request to the wire schema; whole-request JSON/YAML can preserve arrays
@@ -140,6 +148,13 @@ read 2026-11-06).
 
 A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
 
+A CLI can read default configuration or open runtime files before applying
+explicit connection arguments. Verify a useful command with the declared user,
+mounts, environment and filesystem restrictions, including absent default files;
+preserve the exception class and a sanitized cause. **Bad:** prove a query in an
+administrator toolbox; **Good:** the workload's own non-root image performs it
+using only its declared inputs.
+
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
 and retain bounded daemon startup logs before that instance ends; a path inside
@@ -251,6 +266,14 @@ Use supported device authorization for interactive user delegation when the clie
 Keep one executable public contract and derive clients where that prevents drift. Use consistent naming, pagination, idempotency, deadlines, and typed errors with safe messages/retry semantics.
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
+
+When publication requires the selected commit to equal a live branch head, even
+documentation-only commits invalidate that identity. Coordinate every writer to
+that branch through the authoritative validation boundary, without a standing
+freeze beyond it. After a terminal prewrite validation failure, retain its receipt
+and use a distinct attempt from reviewed current source only when the executed
+steps and authoritative target state prove no publication side effect and an
+unused immutable version; never blindly rerun the retired source.
 
 Before adding a changeset, check the package's `private` field and release exclusions, and follow the repository's existing changelog convention for packages excluded from publishing.
 
@@ -503,7 +526,7 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
   system libraries in the lease that runs the affected tests.
   See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
 - Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06).
-- A required aggregate verdict reflects failure of its required work. Name the failed check in the log or summary, including when the inner command is silent; an exit code alone leaves the failure unidentified. Cleanup and diagnostic jobs can be non-blocking when that is explicit; do not hide a failed required check behind success syntax or missing resources.
+- A required aggregate verdict reflects failure of its required work and identifies the failed check, even when the inner command is silent; explicitly non-blocking cleanup and diagnostics are separate; never mask a required failure with success syntax or a missing resource. A healthy-path pass or dependency edge cannot prove propagation: failure or cancellation may skip an intermediate job that a later aggregate accepts. **Wrong:** infer coverage from an all-green chain; **Right:** witness a required failure reaching a non-passing aggregate through every intermediate boundary, or prove those transitions before reducing the graph.
 - Reusable workflows inherit the caller's `github` context and hosted-runner billing: a public library does not prove a public caller. For public-only standard hosted routing, require `github.event.repository.visibility == 'public'`; **Wrong:** negate `private` or compare it with `false`, since missing properties and loose equality can admit unknown payloads. Inputs may select standard hosted labels only after that proof, never assert visibility. Verify the entire reusable library—including every `workflow_call` workflow, locally uncalled entrypoints and actions—with a named private caller requesting literal `ubuntu-latest`, a public opt-in, legacy no-input calls and missing repository payloads across PR, push, merge-group, manual and scheduled events; an evaluator that cannot model the exact context property leaves the census unresolved.
   Sources: [reusable workflow context and billing](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations), [missing context properties](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts), [expression coercion](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#operators) and [repository visibility](https://docs.github.com/en/rest/repos/repos#get-a-repository), read 2026-11-06.
 - Before publishing a disposable CI probe workflow or consuming bounded external attempts, validate the complete orchestration at its provider-expression and embedded-program boundaries; optional diagnostics must not suppress the measured case. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context, and missing context properties can change comparisons through empty-string coercion. Runtime acceptance follows the client contract and measurement layer—application-attempt limits do not establish transport-request counts—so retain failed verifier records and distinguish orchestration or assertion failures from the actual client's output and exit status.

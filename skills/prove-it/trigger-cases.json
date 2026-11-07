@@ -128,6 +128,22 @@
     {
       "prompt": "An incremental audit reports success after a checkpoint advanced; reconcile its empty replay with the original nonempty event population.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify why a signed response fails integrity comparison when the displayed text differs only by a final newline.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Check the claim that a failed, UNMERGEABLE pull request was removed from the merge queue.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A scheduled maintenance job completed safely but missed its recovery target. Verify execution health and the unresolved-outcome alert before reporting success.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A cleanup summary displays 0.0 GB while its receipt records a nonzero byte count. Reconcile the claimed zero before reporting reclaimed bytes.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [
@@ -173,6 +189,11 @@
     },
     {
       "prompt": "Calculate how many seconds are in fifteen minutes.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Round 35,983,360 bytes to one decimal place in decimal gigabytes.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
     }

@@ -2,6 +2,54 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix a report backfill whose stale completion flag suppresses unfinished records after a writer handover.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Ship a game asset reconciler repair that rebuilds malformed completion evidence without following references into private files.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Change a sparse source checkout and prove that widening restores every required nested file without changing sibling selections.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Repair a source checkout installer whose successful native status hides a missing required hook.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Ship a package installer repair and verify every declared executable exists, retaining a missing-output negative control.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Publish the library package whose workflow requires checkout HEAD to equal live main, coordinating documentation writers until source validation completes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish the command-line client from reviewed current source after the prior attempt failed before writes, preserving its receipt and proving the immutable version is unused.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish the card game's content package under its exact-branch source check while an unrelated documentation change is ready to merge.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement shared email-provider quota priority so bulk campaigns yield before transactional purchase receipts, including send and delivery-poll callers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game commerce API poller that spends the same installation quota needed for entitlement delivery, keeping conditional revalidation and exact priority boundaries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship per-account provider budget counters that distinguish local deferrals from charged responses and uncharged 304 revalidations through every HTTP caller.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement a privileged shared-cache permission repair while ensuring concurrent file replacements cannot expose another user's credentials.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -44,6 +92,10 @@
     {
       "prompt": "Upgrade an Android SDK and ship the signed store artifact, checking its packaged classes and startup path after smoke-test preparation.",
       "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Restore an app plugin to fix a missing integration and ship it, checking metadata ownership and qualified resource overrides in the merged release variant even when SDK versions and classes match.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
@@ -440,6 +492,18 @@
     {
       "prompt": "Change the game inventory query and test it through the application role against the migrated schema.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Add an inventory-history fixture where the intermediate revision has an older event clock, and ship the adjacency repair.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix an access-change verifier that skips an explicit requested change when its account is outside the old audit sample.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Implement a fixture setup fix that gives cold schema DDL its own bounded connection budget while preserving request timeouts and exploit assertions.",
@@ -986,16 +1050,12 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
-      "clause": "changing SQL queries or fixtures"
+      "prompt": "Run a Kubernetes DELETE dry-run with a DeleteOptions body and prove the same object UID and resourceVersion remain before retiring its metadata.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Add an inventory-history fixture where the intermediate revision has an older event clock, and ship the adjacency repair.",
-      "clause": "changing SQL queries or fixtures"
-    },
-    {
-      "prompt": "Fix an access-change verifier that skips an explicit requested change when its account is outside the old audit sample.",
-      "clause": "implementing or shipping a feature, bug fix"
+      "prompt": "Ship a metrics CronJob whose vendor CLI works in an administrator toolbox but fails without default configuration in its non-root, read-only image.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -1663,6 +1723,21 @@
       "prompt": "Compare exact-text versus parsed-command workflow tests and recommend an architecture without implementing changes.",
       "clause": "challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether a foreign-owned completion marker caused the earlier reconciliation failure; report evidence without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare completion markers and database checkpoints for a proposed backfill architecture without implementing either.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of reconciliation completion flags without changing software or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }

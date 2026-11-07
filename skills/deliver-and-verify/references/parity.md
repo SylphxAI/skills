@@ -370,10 +370,14 @@ leaves that failure scenario OPEN; an account-free preview also cannot establish
 sign-in continuity for the account-enabled release.
 
 Generated host sources and linked native libraries can come from different
-releases even when a package builds. Match their JNI/FFI contracts before
-exercising a device, record any local compatibility overlay, and limit the
-verdict to the behavior actually exercised; verify the complete published
-combination before claiming an engine upgrade.
+releases even when a package builds; restoring an integration can also revive
+conflicting metadata or higher-priority configuration despite matching versions
+and classes. Before device testing, match JNI/FFI contracts, establish canonical
+ownership of shared metadata and resources, and check the effective merged release
+variant—including eligible resource qualifiers—with known-conflicting input
+controls rather than default files alone. Record local compatibility overlays,
+limit the verdict to exercised behavior, and verify the complete published
+combination before claiming an engine or SDK upgrade.
 
 Declare each case's expected runtime observables and required lifecycle phases
 independently of the candidate's configuration or compiled constants. A test choosing
