@@ -448,7 +448,7 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
@@ -533,9 +533,11 @@ specified date string; a transport retry change needs no formatting cases.
 A negative test can pass for the wrong failure when setup refuses before the
 injected fault. Assert the specific typed refusal or root cause, print the full
 error chain on mismatch, and verify that substituting an unrelated fault makes
-the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
-failed”; **right:** require the changed-price refusal after a passing baseline,
-while a stale-heartbeat refusal fails that same assertion.
+the assertion fail. For expected compiler failures, match machine-readable diagnostic
+codes plus the intended source/API identity, never compiler English wording.
+**Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
+the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
+fails that same assertion.
 
 Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
 
