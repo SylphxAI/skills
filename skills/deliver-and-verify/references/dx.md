@@ -24,10 +24,12 @@ wrapper, derive both from the pinned launcher and verify initialization of the
 unchanged entrypoint before expensive work; an initialization refusal establishes
 no policy or product verdict.
 
-Local setup can change a check's input population: dependency caches placed
-inside a checkout may be scanned as source even when Git ignores them. Keep
-rebuildable caches outside that population, or verify the check's exclusions;
-failures naming cached third-party files call for correcting input discovery.
+Local checks can inspect a different file population from the published artifact:
+ignored required files may pass from a mutable checkout, while local caches may
+be scanned as source. Publication evidence matches every manifest entry and digest
+to the clean committed archive or final package and exercises the consuming checks
+there. Rebuildable caches stay outside that population unless the check's contract
+explicitly includes them.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated
@@ -297,9 +299,12 @@ unused immutable version; never blindly rerun the retired source.
 Before adding a changeset, check the package's `private` field and release exclusions, and follow the repository's existing changelog convention for packages excluded from publishing.
 
 Preserve the resolver-generated lockfile bytes as the resolved dependency graph;
-never reconstruct transitive dependencies from version logs. A direct requirement
-need not equal the selected version: validate it under the resolver's documented
-constraints and resolution strategy, not textual equality
+never reconstruct transitive dependencies from version logs. Cross-target download
+flags can select compatible artifacts without evaluating every conditional
+dependency under the target interpreter; completeness requires a fresh locked
+install and dependency-consistency check under the shipping interpreter. A direct
+requirement need not equal the selected version: validate it under the resolver's
+documented constraints and resolution strategy, not textual equality
 ([lockfile semantics example](https://docs.unity3d.com/2022.3/Documentation/Manual/upm-conflicts-auto.html),
 read 2026-11-06).
 
@@ -411,7 +416,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
-- **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
+- **Safe worktree cleanup:** Git cleanliness and pushed commits do not prove that a working directory has no unique outputs; automatic retirement can also remove non-Git directories. Safe cleanup depends on preserving unpushed commits and unique or uncertain drafts, reports, logs, captures and patches outside the entire deletion scope and reading the saved bytes back before removal. Rebuildable build trees need no preservation.
 - **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors; do not change code to appease a stale artifact.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
 - **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
