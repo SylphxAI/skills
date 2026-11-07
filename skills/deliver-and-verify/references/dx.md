@@ -18,6 +18,12 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
+A copied entrypoint is not a complete tool: its dependency files and
+wrapper-supplied launch context are inputs too. When running outside the normal
+wrapper, derive both from the pinned launcher and verify initialization of the
+unchanged entrypoint before expensive work; an initialization refusal establishes
+no policy or product verdict.
+
 Local setup can change a check's input population: dependency caches placed
 inside a checkout may be scanned as source even when Git ignores them. Keep
 rebuildable caches outside that population, or verify the check's exclusions;
@@ -63,10 +69,20 @@ need private state. A cached executable or compiler result trusted without
 reverification needs a private cache or a trusted single writer. A writable
 mixed-home parent permits replacing its private entries even if file modes stay
 0600, so grant access only to named content leaves and retain read-only parents.
-Setgid preserves a group, not write permission; verify old contents and future
-writes under restrictive umasks, inherited ACLs and two UIDs. Preserve outside
-links and active locks. A declared tool version must either launch or fail
-clearly after an install/lock error, rather than silently running another major.
+Setgid preserves a group, not write permission. For shared Git metadata, use
+additive access and default POSIX ACLs that preserve the old effective masks and
+the original owner's access on future child-created objects; `chgrp` or setgid
+alone can revoke sibling access. Verify old contents and future writes under
+restrictive umasks with two real UIDs, and report any privilege skip explicitly—a
+skipped privileged case is not acceptance. Preserve outside links and active
+locks. A declared tool version must either launch or fail clearly after an
+install/lock error, rather than silently running another major.
+
+Identity fixtures keep the real UID and primary GID separate; one cannot be
+derived from the other. Assert the returned tuple against both OS identities
+and retain a CI environment where they differ, such as macOS. **Bad:** return
+`(current_uid(), current_uid())`; **Good:** use the actual UID and primary GID
+and prove the fixture still works when they differ.
 
 Before concluding a local-mode override is ineffective, check the mode flag's
 effective value in a fresh task-runner child; exporting it in the parent shell
@@ -395,6 +411,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
 - **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
 - **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
+- **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors; do not change code to appease a stale artifact.
 - **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
 - **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.

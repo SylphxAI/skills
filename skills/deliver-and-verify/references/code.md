@@ -126,6 +126,8 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
+Equal text or value after an await does not identify the same target: another entity or range may have replaced it. Carry stable entity/range identity across the wait and make the final identity and version check atomic with the mutation. **Bad:** hold a clipboard-write promise, replace A with same-text B, then let A's continuation mutate B; **Good:** resume against A's captured identity and refuse the changed target/version while an unchanged-target control succeeds.
+
 Exceptional terminal or preservation states, including erasure, must remain authoritative across every ordinary writer, retry, and replay path; exercise a normal writer after the transition through the real API and after persistence reopen or row aging, with an allowed nonterminal enrichment control. A historical receipt proves only the operation it records, not today's mutable state, so replay must re-read current state rather than restore it from the receipt.
 
 A nested admission helper that acquires a second connection from the caller's
@@ -407,6 +409,13 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+When adding a variant, asset or status to a pipeline with evaluate-only and
+effectful modes, prove one authorised durable round trip: schema constraints,
+commit, reload and downstream consumer encoding. Evaluate-only success proves
+only evaluation; keep ordinary-denial controls separate from the durable case.
+**Wrong:** accept a new variant because admission evaluates it; **Right:**
+commit and reload it through the real transport before claiming support.
+
 Revoking an owner's ordinary privileges does not prove workload immutability:
 [PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)
 look up referenced rows as that table's owner with `FOR KEY SHARE`, which
@@ -456,7 +465,11 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or other repairs can converge on the same state, observe the target mechanism's effect before competing repairs run, without the observation itself repairing state; disabling only the target must fail its unchanged assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
+
+For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+
+Conformance vectors against a real implementation assert behavioral outcomes: emitted POSTs, refusals, ordering, verdicts and resulting counts. Exact clock values require a declared recorder history; synthetic vectors must not freeze incidental timing or internal call sequences.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
@@ -515,6 +528,8 @@ Concurrency assertions should distinguish the mechanism from scheduler latency: 
 
 For process-lifetime tests, a runtime's exit notification need not be the contract: bounded observation of authoritative process state can establish termination (including a zombie if reaping is not required), with a live-process control proving the observer still refuses nontermination. A child's ready marker does not prove its parent's signal handler or cleanup region is ready; the synchronization evidence must come from the component whose behavior the test exercises. Raw monotonic timestamps from different runtimes may have different origins: correlate observations with UTC and measure durations within each clock domain, without treating a missing stage event as evidence of when or why that stage failed.
 
+A bounded retry around temporary-profile cleanup is a workaround: descendants can still write after the direct child exits. Run the child in its own process group and wait for the whole group before removing the profile; never retry a test assertion.
+
 An adapted reference executable can repeat an adapter defect even when its core source is untouched; pin source/configuration, make boundary substitutions explicit, and qualify it against independently recorded outcomes when available. Compare the same computation stage, separating later modifiers, and keep missing inputs unknown: exact known-input matches and compatibility across possible inputs support different claims. **Wrong:** infer a missing input from the expected result and count it as an exact match; **right:** report the unknown stratum separately until independent evidence resolves that input.
 
 For destructive work planned from shared references, test another live reference
@@ -545,6 +560,8 @@ hides which authority the component actually reads.
 **Right:** `expect(renderedPrice).toBe('US$1.99')` for a contract requiring that
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
+
+Source-API refusal and out-of-band tamper detection prove different boundaries and need separate fixture routes and assertions. Exercise forbidden writes through the source API; construct tamper directly on disk and assert its detection/count independently. **Bad:** require the API to accept a forbidden write to seed a tamper count; **Good:** retain the API refusal and seed the tamper fixture without that API.
 
 A negative test can pass for the wrong failure when setup refuses before the
 injected fault. Assert the specific typed refusal or root cause, print the full

@@ -1066,6 +1066,14 @@
       "clause": "changing source checkouts"
     },
     {
+      "prompt": "Change the source materialization for a standalone policy scanner, preserving dynamically loaded helpers and the revision context supplied by its normal launcher.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Move a game asset validator into a CI step outside its usual wrapper, retaining relative policies and required environment before running the full catalog check.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
       "clause": "handling credentials in process arguments"
     },
@@ -1312,6 +1320,46 @@
     {
       "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
       "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement an async clipboard write that survives an A-to-B same-text interleaving by carrying entity and version identity across the held promise.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add source-API refusal and on-disk tamper fixtures as separate routes, so a tampered count never becomes a requirement to accept a forbidden write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair shared Git metadata access across two real UIDs with additive default ACLs, preserving existing masks and reporting any privilege skip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a redaction pipeline to bind the decision across merged aliases and recognize redelivery under a new source key before storing or indexing content.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add conformance vectors against a real implementation that assert POST, refusal, ordering, verdict and count outcomes, reserving exact clock values for declared recorder histories.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix temporary-profile cleanup by running the child in its own process group and waiting for the group before removal instead of retrying a test assertion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix concurrent parent and child builds that share source or Cargo target directories, inspecting the linked rlib before editing a supposedly missing export.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add a variant to an evaluate/effectful pipeline and prove schema constraints, commit, reload and downstream consumer encoding in one authorised durable round trip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a permission fixture that returns the UID as the primary GID, and verify the tuple against both OS identities on a runner where they differ.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a retry worker regression to use distinct effective decision keys and observe its effect before fallback repair, proving that disabling only retry fails the unchanged assertion.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -1397,6 +1445,11 @@
     },
     {
       "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a scanner initialization failure supports a claim about source-policy violations, without changing source, invocation, or publication.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
@@ -2164,6 +2217,11 @@
       "prompt": "Rewrite this explanation of source-to-output equivalence for a user guide, without changing a verifier or operating a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a retry regression proves the mechanism when a fallback or state-reading observer can also complete the operation; do not change or publish code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     },
     {
       "prompt": "Review a flaky TCP port test and establish whether the log shows a legal replacement, without modifying or publishing code.",

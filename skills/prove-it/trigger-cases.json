@@ -164,6 +164,30 @@
     {
       "prompt": "Verify the idle-data claim when the diagnostic itself may warm the cache or update access metadata.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Investigate a wrong-target async write after an A-to-B same-text interleaving; verify stable entity and version identity across the held promise.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Reconcile a source API refusal claim with an independent on-disk tamper count; verify each through its own fixture route.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Review a missing-export report when source defines the export; inspect the linked rlib and target revision before attributing it to source.",
+      "clause": "investigating a root-cause claim for a past failure"
+    },
+    {
+      "prompt": "Verify a real-recorder conformance vector by behavioral POST, refusal, ordering, verdict and count outcomes rather than incidental clock or call-count equality.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Check whether evaluate-only success proves a newly supported variant persisted, reloaded and encoded for its downstream consumer.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Review a retry regression where fallback repair can mask failure; check distinct effective decision keys, pre-repair observation and a target-only disabled control.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
     }
   ],
   "negative": [
@@ -231,6 +255,11 @@
       "prompt": "Round 35,983,360 bytes to one decimal place in decimal gigabytes.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
+    },
+    {
+      "prompt": "Implement a retry regression with distinct effective keys, observation before fallback repair and a control that disables only the target mechanism.",
+      "clause": "deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
     }
   ]
 }

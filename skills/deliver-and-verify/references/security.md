@@ -169,6 +169,8 @@ Collect what the product needs and limit exposure in logs/analytics. An opaque l
 
 Implement the product's deletion contract across its relevant stores/processors, billing and credentials. Test that newly introduced personal-data stores participate. Distinguish a deletion request accepted for processing from completed deletion and report the corresponding server state.
 
+Bind redaction to the stable origin across the full merged alias set, so redelivery under a new source key still resolves to the same decision before storing or indexing content. Verify both alias-merge orders and redelivery with a changed source key; checking only the original key leaves an alternate route for the body to reappear.
+
 Delete/anonymize data no longer needed; retain exactly the fields and period applicable law requires, with restricted use. A universal instruction to anonymize every invoice field can conflict with mandatory invoice/retention rules. Describe actual behavior in the privacy surface. Choose age/consent handling for the product's market and audience rather than treating every family/school workflow identically.
 
 Judge the affected authorization, exposure, deletion and recovery behavior with observable checks. A successful job alone does not establish restored data or completed deletion.
