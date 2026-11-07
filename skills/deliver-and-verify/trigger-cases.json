@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a restore command whose recursive validator refuses the missing data that the restore is intended to recover, preserving rejection of invalid recovered data.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement saved-game recovery whose state validator must read restored progress without bypassing account authorization.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Update a shared CI action reference, preserving the source comments required by the dependency updater and verifying its enforced provenance check as well as parsed YAML.",
       "clause": "changing CI workflows or concurrency"
     },
