@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Upgrade a card-game build SDK through a checksummed mirror and preserve its declared origin boundary across redirects.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a package-installer fix that rejects an off-origin redirect even when the returned archive would match the pinned digest.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Push a conflict resolution to an automatically merging SaaS PR whose approval is pinned to its old head; keep the new source held until its renewed approval.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -1631,6 +1643,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare mirror-only and preinstalled-SDK architectures before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of archive integrity versus download authority without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Read whether an unchanged approved PR is queued when autoMergeRequest is null; do not update source or change its activation intent.",
       "clause": "prove-it for a review or evidence check",
