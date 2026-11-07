@@ -62,6 +62,15 @@ the strict proxy after the dependency resolves its full feature set.
 
 ## HTTP test doubles and routing
 
+A direct HTTP fake can skip a CLI or proxy's persistent cache: after a process
+restart, that adapter may inject its own validator and restore cached bytes under
+304 headers even though the caller has no matching page or pagination metadata.
+Verify conditional reads through the installed adapter with independent caller
+and adapter cache lifetimes, preserving one authority for the body, validator
+and continuation metadata. **Bad:** infer cold-start recovery from warm direct-HTTP
+tests; **Good:** retain the adapter cache, restart the caller, and prove complete
+revalidation and later updates without weakening authentication or quota admission.
+
 Before replacing a remote dependency with a fake, read its declared endpoints,
 request shape and error envelope; preserve the boundaries relevant to the change,
 including [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests)
