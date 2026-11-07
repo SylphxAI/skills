@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS checkout whose error notice appears while the retry button is still disabled, preserving duplicate-payment prevention.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game account chooser that ignores an immediate retry after a rejected handoff because the UI transition is still pending.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an export-dialog recovery fix and test the control state at the failure notification rather than waiting for a later enabled render.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Remove a static team-assignment table from repository guidance without losing the independent customer-protection rules embedded in its rows.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
