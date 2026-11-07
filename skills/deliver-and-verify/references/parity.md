@@ -302,11 +302,13 @@ share one line band at the required readable font size across the complete
 expected population; card containment alone misses wrapped prefixes. Check
 required neighbour clearance in the same coordinate space; an 8 CSS px gap is
 contextual, not a universal minimum. Do not shrink the font
-to hide a spacing failure. For composite controls, assert joints and endpoints in
-a shared coordinate system as well as each part's size, because a correctly sized
-segment can be anchored incorrectly. Run the guard against the old failing state
-before claiming it catches the defect, then test the repair under the same
-conditions.
+to hide a spacing failure. For composite controls, check joints and endpoints in
+a shared coordinate system as well as each part's size; correct dimensions can
+still be anchored wrongly. Derive paint probes from the actual geometry and
+rasterization: a fixed inset can sample an antialiased curve instead of the
+intended junction. A corrected probe must retain the original failure and reject
+both the known defective frame and an independent missing-segment control with
+unchanged paint tolerances, then accept the repair under the same conditions.
 
 Also reject a deliberate half-width regression. Sticky headers and ordinary cells
 can have different offset parents: measure reachability with viewport rectangles,
