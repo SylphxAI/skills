@@ -181,14 +181,14 @@ its supported idempotency and recovery semantics.
 Bind generated assessments to the exact request and scope; authoritative request
 context owns normalized identity, while mismatched model echoes may prompt
 bounded resubmission but must never be silently rewritten to certify unchecked
-or stale content. Distinguish transport availability, domain completion and
-validated partial results through aggregation and publication: persistent
-malformed assessments or exhausted work bounds are not transport or capacity
-outages, and neither HTTP success nor workflow completion proves complete work.
-Preserve earlier validated results unless later domain evidence revises them,
-derive the published outcome from the operation's contract, and contrast
-malformed or incomplete assessments with true outages at the public entry point
-with partial results present.
+or stale content. Persistent malformed assessments and exhausted work bounds are
+distinct from genuine transport or capacity outages; neither HTTP success nor
+workflow completion proves a valid, complete assessment. Preserve earlier
+validated results unless later domain evidence revises them; derive the
+published outcome from the operation's contract rather than treating all
+unfinished work as either success or provider failure. Contrast an
+available-but-incomplete response with a true outage at the public entry point,
+both with partial results present.
 
 Verify a queued intent after eligible configuration is removed, both with and
 without an existing spend reservation, through each outer production entrypoint:
