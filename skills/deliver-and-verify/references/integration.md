@@ -15,6 +15,8 @@ Build the integration to survive a slow/unavailable provider and repeated or mis
 - Expensive mutable observations need both freshness and shared-provider cost evidence: a short negative TTL can exhaust a quota, while retaining a negative answer can hide completion. Compare `concurrent pending keys × refreshes/hour × reads/refresh` with the shared budget over the same window, including other callers, and evaluate completion invalidation with a bounded lost-event backstop. Verify duplicate events, in-flight reads and retained caches across ownership changes, so invalidation remains effective without multiplying provider work.
 - Request permissions when the feature needs them and keep vendor-specific workarounds at the integration boundary with a removal condition.
 
+A circuit breaker counts distinct attempted operations, not repeated reconciliation of one uncertain attempt, and its refusal scope follows the evidence: a stale per-request observation cannot deny an otherwise authorized shared destination. Test repeated reconciliation counting once and unrelated authorized work continuing, alongside a genuine shared-dependency failure.
+
 ## Destructive and conditional writes
 
 A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
