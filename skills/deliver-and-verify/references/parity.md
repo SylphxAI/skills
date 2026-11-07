@@ -517,7 +517,7 @@ colours or variance, not only that the file exists.
   those exact candidate files; load every changed table and assert its consuming
   behavior, not schema acceptance alone. For random pools or boxes, every
   reachable outcome ID must resolve in the type-specific template used by the
-  actual grant handler before deployment. Exercise single and batch draws with
+  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
   unknown-ID/null-grant controls, asserting durable grants and the contract's
   charge/rollback behavior: a response can list rewards even when one unknown ID
   suppresses the whole batch after charging.
