@@ -27,7 +27,21 @@ A protective CLI wrapper must recognize the syntax its real client accepts. Comb
 
 Configuration previews and exception diagnostics can include unchanged credentials even when an edit touches only safe fields, and allowed field names can conceal raw diagnostics in unexpected nested values. A safe projection validates a closed schema's field names, types and canonical values before printing or persistence; a changed-line filter suffices only when allowed changes cannot contain credentials. **Bad:** retain an allowed status field containing an arbitrary object; **Good:** reject undeclared shapes while preserving useful validated status, timestamps and safe diagnostic detail, with positive controls proving that useful output survives.
 
-A redaction boundary must conceal credentials across emitted representations: whole-value matching alone can miss quoted, escaped, encoded or truncated fragments of effective input or output. **Wrong:** match only complete values, hide the whole structured record, or classify unfamiliar words as credentials by length alone. **Right:** verify final consumers see no known raw or encoded credential material while retaining parseable records, process status and novel short and long actionable diagnostics, including safe retained detail beyond public excerpt bounds; exercise transformed fragments and length boundaries alongside credential-named non-secret controls. Retention and publication of diagnostic artifacts must depend on successful sanitization under the actual producing and consuming identities; writable test fixtures can hide ownership failures on real diagnostics. An unconditional failure-artifact upload can publish unsanitized bytes after cleanup fails: withhold those bytes while preserving independently safe evidence and the original process status.
+A redaction boundary sanitizes the complete stream before output caps, in linear
+time within the failure-reporting budget: whole-value matching can miss quoted,
+escaped, encoded or truncated credential fragments. Verify final consumers see no
+known raw or encoded credential material while retaining parseable records,
+process status and novel short and long actionable diagnostics, including safe
+detail beyond public excerpt bounds. Exercise transformed fragments, length
+boundaries, credential-named non-secret controls and growing large single-line
+inputs; hiding the whole record or classifying unfamiliar words by length alone
+fails the useful-output contract.
+
+Diagnostic artifact retention and publication require successful sanitization
+under the actual producing and consuming identities; writable fixtures can hide
+ownership failures. An unconditional failure-artifact upload can publish raw bytes
+after cleanup fails: withhold those bytes while preserving independently safe
+evidence and the original process status.
 
 Masking can rewrite structural keys as well as values, so even parseable diagnostic JSON
 is not an admission or recovery contract. Policy decisions require authoritative
@@ -37,6 +51,14 @@ disappeared; **Good:** exercise permitted and refused requests through the real 
 boundary without deriving authority from diagnostics.
 
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
+
+A weaker inspection path requires positive trust evidence for every filesystem
+object and setting on which resolution depends, before trusting the tool's result;
+unproven inputs retain strict inspection. A known-bad selector list cannot establish
+that boundary: pointer files, configuration includes and inherited environment
+overrides can all redirect resolution. Test each supported indirection with an
+untrusted target and a fully proven trusted control, rather than treating an
+unlisted selector as safe.
 
 For privileged tool maintenance, run executables from user-writable paths as
 that user, including version probes, health checks and post-install validation.

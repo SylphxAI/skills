@@ -41,9 +41,10 @@ event history must support attribution. **Wrong:** “Both grants started at zer
 so the first was lost.” **Right:** “Each grant creates a separate inventory
 instance; the shared item type does not identify one balance chain.”
 
-For async wrong-target writes, refusal callers, source refusal versus on-disk tamper,
-contract-derived conformance, evaluate-only support claims or converging retry and
-fallback mechanisms, read [code boundary tests](../deliver-and-verify/references/code.md).
+For syntax guards, async wrong-target writes, refusal callers, source refusal
+versus on-disk tamper, contract-derived conformance, evaluate-only support claims
+or converging retry and fallback mechanisms, read
+[code boundary tests](../deliver-and-verify/references/code.md).
 For displayed-versus-actual data fixes or reward-pool grantability, read
 [asset and table verification](../deliver-and-verify/references/parity.md#before-publishing-assets-tables-or-configuration).
 For missing exports present in source or cross-UID permission fixtures, read
@@ -205,13 +206,23 @@ body, and validate the query with a known event stored in the same form.
 lost it.” **Right:** “The consumer loads the referenced body first; count missing
 visibility in those resolved bodies and report unresolved references separately.”
 
+## Verify installed entrypoint behavior
+
 Resolve conflicting readings with a fresh subprocess invoking the unmodified
-published entrypoint in the relevant real environment. Bind the receipt to the
-immutable revision and loaded artifact hash; record the command, relevant
-non-secret configuration, exit status and diagnostic output. Run a positive
+installed CLI or published entrypoint in the relevant real environment. Bind the
+receipt to the immutable revision and loaded artifact hash; record the command,
+relevant non-secret configuration, exit status and diagnostic output. Run a positive
 control and an adversarial negative through that same entrypoint, preserving
 the fallback behavior under investigation. A direct callee test or rewritten
 local copy does not establish the published entrypoint's behavior.
+
+For a syntax-guard repair, qualify syntax and resolution with independent compiler
+or runtime controls, then compare the committed pre-fix archive with the live
+candidate through the installed CLI. Each previously omitted policy-violating case
+must fail the unchanged regression assertion on the archive and pass it on the
+candidate because the intended violation is now detected; permitted constructs
+must remain accepted by both. A guard's nonzero exit alone proves neither the
+intended detection nor correct resolution.
 
 Keep unexpected success as disconfirming evidence, including when the verifier's
 own assertion expected failure. Correct the causal claim and affected decisions

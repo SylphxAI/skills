@@ -1444,6 +1444,18 @@
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game-script syntax guard that infers module roots from filenames, confuses member keywords with control flow, and exempts nested declarations solely by a shared operator.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
+      "clause": "changing diagnostic redaction"
     }
   ],
   "negative": [
@@ -2369,6 +2381,21 @@
     },
     {
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a syntax guard refusal names the correct unresolved target, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare compiler-backed and custom-tokenizer designs for a proposed source guard without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of strict inspection for unproven tool resolution, without changing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

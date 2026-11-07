@@ -546,10 +546,20 @@ inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
 
-When opening previously uninspected syntax, put a real state mutation after every
-supported control opener and exercise its allowed and forbidden forms through
-the real checker entrypoint. Cross-dialect keywords need separate controls, so a
-harmless idiom in one language cannot exempt a destructive statement in another.
+Syntax guards preserve the compiler's context: module roots follow contextual
+rules rather than filenames, and token kind plus preceding control/member context
+distinguish regex from division, a quoted `"+"` from an operator, and member
+`.return` from control flow. Binding inventories distinguish runtime writes from
+annotation-only bindings and read/delete targets while respecting nested scopes;
+a refusal naming the wrong unresolved target is still a resolution defect.
+
+A token-tree exemption needs positive proof of the declared exempt construct;
+a valid non-exempt form reusing its operator still requires inspection of nested
+declarations. When opening previously uninspected syntax, put a real state mutation
+after every supported control opener and exercise allowed and forbidden forms through
+[the installed checker](../../prove-it/SKILL.md#verify-installed-entrypoint-behavior).
+Cross-dialect keywords need separate controls, so a harmless idiom in one language
+cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
