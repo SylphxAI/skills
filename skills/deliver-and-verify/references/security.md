@@ -23,6 +23,8 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. Credential secrecy and payload integrity are independent: keep existing input channels usable, with a synthetic credential absent from the final spawned argv and unchanged payload and refusal bytes verified through the actual client. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
+A private script file does not isolate its imports: on shared hosts, the interpreter can execute another run's same-named module before credential handling starts. Use an isolated import path for credential-bearing probes (`python3 -I` when no local imports are needed), or explicitly trusted module roots when local dependencies are required; verify both that a synthetic shadow module stays unexecuted and that the required imports still work. **Bad:** trust a script's private filename while importing from a shared temporary directory; **Good:** prove the actual launcher selects the intended modules before giving it credentials.
+
 A wrapper can select a different principal at several routing layers, including
 local credential lookup; disabling one route does not establish the connected
 user's identity. If routing alters that lookup, use the supported unwrapped

@@ -1720,6 +1720,22 @@
     {
       "prompt": "Update generated runtime configuration and its rendered consumer references, proving existing immutable operations remain unchanged rather than relying on prune-disabled retention.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error, also covering alternate public proxy response headers on success and failure while preserving internal diagnostics and ordinary public headers.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Run an authorized read-only credential-bearing service probe on a shared host and prevent sibling scripts from shadowing standard-library imports.",
+      "clause": "authorized operational"
+    },
+    {
+      "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
+      "clause": "changing selected-source release inputs"
     }
   ],
   "negative": [
@@ -2842,6 +2858,11 @@
       "prompt": "Rewrite a completed-job operations explanation for clarity without changing source, runtime configuration or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
