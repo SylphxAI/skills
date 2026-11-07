@@ -96,6 +96,14 @@
     {
       "prompt": "A completion watch remains pending after its target finished, while per-watch REST GETs exhaust the shared API floor; restore delivery without bypassing the quota.",
       "clause": "a completion watch stays pending after its target finishes"
+    },
+    {
+      "prompt": "The release still fails because its pinned client is stale, although every updater run succeeds. Restore automatic adoption without weakening unrelated dependency protections.",
+      "clause": "a promised fix still fails"
+    },
+    {
+      "prompt": "An automatic certificate rotation remains blocked because every replacement candidate restarts the stability wait. Restore eligibility without repeatedly submitting the rotation.",
+      "clause": "restoring a task, deployment or CI/build run that has actually stalled or is failing"
     }
   ],
   "negative": [
@@ -158,6 +166,11 @@
       "prompt": "Audit the past quota cost of an event-watch implementation without restoring failed work.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "A new third-party package release is waiting normally within its configured minimum age. Leave the updater running on its normal schedule.",
+      "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
+      "route_to": null
     }
   ]
 }
