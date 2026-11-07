@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
-- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence does not turn upstream inference into authority: privilege or scheduling escalation needs authoritative source evidence, not user-controlled names or lookalikes. Verify those decisions through real upstream classification, state transformations, persistence and reload—not just directly seeded records—with absent, unknown or tampered provenance, user-controlled lookalikes and an explicit authoritative positive control, including successive transitions with unchanged or changed inputs.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence cannot turn inference or user-controlled names into privilege authority; documented provider-protocol signals may justify scheduling only within positively proven origin scope, so removing one requires an authoritative replacement available at the first actionable decision, not merely after later enrichment. Verify those decisions from real provider-shaped inputs through upstream classification, transformations, persistence, reload and every consumer—not just directly seeded records—varying event, repository/fork origin and lookalike names independently, with absent, unknown or tampered provenance alongside an authoritative positive control, explicit contradictory evidence prevailing, and successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
@@ -156,6 +156,8 @@ and run, preserving original failed receipts unchanged.
 ## Transactions and idempotency
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Replay uses the same identity equivalence as initial admission, including database collation or canonical aliases; stricter application-string equality can reject an identical retry after its effect committed. Prove an accepted alternate spelling replays the original receipt after configuration removal, with a genuinely different identity as the refusal control. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
+
+A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints.
 
 An asynchronous request captures its target's stable identity (slot, item, row
 or range) in request context at submission; its continuation never resolves the
@@ -307,6 +309,14 @@ A serializer-only test cannot prove the database accepted the event.
 
 - **Phenomenon:** Providers often validate zero-weight/inactive target references and reject the entire spec if one optional recovery/warm-up target does not yet exist; lagging status reads can overwrite a pending rollback intent if observed state is copied back into desired state.
 - **Invariants:** Keep provider existence, desired intent, and observed serving state distinct. Verify a target exists before emitting a reference to it, and preserve pending rollback/rollout intent until the matching operation is observed applied.
+
+Retention based only on serving or published references can delete artifacts
+still owned by an unfinished operation; a count cap may bypass an age grace
+period. Read the deployed collector's precedence and protected states, then
+verify in-flight delivery, recovery-point availability and expiry of unreferenced
+eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
+safe retention; **Right:** the pending artifact survives publication, the rollback
+target stays usable and eligible abandoned artifacts expire.
 
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
@@ -472,12 +482,16 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
-For catalog-driven cleanup, derive independently removable objects and deletion
-order from authoritative dependency and ownership metadata; lexical names and
-enumeration order carry neither guarantee. Through that same production path
-under the actual cleanup identity, use adversarial names/order to prove completed
-cleanup and usable post-reset state, plus rollback after a late failure when
-atomicity is promised.
+
+Derive mutation targets from authoritative ownership, not enumeration or sort
+order or matching content: a foreign object can have the same schema and values
+as an owned target. Through the production mutation path, vary names, layout and order
+with those plausible foreign objects present, proving both their preservation
+and the required owned output. For catalog-driven cleanup, also derive
+independently removable objects and deletion order from authoritative dependency
+metadata, and verify completed cleanup and usable post-reset state under the
+actual cleanup identity, plus rollback after a late failure when atomicity is
+promised.
 **Bad:** sort every catalog entry by name and count rollback as recovery;
 **Good:** respect owner-managed dependents and prove dependency-safe completion,
 subsequent use and failure atomicity.
@@ -537,7 +551,10 @@ establish compatibility with the deployed schema.
 default. **Right:** execute the actual query under the application role, preserve
 the column type, and verify the intended typed decode or explicit SQL conversion.
 Propagate unexpected encoding and decoding errors. A contract's missing-value
-default does not make an unreadable value equivalent to absence.
+default does not make an unreadable value equivalent to absence: a successful
+bulk read can collapse per-item type or access failures into missing values.
+Prove that distinction through the real adapter with both a corrupt/wrong-type
+item and a genuinely absent item before deriving defaults or healthy metrics.
 
 Sweep related projections and parameters for the same mismatch. Before removing
 a suppressed error, identify the fallback it previously supplied and which live
@@ -602,10 +619,30 @@ inside strings as refused before any write. **Wrong:** remove all whitespace
 before comparing an exact ACL path; **right:** preserve the quoted path's identity
 while accepting permitted layout changes.
 
-When opening previously uninspected syntax, put a real state mutation after every
-supported control opener and exercise its allowed and forbidden forms through
-the real checker entrypoint. Cross-dialect keywords need separate controls, so a
-harmless idiom in one language cannot exempt a destructive statement in another.
+Source-closure checks—whether every declared source exists in the published
+tree—default-deny the untracked or ignored source inventory, with exact
+per-invocation waivers, rather than accumulating syntactic exceptions. Hand-written
+cross-language declaration resolution can miss missing sources and falsely refuse
+valid code; test `.gitignore`, `info/exclude`, `core.excludesFile`, custom extensions,
+and generated-file and declared-dependency directory controls.
+
+Compiler context explains why syntactic exceptions cannot establish closure:
+
+- Module roots follow contextual rules rather than filenames; token kind and
+  preceding control/member context distinguish regex from division, a quoted
+  `"+"` from an operator, and member `.return` from control flow.
+- Binding inventories distinguish runtime writes from annotation-only bindings
+  and read/delete targets while respecting nested scopes; a refusal naming the
+  wrong unresolved target is still a resolution defect.
+- A token-tree exemption needs positive proof of the declared exempt construct;
+  a valid non-exempt form reusing its operator still contains declarations that
+  cannot be skipped.
+
+For guards enforcing syntax behavior, put a real state mutation after every
+supported control opener and exercise allowed and forbidden forms through
+[the installed checker](../../prove-it/SKILL.md#verify-installed-entrypoint-behavior).
+Cross-dialect keywords need separate controls, so a harmless idiom in one language
+cannot exempt a destructive statement in another.
 
 Workflow policy evaluators can mistake a literal in an unreachable branch for
 an allocated runner when unsupported syntax falls back to string matching.
