@@ -1400,6 +1400,18 @@
     {
       "prompt": "Repair a game test suite that discovers all tests but lost its runtime fixture executable when the build target was recreated.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Roll out a required external review check across service repositories, enrolling any missing producer before activating its fail-closed merge gate.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Enable an artifact approval gate in a game release pipeline and prove its configured producer can emit the required success for that consumer.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Arm a shared approval-gate adoption only after the target repository has a working producer and its current-source approval succeeds.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
@@ -2302,6 +2314,16 @@
       "prompt": "Review whether a past missing-executable failure happened before the intended assertion, without editing or publishing the runner.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether an installed application or empty check suite established producer availability during a past rollout, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare central and per-repository approval producers as proposed architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }
