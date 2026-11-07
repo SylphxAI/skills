@@ -564,18 +564,24 @@ routing expression before choosing a supported event with the intended metadata.
 Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
 
 
-- Dependency installation alone does not establish test readiness: workspace
-  exports may resolve to generated files, and assertions may invoke external
-  executables. The package's exports and CI setup identify those prerequisites;
-  they belong in the test's own lease and build target, with the production
-  version when an evaluator or runtime is part of the claim. Recreating a target
-  removes its runtime fixtures; discovering or compiling test harnesses does not
-  establish that their plain executable dependencies were rebuilt. A missing module or executable
-  leaves behavior untested; source aliases or skipped assertions change the claim.
-  **Wrong:** replace a missing published export with a source alias, or install
-  a browser in one disposable lease and run its suite in another.
+- Dependency installation alone does not establish test readiness: package
+  exports and CI setup identify generated files and external executables needed
+  in the test's own build target, with production evaluator/runtime versions
+  when those are part of the claim. Dependency preparation and offline fixture
+  compilation share the same effective executor, package source and cache;
+  a wrapper can place each nested command in a fresh cold lease, so a successful
+  fetch does not prepare the next command. Verify that the real fixture working
+  directories and subcommands are supported by that execution path before running
+  the suite; a refusal before compilation is environment evidence, not a
+  product-code verdict. Recreating a target removes runtime fixtures; discovering
+  or compiling harnesses does not prove their executable dependencies were rebuilt.
+  A missing module or executable leaves behavior untested; source aliases or
+  skipped assertions change the claim.
+  **Wrong:** replace a missing published export with a source alias, or fetch
+  dependencies in one cold lease and compile offline in another.
   **Right:** build the exported package and prepare the pinned executables and
-  system libraries in the lease and target that run the affected tests.
+  system libraries through the supported fixture launch path in the executor,
+  cache and target that run the affected tests.
   See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
 - Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06). Cancellation guards alone do not protect queued work: under GitHub's default one-pending-slot behavior, a stable non-PR group can evict an older pending run even with `cancel-in-progress: false`; unique per-run non-PR groups or an explicitly supported queue preserve those runs. Reusable workflows inherit the caller's `github.workflow`, so a caller and callee sharing that group can cancel or block their own invocation; verify the resolved call graph rather than each block in isolation.
 - A required aggregate verdict reflects failure of its required work and identifies the failed check, even when the inner command is silent; explicitly non-blocking cleanup and diagnostics are separate; never mask a required failure with success syntax or a missing resource. A healthy-path pass or dependency edge cannot prove propagation: failure or cancellation may skip an intermediate job that a later aggregate accepts. **Wrong:** infer coverage from an all-green chain; **Right:** witness a required failure reaching a non-passing aggregate through every intermediate boundary, or prove those transitions before reducing the graph.

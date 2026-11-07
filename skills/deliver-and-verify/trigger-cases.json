@@ -226,7 +226,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
+      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
       "clause": "running builds or tests in a lease"
     },
     {
