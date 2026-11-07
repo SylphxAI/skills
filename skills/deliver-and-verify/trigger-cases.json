@@ -1562,7 +1562,7 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Implement regression coverage for shared readiness through every assembled constructor, including intentionally absent optional capabilities rather than only configured helper states.",
+      "prompt": "Implement regression coverage for shared readiness from the real environment/declaration parser through every production constructor: intentionally absent configuration stays valid, while configured capabilities with missing, empty, malformed, or non-Unicode prerequisite bindings cannot disappear into an absent runtime.",
       "clause": "implementing or shipping a feature, bug fix"
     }
   ],
