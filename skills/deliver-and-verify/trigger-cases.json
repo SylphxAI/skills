@@ -1870,6 +1870,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a SaaS browser-test helper that closes its session before retaining the failure screenshot and masks the original error when cleanup fails.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game native preparation helper so bounded failure evidence is retained before the owned device is released, without replaying uncertain input.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a database-fixture runner correction that keeps the original test failure primary when diagnostic capture and teardown also fail.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change CI workflow runner selectors to isolate merge builds while preserving their required memory class in the target organization.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -3095,6 +3107,21 @@
     },
     {
       "prompt": "Rewrite the explanation of slow-pass scheduler fairness and idle controls for clarity without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past browser failure lost its original cause during cleanup, without changing code or rerunning anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare retaining a stateful test session and exporting a diagnostic snapshot as alternative architectures, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explanation of failure evidence and teardown without changing helpers or operating a service.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
