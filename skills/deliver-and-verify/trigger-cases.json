@@ -1156,6 +1156,14 @@
     {
       "prompt": "Ship a concurrency repair that preserves pending main-branch runs even when active-run cancellation is false.",
       "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a SaaS worker test that mistakes accepted but unfinished setup work for completed work, so legitimate recovery races its duplicate-delivery assertion.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game reward retry fixture by proving completed and interrupted grants have distinct lifecycle states before testing duplicate delivery.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
