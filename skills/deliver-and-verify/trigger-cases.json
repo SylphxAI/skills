@@ -14,6 +14,14 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Align a SaaS project declaration with its live identity when the typed CLI rejects a legacy UUID but the supported raw API returns a canonical resource.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Repair a card-game account lookup client that classifies an accepted legacy account ID as a handle; preserve the existing account and verify both accepted forms.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement credential refresh recovery after a dropped response, preserving the current valid credential while using the provider-supported duplicate-safe retry contract.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1524,6 +1532,14 @@
     {
       "prompt": "Change database fixture identifiers to respect the tightest seeded column bound while retaining a random suffix.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Publish a SaaS reader-permission delta stacked on its held dependency branch when the commit is local but the publisher cannot find that branch's remote-tracking base.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a card-game balance patch for review on its prerequisite branch, verifying that the single-branch checkout materialized that exact remote base without retargeting to main.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [

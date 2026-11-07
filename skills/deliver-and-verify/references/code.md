@@ -155,7 +155,7 @@ forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
 
-Optional presentation metadata and executable fulfilment are separate contracts: omitting a label cannot make an unresolved entitlement, stock item or nested bundle grantable. Before consuming a single-use right, validate the complete payload against the actual fulfiller's catalogue and supported types; a mixed valid/invalid payload must refuse atomically, while missing optional labels alone may still succeed.
+Optional presentation metadata and executable fulfilment are separate contracts: missing labels may be harmless, but a valid container does not prove its executable descendants resolve. Before consuming a single-use right, resolve the complete payload recursively through the actual fulfiller's type-specific catalogues; any unresolved descendant must refuse the whole operation atomically. Test missing typed leaves at several nesting depths alongside an entirely valid nested payload and missing optional labels, so neither top-level-only checks nor blanket refusal can pass.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
@@ -320,6 +320,13 @@ from the qualifying observation to the guarded action, including client startup
 and transport setup. Read-only setup may happen beforehand if the final
 observation still verifies the exact target and state; extending receipt validity
 to hide setup time weakens the safety contract.
+
+A bounded side task can still cross into a periodic worker's narrow due window;
+a clock read from before that task is stale when choosing the next wait.
+Recompute eligibility after side work and before sleeping, preserving slot
+deduplication. Drive a side task across the window boundary with a controlled
+clock and prove the due slot runs once while an already-completed slot stays
+suppressed.
 
 In PostgreSQL, `now()` and `CURRENT_TIMESTAMP` name the transaction start.
 Moving them to the final update of a long transaction still consumes the new

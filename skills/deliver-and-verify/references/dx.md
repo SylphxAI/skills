@@ -407,7 +407,7 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
-- **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
+- **Remote-tracking refs in single-branch clones:** Before comparing or publishing a checkout, materialize and verify the exact remote-tracking ref selected as its base; a readable commit or same-named local branch does not prove that the publisher can bound its history against that remote ref. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; inspect `remote.<name>.fetch` and use the repository's supported named-base fetch or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`). Restoring a missing stacked-base ref does not require retargeting the held PR or merging the default branch.
 - **Safe worktree cleanup:** Git cleanliness and pushed commits do not prove that a working directory has no unique outputs; automatic retirement can also remove non-Git directories. Safe cleanup depends on preserving unpushed commits and unique or uncertain drafts, reports, logs, captures and patches outside the entire deletion scope and reading the saved bytes back before removal. Rebuildable build trees need no preservation.
 - **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors; do not change code to appease a stale artifact.
 - **Private test fixtures:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename; leave another run's files and permissions alone. Keep Unix socket paths within the operating system's limit and verify any short alias through both server and connection-URI parser. Isolate process-global environment and lock assertions in single-test subprocesses: an in-process mutex cannot protect them from concurrent fork/exec fixtures that inherit descriptors until exec. Launch fixture children with unrelated identity, configuration and data-directory overrides removed, retaining explicit fixture inputs; numeric identity separation alone does not isolate inherited authority.
@@ -437,6 +437,15 @@ exit code and a signal separately when the supervisor can distinguish them;
 label a shell's signal-like status as a convention rather than proof of cause.
 Missing logs limit the conclusion; do not substitute a resource or flag change
 for evidence of the failure.
+
+A supervisor-only lock and deadline disappear on `SIGKILL`, while a detached
+child can continue work and overlap its replacement. Exclusion and cleanup must
+cover the whole child lifetime: a cleanup owner retaining an inherited lock and
+watching a pipe whose sole writer is the supervisor can detect EOF, terminate
+child process groups and finish cleanup before releasing the lock. In a
+disposable fixture, hard-kill only the supervisor and verify descendant
+termination, owned temporary-state cleanup and replacement exclusion until
+cleanup finishes; graceful-stop tests do not establish this contract.
 
 Verify with a disposable instance: terminate only the supervised runtime, then
 observe management readiness, refusal without dispatch, retained files and

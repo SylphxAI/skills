@@ -20,7 +20,8 @@ Native tests and browser previews can exercise different input and feature paths
 
 ## Step 0: Route identifier changes
 
-When changing multi-namespace lookups or identifier-based pagination, read
+When reconciling legacy and canonical identifiers, changing multi-namespace
+lookups or identifier-based pagination, read
 [identifiers.md](references/identifiers.md) before defining acceptance cases.
 
 ## Coordinate the work
@@ -131,8 +132,9 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When handling credentials exposed in process arguments or changing diagnostic
-or stored-body redaction, read [security.md](references/security.md) to protect
+When changing credential routing, handling credentials exposed in process
+arguments or changing diagnostic or stored-body redaction, read
+[security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.
 
