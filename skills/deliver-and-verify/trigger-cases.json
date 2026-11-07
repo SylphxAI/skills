@@ -1720,6 +1720,18 @@
     {
       "prompt": "Update a SaaS deploy approval to select previously merged source and verify release scope against resolved old and new materializations.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Implement automatic profile rotation without interrupting an active turn, retaining its load in capacity accounting.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Fix a SaaS worker configuration reload so active jobs survive the drain deadline and queued requests resume once after completion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game-server maintenance change that defers disruptive credential rotation until a match ends while counting the running match toward load.",
+      "clause": "implementing or shipping a feature"
     }
   ],
   "negative": [
@@ -2832,6 +2844,21 @@
       "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a past profile rotation killed an active child after its drain timeout, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dynamic snapshots and rolling restarts for a proposed worker architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local guide explaining graceful shutdown, without changing source or operating the service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }

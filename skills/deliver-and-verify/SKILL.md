@@ -112,6 +112,9 @@ Before bulk mutations, including cancelling CI runs, read
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
+For automatic configuration rotation, runtime reloads or graceful drain, read
+[configuration reload and graceful drain](references/dx.md#internal-development).
+
 When changing shared runtime settings or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
