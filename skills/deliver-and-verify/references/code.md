@@ -401,11 +401,14 @@ Check that revision's transaction boundaries and lock lifetimes, including
 external calls made inside transactions. A lock-release fix shipped with the
 migration cannot make its own earlier DDL safe. If DDL depends on that fix,
 deploy and verify the fix first; otherwise document why the migration works
-independently of it. Bound lock waits using the migration system's supported
-timeout, and test contention against the old behavior when it affects safety.
-**Wrong:** justify a new column's lock with transaction code that is not deployed.
-**Right:** establish the old caller releases the conflicting lock in time, or
-ship that prerequisite separately before applying the migration.
+independently of it. A queued strong lock can block later writers before it is
+acquired, so derive each attempt's wait from the shortest affected writer budget,
+with scheduling margin, and bound total retries separately. The contention proof
+needs continuous writers at that budget queued behind the DDL, with writer
+progress and failure counts for both eventual success and clean budget refusal.
+**Wrong:** prove migration success and run a writer only during backoff.
+**Right:** observe the blocker → queued DDL → writer wait graph and preserve writer
+success while the old transaction remains open.
 
 Check both directions during a rolling cutover: new readers must understand old
 writes, and old readers must understand new writes. If backfill publishes a
