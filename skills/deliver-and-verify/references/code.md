@@ -455,6 +455,14 @@ Stateful integration fixtures can interfere through shared durable decision keys
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
+Repeated matching reads of mutable metadata prove stability during that interval,
+not which source produced an earlier transformed artifact. **Wrong:** reread the
+current source twice and authorize an older output; **right:** bind immutable
+inputs or reconstruct each authorized source's output in its immutable context
+and require equality. Test a replacement source that stays unchanged throughout
+validation, alongside unchanged-source and independently changed batch-position
+controls; churn-only tests cannot expose this gap.
+
 Cache-key or content-digest equality proves only the inputs represented by that
 key or digest; independently authoritative policy omitted from it still governs
 every reuse path, including fallback hits. A negative regression with the

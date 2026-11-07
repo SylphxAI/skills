@@ -1220,6 +1220,18 @@
     {
       "prompt": "Repair a card-game settlement worker so recovery waits behind retained player actions while a genuinely empty queue still resumes interrupted settlement.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a merge-queue CI gate so a stable replacement source cannot authorize an earlier transformed commit, proving both unchanged and replaced sources.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a selected-source release check that rereads current source twice but never binds it to the archived package contents.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Ship a game content exporter fix that proves every approved source maps to the corresponding immutable output position, including one stable replaced input.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -1980,6 +1992,21 @@
     },
     {
       "prompt": "Rewrite a local explanation of reusable workflow concurrency without changing or publishing CI.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether two stable API reads proved which source produced an old package, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare immutable-input attestation and output reconstruction for a proposed release architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of source-to-output equivalence for a user guide, without changing a verifier or operating a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
