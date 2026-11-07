@@ -1040,6 +1040,18 @@
     {
       "prompt": "Run a Kubernetes DELETE dry-run with a DeleteOptions body and prove the same object UID and resourceVersion remain before retiring its metadata.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a checkout transaction that stalls only when the configured catalogue cache refreshes with a pool of one connection.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a save-helper repair whose absent-cache fixture passes while its enabled cache borrows a nested connection.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
+      "clause": "changing selected-source release inputs"
     }
   ],
   "negative": [
@@ -1720,6 +1732,21 @@
     },
     {
       "prompt": "Rewrite this explanation of reconciliation completion flags without changing software or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the earlier pool-size-one result actually exercised the enabled cache-refresh branch, without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare transaction-bound refresh and preloaded catalogue snapshots for a proposed design, without implementing it.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

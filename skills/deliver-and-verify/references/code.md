@@ -114,13 +114,14 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
-A nested admission helper that acquires a second connection from the caller's
-finite pool can starve while the outer transaction holds the available capacity;
-a larger test pool can hide this dependency. Reuse the caller's transaction
-connection and prove the public entry point completes with `max_connections=1`,
-while retaining separate multi-connection proofs for races. **Wrong:** increase
-the pool to make a nested acquisition pass; **right:** remove that acquisition
-and verify both constrained-capacity progress and concurrent correctness.
+A nested helper that acquires a second connection from the caller's finite pool
+can starve while the outer transaction holds the available capacity; a larger
+test pool or absent optional cache can hide that branch. Reuse the caller's
+transaction connection, or finish independent initialization before entering it.
+The public-entry test with `max_connections=1` needs an enabled dependency and a
+forced cache refresh, alongside separate multi-connection race tests.
+**Wrong:** pass with no cache or increase the pool; **right:** exercise the real
+refresh path and verify constrained-capacity progress and concurrent correctness.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
