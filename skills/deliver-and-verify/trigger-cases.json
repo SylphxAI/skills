@@ -1808,6 +1808,18 @@
     {
       "prompt": "Update a card-game job access policy when the gateway routing label is not propagated to its generated reward workers; verify their effective identities and access.",
       "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Rotate a Job's credential file and ensure a FIFO at that path is refused before its open can stall unrelated jobs.",
+      "clause": "rotating secrets consumed by Jobs"
+    },
+    {
+      "prompt": "Ship a file-indexing service fix that rejects named pipes before opening them can block the shared worker.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a multiplayer server configuration reader so a malformed special-file input cannot block other worlds behind its validation mutex.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2963,6 +2975,21 @@
     },
     {
       "prompt": "Rewrite this explanation of mock and observer isolation without changing tests or running commands.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a prior credential-file validation could block before it checked the opened type, without modifying or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dedicated workers and nonblocking file opens for a proposed shared configuration reader without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of why a named pipe can block, without changing source or runtime configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
