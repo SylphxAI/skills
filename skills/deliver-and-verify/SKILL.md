@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, publishing CI probe workflows, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -18,11 +18,15 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
-## Step 0: Route identifier changes
+## Step 0: Route the acceptance cases
 
 When reconciling legacy and canonical identifiers, changing multi-namespace
 lookups or identifier-based pagination, read
 [identifiers.md](references/identifiers.md) before defining acceptance cases.
+
+When admitting or changing selectable platforms, architectures or deploy
+components, read [continuous integration](references/dx.md#continuous-integration)
+before defining acceptance cases.
 
 ## Coordinate the work
 
