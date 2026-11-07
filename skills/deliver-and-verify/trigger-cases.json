@@ -1190,7 +1190,7 @@
       "clause": "publishing, editing or arming PRs"
     },
     {
-      "prompt": "Reconcile this already-armed pull request after autoMergeRequest becomes null: verify mergeQueue.entries or the gh-state pr queue line before deciding whether to enable auto-merge again.",
+      "prompt": "Reconcile this already-armed pull request after autoMergeRequest becomes null: verify the merge queue's entries (GraphQL mergeQueue.entries) or your queue cache before deciding whether to enable auto-merge again.",
       "clause": "publishing, editing or arming PRs"
     },
     {

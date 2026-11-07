@@ -681,7 +681,7 @@ Use the normal queue with its required checks and existing incident-priority rul
 
   GitHub clears `autoMergeRequest` when a PR enters the merge queue. Determine
   whether it is armed from pending auto-merge intent and actual queue membership
-  (`mergeQueue.entries` or the queue line in `gh-state pr`), never from
+  (GraphQL `mergeQueue.entries` or your queue cache), never from
   `autoMergeRequest` alone. A queued PR remains armed; preserve its existing entry
   rather than submitting another enable request because that field is null.
 
