@@ -1868,6 +1868,14 @@
     {
       "prompt": "Ship a card-game worker fairness repair so periodic cleanup cannot starve ready player-action notifications, without inventing idle work or an undeclared catch-up burst.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Regenerate a SaaS API registry, console actions and documentation so canonical exclusions override broad routing inference, missing metadata retains its documented fallback and supported endpoints remain available.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Regenerate a card game's client catalog and editor documentation so explicitly excluded rewards stay unavailable despite inferred expansion support, while supported rewards and documented missing-metadata fallbacks remain unchanged.",
+      "clause": "generating source"
     }
   ],
   "negative": [
@@ -3083,6 +3091,11 @@
     },
     {
       "prompt": "Rewrite the explanation of slow-pass scheduler fairness and idle controls for clarity without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite a museum visitor notice for clarity without changing code or publishing anything.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
