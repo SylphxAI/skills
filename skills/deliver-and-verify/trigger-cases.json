@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a live database snapshot before a gateway upgrade, proving it completes while another connection keeps committing writes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Roll back a commerce service executable against its current migrated database while preserving orders accepted after its backup.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game server recovery path that separates executable rollback from restoring an older player-state snapshot.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Arm a SaaS API pull request after its required automated review succeeds at the current head, preserving any existing queue entry.",
       "clause": "publishing, editing or arming PRs"
     },
