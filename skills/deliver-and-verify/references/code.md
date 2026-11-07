@@ -133,7 +133,7 @@ and run, preserving original failed receipts unchanged.
 
 ## Transactions and idempotency
 
-Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
+Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Replay uses the same identity equivalence as initial admission, including database collation or canonical aliases; stricter application-string equality can reject an identical retry after its effect committed. Prove an accepted alternate spelling replays the original receipt after configuration removal, with a genuinely different identity as the refusal control. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
 An asynchronous request captures its target's stable identity (slot, item, row
 or range) in request context at submission; its continuation never resolves the
@@ -154,6 +154,8 @@ The public-entry test with `max_connections=1` needs an enabled dependency and a
 forced cache refresh, alongside separate multi-connection race tests.
 **Wrong:** pass with no cache or increase the pool; **right:** exercise the real
 refresh path and verify constrained-capacity progress and concurrent correctness.
+
+Optional presentation metadata and executable fulfilment are separate contracts: omitting a label cannot make an unresolved entitlement, stock item or nested bundle grantable. Before consuming a single-use right, validate the complete payload against the actual fulfiller's catalogue and supported types; a mixed valid/invalid payload must refuse atomically, while missing optional labels alone may still succeed.
 
 A response type with write-only fields can still yield safe metadata; judge the actual serialized answer against its declared field policy at the durable replay boundary, including nested values. If publication is refused after an effect may have committed, preserve the claim or earlier safe receipt so a retry cannot repeat the effect; an atomic refusal instead rolls back the effect. Prove both boundaries through their real entry points, with safe metadata replay as a positive control.
 
