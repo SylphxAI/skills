@@ -12,6 +12,15 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+A configuration rewrite can corrupt untouched caller fields when a serializer
+from another format accepts different string escapes or key syntax. Verify the
+complete rewritten document with the destination consumer's parser, including
+non-ASCII and escaped keys and values, and assert that caller-owned content
+survives successive updates and removal of managed settings. **Wrong:** inspect
+only the new section or round-trip through the helper's own serializer;
+**Right:** parse the emitted configuration through its actual consumer and
+compare preserved fields.
+
 A scoped policy waiver suppresses only its local findings: waived input still
 updates semantic state, including facts that invalidate earlier assumptions,
 while tokenization, parsing and boundary failures remain non-waivable.
