@@ -602,7 +602,11 @@ active element; synthetic `KeyboardEvent` dispatch only checks the listener path
 Trusted delivery and an uncancelled event do not prove a native default ran:
 calibrate the input bridge against the actual effect in a minimal positive control,
 including generated character input when applicable, before attributing its absence
-to application code. Preserve the behavioral negative when repairing the bridge.
+to application code. Exercise that control both after fixture reset and under the
+fixture's active mocks: a mocked product transport can acknowledge a driver
+request without delivering input. Keep the input driver's control path independent
+of mocked product transport, preserving the native default-effect assertion and
+behavioral negative when repairing the bridge.
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
