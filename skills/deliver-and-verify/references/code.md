@@ -260,20 +260,20 @@ rather than eventual completion alone.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
-Track failure cause separately from certainty about effects: once a request may
-have reached its worker, a lost connection, timeout or subsequent worker death
-can explain a missing response without proving the command did not run, and
-cancellation can release a waiter while noncancellable work continues.
+Track failure cause separately from certainty about effects: once a request
+may have reached its worker, a lost connection, timeout or subsequent worker
+death can explain a missing response without proving the command did not run,
+and cancellation can release a waiter while noncancellable work continues.
 Preserve the unknown outcome, typed cause and original idempotency key; keep
 settlement observation attached to the unresolved operation's lifetime,
 including idle gaps, and replay or reconcile through the supported contract
-without starting a second logical operation. Reconcile only when observed
-state diverges from intended state—an authoritative terminal receipt can
-resolve an unknown outcome, while a late acknowledgement of unchanged state
-must terminate rather than recursively rewrite it; classify a failure as
-pre-dispatch rejection only when dispatch was conclusively prevented, and a
-controller's terminal status alone does not prove its worker exited or
-released its lock.
+without starting a second logical operation. Apply corrective writes only
+when observed state diverges from intended state—an authoritative terminal
+receipt can resolve an unknown outcome, while a late acknowledgement of
+unchanged state must terminate rather than recursively rewrite it; classify a
+failure as pre-dispatch rejection only when dispatch was conclusively
+prevented, and a controller's terminal status alone does not prove its worker
+exited or released its lock.
 
 Verify this boundary through the real transport: have the peer receive the
 request, then close the connection before response headers. Assert the typed
@@ -585,7 +585,7 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check intermediate and final state after delayed settlement, including an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
+Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
