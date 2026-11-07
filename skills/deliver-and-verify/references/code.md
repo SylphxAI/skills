@@ -102,6 +102,15 @@ preemption effects; final-state savings do not establish a safe transition.
 **Right:** stage source activation against the owning controller's actual rollout
 and verify availability without racing it with another replacement mechanism.
 
+HTTP readiness success or a `Ready` pod can precede initial discovery and usable
+work; a controller may retire the predecessor on `readyReplicas` while
+`minReadySeconds` affects only availability. Bind cutover to the exact field the
+installed controller consumes and evidence that the required replacement workload
+is discovered and usable, rather than fixed delays or probe-count timing
+assumptions. Through that controller, hold discovery pending beyond any configured
+delay and verify the predecessor remains serving, then release healthy discovery
+and verify usable work permits retirement.
+
 Protect co-dependent stateful and serving-path pods at a shared numeric priority
 that routine work eligible on their nodes cannot preempt; keep deliberately
 expendable batch work below that tier. `preemptionPolicy: Never` prevents its pod
