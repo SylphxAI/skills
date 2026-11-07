@@ -1456,6 +1456,14 @@
     {
       "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
       "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a source publisher that contacts the remote before validating malformed local objects; finalize its local plan before HTTP or transport calls, preserve remote-only history and inject faults at remote object availability.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Replace a card-game source-closure guard's module exceptions with default-deny untracked or ignored source inventory and exact per-invocation waivers; test Git ignore routes, custom extensions and allowed generated-file and declared-dependency directories.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [

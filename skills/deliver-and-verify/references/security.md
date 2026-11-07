@@ -53,12 +53,22 @@ boundary without deriving authority from diagnostics.
 Default workflow tokens to read-only and request the write a job needs. Pin third-party actions by commit where that is the repository policy. Pass untrusted input as data through environment/typed arguments, quote shell expansion and avoid evaluating it as source; moving a value into `env:` alone does not make later evaluation safe.
 
 A weaker inspection path requires positive trust evidence for every filesystem
-object and setting on which resolution depends, before trusting the tool's result;
-unproven inputs retain strict inspection. A known-bad selector list cannot establish
-that boundary: pointer files, configuration includes and inherited environment
-overrides can all redirect resolution. Test each supported indirection with an
-untrusted target and a fully proven trusted control, rather than treating an
-unlisted selector as safe.
+object and setting on which resolution depends; unproven inputs retain strict
+inspection. Pointer files, configuration includes and inherited environment
+overrides can redirect resolution, so a known-bad selector list cannot establish
+trust. Test each supported indirection with an untrusted target and a fully proven
+trusted control.
+
+A terminal-write refusal is too late if earlier reads or metadata mutations
+already have effects: before any external call, seal classification, caller
+intent, immutable-object parsing, parent presence, canonical identity decisions
+and the complete local transform into a fixed authorized plan. Live remote facts
+may preserve or narrow that plan, or refuse it, but never supply new source or
+trigger new local parsing; race and compare-and-swap guards still belong at the
+write boundary. Verify malformed local inputs produce zero HTTP and zero transport
+calls, with a positive control preserving remote history absent from local
+tracking metadata, and inject faults at their semantic phase (such as remote
+object availability) rather than whichever low-level read happens first.
 
 For privileged tool maintenance, run executables from user-writable paths as
 that user, including version probes, health checks and post-install validation.
