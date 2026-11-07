@@ -144,7 +144,7 @@ for A, select same-text B and let A's reply mutate B; **Good:** resume against
 captured A and refuse a replaced or stale A, while unchanged A succeeds even
 after a test moves selection to B between submission and response.
 
-Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original payload under a discarded old route/key through the real API after persistence reopen or row aging, with a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested helper that acquires a second connection from the caller's finite pool
 can starve while the outer transaction holds the available capacity; a larger
@@ -649,7 +649,7 @@ For shell evidence gates, execute the actual script with the runner's shell opti
 
 Runtime fixtures must compile and lint in the repository's compile-only configurations without runtime-only setup; passing configured execution does not establish that contract. At execution, a required resource-dependent check fails clearly when setup is absent, while an optional suite retains its documented behavior without the fixture. For optional tests, verify both states and require the fixture at the proof's invocation boundary; a green skip does not establish that database, browser or external-service assertions ran. An intentionally excluded or slow test records its reason and supported execution route, with scheduling chosen from the workload.
 
-Share cohesive fixtures and table-driven cases where that improves readability.
+Share cohesive fixtures and table-driven cases where that improves readability. When production treats fields independently, vary them independently in allowed and refused cases unless its contract guarantees equality; assigning the same value to tenant and owner can hide a boundary defect.
 When several implementations or adapters claim one behavioral contract, preserve
 the authoritative cases’ identities, multiplicity, units and expected outcomes
 across the changed boundaries; a locally reconstructed equivalent can erase the

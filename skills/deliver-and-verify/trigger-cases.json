@@ -1436,6 +1436,14 @@
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
       "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Extend terminal-state replay tests to resend the original payload through a discarded alias, including source-only replay and late redelivery.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a tenant-boundary fixture whose tenant and owner fields always share a value, varying them independently in permitted and refused cases.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -2363,6 +2371,16 @@
       "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an erasure test covers discarded aliases and late redelivery, without modifying or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare fixture identity models for a proposed authorization architecture, without implementing tests.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
     }
   ]
 }
