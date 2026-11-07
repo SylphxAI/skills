@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Move CI concurrency to individual job locks while preserving every expanded matrix child and reusable caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Fix a SaaS checkout whose error notice appears while the retry button is still disabled, preserving duplicate-payment prevention.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1959,6 +1963,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an existing job-ID concurrency prefix causes matrix siblings to cancel each other, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
       "clause": "prove-it for a review or evidence check",
