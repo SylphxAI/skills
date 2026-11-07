@@ -594,11 +594,14 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
-Before patching allegedly lost input, trace delivery through the handler, state
-change, paint generation and presentation: a callback or generated paint does
-not establish visible completion. Retain the unchanged early capture and any
-later transition with no new input; that transition distinguishes delayed
-completion from a dropped action, without establishing the cause of the delay.
+Before patching allegedly lost or duplicated input, trace the affected user/device
+and automated paths through host normalization, handler, state change, paint and
+presentation; those paths can use different protocol branches, and a callback
+still does not establish visible completion. A synthetic-path failure establishes
+neither a universal product defect nor an automation-only defect, and a changed
+stimulus must preserve the complete action workload. Retain the unchanged early
+capture and any later transition with no new input to distinguish delayed
+completion from a dropped action, without inferring its cause.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a
