@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS editor's offline layout check that uses full screenshot dimensions despite an inset content viewport; recompute each calibration row with its measured origin, scale and anchor rules.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game hit-area checker that preserves a narrow-profile static overlap and a wide-profile successful tap as separate valid results rather than rejecting every supported aspect ratio.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a map app's geometry calibration so a content inset changes available width as well as origin, allowing left- and right-anchored controls to move differently in offline predictions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Move CI concurrency to individual job locks while preserving every expanded matrix child and reusable caller.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -1934,6 +1946,18 @@
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
+      "prompt": "Fix a recursive parser/graph resolver that flattens linked payloads: a three-node chain must use the contract's direct-parent identity rather than a transitive-root identity, with a valid no-inheritance control through the public entrypoint.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
+      "prompt": "Repair inherited authorization or configuration resolution so a shared nested payload does not transfer the root identity; distinguish direct-parent and transitive-root outcomes through the production path and retain a non-matching root control.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
+      "prompt": "Implement provenance-graph materialization for recursively shared records, checking the reference-selected edge identity in a three-node chain while keeping unrelated flat formatting out of scope.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
       "prompt": "Ship a SaaS menu repair whose new dormant Export control has valid geometry and a handler but no intended feature; compare its identity and state with the verified serving baseline before accepting it.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1962,6 +1986,14 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Add a SaaS policy-test CI step using only its selected runner's declared runtime and sparse checkout, rather than a workstation-only package launcher.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a game asset-validation workflow with explicit package-launcher setup and prove the declared command runs before judging its assertions.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Change a game release guard to reject pointer-only selections that mix runtime modules while keeping a single-module rebind passing.",
       "clause": "changing selected-source release inputs"
     },
@@ -1987,6 +2019,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether the retained database timings establish a lock-wait cause; do not change or publish anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare storage architectures for a document archive without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a password-reset help paragraph for clarity without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an existing job-ID concurrency prefix causes matrix siblings to cancel each other, without changing or publishing source.",
       "clause": "prove-it for a review or evidence check",
@@ -3268,14 +3315,29 @@
       "route_to": "clear-writing"
     },
     {
+      "prompt": "Review whether a parser's recursive linked-payload tests distinguish direct-parent identity from transitive-root identity, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
       "prompt": "Review whether this unchanged UI baseline already has evidence for its control inventory and states; report findings without changing tests or publishing anything.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
     {
+      "prompt": "Compare direct-parent and transitive-root identity strategies for a proposed permissions graph before choosing an implementation.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
       "prompt": "Compare candidate architectures for declaring intended UI activation states without implementing a checker or publishing a change.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a plain-language explanation of shared-payload identity semantics without changing tests, implementation or running commands.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Rewrite the explanation of a dormant UI control for clarity, without changing product behavior, tests or publication settings.",
@@ -3286,6 +3348,11 @@
       "prompt": "Rewrite a museum visitor notice for clarity without changing code or publishing anything.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a passing local script proves its CI launcher exists on the selected runner; report evidence without editing or publishing workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     },
     {
       "prompt": "Review whether an approval-only release change selects runtime changes merged earlier by comparing resolved materializations, without editing or publishing anything.",
