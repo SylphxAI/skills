@@ -88,6 +88,10 @@ that a consumer receives it: replacement environment lists, arguments or
 volume mounts can discard new shared entries. Assert the required effective
 values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
+Resolve generated targets and consumer references in that rendered output too:
+namespace or content-hash rewriting can leave separately valid documents
+pointing at different objects. **Wrong:** validate a template and its generator
+independently; **right:** verify the emitted consumer resolves the emitted target.
 
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial
@@ -173,9 +177,10 @@ writer blocked behind the first in a real database fixture, then verify commit
 order and complete results through the public after-cursor read, including
 writers for different event types.
 
-Independent background candidates need both forward progress and revisitation:
-an early pending or failed row must not starve later work or become stranded when
-its eligibility changes after discovery advances. Repeated polls with unchanged
+Independent background candidates need isolated failure and retry state, forward
+progress and revisitation: an early pending or failed row must not starve later
+work or other tenants, or become stranded when its eligibility changes after
+discovery advances. Repeated polls with unchanged
 inputs prove only idempotence; change an already-scanned candidate's inputs and
 verify its later completion through the public worker or poll entrypoint, without
 a read that can itself complete the work. Preserve its retry source until the
@@ -446,7 +451,7 @@ publishing the correction.
 
 ## Tests
 
-Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation matrices, unchanged controls must pass and each mutant must fail at least its intended target. Run every case and report the full mutant-by-case failure matrix so unrelated fixture interference and surviving mutants remain visible without rejecting legitimate failures across multiple cases.
+Stateful integration fixtures can interfere through shared durable decision keys even when their rows or transactions are unique; isolate independent cases at the full key scope read by production behavior, preserving intentional sharing within a scenario. For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work.
 
@@ -531,11 +536,19 @@ specified date string; a transport retry change needs no formatting cases.
 A negative test can pass for the wrong failure when setup refuses before the
 injected fault. Assert the specific typed refusal or root cause, print the full
 error chain on mismatch, and verify that substituting an unrelated fault makes
-the assertion fail. **Wrong:** accept `is_err()` or a wrapper's generic “check
-failed”; **right:** require the changed-price refusal after a passing baseline,
-while a stale-heartbeat refusal fails that same assertion.
+the assertion fail. For expected compiler failures, match machine-readable diagnostic
+codes plus the intended source/API identity, never compiler English wording.
+**Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
+the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
+fails that same assertion.
 
-Before asserting that state was lost, prove the precondition held. The fixture reached the intended screen or route, the element is present and laid out, and the initial input was accepted and reads back. A getter that returns an empty value for an absent node is not evidence of loss. Fix the fixture before touching product retention, then compare after the unrelated change.
+Before attributing state loss or duplicate work to product code, prove the fixture
+reached the intended state through the real lifecycle: accepted or cursor-advanced
+work may remain incomplete and legitimately trigger recovery. Use completed and
+interrupted controls that read back their distinct state before the measured
+action; repair setup without suppressing legitimate recovery. For UI retention,
+establish a present, laid-out element with accepted input before comparison; an
+absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
 selects it. Preserve each independent reason for selection: historical comparison
@@ -616,7 +629,7 @@ the ordering; do not hide the failure by terminating unrelated sessions.
 
 ## Outbound calls
 
-- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. Reuse clients by connection and security configuration and share retry/redaction policy.
+- Give each remote operation an effective deadline/cancellation policy, configured on the client or request. An enclosing work limit must also cover admission, retries, reconciliation and durable/terminal receipts; checking time only before work begins cannot bound the final in-flight unit. **Bad:** sum only the work interval and one request timeout; **Good:** prove the complete invocation stays within its outer deadline and cancellation resumes from acknowledged durable state. Reuse clients by connection and security configuration and share retry/redaction policy.
 - Avoid holding a database transaction or lock across an external call. Prefer claiming work, committing, calling and then settling when that preserves the invariant.
 - Refresh key/token caches without blocking every reader. A refresh failure does not extend a credential's validity or revocation contract.
 - Load related rows in set-based queries on a growing list/batch path rather than one query per row.
