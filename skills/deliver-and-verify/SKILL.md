@@ -46,8 +46,8 @@ Read the relevant code, configuration and external primary specification in the 
 For readiness or propagation promises across replicas, read
 [replicated readiness](references/performance.md#replicated-readiness) before defining the probe population and timing boundary.
 
-For request/response limits, context compaction, agent tool outputs or low-rate
-flake comparisons, read
+For request/response limits, asynchronous effect admission, context compaction,
+agent tool outputs or low-rate flake comparisons, read
 [final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
 For large transfers, shared response caches, fan-out streams, archive restores,
 or stored-output replay, read
