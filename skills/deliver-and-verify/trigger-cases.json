@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a CLI wrapper test whose temporary symlink still discovers real configuration beside the source executable. Keep the child and its outputs in a private fixture.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game packaging regression test that invokes a source-adjacent deployment helper despite setting a private HOME; preserve production admission checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an export-command fixture so executable-relative helper discovery cannot reach the real publisher; prove it with a failing external-helper control.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Replace a SaaS CI SDK downloader with a pinned mirror while keeping signing credentials out of download and version-probe children.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Upgrade a card-game build SDK through a checksummed mirror and preserve its declared origin boundary across redirects.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a package-installer fix that rejects an off-origin redirect even when the returned archive would match the pinned digest.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Ship a synthetic probe that checks a newly issued credential reaches every serving replica before its advertised readiness interval.",
       "clause": "synthetic probe"
     },
@@ -280,10 +304,6 @@
     {
       "prompt": "Fix and ship a localized recovery option that reads a global language while its active UI provider selects a different locale.",
       "clause": "implementing or shipping a feature, bug fix"
-    },
-    {
-      "prompt": "Run tests in a fresh build lease after a dependency install, keeping the package cache out of the source files scanned by lint.",
-      "clause": "running builds or tests in a lease"
     },
     {
       "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
@@ -1662,19 +1682,61 @@
       "clause": "changing resource sizing or retention"
     },
     {
-      "prompt": "Repair a CLI wrapper test whose temporary symlink still discovers real configuration beside the source executable. Keep the child and its outputs in a private fixture.",
-      "clause": "changing SQL queries or fixtures"
+      "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
+      "clause": "running builds or tests in a lease"
     },
     {
-      "prompt": "Fix a game packaging regression test that invokes a source-adjacent deployment helper despite setting a private HOME; preserve production admission checks.",
+      "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Change an export-command fixture so executable-relative helper discovery cannot reach the real publisher; prove it with a failing external-helper control.",
-      "clause": "changing SQL queries or fixtures"
+      "prompt": "Repair a game-script syntax guard that infers module roots from filenames, confuses member keywords with control flow, and exempts nested declarations solely by a shared operator.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a publisher of already-local, caller-authorized source that contacts the remote before validating malformed local objects; prove zero HTTP or transport calls for those inputs while preserving explicitly authorized fetch-and-parse workflows for missing immutable parents.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Replace a card-game source-closure guard's module exceptions with default-deny untracked or ignored source inventory and exact per-invocation waivers; test Git ignore routes, custom extensions and allowed generated-file and declared-dependency directories.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this wrapper test really isolates its executable-relative helper dependencies, without changing or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare copying a command and its helper graph with running it in a container for future fixture isolation; do not implement the design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explaining why a symlinked fixture command can load real sibling helpers; do not modify the tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past SDK download followed an off-origin redirect without changing code or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare mirror-only and preinstalled-SDK architectures before implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of archive integrity versus download authority without changing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether one load-balanced success proves the claimed propagation deadline; report evidence without changing or rerunning anything.",
       "clause": "prove-it for a review or evidence check",
@@ -2736,17 +2798,17 @@
       "route_to": "clear-writing"
     },
     {
-      "prompt": "Review whether this wrapper test really isolates its executable-relative helper dependencies, without changing or running a repair.",
+      "prompt": "Review whether a syntax guard refusal names the correct unresolved target, without modifying or publishing anything.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
     {
-      "prompt": "Compare copying a command and its helper graph with running it in a container for future fixture isolation; do not implement the design.",
+      "prompt": "Compare compiler-backed and custom-tokenizer designs for a proposed source guard without implementing either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
     },
     {
-      "prompt": "Rewrite the documentation explaining why a symlinked fixture command can load real sibling helpers; do not modify the tests.",
+      "prompt": "Rewrite a local explanation of strict inspection for unproven tool resolution, without changing or publishing source.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

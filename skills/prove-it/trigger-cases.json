@@ -272,6 +272,18 @@
     {
       "prompt": "The report needs the exact historical maximum, but a worker read only a limited time window. Reconcile that claim with its population coverage.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Reconcile a game-script guard helper test with different behavior from the installed CLI, using independent compiler controls rather than a rewritten checker.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Review a syntax-guard repair by comparing unchanged regression assertions on the committed pre-fix archive and live candidate, preserving accepted permitted constructs on both.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Review whether a missing-module refusal proves correct resolution when the compiler identifies a different contextual module root and unresolved target.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
     }
   ],
   "negative": [
@@ -407,6 +419,21 @@
     },
     {
       "prompt": "Design a new attachment chunking protocol and compare its architecture with storing one large object.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Publish the tested syntax-guard repair as a held draft pull request.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Restore a currently stalled publication whose failure report hangs while redacting a long single line.",
+      "clause": "Use unblock to restore currently failing work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare installed-CLI and embedded-library designs for a proposed guard architecture without testing either.",
       "clause": "challenge to compare designs",
       "route_to": "challenge"
     }
