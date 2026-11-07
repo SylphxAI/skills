@@ -20,7 +20,7 @@ Native tests and browser previews can exercise different input and feature paths
 
 ## Coordinate the work
 
-- Keep one named writer per worktree, pull request, database record, or live configuration. Parallel readers and writers on independent targets can proceed together.
+- Keep one named writer per worktree, pull request, database record, or live configuration. Before editing shared source, search open PRs touching the same files; a task handoff can omit an earlier owning change, whose writer should receive the delta rather than a competing implementation. Parallel readers and writers on independent targets can proceed together.
 - Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
 - During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
 - Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.

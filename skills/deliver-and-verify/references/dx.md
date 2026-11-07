@@ -430,14 +430,15 @@ confirm cleanup through the normal path.
 
 ## Workflow admission
 
-Admission derives its required verdicts from the selected target's effective policy;
-a familiar workflow name, optional diagnostic or unrelated approval stamp can
-otherwise block valid work or admit an unreviewed candidate. A control protects
-a witnessed failure or real invariant within that authority; remove or recalibrate
-a mismatched control rather than adding a bypass. **Wrong:** require one target's
-optional workflow everywhere or substitute a security stamp for a specified review
-check; **Right:** bind each required verdict to its actual authority and exact
-candidate, preserving independent review requirements.
+Admission evidence follows the selected target's effective policy and the failure
+the gate is meant to detect; a familiar workflow name or unrelated approval stamp
+can otherwise block valid work or admit an unreviewed candidate. Passing
+prerequisite checks cannot establish an independent post-release health claim;
+remove or recalibrate a mismatched control rather than adding a bypass.
+**Wrong:** reuse admission checks as post-release health evidence or substitute a
+security stamp for a specified review check; **Right:** bind each verdict to its
+actual authority, exact candidate and claimed failure, preserving independent
+review requirements.
 
 Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels.
 

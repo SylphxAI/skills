@@ -1102,7 +1102,7 @@
       "clause": "changing selected-source release inputs"
     },
     {
-      "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
+      "prompt": "Before repairing a shared pull-request publisher, search open PRs touching its files and route the missing delta to an existing writer instead of creating a competing implementation.",
       "clause": "publishing or editing PRs"
     },
     {
@@ -1110,7 +1110,7 @@
       "clause": "publishing or editing PRs"
     },
     {
-      "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
+      "prompt": "Repair a post-release health gate that mistakes required admission checks, already green by construction, for evidence capable of detecting a later independent failure.",
       "clause": "implementing or shipping a feature, bug fix"
     }
   ],
