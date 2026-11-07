@@ -12,6 +12,8 @@ Generate the identity at its owning authority or through the shared SDK when it 
 
 Keep another system's published identifier unchanged. Preserve customer-held IDs and accepted external forms through an explicit migration contract; moving to a new internal representation does not authorize breaking those references. A new canonical ID for a legacy format needs a mapping or completed consumer migration. Existing UUID values need not be regenerated just to gain ordering.
 
+A parseable identifier does not identify its namespace: the same value can be valid in multiple domains and select different records. For a lookup spanning namespaces, carry an explicit tagged kind (for example, `externalKey` or `localId`) and resolve only within that namespace. Tests must cover same-value collisions and reject records owned by a different principal.
+
 UUIDv4, ULID, KSUID and coordinated integer IDs have different locality, size and generator tradeoffs. ULID is 128-bit compatible with UUID storage, although it is not UUIDv7; KSUID is 160 bits and does not fit a UUID column. Choose the identifier policy for the owning schema and its consumers.
 
 ## Order is the log's, never the id's
@@ -19,6 +21,8 @@ UUIDv4, ULID, KSUID and coordinated integer IDs have different locality, size an
 For a gap-free durable stream or change feed, use an authoritative commit/log position. Concurrent transactions can generate IDs in one order and commit in another.
 
 For ordinary list pagination, define the sort and unique tie-breaker plus snapshot/concurrency semantics. A composite `(sort_value, id)` key can support a stable list without a new serialization system. Store a separate authoritative timestamp where people need to know when an event occurred.
+
+For exclusive-cursor pagination, absence and a legal ID are distinct states: an in-range sentinel can silently exclude a valid row. Initial queries preserve the full legal ID range, explicit cursors remain exclusive, and boundary tests verify both paths and terminal completeness.
 
 ## The text form: TypeID
 

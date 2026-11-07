@@ -2,6 +2,122 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Update a shared CI action reference, preserving the source comments required by the dependency updater and verifying its enforced provenance check as well as parsed YAML.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a payment-adapter unavailable-state test that spends its deadline on real retry backoff; keep production refusal and adapter coverage.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game launcher offline-mode test by injecting dependency failure into its real startup decision while retaining executable startup checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS database launcher that validates a connection URL generically but the actual migration driver ignores its socket option; assert the effective endpoint through both real parsers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a mail relay client that double-decodes a password containing literal percent-escape text after transferring it between connection-string libraries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a storage client fix that preserves independently specified connection option precedence and reserved-character credentials across its runtime adapters.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS policy matcher whose shared regex classifies astral characters differently in backend and browser runtimes; preserve inspection when classifications disagree.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset selector fix that carries combining-character and line-separator cases through the actual server and client matchers instead of normalizing test fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement cross-runtime matcher regression cases using effective runtime flags and the code-point, UTF-16 code-unit or grapheme-cluster contract rather than assuming identical pattern text gives parity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS integration helper that sends API-specific Accept headers to an object service; verify the prepared requests and an authorized read-only metadata request.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game asset downloader repair that preserves same-origin authentication but removes credentials on a redirect to another origin.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a package-publication receipt whose permissive HTTP fake currently hides a real registry media-type rejection.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change CI so the full enrolled SaaS test inventory completes on its smallest supported runner without weakening per-test bounds or correctness assertions.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a card-game CI wrapper whose aggregate subprocess timeout expires while the complete asset-validation suite is making legitimate progress.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix an email-provider retry classifier that mistakes negated throttle text for a supported refusal and ignores a malformed required reset when another retry hint is valid.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a game entitlement integration fix that waits for both independently required quota barriers and keeps the typed refusal distinct from uncertain delivery effects.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a paged payment reconciler so an old pending receipt is revisited when provider settlement arrives after its scan cursor advances.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix a CRM delivery worker that sends later eligible messages but strands an earlier message after the customer becomes contactable.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Repair a retention reconciler whose failed early candidate is never retried after a later page succeeds.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Implement a live database snapshot before a gateway upgrade, proving it completes while another connection keeps committing writes.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Roll back a commerce service executable against its current migrated database while preserving orders accepted after its backup.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a game server recovery path that separates executable rollback from restoring an older player-state snapshot.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Arm a SaaS API pull request after its required automated review succeeds at the current head, preserving any existing queue entry.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Enqueue a card-game configuration change through the normal queue only after the separately required review covers every changed path.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Re-arm a dequeued pull request after its neutral review is replaced by a successful current-head review, with one guarded submission.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Fix a game administration tool whose read-only mode dispatches to the grant writer, testing zero effects through its real entrypoint and a misrouting mutant.",
+      "clause": "changing database privileges"
+    },
+    {
+      "prompt": "Change workload credential isolation so a verifier without an admin mount cannot retrieve the same secret through its shared API identity.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change diagnostic redaction for a privileged worker to preserve safe execution stages and error codes without inferring that a missing receipt means no effects.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
       "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
       "clause": "repairing recovery references or reconcilers"
     },
@@ -203,6 +319,10 @@
     },
     {
       "prompt": "Ship a shared service setting and verify each regional deployment overlay that replaces its environment list receives the required value.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Ship a Job mounting a generated ConfigMap and verify its rendered namespace and hashed reference resolve to the emitted object.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
@@ -658,6 +778,30 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Extend a SaaS migration guard from a schema snapshot to the directories used by its migration runners.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship opt-in filename-dialect routing for a game migration guard before enrolling its mixed SQL directory, preserving existing defaults.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Enroll a document service's separate PostgreSQL migration stores in CI and verify their effective guard scopes and dialects.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Publish bulk CI enrollment only for repositories included by the authoritative lifecycle and ownership inventory, including an explicitly eligible frozen target.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a bulk configuration change that excludes paused and retired services under its declared scope instead of trusting nonarchived provider search hits.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement bulk CI updates that leave repositories with unknown lifecycle or owner mappings unresolved rather than guessing they are active.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -751,6 +895,10 @@
     },
     {
       "prompt": "Build a matched browser engine benchmark with shared texture assets and validate the independent bilinear pixel checker before timing.",
+      "clause": "benchmarking engines"
+    },
+    {
+      "prompt": "Optimize fragment-shader frame times with ablations, pixel-equivalent specialized pipelines and frozen paired engine runs.",
       "clause": "benchmarking engines"
     },
     {
@@ -863,15 +1011,15 @@
     },
     {
       "prompt": "Add a deployed proof link to the body of an open billing-service PR whose required checks are queued.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Rename the game-server pull request while its edited-event checks are waiting for a runner.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update an SDK pull request title and body with follow-up links while the shared CI pool is starved.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a disposable recovery database fixture to the deployment repository and verify its backup and lifecycle policy defaults before delivery.",
@@ -940,6 +1088,14 @@
     {
       "prompt": "Change a blob-filtered CI checkout and verify every graph and content read under the job's final credentials.",
       "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Change the source materialization for a standalone policy scanner, preserving dynamically loaded helpers and the revision context supplied by its normal launcher.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Move a game asset validator into a CI step outside its usual wrapper, retaining relative policies and required environment before running the full catalog check.",
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
@@ -1027,15 +1183,19 @@
     },
     {
       "prompt": "Publish this branch as a pull request for review while its prerequisite remains pending; keep merge disabled.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Update the already-ready pull request with the corrected game-server configuration without enabling its default auto-merge yet.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Publish the billing fix through the repository wrapper and verify the source head and merge intent at the requested review boundary.",
-      "clause": "publishing or editing PRs"
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Reconcile this already-armed pull request after autoMergeRequest becomes null: verify the merge queue's entries (GraphQL mergeQueue.entries) or your queue cache before deciding whether to enable auto-merge again.",
+      "clause": "publishing, editing or arming PRs"
     },
     {
       "prompt": "Add a fail-fast executable prerequisite to an existing CI shell step and update the manifest tests that read its command text.",
@@ -1068,9 +1228,297 @@
     {
       "prompt": "Ship a game's controller-input regression fix while preserving the complete recorded action sequence.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a database-backed retry fixture to prove effective eligibility across message and shared-resource deadlines, including refusal before expiry, recovery afterward and timestamp precision across persistence.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair frozen-release fixtures that incorrectly rebind a historical assembly to the current checkout after an unrelated source change.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Change a release guard so its fixture reads the selected plan and policy from the same committed revisions as the publisher.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Ship regression coverage proving that unrelated checkout edits preserve a bound release while a changed selected input is rejected.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a review-labelled pull request only after its exact-candidate review Check Run succeeds, without substituting an unrelated security approval.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Repair release admission so the current candidate cannot inherit an older build's green verdict and optional diagnostics do not become required checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change PR workflow concurrency so superseded checks cancel while every scheduled publication remains queued.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Normalize a game CI entry workflow and its reusable callees without letting a callee cancel its caller.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a concurrency repair that preserves pending main-branch runs even when active-run cancellation is false.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a SaaS worker test that mistakes accepted but unfinished setup work for completed work, so legitimate recovery races its duplicate-delivery assertion.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game reward retry fixture by proving completed and interrupted grants have distinct lifecycle states before testing duplicate delivery.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Implement an ETag-based catalog watcher whose CLI adapter retains its cache across process restarts, preserving pagination and quota admission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game inventory synchronizer that receives a restored body under 304 headers after only its own cache is cleared.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a SaaS status watcher repair and test cold caller recovery through the installed proxy rather than a direct HTTP fake.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Before fixing a publisher's base-health refusal, search open PRs for that same outcome; let an unrelated change edit the same publisher file in its own isolated worktree.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Add a Check Runs API lookup to a shared CI action, verifying permissions for every aggregate and result-producing caller rather than only the final required job.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
+      "clause": "handling credentials in process arguments"
+    },
+    {
+      "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game settlement worker so recovery waits behind retained player actions while a genuinely empty queue still resumes interrupted settlement.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a merge-queue CI gate so a stable replacement source cannot authorize an earlier transformed commit, proving both unchanged and replaced sources.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a selected-source release check that rereads current source twice but never binds it to the archived package contents.",
+      "clause": "changing selected-source release inputs"
+    },
+    {
+      "prompt": "Ship a game content exporter fix that proves every approved source maps to the corresponding immutable output position, including one stable replaced input.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a service restart fixture that assumes a released TCP port stays free on a shared runner; retain the reuse and occupied-port replacement controls.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a worker lease test that releases its reservation before another process makes the allocation decision.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement deterministic resource ownership in a game-server integration fixture without changing its permitted fallback behavior.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
+      "clause": "zero-token external inbox/queue watcher"
+    },
+    {
+      "prompt": "Implement an async clipboard write that survives an A-to-B same-text interleaving by carrying entity and version identity across the held promise.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add source-API refusal and on-disk tamper fixtures as separate routes, so a tampered count never becomes a requirement to accept a forbidden write.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair shared Git metadata access across two real UIDs with additive default ACLs, preserving existing masks and reporting any privilege skip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a redaction pipeline to bind the decision across merged aliases and recognize redelivery under a new source key before storing or indexing content.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add conformance vectors against a real implementation that assert POST, refusal, ordering, verdict and count outcomes, reserving exact clock values for declared recorder histories.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix temporary-profile cleanup by running the child in its own process group and waiting for the group before removal instead of retrying a test assertion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix concurrent parent and child builds that share source or Cargo target directories, inspecting the linked rlib before editing a supposedly missing export.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add a variant to an evaluate/effectful pipeline and prove schema constraints, commit, reload and downstream consumer encoding in one authorised durable round trip.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a permission fixture that returns the UID as the primary GID, and verify the tuple against both OS identities on a runner where they differ.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a retry worker regression to use distinct effective decision keys and observe its effect before fallback repair, proving that disabling only retry fails the unchanged assertion.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement bounded transcript recall with continuation when a single tool output exceeds the encoded response budget.",
+      "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Change a CI test invocation to explicit file globs that discover the intended tests on the pinned runtime version.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a CI runner to use fresh build directories while preserving executable examples launched by integration tests.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair a game test suite that discovers all tests but lost its runtime fixture executable when the build target was recreated.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Roll out a required external review check across service repositories, enrolling any missing producer before activating its fail-closed merge gate.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Enable an artifact approval gate in a game release pipeline and prove its configured producer can emit the required success for that consumer.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Arm a shared approval-gate adoption only after the target repository has a working producer and its current-source approval succeeds.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Fix a browser synchronization regression whose assertion yields to queued animation callbacks that can hide the defect; verify the immediate boundary and final state separately.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an optimistic order-state rollback test where a queued UI refresh restores the expected value before the assertion, masking a broken rollback.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a checkout transaction that stalls only when the configured catalogue cache refreshes with a pool of one connection.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Ship a save-helper repair whose absent-cache fixture passes while its enabled cache borrows a nested connection.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
+      "clause": "changing selected-source release inputs"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether retry backoff caused a past test timeout; report evidence without changing source or running a new test.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review a past database connection refusal to determine which endpoint its driver selected, without changing code or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two proposed connection-string adapter architectures without implementing or publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite user documentation explaining literal percent signs in connection passwords, with no source or configuration change.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a shared regex granted an inspection exemption after runtime classifiers disagreed; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare code-point and grapheme-cluster matching approaches for a proposed asset selector without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local user-guide paragraph explaining an account settings page, without changing software or publishing configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past API failure came from a wrong media type; inspect evidence without changing any source or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare direct HTTP and proxy adapters for a proposed cross-provider client without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of HTTP Accept and redirect authentication for a user guide without changing an integration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether this CI timeout measures aggregate latency or merely detects hangs; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two proposed provider retry architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of quota-reset messages without changing or publishing the integration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Inspect whether a neutral review with zero findings actually approved this exact commit; do not enqueue or change anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Explain whether the current merge rules enforce the separately required source review, using live check results only.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Verify which changed paths an automated review left uncovered before reporting its status.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Review whether this session-origin diff invents browser provenance; report findings without changing or shipping code.",
       "clause": "prove-it for a review or evidence check",
@@ -1082,12 +1530,22 @@
       "route_to": "challenge"
     },
     {
+      "prompt": "Compare general-purpose fragment shaders and specialized pipelines as an architecture proposal without implementing or measuring either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
       "prompt": "Rewrite the cookie-session error message for clarity without changing or publishing the application.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
     {
       "prompt": "Review whether the proposed SDK source upgrade requires a newer compiler; report evidence without implementing or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a scanner initialization failure supports a claim about source-policy violations, without changing source, invocation, or publication.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
@@ -1160,6 +1618,36 @@
       "prompt": "Design a migration plan and compare its alternatives; do not execute it yet.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether a green migration guard selects every runner directory and the correct SQL dialect; report evidence without changing CI.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared and per-service SQL dialect routing designs without implementing or publishing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this migration-safety explanation for clarity without changing or publishing the guard or CI.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Audit whether nonarchived repository search results belong to the authorized active or frozen population, without triggering CI or changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare lifecycle catalog and provider-search designs for a proposed bulk rollout without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of excluded paused, retired and unmapped targets for clarity, without applying a bulk change.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Review this exact pull request diff for defects without changing it.",
@@ -1763,6 +2251,116 @@
     },
     {
       "prompt": "Rewrite the explanation of this keyboard shortcut for a release announcement, without changing its behavior.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a historical release test accidentally proves fixture HEAD instead of the bound source; report evidence without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare historical release fixture designs and their maintenance costs without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of frozen release inputs for a user guide without changing a fixture or configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past merge used a security approval in place of the required review check; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare a shared admission service with per-product release gates, without implementing either architecture.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this guide explaining required and optional checks, without changing software or operating the release process.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether cancel-in-progress:false protected queued runs in a past incident; inspect evidence without changing workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare per-run groups and multi-pending queues for a proposed CI architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of reusable workflow concurrency without changing or publishing CI.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether two stable API reads proved which source produced an old package, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare immutable-input attestation and output reconstruction for a proposed release architecture, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of source-to-output equivalence for a user guide, without changing a verifier or operating a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a retry regression proves the mechanism when a fallback or state-reading observer can also complete the operation; do not change or publish code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review a flaky TCP port test and establish whether the log shows a legal replacement, without modifying or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare reservation transfer and a private resource pool as proposed test architectures, without implementation.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining TCP port allocation, without editing or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past missing-executable failure happened before the intended assertion, without editing or publishing the runner.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether an installed application or empty check suite established producer availability during a past rollout, without modifying or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare central and per-repository approval producers as proposed architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether the earlier pool-size-one result actually exercised the enabled cache-refresh branch, without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare transaction-bound refresh and preloaded catalogue snapshots for a proposed design, without implementing it.",
+      "clause": "challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of additive helper changes in a pinned release, with no code or release configuration changes.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
