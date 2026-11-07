@@ -1880,6 +1880,18 @@
     {
       "prompt": "Ship a database-fixture runner correction that keeps the original test failure primary when diagnostic capture and teardown also fail.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change CI workflow runner selectors to isolate merge builds while preserving their required memory class in the target organization.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a batch deployment to an isolated resource tier advertised globally, while retaining the required memory in its target region.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Ship a worker configuration change when the same-size isolated tier is not served in this account; preserve the serving allocation and report remaining contention.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
     }
   ],
   "negative": [
@@ -3110,6 +3122,21 @@
     },
     {
       "prompt": "Rewrite the documentation explanation of failure evidence and teardown without changing helpers or operating a service.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a globally listed runner label has serving allocations in this organization without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared and isolated resource tiers for a proposed regional deployment architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of remaining resource contention without changing or publishing any configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

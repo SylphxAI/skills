@@ -61,6 +61,15 @@ prove the declared nonproduction target serves, and test every independent
 resolver against missing configuration, wrong-environment targets and all
 declared production route aliases before forwarding credentials or traffic.
 
+A globally documented runner label or resource tier does not prove a serving
+allocation in the target account, organization or region: match the selector,
+scope and required memory class against effective desired and served inventories.
+If a same-size isolated allocation is not served, preserve the serving allocation
+rather than inventing a selector or downsizing to obtain isolation, and state the
+remaining contention. **Wrong:** select a catalogued isolated tier that is absent
+in the target scope; **Right:** retain the served memory class until scoped
+desired and served inventories establish the isolated replacement.
+
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
