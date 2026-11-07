@@ -108,6 +108,14 @@
     {
       "prompt": "An automatic certificate rotation remains blocked because every replacement candidate restarts the stability wait. Restore eligibility without repeatedly submitting the rotation.",
       "clause": "restoring a task, deployment or CI/build run that has actually stalled or is failing"
+    },
+    {
+      "prompt": "Restore sign-in after the identity API accepted a newly issued credential but the authenticating service still refuses that same credential.",
+      "clause": "a call is refused"
+    },
+    {
+      "prompt": "A newly created API key is listed in the control plane but our running worker rejects it; recover the worker without duplicating keys or resetting the existing account.",
+      "clause": "a promised fix still fails"
     }
   ],
   "negative": [
@@ -180,6 +188,11 @@
       "prompt": "A new third-party package release is waiting normally within its configured minimum age. Leave the updater running on its normal schedule.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
+    },
+    {
+      "prompt": "Explain last month’s delayed key propagation; authentication works now and no restoration or change is requested.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
     }
   ]
 }

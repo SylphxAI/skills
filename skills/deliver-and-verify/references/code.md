@@ -202,14 +202,17 @@ Use transactions for atomic invariants and authority-side uniqueness for retryab
 
 A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints. A current read after a lock wait can observe a commit that a later snapshot validation still cannot; every decision about that newly observed receipt needs consistent visibility. Test overlapping identical retries under the effective production isolation alongside changed-body conflicts and conserved effects.
 
-An asynchronous request captures its target's stable identity (slot, item, row
-or range) in request context at submission; its continuation never resolves the
-target from mutable UI selection. Equal text or value after an await does not
-identify the same target: another entity or range may have replaced it, so make
-the final identity and version check atomic with the mutation. **Bad:** submit
-for A, select same-text B and let A's reply mutate B; **Good:** resume against
-captured A and refuse a replaced or stale A, while unchanged A succeeds even
-after a test moves selection to B between submission and response.
+An asynchronous request captures its target's stable identity and version at
+submission; check eligibility atomically at mutation rather than resolving
+mutable UI selection or equating values after an await. Cancellation or newer
+intent can prevent mutation, but after an accepted mutation, view cleanup or an
+uncommitted replacement ends obsolete presentation authority without revoking the
+obligation to complete or compensate coherent durable state and projections; only
+conflicting changes to authoritative state or authorization for that exact
+committed identity/version supersede completion. **Bad:** abandon an accepted update when its view closes
+or a replacement merely starts; **Good:** verify pre-mutation refusal,
+post-mutation cleanup, a failed replacement and a newer committed replacement,
+preserving coherent state without obsolete navigation or feedback.
 
 Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure and late admission must serialize on the same stable owner before the final eligibility snapshot and publication marker; deleting existing markers alone permits later resurrection. Prove both lock orders through real entrypoints and the database wait graph. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
