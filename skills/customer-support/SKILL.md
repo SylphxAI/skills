@@ -125,8 +125,11 @@ paid percentile, top-N payer status, or paid-rank-based comparison or privilege
 in any player-facing surface: private DM, official support, in-game mail title
 or content, offer spec, PR or social copy. This ban covers that player's own
 rank even in 1:1 and covers every other player's spend, rebate or paid-rank
-records. A verified player explicitly requesting their own spend **total** may
-receive only that verified total, never a rank, percentile or top-N position.
+records. A payer knows their own spend: a rank claim exposes the single-whale
+LTV ceiling and revenue scale to screenshot viewers, erodes competitive suspense
+and invites cross-VIP price comparisons. Personal VIP status, never spend
+standing, frames bespoke care and bonus rates. A verified player explicitly
+requesting their own spend **total** may receive only that verified total, never a rank, percentile or top-N position.
 Gameplay and skill leaderboards unrelated to spend remain permitted. Use
 non-rank personal recognition such as `資深 VIP`, `個人專屬尊貴禮遇` or
 `感謝長期支持`, never paid-rank titles or rank-based extra percentages.

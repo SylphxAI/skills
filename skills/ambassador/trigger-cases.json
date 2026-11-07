@@ -44,6 +44,18 @@
     {
       "prompt": "A player says 唔想再課，唔好再推包 after a three-tier offer. Review the transcript and write a caring reply with no sales pitch or rival-overtake framing.",
       "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "Review a VIP reply that explains a rival got seven red books from old events or saved boxes, then promises to beat their screenshot by 80%; keep only general rules and the recipient’s own verified milestone.",
+      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "Review this gift notice that recites backend balances and order counts, raw 15-digit currency, approval queues and reboot excuses; deliver a warm routine notice within 90 characters only after the inserted-mail receipt.",
+      "clause": "reviewing recent outbound VIP/support transcripts or in-game mail for paid-rank disclosure, third-party privacy, internal IDs, oversharing/surveillance, or corporate/salesy tone"
+    },
+    {
+      "prompt": "Audit the ambassador sequence: an action was called technically impossible, then repeatedly pre-announced; after a closing promise the player says 嗯. Avoid a last-word filler reply and wait for verified delivery.",
+      "clause": "running an Adversarial Turing self-test on conversational replies"
     }
   ],
   "negative": [

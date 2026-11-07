@@ -8,7 +8,7 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 ## Types and boundaries
 
 - Parse untrusted input into typed domain values at ingress. Give identity, money, quantities and units explicit types. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
-- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence cannot turn inference or user-controlled names into privilege authority; documented provider-protocol signals may justify scheduling only within positively proven origin scope, so removing one requires an authoritative replacement available at the first actionable decision, not merely after later enrichment. Verify those decisions from real provider-shaped inputs through upstream classification, transformations, persistence, reload and every consumer—not just directly seeded records—varying event, repository/fork origin and lookalike names independently, with absent, unknown or tampered provenance alongside an authoritative positive control, explicit contradictory evidence prevailing, and successive transitions with unchanged or changed inputs.
+- Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence, inference, user-controlled names, or a verification marker with matching identity cannot authenticate a separately mutable parsed body: privilege elevation binds decision-bearing facts to the exact retained original bytes, event and verifier/hash, or independently proven enrichment. Documented provider-protocol signals may justify scheduling only within positively proven origin scope, so removing one requires an authoritative replacement available at the first actionable decision, not merely after later enrichment. Unknown or tampered proof cannot raise authority, explicit negative facts may lower it, and reuse rechecks current authority despite an earlier positive receipt. Verify those decisions from real provider-shaped inputs through upstream classification, transformations, persistence, reload and every consumer—not just directly seeded records—varying event, repository/fork origin and lookalike names independently, with absent, unknown or tampered provenance alongside an authoritative positive control, explicit contradictory evidence prevailing, and successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
@@ -121,8 +121,14 @@ values and preserve intentional target-specific omissions; changing replacement
 to merging can also import settings that belong only to another target.
 Resolve generated targets and consumer references in that rendered output too:
 namespace or content-hash rewriting can leave separately valid documents
-pointing at different objects. **Wrong:** validate a template and its generator
-independently; **right:** verify the emitted consumer resolves the emitted target.
+pointing at different objects. Content-hash rewriting can also change an existing
+immutable operation's template even when no execution is intended; retention or
+prune settings do not make that update legal. Preserve its template and referenced
+generation, or authorize a distinct operation identity rather than rewriting or
+replaying the completed operation. **Wrong:** validate a template and its generator
+independently; **Right:** resolve the rendered references and dry-run the effective
+update against existing objects, proving unchanged immutable templates and no
+unintended execution.
 
 Trace each pinned or referenced input through the existing automatic writer's
 change trigger, propagation latency and the consumer's read behavior; an initial
@@ -565,6 +571,8 @@ publishing the correction.
 
 Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check the final state after queued work settles; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
+Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
+
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
 Derive conformance vectors' expected outcomes from the contract or specification
@@ -739,9 +747,12 @@ permission change because its account is absent from the old audit sample.
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
 requests fail without expanding collateral comparisons.
 
-A read-only or dry-run helper can be correct while its public mode dispatch
-selects the mutating path. Exercise the assembled entrypoint with a zero-effect
-assertion and prove that redirecting that mode to the mutator fails the same test.
+A helper's refusal or dry-run guarantee can disappear in public mode dispatch or
+exit-status translation. Exercise allowed and refused cases through the assembled
+entrypoint, asserting effects, structured output and the enclosing caller's status.
+**Wrong:** count `valid: false` with exit status 0 as a rejected command; **right:**
+when the command promises rejection, refusal exits nonzero without mutation while
+a valid dry run exits 0 without mutation.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
