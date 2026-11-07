@@ -11,14 +11,15 @@ machine identities, paths and incident records in the owning workspace.
 | --- | --- | --- |
 | Workspace isolation | Distinct working directories, Git worktree pointers and branches for the actual agents. | Distinct agent names or an intended directory scheme. |
 | Shared repository storage | Read each worktree's Git common directory and the runtime's repository-cache ownership. | A cache directory merely exists. |
-| Safe archive cleanup | Separate clean/pushed, dirty and unpushed fixtures; read lifecycle state, directory existence, Git status and unique bytes/commits after archive. | A source-only test, or a removed directory without checking unique work. |
+| Safe archive cleanup | Clean/pushed, dirty, unpushed and non-Git fixtures, including unique untracked/ignored outputs; read lifecycle state, directory existence, Git status where applicable and preserved bytes/commits after archive. | Git cleanliness, pushed commits or directory removal without verifying that unique outputs survive. |
 | Fresh shared instructions | Current source revision, resolved mounts, generated text and the session's loaded context. | A valid shared symlink alone. |
 | Complete retained history | Exact known message body or byte hash from the retention interface. | A search result, a summary or a positive prefix match. |
 | Complete searchable history | Known early and late text found through the supported query interface, including relevant filters. | Raw storage contains the body. |
 | Multi-runtime support | Actual execution receipts for every claimed maintained runtime and version. | Catalog membership, protocol tests or local doubles. |
 
-For cleanup, preserve uncertain or unique work. When an expected removal does
-not happen, collect the cleanup decision, Git exit status and stderr under the
+The [safe-cleanup boundary](../../deliver-and-verify/references/dx.md#internal-development)
+owns preservation before archive; runtime verification establishes whether cleanup
+honors it. When an expected removal does not happen, collect the cleanup decision, Git exit status and stderr under the
 runtime's execution identity before naming a cause. A local explicit-directory
 success does not establish another placement route works. Record skipped and
 uninstalled runtimes as gaps; do not switch a worker's model or repair its

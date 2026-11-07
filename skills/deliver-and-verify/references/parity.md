@@ -153,6 +153,9 @@ the engine's verdict.
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
    release's limitations. Bind local builds and fixtures to immutable revisions.
+   Keep pinned browser/tool binaries in a location owned for the run and verify
+   their hashes; an executable borrowed from another checkout can disappear
+   before capture even when its version matched during setup.
 2. Before running, declare the equal-work set, acceptance predicate, sample count,
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
@@ -466,8 +469,16 @@ A generated image a release depends on fails closed on blank output: check its
 colours or variance, not only that the file exists.
 
 - Enumerate every changed asset and table from the candidate manifest/diff,
-  including additions, removals and dependent references. Match the checked set
-  to that inventory so one successful sample cannot stand for all changed files.
+  including additions, removals and the complete declared dependency closure;
+  match the checked set to that inventory so one sample cannot stand for all files.
+  Artifact identity and admission include referenced payload bytes stored
+  separately from root metadata; changed unowned or unverifiable payloads fail
+  closed. The real publication gate must reject an undeclared change confined
+  to referenced external bytes while accepting an explicitly declared complete
+  closure. Identical objects do not prove compatibility: validate container and
+  each serialized member’s target, runtime version and format metadata against
+  the independently selected platform/runtime, with metadata-only negative
+  controls through both the producer and an independent reader.
 - Diff the prepared change against what is mounted live, not against the source
   repository. Label every changed cell as chosen, with its decision, or as drift
   that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
@@ -594,11 +605,14 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
-Before patching allegedly lost input, trace delivery through the handler, state
-change, paint generation and presentation: a callback or generated paint does
-not establish visible completion. Retain the unchanged early capture and any
-later transition with no new input; that transition distinguishes delayed
-completion from a dropped action, without establishing the cause of the delay.
+Before patching allegedly lost or duplicated input, trace the affected user/device
+and automated paths through host normalization, handler, state change, paint and
+presentation; those paths can use different protocol branches, and a callback
+still does not establish visible completion. A synthetic-path failure establishes
+neither a universal product defect nor an automation-only defect, and a changed
+stimulus must preserve the complete action workload. Retain the unchanged early
+capture and any later transition with no new input to distinguish delayed
+completion from a dropped action, without inferring its cause.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a

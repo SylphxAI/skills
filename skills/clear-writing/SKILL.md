@@ -27,6 +27,54 @@ Choose wording and structure from three inputs:
 | **2. Purpose (Why?)** | What single conclusion, decision, or action should the reader take in the first 3 seconds? | Put the answer, outcome, or hook in sentence 1. If the text is informational, lead with the result; if persuasive, lead with the reader's problem and concrete benefit; if a decision request, lead with the recommended choice. |
 | **3. Channel (Where?)** | Is this a chat reply, a PR review, a landing page, a long-form article, or an incident notice? | Chat replies use natural prose (not heading/bullet walls). Reference docs use scannable tables. Articles use narrative momentum, varied sentence length, and concrete examples. |
 
+### Narrow mobile chat bubbles
+
+For mobile ambassador and support replies, keep each paragraph to no more than
+2–3 sentences and at most 110 CJK characters; never send a single-paragraph
+wall of text (`磚頭字`). Put every choice or list item (`1️⃣`, `2️⃣`, `3️⃣`,
+`1)`, `2)`, `•`) on its own line, never join multiple items with `｜`, commas
+or `、`: they are hard to scan even when the reply looks short on a desktop.
+Use actual line-feed characters (LF) for line breaks and two consecutive LFs for a paragraph gap; literal `\n` text and
+visual wrapping by the app do not create paragraph breaks.
+
+Messenger, WhatsApp, Telegram and in-app chat bubbles are roughly 14–18 CJK
+characters wide. Let the app wrap within sentences; this width is not a
+hard-wrap interval. The paragraph ceiling is an editorial delivery boundary,
+not a reason to add runtime character-count machinery. Keep the warm, natural
+voice, the user's instructions and all necessary information; a substantive
+reply can have several short paragraphs, while a quick acknowledgment needs no
+padding. This mobile readability requirement takes precedence over general
+prose or no-bullets style defaults; it does not require headings, bullets or a
+fixed number of paragraphs. Adjust the width assumption when the actual channel
+shows different wrapping or the reader requests another format.
+
+For multi-line delivery through a Lexical-based Web-UI composer (such as Meta
+Business Suite Inbox), plain `fill` can flatten breaks or leave raw LF characters
+inside one `TextNode` instead of rendered breaks. Construct explicit Lexical
+`linebreak` nodes (rendered as `<br>`) with `ed.parseEditorState(...)` and apply
+with `ed.setEditorState(...)`; represent a paragraph gap with two line breaks.
+After sending, read the delivered message through the API and verify its `\n`
+count and placement against the intended reply; composer appearance alone does
+not establish delivery fidelity.
+
+Synthetic contrast (the Good block contains actual line breaks and blank lines):
+
+**Bad**
+```text
+可以慢慢揀呀：想升裝就揀材料包｜想換造型就揀外觀包｜想先試玩就揀體驗包，你想要邊款？
+```
+
+**Good**
+```text
+可以慢慢揀呀，睇你而家想玩咩。
+
+想升裝：材料包
+想換造型：外觀包
+想先試玩：體驗包
+
+你想要邊款？
+```
+
 ---
 
 ## Step 2: Anti-Slop Defaults for Newly Authored Prose

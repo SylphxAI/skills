@@ -17,13 +17,13 @@ Before intervening, read the live state of the job, queue, or target resource:
 1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
 2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
-4. **Challenge an added prerequisite:** Before repairing a refused step, reread
-   the outcome and ask whether that step is required at all. Remove an unrelated
-   dependency from this delivery rather than repeatedly repairing it; track the
-   independent outcome separately. For example, a UX change that works with the
-   current engine version should not wait on an optional version bump whose
-   migration fails. Split the bump from the UX change; retain a prerequisite
-   when the acceptance cases actually depend on it.
+4. **Challenge an added prerequisite:** Before removing a refused step, compare
+   its selection contract and effective input population with the acceptance
+   cases. Shared or inherited inputs alone do not show incorrect selection;
+   preserve required coverage when setup or execution fails. Track unrelated
+   dependencies separately: split an optional engine upgrade from a UX change
+   that works on the current version, but retain a required integration check
+   whose external dependency fails during setup.
 5. **Verify the resource can supply the missing capability:** Before restoring
    a credential or expanding a grant, read the selected account/workspace's
    entitlement and access to the specific model, feature or workload. Successful
@@ -89,8 +89,18 @@ job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
 
-Primary source checked 2026-11-06:
-[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+An accepted cancellation can leave an obsolete operation queued and holding its
+concurrency slot, so a replacement remains pending. When ordinary cancellation
+has failed to reach a terminal state, reconcile the exact obsolete operation and
+its replacement before using the provider's documented stronger cancellation;
+verify both terminal cancellation and replacement admission afterward.
+**Bad:** report capacity released from HTTP 202; **good:** observe the obsolete
+run as `completed/cancelled` and its replacement admitted, while preserving
+unrelated work.
+
+Primary sources checked 2026-11-07:
+[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+and [force cancellation after ordinary cancellation is ineffective](https://docs.github.com/en/rest/actions/workflow-runs#force-cancel-a-workflow-run).
 
 ### Missing pull-request CI
 
