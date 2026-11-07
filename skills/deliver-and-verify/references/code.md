@@ -802,9 +802,13 @@ establish a present, laid-out element with accepted input before comparison; an
 absent node's empty getter is not evidence of loss.
 
 A safety or dependency predicate can be correct while discovery or routing never
-selects it. Preserve each independent reason for selection: historical comparison
-coverage does not limit explicit requested assertions about objects outside that
-population. Offline tests that omit verb, subresource, identity or old-object
+selects it; differential preservation checks include reference-only identities,
+since iterating only surviving candidates hides deleted working capabilities.
+Test disappearance and retained-but-broken behavior independently; an explicit
+removal waiver suppresses only the local disappearance finding for an actually
+removed identity. Preserve each independent reason for selection: historical
+comparison coverage does not limit explicit requested assertions about objects
+outside that population. Offline tests that omit verb, subresource, identity or old-object
 fields establish only their modeled requests; verify alternative supported routes
 through actual selection and enforcement, with permitted controls and the intended
 denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
