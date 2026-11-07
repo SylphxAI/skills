@@ -606,6 +606,13 @@ codes plus the intended source/API identity, never compiler English wording.
 the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
 fails that same assertion.
 
+When a parser promises contextual errors, test invalid input through flattened
+and dynamically named maps as well as ordinary typed nesting: intermediate
+buffering can preserve values while losing the source path. Assert the offending
+section, named entry and key through the production entrypoint, with a valid entry
+as a control. **Wrong:** accept any deserialization error; **right:** an invalid
+field under a named entry identifies that entry, not only its parent table.
+
 Before attributing state loss or duplicate work to product code, prove the fixture
 reached the intended state through the real lifecycle: accepted or cursor-advanced
 work may remain incomplete and legitimately trigger recovery. Use completed and
