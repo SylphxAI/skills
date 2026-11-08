@@ -68,6 +68,10 @@
     {
       "prompt": "Review exclusive-tier wording that implies nobody else spends more; remove all relative spending while preserving the approved personal benefit.",
       "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
+    },
+    {
+      "prompt": "Review an outbound ambassador reply that tells an angry player management cancelled all private manual gifts and top-tier special approvals; rewrite it to take personal conversational ownership and point to fixed pack rules without confessing past private gifts or reneging on already-spoken promises.",
+      "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
     }
   ],
   "negative": [
