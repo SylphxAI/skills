@@ -317,6 +317,13 @@ configuration, empty matches, wrong counts or duplicate/unexpected targets.
 Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
+When an intended design changes group count or composition, replace obsolete
+structural assertions with complete identity/role coverage and the surviving
+geometry and paint invariants; an early obsolete assertion can hide later real
+failures. **Bad:** remove a three-box limit and accept every larger layout.
+**Good:** legal new groups pass, the old layout and an independent opaque-panel
+mutation fail, and all viewport cases are evaluated so masked collisions remain
+visible.
 
 Measure the defect's actual geometry. Use rendered glyph ranges
 (`Range.getClientRects()` for DOM text) for the whole composite value (prefix,

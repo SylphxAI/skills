@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a card-game HUD regression test after public tile groups become separate from identity labels, preserving every target and rejecting opaque backing or table overlap.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a dashboard layout test after one status card splits into a name label and event badges; keep role coverage and collision checks instead of merely increasing the box count.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a map UI test after route annotations split into markers and labels, proving legal new groups while retaining old-layout and independent paint-regression negatives.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement a campaign-code parser that accepts numeric suffixes without misrouting a longer supported alias that ends in a digit.",
       "clause": "implementing or shipping a feature, bug fix, parser"
     },
