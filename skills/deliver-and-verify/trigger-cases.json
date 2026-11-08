@@ -2188,6 +2188,18 @@
     {
       "prompt": "Ship a reward dispatcher change that keeps deletion serialized until its active provider attempt ends.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a dashboard update that commits successfully but never refreshes an already-connected client.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a post-commit notification and prove rollback cannot emit a refresh signal.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an event batch whose later failure hides notifications for earlier committed updates.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3683,6 +3695,21 @@
     },
     {
       "prompt": "Rewrite the explanation of an expired offer and an existing delivery owner without changing behavior, tests or publication.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a reported missing refresh is caused by storage or the notification consumer without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare polling and push-notification cache invalidation architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite dashboard documentation explaining refresh signals without changing product behavior.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

@@ -59,10 +59,10 @@ and its [catalogue](mechanics-catalogue.md).
     sign-up or payment.
   - **Public discovery and social card hygiene on web and game entry surfaces.**
     Every public web storefront, referral/invite landing page (`/i/<code>`), and
-    playable web game pack (`keel.toml` `[product]` and `[web.seo]`) must strip
-    internal engineering or dogfood strings (`"rebuilt on Keel"`,
-    `"Keel dogfood"`, `"Browser Shell"`), declare `category = "game"` and
-    `schema_type = "VideoGame"` (for games), emit a valid
+    playable web game pack must resolve its manifest and SEO contract from the
+    owning product. Remove the internal engineering and launch-branding strings
+    forbidden by that contract, declare the appropriate game category and
+    `VideoGame` structured-data type (for games), emit a valid
     `<link rel="canonical">`, and serve an absolute `200 OK` raster
     OpenGraph/Twitter image (`og:image` / `twitter:image`) in the target
     market's language.

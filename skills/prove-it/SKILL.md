@@ -7,6 +7,8 @@ description: "Use when investigating a root-cause claim for a past failure; chec
 
 Support a claim with the authoritative object at the layer being claimed. Cached badges, summaries, undeployed branches and unchecked reports can differ from that object.
 
+When reviewing shared engines, verifiers or skills, test the [three architectural invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms with caller-owned policy, zero domain leakage including fixtures and denylists, and exact causal guards. Allowed, denied and unreadable-required-state cases must reach the actual decision, without identity guessing or fail-open defaults.
+
 ## Establish the evidence
 
 - Before claiming something is serving, deployed, merged, fixed or blocked, read its mutable status and name the object, version/revision and UTC read time; an immutable object already read can be reused at that exact version and scope. A cache reader can exit zero while an individual result says `stale: true`; check structured freshness, object identity/version and observation time rather than equating command success or a repository-level timestamp with current evidence. A stale observation cannot establish a current value or authorize a conditional write; any documented refresh or authoritative fallback stays within existing authority and the remaining read budget, without replaying completed stages or treating a quota/access refusal as staleness.
@@ -152,7 +154,11 @@ incomplete coverage; derive approval requirements from the repository's declared
 merge contract as well as its effective rules. When that contract requires a
 review, verify the named producer's explicit `success`, complete reported scope
 and current head; `completed`, zero findings or a separate approval do not
-substitute. Keep advisory reviews advisory.
+substitute. A historical review ID is audit evidence, not an extra admission
+requirement unless the contract pins that exact generation. For a replacement
+result at the same source revision, evaluate the authoritative current producer,
+verdict and scope; a pending, failed or incomplete replacement cannot reuse the
+older pass. Keep advisory reviews advisory.
 
 **Wrong:** "CI passed and the completed review has zero findings, so enqueue."
 **Right:** "The review is neutral with unreviewed paths; its required success is
