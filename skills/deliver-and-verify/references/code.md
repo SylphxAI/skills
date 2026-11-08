@@ -952,7 +952,11 @@ of all protected data and metadata, contrasting missing/unusable input with a
 validated authoritative empty snapshot that must still perform permitted removals.
 For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
-metadata; missing recovery evidence remains unknown.
+metadata. Missing optional recovery metadata leaves recovery timing unknown; it does not
+negate an authoritative availability decision or turn successful I/O into failure. Through the
+composed discovery and execution consumers, contrast known unavailability with
+and without recovery metadata against missing authority and failed reads,
+preserving each consumer's disclosure and execution boundaries.
 
 **Wrong:** a save helper refuses correctly, but save-and-exit closes the editor
 and discards pending input. **Right:** exercise refusal and success through every
