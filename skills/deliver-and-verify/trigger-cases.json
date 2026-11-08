@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a card-game tournament fixture that assumes an empty migrated database despite retained seed rows and enabled activation guards.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a payroll database fixture to verify effective application-role privileges after partially successful setup without broadening production grants.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Implement shared validation for a SaaS file importer and a new API without dropping the importer's supported aliases or widening API admission.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2131,6 +2143,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a tolerant migration replay actually granted the fixture role access, without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare empty-clone and seeded-clone database fixture designs without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of grouped SQL grant failures for clarity without changing or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
       "clause": "prove-it for a review or evidence check",
