@@ -63,7 +63,7 @@ The budget holder establishes a standing program before delegating gifts:
 | Allowed assets and quantities | Meaningful use, substitution, transferability, time to cap and competition effects |
 | Per-recipient and aggregate exposure | Eligible population × likely uptake × quantity, plus overlapping programs and an explicit uncertainty margin |
 | Funded commercial cost | Direct service cost, plausible foregone contribution and the retention value or learning benefit being funded |
-| Delivery and review | Idempotent grants, recipient checks, complete observation window and measured triggers to resize or stop future issuance |
+| Delivery and review | Economic admission before configuration, then idempotent grants, recipient checks, exact intended and zero unwanted-currency deltas, complete observation window and measured triggers to resize or stop future issuance |
 
 The person speaking to players chooses within that authority. No fresh
 approval is needed for each covered gift. A changed exposure or an exhausted
@@ -110,6 +110,13 @@ campaign code architecture across every title:
         channels hold zero code-generation, reward-configuration, or
         single-player grant authority; they only announce and share
         already-published server-wide public campaign codes.
+   - Valuation caps and mechanical redemption proof do not replace economic
+     admission. Before configuration or announcement, apply
+     [Admit a grant by progression, not delivery](economy-model.md#admit-a-grant-by-progression-not-delivery):
+     progression-band balances and the current faucet/sink direction must support
+     the fixed amount and intended stock trajectory. Production must show the
+     exact intended deltas and zero unwanted-currency delta, not merely a
+     successful credit or duplicate no-op.
    - Keep in-game pack openings, gacha pulls, slot jackpots, and auction wins on
      automated system broadcasts (`100%` marquee/fanfare for social proof) with
      a user-facing privacy toggle (`stealth = true` masking the actor as

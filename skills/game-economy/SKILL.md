@@ -17,8 +17,8 @@ player outcomes, contribution or a broken assumption favor another action.
 
 ## Step 0: Read for the decision
 
-- **Currency balance, a cap, a growth line or pack contents:** read the
-  [economy model](references/economy-model.md).
+- **Currency balance, a cap, a growth line, pack contents or a server-wide
+  currency grant:** read the [economy model](references/economy-model.md).
 - **A price, gift budget, complaint-related gift or falling sales:** read
   [offers, gifts and experiments](references/offers-gifts-and-experiments.md).
 - **An outside explanation or methodological claim:** read the
