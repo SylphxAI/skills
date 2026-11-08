@@ -84,6 +84,22 @@ billing:
   authorized_remedies: []
   idempotency_check: "<read order and delivery before and after action>"
   billing_owner: "<designated owner or automated route>"
+fulfillment_policy:
+  source: "<current product policy and cutoff authority>"
+  system_only: null # unknown, not permission for manual delivery
+  new_discretionary_gifts: null
+  private_whitelist_offers: null
+  negotiated_terms: null
+  prior_commitment_cutoff: "<policy effective instant, or null>"
+  prior_commitment_route: "<verified code redemption / automatic settlement>"
+  code_channel: "<verified player self-redemption surface, or null>"
+  deployment_evidence: "<serving revision and observed redemption, or null>"
+  code_terms:
+    quantity_cap: "<integer or explicitly unlimited>"
+    expires_at: "<instant with time zone or explicitly no expiry>"
+    per_player_limit: "<verified enforced limit>"
+    eligibility: "<published eligibility>"
+  technical_fulfillment_route: "<authorized idempotent system path, or null>"
 calculation:
   public_verifier_surface: null
   internal_verification_route: null
@@ -145,6 +161,42 @@ an automated feedback path:
 | Refund owner | The app store's purchase-support path |
 | Verifier | No public verifier or internal calculation-verification route configured |
 | Response commitment | No published SLA in the fixture |
+
+## System-only fulfillment policy
+
+A profile binds policy separately from capability. The following synthetic
+fixture C requires 100% system monetization, no ambassador gifts, no custom
+whitelist or negotiation, and player-self-redeemed system codes for all gifts
+and activities. Direct database grants and direct `mail_task` writes are not
+fulfillment routes. These are required contract terms, not a deployment claim;
+the implementing owners must supply serving and redemption evidence before
+support advertises availability. Unknown or absent channels mean no new
+activity/gift, not permission for a manual fallback.
+
+Fixture C defines an explicit policy cutoff. Promises verified as explicit and
+made before that cutoff remain obligations: preserve delivered entitlements,
+settle the exact pending scope once through a regular system code or authorized
+automatic settlement, then zero new batches. Pending implementation does not
+cancel the promise. A verified missing paid/system entitlement is technical
+fulfillment, not a discretionary gift; neither label authorizes direct writes.
+No date, currency, cap or expiry in these fixtures is a live product fact.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| C01+ | Verified missing entitlement; authorized automatic settlement exists | Reconcile the exact uncompensated delta, settle once, read back; preserve delivered gains |
+| C01− | Player alleges loss without ledger evidence, or asks to add goodwill to a verified deficit | No invented deficit or extra gift; verify the claim and fulfill only what is owed |
+| C02− | Operator requests a direct database or `mail_task` grant, including for a prior promise | Refuse that route; retain any verified obligation for code/automatic settlement, without a manual write |
+| C03− | High-spend player asks ambassador for a custom whitelist, private percentage or negotiated gift | Warm help without an offer; spend and budget do not override the system-only policy |
+| C04+ | Explicit pre-cutoff promise is verified and not delivered; regular system code becomes available | Honor original scope through player self-redemption (or verified automatic settlement), reconcile receipt, then zero new batch |
+| C04− | New policy arrives while an old promise is pending or an entitlement already delivered | Neither cancel the pending promise nor claw back delivered items; no new discretionary extension |
+| C05+ | Synthetic code has cap 100, expiry 2030-01-02 00:00 UTC and one redemption per player | Quote those verified terms; enforce cap, expiry and one-per-player in the system; issuance alone is not credit |
+| C05− | Code is exhausted, expired, replayed by the same player or terms are unknown | No bypass, renewal promise or direct mail; distinguish known rejection from unverified state |
+| C06+ | Unlimited quantity with a verified finite redemption window | Explain unlimited quantity only within that window; do not imply no expiry |
+| C06b+ | Verified code terms explicitly allow an unlimited redemption window (no expiry), independently of quantity cap | State no expiry only on that evidence; still enforce eligibility, quantity cap and one-per-player |
+| C06− | Limited time window with no verified quantity cap, or finite stock with no verified window | Do not infer a stock cap from time or a deadline from stock; retrieve the independent terms |
+| C07− | Code channel is planned but not deployed or verified | No new activity/gift and no “available now” claim; prior obligations remain pending for the required channel |
+| C08+ | SaaS fixture A restores purchased credits through its authorized idempotent service | Apply A's verified profile, not C's game-code policy; the shared invariant is authorized exact-once fulfillment |
+| C08− | Request only concerns published subscription pricing | Answer the price; do not start a gift or redemption workflow |
 
 ## 4. Optional locale components
 

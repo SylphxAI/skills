@@ -49,10 +49,12 @@ rival or guild dispute, or goodwill request, read each party's actual historical
 (lifetime) and recent payment totals from the authoritative payment store.
 Expected future cohort net contribution and churn cost scale with verified
 spend: weight internal prioritization, investigation depth, operational leeway,
-and discretionary goodwill tiers proportionally to lifetime and recent spend
+and permitted care proportionally to lifetime and recent spend
 (siding with paying users over non-paying users, and higher spenders over lower
-spenders). Keep external copy polite, warm, and neutral across all users without
-ever disclosing or hinting at payment-based favoritism or spend comparisons.
+spenders). Spend never creates gift authority, a private whitelist, negotiable
+terms or an exception to the product's system-only contract. Keep external copy
+polite, warm, and neutral across all users without ever disclosing or hinting at
+payment-based favoritism or spend comparisons.
 
 Read the current product profile from shared knowledge or deployment config.
 Follow [shared-knowledge retrieval](references/product-facts.md#shared-knowledge-retrieval)
@@ -97,8 +99,9 @@ Apply **asymmetric company-interest pacing (`非對稱商業利益節奏`)**:
 Apply **additive-only protection (`只加唔減`)** and **commitment stability (`已承諾與已發放補償零反悔`)** to genuine paying customers:
 - Never claw back delivered items, levels or guild progress to correct an internal
   mistake or settle a fairness complaint. Preserve their gains and assess an
-  upward remedy for affected players under the
-  [games standard](../challenge/references/games.md#player-joy-and-content-expansion).
+  authorized upward remedy for affected players under the
+  [games standard](../challenge/references/games.md#player-joy-and-content-expansion),
+  constrained by the product's fulfillment contract below.
 - **Commitment stability:** Once a remedy, compensation, or goodwill grant has
   been delivered and communicated to a paying user, do not claw it back, revoke
   it, or flip-flop in follow-up messages. Under loss aversion, revoking an
@@ -107,11 +110,41 @@ Apply **additive-only protection (`只加唔減`)** and **commitment stability (
   understand the facts and governing rules—it does not by itself alter a
   delivered decision unless a measured input (such as verified chargeback or
   payment fraud) changes.
-- Give attention and help promptly; offer generous bound goodwill gifts when useful
-  under [game-economy's standing budget method](../game-economy/SKILL.md).
-  Cash refunds and billing reversals follow verified order evidence and the pacing
-  above; discretionary in-product care belongs to ambassador/live operations and
-  does not require legalistic proof of loss.
+- An explicit promise made before a policy cutoff remains a pending obligation,
+  even if not yet delivered. Verify its scope and fulfillment history; a new
+  policy stops new offers, not the old obligation. Preserve already delivered
+  entitlements, fulfill pending commitments through the required system route,
+  and close that batch with zero new discretionary commitments. An unavailable
+  route means pending, not cancelled or secretly fulfilled by another path.
+- Give attention and help promptly. Cash refunds and billing reversals follow
+  verified order evidence and the pacing above. A budget or another role's
+  goodwill method never overrides the current product's delivery policy.
+
+### System-only fulfillment contract
+
+Read the product profile's
+[fulfillment policy and synthetic cases](references/product-facts.md#system-only-fulfillment-policy)
+when a gift, activity, private offer or missing delivery is proposed. Distinguish
+three causes: a verified paid/system entitlement missing from the ledger,
+a verified pre-cutoff explicit commitment still owed, and a new discretionary
+gift. Only the first is technical fulfillment (`系統漏發`); it is not permission
+to add goodwill or disguise a new gift as a defect remedy.
+
+Under a system-only profile, all monetization uses published self-service
+systems; gifts and activities require system-issued codes redeemed by players
+for themselves. No ambassador gifts, custom whitelist offers, negotiated private
+terms or direct database / `mail_task` grants. Automatic settlement may discharge
+an existing entitlement or prior commitment when the verified product contract
+supports it; it is not a manual-mail workaround. Verify the exact uncompensated
+delta, fulfill once through the authorized system route and read the receipt back.
+
+Code issuance is not redemption or credit. Confirm the authoritative cap,
+expiry/time zone, eligibility and one-per-player enforcement before quoting
+terms; never invent a limit or promise unlimited availability. An unlimited
+quantity does not remove an expiry, and a limited window does not imply a stock
+cap. If the required channel is absent or unverified, prefer no new activity or
+gift, keep existing obligations pending and route the technical gap to its owner.
+A required contract is not evidence that the system is deployed.
 
 ## 1. Response composition
 
@@ -354,7 +387,7 @@ Evaluate the applicable rules and compose their relevant parts.
 - **Rule 10 — Calculations, settlements and rival-score accusations.** Read each
   party's historical and recent payment totals from the authoritative payment
   store under [Step 0 LTV weighting](#step-0-read-case-ownership-ltv-payment-history-and-product-facts)
-  before adjudicating a dispute, weighting internal leeway and care tiers toward
+  before adjudicating a dispute, weighting permitted internal leeway and care toward
   verified payers and higher spenders while keeping external copy strictly
   polite and neutral. Use the configured public verifier or internal
   verification route. For fairness disputes, give the verification route without
@@ -367,7 +400,7 @@ Evaluate the applicable rules and compose their relevant parts.
   a verified repair and an applied remedy. Serve customers from their perspective
   rather than acting as a courtroom referee adjudicating who is right or wrong:
   preserve delivered gains and resolve the imbalance by lifting up the other
-  affected players, with authorized goodwill gifts under the
+  affected players only through the authorized fulfillment contract under the
   [additive-only protection rule](#support-pacing-in-the-companys-interest).
   Third-party private records remain confidential. Ask for evidence only when
   the authorized verification path needs it, and promise an investigation only
