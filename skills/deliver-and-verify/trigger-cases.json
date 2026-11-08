@@ -2236,6 +2236,10 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Replace a tiny anisotropic pixel fixture that passed one backend matrix but fails on another driver, retaining a control that fails when the improvement is disabled.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
