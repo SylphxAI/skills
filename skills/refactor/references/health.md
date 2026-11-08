@@ -37,9 +37,21 @@ An interrupted or unverified copy leaves the source intact and claims no release
 - Duplicate authorities for the same domain rule, schema or contract. Multiple language clients or independent concepts are not automatically duplicates.
 - Whether the affected tests are selected and can fail on the behavior they claim to check.
 - Runner cost, feedback time and queue delay against the repository's declared budget.
-- Module cohesion, navigation and change cost; file size can flag a place to inspect rather than dictate a split.
+- Module cohesion, navigation and change cost on representative supported changes; file size can flag a place to inspect rather than dictate a split.
 - Links and capability statements that still match the code and delivered behavior.
 
 Use the repository's available checks appropriate to those signals. State missing coverage instead of claiming an uninstalled check exists. Report size/duplication changes when they help assess the outcome, and record a repeated lesson beside its owning method or issue.
+
+For scattered edits, compare the files and interfaces a representative supported
+change requires a reader to understand or edit before and after restructuring.
+Available Git co-change history can corroborate that path after excluding mass
+formatting, renames and dependency updates; inspect the requirement and dependency
+path because co-occurrence alone does not establish coupling. Apply the
+[change-together criterion](../../challenge/references/architecture.md#dependencies-and-modules);
+reconsider a refactor when the same change path costs no less to understand or
+edit, or couples independent concepts.
+
+**Bad:** merge modules because a formatter touched both. **Good:** trace repeated
+edits for one rule through its consumers and compare that path after consolidation.
 
 [Code conventions](../../deliver-and-verify/references/code.md), [developer experience](../../deliver-and-verify/references/dx.md) and [documentation](../../author-skill/references/docs.md) provide the detailed methods.
