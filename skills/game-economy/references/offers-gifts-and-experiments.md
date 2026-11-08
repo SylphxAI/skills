@@ -70,49 +70,58 @@ approval is needed for each covered gift. A changed exposure or an exhausted
 budget is a reason for the budget holder to resize it from current evidence,
 not for inventing a universal rebate percentage or prohibiting a reward type.
 
-### 100% System Monetization, Universal Equal Treatment & Self-Serve Redemption Codes Only
+### 100% System Monetization, Universal Equal Treatment & Public Campaign Codes Only
 
 When operating live games and companion channels, manual database grants, ad-hoc
-inbox attachments, and two-track whale whitelists create price arbitrage,
-train players to bargain for freebies, and erode paid store unit economics.
-Enforce a 100% systematized monetization and redemption-code architecture across
-every title:
+inbox attachments, single-player soothing codes, and two-track whale whitelists
+create price arbitrage, train players to bargain for freebies, and erode paid
+store unit economics. Enforce a 100% systematized monetization and public
+campaign code architecture across every title:
 
-1. **100% System Monetization & Zero Manual Grants:**
-   - Every promotion, event, and gift across all titles must execute 100%
-     through automated product/platform systems; if an event or gift cannot be
+1. **100% System Monetization & Zero Single-Player Codes or Micro-Gifts:**
+   - Ambassadors and support agents provide emotional value, onboarding help,
+     and gameplay guidance only.
+   - Every promotion, event, and reward across all titles must execute 100%
+     through automated product/platform systems; if an event or reward cannot be
      executed through a legitimate automated system channel, do not run the
-     event or issue the gift.
-   - Ambassadors and staff never modify databases, never manually insert inbox
-     attachments, and never offer top-up-linked or player-negotiated gifts.
-     Purchases grant strictly the advertised in-game store or automated
+     event or issue the reward.
+   - Never issue individual soothing codes, personal care codes, free
+     micro-gifts, manual inbox grants, or ad-hoc database rewards to placate
+     individual players, and never offer top-up-linked or player-negotiated
+     gifts. Purchases grant strictly the advertised in-game store or automated
      activity-template contents.
-2. **Universal Equal Treatment & Self-Serve Redemption Codes:**
+2. **Public Campaign Codes Only (Three-Layer Separation of Duties):**
    - Apply one universal standard across all players with zero whale-whitelist
      vs. non-whitelist tracks and zero per-order or milestone ambassador rebate
-     quotas, ensuring every player and spender experiences identical,
-     transparent rules with zero two-tier caste or table-rigging perception.
-   - Deliver pre-approved free micro-gifts (strictly decoupled from spend,
-     non-negotiable, capped to low-cost non-inflationary convenience/table-relief
-     items with zero premium currency, upgrade materials, or high-tier
-     containers) and event rewards exclusively as **system-configured redemption
-     codes / vouchers** supporting configurable claim caps (`limited`
-     `maxClaims` vs. `unlimited`), validity windows (`time-limited`
-     `startsAt..endsAt`), and per-player cooldowns (`1 claim per player per code
-     series`) that the player enters and claims themselves inside the game or
-     platform redemption surface.
+     quotas.
+   - Redemption codes are restricted strictly to server-wide public campaigns
+     that benefit all players equally (configured as `limited` total-claim cap,
+     `unlimited`, or `time-limited` window, 1 claim per account). Governance
+     uses three strict layers:
+     1. **Economy / CI Automated Cap & Blacklist Layer:** Machine-readable
+        Clean-USD valuation SSOT and CI checks enforce hard per-player value
+        ceilings (e.g., `<= US$1.50` Clean-USD for public festival/campaign
+        codes) and block premium currencies, high-tier progression bottlenecks,
+        and unpriced containers before merge.
+     2. **Product / Game Design Configuration Layer:** Only the game/product
+        engineering flow configures public campaign code templates within
+        CI-enforced caps.
+     3. **Ambassador / Support / Marketing Distribution Layer:** Frontline
+        channels hold zero code-generation, reward-configuration, or
+        single-player grant authority; they only announce and share
+        already-published server-wide public campaign codes.
    - Keep in-game pack openings, gacha pulls, slot jackpots, and auction wins on
      automated system broadcasts (`100%` marquee/fanfare for social proof) with
      a user-facing privacy toggle (`stealth = true` masking the actor as
-     "A Mysterious Player" / `某位神秘玩家` and disabling profile inspection
-     while keeping the broadcast active).
-3. **One-Time System Closure of Pre-Transition Explicit Commitments:**
+     "A Mysterious Player" and disabling profile inspection while keeping the
+     broadcast active).
+3. **Pre-Transition Commitment Sunset via Automated System Settlement:**
    - When retiring legacy concierge grants in favor of 100% system monetization,
-     preserve already-claimed player holdings (no clawback) and fulfill any
-     explicit pre-transition commitments one final time strictly through
-     legitimate system channels (single-use system redemption codes or automated
-     activity-expiry settlement — never manual DB/inbox writes), then
-     permanently close the legacy track with zero new batches.
+     preserve already-claimed player holdings (no clawback) and settle any
+     explicit, verified pre-transition commitment one final time strictly
+     through automated system settlement (never via single-player codes or
+     manual inbox/DB writes), after which zero new individual promises or
+     exceptions are permitted.
 
 ## Measure a gift's real cost
 
