@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Upgrade a card-game SDK whose application build admits only published registry versions; the fixed SDK currently exists only in an open source PR.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a SaaS export fix that depends on a library release not yet admitted by its package provenance guard.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
       "clause": "changing admission or access rules"
     },
@@ -1215,7 +1227,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -1363,7 +1375,7 @@
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
@@ -1567,15 +1579,15 @@
     },
     {
       "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
@@ -2272,6 +2284,18 @@
     {
       "prompt": "Arm a conditional release that must leave the merge queue if its live readiness condition expires; qualify its dequeue control before relying on automatic removal.",
       "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Change a card-game operations wrapper to preserve byte-exact credential output into a program while refusing terminal aliases and a forwarding subprocess.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Regenerate schemas after merging a declaration change, preserving table and field semantics while refreshing every catalog and validator that records their hashes.",
@@ -3876,6 +3900,21 @@
       "prompt": "Check whether a reported cancellation actually removed the queued export, without implementing or publishing a change.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review the exact-source output guard and establish whether its forwarding-launcher refusal test actually executes; do not change code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare descriptor-based and token-redaction designs for an export tool before choosing an architecture; no implementation is requested.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the public explanation of private-file credential exports without modifying the guard or its tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Explain in documentation why unchanged schema types can still have new provenance hashes; do not change generators or outputs.",

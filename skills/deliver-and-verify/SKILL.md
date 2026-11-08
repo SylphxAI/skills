@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, changing credential input/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -35,7 +35,7 @@ before defining acceptance cases.
 - Keep one named writer per worktree, pull request, database record, or live configuration. Before building, search open PRs for the same outcome to avoid duplicate implementations; distinct outcomes may edit the same files in parallel in isolated worktrees and resolve conflicts normally. Parallel readers and writers on independent targets can proceed together.
 - Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
 - During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
-- Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.
+- Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers. An immutable dependency hash establishes content identity, not admission: read the consumer’s release/provenance rule before selecting a revision. **Wrong:** pin another commit in the same unmerged PR when consumers require protected-branch ancestry; **Right:** merge the producer independently, then adopt its verified published revision without weakening that rule.
 - Compare repair and replacement by total cost to a verified outcome, including migration, recovery, cleanup and preservation of binding constraints. Stale configuration or documentation can mix mutable assignments with independent behavioral rules: account for each retained or explicitly retired clause, because a broad replacement goal does not preserve a specific negative case. Migrate consumers before removing superseded paths; split delivery when a dependency must merge first.
 - Search related components for the same defect class. Repair affected instances within the authorized boundary and record separately owned work. Use a default, type or existing check when it proportionately prevents recurrence; a one-off ruling does not need a permanent guard.
 
@@ -151,8 +151,8 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When changing credential routing, handling credentials exposed in process
-arguments or changing diagnostic or stored-body redaction, read
+When changing credential routing, credential input/output guards or diagnostic or
+stored-body redaction, read
 [security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.

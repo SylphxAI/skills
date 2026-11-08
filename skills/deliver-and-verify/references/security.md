@@ -24,6 +24,16 @@ A credential container, an enabled value version and the value selected by a run
 
 Output redaction cannot conceal a credential passed in expanded shell text or process arguments; use an in-process client, stdin or a private file, and verify the actual launcher and its consumers. Credential secrecy and payload integrity are independent: keep existing input channels usable, with a synthetic credential absent from the final spawned argv and unchanged payload and refusal bytes verified through the actual client. **Bad:** infer that a shell wrapper protects a separately launched daemon; **Good:** repair the credential-producing launch path and coordinate replacement across its verified consumers before revocation.
 
+A pipe, private-looking filename or non-shell parent does not establish that raw
+sensitive output avoids a transcript: launchers may forward inherited descriptors,
+while nested shells may redirect to a genuinely private consumer. Qualify the
+actual output path through launched processes and file aliases, preserving
+byte-exact authorized program/private-file consumers and refusing terminal or
+transcript destinations and unverifiable safety state before dispatch. **Bad:**
+trust a non-shell launcher as a consumer or reject every ancestor's regular file;
+**Good:** pair forwarding and alias refusals with nested-shell consumption
+controls through the real entrypoint, checking dispatch and final byte fidelity.
+
 A private script file does not isolate its imports: on shared hosts, the interpreter can execute another run's same-named module before credential handling starts. Use an isolated import path for credential-bearing probes (`python3 -I` when no local imports are needed), or explicitly trusted module roots when local dependencies are required; verify both that a synthetic shadow module stays unexecuted and that the required imports still work. **Bad:** trust a script's private filename while importing from a shared temporary directory; **Good:** prove the actual launcher selects the intended modules before giving it credentials.
 
 Reconstructed defaults or later environment overrides can replace an explicitly
