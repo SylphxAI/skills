@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
       "clause": "changing CI workflows"
     },
