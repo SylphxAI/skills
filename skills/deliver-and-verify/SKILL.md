@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, changing credential input/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -151,8 +151,8 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When changing credential routing, handling credentials exposed in process
-arguments or changing diagnostic or stored-body redaction, read
+When changing credential routing, credential input/output guards or diagnostic or
+stored-body redaction, read
 [security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.

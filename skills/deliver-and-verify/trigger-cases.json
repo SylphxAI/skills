@@ -1191,7 +1191,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -1339,7 +1339,7 @@
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
@@ -1543,15 +1543,15 @@
     },
     {
       "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
@@ -2224,6 +2224,18 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Change a card-game operations wrapper to preserve byte-exact credential output into a program while refusing terminal aliases and a forwarding subprocess.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
+      "clause": "changing credential input/output guards"
     }
   ],
   "negative": [
@@ -3764,6 +3776,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review the exact-source output guard and establish whether its forwarding-launcher refusal test actually executes; do not change code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare descriptor-based and token-redaction designs for an export tool before choosing an architecture; no implementation is requested.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the public explanation of private-file credential exports without modifying the guard or its tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
