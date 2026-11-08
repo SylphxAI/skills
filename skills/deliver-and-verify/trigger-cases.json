@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Add SQL-backed regression tests for a failed invoice import whose retained request identity lets the next import succeed but suppresses a second distinct import on the same worker.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a game purchase callback that keeps its failed order identity on a reused worker; prove two later distinct purchases receive their own rewards.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change a partial-clone CI checkout reader to batch historical source reads; prove remote request count on cold history and reuse on warm history, not just one local process.",
       "clause": "changing source checkouts"
     },
