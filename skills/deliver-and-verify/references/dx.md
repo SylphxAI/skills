@@ -388,9 +388,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 Generator obligations follow changed inputs, including declarative objects,
 even when no generator code changes. Trace those inputs through the repository's
 generation and freshness checks to every affected registry, client and document.
-An alert's valid dedicated runbook, for example, can still leave its generated
-index stale. In-process tests can reuse cached modules and hide startup or
-import-path failures; exercise affected generation entrypoints in fresh processes.
+Even a provenance-only edit can change output digests without changing fields
+or rows. **Wrong:** declare regeneration complete because types are unchanged.
+**Right:** rebuild affected catalogs, validators and fixtures from final bytes,
+while separately comparing the full named population and values. In-process
+tests can reuse cached modules and hide startup or import-path failures; exercise
+affected generation entrypoints in fresh processes.
 A lockfile-only install also changes source.
 
 Requiring a generator's missing output at admission creates a circular

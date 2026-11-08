@@ -2,12 +2,8 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Repair a CI installer after a warm pull-request build passed but the merge group could not restore that cache or download its compiler accelerator.",
-      "clause": "changing CI workflows"
-    },
-    {
-      "prompt": "Upgrade a card-game SDK installer and verify it starts with an empty package cache under the production build identity, not just a warm developer cache.",
-      "clause": "upgrading engine or SDK dependencies"
+      "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
@@ -2304,6 +2300,50 @@
     {
       "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
       "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Regenerate schemas after merging a declaration change, preserving table and field semantics while refreshing every catalog and validator that records their hashes.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Regenerate an asset manifest after a provenance-only metadata update and refresh downstream bundle indexes without changing the asset population or values.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Update generated API source fingerprints and regenerate the hash-pinned client fixtures, although the public field types remain unchanged.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Implement a signed deployment snapshot publisher and independent live reader whose hashes currently disagree because list items omit fields returned by singleton GETs.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export verifier whose producer and consumer hash equivalent-looking JSON with different value types and array ordering.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset manifest signer and loader with a shared canonical derivation contract and independent expected-byte fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export whose signed worker configuration is valid at startup but expires before the final protected read after queue delay.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game tournament capture whose signed observation inputs must remain valid after deployment delay through the last frame without disabling expiry checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a recovery gate publisher that budgets only execution duration and omits issuance-to-start lead time from its signed input validity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a CI installer after a warm pull-request build passed but the merge group could not restore that cache or download its compiler accelerator.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Upgrade a card-game SDK installer and verify it starts with an empty package cache under the production build identity, not just a warm developer cache.",
+      "clause": "upgrading engine or SDK dependencies"
     }
   ],
   "negative": [
@@ -3909,6 +3949,51 @@
     },
     {
       "prompt": "Rewrite the public explanation of private-file credential exports without modifying the guard or its tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Explain in documentation why unchanged schema types can still have new provenance hashes; do not change generators or outputs.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify the claim that a published asset manifest has stale content hashes; do not change source or publish a fix.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare semantic and byte-level hashing for a package catalog architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether two existing signed snapshots use identical hash inputs without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare canonical JSON and binary signature formats for an architecture proposal without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite documentation explaining why list and singleton API responses can have different shapes; do not change code or tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify whether an existing signed bundle expires before the last scheduled operation without changing code or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare renewable leases and fixed-expiry attestations for a proposed architecture; no implementation is requested.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite operator documentation explaining validity horizons without changing issuers, tests or deployment inputs.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
