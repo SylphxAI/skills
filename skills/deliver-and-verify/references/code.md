@@ -19,6 +19,16 @@ the contract and destination type, retaining original bytes separately where req
 equivalent values with different spellings and combined coefficient/scale limits
 through the actual storage driver, while byte-defined identifiers remain distinct.
 
+Raw bytes containing table-relative references can silently change meaning when
+copied into a destination with reordered lookup entries, even when every target
+exists in both tables. **Wrong:** require equal tables before checking whether
+anything will be copied, or copy numeric indices unchanged; **Right:** preserve
+an empty copy unchanged and remap copied references by stable target identity,
+refusing unresolved targets. Verify by reloading emitted output with the real
+consumer, varying reordered and unrelated added/removed entries, with local
+references unchanged and missing referenced targets refused without partial
+writes.
+
 A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
 complete rewritten document with the destination consumer's parser, including
