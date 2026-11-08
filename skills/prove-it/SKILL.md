@@ -152,7 +152,11 @@ incomplete coverage; derive approval requirements from the repository's declared
 merge contract as well as its effective rules. When that contract requires a
 review, verify the named producer's explicit `success`, complete reported scope
 and current head; `completed`, zero findings or a separate approval do not
-substitute. Keep advisory reviews advisory.
+substitute. A historical review ID is audit evidence, not an extra admission
+requirement unless the contract pins that exact generation. For a replacement
+result at the same source revision, evaluate the authoritative current producer,
+verdict and scope; a pending, failed or incomplete replacement cannot reuse the
+older pass. Keep advisory reviews advisory.
 
 **Wrong:** "CI passed and the completed review has zero findings, so enqueue."
 **Right:** "The review is neutral with unreviewed paths; its required success is

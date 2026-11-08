@@ -18,6 +18,18 @@
       "clause": "verifying a live status or metric before reporting it"
     },
     {
+      "prompt": "Verify whether a replacement review's new Check Run ID invalidates its success when the required producer, current commit and complete scope are unchanged.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A SaaS review check has replaced an earlier success with a pending result at the same revision. Reconcile the claimed approval with the authoritative current result.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A card-game release contract pins one review generation, but a later review succeeded on the same commit. Verify which result satisfies that contract.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "Check whether the SaaS repository's green CI aggregate actually includes its separately required current-head review.",
       "clause": "verifying a live status or metric before reporting it"
     },
@@ -492,6 +504,11 @@
       "prompt": "Explain the standard difference between HTTP HEAD and GET without checking a live service or incident.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
+    },
+    {
+      "prompt": "Arm the reviewed pull request after its current required review and CI have passed.",
+      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "route_to": "deliver-and-verify"
     }
   ]
 }
