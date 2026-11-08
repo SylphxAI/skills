@@ -313,12 +313,13 @@ rollback through both standalone and caller-owned transaction entrypoints, with
 the inner error handled and the outer callback returning normally. SQL rollback
 does not restore mutated cached entities or aggregates; snapshot and restore the
 affected in-memory fields on failure, or defer their effects until the owning
-transaction commits. **Wrong:** infer nested safety from a standalone rollback
-or restored row; **Right:** verify the declared savepoint or rollback-only
-contract at the actual outer commit boundary, checking every mutated field
-(each currency balance and item count) in persisted rows and the same real
-domain objects—not a SQL-only double—after injected failure and after a
-subsequent normal save or replay.
+transaction commits; cached merge baselines and completion flags belong to that
+state too. Recovery can itself fail or overlap another mutation, so its invariant
+must survive a secondary exception and cannot overwrite another operation's
+committed state. **Wrong:** infer safety from a restored row or separately locked
+saves; **Right:** verify every mutated field in persisted rows and the same real
+domain objects at the outer commit boundary, after recovery failure and a
+controlled concurrent call, then after normal save or replay.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
