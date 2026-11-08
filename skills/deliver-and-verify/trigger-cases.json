@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a CI installer after a warm pull-request build passed but the merge group could not restore that cache or download its compiler accelerator.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Upgrade a card-game SDK installer and verify it starts with an empty package cache under the production build identity, not just a warm developer cache.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
       "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
       "clause": "changing CI workflows"
     },
@@ -3903,6 +3911,11 @@
       "prompt": "Rewrite the public explanation of private-file credential exports without modifying the guard or its tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify whether a reported CDN cache hit actually occurred for this request, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
