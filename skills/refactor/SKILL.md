@@ -1,6 +1,6 @@
 ---
 name: refactor
-description: "Use when splitting an oversized module or test suite, deduplicating implementations across packages or runtimes, deleting dead code or unused dependencies, removing completed compatibility layers, or restructuring a codebase while preserving its observable behavior. Use deliver-and-verify when the outcome adds features or changes product behavior."
+description: "Use when splitting an oversized module or test suite, deduplicating implementations across packages or runtimes, deleting dead code or unused dependencies, removing completed compatibility layers, reducing scattered edits for one supported change, or restructuring a codebase while preserving its observable behavior. Use challenge for architecture-only advice without implementation. Use deliver-and-verify when the outcome adds features or changes product behavior."
 ---
 
 # Refactor

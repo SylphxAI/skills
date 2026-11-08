@@ -158,17 +158,25 @@ observation window.
 
 Use this method when a startup event and the screen people can use disagree:
 
-- Treat an application's ready event as one diagnostic boundary. Establish the
-  first usable screen from its required controls and content, then exercise a
-  safe control. Keep appearance and input-response results separate; an empty
-  container behind an onboarding overlay does not establish readiness.
+- A ready event or a navigation-template match can precede required content.
+  Distinguish the screen shell, required content populated, and the populated
+  screen unobstructed; calibrate the last state against a safe input and a
+  partially populated negative control. A modal covering required content
+  censors population time rather than proving it; record dismissal timestamps
+  separately, because subtracting an operator's delay does not identify a
+  counterfactual launch without the modal. **Bad:** accept a dashboard's toolbar
+  while its data panels are blank; **Good:** retain separate shell, content and
+  unobstructed-screen times, with hidden content bounded by the first verified
+  unobstructed frame.
 - For sampled video, retain the last frame missing the required content and
   the first frame showing it. Report that interval, including uncertainty in
   the input timestamp. Preserve original presentation timestamps (PTS) and
   source-frame indices. A frame-rate conversion can duplicate frames and assign
   new timestamps; its output index divided by frame rate is not the original
   frame's time. Match selected images to source frames by index or decoded-pixel
-  hashes before calculating a latency.
+  hashes before calculating a latency. A burned-in counter can use another
+  numbering domain; reconcile its displayed clock with the selected frame's
+  metadata instead of treating the counter as the decoder index.
 - Bind video time to the recorded input's clock. Android `screenrecord` can
   embed Winscope frame timestamps and a clock offset; validate the magic,
   version, length and frame count against the
