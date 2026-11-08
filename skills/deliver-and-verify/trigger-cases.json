@@ -2308,6 +2308,18 @@
     {
       "prompt": "Update generated API source fingerprints and regenerate the hash-pinned client fixtures, although the public field types remain unchanged.",
       "clause": "generating source"
+    },
+    {
+      "prompt": "Implement a signed deployment snapshot publisher and independent live reader whose hashes currently disagree because list items omit fields returned by singleton GETs.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export verifier whose producer and consumer hash equivalent-looking JSON with different value types and array ordering.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset manifest signer and loader with a shared canonical derivation contract and independent expected-byte fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3930,6 +3942,21 @@
       "prompt": "Compare semantic and byte-level hashing for a package catalog architecture; do not implement either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether two existing signed snapshots use identical hash inputs without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare canonical JSON and binary signature formats for an architecture proposal without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite documentation explaining why list and singleton API responses can have different shapes; do not change code or tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
