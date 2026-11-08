@@ -360,6 +360,18 @@
     {
       "prompt": "Verify a repository release status through authenticated provider metadata and prepare a safe report without copying temporary access credentials.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Read returned truncated=true and JSON.parse failed at the cut-off offset. Does that prove the source file is corrupt?",
+      "clause": "judging parse or validation failures after a truncated or bounded read"
+    },
+    {
+      "prompt": "A size-limited configuration read ends midway through a YAML value and validation fails. Judge whether the source is malformed.",
+      "clause": "judging parse or validation failures after a truncated or bounded read"
+    },
+    {
+      "prompt": "An API page limit hides later CSV export records. Judge whether a missing record is absent from the source or only unread.",
+      "clause": "checking that a resource or bug is absent"
     }
   ],
   "negative": [
@@ -551,6 +563,16 @@
     {
       "prompt": "Explain what a Git commit parent is using static knowledge, without checking a repository or live run.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
+      "route_to": null
+    },
+    {
+      "prompt": "Full file read, JSON.parse fails mid-document on an invalid token. Report the file as malformed; no unread tail remains.",
+      "clause": "Full-read parse errors need no truncation investigation.",
+      "route_to": null
+    },
+    {
+      "prompt": "What does the CSV abbreviation stand for? Use standard terminology without inspecting a source.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
       "route_to": null
     }
   ]
