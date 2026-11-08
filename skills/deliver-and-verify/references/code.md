@@ -96,6 +96,10 @@ missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
 
+Server-side apply can succeed and attribute a field in `managedFields` even when
+mutating admission rewrites its value; compare the live post-apply values with
+intent before treating field ownership as authorship.
+
 When replacing a mutually exclusive configuration variant or retiring fields,
 validate the effective update against an existing object with its server defaults
 and field ownership: omission can retain another manager's value, and `null` can
