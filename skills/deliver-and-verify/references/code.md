@@ -570,7 +570,12 @@ custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
 prepared-statement behavior under the effective role and row-level security
 (RLS), comparing generic and custom execution plans where supported; inspect
-actual rows, loops and buffers as well as latency. Empty-result distributions
+actual rows, loops and buffers as well as latency. A set-based source or
+`GROUP BY` does not prove an aggregate executes once: optimizer inlining and
+cardinality choices can repeat it. Aggregate reuse is established by actual
+loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
+prevents aggregate reexecution, but correlated scans of an unindexed materialized
+pool can still be quadratic. Empty-result distributions
 can reject every candidate upstream or reach costly downstream branches before
 later predicates reject them all; identical output cardinality does not establish
 comparable work coverage. Performance evidence includes reachable repeated scans
