@@ -36,7 +36,15 @@ data, while contract-refused states remain refusals.
 A successful load-balanced request can hide a stale replica: a readiness promise
 across replicas needs repeated agreement on every member of a stable serving
 consumer census, tied to its deployed revision, with each sample taking the
-maximum latency rather than the first success. State the clock origin, preserve
+maximum latency rather than the first success. Authenticating every listed member
+does not establish that no unlisted member now serves: when membership or routing
+can change, compare independently enumerated complete current populations with
+the accepted binding before and after each proof; unavailable or incomplete
+discovery leaves the proof unavailable. **Bad:** recheck only the signed startup
+members; **Good:** retain the unchanged-population positive control while testing
+an added member, a removed member and a routing change during the proof.
+
+State the clock origin, preserve
 the original source-observation time across reloads and unchanged content, retain
 failed or censored samples, and identify excluded routes or a changed census
 rather than silently shrinking or mixing the population. A measured budget uses

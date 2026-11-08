@@ -45,7 +45,8 @@ Use read-only discovery to understand the target. Before changing it, state the 
 
 Read the relevant code, configuration and external primary specification in the current session. Record the version and read time for an external dependency. For a live mutation, read the affected state before acting.
 
-For readiness or propagation promises across replicas, read
+For readiness or propagation promises across replicas, or proof gates over a
+mutable serving population, read
 [replicated readiness](references/performance.md#replicated-readiness) before defining the probe population and timing boundary.
 
 For request/response limits, asynchronous effect admission, context compaction,

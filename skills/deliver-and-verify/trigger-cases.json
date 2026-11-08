@@ -2336,6 +2336,18 @@
     {
       "prompt": "Repair a recovery gate publisher that budgets only execution duration and omits issuance-to-start lead time from its signed input validity.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS ingestion gate that verifies listed collectors but misses newly shipping collectors; compare the complete current population before and after each proof.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a card-game rollout probe that keeps its proof unavailable when current shard membership cannot be completely discovered.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Repair a replicated document-cache verification gate so routing changes during a proof invalidate its startup population binding.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3986,6 +3998,21 @@
     },
     {
       "prompt": "Rewrite operator documentation explaining validity horizons without changing issuers, tests or deployment inputs.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether signed member identities establish a complete current collector population, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare before-and-after population discovery with leased membership as proposed readiness architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the operator explanation of an existing shard population check without changing its behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
