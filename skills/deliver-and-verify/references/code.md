@@ -63,8 +63,8 @@ configured-but-unusable capability into absence and a false-ready success. Prese
 intentionally absent reduced-scope deployments, but refuse construction/readiness
 for a configured capability with a missing, empty, malformed, or non-Unicode
 binding rather than treating it as absent. Verify the real environment/declaration
-parser through every production constructor or deployment profile (using isolated
-subprocess environments for process-global settings), covering absent, invalid,
+parser through every production constructor or deployment profile (using [private test fixtures](dx.md#internal-development)
+for process-global settings), covering absent, invalid,
 and loaded declarations plus healthy and failing mandatory upstreams; helper-only
 tests miss this boundary.
 

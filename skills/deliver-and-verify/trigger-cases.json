@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair an offline integration fixture so the launched service receives explicit offline configuration instead of inferring it from test-runner variables.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix an environment-mutating test whose module mutex leaves concurrent configuration readers exposed to its overrides.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a loopback mock to establish blocking mode on the accepted socket instead of relying on listener-mode inheritance across platforms.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2227,6 +2239,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an offline fixture really prevents external requests, without modifying or running a repair.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare subprocess isolation with shared locking for future environment-dependent tests; do not implement either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of blocking socket inheritance without changing a fixture or publishing a PR.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
