@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a campaign-code parser that accepts numeric suffixes without misrouting a longer supported alias that ends in a digit.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
       "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
       "clause": "implementing or shipping a feature, bug fix"
     },
