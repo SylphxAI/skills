@@ -116,6 +116,14 @@ For privileged Git maintenance, pin recorded `--git-dir`/`--work-tree` paths ins
 
 ## Source publication authority
 
+Publication authority binds the destination as well as the source: a local
+worktree branch or matching uploaded SHA does not establish the remote object
+being updated. Resolve the destination repository and ref from the provider's
+current target metadata, and verify that target reports the retained source
+after publication. **Bad:** push to the local branch name and infer that the
+existing PR advanced; **Good:** publish the retained SHA to the PR's actual head
+repository/ref, then verify that PR's head SHA.
+
 Agreement between observations of the same writable state is not independent
 verification: shared refs and group-writable Git metadata, including linked-worktree
 reflogs, cannot witness caller authorization. Push the exact full commit SHA retained
