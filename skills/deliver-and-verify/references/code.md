@@ -446,9 +446,16 @@ read 2026-11-06).
 Through the real entry point, work lasting at least the minimum retention must
 still publish a ready, gettable, usable resource with its full promised lifetime;
 an absolute-deadline control keeps its original origin.
-For scheduling tests, derive effective eligibility across message, route and
-resource deadlines, anchored to the event that issued the constraint rather than
-a late assertion clock or one storage field.
+For scheduling tests, couple producer lifetime, controller convergence and caller
+deadline: derive effective eligibility across message, route and resource
+constraints from their issuing events, not a late assertion clock or one storage
+field. Fresh single, repeated and burst arrivals across independent contention domains must
+exercise production lifecycle and expiry predicates, proving deadline-bound
+progress while failed-head cleanup coexists with surviving and next-feasible-head
+progress; pre-aged records, hardcoded deletion or single-head success can hide
+lost work or excessive serialization. Match the claim to the observed resource
+boundary: aggregate pool-model success does not establish per-node feasibility
+or a reservation guarantee without evidence at those boundaries.
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round
@@ -572,7 +579,12 @@ custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
 prepared-statement behavior under the effective role and row-level security
 (RLS), comparing generic and custom execution plans where supported; inspect
-actual rows, loops and buffers as well as latency. Empty-result distributions
+actual rows, loops and buffers as well as latency. A set-based source or
+`GROUP BY` does not prove an aggregate executes once: optimizer inlining and
+cardinality choices can repeat it. Aggregate reuse is established by actual
+loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
+prevents aggregate reexecution, but correlated scans of an unindexed materialized
+pool can still be quadratic. Empty-result distributions
 can reject every candidate upstream or reach costly downstream branches before
 later predicates reject them all; identical output cardinality does not establish
 comparable work coverage. Performance evidence includes reachable repeated scans
@@ -580,11 +592,13 @@ and function calls, distinguishing repeated function planning from execution cos
 where applicable.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
-effectful modes, prove one authorised durable round trip: schema constraints,
-commit, reload and downstream consumer encoding. Evaluate-only success proves
-only evaluation; keep ordinary-denial controls separate from the durable case.
-**Wrong:** accept a new variant because admission evaluates it; **Right:**
-commit and reload it through the real transport before claiming support.
+effectful modes, prove an authorised durable round trip for each distinct source
+of provenance: admission, schema constraints, commit, reload and downstream
+consumer encoding. A variant with no attachment or entitlement can still require
+authenticated policy metadata; adapting a populated fixture bypasses its real
+admission path. **Wrong:** accept a variant from evaluate-only or manually seeded
+records; **Right:** carry its selected provenance through the real consumer,
+with missing-metadata refusals separate from authorised success.
 
 Revoking an owner's ordinary privileges does not prove workload immutability:
 [PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)

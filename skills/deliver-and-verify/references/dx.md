@@ -18,11 +18,15 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
-A copied entrypoint is not a complete tool: its dependency files and
-wrapper-supplied launch context are inputs too. When running outside the normal
-wrapper, derive both from the pinned launcher and verify initialization of the
-unchanged entrypoint before expensive work; an initialization refusal establishes
-no policy or product verdict.
+A copied entrypoint is not a complete tool: derive its dependency files and
+wrapper-supplied launch context from the pinned launcher and verify initialization
+before expensive work; an initialization refusal establishes no policy or product
+verdict. When current control helpers operate on historical inputs, assemble their
+complete sibling dependency closure from the control revision and pass the frozen
+target root (source, data or package) explicitly rather than inferring it from the
+helper's location. Exercise the assembled consuming command against an older target
+lacking the helper and a changed-target negative, so missing dependencies and
+accidental checks of the current checkout cannot pass as historical verification.
 
 Verify completeness and integrity against the producer's intended manifest and
 the consumer's actual enumeration, matching every required entry and digest in
@@ -246,9 +250,12 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal, active or ready
-for CI's transport and authentication mode; permissive local trust can hide
-missing credentials.
+When setup tolerates statement errors, a successful replay does not establish
+effective grants or an empty database: one invalid grantee can fail a grouped
+`GRANT` for valid recipients too, while earlier seed transactions remain committed.
+Establish readiness from effective runtime-role privileges and retained rows under
+enabled guards, not the replay's exit status or a "fully migrated" label;
+permissive local trust can also hide missing transport credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
