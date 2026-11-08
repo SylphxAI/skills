@@ -316,10 +316,13 @@ notification work nor creates an undeclared catch-up burst.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
-In runtimes where futures advance only when polled, awaiting maintenance can
-suspend the worker holding the lock it needs. Keep that worker driven, and join
-or cancel maintenance with its lifetime; test actual contention and cancellation
-rather than eventual completion alone.
+In poll-driven runtimes, waking a future does not release its resources: a
+buffered producer can stop being polled while its consumer awaits the same lock.
+Admission-state locks must not survive refill sleeps; where progress instead
+requires continuous polling, keep the worker driven and join or cancel maintenance
+with its lifetime. **Wrong:** test only concurrent acquisitions; **Right:** suspend
+a polled waiter while a nested consumer uses the same budget, verifying progress,
+unchanged bounds and cancellation through the real adapter.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
