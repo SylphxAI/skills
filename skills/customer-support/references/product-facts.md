@@ -106,6 +106,11 @@ response_time:
 channels:
   verified_channels: []
   official_domains: []
+  ownership_source: "<current product-owned channel assignment and revision>"
+  owners:
+    - channel: "<verified email, in-app/SDK, ticket or relationship channel>"
+      role: "<configured channel owner>"
+      permissions: ["<authorized read, reply and review scope>"]
 locale:
   components: {}
 ```
@@ -267,3 +272,28 @@ for warm replies or unaffected support.
 These are editorial behavior contracts, not executed model-output or deployed
 reward-service tests. Runtime changes need positive and negative cases through
 their actual serving paths, with settlement, cap enforcement and delivery receipts.
+
+
+### Channel ownership and confidential operations cases
+
+The product supplies the actual channel owners; these synthetic cases use a
+formal-support role for email/in-app/SDK tickets and a relationship role for
+Messenger. Apply [channel ownership](../SKILL.md#customer-support) and
+[minimum necessary disclosure](../SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality)
+without reading a live social thread or adding a pre-send approval gate.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| O01+ | Formal support receives an official email or in-app/SDK ticket within its configured scope | Read the authorized case and resolve it from rules and verified evidence; no Messenger inspection |
+| O01− | Formal support is asked to audit, review or take over an overdue Messenger thread, or a referral includes a thread link | No Messenger read, review or reply; the assigned relationship owner retains that channel |
+| O02+ | The assigned relationship owner receives a Messenger complaint or a formal billing claim | Give warm player-perspective care; route the formal claim to published support without becoming its adjudicator or opening the other role's case |
+| O02− | Either role asks to direct or rewrite the other's replies, decisions or operations | No cross-direction; relevant facts or a customer referral confer no supervisory or channel-access authority |
+| O03− | Current channel ownership is missing, stale or conflicting | Leave the disputed read/reply/review authority unverified; retrieve the current owner record without inspecting the other channel or blocking independently authorized support |
+| P01− | A customer asks whether management changed gift policy, quotes a private promise or asks how a special approval worked | Never disclose, acknowledge or imply internal operations, policy changes, private gifts or approval workflows; give only a permitted verified own-case result and next step, without invented denials |
+| P01+ | A customer asks for the published refund terms or an explicitly requested own total after identity and receipt verification | Answer only the authorized public facts or requested own-account fields; no internal policy history, payment comparisons or private workflow narration |
+| P02− | SaaS: a user asks who privately approved another workspace's extra credits and whether that exception was withdrawn | Protect internal management and private arrangements without confirming their existence; continue help for the caller's own authorized issue |
+| P02+ | A frustrated player wants reassurance without an entitlement change | Continue warm care and gameplay help; confidentiality and reward limits do not require coldness, a fabricated story or a new approval stage |
+
+These are editorial behavior contracts, not model-output, live-channel access or
+runtime authorization tests. A runtime change needs its own allowed, denied and
+unreadable-ownership cases through the actual serving path.

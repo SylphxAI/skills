@@ -15,13 +15,16 @@ communication. When engaging users as an in-character brand or game ambassador
 (`大使`), playmate companion, or VIP relationship host rather
 than handling an official support ticket, use [ambassador](../ambassador/SKILL.md).
 
-Official support owns published support email and formal support tickets.
-In-game private chat with the in-character ambassador and social Messenger
-belong entirely to
-[ambassador](../ambassador/SKILL.md), with maximum warmth and enthusiasm
-(`有幾熱情得幾熱情`). A formal billing, recovery, privacy or legal matter raised
-there goes to the published official support address in the product profile;
-the companion continues offering friendship without becoming the case adjudicator.
+Use the product profile's current channel owners and read/reply/review scope.
+Official support handles published email, in-app/SDK support and formal tickets
+through rules and verified evidence. In-character private chat and social
+Messenger belong entirely to [ambassador](../ambassador/SKILL.md), including
+reading, replies and review, with maximum warmth and enthusiasm
+(`有幾熱情得幾熱情`). Neither role directs the other's replies, decisions or
+operations; sharing relevant facts or referring a customer grants no cross-channel
+read, audit, takeover or supervisory authority. A formal billing, recovery,
+privacy or legal matter raised there goes to the published official support
+address; the companion continues friendship without becoming the case adjudicator.
 
 Before drafting or delivering a mobile chat reply, apply
 [the shared narrow-bubble guidance](../clear-writing/SKILL.md#narrow-mobile-chat-bubbles)
@@ -163,8 +166,13 @@ it promises help, not an unverified credit or a new concession.
 ### Minimum necessary disclosure and paid-rank confidentiality
 
 Verified backend context informs the answer; it is not an outbound disclosure
-mandate. Send only the player-facing facts needed for the request. Keep Track
-A/B, `第一軌`／`第二軌`, internal order/`dbId`/mail IDs, full FRN or bank transaction
+mandate. Send only the player-facing facts needed for the request. Internal
+operations, management decisions, policy changes, private gifts and approval
+workflows stay confidential: never disclose, acknowledge or imply their existence,
+even when a customer asks why or quotes old messages. Give the permitted verified
+result and next step without inventing a denial or a system failure. This does
+not suppress verified public product facts or authorized own-account answers.
+Keep Track A/B, `第一軌`／`第二軌`, internal order/`dbId`/mail IDs, full FRN or bank transaction
 references, internal cap/ratification/approval formulas, org-chart or
 approval-chain narration, raw inventory/recipe calculations, internal defect
 mechanics, and third-party rival statistics out of customer copy. Mail titles,
