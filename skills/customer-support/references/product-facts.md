@@ -87,7 +87,7 @@ billing:
 reward_policy:
   source_revision: "<current product-owned policy revision>"
   transition_cutoff: "<verified UTC cutoff for retired commitments, or null>"
-  final_settlement_population: "<closed authoritative commitment record, or null>"
+  final_settlement_population: "<full historical review population with evidence, authorization, proportionate resolutions and delivery receipts, or null>"
   automatic_settlement_route: null
   missing_entitlement_route: "<authorized idempotent fulfillment route, or null>"
   public_campaigns: [] # Published campaigns with live status and enforcement receipts.
@@ -254,10 +254,10 @@ for warm replies or unaffected support.
 | --- | --- | --- |
 | C01+ | Game: a verified paid order lacks its advertised entitlement; authorized automatic fulfillment exists | Restore only the exact missing entitlement once and verify delivery; no care extra |
 | C01− | Same order was already fulfilled, or fulfillment is unknown | Confirm existing delivery or reconcile uncertainty; no duplicate grant |
-| C02+ | A verified promise predates the product cutoff, is in the final closed population and is not yet settled | Automatic system settlement once; no personal code or manual inbox/database grant |
-| C02− | Promise time, final-population membership or previous settlement is unverified | Keep eligibility unresolved; no substitute reward or code |
-| C03− | Final settlement completed; a new promise, renewed batch or whitelist exception is requested | Zero new batch, enrollment or exception, regardless of spend |
-| C04+ | A retired benefit has already reached the customer's holdings | Preserve delivered entitlements without clawback; no future gift rights |
+| C02+ | A historical discretionary promise predates the verified cutoff; evidence and authorization establish a proportionate resolution in the final review population, with no prior delivery | Automatically settle only the approved outcome once; the original promise alone approves no amount; no personal code or manual inbox/database grant |
+| C02− | Promise time, evidence, authorization, final-population membership or previous settlement is unverified | Keep the affected decision unresolved; no automatic issuance, substitute reward or code; independently owed entitlements remain deliverable |
+| C03− | Final reviewed population is resolved; a new promise, renewed batch, repeat settlement or whitelist exception is requested | Zero new batch, promise, enrollment, repeat delivery or exception, regardless of spend |
+| C04+ | A discretionary gift has already reached the customer's holdings, including an unclaimed inbox item | Preserve every delivered holding without clawback or data loss; no repeat delivery or future gift rights |
 | C04− | Customer asks to repeat a historical rebate, whitelist or top-up-linked gift | No renewal, negotiated extra or stored-value ambassador gift |
 | C05− | A frustrated customer requests a personal comfort code, even fixed, free, tiny or automatically redeemed | No personal code; warmth and gameplay help continue |
 | C06+ | Already-published server-wide public campaign with verified universal terms, one claim/account and system-validated cap/window | Frontline may share unchanged published code and terms, not configure or generate |
@@ -268,6 +268,10 @@ for warm replies or unaffected support.
 | C10+ | SaaS: a paid credit entitlement is missing and an authorized idempotent system route exists | Restore the owed credits without discretionary care extras; same entitlement-versus-gift distinction |
 | C10− | SaaS: a customer asks for a new free-credit gift after the final commitment settlement | No new discretionary batch under the configured system-only policy; offer available guidance |
 | C11+ | A customer requests ordinary password recovery or emotional reassurance with no reward | Continue authorized recovery or warm care; reward restrictions do not block unrelated support |
+| C12+ | Game: an activity-earned entitlement is verified missing while a separate historical gift promise is disputed | Deliver the exact earned entitlement once through the normal automatic system; review the discretionary promise independently |
+| C12− | A review list contains an excessive or unauthorized historical promise but no approved proportionate resolution | List membership is not approval; hold automatic issuance of the original promise without blanket cancellation of the population |
+| C13+ | SaaS: a verified historical courtesy-credit promise has an authorized proportionate resolution different from the original amount | Settle only the approved resolution automatically once, then retain its receipt in the final resolved population |
+| C13− | Evidence for one historical promise is unreadable; other records prove purchased entitlements or delivered discretionary holdings | Hold only the unknown promise decision; no guessed approval, blanket cancellation, delayed undisputed entitlement or clawback |
 
 These are editorial behavior contracts, not executed model-output or deployed
 reward-service tests. Runtime changes need positive and negative cases through
