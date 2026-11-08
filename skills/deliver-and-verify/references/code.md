@@ -455,6 +455,14 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+Startup validity does not establish validity throughout a run that rechecks it:
+required horizon = issuance-to-start lead time + maximum run duration +
+finalization margin, within the issuer's authority policy.
+**Wrong:** size a signed input only to the run duration; **Right:** test queue and
+deployment delay through the last protected operation, retaining expiry refusal.
+If that horizon is not authorized, refresh through the issuer before starting
+rather than weakening the checks.
+
 Renewable inactivity deadlines and absolute lifetime limits are different
 contracts: timeout supervision and fresh downstream work share the current
 inactivity deadline, capped by any immutable authority horizon.
