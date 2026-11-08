@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a billing reconciliation query whose exact predecessor remains available but whose attribution evidence disappears when that history ages beyond the output selection window.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a card-game audit query so historical reward evidence follows record order rather than the current clock, preserving the separately documented event-context limit.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Repair export retention so an active-tenant wildcard does not retain every deleted tenant archive, while an explicit historical archive reference remains protected.",
       "clause": "changing resource sizing or retention"
     },

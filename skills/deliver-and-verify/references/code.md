@@ -608,10 +608,14 @@ An output subset need not contain the dependencies needed to evaluate its rows:
 a timestamp filter can remove the true predecessor while leaving a plausible,
 non-null earlier row. Define adjacency from the authoritative ordering over the
 necessary history before restricting scored rows; time-based pruning needs a
-proven ordering guarantee or comparison with full-history evaluation.
-**Wrong:** trust a non-null `LAG` over a recent slice. **Right:** place an
-intermediate event outside that slice and independently assert its successor's
-predecessor, exposing both hidden violations and invented gaps.
+proven ordering guarantee or comparison with full-history evaluation. Output
+selection and diagnostic-history limits are separate contracts: retaining exact
+adjacency does not prove that a later attribution lookup retained its evidence.
+**Wrong:** trust a non-null `LAG` or a recent-only history match. **Right:** pin
+the clock and vary each dependency's age across the selection boundary while
+asserting the selected row's predecessor and classification independently;
+exercise historical rows through a supported historical selector, not an assumed
+full-scan mode.
 
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
