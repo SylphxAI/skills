@@ -14,10 +14,6 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Prepare and arm a migration PR whose merge-group guard cites runtime code from an earlier queue entry; establish whether it is a real undeployed prerequisite before using a supported compatibility declaration.",
-      "clause": "editing or arming PRs"
-    },
-    {
       "prompt": "Change a partial-clone CI checkout reader to batch historical source reads; prove remote request count on cold history and reuse on warm history, not just one local process.",
       "clause": "changing source checkouts"
     },
@@ -2386,6 +2382,14 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Merge the updated integration branch into an open source branch while preserving applied migrations and fixing new migration version ordering.",
+      "clause": "changing source checkouts"
+    },
+    {
+      "prompt": "Prepare and arm a migration PR whose merge-group guard cites runtime code from an earlier queue entry; establish whether it is a real undeployed prerequisite before using a supported compatibility declaration.",
+      "clause": "editing or arming PRs"
+    },
+    {
       "prompt": "Ship a concurrent index for a SaaS journal whose heap builds quickly but older database snapshots repeatedly delay completion; size its finite execution budget from both measured costs without changing lock semantics.",
       "clause": "authorized operational, repository"
     },
@@ -4074,6 +4078,11 @@
       "prompt": "Rewrite the operator explanation of an existing shard population check without changing its behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review a proposed migration renumbering for concrete defects without editing source or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     },
     {
       "prompt": "Verify whether an existing PostgreSQL concurrent-index timeout was caused by snapshot waits or slow heap scanning, without changing source, deployment configuration or live state.",
