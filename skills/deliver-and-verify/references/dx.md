@@ -18,11 +18,15 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
-A copied entrypoint is not a complete tool: its dependency files and
-wrapper-supplied launch context are inputs too. When running outside the normal
-wrapper, derive both from the pinned launcher and verify initialization of the
-unchanged entrypoint before expensive work; an initialization refusal establishes
-no policy or product verdict.
+A copied entrypoint is not a complete tool: derive its dependency files and
+wrapper-supplied launch context from the pinned launcher and verify initialization
+before expensive work; an initialization refusal establishes no policy or product
+verdict. When current control helpers operate on historical inputs, assemble their
+complete sibling dependency closure from the control revision and pass the frozen
+target root (source, data or package) explicitly rather than inferring it from the
+helper's location. Exercise the assembled consuming command against an older target
+lacking the helper and a changed-target negative, so missing dependencies and
+accidental checks of the current checkout cannot pass as historical verification.
 
 Verify completeness and integrity against the producer's intended manifest and
 the consumer's actual enumeration, matching every required entry and digest in
