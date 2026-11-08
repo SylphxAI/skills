@@ -87,6 +87,14 @@ remaining contention. **Wrong:** select a catalogued isolated tier that is absen
 in the target scope; **Right:** retain the served memory class until scoped
 desired and served inventories establish the isolated replacement.
 
+Percentage availability or quota rules act on integer populations with
+provider-specific rounding; adding nominal replicas can create no usable slack.
+For example, Kubernetes `minAvailable: 80%` rounds four replicas up to four
+required healthy Pods, so five healthy replicas are needed for one voluntary
+disruption ([rounding semantics](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#rounding-logic-when-specifying-percentages),
+read 2026-11-08); current controller status, matching selectors and affected
+placement determine whether that arithmetic applies.
+
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
@@ -881,10 +889,11 @@ Test disappearance and retained-but-broken behavior independently; an explicit
 removal waiver suppresses only the local disappearance finding for an actually
 removed identity. Preserve each independent reason for selection: historical
 comparison coverage does not limit explicit requested assertions about objects
-outside that population. Offline tests that omit verb, subresource, identity or old-object
-fields establish only their modeled requests; verify alternative supported routes
-through actual selection and enforcement, with permitted controls and the intended
-denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
+outside that population. Offline tests establish only their evaluator's effective
+request context: adapters can omit or overwrite a fixture's verb, subresource,
+identity or old object. Verify alternative supported routes through actual
+selection and enforcement, with permitted controls and the intended denial.
+**Wrong:** infer a debug-update ban from create tests, or skip a requested
 permission change because its account is absent from the old audit sample.
 **Right:** exercise the alternate update route and requested objects inside and
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
