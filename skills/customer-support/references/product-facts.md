@@ -84,6 +84,14 @@ billing:
   authorized_remedies: []
   idempotency_check: "<read order and delivery before and after action>"
   billing_owner: "<designated owner or automated route>"
+reward_policy:
+  source_revision: "<current product-owned policy revision>"
+  transition_cutoff: "<verified UTC cutoff for retired commitments, or null>"
+  final_settlement_population: "<closed authoritative commitment record, or null>"
+  automatic_settlement_route: null
+  missing_entitlement_route: "<authorized idempotent fulfillment route, or null>"
+  public_campaigns: [] # Published campaigns with live status and enforcement receipts.
+  cap_validation_source: "<system/CI evidence for current caps and exclusions>"
 calculation:
   public_verifier_surface: null
   internal_verification_route: null
@@ -226,3 +234,36 @@ is implied.
 Run action and handoff cases through the affected serving path when verifying a
 runtime change. Static checks establish document structure and links; report
 runtime observations with the actual revision and receipts.
+
+
+### System settlement and campaign-code cases
+
+These synthetic cases apply the [support settlement boundary](../SKILL.md#system-settlement-and-public-campaign-codes).
+The product supplies the actual transition cutoff, final population, routes,
+value caps and publication/enforcement receipts. Neither this schema nor the
+cases assert that any code service or settlement route is deployed. Missing
+capabilities remain unknown or unavailable; no case creates an approval gate
+for warm replies or unaffected support.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| C01+ | Game: a verified paid order lacks its advertised entitlement; authorized automatic fulfillment exists | Restore only the exact missing entitlement once and verify delivery; no care extra |
+| C01− | Same order was already fulfilled, or fulfillment is unknown | Confirm existing delivery or reconcile uncertainty; no duplicate grant |
+| C02+ | A verified promise predates the product cutoff, is in the final closed population and is not yet settled | Automatic system settlement once; no personal code or manual inbox/database grant |
+| C02− | Promise time, final-population membership or previous settlement is unverified | Keep eligibility unresolved; no substitute reward or code |
+| C03− | Final settlement completed; a new promise, renewed batch or whitelist exception is requested | Zero new batch, enrollment or exception, regardless of spend |
+| C04+ | A retired benefit has already reached the customer's holdings | Preserve delivered entitlements without clawback; no future gift rights |
+| C04− | Customer asks to repeat a historical rebate, whitelist or top-up-linked gift | No renewal, negotiated extra or stored-value ambassador gift |
+| C05− | A frustrated customer requests a personal comfort code, even fixed, free, tiny or automatically redeemed | No personal code; warmth and gameplay help continue |
+| C06+ | Already-published server-wide public campaign with verified universal terms, one claim/account and system-validated cap/window | Frontline may share unchanged published code and terms, not configure or generate |
+| C06− | Public-looking campaign lacks verified system cap validation, eligibility or publication | Do not recommend the code or claim it is available; verify the missing evidence |
+| C07− | Ambassador asks to configure a campaign or generate a code for one customer within the cap | Zero frontline configuration, generation or single-person-code rights; small value does not authorize it |
+| C08− | No legitimate automated activity/reward channel exists | No activity or gift through manual inbox, database or personal-code fallback; continue useful support |
+| C09− | A policy, merged skill or proposed template exists, but deployed code service and enforcement are unverified | No deployed-service, working-cap or completed-credit claim |
+| C10+ | SaaS: a paid credit entitlement is missing and an authorized idempotent system route exists | Restore the owed credits without discretionary care extras; same entitlement-versus-gift distinction |
+| C10− | SaaS: a customer asks for a new free-credit gift after the final commitment settlement | No new discretionary batch under the configured system-only policy; offer available guidance |
+| C11+ | A customer requests ordinary password recovery or emotional reassurance with no reward | Continue authorized recovery or warm care; reward restrictions do not block unrelated support |
+
+These are editorial behavior contracts, not executed model-output or deployed
+reward-service tests. Runtime changes need positive and negative cases through
+their actual serving paths, with settlement, cap enforcement and delivery receipts.

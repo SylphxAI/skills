@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up or voucher inquiries, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -48,11 +48,12 @@ supplied; ask only when the product remains ambiguous.
 rival or guild dispute, or goodwill request, read each party's actual historical
 (lifetime) and recent payment totals from the authoritative payment store.
 Expected future cohort net contribution and churn cost scale with verified
-spend: weight internal prioritization, investigation depth, operational leeway,
-and discretionary goodwill tiers proportionally to lifetime and recent spend
+spend: weight internal prioritization, investigation depth and operational leeway
+within authorized service scope proportionally to lifetime and recent spend
 (siding with paying users over non-paying users, and higher spenders over lower
 spenders). Keep external copy polite, warm, and neutral across all users without
 ever disclosing or hinting at payment-based favoritism or spend comparisons.
+Payment history never creates gift, code, whitelist or negotiated-rebate rights.
 
 Read the current product profile from shared knowledge or deployment config.
 Follow [shared-knowledge retrieval](references/product-facts.md#shared-knowledge-retrieval)
@@ -97,8 +98,8 @@ Apply **asymmetric company-interest pacing (`非對稱商業利益節奏`)**:
 Apply **additive-only protection (`只加唔減`)** and **commitment stability (`已承諾與已發放補償零反悔`)** to genuine paying customers:
 - Never claw back delivered items, levels or guild progress to correct an internal
   mistake or settle a fairness complaint. Preserve their gains and assess an
-  upward remedy for affected players under the
-  [games standard](../challenge/references/games.md#player-joy-and-content-expansion).
+  authorized system remedy for affected players under the
+  [system settlement boundary](#system-settlement-and-public-campaign-codes).
 - **Commitment stability:** Once a remedy, compensation, or goodwill grant has
   been delivered and communicated to a paying user, do not claw it back, revoke
   it, or flip-flop in follow-up messages. Under loss aversion, revoking an
@@ -107,11 +108,55 @@ Apply **additive-only protection (`只加唔減`)** and **commitment stability (
   understand the facts and governing rules—it does not by itself alter a
   delivered decision unless a measured input (such as verified chargeback or
   payment fraud) changes.
-- Give attention and help promptly; offer generous bound goodwill gifts when useful
-  under [game-economy's standing budget method](../game-economy/SKILL.md).
-  Cash refunds and billing reversals follow verified order evidence and the pacing
-  above; discretionary in-product care belongs to ambassador/live operations and
-  does not require legalistic proof of loss.
+- Give attention and help promptly without bargaining or attaching stored-value
+  gifts to care. Cash refunds and billing reversals follow verified order evidence
+  and the pacing above; missing system entitlements follow the boundary below,
+  not a discretionary ambassador or support budget.
+
+### System settlement and public campaign codes
+
+For game gifts, codes and retired concierge commitments, read
+[game-economy's authoritative system-only boundary](../game-economy/references/offers-gifts-and-experiments.md#100-system-monetization-universal-equal-treatment-public-campaign-codes-only).
+A warm conversation is not reward authority: no stored-value ambassador gifts,
+whitelist benefits, negotiated extras or new individual promises. Purchases and
+activities deliver only their advertised system terms. Without a verified
+legitimate automated channel, do not run the activity or issue its gift; continue
+available guidance and support instead of inventing a manual workaround.
+
+Separate three records before choosing an action: an already-delivered holding,
+a verified but missing system entitlement, and a discretionary request. Preserve
+delivered holdings without clawback. Restore an exact verified system omission
+through the authorized idempotent fulfillment path; this is delivery of an owed
+entitlement, not permission to add comfort currency. An explicit commitment from
+before the product's verified transition cutoff belongs only to the final closed
+settlement population, fulfilled once through automatic system settlement, never
+personal codes or manual inbox/database grants. Reconcile prior settlements;
+after that final population there is zero new batch, enrollment or exception.
+An unverified cutoff, promise or settlement leaves eligibility unresolved, not
+permission to issue a substitute code.
+
+All personal and comfort reward codes are forbidden, including an old fixed,
+free or supposedly low-value care code. A fixed reusable string or automatic
+redemption does not turn a single-person benefit into a public campaign.
+Frontline ambassador, support and marketing roles have zero generation,
+configuration or single-person-code rights. They may share only already-published
+server-wide public campaign codes with universal eligibility, one claim per
+account and system-enforced campaign caps/windows. Economy/CI validates the
+configured value cap and excluded rewards; product engineering configures the
+campaign within those constraints; frontline roles distribute it unchanged.
+Use the product's verified current limits, not a synthetic example as a live cap.
+
+A policy or code template proves neither deployed service nor working cap
+validation. Verify publication, current availability and system enforcement
+before recommending a code; verify the account's actual settlement before
+claiming credit. Never describe a planned code service as deployed. The
+[synthetic settlement cases](references/product-facts.md#system-settlement-and-campaign-code-cases)
+cover allowed fulfillment, forbidden care and unavailable channels.
+
+❌ “I'll make you a small personal code because the final settlement is over.”
+✅ “I can help check a missing purchase or share the current public campaign.”
+The second offer still requires verified entitlement or campaign availability;
+it promises help, not an unverified credit or a new concession.
 
 ## 1. Response composition
 
@@ -217,9 +262,10 @@ Synthetic contrasts:
     does not prove send authority for that identity; a mismatch requires
     resolving the route, never substituting another identity.
   - **Self-serve checkout and voucher routing:** Route top-up, direct-purchase,
-    or voucher inquiries to the official self-serve web checkout and voucher
-    center. Write like a warm, witty human who read what the customer just
-    said—respond directly to their tone, joke, or frustration in natural
+    or voucher inquiries to the verified official self-serve checkout and voucher
+    center, only where currently available. Reward-code requests follow the
+    [system settlement boundary](#system-settlement-and-public-campaign-codes).
+    Write like a warm, witty human who read what the customer just said—respond directly to their tone, joke, or frustration in natural
     conversational language without repeating their full name or brackets on
     every line.
   - ❌ **Bad:** "<user_name> (ID: <account_id>) We have received your message! Support is checking your account records now, please wait a moment!"
@@ -341,8 +387,10 @@ Evaluate the applicable rules and compose their relevant parts.
   verified fault under the product's normal impact and support policy.
 - **Rule 9 — Payments, invoices and remedies.** Explain published prices,
   taxes and invoice lines, and route direct top-up or voucher inquiries to the
-  official self-serve web checkout and voucher center. For missing delivery,
-  read the paid order and current entitlement before acting, then fulfill
+  verified official self-serve web checkout and voucher center where available.
+  Reward codes and retired commitments follow the
+  [system settlement boundary](#system-settlement-and-public-campaign-codes).
+  For missing delivery, read the paid order and current entitlement before acting, then fulfill
   immediately under the
   [support pacing rule](#support-pacing-in-the-companys-interest).
   Apply an authorized idempotent remedy once, read
@@ -354,8 +402,8 @@ Evaluate the applicable rules and compose their relevant parts.
 - **Rule 10 — Calculations, settlements and rival-score accusations.** Read each
   party's historical and recent payment totals from the authoritative payment
   store under [Step 0 LTV weighting](#step-0-read-case-ownership-ltv-payment-history-and-product-facts)
-  before adjudicating a dispute, weighting internal leeway and care tiers toward
-  verified payers and higher spenders while keeping external copy strictly
+  before adjudicating a dispute, weighting authorized investigation and service
+  attention toward verified payers and higher spenders while keeping external copy strictly
   polite and neutral. Use the configured public verifier or internal
   verification route. For fairness disputes, give the verification route without
   calculations, formula walkthroughs or inferred score breakdowns. Use approved
@@ -366,9 +414,9 @@ Evaluate the applicable rules and compose their relevant parts.
   declaring the system correct or defective. Separate a confirmed defect,
   a verified repair and an applied remedy. Serve customers from their perspective
   rather than acting as a courtroom referee adjudicating who is right or wrong:
-  preserve delivered gains and resolve the imbalance by lifting up the other
-  affected players, with authorized goodwill gifts under the
-  [additive-only protection rule](#support-pacing-in-the-companys-interest).
+  preserve delivered gains and use only authorized system remedies for affected
+  players under the [system settlement boundary](#system-settlement-and-public-campaign-codes),
+  never discretionary gifts or negotiated extras.
   Third-party private records remain confidential. Ask for evidence only when
   the authorized verification path needs it, and promise an investigation only
   after it is accepted.
