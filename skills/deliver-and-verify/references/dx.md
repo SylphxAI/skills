@@ -177,6 +177,16 @@ sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedd
 program executes; **Good:** the workload's exact launch chain emits the program's
 expected marker using only its declared inputs.
 
+A writable temporary parent does not make a metadata-preserving copy of an
+immutable fixture writable: copied directory modes can still deny state creation
+under the actual non-root executor, while root-run host tests mask the denial.
+Acceptance reproduces the effective executor and preserved copy metadata,
+restores only the capability needed for disposable state, and verifies unchanged
+source bytes and permission policy.
+Distinguish setup permission errors from the intended typed failure, and prove
+the intended rejection before and after the repair rather than weakening it to
+make the fixture pass.
+
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
 and retain bounded daemon startup logs before that instance ends; a path inside

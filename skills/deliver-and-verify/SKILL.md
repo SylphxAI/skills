@@ -119,7 +119,8 @@ When changing selected-source release inputs or their CI guards, read
 When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
-For container packaging or one-off container probes, read
+For container packaging, one-off container probes or runtime fixtures copied
+from read-only artifacts, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
 For source checkout or materialization changes, shared-cache permission failures,
