@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
       "clause": "changing CI workflows"
     },
@@ -2322,6 +2326,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a SaaS export whose signed worker configuration is valid at startup but expires before the final protected read after queue delay.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game tournament capture whose signed observation inputs must remain valid after deployment delay through the last frame without disabling expiry checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a recovery gate publisher that budgets only execution duration and omits issuance-to-start lead time from its signed input validity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS ingestion gate that verifies listed collectors but misses newly shipping collectors; compare the complete current population before and after each proof.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -3967,6 +3983,21 @@
     },
     {
       "prompt": "Rewrite documentation explaining why list and singleton API responses can have different shapes; do not change code or tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify whether an existing signed bundle expires before the last scheduled operation without changing code or configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare renewable leases and fixed-expiry attestations for a proposed architecture; no implementation is requested.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite operator documentation explaining validity horizons without changing issuers, tests or deployment inputs.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

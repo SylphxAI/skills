@@ -455,6 +455,14 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+Startup validity does not establish validity throughout a run that rechecks it:
+required horizon = issuance-to-start lead time + maximum run duration +
+finalization margin, within the issuer's authority policy.
+**Wrong:** size a signed input only to the run duration; **Right:** test queue and
+deployment delay through the last protected operation, retaining expiry refusal.
+If that horizon is not authorized, refresh through the issuer before starting
+rather than weakening the checks.
+
 Renewable inactivity deadlines and absolute lifetime limits are different
 contracts: timeout supervision and fresh downstream work share the current
 inactivity deadline, capped by any immutable authority horizon.
@@ -701,7 +709,7 @@ publishing the correction.
 
 Tightening lexical match boundaries can remove accidental matches in opaque data while also losing meaningful compound names or aliases; acceptance needs both false-positive rejection and false-negative preservation cases drawn from the supported vocabulary. **Wrong:** prove only standalone words still match and embedded noise does not; **Right:** also exercise supported compounds and aliases as complete names, with adjacent-alphanumeric noise controls. Restoring a known compound does not justify accepting arbitrary prefixes, suffixes or camelCase fragments.
 
-Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
+Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. Batch tests also need several eligible items sharing one decision key, plus an initially blocked key: the first item's effects can change later eligibility, so expectations must match the contract's admission boundary rather than assume either a snapshot or per-item revalidation. **Wrong:** prove one ready item per owner eventually completes; **Right:** assert the count and state of multiple same-owner items in one pass, before retries can hide suppression. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
