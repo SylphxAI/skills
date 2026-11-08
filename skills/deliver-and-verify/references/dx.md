@@ -67,11 +67,14 @@ request and confirm deletion before claiming the fixture worked.
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
 
-A temporary-directory error can originate in a separately configured package
-cache. Read the failing child's effective tool home, cache and index paths,
-including existing leaf files; writable root directories and a fresh temp path
-do not establish update access. Compare the original command under another
-execution UID, changing only the suspected path when isolating the cause.
+Nested commands can override outer temporary, build-output or cache settings,
+so inspect the failing child's effective paths and wrapper overrides before
+concluding no executor is available. Include tool-home, cache/index paths and
+existing leaf files: writable parents or a fresh temporary path do not prove
+update access; compare the original command under another execution UID or
+change only the suspected path to isolate the cause. For a capacity refusal,
+preserve admission thresholds, select an admitted path and require the
+originally refused inner operation to succeed there before claiming recovery.
 
 Choose cache sharing from every consumer's trust on reuse: untrusted writers can
 share package bytes only when every reuse verifies the actual inputs, including
