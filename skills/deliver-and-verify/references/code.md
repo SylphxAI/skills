@@ -588,11 +588,13 @@ and function calls, distinguishing repeated function planning from execution cos
 where applicable.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
-effectful modes, prove one authorised durable round trip: schema constraints,
-commit, reload and downstream consumer encoding. Evaluate-only success proves
-only evaluation; keep ordinary-denial controls separate from the durable case.
-**Wrong:** accept a new variant because admission evaluates it; **Right:**
-commit and reload it through the real transport before claiming support.
+effectful modes, prove an authorised durable round trip for each distinct source
+of provenance: admission, schema constraints, commit, reload and downstream
+consumer encoding. A variant with no attachment or entitlement can still require
+authenticated policy metadata; adapting a populated fixture bypasses its real
+admission path. **Wrong:** accept a variant from evaluate-only or manually seeded
+records; **Right:** carry its selected provenance through the real consumer,
+with missing-metadata refusals separate from authorised success.
 
 Revoking an owner's ordinary privileges does not prove workload immutability:
 [PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)

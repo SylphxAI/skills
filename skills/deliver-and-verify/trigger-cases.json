@@ -2140,6 +2140,18 @@
     {
       "prompt": "Repair a rendering queue whose short-lived producer records expire before protection takes effect; test the production expiry predicates rather than pre-aging fixtures.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS notification that passes admission but loses the selected policy version before its queued sender validates provenance.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game notice path whose empty-attachment fixture hides missing authenticated metadata in real admitted records.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a new command variant and verify its separately selected provenance survives commit and reload before downstream validation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
