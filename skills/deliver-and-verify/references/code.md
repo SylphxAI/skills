@@ -320,6 +320,13 @@ contract at the actual outer commit boundary, checking every mutated field
 domain objects—not a SQL-only double—after injected failure and after a
 subsequent normal save or replay.
 
+A catch spanning both a committed mutation and its later notification can restore
+stale memory without rolling back storage; independently retryable stages can
+likewise let an older failed stage overwrite a completed successor. **Wrong:**
+prove each stage's rollback alone; **Right:** inject a post-commit notification
+failure and an earlier-failure/later-success/retry sequence, checking persisted
+state, the same objects and emitted messages through the following ordinary save.
+
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
 which operation is blocked before releasing the competing transaction. Diagnostic
