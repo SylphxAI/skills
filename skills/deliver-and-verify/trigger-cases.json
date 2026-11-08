@@ -2,7 +2,7 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Change deployment admission so a verification hold preserves every in-flight phase and a successful recheck resumes rollout.",
+      "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
       "clause": "changing admission or access rules"
     },
     {

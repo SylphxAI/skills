@@ -12,12 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
-An eligibility hold is not a progress transition: replacing an in-flight state
-with a diagnostic wait can strand work when eligibility returns. Keep diagnostics
-separate from resumable progress, and exercise repeated hold and resume from each
-reachable in-flight phase alongside initial refusal. **Wrong:** prove a paused
-import writes nothing; **Right:** also resume at its retained cursor without
-replaying accepted rows.
+An eligibility hold does not itself advance progress: replacing resumable state
+with a diagnostic wait loses recovery context, while retaining exclusive capacity
+forever can block every replacement. Exercise refusal, repeated holds, recovery
+and replacement from each in-flight phase: resume at retained progress or settle
+abandoned intent once outstanding effects permit it, without altering served data.
+**Wrong:** prove a paused import writes nothing; **Right:** also preserve its
+cursor on resume and let a qualified successor replace an abandoned owner.
 
 Losslessly retained token spelling does not establish domain equality or
 destination representability: derive value-defined comparisons and admission from
