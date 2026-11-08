@@ -14,6 +14,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Change replica sizing for an API protected by a percentage availability budget, proving the rounded healthy-Pod threshold permits one eviction before node maintenance.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Change a Pod admission guard whose offline test adapter overwrites UPDATE and resize context with CREATE defaults, preserving ordinary updates while denying forbidden resizes.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a game trade-access policy whose fixture names the player identity but whose adapter substitutes an administrator, then verify the actual allowed and denied requests.",
+      "clause": "changing admission or access rules"
+    },
+    {
       "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -2239,6 +2251,21 @@
     },
     {
       "prompt": "Rewrite this explanation of a cancelled upload for clarity without changing behavior or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review an API availability plan and calculate its percentage-rounding threshold without changing replicas or starting maintenance.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Check whether a published policy-test result proves UPDATE denial when its adapter replaces the request verb; do not change the policy or tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite an explanation of integer-rounded availability targets for a public operations guide without changing the deployment.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
