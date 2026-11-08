@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix an account-balance transaction whose SQL rollback restores the row but leaves the cached account mutated, so a later normal save persists the failed debit.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an inventory credit helper whose caller rolls back a savepoint while its in-memory aggregate retains the credit, causing replay to credit twice.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a CAD exporter that imports successfully but changes the renderer-selected attribute mapping; keep the original visible-defect assertion independent of structural validity.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2511,6 +2519,16 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review evidence that a pure-SQL transaction rolls back its rows with no cached entities or mutated in-memory objects; do not change code or tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite an explanation of a read-only account-balance query that mutates neither rows nor cached objects; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a successful import closes a reported shading defect when the original pixel check still fails; report evidence without changing source.",
       "clause": "prove-it for a review or evidence check",
