@@ -332,6 +332,18 @@
     {
       "prompt": "A card game asset downloads successfully from a newer immutable version with the same digest. Verify whether that proves the original version's failing GET recovered.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Review a SaaS pull request and sign its evidence receipt after refreshing the current commit and automated findings; distinguish the clock-recorded observation time from the later signature time.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Review a card-game release diff when its evidence receipt estimated a future signing time instead of reading the clock.",
+      "clause": "reviewing a PR, diff, proposal or contract for concrete defects"
+    },
+    {
+      "prompt": "Reconcile a deployment status report dated from when the report was written with the earlier provider observation timestamp.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [

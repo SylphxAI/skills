@@ -323,7 +323,7 @@ Unread automated findings can invalidate an independent PASS, and a stricter
 error path can break clients that depended on a fallback.
 
 - Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
-- Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
+- Record UTC observation and signing times from a clock or provider record, not an estimate; writing a receipt later does not move its observation time. Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
 - If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
 - For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; use the [caller refusal tests](../deliver-and-verify/references/code.md#tests) for side-effecting callers and treat comments justifying a fallback as invariants.
 - Treat a signed receipt as immutable once signed. Put facts learned later, such as cleanup verification or late CI, in a separately hashed addendum that names the signed receipt; editing the original invalidates every hash already relayed. For example, append a late cleanup result to the addendum rather than changing the signed receipt's original verdict.
