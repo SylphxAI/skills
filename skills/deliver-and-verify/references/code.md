@@ -12,6 +12,17 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Byte-equal attestations require an explicit derivation contract for field names,
+casing, value types, absent values, array order and encoding/canonicalization;
+a shared schema alone does not define the hash input.
+**Wrong:** let a publisher and reader invent equivalent-looking hashes or copy
+the signed value as live evidence; **Right:** share the derivation while acquiring
+evidence independently, deriving omitted metadata only from an authoritative
+source such as the typed endpoint.
+Verify publisher-to-real-consumer agreement with independent expected bytes and
+both collection and singleton response shapes, preserving equivalence only where
+the contract permits it and refusing meaningful field, type or ordering drift.
+
 An eligibility hold does not itself advance progress: replacing resumable state
 with a diagnostic wait loses recovery context, while retaining exclusive capacity
 forever can block every replacement. Exercise refusal, repeated holds, recovery
