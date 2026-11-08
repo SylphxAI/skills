@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -185,6 +185,20 @@ one-time follow-up; verify that the follow-up actually runs. Reconcile existing
 operation receipts before any write, so a lost notification never repeats a
 successful merge, deployment or payment. Hand the observer or dispatcher fault
 to its owner without restarting healthy work or repairing an unrelated runtime.
+
+### Tool-launch failures
+
+A launch error establishes failure of the invocation route, not necessarily
+unavailability of the underlying capability. A documented or operator-authorized
+alternate entrypoint can restore work within the same caller identity, inherited
+configuration and authorization/guard boundaries; reconcile prior mutation
+receipts before switching routes because a timeout can hide a completed effect.
+Verify the returned operation and report the launch fault to its owner, without
+changing runtime settings or treating an access/quota refusal as a launch error.
+
+**Bad:** replace the runtime or resend an uncertain deployment after its wrapper
+fails. **Good:** use a supported entrypoint with unchanged authority, reconcile
+the deployment receipt and verify the remaining work.
 
 ### Build wrapper timeouts
 
