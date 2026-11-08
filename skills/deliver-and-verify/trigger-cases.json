@@ -2224,6 +2224,18 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export writer that checks access before awaiting metadata but publishes a file after the caller loses permission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game reward worker that loses its lease during an inventory read yet still creates or updates the grant.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a provisioning access rule so revocation during an awaited resource read prevents the later cleanup delete without discarding acknowledged state.",
+      "clause": "changing admission or access rules"
     }
   ],
   "negative": [
@@ -3764,6 +3776,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a permission check before a delayed metadata response proves authority at publication, without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare receiver-side authorization and lease fencing in a proposed asynchronous architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining access revocation during asynchronous work without changing behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
