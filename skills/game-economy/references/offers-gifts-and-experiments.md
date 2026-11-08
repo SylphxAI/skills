@@ -70,88 +70,49 @@ approval is needed for each covered gift. A changed exposure or an exhausted
 budget is a reason for the budget holder to resize it from current evidence,
 not for inventing a universal rebate percentage or prohibiting a reward type.
 
-### Two-track legacy whale whitelist and standard ambassador cap
+### 100% System Monetization, Universal Equal Treatment & Self-Serve Redemption Codes Only
 
-When an existing live game faces a conflict between (a) legacy high-LTV payers
-conditioned by prior operations to expect bespoke concierge rebates and emperor
-privileges, and (b) macro-economy inflation and the need for clean unit
-economics on new user acquisition, an across-the-board cut triggers immediate
-whale loss aversion while an open-ended rebate policy permanently devalues core
-assets. Resolve the tension with a two-track architecture enforced mechanically
-in the grant service:
+When operating live games and companion channels, manual database grants, ad-hoc
+inbox attachments, and two-track whale whitelists create price arbitrage,
+train players to bargain for freebies, and erode paid store unit economics.
+Enforce a 100% systematized monetization and redemption-code architecture across
+every title:
 
-1. **Track A — Closed Legacy Whale Snapshot Whitelist (`Frozen Cohort, Zero New Admissions`):**
-   - **Pareto Elbow Cutoff & Disconfirming Check:** Query the full settled-order
-     ledger across all-time and trailing `30d/90d` windows. Set the lifetime
-     spend cutoff at the Pareto inflection point that captures `~85%–95%` of
-     trailing revenue, and run the disconfirming check that `0` recent
-     high-ticket payers sit below that threshold. Freeze the resulting account
-     set at an immutable `snapshot_at` timestamp with no interface to add new
-     accounts.
-   - **Push-Payment Channel Arbitrage (Bank Transfer / Instant Rail):** Offer
-     1-to-1 private direct bank transfer or instant push-payment top-ups to
-     Track A whales. Because push bank transfers carry `0%` store commission
-     (vs. `15%–30%` app-store fees) and `0%` chargeback risk, the recaptured
-     margin funds generous legacy rebate tiers (`+35%` to `+100%` in bound
-     progression value) while still increasing net cash retained per dollar
-     spent. Always verify settled bank credit and deduplicate the bank reference
-     before issuing grants; never fulfill from screenshots alone.
-   - **Sink-Matched Rebate Composition, 100% Private Information Isolation &
-     Anti-Target Psychology:**
-     Structure Track A bespoke rebates strictly as (i) **standard existing
-     account-bound bottleneck progression materials** chosen via 1-to-1 private
-     concierge menu ordering, and (ii) **recipe-matched upgrade currency**
-     capped strictly at the exact progression sink requirement for the unlocked
-     levels so 100% of granted currency is immediately destroyed in progression
-     sinks rather than entering public table or market circulation. Deliver all
-     Track A grants silently via private mail with **zero public two-tier
-     badges, zero exclusive whitelist titles/frames, zero server-wide
-     broadcasts, and zero disclosure of player spend or grant records**:
-     - **Whale Self-Attribution & Anti-Target Protection:** Paying players want
-       their victories and high-level gear perceived—by opponents and by
-       themselves—as legitimate competence and earned status, never as official
-       favoritism or "cheating." Publicly broadcasting special grants or pinning
-       an unbuyable whitelist mark on a payer turns them into a resented target
-       at the table (where opponents blame losses on official rigging) and
-       cheapens their paid achievements.
-     - **Earned VIP Advocacy vs. Unprompted Handout (Effort Justification &
-       Price-Anchor Preservation):** Automatic, unframed handouts reset the
-       payer's reference price (hedonic adaptation) and make scarce progression
-       items feel printed for free. Frame every Track A bonus as a scarce,
-       personal VIP appreciation, without naming the internal cohort or implying
-       relative spending. Private mail and concierge quotes follow the
-       [spending-confidentiality and player-ready mail boundary](../SKILL.md#confidential-spending-comparisons-and-player-ready-mail);
-       verified ownership and screenshot privacy do not permit spending-rank
-       claims or rank-linked rebate labels.
-     - **New-Player & New-Whale Fairness:** Keeping all visible items and
-       prestige systems (auctions, VIP tiers, seasonal cosmetics) 100% identical
-       and earnable on the same rules ensures newly acquired players and new
-       whales never perceive a two-tier caste or rigged table.
-     - **Separate Off-Book VIP Rebates (`0%` Broadcast) from In-Game Pack,
-       Gacha & Jackpot Wins (`100%` System Broadcast with Opt-Out Mystery
-       Player Masking):** Distinguish strictly between (a) off-book VIP rebates
-       or ambassador grants, which are **never** broadcast (`0%`), and (b) a
-       player's own in-game pack openings, gacha pulls, slot jackpots, or
-       auction wins, which the system **always** broadcasts (`100%`) with
-       full-screen/marquee fanfare to sustain server-wide jackpot social proof.
-       Because high-spend players split between high-profile prestige seekers
-       and low-profile stealth players, provide a user-facing broadcast-name
-       toggle (ticked by default to show their real nickname); when unticked
-       (`stealth = true`), never suppress the server-wide jackpot broadcast—fire
-       the exact same marquee and visual fanfare while masking the actor as
-       "A Mysterious Player" (`某位神秘玩家`) and disabling profile inspection.
-2. **Track B — Standard Ambassador Authority (`All Non-Whitelist & 100% of Future Players`):**
-   - **Daily Non-Order Care Floor:** Restrict non-order goodwill to a small,
-     non-inflationary item allowlist (table-relief ration or single-match
-     consumable) with a strict per-player daily and rolling 7-day cap.
-   - **Order-Backed Bonus Ceiling (`<= 10%` of Verified Cash Paid):** Require an
-     idempotent settled `order_id` binding (`1 order = 1 bonus grant`) and cap
-     the retail-equivalent value of all discretionary bonus items at `<= 8%–10%`
-     of verified cash paid—mechanically refusing any grant that exceeds the cap
-     or devalues purchased principal.
-   - **Acquisition ROAS Isolation:** Evaluate paid user-acquisition ROAS and
-     payback strictly on Track B cohorts so legacy Track A bank transfers never
-     distort new-user unit economics.
+1. **100% System Monetization & Zero Manual Grants:**
+   - Every promotion, event, and gift across all titles must execute 100%
+     through automated product/platform systems; if an event or gift cannot be
+     executed through a legitimate automated system channel, do not run the
+     event or issue the gift.
+   - Ambassadors and staff never modify databases, never manually insert inbox
+     attachments, and never offer top-up-linked or player-negotiated gifts.
+     Purchases grant strictly the advertised in-game store or automated
+     activity-template contents.
+2. **Universal Equal Treatment & Self-Serve Redemption Codes:**
+   - Apply one universal standard across all players with zero whale-whitelist
+     vs. non-whitelist tracks and zero per-order or milestone ambassador rebate
+     quotas, ensuring every player and spender experiences identical,
+     transparent rules with zero two-tier caste or table-rigging perception.
+   - Deliver pre-approved free micro-gifts (strictly decoupled from spend,
+     non-negotiable, capped to low-cost non-inflationary convenience/table-relief
+     items with zero premium currency, upgrade materials, or high-tier
+     containers) and event rewards exclusively as **system-configured redemption
+     codes / vouchers** supporting configurable claim caps (`limited`
+     `maxClaims` vs. `unlimited`), validity windows (`time-limited`
+     `startsAt..endsAt`), and per-player cooldowns (`1 claim per player per code
+     series`) that the player enters and claims themselves inside the game or
+     platform redemption surface.
+   - Keep in-game pack openings, gacha pulls, slot jackpots, and auction wins on
+     automated system broadcasts (`100%` marquee/fanfare for social proof) with
+     a user-facing privacy toggle (`stealth = true` masking the actor as
+     "A Mysterious Player" / `某位神秘玩家` and disabling profile inspection
+     while keeping the broadcast active).
+3. **One-Time System Closure of Pre-Transition Explicit Commitments:**
+   - When retiring legacy concierge grants in favor of 100% system monetization,
+     preserve already-claimed player holdings (no clawback) and fulfill any
+     explicit pre-transition commitments one final time strictly through
+     legitimate system channels (single-use system redemption codes or automated
+     activity-expiry settlement — never manual DB/inbox writes), then
+     permanently close the legacy track with zero new batches.
 
 ## Measure a gift's real cost
 
