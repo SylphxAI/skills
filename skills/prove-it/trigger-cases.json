@@ -356,6 +356,10 @@
     {
       "prompt": "A deployment run's input tag is older than the resolved immutable image digest. Reconcile the serving claim against the loaded artifact rather than the input label.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify a repository release status through authenticated provider metadata and prepare a safe report without copying temporary access credentials.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [

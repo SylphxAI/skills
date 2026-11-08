@@ -58,6 +58,10 @@ or uncertain tool mutations, read [agent runtime evidence](references/agent-runt
 It separates source, generated files, session context, raw retention, search
 coverage and actual runtime execution.
 
+For live checks that retain authenticated provider metadata or diagnostic artifacts,
+read [safe status projections](../deliver-and-verify/references/security.md#practices)
+before reporting; a read-only response can include credentials.
+
 For API route rankings, ingress-log percentiles, slow-request attribution or
 before/after latency claims, read [API latency evidence](references/api-latency.md).
 It covers parser and coverage controls, duplicate records versus proxy hops,
