@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, and deliver-and-verify to implement a change."
+description: "Use when checking reward-route support, choosing a game's pack contents or price, designing bottleneck-first VIP whale bespoke tiers from live inventory and upgrade-recipe cliffs, verifying ItemTemplate funType payloads before offering bundles, auditing transitive reward graphs and recursive container payloads before reusing or repricing an item or cosmetic, structuring a two-track grandfathered whale whitelist versus standard ambassador bonus cap, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover from retention grants, checking virtual-currency inflation, drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, deliver-and-verify to implement a change, and clear-writing for unrelated copy."
 ---
 
 # Game economy
@@ -34,6 +34,17 @@ Name the decision, affected population, currency, live configuration, complete
 measurement window and next meaningful content release. Separate observations,
 assumptions and proposed changes. Read the serving offer and actual settlement
 path before blaming a price or economy.
+
+A reward type accepted by a generic helper can be silently skipped by mail,
+shop or item-use dispatch; check each entry against the selected serving channel
+and version, including whether receipt or claim status can advance after partial
+credit. Resolve item definitions through the runtime-selected baseline and override
+precedence—an empty override table does not prove absence—and include every bundled
+effect, automatic or manual use, and quantity limit before substituting a container.
+**Wrong:** treat a stored or claimed mixed-reward message as complete; **Right:**
+reconcile each promised leaf reward with its durable consumer effect, preserve
+credited entries and repair only the verified missing entitlement through a
+supported route.
 
 For each currency and progression system, collect:
 
@@ -89,6 +100,7 @@ cannot replace that calculation.
 | Reduce an earned balance to make a leaderboard equal again. | Absorb the service mistake, preserve holdings, repair future issuance and assess additional care or new goals for affected players. |
 | Call a non-transferable item free because it creates no coins. | Measure whether it replaces purchases, accelerates exhaustion or changes competition, as well as its direct service cost. |
 | Treat a cosmetic or item as "never sold" after checking only direct cash SKU rows, and reuse it on new VIP or progression tiers. | Expand the full transitive reward graph (activity trigger-currency handlers + recursive chest/choice-box payloads) and live payer-cohort holdings before reusing any asset; create net-new art when prior cash-event containers already granted it. |
+| Offer `全服第一累課` recognition or a permanent `No.1-payer +20%` privilege. | Keep paid-rank analysis internal and use non-positional personal recognition such as `資深 VIP` or `感謝長期支持`, with benefits based on the verified order or personal milestone rather than paid rank. |
 
 ## 3. Set offers and gift authority in advance
 
@@ -97,6 +109,53 @@ as smaller packs by default. Compare identical eligibility, timing and
 restrictions; show distinct promotional terms explicitly. Use observed demand
 and cohort contribution to revise this default, without misleading reference
 prices or changing an offer already purchased.
+
+### Confidential spending comparisons and player-ready mail
+
+Internal spend and LTV cohorts guide budgets; they never become player-facing
+status claims. Across grant specs, ambassador chats, support replies, in-game
+mail (`titleF` / `contentF`) and public/community copy, never disclose, confirm
+or hint at server-wide real-money spending rank, cumulative-spend standing,
+spend percentile or rank-differentiated rebate percentages, even to the verified
+account owner. Public gameplay, tournament and collection scores are distinct
+from confidential spending comparisons. Describe bespoke care solely as personal
+VIP appreciation (`個人專屬尊貴 VIP 禮遇`), without comparative hints such as
+“nobody contributes more” or “only the top few qualify.”
+
+Flattery creates a commercial leak: a payer knows their own cumulative spend;
+confirming first place reveals the single-payer LTV ceiling and gives a screenshot
+viewer a basis to estimate revenue scale. Confirming an undisputed leader can
+remove upward competitive tension and discourage challengers. Rank-linked rebate
+labels also become portable screenshot evidence for cross-player price arbitrage.
+Private delivery and verified ownership do not remove these effects.
+
+Where mail delivery is append-only, source copy is the correction boundary:
+least-privilege writers may have only `SELECT` and `INSERT`, while deleting and
+re-inserting attachment mail can enable duplicate claims. Every signed mail spec
+therefore contains final, natural player-facing `titleF` and `contentF`: no spend
+or LTV ranks, internal tier/track labels, Markdown formatting symbols (such as
+`**`), internal order/ticket IDs or raw warehouse/inventory integers. Keep audit
+metadata outside those fields; use player-readable units when a quantity is
+needed. Never assume the delivery operator can sanitize an already-inserted mail.
+
+| ❌ Bad | ✅ Good |
+| --- | --- |
+| “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Track A order <order_id> **VIP**”. | “個人專屬尊貴 VIP 禮遇”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
+
+Billing disclosure is role-specific: ambassadors never answer or quote cumulative
+recharge totals, order numbers or top-up amounts, even when the verified owner
+asks or LTV is known internally. Warmly route those inquiries to in-game official
+support or the published support address in the product profile. Payment
+concierge help removes checkout friction; it does not authorize billing disclosure.
+Only official support may answer an explicitly requested own total and explicitly
+requested order breakdown, after both account-identity and payment receipt
+verification. Provide only the requested verified total, currency and relevant
+period, or requested per-order details, with zero rank, percentile, comparison
+or unrequested inventory, recipes or other account details. Legitimate own-order,
+receipt and missing-payment help remains available through that verified official
+path; own billing records are private, never public recognition. See the [support disclosure boundary](../customer-support/SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality).
+Explicit disinterest or a spending complaint stops the outbound sales sequence
+under [ambassador's stop-sales rule](../ambassador/SKILL.md#3-emotional-care-first-and-the-adversarial-turing-self-test).
 
 ### Bottleneck-First High-Ticket VIP Bespoke Pricing & Primary-Source `ItemTemplate` Verification
 

@@ -1,6 +1,6 @@
 # Identifiers
 
-Trigger: creating or changing entity IDs, slugs, generated names, credentials or human-entered codes.
+Trigger: reconciling legacy and canonical identifiers, or creating or changing entity IDs, slugs, generated names, credentials or human-entered codes.
 
 Keep stable identity, display names, ordering and secrets distinct. Use one encoding contract and cross-language conformance vectors rather than independent definitions.
 
@@ -12,6 +12,10 @@ Generate the identity at its owning authority or through the shared SDK when it 
 
 Keep another system's published identifier unchanged. Preserve customer-held IDs and accepted external forms through an explicit migration contract; moving to a new internal representation does not authorize breaking those references. A new canonical ID for a legacy format needs a mapping or completed consumer migration. Existing UUID values need not be regenerated just to gain ordering.
 
+A typed client can classify an accepted legacy ID as a slug and reject it before the API sees it; that local rejection does not establish resource absence or a different tenant. Compare a canonical-ID read with the same authorized lookup through a supported raw API, and establish the authoritative ID mapping before moving, recreating or renaming a resource. **Bad:** recreate an account after a CLI says its legacy ID is unknown; **Good:** resolve both accepted forms to the same canonical account and repair the client classification.
+
+A parseable identifier does not identify its namespace: the same value can be valid in multiple domains and select different records. For a lookup spanning namespaces, carry an explicit tagged kind (for example, `externalKey` or `localId`) and resolve only within that namespace. Tests must cover same-value collisions and reject records owned by a different principal.
+
 UUIDv4, ULID, KSUID and coordinated integer IDs have different locality, size and generator tradeoffs. ULID is 128-bit compatible with UUID storage, although it is not UUIDv7; KSUID is 160 bits and does not fit a UUID column. Choose the identifier policy for the owning schema and its consumers.
 
 ## Order is the log's, never the id's
@@ -19,6 +23,8 @@ UUIDv4, ULID, KSUID and coordinated integer IDs have different locality, size an
 For a gap-free durable stream or change feed, use an authoritative commit/log position. Concurrent transactions can generate IDs in one order and commit in another.
 
 For ordinary list pagination, define the sort and unique tie-breaker plus snapshot/concurrency semantics. A composite `(sort_value, id)` key can support a stable list without a new serialization system. Store a separate authoritative timestamp where people need to know when an event occurred.
+
+For exclusive-cursor pagination, absence and a legal ID are distinct states: an in-range sentinel can silently exclude a valid row. Initial queries preserve the full legal ID range, explicit cursors remain exclusive, and boundary tests verify both paths and terminal completeness.
 
 ## The text form: TypeID
 
@@ -35,6 +41,8 @@ A person-chosen slug is a mutable lookup key or handle. Keep its uniqueness scop
 Define rename/alias retention from the product's external contract. GitHub documents redirects and warns that reuse of the old name breaks them. Keep historical links from resolving to a different entity without an intentional compatibility decision.
 
 Derive internal system names from stable identity where a renameable slug would cause drift. Where underscores are legal, the compact TypeID profile can be used directly. For a DNS-compatible form replace the separator with a hyphen: the five-letter-prefix maximum is 32 characters (5 + 1 + 26). Validate the complete target grammar/length again after appending a purpose suffix.
+
+For an existing hash-derived artifact naming format, derive the expected name from the pinned producer contract and the repository or namespace recorded by an independently selected operation, not today's canonical slug or the artifact's own claims. A historical name can be valid for that operation; accepting any alias can bind another namespace's artifact. Preserve content digests, image identity, ordered lineage and execution/proof joins, testing current-name and historical-name matches plus cross-namespace rejection.
 
 Keep mutable placement separate from stable identity. A directory or routing authority can change an entity's home without embedding a second location authority in every ID. A customer-facing hostname follows the product's domain contract.
 

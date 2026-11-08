@@ -22,6 +22,58 @@ Choose a measurable target for each critical journey and define its response whe
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
 
 
+## Replicated readiness
+
+Equivalent retained entrypoints can share refusal logic yet diverge on authorized
+recovery: absent or fresh-but-incomplete derived state is not stale installed
+state. Derive each state’s recovery and refusal from the declared authority
+contract, preserve the caller’s existing authorization, and re-evaluate full
+policy after supported recovery. Exercise those states independently through
+every retained entrypoint so an earlier request or background refresh cannot
+satisfy a later case; permitted recovery must still exclude denied and foreign
+data, while contract-refused states remain refusals.
+
+A successful load-balanced request can hide a stale replica: a readiness promise
+across replicas needs repeated agreement on every member of a stable serving
+consumer census, tied to its deployed revision, with each sample taking the
+maximum latency rather than the first success. State the clock origin, preserve
+the original source-observation time across reloads and unchanged content, retain
+failed or censored samples, and identify excluded routes or a changed census
+rather than silently shrinking or mixing the population. A measured budget uses
+that complete cohort's maximum plus a stated margin; finite acceptance does not
+establish an absolute bound under failure or a production-population tail
+percentile.
+
+## Fragment-shader hot paths
+
+Use when a renderer misses frame-time targets despite few draw calls, or when
+specializing a general-purpose fragment shader. Model fragment work as shaded
+area, including overdraw, times per-pixel program cost; flags and early returns
+do not establish that unused features are free, especially on software rasterizers.
+
+Hold geometry, draw area and uploads fixed while comparing the original shader,
+a constant-colour fragment and an early-return variant. If constant colour is
+cheap but early returns are not, test compile-time specialized pipelines for
+common paint while retaining the general path for unsupported states; the
+ablation isolates a candidate cost, not pixel correctness or shipping speed.
+
+Require byte-exact differential pixels against the general path on every affected
+backend, with an independently expected visible-target population and a deliberately
+wrong-pipeline mutation that changes it; fully overpainted targets can pass
+vacuously. After merge, repeat [paired engine runs](parity.md#compare-engines-on-declared-equal-work)
+against the category leader on the frozen fixture, preserving quality, startup
+and size limits; shader tests alone do not establish the delivered frame times.
+
+## Final encoded limits and reliability evidence
+
+A per-item limit or compact stored input does not bound the final encoding: count the complete consumer request, response or persisted effect with the destination serializer against its actual limit, including escaping, envelopes, implicitly added entries and reserved output. Evaluate state-reduction candidates and asynchronous downstream persistence before committing state, claims or outbox entries; rejection preserves prior usable state and authoritative raw data without admitting effects. **Bad:** enqueue compact input that expands beyond the destination column's byte limit; **Good:** verify exact-limit materialization and one-byte-over refusal before durable admission.
+
+Derive behavioral-test request budgets from the serialized empty instruction/schema envelope plus a fixed source allowance, preserving the full encoded-bound assertion and original partition/omission assertions as the envelope grows.
+
+Bound every agent tool output to 32 KiB in its final encoded form, with a continuation cursor for omitted bytes. Returning an active transcript range verbatim can duplicate the context into itself; return pointers or a summary for already-visible content, while keeping evicted raw bytes recoverable through bounded pages. Test aggregate size, oversized single records, escaping, Unicode boundaries and lossless continuation through the real tool boundary.
+
+A short green streak is weak evidence for a low-rate flake: with independent 6% failures, the probability of 16 clean runs is `0.94^16 ≈ 37%`. Near that rate, compare at least 100 runs per arm under the same conditions and use [Fisher's exact test](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.fisher_exact.html) on failure/pass counts, reporting the effect and uncertainty rather than treating a nonsignificant result as equivalence (read 2026-11-07). Choose larger populations when the desired detectable improvement or observed dependence requires them.
+
 ## Bounded memory for large transfers
 
 Set a peak-memory budget from concurrency and bounded buffers, independent of

@@ -15,7 +15,59 @@
     },
     {
       "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
-      "clause": "inspecting external production surfaces for unanswered customer inbox queues and dual-store revenue discrepancies"
+      "clause": "inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies"
+    },
+    {
+      "prompt": "Check all official email inboxes since the saved cursors for banking or statutory notices.",
+      "clause": "official email notices"
+    },
+    {
+      "prompt": "Check a software vendor inbox with hundreds of build notices for exceptional security or account notices without marking messages read.",
+      "clause": "official email notices"
+    },
+    {
+      "prompt": "The support inbox latest UID is below our saved cursor. Patrol the requested time window without marking messages read.",
+      "clause": "unanswered customer inbox queues"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a SaaS support inbox with a zero-token file-watch daemon, preserving wake coverage after its one-shot subscription fires.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a card-game support inbox with a zero-token trigger daemon that reconciles messages arriving during successor watch registration.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch daemon and verify successor and failure/exit wake coverage before ending the handoff.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a SaaS inbox with a zero-token file-watch daemon whose native watch probe cannot traverse the producer's temporary directory; preserve private inbox payloads.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM polling of a card-game support inbox with a zero-token trigger daemon and prove its watcher can observe the nonsecret signal without exposing player messages.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Patrol official SaaS email notices for actionable account events while keeping emailed verification codes out of tool output.",
+      "clause": "official email notices"
+    },
+    {
+      "prompt": "Inspect card-game support inbox queues containing purchase receipts and login codes, reporting only nonsecret findings.",
+      "clause": "unanswered customer inbox queues"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for SaaS support; an unavailable count must not clear the last observed unanswered queue.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for a card game; a null moderation result must remain unknown until a fresh result confirms recovery.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for a store support queue, retaining historical incidents without treating their old counts as current.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
     }
   ],
   "negative": [
@@ -38,6 +90,36 @@
       "prompt": "File a new outcome issue for the discovered defect.",
       "clause": "author-item to file a new outcome",
       "route_to": "author-item"
+    },
+    {
+      "prompt": "Verify whether one past file-watch subscription was consumed without changing the watcher or restoring stalled work.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare persistent and one-shot notification architectures for a future support inbox without implementing either.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Verify whether one past file-watch probe failed because its reader could not traverse a directory, without repairing the watcher or replacing polling.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Verify whether this single null endpoint response proves the earlier incident recovered; do not change the observer.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Restore a stopped support observer whose unknown-to-zero conversion caused repeated recovery alerts.",
+      "clause": "unblock to restore stalled work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare designs for representing unavailable telemetry separately from healthy and unhealthy states, without implementing or patrolling either.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
     }
   ]
 }

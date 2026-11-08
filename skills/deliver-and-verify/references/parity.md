@@ -42,6 +42,15 @@ native touch, keyboard, controller or device behavior. A fixed fixture matrix
 does not cover every state: reproduce a reported fault at its exact viewport
 and state as well as running the standard matrix.
 
+Reconcile runtime captures with offline geometry using the measured content
+viewport, origin, effective scale and anchor rules, not nominal device or screenshot
+dimensions: an inset can change both origin and available width, so differently
+anchored controls need not move equally. Each calibration row needs its actual
+measured viewport/aspect profile and model predictions recomputed for that profile
+before judging agreement. A static overlap and a successful runtime tap can both
+be valid at different profiles; neither refutes the other's profile-specific result
+or establishes behavior for every supported profile.
+
 Compare what matters in use: composition, art and typography, content density,
 discoverability, controls, motion and sound, latency, accessibility, feature
 depth, failure states and recovery. Read the
@@ -152,14 +161,24 @@ the engine's verdict.
 1. Keep a primary-source ledger for each engine: exact release/revision, official
    source URL, UTC read time from this session and the claim it supports. Read the
    current version's documentation/code rather than carrying forward an older
-   release's limitations. Bind local builds and fixtures to immutable revisions.
+   release's limitations. Bind local builds and fixtures to immutable revisions;
+   cross-revision comparisons also use [isolated child builds](dx.md#internal-development)
+   so a clean checkout cannot stand in for the linked artifact's identity.
+   Keep pinned browser/tool binaries in a location owned for the run and verify
+   their hashes; an executable borrowed from another checkout can disappear
+   before capture even when its version matched during setup.
 2. Before running, declare the equal-work set, acceptance predicate, sample count,
    trial order and summary statistic. Match scene/content, resolution, quality,
    lights and shadows, assets, backend, build flags and workload semantics. Record
    compiler, browser/OS, device/CPU/GPU, cache state, network shaping, background
    load, effective process environment and instrumentation. Inherited settings can
    change only one runtime's colors, locale or cache behavior; equal command flags
-   need rendered-output evidence, not an assumption of equal work. Bind resource
+   need rendered-output evidence, not an assumption of equal work. All-zero
+   profiler counters can indicate disabled instrumentation rather than zero work;
+   verify effective enablement with a known-positive counter control before
+   attributing a hotspot or absence of work. Keep instrumented attribution separate
+   from uninstrumented performance verdicts because instrumentation can change the
+   measured path. Bind resource
    metrics to the measured process and lifetime: a child high-water mark may
    include its larger pre-exec launcher, so an application-memory claim needs
    post-exec evidence. Name unavoidable differences and the comparison they
@@ -216,6 +235,10 @@ Capture live receipts in the **same run** as a version or revision read from the
 surface under test. A screenshot taken before the release reached serving never
 counts as evidence for that release.
 
+For a server status or error-contract change, include client versions already in
+the field using the [deployed-caller compatibility checks](integration.md#shared-dependency-features-and-client-policy);
+a journey passing only on the newest client leaves their behavior unverified.
+
 1. Start a uniquely named run directory containing UTC date/time and run ID.
    Record the target URL/environment, expected revision, device matrix, account
    fixture and journey. Keep credentials and personal data out of the record.
@@ -225,6 +248,13 @@ counts as evidence for that release.
    Compare these with the candidate. A deployment's desired revision alone does
    not prove that this browser or device received it.
 3. Exercise the journey, record assertions and capture screenshots or recordings.
+   For timed acceptance, record each capture's actual begin/end on the executing
+   device's clock; a filename or requested wait is not timing evidence. Check the
+   device shell's integer width and unit range before arithmetic; use bounded
+   monotonic deltas, not epoch nanoseconds. For example, frames named
+   `t2s`/`t10s`/`t30s` began at +2.071/+5.771/+8.555 s when signed 32-bit shell
+   arithmetic wrapped (`2000000000+2000000000=-294967296`,
+   `10*1000000000=1410065408`).
    Read the served revision again at the end. Reject mixed-version evidence;
    wait for the intended release and make a new run. Bound propagation waits
    with the release's declared timeout rather than retrying until green.
@@ -288,17 +318,53 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
-Measure the defect's actual geometry. A single-line label at the required font
-size can still overlap a chevron. Use the text node's `Range.getClientRects()`
-bounds, not its allocated container width, and measure the gap to the chevron
-in the same coordinate space on every rendered row. Check the acceptance case's
-required gap, line count and typography together; for example, an 8 CSS px gap
-is a contextual requirement, not a universal minimum. Do not shrink the font
-to hide a spacing failure. For composite controls, assert joints and endpoints in
-a shared coordinate system as well as each part's size, because a correctly sized
-segment can be anchored incorrectly. Run the guard against the old failing state
-before claiming it catches the defect, then test the repair under the same
-conditions.
+Measure the defect's actual geometry. Use rendered glyph ranges
+(`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
+number and suffix), not its allocated container width. Single-line values must
+share one line band at the required readable font size across the complete
+expected population; card containment alone misses wrapped prefixes. Check
+required neighbour clearance in the same coordinate space; an 8 CSS px gap is
+contextual, not a universal minimum. Do not shrink the font
+to hide a spacing failure. For composite controls, check joints and endpoints in
+a shared coordinate system as well as each part's size; correct dimensions can
+still be anchored wrongly. Derive paint probes from the actual geometry and
+rasterization: a fixed inset can sample an antialiased curve instead of the
+intended junction. A corrected probe must retain the original failure and reject
+both the known defective frame and an independent missing-segment control with
+unchanged paint tolerances, then accept the repair under the same conditions.
+
+Also reject a deliberate half-width regression. Sticky headers and ordinary cells
+can have different offset parents: measure reachability with viewport rectangles,
+the current scroll offset and pinned-column width, never `offsetLeft`.
+
+A text-hidden control comparison limited to self-reported glyph, mesh or layout
+bounds cannot detect paint outside those bounds. Account for every changed pixel
+in the full frame, assigning each to disjoint real visual regions (the label's
+plate or header and its neighbours); reject unassigned paint before checking each
+region's bounds and clearance. **Bad:** accept a "safe" mesh while ignoring
+changed pixels outside it. **Good:** overflowing paint fails despite safe mesh
+bounds; contained paint passes only with the required neighbour clearance.
+
+Project world points into capture-derived boxes using the same temporary aspect
+ratio and projection as rendering and pixel capture; restore the camera on both
+success and rejection. Prove the check fails if aspect correction is removed.
+
+Positive hit geometry and handler ownership can still describe an unintended
+or nonfunctional control. Compare the complete candidate control inventory and
+activation states against a verified serving baseline: additions, including dormant
+controls that runtime code can activate, and inactive-to-active transitions need
+evidence of intent bound to exact identity and meaningful state. Intent approval
+never waives geometry, paint or runtime-action checks; unchanged-baseline
+self-comparison needs no new approval.
+
+An offline engine adapter can pass isolated checks while inventing symmetry or
+losing state between phases: derive each axis's contract and phase order from
+the pinned upstream source, not from the other axis. Compare a chained case
+where one phase changes the next phase's input against independent upstream
+results, alongside empty-input and unchanged fixed-constraint controls; isolated
+axis results do not establish composed behavior. A matching fixed-constraint
+baseline remains valid, but does not establish flexible or content-dependent
+behavior.
 
 Treat target size, hit testing and visible paint as separate assertions:
 
@@ -306,6 +372,13 @@ Treat target size, hit testing and visible paint as separate assertions:
   rendering no visible label. Assert its displayed content as well as its
   accessible name and action, and inspect the captured frame before presenting
   it as visual proof.
+- For runtime-activated controls that are serialized inactive, evaluate each
+  target with sibling menus still inactive. Resolve its runtime layout and
+  nearest click-handler ancestor, then require the primary visible artwork
+  centre to dispatch to a handler in that target's own subtree; a positive
+  raycast area at a corner is not enough. Calibrate each semantic assumption
+  against mapped device taps before making the checker blocking; serialized
+  defaults alone do not establish runtime reachability.
 - A valid DOM rectangle, nonempty SVG `getBBox()` and successful hit test can
   all pass while an ancestor's `opacity: 0` makes the control invisible. Check
   the control's effective opacity through every ancestor, visibility, clipping
@@ -466,13 +539,25 @@ A generated image a release depends on fails closed on blank output: check its
 colours or variance, not only that the file exists.
 
 - Enumerate every changed asset and table from the candidate manifest/diff,
-  including additions, removals and dependent references. Match the checked set
-  to that inventory so one successful sample cannot stand for all changed files.
-- Diff the prepared change against what is mounted live, not against the source
-  repository. Label every changed cell as chosen, with its decision, or as drift
-  that the source carried in unnoticed. Only chosen cells ship. Drift stays at the
-  live value and is reported. A source template can hold old values nobody chose,
-  and a flag that looks like a harmless hide can remove what a user already owns.
+  including additions, removals and the complete declared dependency closure;
+  match the checked set to that inventory so one sample cannot stand for all files.
+  Artifact identity and admission include referenced payload bytes stored
+  separately from root metadata; changed unowned or unverifiable payloads fail
+  closed. The real publication gate must reject an undeclared change confined
+  to referenced external bytes while accepting an explicitly declared complete
+  closure. Identical objects do not prove compatibility: validate container and
+  each serialized member’s target, runtime version and format metadata against
+  the independently selected platform/runtime, with metadata-only negative
+  controls through both the producer and an independent reader.
+- Snapshot serving inputs read-only before handoff and diff the candidate against
+  that baseline, not repository copies; for display claims, use only the bundle
+  actually served to users. For probability fixes, trace the server's reader to
+  the exact columns, report their before/after values and enumerate every row
+  whose real probability changes: `display == actual` says neither which column changed nor
+  that actual odds stayed fixed. Label each changed cell as chosen with its
+  decision or unchosen drift; ship only chosen changes and preserve/report the
+  live value for drift, since stale templates or a hiding flag can remove owned
+  value.
 - Trace asset generation through export/build, package staging and runtime
   manifest/cache/remote selection: a store build may skip a separate bundle
   builder, packaging may only copy an export, and remote content may supersede
@@ -485,15 +570,26 @@ colours or variance, not only that the file exists.
   consumer or a separately implemented decoder/validator. Reusing the writer's
   serialization code or comparing its output with itself is insufficient. Check
   the decoded values against the intended change, including field types, units,
-  ranges, relationships, missing fields and intended removals.
+  ranges, relationships, missing fields and intended removals. At displayed
+  precision, reproduce the shipping consumer's numeric widths, cast order and
+  rounding rather than an algebraically equivalent rational formula. For
+  example, an independent consumer run can disprove equality at a rounding
+  boundary: displayed `1.00%` versus consumer-formatted actual `1.01%` at raw
+  `1.005%`.
 - Exercise assets in their consuming renderer: for example, decode a sprite
   atlas, resolve every frame and render the changed states; load a model with
   its materials and animations. Existence, file size and checksums alone cannot
   establish usable content.
 - Start the client and, for server-loaded data, a server built/configured from
-  those exact candidate files. Load every changed table without error and assert
-  its relevant behavior. A schema-only check cannot establish that the shipping
-  client or server accepts the file.
+  those exact candidate files; load every changed table and assert its consuming
+  behavior, not schema acceptance alone. For reward delivery, apply the
+  [channel-specific dispatch and effective-item checks](../../game-economy/SKILL.md#1-establish-what-is-happening).
+  For random pools or boxes, every
+  reachable outcome ID must resolve in the type-specific template used by the
+  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
+  unknown-ID/null-grant controls, asserting durable grants and the contract's
+  charge/rollback behavior: a response can list rewards even when one unknown ID
+  suppresses the whole batch after charging.
 - Emit machine-readable results bound to the candidate digest: checked artifact
   IDs, expected/actual values, assertions, failures and tool versions. Missing
   required results fail publication. Preserve the last known good release and
@@ -594,11 +690,14 @@ A matching pointer trace establishes only that gesture's coordinate mapping.
 Record the observed UI transition separately from the requested action. For
 short-lived turns or dialogs, capture before, act and capture after in one
 bounded sequence; an observer round trip can outlast the state being tested.
-Before patching allegedly lost input, trace delivery through the handler, state
-change, paint generation and presentation: a callback or generated paint does
-not establish visible completion. Retain the unchanged early capture and any
-later transition with no new input; that transition distinguishes delayed
-completion from a dropped action, without establishing the cause of the delay.
+Before patching allegedly lost or duplicated input, trace the affected user/device
+and automated paths through host normalization, handler, state change, paint and
+presentation; those paths can use different protocol branches, and a callback
+still does not establish visible completion. A synthetic-path failure establishes
+neither a universal product defect nor an automation-only defect, and a changed
+stimulus must preserve the complete action workload. Retain the unchanged early
+capture and any later transition with no new input to distinguish delayed
+completion from a dropped action, without inferring its cause.
 
 On a fresh Android emulator, let Google Play services and automatic system
 package updates settle before launching the app, measuring startup or judging a

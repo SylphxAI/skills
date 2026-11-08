@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -14,16 +14,16 @@ resuming delivery or allowing cleanup.
 ## 1. Verify It Is Actually Blocked
 
 Before intervening, read the live state of the job, queue, or target resource:
-1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work.
-2. **Never resend an uncertain mutation blindly:** If a deploy, API call, or payment/grant request timed out or lost its connection, read the target's live timeline or receipt first so you never create duplicate side effects.
+1. **Normal progress needs no action:** A build, test suite, or external store review running within its expected duration is not blocked. Do not cancel and restart healthy in-flight work. Recovery eligibility belongs to the failure state, not the target ID: re-read the exact state that justified recovery immediately before the write and skip it if that state no longer holds.
+2. **Never resend an uncertain mutation blindly:** Follow the [duplicate-safety recovery contract](../deliver-and-verify/references/integration.md#provider-integration): reconcile potentially harmful duplicate effects, while a documented duplicate-safe refresh can recover with bounded serial retries before its output expires.
 3. **Discard self-imposed blocks:** A hypothetical third-party ToS question, an unscored civil risk (`../challenge/references/risk.md`), or a local convention that protects neither user data nor authorized spend is not a real block—proceed directly with the outcome.
-4. **Challenge an added prerequisite:** Before repairing a refused step, reread
-   the outcome and ask whether that step is required at all. Remove an unrelated
-   dependency from this delivery rather than repeatedly repairing it; track the
-   independent outcome separately. For example, a UX change that works with the
-   current engine version should not wait on an optional version bump whose
-   migration fails. Split the bump from the UX change; retain a prerequisite
-   when the acceptance cases actually depend on it.
+4. **Challenge an added prerequisite:** Before removing a refused step, compare
+   its selection contract and effective input population with the acceptance
+   cases. Shared or inherited inputs alone do not show incorrect selection;
+   preserve required coverage when setup or execution fails. Track unrelated
+   dependencies separately: split an optional engine upgrade from a UX change
+   that works on the current version, but retain a required integration check
+   whose external dependency fails during setup.
 5. **Verify the resource can supply the missing capability:** Before restoring
    a credential or expanding a grant, read the selected account/workspace's
    entitlement and access to the specific model, feature or workload. Successful
@@ -46,6 +46,8 @@ without widening scanner exclusions.
 
 A guarded read can refuse an entire resource because fields unrelated to the question contain credentials; filtering its output afterward cannot recover the refused bytes. Select the required fields at the provider or CLI before that boundary to restore the bounded read without weakening the guard or expanding access to raw secrets. If a required field itself is protected, use its authorized in-process consumer rather than printing it.
 
+A refusal of recursive directory enumeration is scoped to that operation; it does not by itself establish that explicitly named direct-file reads are unsupported. Stop the refused walk, obtain the owning boundary’s documented named-read contract, and read only the authorized exact files. Guessing aliases, traversing alternate paths or switching identities evades that boundary; declaring all reads unavailable overstates the refusal.
+
 For a secret-scanner publication refusal, use the
 [scanner finding procedure](../deliver-and-verify/references/security.md#secret-scanner-publication-refusals)
 to distinguish credentials from verified false positives through the supported publisher.
@@ -60,18 +62,59 @@ Read the exact failing job log, exit status, and resource metrics before choosin
 | **4. Authority, credential, or session challenge** | Missing scope/grant, expired token, or interactive login/CAPTCHA challenge | Reuse existing delegated credentials from the authorized secret store (including in-process secret-reference resolution and automated TOTP), preserve persistent browser profiles (`--user-data-dir` / cookies) so authenticated sessions are never needlessly wiped, and trigger an interactive human browser takeover only after every zero-human sign-in channel is exhausted: the provider's SSO button for the agent identity, an emailed magic link or code from an inbox the agent reads, an SMS code from the company number's inbox, an API or CLI with existing keys, and a trusted persistent profile. A CAPTCHA widget under one email/password form is not a challenge while another channel on the same page avoids it. **Wrong:** see `captcha_detected` on the password form and page a person. **Right:** try "Continue with Google" or the emailed code first; ask a person only for a challenge every channel shows, or for hardware approval. |
 | **5. Quota, rate limit, or capacity ceiling** | Provider HTTP `429`, exhausted seat/API quota, or saturated build lock | Pace concurrency to the measured sustainable rate, switch to an approved fallback capacity pool within existing spend limits, or surface the exact measured capacity gap to the budget owner. |
 
+An identity API can acknowledge a new credential before the authenticating
+service adopts it, so an immediate consumer refusal alone does not establish a
+bad secret. Reconcile the issued identity and its actual consumer within the
+existing propagation and caller-deadline budget before replacing grants or
+resetting retained credentials. **Wrong:** create a second key after the first
+API acknowledgement and failed login; **Right:** preserve the issued key and
+establish consumer convergence or a concrete authorization error.
+
+A successful automation run can leave every update permanently ineligible: if
+an age or stability wait restarts whenever the selected target changes, a target
+that moves faster than that wait never qualifies. Compare the policy's timestamp
+source and candidate selection with the observed update cadence; repair only the
+incompatible scope, retaining unrelated trust delays and bounded update frequency.
+**Wrong:** rerun the updater because its job is green but consumers stay stale;
+**Right:** prove a required candidate can become eligible and reach its consumer,
+while unrelated candidates keep their intended waiting policy.
+
 Aggregate free capacity can hide starvation of jobs that need a whole fit on
 a smaller eligible host set: compare their effective requests, reservations
 and priorities with the competing jobs on those hosts before adding capacity.
 Priority orders new allocations; existing reservations and non-preempting
 occupants can still hold the required room, so a priority change alone does not
-establish bounded wait. Verify both admission and actual provider pickup under
-continued competing demand before introducing an idle reservation or claiming
-the starvation is fixed.
+establish bounded wait. In a fungible worker pool, provisioning metadata names
+why a worker was created, not which task the provider will assign; selective
+recovery needs an enforced assignment constraint or acknowledged pool-wide scope.
+**Bad:** raise an origin-labelled worker's priority and call its intended task
+unblocked; **Good:** match actual assignment and target-task start before claiming
+recovery, and verify continued progress under competing demand before reserving
+idle capacity.
 
 Classify from the newest run on that commit and its first exact error; an older failure may already be superseded. Before rerunning or redispatching, confirm no newer or completed run exists for the same head. A passing source contract or a successful activation does not prove the visible output.
 
 ### Parent-operation recovery
+
+An idle replacement process proves liveness, not recovery: same-process tests
+can retain unsaved payloads that disappear after restart. For restartable work,
+compare accepted payload identities and order, acknowledgements and completed-effect
+receipts across the failed attempt, durable state and a fresh worker's first
+successful continuation; reconcile uncertain effects instead of resending them.
+**Bad:** restart and see healthy; **Good:** inject a failure after accepting work,
+restart from persisted state, and verify the original work completes without
+losing pending input or repeating completed effects.
+
+A resumed scan cannot replace the accepted pre-signal work census: any
+pre-intent recensus may add stable work identity/sequence pairs without dropping
+missing entries or replacing original recovery baselines. Durable intent is not
+proof of dispatch, so reconcile actual serving identity first; redelivery is
+permitted only for an independently idempotent signal bound to the original
+immutable process identity, never for a confirmed dispatch or an unknown
+non-idempotent API mutation. **Bad:** discard unresolved accepted work or
+suppress recovery solely because intent exists; **Good:** test crashes both
+before signal dispatch and after dispatch but before its receipt, retaining the
+census and proving no repeat against a confirmed dispatch or replacement process.
 
 Recovery must resume the authoritative parent operation; a successful child
 retry can belong to an operation already retired or replaced. For a failed
@@ -89,8 +132,18 @@ job once, after reading the current head, attempt and status. Read the new job
 and dependent checks afterward. This preserves unrelated successful work while
 restoring the failed check without rerunning the whole workflow.
 
-Primary source checked 2026-11-06:
-[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+An accepted cancellation can leave an obsolete operation queued and holding its
+concurrency slot, so a replacement remains pending. When ordinary cancellation
+has failed to reach a terminal state, reconcile the exact obsolete operation and
+its replacement before using the provider's documented stronger cancellation;
+verify both terminal cancellation and replacement admission afterward.
+**Bad:** report capacity released from HTTP 202; **good:** observe the obsolete
+run as `completed/cancelled` and its replacement admitted, while preserving
+unrelated work.
+
+Primary sources checked 2026-11-07:
+[GitHub merge queues](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
+and [force cancellation after ordinary cancellation is ineffective](https://docs.github.com/en/rest/actions/workflow-runs#force-cancel-a-workflow-run).
 
 ### Missing pull-request CI
 
@@ -120,8 +173,10 @@ Primary source checked 2026-11-06:
 ### Missed completion events
 
 A registered watch does not prove that its observer saw the terminal status or
-that its notification resumed the waiting worker. Retain the target, source
-revision, baseline, last observed status and expected completion window. For an
+that its notification resumed the waiting worker. Its name also says nothing about
+provider cost: inspect the [observer's actual request and quota behavior](../deliver-and-verify/references/integration.md#provider-integration),
+backing off at the shared rate-limit floor rather than multiplying per-target GETs.
+Retain the target, source revision, baseline, last observed status and expected completion window. For an
 unverified event source, keep a timed fallback that reads the target directly.
 
 If the target has finished but the watch still reports pending, read the final
@@ -151,6 +206,15 @@ preparation, work submission, completion and capture. A mount or load duration
 does not measure the whole operation. Retain the last typed readiness state and
 timings on failure; a generic loading message does not identify a missing asset.
 
+An enclosing timeout can be spent on implicit discovery even when the intended
+fixture or configuration already exists; existence does not prove selection.
+When traces place the wait before business execution, compare the default route
+with the same artifact and workload using a supported explicit selector,
+preserving the original assertions and deadline. Verify effective selection and
+separate discovery/startup timings from business execution before attributing
+the failure to product code; a wait that remains in business execution needs a
+different explanation.
+
 Compare the same artifact and workload alone and concurrently under the failing
 runner's effective CPU quota and affinity. Record its memory limit and observed
 usage separately from resource requests or host-wide reservations. Trace the
@@ -168,9 +232,11 @@ Measure a hardware browser before claiming a delay is exclusive to software
 rendering. Increase a deadline only after legitimate completion times justify
 the headroom and the required behavior still satisfies the product's budget.
 
-**Bad:** infer a missing image from a generic timeout and increase the budget.
-**Good:** identify the pending completion condition, measure isolated and
-concurrent durations, and fix the phase or resource policy the data identifies.
+**Bad:** infer a missing fixture or product hang from a generic timeout and
+increase the budget.
+**Good:** verify effective selection, identify the pending completion condition,
+measure discovery/startup separately from business execution, and fix the phase
+or resource policy the data identifies.
 
 ## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
 

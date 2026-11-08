@@ -18,10 +18,26 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
-Local setup can change a check's input population: dependency caches placed
-inside a checkout may be scanned as source even when Git ignores them. Keep
-rebuildable caches outside that population, or verify the check's exclusions;
-failures naming cached third-party files call for correcting input discovery.
+A copied entrypoint is not a complete tool: derive its dependency files and
+wrapper-supplied launch context from the pinned launcher and verify initialization
+before expensive work; an initialization refusal establishes no policy or product
+verdict. When current control helpers operate on historical inputs, assemble their
+complete sibling dependency closure from the control revision and pass the frozen
+target root (source, data or package) explicitly rather than inferring it from the
+helper's location. Exercise the assembled consuming command against an older target
+lacking the helper and a changed-target negative, so missing dependencies and
+accidental checks of the current checkout cannot pass as historical verification.
+
+Verify completeness and integrity against the producer's intended manifest and
+the consumer's actual enumeration, matching every required entry and digest in
+the transferred archive or final package before exercising the consuming checks
+there. Transferred files, a regenerated index or catalog, and consumer selection
+can differ under ignore/filter rules; the regenerated selector does not define
+which inputs should exist, so selection drift alone establishes neither byte
+corruption nor permission to drop intended inputs. A clean status or regenerated
+`git ls-files` inventory can omit required imports/modules under
+`.git/info/exclude` even when their bytes arrived intact; rebuildable caches stay
+outside the population unless the check's contract includes them.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated
@@ -49,7 +65,7 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. Diagnostic collection failures must not replace the original outcome.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
 
 A temporary-directory error can originate in a separately configured package
 cache. Read the failing child's effective tool home, cache and index paths,
@@ -57,16 +73,24 @@ including existing leaf files; writable root directories and a fresh temp path
 do not establish update access. Compare the original command under another
 execution UID, changing only the suspected path when isolating the cause.
 
-Choose cache sharing from its contents and trust on reuse. Package bytes with
-integrity checks can use a shared group; credentials, signing keys and config
-need private state. A cached executable or compiler result trusted without
-reverification needs a private cache or a trusted single writer. A writable
+Choose cache sharing from every consumer's trust on reuse: untrusted writers can
+share package bytes only when every reuse verifies the actual inputs, including
+indexes and extracted source, against trusted integrity metadata obtained outside that
+writable tree. Otherwise use private caches or a trusted single writer with
+read-only consumers; credentials, signing keys and config remain private.
+**Wrong:** share extracted source because downloads have checksums; **Right:**
+verify each reused input against independent trusted metadata or isolate it. A writable
 mixed-home parent permits replacing its private entries even if file modes stay
 0600, so grant access only to named content leaves and retain read-only parents.
-Setgid preserves a group, not write permission; verify old contents and future
-writes under restrictive umasks, inherited ACLs and two UIDs. Preserve outside
-links and active locks. A declared tool version must either launch or fail
-clearly after an install/lock error, rather than silently running another major.
+Setgid preserves a group, not write permission. Scope additive access/default POSIX ACLs to named shared-content leaves, never mixed metadata parents or defaults that admit future siblings; preserve existing effective grants and the original owner's future access, judging ACL writers rather than group mode bits, which represent the ACL mask. Read-only entries also need unlink/rename protection through every writable ancestor. Verify old contents and future writes under restrictive umasks with two real UIDs, preserve outside links and active locks, and report privilege skips rather than acceptance. Derive each shared principal grant's lifetime from all active server-owned use records under one transition lock; revoke only grants no survivor needs and read effective access back independently of dirty-file retention. A declared tool version must either launch or fail clearly after an
+install/lock error, rather than silently running another major.
+
+Identity fixtures keep the real UID and primary GID separate; one cannot be
+derived from the other. Assert both OS identities, retain an environment where
+they differ, and make synthetic fixture UIDs or kinds distinct from the executor's
+real identity so the fixture cannot accidentally exercise the current-user path.
+**Bad:** return `(current_uid(), current_uid())` or use the executor as a synthetic
+other user; **Good:** verify the actual tuple and a distinct synthetic identity.
 
 Before concluding a local-mode override is ineffective, check the mode flag's
 effective value in a fresh task-runner child; exporting it in the parent shell
@@ -148,6 +172,25 @@ read 2026-11-06).
 
 A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
 
+A CLI can fail in configuration or interpreter startup before the requested
+program runs; a successful transport-only probe does not establish that program's
+execution. Before relying on a privileged effect, prove a harmless operation-specific
+result through the actual interpreter, input mode, identity, mounts, environment
+and filesystem restrictions, including absent default files, while retaining a
+sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedded
+program executes; **Good:** the workload's exact launch chain emits the program's
+expected marker using only its declared inputs.
+
+A writable temporary parent does not make a metadata-preserving copy of an
+immutable fixture writable: copied directory modes can still deny state creation
+under the actual non-root executor, while root-run host tests mask the denial.
+Acceptance reproduces the effective executor and preserved copy metadata,
+restores only the capability needed for disposable state, and verifies unchanged
+source bytes and permission policy.
+Distinguish setup permission errors from the intended typed failure, and prove
+the intended rejection before and after the repair rather than weakening it to
+make the fixture pass.
+
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
 and retain bounded daemon startup logs before that instance ends; a path inside
@@ -207,13 +250,20 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal or active.
+When setup tolerates statement errors, a successful replay does not establish
+effective grants or an empty database: one invalid grantee can fail a grouped
+`GRANT` for valid recipients too, while earlier seed transactions remain committed.
+Establish readiness from effective runtime-role privileges and retained rows under
+enabled guards, not the replay's exit status or a "fully migrated" label;
+permissive local trust can also hide missing transport credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
-guard enabled; extreme values or times can break a cross-field or ordering
-constraint before the intended behavior runs. A small setup-and-transition
-control should reach the decision under test, separating invalid or inactive
-setup from a behavior failure.
+guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
+control should reach the decision under test through a real connection as the
+intended role using CI's transport and authentication mode, separating setup from
+behavior failure. Where credentials are required, pair accepted restricted-role
+behavior with unauthenticated connection refusal, without weakening authentication
+or broadening grants.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
@@ -260,6 +310,8 @@ Keep one executable public contract and derive clients where that prevents drift
 
 A published package states its API, runtimes, and license and follows its versioning contract. Keep published artifacts immutable; version plus platform/build identity and digest distinguishes intentional multi-platform outputs. Test the serialization, ordering, and failure behavior promised to consumers.
 
+Verify supported external construction and call forms against the published version contract; adapting in-repository callers can hide a consumer source break. Adding even a defaulted field to an exhaustively constructible public type, or making a field private, can invalidate existing consumer construction. Within a stable contract, prefer an additive policy-aware entrypoint that preserves supported construction and legacy calls over extending that type in place.
+
 When publication requires the selected commit to equal a live branch head, even
 documentation-only commits invalidate that identity. Coordinate every writer to
 that branch through the authoritative validation boundary, without a standing
@@ -271,25 +323,43 @@ unused immutable version; never blindly rerun the retired source.
 Before adding a changeset, check the package's `private` field and release exclusions, and follow the repository's existing changelog convention for packages excluded from publishing.
 
 Preserve the resolver-generated lockfile bytes as the resolved dependency graph;
-never reconstruct transitive dependencies from version logs. A direct requirement
-need not equal the selected version: validate it under the resolver's documented
-constraints and resolution strategy, not textual equality
+never reconstruct transitive dependencies from version logs. Cross-target download
+flags can select compatible artifacts without evaluating every conditional
+dependency under the target interpreter; completeness requires a fresh locked
+install and dependency-consistency check under the shipping interpreter. A direct
+requirement need not equal the selected version: validate it under the resolver's
+documented constraints and resolution strategy, not textual equality
 ([lockfile semantics example](https://docs.unity3d.com/2022.3/Documentation/Manual/upm-conflicts-auto.html),
 read 2026-11-06).
 
-Before pinning consumers to a registry or download mirror, verify the live
-metadata response shape and canonical archive URL through every redirect to the
-final bytes. Derive requests from the actual provider contract rather than a
-guessed per-version endpoint or a test fixture's URL layout, and verify a real
-package download through the mirror.
+Before pinning consumers to a registry or download mirror, derive metadata and
+archive requests from the live provider contract and verify a real download,
+including every redirect to the final bytes. A pinned digest proves byte
+identity, not permitted transport origin or child-process authority: constrain
+redirects to the declared origins and give download and version-probe children
+only their required environment and configuration, excluding unrelated
+credentials. **Bad:** accept a matching digest as the whole boundary proof;
+**Good:** also exercise an off-origin redirect and a sentinel parent credential,
+verifying the child's effective destination and credential absence.
+
+A completed retried download does not prove resumption: interrupt after a known
+prefix, observe the next request's actual `Range` offset advance to the retained
+byte count, and verify the final digest against the authoritative artifact.
+curl's built-in retry removes the failed attempt's file output rather than
+advancing the resume offset; a nonzero starting offset or eventual success alone
+can hide a restart ([curl retry and continuation semantics](https://curl.se/docs/manpage.html#--retry),
+read 2026-11-07). The [whole-chain deadline](code.md#outbound-calls) still bounds
+all sources, attempts and server-requested delays.
 
 For a client failure, read the executable path and version used by the failing
-caller before adding another fix. Compare it with the first published release
-containing the relevant behavior, then trace the installer's version and checksum
-pins. If that release already fixes the failure, update the consumer through its
-supported installer and rerun the original command. A published fix does not
-update a pinned installation. Keep the checksum pinned with the version; an
-automatic update proposal should copy both from the release's checksum artifact
+caller and compare it with the first published release containing the required
+behavior. Installer aliases can resolve through a manifest pinned to the installer
+revision rather than the latest release; select an explicit compatible version
+supported by that manifest and trace its checksum pin. After installation, record
+the resolved path and version and prove the required capability through the actual
+consumer invocation and environment, including the next CI step when PATH changes
+apply there: a same-step version check can report a preexisting executable.
+Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
 and follow normal review, rather than fetching a new checksum at install time.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
@@ -377,9 +447,14 @@ If CI adds a generated commit, inspect that commit and fast-forward the checkout
 before further edits. Re-evaluate checks and approvals against the new head;
 results tied to the previous head do not authorize the generated delta.
 
-**Wrong:** Publish after the contract compiler succeeds, leaving a downstream
-web registry unchanged. **Right:** Run the complete generation chain, return its
-outputs, and verify the web consumer's generated-file assertion before publishing.
+**Wrong:** Publish after the contract compiler succeeds while a downstream
+consumer overrides an explicit canonical exclusion with inferred availability.
+**Right:** Run the complete generation chain with explicit canonical exclusions
+taking precedence over downstream routing or capability heuristics, while absent
+metadata follows its documented fallback and explicitly supported cases stay available.
+Verify these distinctions through real consumer assertions for visibility,
+documentation indexing and navigation, and available actions where relevant;
+successful generation or fresh bytes alone cannot establish them.
 
 ## Internal development
 
@@ -389,9 +464,10 @@ Follow the [delivery workflow](../SKILL.md): practical targeted checks, publicat
 
 - **Independent dependency environments:** Install a standalone project's declared dependencies in the same environment as its compiler and tests. A root workspace install or an earlier remote build does not establish that this independent graph is present; [isolated installs](https://bun.com/docs/pm/isolated-installs) restrict packages to declared dependencies (read 2026-11-06). If unrelated dependencies prevent a broad install, use the affected project's lockfile and a pinned compiler for the targeted check while retaining required integration coverage.
 - **Path dependency changes:** Find every workspace that consumes the changed package or feature, including through another path dependency. Regenerate each affected lockfile with the package manager and verify locked resolution with transitive dependencies included. The package's own tests or metadata produced with `--no-deps` can pass while a consumer's locked compilation fails.
-- **Remote-tracking refs in single-branch clones:** Before comparing a checkout with its remote base, inspect `remote.<name>.fetch` and verify the exact remote-tracking SHA after fetching. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; use the repository's supported fetch command or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`).
-- **Safe worktree cleanup:** Before removing a worktree or clearing a working folder, check unpushed commits and untracked/ignored evidence as well as `git status`. Copy only unique, small receipts (reports, logs, captures, patches), never rebuildable build trees.
-- **Private test-fixture paths:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename. Configure the output path when another run owns that filename; leave its permissions and files alone. Keep Unix socket paths within the operating system's length limit. If a short alias is needed, verify that the server and connection-URI parser resolve it to the same owned directory before running the suite.
+- **Remote-tracking refs in single-branch clones:** Before comparing or publishing a checkout, materialize and verify the exact remote-tracking ref selected as its base; a readable commit or same-named local branch does not prove that the publisher can bound its history against that remote ref. In a single-branch clone, `git fetch origin main` can update `FETCH_HEAD` without updating `origin/main`; inspect `remote.<name>.fetch` and use the repository's supported named-base fetch or an explicit refspec (`git fetch origin main:refs/remotes/origin/main`). Restoring a missing stacked-base ref does not require retargeting the held PR or merging the default branch.
+- **Safe worktree cleanup:** Git cleanliness and pushed commits do not prove that a working directory has no unique outputs; automatic retirement can also remove non-Git directories. Safe cleanup depends on preserving unpushed commits and unique or uncertain drafts, reports, logs, captures and patches outside the entire deletion scope and reading the saved bytes back before removal. Rebuildable build trees need no preservation.
+- **Isolated child builds:** Any child that touches files needs its own worktree or private directory, even when its task is described as read-only; never share a Cargo target directory across source revisions. Exercise an exported tree archive, such as a frozen suite from `git archive`, outside the source repository using only its declared inputs: running inside the full checkout can hide sibling-path dependencies. If an export is reported missing while the source defines it, inspect the actual rlib with `nm -g --defined-only` and bind it to the source/target revision before editing code. Stale Cargo fingerprints can reuse an old rlib and produce false missing-export errors or identical benchmark results: relative dependency paths and source mtimes older than the previous build can hide a worktree change. Bind the executed binary to its actual dependency metadata or symbols before attributing unchanged behavior to source; do not change code to appease a stale artifact.
+- **Private test fixtures:** Give each test run its own generated certificates, logs, database files and sockets, including outputs whose library defaults use a shared temporary filename; leave another run's files and permissions alone. Keep Unix socket paths within the operating system's limit and verify any short alias through both server and connection-URI parser. Isolate process-global environment and lock assertions in single-test subprocesses: an in-process mutex cannot protect them from concurrent fork/exec fixtures that inherit descriptors until exec. Launch fixture children with unrelated identity, configuration and data-directory overrides removed, retaining explicit fixture inputs; numeric identity separation alone does not isolate inherited authority.
 - **Background processes launched by tools:** Shell `&`/`nohup` can leave a compound command's launcher or inherited tool pipes open, so the call may wait for the child's lifetime. Use a supported persistent execution session or process manager, or on POSIX a [`subprocess.Popen`](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) child with stdin `DEVNULL`, stdout/stderr files, `close_fds=True` and `start_new_session=True`; the launcher must return immediately without waiting for that child. After the call returns, independently verify that the child is still running and has produced its first expected sample before reporting it as active. Keep the [missed-event fallback](../../unblock/SKILL.md#missed-completion-events) until delivery is verified. If a tool call hangs after starting a daemon, inspect the wrapper's open file descriptors and close or terminate only the pipe-holding wrapper.
 - **Configuration reload and graceful drain:** Choose configuration reload semantics (dynamic read, atomic snapshot, or rolling restart) to match the service's consistency needs. When stopping a service that lacks a built-in drain path, close ingress first, verify external queues are preserved, wait for active work to reach zero, and then stop the process.
 - **Client-verified readiness:** Measure service availability from the moment a real client request or sign-in succeeds, not merely when an orchestrator readiness probe turns green.
@@ -419,6 +495,18 @@ label a shell's signal-like status as a convention rather than proof of cause.
 Missing logs limit the conclusion; do not substitute a resource or flag change
 for evidence of the failure.
 
+A supervisor-only lock and deadline disappear on `SIGKILL`, while a detached
+child can continue work and overlap its replacement. Exclusion and cleanup must
+cover the whole child lifetime: a cleanup owner retaining an inherited lock and
+watching a pipe whose sole writer is the supervisor can detect EOF, terminate
+child process groups and finish cleanup before releasing the lock. In a
+disposable fixture, hard-kill only the supervisor and verify descendant
+termination, owned temporary-state cleanup and replacement exclusion until
+cleanup finishes; graceful-stop tests do not establish this contract. A terminal
+receipt can precede process exit and inherited-descriptor closure; retain
+exclusion through publication, then observe actual lock acquisition within a
+bounded deadline rather than treating the receipt timestamp as resource release.
+
 Verify with a disposable instance: terminate only the supervised runtime, then
 observe management readiness, refusal without dispatch, retained files and
 request replays, and centrally readable exit evidence. Release the instance and
@@ -426,9 +514,17 @@ confirm cleanup through the normal path.
 
 ## Workflow admission
 
-A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass.
+A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass. Checks and mutations share one resolved target context and environment, with configuration validated against the native helper's exact schema and its effective destination checked after rewrites. **Wrong:** validate the caller's working directory with a permissive fake, then let a helper select another repository; **Right:** native compatibility passes while alternate-directory, environment-override and destination-rewrite cases cannot redirect the authorized write.
 
-Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels.
+A generic guard derives each target's contract and required verdicts from its
+authoritative declarations, distinguishing confirmed absence from failed
+discovery instead of imposing the originating target's conventions or substituting
+an unrelated approval. Exercise a permitted alternative declaration alongside a
+refusal through the real entrypoint, preserving independent exact-candidate
+review requirements so fail-closed behavior cannot hide rejection of every
+supported target.
+
+Admission follows an operation's resource and effect. Publishing source does not apply a cluster change; CI scheduling and deployment/reconciliation have their own constraints. Keep actual repository holds and writer/rate budgets effective without making unrelated cluster telemetry a publication gate. GitHub merge-queue build concurrency limits `merge_group` builds, not source publication by owner labels. Shared-capacity accounting retains successfully read inventory even when later enrichment excludes items from eligibility; an unreadable census leaves capacity unknown and permits no new allocation. **Wrong:** count only enriched candidates; **Right:** an ineligible existing item still consumes capacity.
 
 ## Selected release inputs
 
@@ -442,29 +538,54 @@ inputs that no longer exist, including paths left behind by a rename.
 
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
-per-path blobs with the serving plan, including inherited base inputs and runtime
-resources; the difference must equal only the declared change under test.
-Bind that proof to the candidate head and serving revision, and refresh it if
-either changes: matching counts or passing source tests do not establish scope.
+per-path blobs and file modes with the serving plan, including inherited base
+inputs, removals and runtime resources; the difference must equal only the
+declared change under test. An unchanged-input exemption requires identical
+pinned content and modes; a frozen provenance label cannot exclude changed
+destinations from scope checks. Resolve the serving selection from its producer's frozen approval, not
+the selected source revision's own selector.
+Include every other profile selecting a changed shared file, even if it does
+not call the new helper: an additive edit still changes its retained bytes.
+Preserve each profile's declared comparison instead of widening its expected
+delta to accept unrelated code. Bind the comparison to the candidate head and
+serving revision, and refresh it if either changes: matching counts or passing
+source tests do not establish scope.
 
 Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
 keeps other dependencies byte-identical. A direct source overlay into a compiled
 module can replace that route; require binary synchronization only while those
-binaries remain the delivery mechanism. Derive registration from the input to
-destination mapping, since their directory names can differ.
+binaries remain the delivery mechanism. Derive registration and runtime scope
+from the input-to-destination mapping and actual consumers, not plan membership:
+an assembly can retain another role's scaffolding. Shared inputs require
+registration in every consuming profile without creating false mixed scope.
 
-Keep ordinary source registration separate from release selection. Read the
-selector and lock history before requiring every source PR to regenerate a
-frozen release binding; validate that binding where the release is selected.
+Keep PR filename diffs for ordinary source registration, rather than requiring
+every source PR to regenerate a frozen release binding. A pointer- or
+approval-only release change can select source merged earlier, so determine
+release scope from resolved old and new materializations using the selector
+and lock history.
+Frozen-release fixtures resolve the plan, inputs and policy at the revisions the
+publisher actually consumes; rebinding them to fixture HEAD changes the release
+being proved. An unrelated later checkout edit must leave that proof passing,
+while drift in a selected input must fail it.
 Replay a witnessed omitted-input diff and a known registered diff through the
 actual guard, and test both source-overlay and prebuilt routes when supported.
+
+**Wrong:** Treat an empty PR source diff or frozen input labels as no runtime change.
+**Right:** For a release limited to one runtime module, refuse a pointer-only
+selection that mixes modules and keep a single-module rebind passing.
 
 ## Bulk mutations
 
 Before bulk cancellation, deletion, closure, re-dispatch, labeling or overwriting,
-map each candidate to its real owning object and prove both controls: a known-live
-object classifies as **keep**, and a known-stale object as **act**.
+map each candidate to its real owning object and derive eligibility from
+authoritative scope and lifecycle records; provider existence or a nonarchived
+search hit does not establish operational membership. Keep declared exclusions
+and unresolved mappings out of the write set, and prove both controls against
+the operation's eligibility rule: an ineligible object classifies as **keep**,
+and an eligible object as **act** (for cleanup, a live object is **keep** and a
+stale one is **act**).
 Dry-run the full candidate set; stop and investigate if either class takes nearly
 all candidates or **keep** is empty, rather than treating uniform agreement as proof.
 Mutate at a paced rate and log object IDs, owner mappings, prior state and outcomes
@@ -512,37 +633,54 @@ routing expression before choosing a supported event with the intended metadata.
 Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#github-context), read 2026-11-06.
 
 
-- Dependency installation alone does not establish test readiness: workspace
-  exports may resolve to generated files, and assertions may invoke external
-  executables. The package's exports and CI setup identify those prerequisites;
-  they belong in the test's own lease, with the production version when an
-  evaluator or runtime is part of the claim. A missing module or executable
-  leaves behavior untested; source aliases or skipped assertions change the claim.
-  **Wrong:** replace a missing published export with a source alias, or install
-  a browser in one disposable lease and run its suite in another.
+- Local logic success does not establish CI command availability: each check's
+  complete launch chain needs its imports, generated files and executables on the
+  selected runner in its own job, stage and build target, with production
+  evaluator/runtime versions when claimed. Use declared setup for launchers and
+  dependencies or a supported native runtime; later steps cannot prepare an
+  earlier check. Execute the parsed workflow command with its effective
+  checkout/copy inputs, working directory, PATH and packages, excluding undeclared
+  workstation tools and packages.
+  Dependency preparation and offline fixture
+  compilation share the same effective executor, package source and cache;
+  a wrapper can place each nested command in a fresh cold lease, so a successful
+  fetch does not prepare the next command. Verify that the real fixture working
+  directories and subcommands are supported by that execution path before running
+  the suite; a refusal before compilation is environment evidence, not a
+  product-code verdict. Recreating a target removes runtime fixtures; discovering
+  or compiling harnesses does not prove their executable dependencies were rebuilt.
+  A missing module or executable leaves behavior untested; source aliases or
+  skipped assertions change the claim.
+  **Wrong:** replace a missing published export with a source alias, or fetch
+  dependencies in one cold lease and compile offline in another.
   **Right:** build the exported package and prepare the pinned executables and
-  system libraries in the lease that runs the affected tests.
+  system libraries through the supported fixture launch path in the executor,
+  cache and target that run the affected tests.
   See [Playwright CI setup](https://playwright.dev/docs/ci), read 2026-11-06.
-- Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06).
-- A required aggregate verdict reflects failure of its required work and identifies the failed check, even when the inner command is silent; explicitly non-blocking cleanup and diagnostics are separate; never mask a required failure with success syntax or a missing resource. A healthy-path pass or dependency edge cannot prove propagation: failure or cancellation may skip an intermediate job that a later aggregate accepts. **Wrong:** infer coverage from an all-green chain; **Right:** witness a required failure reaching a non-passing aggregate through every intermediate boundary, or prove those transitions before reducing the graph.
+- Keep required checks fast enough for the workload, with draft, ready, merge-group and default-branch coverage declared beside the workflows. A lifecycle transition can require new checks at the same source revision: exercise it while the predecessor is unfinished, proving the required run is admitted independently while same-stage duplicates preserve the authoritative result. **Wrong:** treat a valid cancellation expression as proof that a queued predecessor released its concurrency group; **Right:** observe both runs, and separate their groups by lifecycle state when cancellation leaves the required run waiting ([GitHub workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency), read 2026-11-06). Cancellation guards alone do not protect queued work: under GitHub's default one-pending-slot behavior, a stable non-PR group can evict an older pending run even with `cancel-in-progress: false`; unique per-run non-PR groups or an explicitly supported queue preserve those runs. GitHub accepts skipped required checks, so a required aggregate keeps job-level `always()`; moving `!cancelled()` to the job can turn cancellation into admission. Make its long-running steps cancellable and fail cancellation at a terminal step instead: verify the old aggregate's check conclusion is neither `success` nor `skipped`, and measure lock release while it is active ([workflow cancellation](https://docs.github.com/en/actions/reference/workflow-cancellation-reference) and [required-check conclusions](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/troubleshooting-required-status-checks), read 2026-11-07).
+- Resolve concurrency over the expanded job graph: reusable workflows inherit the caller's `github.workflow`, and literal job-ID prefixes do not distinguish `strategy.matrix` children. **Wrong:** accept a cancelling job lock because declared job IDs differ; **Right:** resolve caller/callee and matrix-child groups through the shipped checker, preserving permitted unlocked callee matrices while refusing unintended sibling cancellation or pending-slot eviction.
+- A required aggregate verdict reflects failure of its required work and identifies the failed check, even when the inner command is silent; explicitly non-blocking cleanup and diagnostics are separate; never mask a required failure with success syntax or a missing resource. Admission uses the designated verdict bound to the exact candidate, rather than the enclosing workflow lifecycle: optional trailing work can leave the workflow active after its verdict is final. When refusal ejects durable queued work, pending evidence warrants a bounded hold with refresh, distinct from confirmed failure; expiry remains an explicit refusal, never success. Parser/CLI acceptance and component tests cannot prove subset delivery: joins or artifact transfers may still assume the full/default population. Evaluate the actual workflow expressions and artifact steps for complementary selections, allowing intentionally unselected producers to be skipped and omitting their transfers while requiring selected producers' success and complete artifacts. **Wrong:** infer coverage from an all-green default chain; **Right:** a supported subset reaches its consumer, while missing, failed or cancelled selected evidence reaches a non-passing aggregate through every intermediate boundary.
+- A gate requiring a producer's explicit success admits nothing until that consumer's producer is enrolled. Establish its live success path for the covered events and current source before gate activation; an installed application, empty check suite or sibling consumer's success does not suffice. Preserve refusal on missing or non-successful evidence, including after adoption: a pre-adoption rescue exception accepting `neutral` is no longer valid under that contract. **Wrong:** relax the gate to cover a rollout gap; **Right:** enroll the producer first and retain missing/neutral negative controls after activation.
+- A new API lookup in a shared action changes the authority needed by every invoking job, including intermediate aggregate jobs and result producers; match each invocation to its actual token and effective permissions rather than granting only the final check. Inventory every `workflow_call` edge and compare all declared callee job grants with the caller's effective permission ceiling, including jobs or steps skipped on the triggering event: a reusable workflow cannot elevate the caller's grants. Add only missing scopes while preserving required existing grants, since a job-level `permissions` map sets unlisted scopes to `none` ([GitHub permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions) and [reusable workflow permissions](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations#access-and-permissions-for-nested-workflows), read 2026-11-07).
 - Reusable workflows inherit the caller's `github` context and hosted-runner billing: a public library does not prove a public caller. For public-only standard hosted routing, require `github.event.repository.visibility == 'public'`; **Wrong:** negate `private` or compare it with `false`, since missing properties and loose equality can admit unknown payloads. Inputs may select standard hosted labels only after that proof, never assert visibility. Verify the entire reusable library—including every `workflow_call` workflow, locally uncalled entrypoints and actions—with a named private caller requesting literal `ubuntu-latest`, a public opt-in, legacy no-input calls and missing repository payloads across PR, push, merge-group, manual and scheduled events; an evaluator that cannot model the exact context property leaves the census unresolved.
   Sources: [reusable workflow context and billing](https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations), [missing context properties](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts), [expression coercion](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#operators) and [repository visibility](https://docs.github.com/en/rest/repos/repos#get-a-repository), read 2026-11-06.
+- Free runner eligibility does not authorize metered work triggered by that runner: automatic admission also depends on verified event provenance and the downstream spending grant. **Wrong:** let every fork's build start paid inference because the repository is public; **Right:** admit trusted repository events automatically under the existing budget and retain maintainer dispatch for authorized fork reviews. Verify both event sources and the explicit route; apply the same distinction to public uploads that trigger paid processing.
 - Before publishing a disposable CI probe workflow or consuming bounded external attempts, validate the complete orchestration at its provider-expression and embedded-program boundaries; optional diagnostics must not suppress the measured case. Cross-job values travel through declared outputs and `needs` rather than another job's `steps` context, and missing context properties can change comparisons through empty-string coercion. Runtime acceptance follows the client contract and measurement layer—application-attempt limits do not establish transport-request counts—so retain failed verifier records and distinguish orchestration or assertion failures from the actual client's output and exit status.
 - Before editing a workflow file in a product repository, read which workflows run on a push to the default branch and what each one publishes so an infrastructure or cache edit does not unintentionally trigger a production release.
-- Bind each verification result to the complete source range, checks actually executed, workflow path or ID, event, branch, exact commit and run attempt; display titles can change independently. A clean last-commit diff or manual run can leave full-PR lint or event-conditional checks untested. **Wrong:** extend either result to the whole pull request; **Right:** validate the complete applicable diff and confirm required steps ran under the relevant event predicates.
+- Bind each verification result to the complete source range, materialized candidate graph/input, checks executed, workflow path or ID, event, branch, exact commit and run attempt; trigger/source metadata and display titles do not establish what executed. For GitHub `pull_request`, default checkout uses the synthetic merge rather than the PR head (explicit checkout refs and `pull_request_target` differ), so PR-head ancestry or run `head_sha` alone cannot establish adoption or routing: use checkout/log evidence for the candidate and actual job labels/runner for routing ([GitHub event semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request), read 2026-11-07). Preserve intentional event-head, manual-input and merge-queue-entry comparison contracts: an immutable webhook baseline may be stale relative to the materialized candidate, but a historical receipt is judged against its own intended baseline, and a last-commit/manual pass does not cover the whole PR or prove required event-predicated steps ran.
 - Match a browser-test artifact's build configuration to the journey being claimed. A pack that deliberately omits an embedded signing key can establish offline rendering while being unable to authenticate a real guest. Read the build inputs and declared secret bindings before scheduling a live journey, and check the served source revision before creating a synthetic account. For a supported local mode, exercise its first useful action with the service deliberately disabled; separately prove that a configured but unresolved account stays blocked until its record loads. A rendered entry screen or a configuration predicate alone cannot establish either behavior. When a suitable preview is unavailable, use the normal release path and verify its deployed revision; keep offline, preview and live results distinct.
 - When a startup regression escaped compilation and unit checks, put the affected interaction into the existing merge gate using the exact candidate artifact. Require its result through the aggregate verdict on both ready PRs and merge groups; a scheduled or post-merge journey only detects damage after admission. Keep the interaction driver and its acceptance predicate shared across these paths, and retain the default-branch check as the delivered-artifact receipt.
-- Select affected checks from actual dependencies—imports, subprocesses, generated files, fixtures, schemas/registries and direct source reads across languages/workspaces—not test-directory proximity; discover readers by changed paths and semantic types, fields or commands. Declarative command edits can preserve execution while breaking exact-text selectors: update reader/fixture assertions together, allowing harmless representation changes without losing behavioral or ordering checks, and run those consumers. Scans can select typed fixtures without naming paths, copied/restored code inherits current repository contracts, and shared helpers inherit each entrypoint's lint policy; run the enclosing suite and state its scope when dependency coverage remains unresolved.
+- Derive affected-check selection and skips from complete reader inputs—imports, subprocesses, generated files, fixtures, schemas/registries and direct source reads across languages/workspaces—not test-directory proximity or filename suffixes; discover readers by changed paths and semantic types, fields or commands. Workflow invocation is distinct from inner compilation or test selection: unknown or unreadable dependencies conservatively invoke the check. The conservative consumed set includes whole reached directory trees at both old and new revisions, including relative imports and package initializers; precise traces add evidence without subtracting this coverage. Interpret execution references in their actual language: unresolved executable references remain unknown, while template strings remain data. **Wrong:** a new-revision trace or truncated comparison clears an old dependency; **Right:** old/new coverage and any returned consumed-path match retain positive relevance despite unknown omitted paths. Consolidating independently triggered workflows preserves their original event/path scope, effective permissions and at least one unfiltered proof where previously promised; identical copied job bodies establish none of these. Recompute those readers and affected checks from the integrated candidate after a base merge or rebase: earlier passes do not cover newly introduced contract consumers. Declarative edits can preserve runtime semantics while breaking source-text readers, including provenance checks and dependency-tracking comments; verify those readers from their enforced versions alongside runtime parsing. Update reader/fixture assertions only for intended contract changes, allowing harmless representations without losing behavioral, ordering or provenance checks. Scans can select typed fixtures without naming paths, copied/restored code inherits current repository contracts, and shared helpers inherit each entrypoint's lint policy; run the enclosing suite and state its scope when dependency coverage remains unresolved.
 - Narrowing package selection can change resolved features and remove a consumer's gated tests even when the reverse-dependency closure is complete. Preserve the reference suite's resolved configuration while filtering execution, and compare its discovered nonignored test names with terminal execution events; aggregate success or a nonzero count cannot prove coverage. **Wrong:** select every consumer using isolated defaults; **Right:** retain the reference feature graph and require every expected case to execute ([Cargo feature unification](https://doc.rust-lang.org/cargo/reference/features.html#feature-unification), read 2026-11-06).
 - Passing unit tests establish only their build configuration: test-only imports or reexports (such as Rust `cfg(test)`) can hide missing symbols in production. Pair affected tests with a compile check of the shipping binary or library using its actual feature set and target. **Wrong:** infer production compilation from a green unit-test build; **Right:** verify the non-test shipping target separately.
 - For a regression selected by a target, filter, disabled marker or external prerequisite, trace the discovered inventory through the registered execution route; inventory every disabled test, whatever its stated reason, against the named tests the route actually ran in the required environment. A binary-target run can pass while the regression belongs to the library target; a missing resource can turn every case into an early return. Adjust selection at the owning package or runner boundary and verify execution there: a configured but unavailable prerequisite fails explicitly, while an intentionally resource-free job is separate from the required database proof ([executed-test evidence](../../prove-it/SKILL.md)).
 - First execution can expose stale expectations, product defects or fixture drift: distinguish these using the asserted contract and its history, and retain a negative that detects the intended fault after any fixture repair. A reduced fixture establishes only its installed schema and protections; omitted migrations, constraints, triggers, policies and defaults remain stated limitations on the result.
-- When a build or release helper changes its direct or transitive inputs, align every consumer's sparse-checkout patterns, selective container `COPY` layers, per-job toolchain setup and deploy `watch_paths` with what it reads or runs. Full-checkout tests or a predecessor's prepared environment can hide missing dependencies; exercise the helper after applying each consuming job's real checkout or copy rules and runtime setup ([Git sparse-checkout](https://git-scm.com/docs/git-sparse-checkout), read 2026-11-06).
-- Derive local lint and formatting checks from the complete changed-file list against the PR base, including generated forms, module roots, import barrels and manifests; match each CI check's input selection, flags, configuration and exclusions. Source files and embedded copies can use different validators, so a pass over one form leaves the other unverified even when their bytes match; regenerate affected copies after canonical edits and recheck when inputs change. **Wrong:** infer standalone script validity from a green embedded-shell scanner, or import grouping from a formatter-only pass; **Right:** run each applicable CI validator over its actual input population.
+- When an entrypoint's direct or transitive inputs change, align every consuming sparse checkout, copy/package rule, per-job toolchain setup and deploy `watch_paths`, including generated variants. Full-checkout tests, ambient sibling directories and leftover staged files can hide omissions; execute each assembled entrypoint from a clean isolated output using that consumer's actual materialization and runtime setup. A missing-dependency control fails on the removed input, not on unrelated setup ([Git sparse-checkout](https://git-scm.com/docs/git-sparse-checkout), read 2026-11-06).
+- Derive local lint and formatting checks from the complete changed-file list against the PR base, including generated forms, module roots, import barrels and manifests; match each CI check's input selection, flags, configuration and exclusions. Source files and embedded copies can use different validators, so a pass over one form leaves the other unverified even when their bytes match; regenerate affected copies after canonical edits and recheck when inputs change. A successful hook may skip validators when optional dependencies are absent; the executed validator, version and input population establish coverage, not the hook's exit status. **Wrong:** infer standalone script validity from a green embedded-shell scanner, import grouping from a formatter-only pass, or formatting from a hook that skipped its formatter; **Right:** run each applicable CI validator over its actual input population.
 - When inserting or reordering generated collection entries, search consumers by emitted field names, including ignored integration tests and database proofs. Find entries by their stable identity when checking their values; assert positions separately when order itself is part of the contract. An ignored test still consumes the generated shape, so compile it and name the isolated CI proof that remains pending when its database is unavailable locally.
-- Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities.
-- Size time/resource bounds to the operation being measured: an enclosing test deadline includes every sequential fixture and child command. Independent scenarios need separate fixtures and named results under the existing per-case bound; keep a shared deadline when aggregate latency is the acceptance contract. A corpus split preserves the complete input inventory and fail-closed parsing and coverage assertions; report total and slowest-case times so missing work cannot masquerade as a speedup. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
-- Classify assertions by what they protect when making measurements advisory: runner load can perturb timing, while finite outputs and numerical accuracy bounds may enforce correctness. **Wrong:** remove every numeric assertion because timings are noisy; **Right:** report noisy timings while retaining correctness checks. Quarantine a demonstrated flaky case instead of retrying until green; a named defect or infrastructure repair can justify an affected rerun.
+- Share suitable build artifacts/caches. Isolate cache/credential ownership and choose priority-aware capacity from measured use and the repository's priorities. A runner-priority class derived from event metadata requires authoritative run-linked ref evidence: a branch and tag can share a name and point at the same SHA, so name or commit equality alone cannot authorize escalation. Test that collision through the real event resolver before optimizing queue cost.
+- Size time/resource bounds to the operation being measured: an enclosing hang ceiling covers the complete enrolled inventory, sequential fixtures and child commands, calibrated from measured runtime on the smallest declared runner plus margin. Preserve inner per-case bounds and correctness assertions; separate independent scenarios into fixtures with named results, but keep a shared deadline when aggregate latency is the acceptance contract. A corpus split preserves the complete input inventory and fail-closed parsing and coverage assertions; report total and slowest-case times so missing work cannot masquerade as a speedup. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
+- Classify assertions by what they protect when making measurements advisory: runner load can perturb timing, while finite outputs and numerical accuracy bounds may enforce correctness. **Wrong:** remove every numeric assertion because timings are noisy; **Right:** report noisy timings while retaining correctness checks. Quarantine a demonstrated flaky case instead of retrying until green; a named defect or infrastructure repair can justify an affected rerun. Dependency-unavailability decisions can time out on real retry backoff before reaching the assertion: inject the failed resolution into the production decision path while retaining adapter and entrypoint coverage. Measure real waiting when retry timing is itself the acceptance contract.
 - Before a local integration proof, read its fixture contract: an empty database
   and a migrated database are different inputs. Select the test runner's supported
   fixture before treating a relation-exists error as a product defect. Check
@@ -552,13 +690,22 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 
 ### Browser input and foreground tests
 
-Use trusted browser input when acceptance depends on a browser default action,
-such as Tab moving focus. Assert both event cancellation and the resulting
-active element; synthetic `KeyboardEvent` dispatch only checks the listener path.
+Use trusted browser input through the shipped client/server path for focus
+ownership, native defaults such as Tab or clipboard paste, and complete pointer
+press/move/release sequences, including supported focus locations outside the main
+widget. Assert event cancellation state and the resulting active element, then
+verify ordered delivery, remote state and painted output where those boundaries
+apply. Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
+backend text insertion bypass parts of this path and cannot prove the user's
+shortcut or gesture works.
 Trusted delivery and an uncancelled event do not prove a native default ran:
 calibrate the input bridge against the actual effect in a minimal positive control,
 including generated character input when applicable, before attributing its absence
-to application code. Preserve the behavioral negative when repairing the bridge.
+to application code. Exercise that control both after fixture reset and under the
+fixture's active mocks: a mocked product transport can acknowledge a driver
+request without delivering input. Keep the input driver's control path independent
+of mocked product transport, preserving the native default-effect assertion and
+behavioral negative when repairing the bridge.
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
@@ -587,10 +734,12 @@ endpoint change from interpolation across frames, and use static and missing
 content as negative controls. See [reduced-motion acceptance](parity.md#ui-coverage-geometry-and-painted-output)
 for the product behavior that these measurements must establish.
 
-**Wrong:** dispatch Tab, manually focus the next button, and report that the
-browser exit works. **Right:** press Tab through the browser, check that an
-internal destination cancels it, then check that a boundary press moves focus
-outside without a manual focus call.
+**Bad:** dispatch Tab and manually focus the next button, or pre-focus one widget
+and call a backend text-insertion API to declare paste working. **Good:** press
+Tab and Cmd/Ctrl+V from supported focus locations and complete pointer
+press/move/release through the shipped path; verify internal Tab cancellation,
+boundary focus exit, pasted text and painted results without manually repairing
+the tested effect.
 
 Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
 and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).
@@ -607,9 +756,13 @@ Read the current store controls and the product's release contract. Identify the
 
 ## Merge queue
 
-Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings before changing them; preserve an already-correct request instead of disabling and rearming it merely to restate its current values.
+Before arming a merge, verify the repository's declared approval requirements
+through the [current-head review and check results](../../prove-it/SKILL.md#pull-request-checks-and-merge-queue-state);
+provider merge eligibility can leave a required review unenforced.
 
-- **Publication and merge intent:** Read the publisher's merge defaults before
+Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings and queue membership before changing them; preserve an already-correct request for unchanged approved source. An automatic merge request can survive a source push: the original head match protects its submission, not every later update. When new source requires renewed approval, remove and verify both activation intent and queue membership before publishing it, then restore intent only for the newly approved head.
+
+- **Publication and merge intent:** Bind source changes to [source publication authority](security.md#source-publication-authority), including successful receipt adoption after a rewrite. Read the publisher's merge defaults before
   creating or updating a PR that must remain held. Omitting an activation flag
   does not disable default auto-merge, including on an already-ready PR. Supply
   its explicit draft or hold option in that submission, including for a stack opened for review while its
@@ -618,6 +771,12 @@ Use the normal queue with its required checks and existing incident-priority rul
   Verify the published PR's head, base, hold and actual merge state. Retain the
   hold until the prerequisite is merged and the PR targets its intended
   integration branch; then follow that branch's required checks and queue.
+
+  GitHub clears `autoMergeRequest` when a PR enters the merge queue. Determine
+  whether it is armed from pending auto-merge intent and actual queue membership
+  (GraphQL `mergeQueue.entries` or your queue cache), never from
+  `autoMergeRequest` alone. A queued PR remains armed; preserve its existing entry
+  rather than submitting another enable request because that field is null.
 
   **Wrong:** "The title says review, so publishing this stack cannot merge it."
   **Right:** "The publisher enables auto-merge; I submitted an explicit hold and
