@@ -87,16 +87,18 @@ with independent reference pixels, retaining original startup/validation failure
 logs and unchanged pixel tolerances.
 
 Rendering APIs can leave sampling or reconstruction implementation-dependent,
-so descriptor validation and a tiny exact-pixel fixture do not establish portable
-quality. Retain exact references for deterministic paths; variable paths need
-contract-derived bounds and a nondegenerate quality case that fails without the
-improvement, exercised through the shipping renderer with an unsupported-backend
-control across supported backends and driver implementations. A separately built
-direct-API reference or a backend matrix on one driver does not establish pixel
-portability. **Bad:** prescribe anisotropic fractional-LOD colours from one
-implementation, or widen every pixel tolerance. **Good:** keep exact isotropic/data
-results and separately prove grazing-angle detail retention against a disabled
-improvement control on the affected renderer implementations
+so descriptor validation and an advertised capability do not establish quality
+in every shader path: driver lowering can discard the requested improvement.
+Retain exact deterministic references; variable paths need contract-derived
+bounds and a shipping-renderer quality case that fails with the improvement
+disabled, alongside exact unsupported-backend controls. A matched direct-API
+reference can distinguish a driver no-op from an integration regression, but
+agreement on a no-op or a backend matrix on one driver proves no quality gain.
+**Bad:** prescribe anisotropic fractional-LOD colours from one implementation,
+or widen every pixel tolerance. **Good:** retain exact isotropic/data results,
+compare independently authored references on each affected implementation, and
+claim grazing-angle detail retention only where the shipping output distinguishes
+the disabled control
 ([Vulkan anisotropic filtering](https://docs.vulkan.org/spec/latest/chapters/textures.html#textures-texel-anisotropic-filtering),
 read 2026-11-08).
 
