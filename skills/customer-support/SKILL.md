@@ -126,17 +126,24 @@ activities deliver only their advertised system terms. Without a verified
 legitimate automated channel, do not run the activity or issue its gift; continue
 available guidance and support instead of inventing a manual workaround.
 
-Separate three records before choosing an action: an already-delivered holding,
-a verified but missing system entitlement, and a discretionary request. Preserve
-delivered holdings without clawback. Restore an exact verified system omission
-through the authorized idempotent fulfillment path; this is delivery of an owed
-entitlement, not permission to add comfort currency. An explicit commitment from
-before the product's verified transition cutoff belongs only to the final closed
-settlement population, fulfilled once through automatic system settlement, never
-personal codes or manual inbox/database grants. Reconcile prior settlements;
-after that final population there is zero new batch, enrollment or exception.
-An unverified cutoff, promise or settlement leaves eligibility unresolved, not
-permission to issue a substitute code.
+Separate delivered holdings, owed entitlements and discretionary promises before
+choosing an action. Preserve every delivered holding, including discretionary
+gifts, without clawback or data loss. Fulfill purchased, activity-earned and
+verified-missing entitlements exactly once under their actual terms through the
+authorized automatic system; an unrelated disputed promise never delays that
+delivery or authorizes comfort extras.
+
+Historical explicit or implied promises require full-population review, not
+blanket cancellation or automatic approval of every original amount. Verify the
+product cutoff, promise evidence, authorization and delivery receipts. A
+discretionary historical promise needs a proportionate authorized resolution;
+only its approved outcome enters final automatic system settlement exactly once.
+Unverified, unauthorized or excessive promises cannot auto-issue in their original
+form. Missing evidence leaves the affected decision unresolved; it never erases an
+independently owed entitlement or authorizes a substitute reward. Reconcile prior
+deliveries and settlements without personal codes or manual inbox/database grants.
+After the final reviewed population is resolved, there is zero new batch, promise,
+enrollment or exception; closure never authorizes repeat delivery.
 
 All personal and comfort reward codes are forbidden, including an old fixed,
 free or supposedly low-value care code. A fixed reusable string or automatic

@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Replacing an interior-mutable cache with a lock does not establish thread safety
+for its containing type: retained receivers, thread-affine handles and trait
+objects can still prevent sharing. **Wrong:** infer `Send + Sync` from the changed
+field; **Right:** compile the actual public aggregate with its production port
+and generic bounds, preserve deliberate thread affinity, and exercise concurrent
+calls for lost updates, duplicate state and the promised poison-recovery behavior.
+
 Byte-equal attestations require an explicit derivation contract for field names,
 casing, value types, absent values, array order and encoding/canonicalization;
 a shared schema alone does not define the hash input.
@@ -715,6 +722,11 @@ the column type, and verify the intended typed decode or explicit SQL conversion
 Propagate unexpected encoding and decoding errors. A contract's missing-value
 default does not make an unreadable value equivalent to absence: a successful
 bulk read can collapse per-item type or access failures into missing values.
+Recovery readers distinguish storage representations from progress: an optional
+collection may persist as SQL NULL, JSON `null` or an empty array, but only the
+producer's contract and actual interrupted writes establish their equivalence.
+Preserve nonempty progress and reject malformed or wrong-shaped values instead
+of treating every decoding failure as an empty checkpoint.
 Prove that distinction through the real adapter with both a corrupt/wrong-type
 item and a genuinely absent item before deriving defaults or healthy metrics.
 
@@ -799,11 +811,15 @@ keep the optimization enabled, supply a genuine eligible hit, and vary the
 omitted policy so reuse must be refused. Pair it with a valid-hit positive
 control so disabling reuse entirely cannot pass as the fix.
 
-An optional selector's omitted or empty value can be a valid mode with its own
-required outputs. Test that mode through the real entrypoint and assert those
-outputs as well as status: a swallowed error can keep the enclosing workflow
-green while forcing an expensive fallback. Keep malformed nonempty inputs as
-negative cases rather than weakening their validation.
+An optional field's omitted or empty value can be a valid mode with required
+outputs, or a contract-defined missing sentinel: derive each consumer's
+interpretation rather than applying a null-only check. Exercise omission,
+explicit emptiness, malformed nonempty input and a known-value control through
+the real entrypoint, asserting structured output and enclosing status; an inner
+failure can leave a workflow green or force an expensive fallback.
+**Wrong:** accept an unknown provenance string as a successful probe; **Right:**
+preserve the missing observation and its required refusal status while a
+known-value control succeeds without inventing unrelated readiness.
 
 For before/after comparisons of derived state, preserve each version's source
 inputs while giving both sides equivalent dependency availability and preparation
