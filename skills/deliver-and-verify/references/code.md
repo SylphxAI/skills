@@ -12,6 +12,17 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Byte-equal attestations require an explicit derivation contract for field names,
+casing, value types, absent values, array order and encoding/canonicalization;
+a shared schema alone does not define the hash input.
+**Wrong:** let a publisher and reader invent equivalent-looking hashes or copy
+the signed value as live evidence; **Right:** share the derivation while acquiring
+evidence independently, deriving omitted metadata only from an authoritative
+source such as the typed endpoint.
+Verify publisher-to-real-consumer agreement with independent expected bytes and
+both collection and singleton response shapes, preserving equivalence only where
+the contract permits it and refusing meaningful field, type or ordering drift.
+
 An eligibility hold does not itself advance progress: replacing resumable state
 with a diagnostic wait loses recovery context, while retaining exclusive capacity
 forever can block every replacement. Exercise refusal, repeated holds, recovery
@@ -444,6 +455,14 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+Startup validity does not establish validity throughout a run that rechecks it:
+required horizon = issuance-to-start lead time + maximum run duration +
+finalization margin, within the issuer's authority policy.
+**Wrong:** size a signed input only to the run duration; **Right:** test queue and
+deployment delay through the last protected operation, retaining expiry refusal.
+If that horizon is not authorized, refresh through the issuer before starting
+rather than weakening the checks.
+
 Renewable inactivity deadlines and absolute lifetime limits are different
 contracts: timeout supervision and fresh downstream work share the current
 inactivity deadline, capped by any immutable authority horizon.
@@ -690,7 +709,7 @@ publishing the correction.
 
 Lexical matching changes need both false-positive rejection and preservation cases from the complete supported vocabulary; permitting a suffix can make a short alias capture a longer valid name even with an anchored pattern. **Wrong:** resolve `arena2` as `arena` plus a campaign number because that alias appears first; **Right:** establish the contract's precedence or ambiguity rejection across exact names and permitted suffixes, and test overlapping aliases with and without those suffixes through the actual resolver. Tightening boundaries must still preserve supported compounds without accepting arbitrary adjacent fragments.
 
-Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
+Stateful integration fixtures can interfere through shared effective decision keys even when their rows or transactions are unique; give independent cases distinct keys at the full scope read by production, preserving intentional sharing within a scenario. Batch tests also need several eligible items sharing one decision key, plus an initially blocked key: the first item's effects can change later eligibility, so expectations must match the contract's admission boundary rather than assume either a snapshot or per-item revalidation. **Wrong:** prove one ready item per owner eventually completes; **Right:** assert the count and state of multiple same-owner items in one pass, before retries can hide suppression. When retry, fallback or queued callbacks can converge on the same state, assert the target mechanism's effect immediately at the intended ordering boundary, before yielding to work that could mask the defect and without the observation itself repairing state. Independently check final state after queued work settles, including delayed settlement across an idle gap and a slow repair that leaves state unchanged; disabling only the target must fail its unchanged boundary assertion while the enabled control passes. A fallback completing work cannot prove retry ran; a pure formatter has no competing repair to isolate.
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
@@ -952,7 +971,11 @@ of all protected data and metadata, contrasting missing/unusable input with a
 validated authoritative empty snapshot that must still perform permitted removals.
 For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
-metadata; missing recovery evidence remains unknown.
+metadata. Missing optional recovery metadata leaves recovery timing unknown; it does not
+negate an authoritative availability decision or turn successful I/O into failure. Through the
+composed discovery and execution consumers, contrast known unavailability with
+and without recovery metadata against missing authority and failed reads,
+preserving each consumer's disclosure and execution boundaries.
 
 **Wrong:** a save helper refuses correctly, but save-and-exit closes the editor
 and discards pending input. **Right:** exercise refusal and success through every
