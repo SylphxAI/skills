@@ -873,6 +873,8 @@ entrypoint, asserting effects, structured output and the enclosing caller's stat
 when the command promises rejection, refusal exits nonzero without mutation while
 a valid dry run exits 0 without mutation.
 
+A committed write does not establish visibility for a reader that refreshes only on a notification; acceptance includes the publication route and the reader's refresh behavior, not just durable storage. **Wrong:** count committed rows while an already-connected dashboard retains its cache; **right:** exercise the routed signal, verify committed state at notification time and reader refresh without reconnecting, with no signal on refusal/rollback and no suppression of an earlier committed update by a later batch failure.
+
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
 Reproduce test selection on CI's runtime version: a newer local runtime can accept selectors the deployed runner rejects. For example, `node --test tests` fails to resolve the directory on Node 22, while explicit file globs such as `node --test tests/*.test.js` work; verify discovered names/counts rather than inferring execution from an exit code ([Node 22 test runner](https://nodejs.org/docs/latest-v22.x/api/test.html#running-tests-from-the-command-line), read and reproduced 2026-11-07).
