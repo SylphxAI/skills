@@ -115,13 +115,26 @@ campaign code architecture across every title:
      a user-facing privacy toggle (`stealth = true` masking the actor as
      "A Mysterious Player" and disabling profile inspection while keeping the
      broadcast active).
-3. **Pre-Transition Commitment Sunset via Automated System Settlement:**
-   - When retiring legacy concierge grants in favor of 100% system monetization,
-     preserve already-claimed player holdings (no clawback) and settle any
-     explicit, verified pre-transition commitment one final time strictly
-     through automated system settlement (never via single-player codes or
-     manual inbox/DB writes), after which zero new individual promises or
-     exceptions are permitted.
+3. **Calibrated Pre-Transition Commitment Sunset (`Proportionality & Anti-Blind-Fulfillment`):**
+   - **Earned & paid entitlements (`Category A`):** Paid purchases,
+     activity-earned rewards, verified undelivered paid entitlements, and
+     already-delivered inbox mails are honored and preserved 100%
+     (`exactly-once` automated system settlement; zero clawback of delivered
+     mails or claimed items).
+   - **Pre-transition discretionary promises (`Category B` vs. `Category C`):**
+     Legacy pre-transition commitments form a candidate audit population, NOT an
+     automatic 100% verbatim payout list. Evaluate each candidate item-by-item
+     against verified paid spend, authorization, sink progression integrity, and
+     public leaderboard fairness:
+     - **Moderate, proportionate commitments (`Category B`):** Non-leaderboard
+       commitments proportionate to verified paid spend may be settled once via
+       automated system settlement to close legacy tails cleanly.
+     - **Excessive or economy-destroying promises (`Category C`):** Excessive,
+       unauthorized, unverified, or sink/leaderboard-destroying promises (such
+       as unpaid currency grants exceeding paid purchase value, flipping public
+       wealth/rank leaderboards, or bypassing endgame progression sinks) must be
+       calibrated down or rejected, never blindly auto-settled verbatim.
+     - **Post-cutoff:** Allow zero new bespoke or off-system gift commitments.
 
 ## Measure a gift's real cost
 
