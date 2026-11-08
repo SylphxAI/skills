@@ -307,7 +307,12 @@ tenant and current transaction's live ownership. An opaque value alone can
 outlive a commit or savepoint rollback that releases the lock. Test wrong-key,
 foreign-transaction and released-lock proofs. Keep compound state changes
 atomic when a later helper refuses; a caller must not accidentally commit an
-earlier release or partial batch after receiving an error.
+earlier release or partial batch after receiving an error. A joined transaction
+can still commit partial work when an inner caller catches the failure: prove
+rollback through both standalone and caller-owned transaction entrypoints, with
+the inner error handled and the outer callback returning normally. **Wrong:**
+infer nested safety from a standalone rollback; **Right:** verify the declared
+savepoint or rollback-only contract at the actual outer commit boundary.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
