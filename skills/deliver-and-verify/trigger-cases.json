@@ -2212,6 +2212,18 @@
     {
       "prompt": "Repair an event batch whose later failure hides notifications for earlier committed updates.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an operation-budget deadlock when a buffered producer stops being polled while its consumer awaits another operation.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement cancellation-safe admission for a download stream whose consumer requests metadata through the same shared limiter.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3737,6 +3749,21 @@
     },
     {
       "prompt": "Rewrite dashboard documentation explaining refresh signals without changing product behavior.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the current deadlock evidence proves a shared mutex owner is unpolled, without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare driving a producer concurrently with releasing its admission lock as proposed architectures, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
