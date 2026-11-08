@@ -14,6 +14,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a shared-database webhook fixture whose queued callbacks reach a later mock when the operating system reuses its listening address; preserve signature and audience assertions.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair an asynchronous file-export fixture whose retained job writes into a later test's reused output path despite different database row identifiers.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a notification fixture to give each receiver a unique identity and force address reuse in its regression test instead of relying on random port allocation.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Publish a multiline PR description through a shell-wrapped CLI and verify the published body preserves its line breaks.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -2489,12 +2501,27 @@
       "route_to": "prove-it"
     },
     {
+      "prompt": "Review whether a webhook test's unique row identifiers actually isolate its retained callbacks; report evidence without changing the fixture.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
       "prompt": "Compare silhouette and projected-extent checks for a proposed diagram-rendering architecture without implementing either.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
     },
     {
+      "prompt": "Compare per-test databases with receiver identities for asynchronous fixture isolation; do not implement either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
       "prompt": "Rewrite an explanation of cumulative drift and repeated return-to-origin testing; edit prose only, without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite a documentation explanation of why a recycled network address is not a stable receiver identity; change prose only.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

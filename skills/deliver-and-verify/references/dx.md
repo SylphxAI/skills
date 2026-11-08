@@ -290,10 +290,12 @@ from the declared environment, preserve explicit security settings, and exercise
 every supported client through actual connection setup. Where credentials are
 required, pair accepted restricted-role behavior with unauthenticated connection
 refusal, without weakening authentication or broadening grants.
-Fixture isolation must hold across the actual executor's processes: a shared
-database can couple independent cases through global reconciliation, even when
-their row identifiers differ. A process-local mutex does not isolate a
-process-per-test runner.
+Fixture isolation follows retained work across the actual executor's processes:
+global reconciliation can deliver an earlier case's queued effects to a later
+case's reused resource, even when their row identifiers differ. Bind retained
+effects to a per-fixture receiver identity that survives address reuse, and
+exercise forced reuse without weakening authentication or ownership assertions.
+A process-local mutex does not isolate a process-per-test runner.
 
 **Wrong:** omit the customer table because the invoice uses guest checkout.
 **Right:** include the joined table and execute the invoice projection.
