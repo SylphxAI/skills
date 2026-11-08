@@ -2452,6 +2452,18 @@
     {
       "prompt": "Repair a static exception guard and publish its independently executed interface-dispatch refusal controls.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a migration recovery reader that rejects JSON null written before the first successful statement; preserve nonempty progress and reject invalid shapes.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an export checkpoint decoder so documented empty collection representations recover correctly while malformed or nonempty state is not reset.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a database fixture that connects with one supported client but another client defaults to TLS unavailable on the disposable server; retain explicit secure configurations.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
@@ -4172,6 +4184,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining unknown analysis results without changing software or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify whether a past migration failed because JSON null was confused with SQL NULL, without changing source or state.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare nullable checkpoint representations as proposed architecture without implementing a decoder.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a customer guide explaining database TLS modes without changing fixtures, source or configuration.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

@@ -283,9 +283,13 @@ constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
 control should reach the decision under test through a real connection as the
 intended role using CI's transport and authentication mode, separating setup from
-behavior failure. Where credentials are required, pair accepted restricted-role
-behavior with unauthenticated connection refusal, without weakening authentication
-or broadening grants.
+behavior failure. Transport defaults belong to each executable version: a
+queryless TCP fixture can connect with one client while another requires TLS
+that its server does not provide. Supply only missing fixture transport options
+from the declared environment, preserve explicit security settings, and exercise
+every supported client through actual connection setup. Where credentials are
+required, pair accepted restricted-role behavior with unauthenticated connection
+refusal, without weakening authentication or broadening grants.
 Fixture isolation must hold across the actual executor's processes: a shared
 database can couple independent cases through global reconciliation, even when
 their row identifiers differ. A process-local mutex does not isolate a
