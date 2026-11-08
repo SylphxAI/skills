@@ -2384,6 +2384,10 @@
     {
       "prompt": "Deploy a card-game reporting index while unrelated inventory transactions keep older snapshots open; preserve supported concurrent-build recovery and distinguish snapshot age from idle connection age.",
       "clause": "authorized operational, repository"
+    },
+    {
+      "prompt": "Fix an endpoint that deduplicates independent actors sharing one source object, while preserving retry safety and source attribution.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
