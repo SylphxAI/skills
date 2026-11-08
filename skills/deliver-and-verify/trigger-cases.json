@@ -2492,6 +2492,18 @@
     {
       "prompt": "Repair a database fixture that connects with one supported client but another client defaults to TLS unavailable on the disposable server; retain explicit secure configurations.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a static guard that assumes a mutable receiver still has its declaration values when a method runs later.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement constructor and executed-initializer reachability in a source analyzer without treating stored lambda bodies as executed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a callback safety analyzer and test the callback after receiver state changes between capture and invocation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -4257,6 +4269,21 @@
     },
     {
       "prompt": "Rewrite a customer guide explaining database TLS modes without changing fixtures, source or configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an existing static analysis result assumes construction-time state at later method entry; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare whole-program and modular state analyses for a proposed compiler design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user-facing explanation of constructor side effects without changing an analyzer or tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

@@ -751,8 +751,11 @@ Path-sensitive exception guards connect a guarded mutation, its actual source
 dispatch targets and the caller-visible exceptional outcome; membership alone
 cannot establish a violation, and a declared interface does not exclude its
 source implementations or inherited implementations. Transfer functions retain
-uncertainty unless semantics prove a constant result, while assignment snapshots,
-return ownership and cleanup preserve the outcome actually observed by callers.
+uncertainty unless semantics prove a constant result; declaration initializers
+are not invariants of mutable state at later method or callback entry. Reachability
+covers executed construction and initialization as well as ordinary calls, without
+executing nested bodies merely stored for later; assignment snapshots, return
+ownership and cleanup preserve the outcome actually observed by callers.
 **Wrong:** turn an unknown operand into an empty understood value, or test only
 concrete receivers; **Right:** independently execute refusal cases through
 interface dispatch and unknown-value expressions alongside absorbing-failure,
