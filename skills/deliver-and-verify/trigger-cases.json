@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Prepare and arm a migration PR whose merge-group guard cites runtime code from an earlier queue entry; establish whether it is a real undeployed prerequisite before using a supported compatibility declaration.",
+      "clause": "editing or arming PRs"
+    },
+    {
       "prompt": "Change a partial-clone CI checkout reader to batch historical source reads; prove remote request count on cold history and reuse on warm history, not just one local process.",
       "clause": "changing source checkouts"
     },
