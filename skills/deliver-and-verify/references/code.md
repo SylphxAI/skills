@@ -444,9 +444,14 @@ read 2026-11-06).
 Through the real entry point, work lasting at least the minimum retention must
 still publish a ready, gettable, usable resource with its full promised lifetime;
 an absolute-deadline control keeps its original origin.
-For scheduling tests, derive effective eligibility across message, route and
-resource deadlines, anchored to the event that issued the constraint rather than
-a late assertion clock or one storage field.
+For scheduling tests, couple producer lifetime, controller convergence and caller
+deadline: derive effective eligibility across message, route and resource
+constraints from their issuing events, not a late assertion clock or one storage
+field. Fresh single and repeated arrivals under contention must exercise the
+production lifecycle and expiry predicates; pre-aged records or hardcoded deletion
+can hide work disappearing before protection becomes effective. Verify progress
+within the caller deadline, release after a failed head, and progress of the next
+feasible head—not only the first admission.
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round
@@ -570,7 +575,12 @@ custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
 prepared-statement behavior under the effective role and row-level security
 (RLS), comparing generic and custom execution plans where supported; inspect
-actual rows, loops and buffers as well as latency. Empty-result distributions
+actual rows, loops and buffers as well as latency. A set-based source or
+`GROUP BY` does not prove an aggregate executes once: optimizer inlining and
+cardinality choices can repeat it. Aggregate reuse is established by actual
+loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
+prevents aggregate reexecution, but correlated scans of an unindexed materialized
+pool can still be quadratic. Empty-result distributions
 can reject every candidate upstream or reach costly downstream branches before
 later predicates reject them all; identical output cardinality does not establish
 comparable work coverage. Performance evidence includes reachable repeated scans
