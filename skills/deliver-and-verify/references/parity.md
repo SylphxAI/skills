@@ -576,10 +576,15 @@ colours or variance, not only that the file exists.
   example, an independent consumer run can disprove equality at a rounding
   boundary: displayed `1.00%` versus consumer-formatted actual `1.01%` at raw
   `1.005%`.
-- Exercise assets in their consuming renderer: for example, decode a sprite
-  atlas, resolve every frame and render the changed states; load a model with
-  its materials and animations. Existence, file size and checksums alone cannot
-  establish usable content.
+- Exercise assets in their consuming renderer, including changed sprite states
+  and model materials/animations. Joins and exports can preserve structure while
+  changing named attribute mappings selected by the consumer, so validate those
+  mappings independently—for example a model's complete UV/tangent streams,
+  not positions alone. Keep structural validity and defect resolution separate:
+  **Bad:** a successful import and repaired attributes close a shading defect;
+  **Good:** consumed attributes pass independent validation, but the matched
+  repaired render still fails the original pixel predicate, so that defect stays
+  open.
 - Start the client and, for server-loaded data, a server built/configured from
   those exact candidate files; load every changed table and assert its consuming
   behavior, not schema acceptance alone. For reward delivery, apply the
