@@ -245,6 +245,14 @@ container exit with no operation-specific evidence leaves the check unverified.
 
 ## Database test fixtures
 
+A shared application timestamp does not freeze database-side time predicates;
+cross-engine fixtures need a controlled clock at each executing query boundary
+and a delay beyond the nearest decision margin to expose drift.
+Test-only query rewriting must preserve setup and production syntax: **Wrong:**
+replace a clock token throughout schema DDL and queries; **Right:** isolate the
+fixture-read clock, prove precise timestamp defaults still initialize, and keep
+production clock behavior unchanged.
+
 An isolated database fixture needs every schema object referenced by its
 queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema

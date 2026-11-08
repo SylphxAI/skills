@@ -1102,7 +1102,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client’s rejection of encoded responses.",
+      "prompt": "Enable HTTP compression for a package downloader while preserving the separate audit client\u2019s rejection of encoded responses.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
@@ -1230,11 +1230,11 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
-      "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
+      "prompt": "Provision an existing API credential\u2019s first value version and verify that the running service consumes it.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
     {
-      "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
+      "prompt": "Rotate a scheduled export worker\u2019s signing key and verify its next Job consumes the enabled replacement version.",
       "clause": "rotating secrets consumed by Jobs"
     },
     {
@@ -1598,7 +1598,7 @@
       "clause": "changing CI workflows or concurrency"
     },
     {
-      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job’s effective token without dropping its existing artifact permissions.",
+      "prompt": "Update a reusable game-build workflow to read release metadata under each calling job\u2019s effective token without dropping its existing artifact permissions.",
       "clause": "changing CI workflows or concurrency"
     },
     {
@@ -2368,6 +2368,10 @@
     {
       "prompt": "Repair a replicated document-cache verification gate so routing changes during a proof invalidate its startup population binding.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair cross-engine SQL fixtures whose shared application clock stays fixed while database time predicates drift; preserve production time and schema defaults.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
