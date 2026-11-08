@@ -210,12 +210,14 @@ while accepting a contract-equivalent permutation of unordered sibling fields.
 
 ## Queued work and partial acceptance
 
-An idle worker can be backpressured while durable work remains queued. Recovery
-that requires a drained queue needs authoritative emptiness, including deferred
-and non-waking entries; a failed read does not establish emptiness. **Bad:** replay
-interrupted work because a dispatch pass accepted nothing; **Good:** hold replay
-behind deferred real work, verify its identity and order after acceptance resumes,
-and retain an empty-queue control that proves legitimate recovery still runs.
+An idle worker can be backpressured while durable work remains queued; zero
+visible items can also coexist with retained delivery obligations after trimming.
+Recovery that requires a drained queue needs authoritative emptiness across
+outstanding lifecycle states, including deferred and non-waking entries; a failed
+read does not establish emptiness. **Bad:** treat zero payloads or no accepted
+dispatches as a drained queue; **Good:** exercise payload removal while delivery
+remains pending, preserve its identity and order when recovery resumes, and retain
+a genuinely empty control that proves legitimate recovery still runs.
 
 Admission proves that work can be queued under the configuration at that
 moment. A later worker must resolve a compatible provider for that exact
