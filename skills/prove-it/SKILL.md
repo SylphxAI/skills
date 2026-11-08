@@ -103,6 +103,12 @@ successful run at the same SHA. Rollups, `CheckRun.isRequired` and REST
 the effective rules and actual enqueue acceptance or refusal in an authorized
 fixture, separately from what ran or which result a display selected.
 
+Trigger metadata identifies the requested change, not necessarily the artifact
+executed: integration checkouts can include a newer base than the run's retained
+pull-request metadata. An ancestry or baseline-consumption claim is bound to the
+job's actual checkout commit and parent graph; a direct-head checkout remains
+evaluated at that head.
+
 A missing check can reflect a producer that failed before publication; use the
 [execution-versus-triggering-source distinction](../deliver-and-verify/references/dx.md#bulk-mutations)
 rather than filtering downstream runs only by the reviewed SHA. Correlate the
