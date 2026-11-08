@@ -429,9 +429,13 @@ Retention based only on serving or published references can delete artifacts
 still owned by an unfinished operation; a count cap may bypass an age grace
 period. Read the deployed collector's precedence and protected states, then
 verify in-flight delivery, recovery-point availability and expiry of unreferenced
-eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
-safe retention; **Right:** the pending artifact survives publication, the rollback
-target stays usable and eligible abandoned artifacts expire.
+eligible objects while preserving finite cleanup. Protection selectors expand
+over their contract's authoritative population, not automatically over cleanup
+candidates: the latter can invent references to every orphan. **Wrong:** expand
+an active-object wildcard over historical objects and call zero deletions safe;
+**Right:** live objects, unfinished operations and explicit retained references
+survive, while an expired unreferenced object is still collected under the same
+broad selector.
 
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
