@@ -2128,6 +2128,18 @@
     {
       "prompt": "Ship notification admission checks that measure escaped destination bytes, accept the exact column limit and reject the next byte without creating durable work.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS ingestion gate that verifies listed collectors but misses newly shipping collectors; compare the complete current population before and after each proof.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a card-game rollout probe that keeps its proof unavailable when current shard membership cannot be completely discovered.",
+      "clause": "synthetic probe"
+    },
+    {
+      "prompt": "Repair a replicated document-cache verification gate so routing changes during a proof invalidate its startup population binding.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3578,6 +3590,21 @@
     },
     {
       "prompt": "Rewrite an explanation of source and destination byte limits without changing source, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether signed member identities establish a complete current collector population, without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare before-and-after population discovery with leased membership as proposed readiness architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the operator explanation of an existing shard population check without changing its behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
