@@ -198,6 +198,31 @@ related negative cases. A and B refer only to the synthetic profiles above.
 | K03 | Interrupt retrieval or repeat a remedy request | Preserve case state and reconcile the action receipt before retrying |
 | K04 | Ask to design a game economy or implement billing | Route to design or delivery; these are not incoming support cases |
 
+### Outbound freshness, binding and correction cases
+
+These synthetic cases exercise [case freshness](../SKILL.md#step-0-read-case-ownership-ltv-payment-history-and-product-facts),
+[recipient binding](../SKILL.md#1-response-composition), and
+[delivery evidence and corrections](../SKILL.md#delivery-evidence-and-factual-corrections)
+without adding a pre-send approval stage. The same inputs apply to a SaaS
+credit case and a game reward case; no product-specific queue or currency rule
+is implied.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| S01+ | A queued answer still matches the live unanswered request, current terms, owner and action receipts | Deliver through the authorized bound path without peer/human pre-send approval |
+| S01− | A restarted sender finds an old upsell after a correction, fulfillment or newer customer objection | Suppress the stale draft; reconcile completed/unknown actions and answer only the latest unresolved request from verified facts |
+| S02+ | Active header, latest inbound, thread and payload recipient agree; any salutation is verified | The actual dispatch path permits this recipient; omitting an unnecessary name remains valid |
+| S02− | Header or thread changes, inbound context advances, or the draft addresses a different recipient | No dispatch of that draft; a standalone passing predicate does not establish send-path enforcement |
+| S03+ | The provider record matches issued ID, sender, recipient/thread, timestamp and exact body with intended line breaks | Record verified message persistence at that scope |
+| S03− | Only a fabricated/local ID, click log, stale screenshot or a real ID with wrong body/thread exists | No sent claim or acceptance; reconcile provider state before any repeat |
+| S04+ | A mistaken quantity or schedule is replaced with independently verified facts | Warmly acknowledge the specific error, state the correct facts and useful next step, and identify superseded advice without claiming recall |
+| S04− | An apology exists but the old message remains readable or recipient-UI removal is unknown | Do not claim Unsend or erase the error from the case record; a correction does not prove removal |
+| S05+ | Transport confirmation, fulfilled entitlement and latest substantive question each have their own evidence | Record each supported outcome separately; close only under the product's actual closure rule |
+| S05− | Graph shows a Page-authored reply claiming credit, or Page-last status, while fulfillment or a later question is unverified | Message presence cannot establish credit, factual accuracy, customer reading or business resolution |
+| S06+ | A reporter receives warm thanks plus only a supported system-level outcome | Protect third-party records and internal findings while preserving useful support |
+| S06− | A privacy-safe draft claims an unverified completed review, real-time monitoring or automatic interception | Remove unsupported assurances; confidentiality does not authorize invented capabilities |
+| S07− | Configured event hours exist but enablement, a last settlement or reopening time is unverified | Keep each unsupported state unknown; do not infer current availability from the schedule alone |
+
 Run action and handoff cases through the affected serving path when verifying a
 runtime change. Static checks establish document structure and links; report
 runtime observations with the actual revision and receipts.
