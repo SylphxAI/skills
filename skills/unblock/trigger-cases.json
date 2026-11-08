@@ -144,6 +144,10 @@
     {
       "prompt": "A storage client launcher is broken, but the documented CLI supports the same operation under the existing identity. Restore the pending export while reconciling any completed effects.",
       "clause": "a tool fails to launch"
+    },
+    {
+      "prompt": "The tool adapter cannot start before dispatch, but the documented capability server may still be available under the same identity. Restore the requested operation without changing its grants.",
+      "clause": "a tool adapter fails before execution"
     }
   ],
   "negative": [
