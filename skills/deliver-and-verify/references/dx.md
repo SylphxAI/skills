@@ -135,8 +135,17 @@ read 2026-11-06).
 Faster source checkout or materialization must preserve the graphs and readable
 object bodies its consumers need under their final credential state: synthetic
 snapshots can lose original history, and a complete commit graph does not prove
-historical blobs remain readable. Choose acceptance cases from actual consumer
-read paths in the consuming environment, including original HEAD/base graphs,
+historical blobs remain readable. A history-dependent predicate can miss
+side-parent transitions under a first-parent walk, while treating every merge-parent
+diff as new can misclassify inherited baseline code. Real-graph acceptance varies
+supported parent order, intermediate add/revert and merge-only changes, with
+already-applied inheritance as a negative control. **Wrong:** prove a history guard
+with a linear fixture and one queue merge; **right:** exercise the same baseline
+and branch changes through each supported graph entrypoint, preserving both new
+transitions and baseline exclusions.
+
+Choose acceptance cases from actual consumer read paths in the consuming
+environment, including original HEAD/base graphs,
 SHA-only bases and requested merge bases where used; file-only checks keep their
 existing transfer scope. A single local batch can still issue one remote request
 per missing object; process count is not network request count. Compare cold and
