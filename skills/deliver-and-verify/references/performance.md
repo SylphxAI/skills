@@ -24,6 +24,15 @@ Use the organization's declared incident threshold and measured impact/exposure.
 
 ## Replicated readiness
 
+Equivalent retained entrypoints can share refusal logic yet diverge on authorized
+recovery: absent or fresh-but-incomplete derived state is not stale installed
+state. Derive each state’s recovery and refusal from the declared authority
+contract, preserve the caller’s existing authorization, and re-evaluate full
+policy after supported recovery. Exercise those states independently through
+every retained entrypoint so an earlier request or background refresh cannot
+satisfy a later case; permitted recovery must still exclude denied and foreign
+data, while contract-refused states remain refusals.
+
 A successful load-balanced request can hide a stale replica: a readiness promise
 across replicas needs repeated agreement on every member of a stable serving
 consumer census, tied to its deployed revision, with each sample taking the
