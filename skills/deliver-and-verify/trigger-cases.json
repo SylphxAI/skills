@@ -2176,6 +2176,18 @@
     {
       "prompt": "Change a durable job controller so disabling new-job eligibility cannot bypass its recorded execution owner or create a second owner through fallback.",
       "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix account erasure racing an already-active external export after durable admission, preserving progress for unrelated accounts.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix cancellation racing creation of the first subscription when no child row exists yet.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a reward dispatcher change that keeps deletion serialized until its active provider attempt ends.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
