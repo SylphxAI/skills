@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Replacing an interior-mutable cache with a lock does not establish thread safety
+for its containing type: retained receivers, thread-affine handles and trait
+objects can still prevent sharing. **Wrong:** infer `Send + Sync` from the changed
+field; **Right:** compile the actual public aggregate with its production port
+and generic bounds, preserve deliberate thread affinity, and exercise concurrent
+calls for lost updates, duplicate state and the promised poison-recovery behavior.
+
 Byte-equal attestations require an explicit derivation contract for field names,
 casing, value types, absent values, array order and encoding/canonicalization;
 a shared schema alone does not define the hash input.
