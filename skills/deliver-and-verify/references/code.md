@@ -444,9 +444,14 @@ read 2026-11-06).
 Through the real entry point, work lasting at least the minimum retention must
 still publish a ready, gettable, usable resource with its full promised lifetime;
 an absolute-deadline control keeps its original origin.
-For scheduling tests, derive effective eligibility across message, route and
-resource deadlines, anchored to the event that issued the constraint rather than
-a late assertion clock or one storage field.
+For scheduling tests, couple producer lifetime, controller convergence and caller
+deadline: derive effective eligibility across message, route and resource
+constraints from their issuing events, not a late assertion clock or one storage
+field. Fresh single and repeated arrivals under contention must exercise the
+production lifecycle and expiry predicates; pre-aged records or hardcoded deletion
+can hide work disappearing before protection becomes effective. Verify progress
+within the caller deadline, release after a failed head, and progress of the next
+feasible head—not only the first admission.
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round
