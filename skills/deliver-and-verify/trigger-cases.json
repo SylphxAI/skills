@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a campaign-code parser that accepts numeric suffixes without misrouting a longer supported alias that ends in a digit.",
+      "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
       "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
       "clause": "changing CI workflows"
     },
