@@ -18,6 +18,10 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
+For credential import, guest restoration or account-continuity changes, read
+[guest continuity](references/auth.md#prove-guest-continuity) before defining
+tests; decoding a retained value is not proof that its production consumer keeps it.
+
 Shared implementations follow the [three architectural invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms with caller-configured policy, zero domain leakage in code/prompts/verifiers/fixtures, and exact causal state/data/authorization guards that fail closed on unreadable required state. Release independent paths concurrently when no causal dependency requires ordering.
 
 ## Step 0: Route the acceptance cases
