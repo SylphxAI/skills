@@ -2368,6 +2368,14 @@
     {
       "prompt": "Repair a replicated document-cache verification gate so routing changes during a proof invalidate its startup population binding.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a concurrent index for a SaaS journal whose heap builds quickly but older database snapshots repeatedly delay completion; size its finite execution budget from both measured costs without changing lock semantics.",
+      "clause": "authorized operational, repository"
+    },
+    {
+      "prompt": "Deploy a card-game reporting index while unrelated inventory transactions keep older snapshots open; preserve supported concurrent-build recovery and distinguish snapshot age from idle connection age.",
+      "clause": "authorized operational, repository"
     }
   ],
   "negative": [
@@ -4035,6 +4043,11 @@
       "prompt": "Rewrite the operator explanation of an existing shard population check without changing its behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify whether an existing PostgreSQL concurrent-index timeout was caused by snapshot waits or slow heap scanning, without changing source, deployment configuration or live state.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
