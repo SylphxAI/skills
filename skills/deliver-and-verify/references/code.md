@@ -429,9 +429,13 @@ Retention based only on serving or published references can delete artifacts
 still owned by an unfinished operation; a count cap may bypass an age grace
 period. Read the deployed collector's precedence and protected states, then
 verify in-flight delivery, recovery-point availability and expiry of unreferenced
-eligible objects while preserving finite cleanup. **Wrong:** fewer objects proves
-safe retention; **Right:** the pending artifact survives publication, the rollback
-target stays usable and eligible abandoned artifacts expire.
+eligible objects while preserving finite cleanup. Protection selectors expand
+over their contract's authoritative population, not automatically over cleanup
+candidates: the latter can invent references to every orphan. **Wrong:** expand
+an active-object wildcard over historical objects and call zero deletions safe;
+**Right:** live objects, unfinished operations and explicit retained references
+survive, while an expired unreferenced object is still collected under the same
+broad selector.
 
 A state validator can block the recovery that supplies its missing inputs;
 authorization and prerequisites for recovery still apply before repair.
@@ -604,10 +608,14 @@ An output subset need not contain the dependencies needed to evaluate its rows:
 a timestamp filter can remove the true predecessor while leaving a plausible,
 non-null earlier row. Define adjacency from the authoritative ordering over the
 necessary history before restricting scored rows; time-based pruning needs a
-proven ordering guarantee or comparison with full-history evaluation.
-**Wrong:** trust a non-null `LAG` over a recent slice. **Right:** place an
-intermediate event outside that slice and independently assert its successor's
-predecessor, exposing both hidden violations and invented gaps.
+proven ordering guarantee or comparison with full-history evaluation. Output
+selection and diagnostic-history limits are separate contracts: retaining exact
+adjacency does not prove that a later attribution lookup retained its evidence.
+**Wrong:** trust a non-null `LAG` or a recent-only history match. **Right:** pin
+the clock and vary each dependency's age across the selection boundary while
+asserting the selected row's predecessor and classification independently;
+exercise historical rows through a supported historical selector, not an assumed
+full-scan mode.
 
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
