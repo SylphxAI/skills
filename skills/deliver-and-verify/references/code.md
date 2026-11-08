@@ -663,6 +663,17 @@ Test control traffic can be swallowed by the same transport a fixture mocks, and
 
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
+Call-graph membership alone cannot establish a path-sensitive violation: tie
+an exception-handler finding to the mutation reachable from its guarded operation
+and to the result observable after failure, preserving unrelated logging or
+notification catches in the same caller. **Wrong:** baseline every successful
+return in a mutation caller; **Right:** contrast a failed debit followed by success
+with a notification failure after a committed debit, using real method shapes.
+A shrinking findings baseline needs both current-finding equality (reject stale
+entries) and prior-identity containment (reject new exemptions); first enrollment
+must derive permitted findings from the independent base revision rather than
+the candidate's list.
+
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
 overbroad refusal proves agreement with the defect. A subset parser used by a
