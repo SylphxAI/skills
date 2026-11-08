@@ -2260,6 +2260,18 @@
     {
       "prompt": "Change a provisioning access rule so revocation during an awaited resource read prevents the later cleanup delete without discarding acknowledged state.",
       "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Ship an automatic cancellation guard for a queued SaaS export; verify cancellation through the real adapter rather than inferring it from successful submission and status reads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement revocation of a temporary card-game event grant and test its separate request schema, rejected payload and lost acknowledgement without issuing duplicate grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Arm a conditional release that must leave the merge queue if its live readiness condition expires; qualify its dequeue control before relying on automatic removal.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
@@ -3847,6 +3859,11 @@
       "prompt": "Rewrite a user guide explaining access revocation during asynchronous work without changing behavior, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Check whether a reported cancellation actually removed the queued export, without implementing or publishing a change.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
