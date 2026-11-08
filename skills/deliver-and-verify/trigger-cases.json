@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Publish a stacked SaaS regression PR with an author-rewriting publisher after the remote base advanced; preserve already-published ancestry and the intended two-file delta.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Fix a billing reconciliation query whose exact predecessor remains available but whose attribution evidence disappears when that history ages beyond the output selection window.",
       "clause": "changing SQL queries or fixtures"
     },
