@@ -447,11 +447,13 @@ an absolute-deadline control keeps its original origin.
 For scheduling tests, couple producer lifetime, controller convergence and caller
 deadline: derive effective eligibility across message, route and resource
 constraints from their issuing events, not a late assertion clock or one storage
-field. Fresh single and repeated arrivals under contention must exercise the
-production lifecycle and expiry predicates; pre-aged records or hardcoded deletion
-can hide work disappearing before protection becomes effective. Verify progress
-within the caller deadline, release after a failed head, and progress of the next
-feasible head—not only the first admission.
+field. Fresh single, repeated and burst arrivals across independent contention domains must
+exercise production lifecycle and expiry predicates, proving deadline-bound
+progress while failed-head cleanup coexists with surviving and next-feasible-head
+progress; pre-aged records, hardcoded deletion or single-head success can hide
+lost work or excessive serialization. Match the claim to the observed resource
+boundary: aggregate pool-model success does not establish per-node feasibility
+or a reservation guarantee without evidence at those boundaries.
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round
