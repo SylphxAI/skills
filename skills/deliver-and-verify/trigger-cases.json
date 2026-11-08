@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Upgrade a card-game SDK whose application build admits only published registry versions; the fixed SDK currently exists only in an open source PR.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a SaaS export fix that depends on a library release not yet admitted by its package provenance guard.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
       "clause": "changing admission or access rules"
     },
