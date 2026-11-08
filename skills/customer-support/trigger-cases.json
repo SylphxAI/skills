@@ -68,6 +68,30 @@
     {
       "prompt": "A support customer asks for a second gift batch after the final automatic settlement of pre-transition commitments.",
       "clause": "care requests"
+    },
+    {
+      "prompt": "On official support, restore a verified missing paid entitlement exactly once while reviewing a separate historical gift promise.",
+      "clause": "missing purchases"
+    },
+    {
+      "prompt": "A support customer asks whether an already-delivered discretionary gift, still unclaimed in their inbox, will be removed during historical promise review.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "Handle an official support care request whose historical courtesy-credit promise has evidence and an authorized proportionate resolution different from the original amount.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "Review an official support care request for an excessive unauthorized historical gift promise appearing on a review list; list membership does not approve automatic issuance.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "Handle a support care request with unreadable promise evidence without guessing approval, canceling the whole review population or delaying an independently owed entitlement.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "A customer asks official support to repeat an already-settled historical promise after the final reviewed population has closed.",
+      "clause": "care requests"
     }
   ],
   "negative": [
@@ -123,6 +147,21 @@
     },
     {
       "prompt": "Write a general blog article about why public promotions work.",
+      "clause": "clear-writing for general copy",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Implement duplicate suppression for the authorized automatic settlement service; no live support case is being handled.",
+      "clause": "deliver-and-verify to implement a fix",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Comfort a player in character as the ambassador without adjudicating their historical gift promise.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Rewrite a general article about proportionate business decisions with no support case or customer policy.",
       "clause": "clear-writing for general copy",
       "route_to": "clear-writing"
     }
