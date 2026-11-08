@@ -17,6 +17,29 @@ its request or tenant while unrelated work can continue
 
 ## Hard lines
 
+### Mechanism, domain boundaries and causal guards
+
+- **Mechanism, not policy.** Shared schedulers, agent runtimes, CI/review engines,
+  controllers and skills expose neutral capabilities, quotas, leases and typed
+  predicates. Company roles, topology labels, agent names, topic slugs and caller
+  workflows belong in caller-owned configuration, never shared implementation.
+- **Zero domain leakage / Open-source pure.** Reusable code, prompts, verifiers,
+  comments and fixtures contain no company/owner/customer/product/incident
+  identities, personas, internal domains, machine aliases or sibling-product
+  slogans. Organization-specific denylists are caller input; tests use synthetic
+  policy fixtures. Exact public API identifiers and attributed methods remain valid.
+- **Causal invariant, not heuristic.** Guards, eligibility checks and transitions
+  require the exact state/data/authorization precondition. Unreadable required
+  state fails closed for that effect. Regex/substring guesses, magic-ID allowlists
+  and fail-open defaults cannot establish authority. Content regexes may implement
+  an explicit caller content policy; they do not prove lifecycle or authorization.
+
+**Bad:** recognize an operator by name and permit a transition when its state read
+fails. **Good:** evaluate a caller-supplied typed authorization predicate against
+readable authoritative state; independently test allowed, denied and unreadable
+cases. Independent work needs no serial rollout gate absent a causal dependency.
+
+
 For operational recovery and execution authorization, use [deliver-and-verify](../../deliver-and-verify/SKILL.md). The design defaults below apply within the workspace's current authority and hard lines.
 
 Products trust each other no more than a stranger, so one product's compromise

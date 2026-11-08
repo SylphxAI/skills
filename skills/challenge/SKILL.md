@@ -9,6 +9,8 @@ The method is operator-invariant: apply the same evidence standard to your own,
 a peer's, a sub-agent's and an external party's proposal. Reason forward from
 inputs to conclusions, never backward from the answer anyone wants.
 
+When designing shared engines or skills, apply the [three architectural invariants](references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms rather than caller policy, zero domain leakage, and causal state/data/authorization predicates that fail closed on unavailable required state.
+
 ## Step 0: Load only the relevant domain
 
 - Architecture, shared-service capacity, storage, scheduled jobs, durable checkpoints, metering trust and runtime/model separation: [architecture](references/architecture.md); game simulation and networking: [games](references/games.md#simulation-and-networking-by-interaction-model); forward-only legacy-to-modern strangler migration: [architecture](references/architecture.md#forward-only-modernization-strangle-legacy-v1-paths); technology or build vs. buy: [stack](references/stack.md).

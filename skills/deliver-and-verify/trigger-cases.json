@@ -2,6 +2,66 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a shared CI installer whose consumer requires every action SHA to be an ancestor of protected main; the proposed consumer pin points at another commit in the same unmerged PR.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Upgrade a card-game SDK whose application build admits only published registry versions; the fixed SDK currently exists only in an open source PR.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Ship a SaaS export fix that depends on a library release not yet admitted by its package provenance guard.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a payroll import that overwrites its progress cursor with a diagnostic wait and cannot resume after authorization recovers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game tournament pause change that preserves bracket progress through repeated pause and resume.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game purchase sheet whose helper maps cancellation correctly but its mounted early-return path emits no terminal event.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a document-upload recovery fix that emits its terminal notice once on repeated completion delivery, restores retry readiness and never applies success-only state on refusal.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change replica sizing for an API protected by a percentage availability budget, proving the rounded healthy-Pod threshold permits one eviction before node maintenance.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Change a Pod admission guard whose offline test adapter overwrites UPDATE and resize context with CREATE defaults, preserving ordinary updates while denying forbidden resizes.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a game trade-access policy whose fixture names the player identity but whose adapter substitutes an administrator, then verify the actual allowed and denied requests.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a card-game tournament fixture that assumes an empty migrated database despite retained seed rows and enabled activation guards.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a payroll database fixture to verify effective application-role privileges after partially successful setup without broadening production grants.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Implement shared validation for a SaaS file importer and a new API without dropping the importer's supported aliases or widening API admission.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -1167,7 +1227,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -1315,7 +1375,7 @@
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
@@ -1519,15 +1579,15 @@
     },
     {
       "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
-      "clause": "handling credentials in process arguments"
+      "clause": "changing credential input/output guards"
     },
     {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
@@ -2130,6 +2190,138 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Change admission rules for a SaaS export queue so fresh requests survive controller convergence and complete before their caller deadlines under contention.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Change admission rules for a multiplayer matchmaking queue and verify repeated fresh arrivals progress after a failed head releases capacity.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a rendering queue whose short-lived producer records expire before protection takes effect; test the production expiry predicates rather than pre-aging fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS notification that passes admission but loses the selected policy version before its queued sender validates provenance.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game notice path whose empty-attachment fixture hides missing authenticated metadata in real admitted records.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a new command variant and verify its separately selected provenance survives commit and reload before downstream validation.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export worker that starts an alternate delivery after a plan change despite an existing durable delivery owner; preserve ordinary first-time delivery.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game reward worker that reroutes an already accepted grant when its offer expires, distinguishing missing ownership from unreadable or foreign ownership.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a durable job controller so disabling new-job eligibility cannot bypass its recorded execution owner or create a second owner through fallback.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix account erasure racing an already-active external export after durable admission, preserving progress for unrelated accounts.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix cancellation racing creation of the first subscription when no child row exists yet.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a reward dispatcher change that keeps deletion serialized until its active provider attempt ends.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a dashboard update that commits successfully but never refreshes an already-connected client.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement a post-commit notification and prove rollback cannot emit a refresh signal.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an event batch whose later failure hides notifications for earlier committed updates.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an operation-budget deadlock when a buffered producer stops being polled while its consumer awaits another operation.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement cancellation-safe admission for a download stream whose consumer requests metadata through the same shared limiter.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export writer that checks access before awaiting metadata but publishes a file after the caller loses permission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game reward worker that loses its lease during an inventory read yet still creates or updates the grant.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a provisioning access rule so revocation during an awaited resource read prevents the later cleanup delete without discarding acknowledged state.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Ship an automatic cancellation guard for a queued SaaS export; verify cancellation through the real adapter rather than inferring it from successful submission and status reads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement revocation of a temporary card-game event grant and test its separate request schema, rejected payload and lost acknowledgement without issuing duplicate grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Arm a conditional release that must leave the merge queue if its live readiness condition expires; qualify its dequeue control before relying on automatic removal.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Change a card-game operations wrapper to preserve byte-exact credential output into a program while refusing terminal aliases and a forwarding subprocess.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
+      "clause": "changing credential input/output guards"
+    },
+    {
+      "prompt": "Regenerate schemas after merging a declaration change, preserving table and field semantics while refreshing every catalog and validator that records their hashes.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Regenerate an asset manifest after a provenance-only metadata update and refresh downstream bundle indexes without changing the asset population or values.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Update generated API source fingerprints and regenerate the hash-pinned client fixtures, although the public field types remain unchanged.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Implement a signed deployment snapshot publisher and independent live reader whose hashes currently disagree because list items omit fields returned by singleton GETs.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export verifier whose producer and consumer hash equivalent-looking JSON with different value types and array ordering.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game asset manifest signer and loader with a shared canonical derivation contract and independent expected-byte fixtures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS ingestion gate that verifies listed collectors but misses newly shipping collectors; compare the complete current population before and after each proof.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2143,6 +2335,66 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Compare separate pause flags and explicit suspended states for a payroll import architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether this tournament pause diff loses bracket progress; provide evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite the customer announcement that an import is paused and will resume later; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare callback and event-based completion designs for a game purchase sheet without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of a cancelled upload for clarity without changing behavior or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review an API availability plan and calculate its percentage-rounding threshold without changing replicas or starting maintenance.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Check whether a published policy-test result proves UPDATE denial when its adapter replaces the request verb; do not change the policy or tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite an explanation of integer-rounded availability targets for a public operations guide without changing the deployment.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a tolerant migration replay actually granted the fixture role access, without changing or running anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare empty-clone and seeded-clone database fixture designs without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of grouped SQL grant failures for clarity without changing or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an XML verifier can erase undeclared container text; provide evidence only without implementing a repair.",
       "clause": "prove-it for a review or evidence check",
@@ -3590,6 +3842,131 @@
     },
     {
       "prompt": "Rewrite an explanation of source and destination byte limits without changing source, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether existing admission tests use production expiry predicates, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare producer lifetime and caller deadline trade-offs in a proposed queue architecture without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining queue wait deadlines without changing behavior, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an accepted grant retains its durable owner after an offer expires, without implementing a fix or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare admission eligibility and durable ownership as concepts in a proposed asynchronous delivery architecture without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of an expired offer and an existing delivery owner without changing behavior, tests or publication.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a reported missing refresh is caused by storage or the notification consumer without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare polling and push-notification cache invalidation architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite dashboard documentation explaining refresh signals without changing product behavior.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether the current deadlock evidence proves a shared mutex owner is unpolled, without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare driving a producer concurrently with releasing its admission lock as proposed architectures, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a permission check before a delayed metadata response proves authority at publication, without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare receiver-side authorization and lease fencing in a proposed asynchronous architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining access revocation during asynchronous work without changing behavior, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Check whether a reported cancellation actually removed the queued export, without implementing or publishing a change.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review the exact-source output guard and establish whether its forwarding-launcher refusal test actually executes; do not change code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare descriptor-based and token-redaction designs for an export tool before choosing an architecture; no implementation is requested.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the public explanation of private-file credential exports without modifying the guard or its tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Explain in documentation why unchanged schema types can still have new provenance hashes; do not change generators or outputs.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Verify the claim that a published asset manifest has stale content hashes; do not change source or publish a fix.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare semantic and byte-level hashing for a package catalog architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether two existing signed snapshots use identical hash inputs without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare canonical JSON and binary signature formats for an architecture proposal without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite documentation explaining why list and singleton API responses can have different shapes; do not change code or tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },

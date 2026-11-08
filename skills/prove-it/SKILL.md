@@ -7,6 +7,8 @@ description: "Use when investigating a root-cause claim for a past failure; chec
 
 Support a claim with the authoritative object at the layer being claimed. Cached badges, summaries, undeployed branches and unchecked reports can differ from that object.
 
+When reviewing shared engines, verifiers or skills, test the [three architectural invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms with caller-owned policy, zero domain leakage including fixtures and denylists, and exact causal guards. Allowed, denied and unreadable-required-state cases must reach the actual decision, without identity guessing or fail-open defaults.
+
 ## Establish the evidence
 
 - Before claiming something is serving, deployed, merged, fixed or blocked, read its mutable status and name the object, version/revision and UTC read time; an immutable object already read can be reused at that exact version and scope. A cache reader can exit zero while an individual result says `stale: true`; check structured freshness, object identity/version and observation time rather than equating command success or a repository-level timestamp with current evidence. A stale observation cannot establish a current value or authorize a conditional write; any documented refresh or authoritative fallback stays within existing authority and the remaining read budget, without replaying completed stages or treating a quota/access refusal as staleness.
@@ -56,6 +58,10 @@ or uncertain tool mutations, read [agent runtime evidence](references/agent-runt
 It separates source, generated files, session context, raw retention, search
 coverage and actual runtime execution.
 
+For live checks that retain authenticated provider metadata or diagnostic artifacts,
+read [safe status projections](../deliver-and-verify/references/security.md#practices)
+before reporting; a read-only response can include credentials.
+
 For API route rankings, ingress-log percentiles, slow-request attribution or
 before/after latency claims, read [API latency evidence](references/api-latency.md).
 It covers parser and coverage controls, duplicate records versus proxy hops,
@@ -100,6 +106,12 @@ successful run at the same SHA. Rollups, `CheckRun.isRequired` and REST
 `filter=latest` are supporting projections, not the admission decision: preserve
 the effective rules and actual enqueue acceptance or refusal in an authorized
 fixture, separately from what ran or which result a display selected.
+
+Trigger metadata identifies the requested change, not necessarily the artifact
+executed: integration checkouts can include a newer base than the run's retained
+pull-request metadata. An ancestry or baseline-consumption claim is bound to the
+job's actual checkout commit and parent graph; a direct-head checkout remains
+evaluated at that head.
 
 A missing check can reflect a producer that failed before publication; use the
 [execution-versus-triggering-source distinction](../deliver-and-verify/references/dx.md#bulk-mutations)
@@ -152,7 +164,11 @@ incomplete coverage; derive approval requirements from the repository's declared
 merge contract as well as its effective rules. When that contract requires a
 review, verify the named producer's explicit `success`, complete reported scope
 and current head; `completed`, zero findings or a separate approval do not
-substitute. Keep advisory reviews advisory.
+substitute. A historical review ID is audit evidence, not an extra admission
+requirement unless the contract pins that exact generation. For a replacement
+result at the same source revision, evaluate the authoritative current producer,
+verdict and scope; a pending, failed or incomplete replacement cannot reuse the
+older pass. Keep advisory reviews advisory.
 
 **Wrong:** "CI passed and the completed review has zero findings, so enqueue."
 **Right:** "The review is neutral with unreviewed paths; its required success is
@@ -317,7 +333,7 @@ Unread automated findings can invalidate an independent PASS, and a stricter
 error path can break clients that depended on a fallback.
 
 - Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
-- Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
+- Record UTC observation and signing times from a clock or provider record, not an estimate; writing a receipt later does not move its observation time. Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
 - If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
 - For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; use the [caller refusal tests](../deliver-and-verify/references/code.md#tests) for side-effecting callers and treat comments justifying a fallback as invariants.
 - Treat a signed receipt as immutable once signed. Put facts learned later, such as cleanup verification or late CI, in a separately hashed addendum that names the signed receipt; editing the original invalidates every hash already relayed. For example, append a late cleanup result to the addendum rather than changing the signed receipt's original verdict.

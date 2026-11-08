@@ -18,11 +18,15 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
-A copied entrypoint is not a complete tool: its dependency files and
-wrapper-supplied launch context are inputs too. When running outside the normal
-wrapper, derive both from the pinned launcher and verify initialization of the
-unchanged entrypoint before expensive work; an initialization refusal establishes
-no policy or product verdict.
+A copied entrypoint is not a complete tool: derive its dependency files and
+wrapper-supplied launch context from the pinned launcher and verify initialization
+before expensive work; an initialization refusal establishes no policy or product
+verdict. When current control helpers operate on historical inputs, assemble their
+complete sibling dependency closure from the control revision and pass the frozen
+target root (source, data or package) explicitly rather than inferring it from the
+helper's location. Exercise the assembled consuming command against an older target
+lacking the helper and a changed-target negative, so missing dependencies and
+accidental checks of the current checkout cannot pass as historical verification.
 
 Verify completeness and integrity against the producer's intended manifest and
 the consumer's actual enumeration, matching every required entry and digest in
@@ -63,11 +67,14 @@ request and confirm deletion before claiming the fixture worked.
 
 Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
 
-A temporary-directory error can originate in a separately configured package
-cache. Read the failing child's effective tool home, cache and index paths,
-including existing leaf files; writable root directories and a fresh temp path
-do not establish update access. Compare the original command under another
-execution UID, changing only the suspected path when isolating the cause.
+Nested commands can override outer temporary, build-output or cache settings,
+so inspect the failing child's effective paths and wrapper overrides before
+concluding no executor is available. Include tool-home, cache/index paths and
+existing leaf files: writable parents or a fresh temporary path do not prove
+update access; compare the original command under another execution UID or
+change only the suspected path to isolate the cause. For a capacity refusal,
+preserve admission thresholds, select an admitted path and require the
+originally refused inner operation to succeed there before claiming recovery.
 
 Choose cache sharing from every consumer's trust on reuse: untrusted writers can
 share package bytes only when every reuse verifies the actual inputs, including
@@ -129,9 +136,13 @@ snapshots can lose original history, and a complete commit graph does not prove
 historical blobs remain readable. Choose acceptance cases from actual consumer
 read paths in the consuming environment, including original HEAD/base graphs,
 SHA-only bases and requested merge bases where used; file-only checks keep their
-existing transfer scope. Measure checkout or materialization step duration
-separately from queue wait, and treat mixed runner/cache samples as observations
-rather than matched causal benchmarks.
+existing transfer scope. Measure checkout and later object hydration separately from queue wait: a
+small initial transfer can defer remote request fan-out to the consuming scan.
+Compare request count, transferred bytes and elapsed time for the same selected
+population and effective Git/tool version; preserve source coverage while batching
+missing inputs rather than extending the deadline or hydrating unrelated data.
+Treat mixed runner/cache samples as observations rather than matched causal
+benchmarks.
 
 For repeatedly used sandbox build environments, bake the pinned compiler, SDK
 and required system packages into a versioned build image rather than installing
@@ -176,6 +187,16 @@ and filesystem restrictions, including absent default files, while retaining a
 sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedded
 program executes; **Good:** the workload's exact launch chain emits the program's
 expected marker using only its declared inputs.
+
+A writable temporary parent does not make a metadata-preserving copy of an
+immutable fixture writable: copied directory modes can still deny state creation
+under the actual non-root executor, while root-run host tests mask the denial.
+Acceptance reproduces the effective executor and preserved copy metadata,
+restores only the capability needed for disposable state, and verifies unchanged
+source bytes and permission policy.
+Distinguish setup permission errors from the intended typed failure, and prove
+the intended rejection before and after the repair rather than weakening it to
+make the fixture pass.
 
 Installed tools do not prove runtime-created devices or mounts exist. Exercise
 required capabilities in a fresh instance with its shipping entrypoint and user,
@@ -236,9 +257,12 @@ read time and its migration source. A live-only grant is schema drift that can
 break a restore. Preserve the clean-replay failure; a separate compatibility
 proof may reproduce only the verified live grants while the schema owner fixes
 their migration source. Broad fixture grants would hide that missing contract.
-A complete schema replay does not by itself make a fixture legal, active or ready
-for CI's transport and authentication mode; permissive local trust can hide
-missing credentials.
+When setup tolerates statement errors, a successful replay does not establish
+effective grants or an empty database: one invalid grantee can fail a grouped
+`GRANT` for valid recipients too, while earlier seed transactions remain committed.
+Establish readiness from effective runtime-role privileges and retained rows under
+enabled guards, not the replay's exit status or a "fully migrated" label;
+permissive local trust can also hide missing transport credentials.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
@@ -364,9 +388,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 Generator obligations follow changed inputs, including declarative objects,
 even when no generator code changes. Trace those inputs through the repository's
 generation and freshness checks to every affected registry, client and document.
-An alert's valid dedicated runbook, for example, can still leave its generated
-index stale. In-process tests can reuse cached modules and hide startup or
-import-path failures; exercise affected generation entrypoints in fresh processes.
+Even a provenance-only edit can change output digests without changing fields
+or rows. **Wrong:** declare regeneration complete because types are unchanged.
+**Right:** rebuild affected catalogs, validators and fixtures from final bytes,
+while separately comparing the full named population and values. In-process
+tests can reuse cached modules and hide startup or import-path failures; exercise
+affected generation entrypoints in fresh processes.
 A lockfile-only install also changes source.
 
 Requiring a generator's missing output at admission creates a circular
@@ -392,6 +419,11 @@ through declared relationships and schema identifiers; archive member order,
 active views and copied headers can select notes or duplicate data. Verify
 reordered members and ambiguous lookalikes without changing which logical
 records are compiled.
+
+Generated-file freshness and sender-side round trips can pass while a generated
+receiver rejects the server's wire representation; feed canonical populated
+server response bytes through the real generated receiver, including the
+protocol's scalar encodings.
 
 Contract conformance and generated-file freshness are separate: regeneration can
 emit consistent clients from an invalid public contract. Run the repository's
@@ -687,7 +719,13 @@ behavioral negative when repairing the bridge.
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
-when the headless browser does not expose the required transition.
+when the headless browser does not expose the required transition. Keep the
+observer's scheduler live across the transition: Playwright `waitForFunction`
+defaults to `requestAnimationFrame`, which browsers can pause in hidden documents.
+For hidden/visible predicates, use bounded wall-clock polling that continues while
+hidden; a caller timeout from a suspended observer does not disprove the transition.
+Retain frame-based sampling when foreground animation timing is itself the
+acceptance contract.
 
 Establish foreground focus before measuring input-induced lifecycle changes,
 so startup transitions do not contaminate the measured sequence. Check the
@@ -721,6 +759,8 @@ the tested effect.
 
 Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
 and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).
+Observer references read 2026-11-08: [Playwright polling](https://playwright.dev/docs/api/class-page#page-wait-for-function)
+and [animation-frame suspension](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame).
 
 ## App-store client releases
 

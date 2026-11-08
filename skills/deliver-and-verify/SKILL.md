@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, handling credentials in process arguments, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, changing source checkouts, changing SQL queries or fixtures, changing admission or access rules, changing database privileges, changing selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, changing diagnostic redaction, changing credential input/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -18,6 +18,8 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
+Shared implementations follow the [three architectural invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms with caller-configured policy, zero domain leakage in code/prompts/verifiers/fixtures, and exact causal state/data/authorization guards that fail closed on unreadable required state. Release independent paths concurrently when no causal dependency requires ordering.
+
 ## Step 0: Route the acceptance cases
 
 When reconciling legacy and canonical identifiers, changing multi-namespace
@@ -33,7 +35,7 @@ before defining acceptance cases.
 - Keep one named writer per worktree, pull request, database record, or live configuration. Before building, search open PRs for the same outcome to avoid duplicate implementations; distinct outcomes may edit the same files in parallel in isolated worktrees and resolve conflicts normally. Parallel readers and writers on independent targets can proceed together.
 - Prefer finishing comparable-priority in-flight work on the same target. Continue independent work during an asynchronous wait; choose ready work using the [priority method](../author-item/references/priority.md).
 - During launch convergence, keep a finite checklist of the core value loop or remake parity. Defer non-blocking enhancements discovered along the way.
-- Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers.
+- Repair an owned upstream capability at its owning boundary and consume the published version. Keep downstream business rules and privileged exceptions out of shared layers. An immutable dependency hash establishes content identity, not admission: read the consumer’s release/provenance rule before selecting a revision. **Wrong:** pin another commit in the same unmerged PR when consumers require protected-branch ancestry; **Right:** merge the producer independently, then adopt its verified published revision without weakening that rule.
 - Compare repair and replacement by total cost to a verified outcome, including migration, recovery, cleanup and preservation of binding constraints. Stale configuration or documentation can mix mutable assignments with independent behavioral rules: account for each retained or explicitly retired clause, because a broad replacement goal does not preserve a specific negative case. Migrate consumers before removing superseded paths; split delivery when a dependency must merge first.
 - Search related components for the same defect class. Repair affected instances within the authorized boundary and record separately owned work. Use a default, type or existing check when it proportionately prevents recurrence; a one-off ruling does not need a permanent guard.
 
@@ -120,7 +122,8 @@ When changing selected-source release inputs or their CI guards, read
 When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
-For container packaging or one-off container probes, read
+For container packaging, one-off container probes or runtime fixtures copied
+from read-only artifacts, read
 [container builds and probes](references/dx.md#container-builds-and-probes).
 
 For source checkout or materialization changes, shared-cache permission failures,
@@ -149,8 +152,8 @@ Before changing database roles, privileges, reader transports or session-bound
 database checks, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When changing credential routing, handling credentials exposed in process
-arguments or changing diagnostic or stored-body redaction, read
+When changing credential routing, credential input/output guards or diagnostic or
+stored-body redaction, read
 [security.md](references/security.md) to protect
 the actual launching process, preserve useful diagnostics and prevent content
 from reappearing through later writes.
@@ -192,7 +195,7 @@ Before publishing or updating a PR, read [publication and merge intent](referenc
 5. **Cross-Currency Entitlement Normalization & Canonical Analytics Read-Model:** When shipping or verifying a new checkout, voucher, credit, or payment channel, verify at the live surface that:
    - **Cross-currency entitlement normalization:** Issued vouchers, credits, or wallet top-ups normalize to the recipient wallet's currency via the authoritative FX rate so redemption never fails on a currency mismatch (for example, a USD checkout credit applied to an HKD or TWD wallet).
    - **Canonical analytics read-model:** Settled orders write to—or project into—the same canonical order table that powers live revenue analytics and payment-history lookups, rather than stranding settled revenue in an isolated channel table.
-   - **Auth-Redirect Attribution & Public Metadata Hygiene:** When shipping or modifying a web storefront, checkout/voucher funnel, invite landing page, or web/game pack (`keel.toml`), verify on the live HTML response (`curl -sS`) that campaign touches survive `/sign-in?nextUrl=...` redirects into authenticated checkout headers, and that public `<title>`, `<meta name="description">`, `<link rel="canonical">`, absolute `og:image` (`HTTP 200`), and JSON-LD (`VideoGame` / `SoftwareApplication`) contain zero internal or dogfood strings (`rebuilt on Keel`, `dogfood`).
+   - **Auth-Redirect Attribution & Public Metadata Hygiene:** When shipping or modifying a web storefront, checkout/voucher funnel, invite landing page, or web/game pack, verify on the live HTML response (`curl -sS`) that campaign touches survive `/sign-in?nextUrl=...` redirects into authenticated checkout headers, and that public `<title>`, `<meta name="description">`, `<link rel="canonical">`, absolute `og:image` (`HTTP 200`), and JSON-LD (`VideoGame` / `SoftwareApplication`) exclude forbidden launch-branding strings resolved from the owning product contract.
 6. **Synthetic Probe CDN Cache Bypass:** When adding or modifying synthetic health, readiness, or scale-to-zero activator probes that traverse a CDN on public domains, ensure probe requests or responses carrying internal routing headers (such as `K-Network-Probe`) explicitly bypass CDN caching (`cache: false` or `Cache-Control: no-store, private`) so synthetic probe bodies never poison public page caches.
 7. For webhook-less external monitoring, use the [zero-token watcher method](../patrol/SKILL.md#external-ground-truth-patrol-vs-self-report-reading), including end-to-end wake verification and subscription handoff.
    A slow inventory read can kill an observer precisely when independent error-rate measurements matter; keep those timestamped measurements and record the timed-out operation, deadline, elapsed time and UTC as an unknown observation. Use per-target failure budgets bounded by the acceptable observation gap; one unknown target need not stop independent observations, while quota, authorization and write boundaries still apply. **Wrong:** reset an unknown alert after stale `200 OK` data and wake repeatedly; **Right:** retain the alert until fresh evidence re-establishes that target's observation, with failure/exit wake coverage. Capture dependency health and resource use alongside a repeated timeout before attributing it to the monitored breach.

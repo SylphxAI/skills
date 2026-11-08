@@ -32,6 +32,17 @@ selects the changed rows.
 
 ## Destructive and conditional writes
 
+A conditional action is only as reversible as its cancellation or revocation
+path: before relying on an automatic compensating action, validate its own
+request contract and exercise the intended state transition through the real
+adapter in an authorized fixture, including rejected input and lost-acknowledgement
+cases. **Bad:** a successful enable request and a working status read imply
+that an untested cancellation will work; **Good:** the cancellation request
+uses its own endpoint schema and the fixture proves the target is no longer
+active, without repeating an uncertain write. A proven pre-execution rejection
+permits a corrected request after a fresh state read; an unknown effect still
+requires [duplicate-safety reconciliation](#provider-integration).
+
 A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
 query parameter: the [API handler](https://github.com/kubernetes/kubernetes/blob/v1.36.4/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/delete.go#L95)
 decodes query options only when the body is empty (source read 2026-11-06).
@@ -138,6 +149,17 @@ response fixture containing irrelevant variants that legitimately omit those
 fields, plus a malformed relevant variant that must be rejected rather than
 silently skipped.
 
+Reusable `json()` stubs hide [Fetch body consumption](https://fetch.spec.whatwg.org/#body-mixin)
+(source read 2026-11-08): exercise real `Response` objects through the production
+adapter to verify one body read preserves structured errors and unfamiliar
+provider codes. For UI-backed operations, mounted-controller tests cover early
+exits and repeated delivery, asserting the contract's terminal notification
+count, recovery readiness and absence of duplicate state changes; a pure outcome
+mapper cannot establish these properties. **Bad:** a reusable JSON stub and
+helper-only error assertions; **Good:** a consumable response and mounted
+refusal/cancel path produce exactly one typed terminal event and no success-only
+effect.
+
 Exercise negative cases through the same public entry point that makes the
 production decision. Return the provider's real error shape so decoding reaches
 the intended branch. Pair a refusal with a permitted request and assert an
@@ -210,12 +232,14 @@ while accepting a contract-equivalent permutation of unordered sibling fields.
 
 ## Queued work and partial acceptance
 
-An idle worker can be backpressured while durable work remains queued. Recovery
-that requires a drained queue needs authoritative emptiness, including deferred
-and non-waking entries; a failed read does not establish emptiness. **Bad:** replay
-interrupted work because a dispatch pass accepted nothing; **Good:** hold replay
-behind deferred real work, verify its identity and order after acceptance resumes,
-and retain an empty-queue control that proves legitimate recovery still runs.
+An idle worker can be backpressured while durable work remains queued; zero
+visible items can also coexist with retained delivery obligations after trimming.
+Recovery that requires a drained queue needs authoritative emptiness across
+outstanding lifecycle states, including deferred and non-waking entries; a failed
+read does not establish emptiness. **Bad:** treat zero payloads or no accepted
+dispatches as a drained queue; **Good:** exercise payload removal while delivery
+remains pending, preserve its identity and order when recovery resumes, and retain
+a genuinely empty control that proves legitimate recovery still runs.
 
 Admission proves that work can be queued under the configuration at that
 moment. A later worker must resolve a compatible provider for that exact

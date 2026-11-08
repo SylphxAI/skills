@@ -12,12 +12,41 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Byte-equal attestations require an explicit derivation contract for field names,
+casing, value types, absent values, array order and encoding/canonicalization;
+a shared schema alone does not define the hash input.
+**Wrong:** let a publisher and reader invent equivalent-looking hashes or copy
+the signed value as live evidence; **Right:** share the derivation while acquiring
+evidence independently, deriving omitted metadata only from an authoritative
+source such as the typed endpoint.
+Verify publisher-to-real-consumer agreement with independent expected bytes and
+both collection and singleton response shapes, preserving equivalence only where
+the contract permits it and refusing meaningful field, type or ordering drift.
+
+An eligibility hold does not itself advance progress: replacing resumable state
+with a diagnostic wait loses recovery context, while retaining exclusive capacity
+forever can block every replacement. Exercise refusal, repeated holds, recovery
+and replacement from each in-flight phase: resume at retained progress or settle
+abandoned intent once outstanding effects permit it, without altering served data.
+**Wrong:** prove a paused import writes nothing; **Right:** also preserve its
+cursor on resume and let a qualified successor replace an abandoned owner.
+
 Losslessly retained token spelling does not establish domain equality or
 destination representability: derive value-defined comparisons and admission from
 the contract and destination type, retaining original bytes separately where required.
 **Wrong:** compare decimal spellings or bound only the exponent; **Right:** test
 equivalent values with different spellings and combined coefficient/scale limits
 through the actual storage driver, while byte-defined identifiers remain distinct.
+
+Raw bytes containing table-relative references can silently change meaning when
+copied into a destination with reordered lookup entries, even when every target
+exists in both tables. **Wrong:** require equal tables before checking whether
+anything will be copied, or copy numeric indices unchanged; **Right:** preserve
+an empty copy unchanged and remap copied references by stable target identity,
+refusing unresolved targets. Verify by reloading emitted output with the real
+consumer, varying reordered and unrelated added/removed entries, with local
+references unchanged and missing referenced targets refused without partial
+writes.
 
 A configuration rewrite can corrupt untouched caller fields when a serializer
 from another format accepts different string escapes or key syntax. Verify the
@@ -77,6 +106,14 @@ remaining contention. **Wrong:** select a catalogued isolated tier that is absen
 in the target scope; **Right:** retain the served memory class until scoped
 desired and served inventories establish the isolated replacement.
 
+Percentage availability or quota rules act on integer populations with
+provider-specific rounding; adding nominal replicas can create no usable slack.
+For example, Kubernetes `minAvailable: 80%` rounds four replicas up to four
+required healthy Pods, so five healthy replicas are needed for one voluntary
+disruption ([rounding semantics](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#rounding-logic-when-specifying-percentages),
+read 2026-11-08); current controller status, matching selectors and affected
+placement determine whether that arithmetic applies.
+
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
 cleanup path. A child's ignore rule can itself be overwritten by its parent's
@@ -95,6 +132,10 @@ across successive operations. Keep pending intent separate from physical evidenc
 missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
+
+Server-side apply can succeed and attribute a field in `managedFields` even when
+mutating admission rewrites its value; compare the live post-apply values with
+intent before treating field ownership as authorship.
 
 When replacing a mutually exclusive configuration variant or retiring fields,
 validate the effective update against an existing object with its server defaults
@@ -207,6 +248,8 @@ and run, preserving original failed receipts unchanged.
 
 Use transactions for atomic invariants and authority-side uniqueness for retryable commands; retry a serialization or optimistic conflict as a whole read-decide-write attempt. Replay uses the same identity equivalence as initial admission, including database collation or canonical aliases; stricter application-string equality can reject an identical retry after its effect committed. Prove an accepted alternate spelling replays the original receipt after configuration removal, with a genuinely different identity as the refusal control. Caller-scoped receipts and locks need a nonempty verified identity because credential-specific fields can be absent in another authentication mode. Prove same-caller replay and different-caller isolation for each supported mode; a legacy receipt is eligible only when its original owner is verifiable.
 
+New-work eligibility can change after an operation acquired a durable owner; resolve that ownership before selecting an unowned fallback, and do not equate foreign or unreadable ownership with authoritative absence. **Bad:** start fallback fulfilment because an accepted order's offer expired; **Good:** vary eligibility with existing, absent and foreign/unreadable ownership through real entrypoints, preserving the recorded owner or explicit refusal under current authorization and ordinary unowned fallback.
+
 A committed terminal no-op needs a durable receipt written atomically with its terminal state, binding the verified caller, idempotency key, exact request bytes or their hash, and operation identity; an audit event alone cannot establish replay. Resolve that receipt before mutable policy, catalog, expiry or evidence validation, so exact retries return the stored result while same-caller/key reuse with a changed valid body or operation conflicts; prove expiry, caller isolation, lost-response replay and concurrent lock-wait cases through real entrypoints. A current read after a lock wait can observe a commit that a later snapshot validation still cannot; every decision about that newly observed receipt needs consistent visibility. Test overlapping identical retries under the effective production isolation alongside changed-body conflicts and conserved effects.
 
 An asynchronous request captures its target's stable identity and version at
@@ -221,7 +264,7 @@ or a replacement merely starts; **Good:** verify pre-mutation refusal,
 post-mutation cleanup, a failed replacement and a newer committed replacement,
 preserving coherent state without obsolete navigation or feedback.
 
-Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure and late admission must serialize on the same stable owner before the final eligibility snapshot and publication marker; deleting existing markers alone permits later resurrection. Prove both lock orders through real entrypoints and the database wait graph. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
+Exceptional terminal or preservation states, including erasure, bind the full identity equivalence class learned through coalescence or promotion, including each identity's namespace (such as account plus ID), across ordinary writers, retry and replay. Exercise the original pre-transition payload under a discarded old route/key, plus source-only replay and late redelivery, through the real API after persistence reopen or row aging; retain a same-number identity in another namespace and allowed nonterminal enrichment as controls. Cancellation/erasure, first-child creation and late admission must serialize on the same stable owner even when no child row exists, before the final eligibility snapshot and through publication; deleting existing markers alone permits resurrection. For an already-active external effect, that exclusion must span the actual overlap with cancellation/erasure, not end at durable admission or cancellation of its waiter. Prove both orders through real entrypoints with an absent-child case, a paused active effect and the database wait graph, while independent owners continue progressing. A historical receipt proves only the operation it records, not today's mutable state, so replay re-reads current state rather than restoring it from the receipt.
 
 A nested helper that acquires a second connection from the caller's finite pool
 can starve while the outer transaction holds the available capacity; a larger
@@ -300,10 +343,13 @@ notification work nor creates an undeclared catch-up burst.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
 
-In runtimes where futures advance only when polled, awaiting maintenance can
-suspend the worker holding the lock it needs. Keep that worker driven, and join
-or cancel maintenance with its lifetime; test actual contention and cancellation
-rather than eventual completion alone.
+In poll-driven runtimes, waking a future does not release its resources: a
+buffered producer can stop being polled while its consumer awaits the same lock.
+Admission-state locks must not survive refill sleeps; where progress instead
+requires continuous polling, keep the worker driven and join or cancel maintenance
+with its lifetime. **Wrong:** test only concurrent acquisitions; **Right:** suspend
+a polled waiter while a nested consumer uses the same budget, verifying progress,
+unchanged bounds and cancellation through the real adapter.
 
 For durable execution, represent terminal failure through the framework's documented mechanism and test replay. A returned error value and a raised exception can have different persistence semantics; neither is universally correct across frameworks.
 
@@ -444,9 +490,16 @@ read 2026-11-06).
 Through the real entry point, work lasting at least the minimum retention must
 still publish a ready, gettable, usable resource with its full promised lifetime;
 an absolute-deadline control keeps its original origin.
-For scheduling tests, derive effective eligibility across message, route and
-resource deadlines, anchored to the event that issued the constraint rather than
-a late assertion clock or one storage field.
+For scheduling tests, couple producer lifetime, controller convergence and caller
+deadline: derive effective eligibility across message, route and resource
+constraints from their issuing events, not a late assertion clock or one storage
+field. Fresh single, repeated and burst arrivals across independent contention domains must
+exercise production lifecycle and expiry predicates, proving deadline-bound
+progress while failed-head cleanup coexists with surviving and next-feasible-head
+progress; pre-aged records, hardcoded deletion or single-head success can hide
+lost work or excessive serialization. Match the claim to the observed resource
+boundary: aggregate pool-model success does not establish per-node feasibility
+or a reservation guarantee without evidence at those boundaries.
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round
@@ -570,19 +623,28 @@ custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
 prepared-statement behavior under the effective role and row-level security
 (RLS), comparing generic and custom execution plans where supported; inspect
-actual rows, loops and buffers as well as latency. Empty-result distributions
+actual rows, loops and buffers as well as latency. A set-based source or
+`GROUP BY` does not prove an aggregate executes once: optimizer inlining and
+cardinality choices can repeat it. Aggregate reuse is established by actual
+loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
+prevents aggregate reexecution, but correlated scans of an unindexed materialized
+pool can still be quadratic. Empty-result distributions
 can reject every candidate upstream or reach costly downstream branches before
 later predicates reject them all; identical output cardinality does not establish
-comparable work coverage. Performance evidence includes reachable repeated scans
-and function calls, distinguishing repeated function planning from execution cost
-where applicable.
+comparable work coverage. When only existence is needed, joining then
+deduplicating can enumerate every matching pair; verify bounded match work in the
+actual plan, while preserving multiplicity when all pairs are required. Performance
+evidence includes reachable repeated scans and function calls, distinguishing
+repeated function planning from execution cost where applicable.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
-effectful modes, prove one authorised durable round trip: schema constraints,
-commit, reload and downstream consumer encoding. Evaluate-only success proves
-only evaluation; keep ordinary-denial controls separate from the durable case.
-**Wrong:** accept a new variant because admission evaluates it; **Right:**
-commit and reload it through the real transport before claiming support.
+effectful modes, prove an authorised durable round trip for each distinct source
+of provenance: admission, schema constraints, commit, reload and downstream
+consumer encoding. A variant with no attachment or entitlement can still require
+authenticated policy metadata; adapting a populated fixture bypasses its real
+admission path. **Wrong:** accept a variant from evaluate-only or manually seeded
+records; **Right:** carry its selected provenance through the real consumer,
+with missing-metadata refusals separate from authorised success.
 
 Revoking an owner's ordinary privileges does not prove workload immutability:
 [PostgreSQL 15.19 FK checks](https://github.com/postgres/postgres/blob/REL_15_19/src/backend/utils/adt/ri_triggers.c)
@@ -644,6 +706,21 @@ Stateful integration fixtures can interfere through shared effective decision ke
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+
+Path-sensitive exception guards connect the handler to a mutation in its guarded
+operation and the result visible after failure, preserving post-commit logging
+catches; call-graph membership alone cannot establish that violation. Outcome
+evidence includes assignment-time values, the callable that owns the return,
+exceptional completion and cleanup that can replace it; a later variable value or
+lexical return alone cannot establish caller-visible success. **Wrong:** classify
+a copied result using its source variable's later value, or report a return
+replaced by cleanup; **Right:** compare findings with independently executed
+failure outcomes in methods and callbacks, including success-returning and
+fail-closed controls.
+A shrinking findings baseline needs both current-finding equality (reject stale
+entries) and prior-identity containment (reject new exemptions); first enrollment
+must derive permitted findings from the independent base revision rather than
+the candidate's list.
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
@@ -835,10 +912,11 @@ Test disappearance and retained-but-broken behavior independently; an explicit
 removal waiver suppresses only the local disappearance finding for an actually
 removed identity. Preserve each independent reason for selection: historical
 comparison coverage does not limit explicit requested assertions about objects
-outside that population. Offline tests that omit verb, subresource, identity or old-object
-fields establish only their modeled requests; verify alternative supported routes
-through actual selection and enforcement, with permitted controls and the intended
-denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
+outside that population. Offline tests establish only their evaluator's effective
+request context: adapters can omit or overwrite a fixture's verb, subresource,
+identity or old object. Verify alternative supported routes through actual
+selection and enforcement, with permitted controls and the intended denial.
+**Wrong:** infer a debug-update ban from create tests, or skip a requested
 permission change because its account is absent from the old audit sample.
 **Right:** exercise the alternate update route and requested objects inside and
 outside comparison coverage, proving fulfilled requests pass and unfulfilled
@@ -850,6 +928,8 @@ entrypoint, asserting effects, structured output and the enclosing caller's stat
 **Wrong:** count `valid: false` with exit status 0 as a rejected command; **right:**
 when the command promises rejection, refusal exits nonzero without mutation while
 a valid dry run exits 0 without mutation.
+
+A committed write does not establish visibility for a reader that refreshes only on a notification; acceptance includes the publication route and the reader's refresh behavior, not just durable storage. **Wrong:** count committed rows while an already-connected dashboard retains its cache; **right:** exercise the routed signal, verify committed state at notification time and reader refresh without reconnecting, with no signal on refusal/rollback and no suppression of an earlier committed update by a later batch failure.
 
 Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
 
@@ -883,7 +963,11 @@ of all protected data and metadata, contrasting missing/unusable input with a
 validated authoritative empty snapshot that must still perform permitted removals.
 For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
-metadata; missing recovery evidence remains unknown.
+metadata. Missing optional recovery metadata leaves recovery timing unknown; it does not
+negate an authoritative availability decision or turn successful I/O into failure. Through the
+composed discovery and execution consumers, contrast known unavailability with
+and without recovery metadata against missing authority and failed reads,
+preserving each consumer's disclosure and execution boundaries.
 
 **Wrong:** a save helper refuses correctly, but save-and-exit closes the editor
 and discards pending input. **Right:** exercise refusal and success through every
