@@ -561,8 +561,13 @@ Check that revision's transaction boundaries and lock lifetimes, including
 external calls made inside transactions. A lock-release fix shipped with the
 migration cannot make its own earlier DDL safe. If DDL depends on that fix,
 deploy and verify the fix first; otherwise document why the migration works
-independently of it. Bound lock waits using the migration system's supported
-timeout, and test contention against the old behavior when it affects safety.
+independently of it. Bound waits using the migration system's supported timeout
+and recovery contract, and test contention against the old behavior when it
+affects safety. For PostgreSQL concurrent index builds, `lock_timeout` also
+cancels virtual-XID snapshot waits, so a short positive value can abort
+nonblocking work. Size a finite statement budget from measured build cost plus
+repeated database-wide snapshot waits, excluding plain idle connection age;
+heap-build timing alone does not establish a safe execution budget.
 **Wrong:** justify a new column's lock with transaction code that is not deployed.
 **Right:** establish the old caller releases the conflicting lock in time, or
 ship that prerequisite separately before applying the migration.
