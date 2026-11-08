@@ -3,7 +3,7 @@
   "positive": [
     {
       "prompt": "A customer says a paid purchase is missing. Resolve it from verified product facts.",
-      "clause": "missing purchases, top-up or voucher inquiries, refunds, prices, invoices"
+      "clause": "missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices"
     },
     {
       "prompt": "A user cannot sign in and requests account recovery on the official support channel.",
@@ -56,6 +56,18 @@
     {
       "prompt": "Review care-mail titles and bodies for internal care-tier labels and top-spender claims; preserve ordinary personal appreciation.",
       "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts"
+    },
+    {
+      "prompt": "On official support, a player requests a fixed free comfort code after losing a match. Resolve the care request under verified system-only terms.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "On official support, help a customer redeem a published public campaign code without creating a personal reward.",
+      "clause": "campaign-code inquiries"
+    },
+    {
+      "prompt": "A support customer asks for a second gift batch after the final automatic settlement of pre-transition commitments.",
+      "clause": "care requests"
     }
   ],
   "negative": [
@@ -97,6 +109,21 @@
     {
       "prompt": "Edit a museum opening-hours announcement, with no customer case or game context.",
       "clause": "clear-writing for general copy.",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Implement and deploy a public campaign-code service with system-enforced claim caps.",
+      "clause": "deliver-and-verify to implement a fix",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "In character, comfort a player after a loss without gifts or billing adjudication.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Write a general blog article about why public promotions work.",
+      "clause": "clear-writing for general copy",
       "route_to": "clear-writing"
     }
   ]
