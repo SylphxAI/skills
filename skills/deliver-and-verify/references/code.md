@@ -307,7 +307,12 @@ tenant and current transaction's live ownership. An opaque value alone can
 outlive a commit or savepoint rollback that releases the lock. Test wrong-key,
 foreign-transaction and released-lock proofs. Keep compound state changes
 atomic when a later helper refuses; a caller must not accidentally commit an
-earlier release or partial batch after receiving an error.
+earlier release or partial batch after receiving an error. A joined transaction
+can still commit partial work when an inner caller catches the failure: prove
+rollback through both standalone and caller-owned transaction entrypoints, with
+the inner error handled and the outer callback returning normally. **Wrong:**
+infer nested safety from a standalone rollback; **Right:** verify the declared
+savepoint or rollback-only contract at the actual outer commit boundary.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe
@@ -751,8 +756,11 @@ Path-sensitive exception guards connect a guarded mutation, its actual source
 dispatch targets and the caller-visible exceptional outcome; membership alone
 cannot establish a violation, and a declared interface does not exclude its
 source implementations or inherited implementations. Transfer functions retain
-uncertainty unless semantics prove a constant result, while assignment snapshots,
-return ownership and cleanup preserve the outcome actually observed by callers.
+uncertainty unless semantics prove a constant result; declaration initializers
+are not invariants of mutable state at later method or callback entry. Reachability
+covers executed construction and initialization as well as ordinary calls, without
+executing nested bodies merely stored for later; assignment snapshots, return
+ownership and cleanup preserve the outcome actually observed by callers.
 **Wrong:** turn an unknown operand into an empty understood value, or test only
 concrete receivers; **Right:** independently execute refusal cases through
 interface dispatch and unknown-value expressions alongside absorbing-failure,
@@ -793,7 +801,7 @@ remain permitted, and, where that identity distinction exists, use a
 distinguishing three-node chain with a valid no-inheritance control if
 supported.
 
-Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work. Failure feedback can precede the committed state that makes recovery actionable, so assert restored state and control readiness at the notification itself, then exercise the next action without an extra settling wait. **Bad:** wait for a retry control to enable after an error toast; **Good:** prove it is enabled when the toast fires, retry succeeds, and in-flight duplicates still cannot dispatch.
+Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Compare incremental paths with independent recomputation across the allowed input range and repeated return-to-origin cycles; isolated endpoints miss cumulative drift. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work. Failure feedback can precede the committed state that makes recovery actionable, so assert restored state and control readiness at the notification itself, then exercise the next action without an extra settling wait. **Bad:** wait for a retry control to enable after an error toast; **Good:** prove it is enabled when the toast fires, retry succeeds, and in-flight duplicates still cannot dispatch.
 
 Repeated matching reads of mutable metadata prove stability during that interval,
 not which source produced an earlier transformed artifact. **Wrong:** reread the

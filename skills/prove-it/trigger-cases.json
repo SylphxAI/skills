@@ -372,6 +372,18 @@
     {
       "prompt": "An API page limit hides later CSV export records. Judge whether a missing record is absent from the source or only unread.",
       "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "A SaaS pull request merged while its first merge-group CI was still pending. Verify whether a later containing group passed required checks before the batch merged.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A card-game change merged with an adjacent queue entry. Check whether a successful sibling group's ancestry actually contains the merged change before calling it a gate bypass.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "The containing merge group passed after the recorded merge time. Verify whether those checks establish admission or leave the earlier merge unexplained.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [

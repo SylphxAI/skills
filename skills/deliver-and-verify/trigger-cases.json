@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a CAD exporter that imports successfully but changes the renderer-selected attribute mapping; keep the original visible-defect assertion independent of structural validity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a chart renderer whose hashes and draw counts pass despite stretched shapes; verify projected extents or silhouettes with a broken-shape control.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an incremental layout update that passes one endpoint but drifts after repeated out-and-back changes; compare recomputation throughout the supported input range.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a shared-database webhook fixture whose queued callbacks reach a later mock when the operating system reuses its listening address; preserve signature and audience assertions.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Repair an asynchronous file-export fixture whose retained job writes into a later test's reused output path despite different database row identifiers.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a notification fixture to give each receiver a unique identity and force address reuse in its regression test instead of relying on random port allocation.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Publish a multiline PR description through a shell-wrapped CLI and verify the published body preserves its line breaks.",
       "clause": "publishing, editing or arming PRs"
     },
@@ -2468,9 +2492,51 @@
     {
       "prompt": "Repair a database fixture that connects with one supported client but another client defaults to TLS unavailable on the disposable server; retain explicit secure configurations.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a static guard that assumes a mutable receiver still has its declaration values when a method runs later.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement constructor and executed-initializer reachability in a source analyzer without treating stored lambda bodies as executed.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a callback safety analyzer and test the callback after receiver state changes between capture and invocation.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a successful import closes a reported shading defect when the original pixel check still fails; report evidence without changing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether a webhook test's unique row identifiers actually isolate its retained callbacks; report evidence without changing the fixture.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare silhouette and projected-extent checks for a proposed diagram-rendering architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Compare per-test databases with receiver identities for asynchronous fixture isolation; do not implement either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of cumulative drift and repeated return-to-origin testing; edit prose only, without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Rewrite a documentation explanation of why a recycled network address is not a stable receiver identity; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Compare separate pause flags and explicit suspended states for a payroll import architecture; do not implement either.",
       "clause": "Use challenge for a plan or architecture",
@@ -4203,6 +4269,21 @@
     },
     {
       "prompt": "Rewrite a customer guide explaining database TLS modes without changing fixtures, source or configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an existing static analysis result assumes construction-time state at later method entry; report evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare whole-program and modular state analyses for a proposed compiler design without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user-facing explanation of constructor side effects without changing an analyzer or tests.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
