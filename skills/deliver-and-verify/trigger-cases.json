@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Publish a multiline PR description through a shell-wrapped CLI and verify the published body preserves its line breaks.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Publish a stacked SaaS regression PR with an author-rewriting publisher after the remote base advanced; preserve already-published ancestry and the intended two-file delta.",
       "clause": "publishing, editing or arming PRs"
     },
