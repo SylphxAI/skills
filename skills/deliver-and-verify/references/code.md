@@ -315,8 +315,10 @@ does not restore mutated cached entities or aggregates; snapshot and restore the
 affected in-memory fields on failure, or defer their effects until the owning
 transaction commits. **Wrong:** infer nested safety from a standalone rollback
 or restored row; **Right:** verify the declared savepoint or rollback-only
-contract at the actual outer commit boundary, checking persisted and in-memory
-state after injected failure and after a subsequent normal save or replay.
+contract at the actual outer commit boundary, checking every mutated field
+(each currency balance and item count) in persisted rows and the same real
+domain objects—not a SQL-only double—after injected failure and after a
+subsequent normal save or replay.
 
 Prove a lock fix with concurrent connections through the actual entry points.
 Use the database's wait graph, such as PostgreSQL `pg_blocking_pids`, to observe

@@ -2,7 +2,7 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Fix an account-balance transaction whose SQL rollback restores the row but leaves the cached account mutated, so a later normal save persists the failed debit.",
+      "prompt": "Fix an account-balance transaction whose SQL rollback restores the row but leaves the real cached account mutated in one currency, so a later normal save persists the failed debit; verify each currency balance.",
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
