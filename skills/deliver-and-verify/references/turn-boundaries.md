@@ -36,6 +36,13 @@ activity after the launcher returns, and bound it to task completion or deadline
 refusal, lease end or generation change must stop it and emit a failure signal,
 and heartbeats must not bypass lifetime or capacity limits.
 
+A newly ready replacement can still inherit the original resource's old deadline;
+compare `expiry - now` with remaining work plus evidence-export and cleanup time,
+not with the advertised maximum lifetime or readiness timestamp. Logs saved outside
+the lease do not preserve unique fixture or session state inside its writable
+layer: verify that state's persistence or recovery before expiry, rather than
+assuming a replacement can recreate it without changing the experiment.
+
 ## Persist results before yielding
 
 A process or tool-session handle can disappear between turns. Before launching
