@@ -56,6 +56,18 @@
     {
       "prompt": "Inspect card-game support inbox queues containing purchase receipts and login codes, reporting only nonsecret findings.",
       "clause": "unanswered customer inbox queues"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for SaaS support; an unavailable count must not clear the last observed unanswered queue.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for a card game; a null moderation result must remain unknown until a fresh result confirms recovery.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for a store support queue, retaining historical incidents without treating their old counts as current.",
+      "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
     }
   ],
   "negative": [
@@ -93,6 +105,21 @@
       "prompt": "Verify whether one past file-watch probe failed because its reader could not traverse a directory, without repairing the watcher or replacing polling.",
       "clause": "Use prove-it to establish one claim or review a diff",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Verify whether this single null endpoint response proves the earlier incident recovered; do not change the observer.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Restore a stopped support observer whose unknown-to-zero conversion caused repeated recovery alerts.",
+      "clause": "unblock to restore stalled work",
+      "route_to": "unblock"
+    },
+    {
+      "prompt": "Compare designs for representing unavailable telemetry separately from healthy and unhealthy states, without implementing or patrolling either.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
     }
   ]
 }
