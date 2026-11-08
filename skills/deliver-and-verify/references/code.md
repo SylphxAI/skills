@@ -722,6 +722,11 @@ the column type, and verify the intended typed decode or explicit SQL conversion
 Propagate unexpected encoding and decoding errors. A contract's missing-value
 default does not make an unreadable value equivalent to absence: a successful
 bulk read can collapse per-item type or access failures into missing values.
+Recovery readers distinguish storage representations from progress: an optional
+collection may persist as SQL NULL, JSON `null` or an empty array, but only the
+producer's contract and actual interrupted writes establish their equivalence.
+Preserve nonempty progress and reject malformed or wrong-shaped values instead
+of treating every decoding failure as an empty checkpoint.
 Prove that distinction through the real adapter with both a corrupt/wrong-type
 item and a genuinely absent item before deriving defaults or healthy metrics.
 
