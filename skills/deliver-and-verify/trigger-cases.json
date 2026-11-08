@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game purchase sheet whose helper maps cancellation correctly but its mounted early-return path emits no terminal event.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a document-upload recovery fix that emits its terminal notice once on repeated completion delivery, restores retry readiness and never applies success-only state on refusal.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -2203,6 +2215,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare callback and event-based completion designs for a game purchase sheet without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite this explanation of a cancelled upload for clarity without changing behavior or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a tolerant migration replay actually granted the fixture role access, without changing or running anything.",
       "clause": "prove-it for a review or evidence check",

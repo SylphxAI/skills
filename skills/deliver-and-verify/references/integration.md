@@ -138,6 +138,17 @@ response fixture containing irrelevant variants that legitimately omit those
 fields, plus a malformed relevant variant that must be rejected rather than
 silently skipped.
 
+Reusable `json()` stubs hide [Fetch body consumption](https://fetch.spec.whatwg.org/#body-mixin)
+(source read 2026-11-08): exercise real `Response` objects through the production
+adapter to verify one body read preserves structured errors and unfamiliar
+provider codes. For UI-backed operations, mounted-controller tests cover early
+exits and repeated delivery, asserting the contract's terminal notification
+count, recovery readiness and absence of duplicate state changes; a pure outcome
+mapper cannot establish these properties. **Bad:** a reusable JSON stub and
+helper-only error assertions; **Good:** a consumable response and mounted
+refusal/cancel path produce exactly one typed terminal event and no success-only
+effect.
+
 Exercise negative cases through the same public entry point that makes the
 production decision. Return the provider's real error shape so decoding reaches
 the intended branch. Pair a refusal with a permitted request and assert an
