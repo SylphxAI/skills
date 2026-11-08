@@ -83,6 +83,17 @@ List linked sign-in methods in settings and prevent removing the last active sig
 
 ### Prove guest continuity
 
+Recovery has two independent facts: retained-source presence and readable
+credential value. A decoded optional value cannot prove absence; test absent,
+corrupt-only and corrupt-plus-readable sources through the public login path,
+including its fallback, with no replacement identity or storage writes on refusal.
+A parser returning several accounts also proves no durable import: compare the
+complete credential set after the production importer, reload and actual account
+consumer, using original-writer bytes and real storage encoding/compaction states
+rather than fixtures invented around the parser. **Wrong:** a helper returns two
+accounts while its caller keeps only the first; **Right:** both remain selectable
+after relaunch, and unreadable evidence cannot authorize a new account.
+
 For a live product, verify guest and account continuity across five distinct layers—passing one layer never substitutes for another:
 
 - **Implementation:** Inspect the account selector, creation guard, and all sign-in entrypoints to confirm existing accounts are preserved.

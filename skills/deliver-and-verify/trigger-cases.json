@@ -2400,6 +2400,18 @@
     {
       "prompt": "Fix an endpoint that deduplicates independent actors sharing one source object, while preserving retry safety and source attribution.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS account import whose parser returns three retained credentials while the production importer saves only the first; verify all remain available after reload.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Upgrade a game SDK whose optional legacy-reader result treats a present corrupt identity as absence and creates a replacement guest.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
+      "prompt": "Implement legacy session recovery against original-writer fixtures, including corruption alongside one valid credential and refusal without fallback identity writes.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
