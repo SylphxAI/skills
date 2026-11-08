@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Deterministic verification suite for the SylphxAI/skills repository."""
+"""Deterministic verification suite for reusable skills."""
 
+import argparse
 import glob
 import json
 import os
@@ -242,27 +243,24 @@ def verify_links_and_references(errors: list[str], root=ROOT) -> None:
             fail(f"Reference not linked from its own SKILL.md: {os.path.relpath(rf, root)}", errors)
 
 
-def verify_no_private_leaks(errors: list[str]) -> None:
-    md_files = sorted(glob.glob(os.path.join(ROOT, "skills", "**", "*.md"), recursive=True))
-    forbidden = re.compile(
-        r"(use-the-room|\bKyle\b|\bSylphx\b|\bCubeage\b|\bSpiron\b|\bTachyn\b|\bEpiow\b|\bCalmora\b|\bKeep H\b|\bBig2\b|\bMahjong\b|\bHexa\b|\bBGCA\b|pg-shared-core|SylphxAI/|Ozyrix|OpenClaw|Hetzner|p:\d+|g\d{4}|owner,\s*2026|mark\.sylphx\.com|api\.sylphx\.com|1Password|keelengine\.dev|ADR-862|ADR-01M|owner-pool|scripts/absence-check|118979196997|oaep_kwp_round_trip|14868|ai_model_pricing|desk_ro)",
-        re.I,
-    )
-    for p in md_files:
-        rel = os.path.relpath(p, ROOT)
-        with open(p) as f:
-            for idx, line in enumerate(f, 1):
-                if forbidden.search(line):
-                    fail(f"{rel}:{idx}: internal/private reference found: {line.strip()}", errors)
+def load_policy(path: str | None, errors: list[str]) -> list[re.Pattern]:
+    """An explicitly selected policy is required input, never a best-effort hint."""
+    if path is None:
+        return []
+    try:
+        policy = json.loads(Path(path).read_text(encoding="utf-8"))
+        if (not isinstance(policy, dict) or set(policy) != {"patterns"}
+                or not isinstance(policy["patterns"], list)
+                or not all(isinstance(p, str) and p for p in policy["patterns"])):
+            raise ValueError("expected an object containing a patterns list of nonempty regex strings")
+        return [re.compile(p, re.I) for p in policy["patterns"]]
+    except (OSError, UnicodeError, ValueError, re.error) as exc:
+        fail(f"Policy input unavailable or invalid ({type(exc).__name__})", errors)
+        return []
 
 
-def verify_no_episodic_identifiers(errors: list[str], root=ROOT) -> None:
-    """Reject known incident identities in skill text, including examples."""
-    forbidden = re.compile(
-        r"小亨|人愛|子璐|(?<![A-Za-z0-9_])"
-        r"(?:Sima|Alan|Alex|15659296|10048291)(?![A-Za-z0-9_])",
-        re.I,
-    )
+def verify_policy(errors: list[str], patterns=(), root=ROOT) -> None:
+    """Apply caller policy to all textual skill resources, without identity guesses."""
     for path in sorted((Path(root) / "skills").rglob("*")):
         if not path.is_file():
             continue
@@ -270,20 +268,26 @@ def verify_no_episodic_identifiers(errors: list[str], root=ROOT) -> None:
             lines = path.read_text(encoding="utf-8").splitlines()
         except UnicodeDecodeError:
             continue  # Raster assets and other binary resources are not prose.
+        except OSError:
+            fail(f"{path.relative_to(root)}: resource unreadable", errors)
+            continue
         for idx, line in enumerate(lines, 1):
-            if forbidden.search(line):
-                fail(f"{path.relative_to(root)}:{idx}: episodic persona/customer "
-                     "identifier found; use a role or explicit placeholder", errors)
+            if any(pattern.search(line) for pattern in patterns):
+                fail(f"{path.relative_to(root)}:{idx}: caller policy match", errors)
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--policy-file", default=os.environ.get("SKILLS_POLICY_FILE"),
+                        help="JSON policy file; overrides SKILLS_POLICY_FILE")
+    args = parser.parse_args(argv)
     errors: list[str] = []
+    patterns = load_policy(args.policy_file, errors)
     verify_manifests(errors)
     descriptions = verify_skills_frontmatter(errors)
     positive, negative = verify_trigger_cases(descriptions, errors)
     verify_links_and_references(errors)
-    verify_no_private_leaks(errors)
-    verify_no_episodic_identifiers(errors)
+    verify_policy(errors, patterns)
     # Keep all regression tests on the existing CI entry point.
     for args in (
         [sys.executable, "scripts/verify-terminology.py"],
@@ -301,7 +305,7 @@ def main() -> int:
 
     skill_count = len(glob.glob(os.path.join(ROOT, "skills", "*", "SKILL.md")))
     ref_count = len(glob.glob(os.path.join(ROOT, "skills", "*", "references", "*.md")))
-    print(f"PASS: {skill_count} skills (PyYAML verified), {positive} positive/{negative} negative trigger contracts (static, not model routing), {ref_count} reference files, 3 plugin manifests, 0 broken links/anchors, 0 private leaks.")
+    print(f"PASS: {skill_count} skills (PyYAML verified), {positive} positive/{negative} negative trigger contracts (static, not model routing), {ref_count} reference files, 3 plugin manifests, 0 broken links/anchors, 0 caller-policy violations (when configured).")
     return 0
 
 
