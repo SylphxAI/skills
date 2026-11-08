@@ -344,6 +344,18 @@
     {
       "prompt": "Reconcile a deployment status report dated from when the report was written with the earlier provider observation timestamp.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A PR benchmark reports an old base in run metadata, but its integration checkout may contain the accepted renderer baseline. Verify the executed commit and ancestry before judging baseline consumption.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "An SDK CI run's branch head lacks a recent main fix, but its test merge may include it. Verify whether the executed tree contains the fix.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "A deployment run's input tag is older than the resolved immutable image digest. Reconcile the serving claim against the loaded artifact rather than the input label.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [
@@ -521,6 +533,21 @@
       "prompt": "Arm the reviewed pull request after its current required review and CI have passed.",
       "clause": "Use deliver-and-verify to publish or arm a PR.",
       "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Publish and arm a reviewed pull request whose checkout-provenance evidence is complete.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Compare integration-branch and direct-head strategies to choose the simpler design, without verifying a live run.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Explain what a Git commit parent is using static knowledge, without checking a repository or live run.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
+      "route_to": null
     }
   ]
 }
