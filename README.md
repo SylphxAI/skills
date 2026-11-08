@@ -37,7 +37,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md`, `terminology.md` |
 | [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
 | [`customer-support`](skills/customer-support/SKILL.md) | Handling official customer support tickets, billing/refund remedies, account recovery, privacy requests, and statutory disclosures | `product-facts.md` |
-| [`ambassador`](skills/ambassador/SKILL.md) | Engaging users or players as an in-character brand or game ambassador (`大使`, such as `小亨`), playmate companion, or VIP relationship host | `behavioral-operations-and-retention.md` |
+| [`ambassador`](skills/ambassador/SKILL.md) | Engaging users or players as an in-character brand or game ambassador (`大使`, such as `<ambassador_name>`), playmate companion, or VIP relationship host | `behavioral-operations-and-retention.md` |
 
 ## Installation Across Agent Harnesses
 
@@ -127,3 +127,15 @@ boundary.
 ## License
 
 [MIT](LICENSE)
+
+## Caller-owned content policy
+
+`python3 -B scripts/verify-skills.py` verifies generic structure, references and
+trigger contracts. Organization-specific content rules are optional caller input:
+pass `--policy-file /path/to/policy.json` or set `SKILLS_POLICY_FILE` (the flag
+wins). The JSON schema is `{"patterns": ["ExamplePersona", "account-98765"]}`;
+these synthetic examples are case-insensitive regular expressions, not built-in
+identity rules. Keep real policy files in the owning workspace, outside this
+reusable package. An explicitly selected unreadable or malformed policy fails
+verification. No policy means no organization-content verdict; structural checks
+still run. A content match reports the resource and line without echoing it.

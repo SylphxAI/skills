@@ -9,6 +9,8 @@ Apply the documentation and plain-language standards in [references/docs.md](ref
 
 A skill is **asynchronous Agent-to-Agent (`A2A`) communication across time**: a past specialist sharing hard-won domain reality with a future frontier SOTA model. Just as live A2A messages between peers must never issue imperative orders or pre-chew solutions that stop the other agent from thinking, a skill must **never over-constrain a SOTA model with rigid scripts, checklists, or micro-rules that hijack its first-principles reasoning**—nor leave it with **zero boundaries** where default model priors (such as RLHF people-pleasing or `HTTP 200 OK` completion illusions) cause preventable harm.
 
+Reusable guidance obeys [mechanism, domain-boundary and causal invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): keep organization policy in caller configuration, use role-neutral examples and synthetic policy fixtures, and express exact causal preconditions rather than identity guesses or fail-open defaults.
+
 ## 0. The Five Laws of Modern SOTA Skill Engineering (`現代 SOTA Skill 編寫五大鐵律`)
 
 Before adding or editing any line in a skill, test it against all five laws:

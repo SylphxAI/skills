@@ -77,40 +77,59 @@ class SkillContractTests(unittest.TestCase):
         descriptions = verifier.verify_skills_frontmatter(errors)
         counts = verifier.verify_trigger_cases(descriptions, errors)
         verifier.verify_links_and_references(errors)
-        verifier.verify_no_episodic_identifiers(errors)
+        verifier.verify_policy(errors)
         self.assertEqual([], errors)
         discovered = {p.parent.name for p in (ROOT / 'skills').glob('*/SKILL.md')}
         self.assertEqual(discovered, descriptions.keys())
         self.assertTrue(all(count >= 3 * len(discovered) for count in counts))
 
-    def test_incident_names_and_ids_are_rejected_in_skill_resources(self):
-        # Check frontmatter, examples and non-Markdown references so moving an
-        # incident into another skill resource cannot evade the check.
+    def test_caller_policy_covers_all_textual_skill_resources(self):
+        policy = self.root / 'policy.json'
+        policy.write_text(json.dumps({'patterns': [r'ExamplePersona', r'account-98765']}))
+        errors = []
+        patterns = verifier.load_policy(str(policy), errors)
+        self.assertEqual([], errors)
         for resource in ['SKILL.md', 'references/example.md', 'assets/profile.json']:
             path = self.skill.parent / resource
             path.parent.mkdir(parents=True, exist_ok=True)
-            for token in ['小亨', 'Sima', 'SIMA姐', '人愛', '子璐', 'Alan', 'Alex',
-                          '15659296', '10048291']:
+            for token in ['ExamplePersona', 'EXAMPLEPERSONA', 'account-98765']:
                 with self.subTest(resource=resource, token=token):
                     path.write_text(f'Example: {token}\n', encoding='utf-8')
                     errors = []
-                    verifier.verify_no_episodic_identifiers(errors, self.root)
+                    verifier.verify_policy(errors, patterns, self.root)
                     self.assertEqual(1, len(errors))
                     self.assertIn(str(path.relative_to(self.root)) + ':1:', errors[0])
+                    self.assertNotIn(token, errors[0])
             path.unlink()
 
-    def test_general_examples_and_public_identifiers_remain_valid(self):
+    def test_generic_verifier_has_no_implicit_identity_policy(self):
+        self.write_skill(body='# Method\nExamplePersona, account-98765 and <account_id>.\n')
+        errors = []
+        verifier.verify_policy(errors, root=self.root)
+        self.assertEqual([], errors)
+
+    def test_general_examples_and_binary_resources_remain_valid(self):
         self.write_skill(body=(
             '# General method\nUse <ambassador_name>, <user_name> and <account_id>.\n'
-            'Judea Pearl, Causality (2009); customer_id is a public API identifier.\n'
-            'https://support.google.com/googleplay/android-developer/answer/13327111\n'
-            'The revision is 20261103; the simulator has an alexa_adapter.\n'))
-        # Incident records outside skills are not part of the reusable package.
-        (self.root / 'incident.md').write_text('Alex, account 10048291\n')
-        binary = self.skill.parent / 'preview.png'
-        binary.write_bytes(b'\x89PNG\r\n\x1a\n\xff')
+            'Judea Pearl, Causality (2009); customer_id is a public API identifier.\n'))
+        (self.root / 'incident.md').write_text('ExamplePersona, account-98765\n')
+        (self.skill.parent / 'preview.png').write_bytes(b'\x89PNG\r\n\x1a\n\xff')
         errors = []
-        verifier.verify_no_episodic_identifiers(errors, self.root)
+        verifier.verify_policy(errors, [verifier.re.compile('ExamplePersona')], self.root)
+        self.assertEqual([], errors)
+
+    def test_explicit_invalid_policy_is_a_failure(self):
+        policy = self.root / 'policy.json'
+        for content in [None, '{', '[]', '{"patterns": [1]}',
+                        '{"patterns": [""]}', '{"patterns": ["["]}']:
+            with self.subTest(content=content):
+                if content is not None:
+                    policy.write_text(content)
+                errors = []
+                verifier.load_policy(str(policy), errors)
+                self.assertEqual(1, len(errors))
+        errors = []
+        self.assertEqual([], verifier.load_policy(None, errors))
         self.assertEqual([], errors)
 
     def test_every_skill_loses_coverage_when_its_cases_are_removed(self):
@@ -132,8 +151,8 @@ class SkillContractTests(unittest.TestCase):
         repo.mkdir()
         env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_')}
         env.update(GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull,
-                   GIT_AUTHOR_NAME='Kyle Tse', GIT_AUTHOR_EMAIL='hi@kylet.se',
-                   GIT_COMMITTER_NAME='Kyle Tse', GIT_COMMITTER_EMAIL='hi@kylet.se')
+                   GIT_AUTHOR_NAME='Test Author', GIT_AUTHOR_EMAIL='author@example.com',
+                   GIT_COMMITTER_NAME='Test Author', GIT_COMMITTER_EMAIL='author@example.com')
 
         def git(*args):
             return subprocess.run(['git', *args], cwd=repo, env=env,
