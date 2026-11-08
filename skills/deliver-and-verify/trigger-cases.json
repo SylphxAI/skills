@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a partial-clone CI checkout reader to batch historical source reads; prove remote request count on cold history and reuse on warm history, not just one local process.",
+      "clause": "changing source checkouts"
+    },
+    {
       "prompt": "Change a CI installer to reuse a preinstalled executable only when its exact version and SHA-256 match the pinned release; prove zero downloads and mismatch fallback.",
       "clause": "changing CI workflows"
     },
