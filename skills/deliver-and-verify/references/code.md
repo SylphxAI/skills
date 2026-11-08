@@ -589,7 +589,10 @@ comparable work coverage. When only existence is needed, joining then
 deduplicating can enumerate every matching pair; verify bounded match work in the
 actual plan, while preserving multiplicity when all pairs are required. Performance
 evidence includes reachable repeated scans and function calls, distinguishing
-repeated function planning from execution cost where applicable.
+repeated function planning from execution cost where applicable, plus cold/warm
+timings that account for cost-triggered work such as compilation. An enabled
+execution-feature setting does not establish runtime availability; verify that
+availability in the measured environment.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove an authorised durable round trip for each distinct source
