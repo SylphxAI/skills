@@ -536,7 +536,12 @@ guard, and a green schema-snapshot check can omit migration history: compare
 guarded paths and effective per-file dialects with the actual migration runners.
 Add any missing shared-engine routing as an opt-in that preserves existing
 defaults before enrolling consumer scopes, and read and run the delivery path's
-pinned guard on the actual candidate. Explicit DDL keeps known target objects
+pinned guard on the actual candidate. Where the delivery contract requires
+monotonic migration versions, a text-clean branch merge can still put new files
+below the current base's high-water mark. Verify the combined ordering against
+that current base; applied/base history stays immutable, and supported
+resequencing is limited to unpublished candidate files, preserving their SQL
+bytes and updating every reference. Explicit DDL keeps known target objects
 inspectable, and a contract reference must name a real released prerequisite.
 
 Before copying an older migration, read the actual runner's transaction, timeout
