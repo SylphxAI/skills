@@ -701,6 +701,11 @@ verify ordered delivery, remote state and painted output where those boundaries
 apply. Synthetic `KeyboardEvent` dispatch, key-listener assertions and direct
 backend text insertion bypass parts of this path and cannot prove the user's
 shortcut or gesture works.
+Browser event fields can depend on live layout: focusing a target can scroll the
+page before its handler first reads target-local coordinates. Preserve the original
+event position and reentrant callback safety across synchronous focus or layout
+effects. Exercise a layout where focus actually scrolls, then assert the original
+hit and activation; an already-visible isolated test cannot expose this boundary.
 Trusted delivery and an uncancelled event do not prove a native default ran:
 calibrate the input bridge against the actual effect in a minimal positive control,
 including generated character input when applicable, before attributing its absence
