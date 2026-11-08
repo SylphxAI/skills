@@ -709,7 +709,13 @@ behavioral negative when repairing the bridge.
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
-when the headless browser does not expose the required transition.
+when the headless browser does not expose the required transition. Keep the
+observer's scheduler live across the transition: Playwright `waitForFunction`
+defaults to `requestAnimationFrame`, which browsers can pause in hidden documents.
+For hidden/visible predicates, use bounded wall-clock polling that continues while
+hidden; a caller timeout from a suspended observer does not disprove the transition.
+Retain frame-based sampling when foreground animation timing is itself the
+acceptance contract.
 
 Establish foreground focus before measuring input-induced lifecycle changes,
 so startup transitions do not contaminate the measured sequence. Check the
@@ -743,6 +749,8 @@ the tested effect.
 
 Primary references read 2026-11-06: [UI Events keydown defaults](https://www.w3.org/TR/uievents/#event-type-keydown)
 and [Chrome DevTools focus emulation](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setFocusEmulationEnabled).
+Observer references read 2026-11-08: [Playwright polling](https://playwright.dev/docs/api/class-page#page-wait-for-function)
+and [animation-frame suspension](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame).
 
 ## App-store client releases
 
