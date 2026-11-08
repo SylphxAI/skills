@@ -118,5 +118,5 @@ Follow the open [Agent Skills specification](https://agentskills.io/specificatio
 ## 4. Stage 3: Verify Links, Format, and Trigger Discrimination
 
 Verify the changed behavior ([`../prove-it/SKILL.md`](../prove-it/SKILL.md)):
-1. **Run `python3 scripts/verify-skills.py`:** Confirm every YAML frontmatter parses via `PyYAML`, every `[...](references/...)` and `[...](../<skill>/SKILL.md)` link and `#heading` anchor resolves, zero orphan reference files exist, and zero private identifiers leak.
+1. **Run `python3 scripts/verify-skills.py`:** Confirm every YAML frontmatter parses via `PyYAML`, every `[...](references/...)` and `[...](../<skill>/SKILL.md)` link and `#heading` anchor resolves, zero orphan reference files exist, and any explicitly configured caller content policy passes. Organization-specific identifiers are not built-in verifier rules; load policy from the owning workspace when claiming that coverage.
 2. **When the trigger changes, check discrimination:** Compare held-out positive cases and unrelated negative controls. Report the prompts, runtime and results; static examples alone establish only an editorial check.

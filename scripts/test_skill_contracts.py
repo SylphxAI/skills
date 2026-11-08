@@ -1,5 +1,7 @@
 """Positive controls and mutation tests for skill metadata, cases, and references."""
 import copy
+import contextlib
+import io
 import importlib.util
 import json
 import os
@@ -7,6 +9,7 @@ import subprocess
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 
 spec = importlib.util.spec_from_file_location(
     'skills_verifier', Path(__file__).with_name('verify-skills.py'))
@@ -131,6 +134,26 @@ class SkillContractTests(unittest.TestCase):
         errors = []
         self.assertEqual([], verifier.load_policy(None, errors))
         self.assertEqual([], errors)
+
+    def test_cli_policy_selection_and_unavailable_input_fail_closed(self):
+        policy = self.root / 'policy.json'
+        policy.write_text('{"patterns": []}')
+        missing = str(self.root / 'missing.json')
+        for argv, env, selected, status in [
+            ([], {}, None, 0),
+            ([], {'SKILLS_POLICY_FILE': str(policy)}, str(policy), 0),
+            (['--policy-file', str(policy)], {'SKILLS_POLICY_FILE': missing}, str(policy), 0),
+            (['--policy-file', missing], {'SKILLS_POLICY_FILE': str(policy)}, missing, 1),
+            ([], {'SKILLS_POLICY_FILE': missing}, missing, 1),
+        ]:
+            with self.subTest(argv=argv, env=env), \
+                    mock.patch.dict(os.environ, env, clear=True), \
+                    mock.patch.object(verifier, 'load_policy', wraps=verifier.load_policy) as load, \
+                    mock.patch.object(verifier.subprocess, 'run', return_value=mock.Mock(returncode=0)), \
+                    contextlib.redirect_stdout(io.StringIO()), \
+                    contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(status, verifier.main(argv))
+                self.assertEqual(selected, load.call_args.args[0])
 
     def test_every_skill_loses_coverage_when_its_cases_are_removed(self):
         descriptions = verifier.verify_skills_frontmatter([])
