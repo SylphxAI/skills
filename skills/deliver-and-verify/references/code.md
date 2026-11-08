@@ -12,6 +12,14 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+An eligibility hold does not itself advance progress: replacing resumable state
+with a diagnostic wait loses recovery context, while retaining exclusive capacity
+forever can block every replacement. Exercise refusal, repeated holds, recovery
+and replacement from each in-flight phase: resume at retained progress or settle
+abandoned intent once outstanding effects permit it, without altering served data.
+**Wrong:** prove a paused import writes nothing; **Right:** also preserve its
+cursor on resume and let a qualified successor replace an abandoned owner.
+
 Losslessly retained token spelling does not establish domain equality or
 destination representability: derive value-defined comparisons and admission from
 the contract and destination type, retaining original bytes separately where required.
@@ -86,6 +94,14 @@ rather than inventing a selector or downsizing to obtain isolation, and state th
 remaining contention. **Wrong:** select a catalogued isolated tier that is absent
 in the target scope; **Right:** retain the served memory class until scoped
 desired and served inventories establish the isolated replacement.
+
+Percentage availability or quota rules act on integer populations with
+provider-specific rounding; adding nominal replicas can create no usable slack.
+For example, Kubernetes `minAvailable: 80%` rounds four replicas up to four
+required healthy Pods, so five healthy replicas are needed for one voluntary
+disruption ([rounding semantics](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#rounding-logic-when-specifying-percentages),
+read 2026-11-08); current controller status, matching selectors and affected
+placement determine whether that arithmetic applies.
 
 When a resource's size or tier is declaration-owned, change its owning source;
 a supported temporary live change also needs a verified reconciliation and
@@ -680,12 +696,16 @@ Test control traffic can be swallowed by the same transport a fixture mocks, and
 
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
-Call-graph membership alone cannot establish a path-sensitive violation: tie
-an exception-handler finding to the mutation reachable from its guarded operation
-and to the result observable after failure, preserving unrelated logging or
-notification catches in the same caller. **Wrong:** baseline every successful
-return in a mutation caller; **Right:** contrast a failed debit followed by success
-with a notification failure after a committed debit, using real method shapes.
+Path-sensitive exception guards connect the handler to a mutation in its guarded
+operation and the result visible after failure, preserving post-commit logging
+catches; call-graph membership alone cannot establish that violation. Outcome
+evidence includes assignment-time values, the callable that owns the return,
+exceptional completion and cleanup that can replace it; a later variable value or
+lexical return alone cannot establish caller-visible success. **Wrong:** classify
+a copied result using its source variable's later value, or report a return
+replaced by cleanup; **Right:** compare findings with independently executed
+failure outcomes in methods and callbacks, including success-returning and
+fail-closed controls.
 A shrinking findings baseline needs both current-finding equality (reject stale
 entries) and prior-identity containment (reject new exemptions); first enrollment
 must derive permitted findings from the independent base revision rather than
@@ -881,10 +901,11 @@ Test disappearance and retained-but-broken behavior independently; an explicit
 removal waiver suppresses only the local disappearance finding for an actually
 removed identity. Preserve each independent reason for selection: historical
 comparison coverage does not limit explicit requested assertions about objects
-outside that population. Offline tests that omit verb, subresource, identity or old-object
-fields establish only their modeled requests; verify alternative supported routes
-through actual selection and enforcement, with permitted controls and the intended
-denial. **Wrong:** infer a debug-update ban from create tests, or skip a requested
+outside that population. Offline tests establish only their evaluator's effective
+request context: adapters can omit or overwrite a fixture's verb, subresource,
+identity or old object. Verify alternative supported routes through actual
+selection and enforcement, with permitted controls and the intended denial.
+**Wrong:** infer a debug-update ban from create tests, or skip a requested
 permission change because its account is absent from the old audit sample.
 **Right:** exercise the alternate update route and requested objects inside and
 outside comparison coverage, proving fulfilled requests pass and unfulfilled

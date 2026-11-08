@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a payroll import that overwrites its progress cursor with a diagnostic wait and cannot resume after authorization recovers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game tournament pause change that preserves bracket progress through repeated pause and resume.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -12,6 +24,18 @@
     {
       "prompt": "Ship a document-upload recovery fix that emits its terminal notice once on repeated completion delivery, restores retry readiness and never applies success-only state on refusal.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change replica sizing for an API protected by a percentage availability budget, proving the rounded healthy-Pod threshold permits one eviction before node maintenance.",
+      "clause": "changing resource sizing or retention"
+    },
+    {
+      "prompt": "Change a Pod admission guard whose offline test adapter overwrites UPDATE and resize context with CREATE defaults, preserving ordinary updates while denying forbidden resizes.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a game trade-access policy whose fixture names the player identity but whose adapter substitutes an administrator, then verify the actual allowed and denied requests.",
+      "clause": "changing admission or access rules"
     },
     {
       "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
@@ -2226,6 +2250,30 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Fix a SaaS export writer that checks access before awaiting metadata but publishes a file after the caller loses permission.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a card-game reward worker that loses its lease during an inventory read yet still creates or updates the grant.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a provisioning access rule so revocation during an awaited resource read prevents the later cleanup delete without discarding acknowledged state.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Ship an automatic cancellation guard for a queued SaaS export; verify cancellation through the real adapter rather than inferring it from successful submission and status reads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement revocation of a temporary card-game event grant and test its separate request schema, rejected payload and lost acknowledgement without issuing duplicate grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Arm a conditional release that must leave the merge queue if its live readiness condition expires; qualify its dequeue control before relying on automatic removal.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
       "clause": "changing credential input/output guards"
     },
@@ -2240,6 +2288,21 @@
   ],
   "negative": [
     {
+      "prompt": "Compare separate pause flags and explicit suspended states for a payroll import architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether this tournament pause diff loses bracket progress; provide evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite the customer announcement that an import is paused and will resume later; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
       "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
@@ -2251,6 +2314,21 @@
     },
     {
       "prompt": "Rewrite this explanation of a cancelled upload for clarity without changing behavior or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review an API availability plan and calculate its percentage-rounding threshold without changing replicas or starting maintenance.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Check whether a published policy-test result proves UPDATE denial when its adapter replaces the request verb; do not change the policy or tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite an explanation of integer-rounded availability targets for a public operations guide without changing the deployment.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     },
@@ -3778,6 +3856,26 @@
       "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a permission check before a delayed metadata response proves authority at publication, without changing or publishing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare receiver-side authorization and lease fencing in a proposed asynchronous architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining access revocation during asynchronous work without changing behavior, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Check whether a reported cancellation actually removed the queued export, without implementing or publishing a change.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     },
     {
       "prompt": "Review the exact-source output guard and establish whether its forwarding-launcher refusal test actually executes; do not change code.",

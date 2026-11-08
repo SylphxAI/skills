@@ -136,9 +136,13 @@ snapshots can lose original history, and a complete commit graph does not prove
 historical blobs remain readable. Choose acceptance cases from actual consumer
 read paths in the consuming environment, including original HEAD/base graphs,
 SHA-only bases and requested merge bases where used; file-only checks keep their
-existing transfer scope. Measure checkout or materialization step duration
-separately from queue wait, and treat mixed runner/cache samples as observations
-rather than matched causal benchmarks.
+existing transfer scope. Measure checkout and later object hydration separately from queue wait: a
+small initial transfer can defer remote request fan-out to the consuming scan.
+Compare request count, transferred bytes and elapsed time for the same selected
+population and effective Git/tool version; preserve source coverage while batching
+missing inputs rather than extending the deadline or hydrating unrelated data.
+Treat mixed runner/cache samples as observations rather than matched causal
+benchmarks.
 
 For repeatedly used sandbox build environments, bake the pinned compiler, SDK
 and required system packages into a versioned build image rather than installing
