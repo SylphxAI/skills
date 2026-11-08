@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a CAD exporter that imports successfully but changes the renderer-selected attribute mapping; keep the original visible-defect assertion independent of structural validity.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a chart renderer whose hashes and draw counts pass despite stretched shapes; verify projected extents or silhouettes with a broken-shape control.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an incremental layout update that passes one endpoint but drifts after repeated out-and-back changes; compare recomputation throughout the supported input range.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a shared-database webhook fixture whose queued callbacks reach a later mock when the operating system reuses its listening address; preserve signature and audience assertions.",
       "clause": "changing SQL queries or fixtures"
     },
@@ -2484,14 +2496,29 @@
   ],
   "negative": [
     {
+      "prompt": "Review whether a successful import closes a reported shading defect when the original pixel check still fails; report evidence without changing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
       "prompt": "Review whether a webhook test's unique row identifiers actually isolate its retained callbacks; report evidence without changing the fixture.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
     {
+      "prompt": "Compare silhouette and projected-extent checks for a proposed diagram-rendering architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
       "prompt": "Compare per-test databases with receiver identities for asynchronous fixture isolation; do not implement either design.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of cumulative drift and repeated return-to-origin testing; edit prose only, without changing tests or publishing source.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Rewrite a documentation explanation of why a recycled network address is not a stable receiver identity; change prose only.",
