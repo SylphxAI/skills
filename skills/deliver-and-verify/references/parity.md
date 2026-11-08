@@ -86,6 +86,18 @@ renderer's adapter → pipeline → draw → mapped pixel-buffer path and pair i
 with independent reference pixels, retaining original startup/validation failure
 logs and unchanged pixel tolerances.
 
+Rendering APIs can leave sampling or reconstruction implementation-dependent,
+so descriptor validation and one exact-pixel fixture do not establish portable
+quality. Derive assertions from the documented contract: retain exact references
+for deterministic paths, independently computed bounds only for the variable
+path, and a quality case that fails without the intended improvement alongside
+its unsupported-backend control. **Bad:** require anisotropic sampling to match
+isotropic fractional-LOD colours, or widen every pixel tolerance. **Good:** keep
+exact isotropic/data results and separately prove detail retention for a grazing
+footprint across supported backends
+([Vulkan anisotropic filtering](https://docs.vulkan.org/spec/latest/chapters/textures.html#textures-texel-anisotropic-filtering),
+read 2026-11-08).
+
 Mechanism references (read 2026-11-06, Naga/wgpu 30.0.1):
 [WGSL parsing](https://docs.rs/naga/30.0.1/naga/front/wgsl/fn.parse_str.html),
 [semantic validation](https://docs.rs/naga/30.0.1/naga/valid/struct.Validator.html),

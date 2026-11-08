@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement anisotropic material sampling for a 3D card game, preserving exact data-map references while verifying grazing-angle detail and unsupported-backend fallback.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a CAD viewport reconstruction filter whose API allows implementation-dependent output, with contract-derived bounds and a quality case that detects the old blur.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change an image editor renderer and verify deterministic colour conversion separately from backend-dependent sampling without widening all pixel tolerances.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2227,6 +2239,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a rendered-image comparison actually establishes a claimed cross-backend defect without changing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two proposed viewport sampling architectures before choosing one.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite documentation explaining anisotropic sampling without changing code or test fixtures.",
+      "clause": "clear-writing for prose alone.",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
