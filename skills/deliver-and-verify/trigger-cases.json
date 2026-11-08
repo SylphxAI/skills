@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change deployment admission so a verification hold preserves every in-flight phase and a successful recheck resumes rollout.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a payroll import that overwrites its progress cursor with a diagnostic wait and cannot resume after authorization recovers.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a card-game tournament pause change that preserves bracket progress through repeated pause and resume.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2227,6 +2239,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Compare separate pause flags and explicit suspended states for a payroll import architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Review whether this tournament pause diff loses bracket progress; provide evidence without changing code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Rewrite the customer announcement that an import is paused and will resume later; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a Fetch adapter consumes a response twice; provide source evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
