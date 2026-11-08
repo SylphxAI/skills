@@ -2368,6 +2368,10 @@
     {
       "prompt": "Repair a replicated document-cache verification gate so routing changes during a proof invalidate its startup population binding.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Merge the updated integration branch into an open source branch while preserving applied migrations and fixing new migration version ordering.",
+      "clause": "changing source checkouts"
     }
   ],
   "negative": [
@@ -4035,6 +4039,11 @@
       "prompt": "Rewrite the operator explanation of an existing shard population check without changing its behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review a proposed migration renumbering for concrete defects without editing source or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
