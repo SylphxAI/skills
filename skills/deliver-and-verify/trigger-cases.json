@@ -2224,6 +2224,18 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a faster CI suite whose coverage checker confuses package and executable identifiers and rejects newly added selected tests against a stale exact count.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Change a card-game build workflow to retain its selected test inventory and prove required purchase regressions ran after partitioning.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Update a SaaS test launcher so omitted required cases fail even when substituted passing cases preserve the total count.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
