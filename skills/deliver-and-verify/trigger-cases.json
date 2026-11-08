@@ -2128,6 +2128,18 @@
     {
       "prompt": "Ship notification admission checks that measure escaped destination bytes, accept the exact column limit and reject the next byte without creating durable work.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export worker that starts an alternate delivery after a plan change despite an existing durable delivery owner; preserve ordinary first-time delivery.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game reward worker that reroutes an already accepted grant when its offer expires, distinguishing missing ownership from unreadable or foreign ownership.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a durable job controller so disabling new-job eligibility cannot bypass its recorded execution owner or create a second owner through fallback.",
+      "clause": "repairing recovery references or reconcilers"
     }
   ],
   "negative": [
@@ -3578,6 +3590,21 @@
     },
     {
       "prompt": "Rewrite an explanation of source and destination byte limits without changing source, tests or publication settings.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an accepted grant retains its durable owner after an offer expires, without implementing a fix or publishing changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare admission eligibility and durable ownership as concepts in a proposed asynchronous delivery architecture without implementing either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of an expired offer and an existing delivery owner without changing behavior, tests or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
