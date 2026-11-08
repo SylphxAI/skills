@@ -614,6 +614,10 @@
       "clause": "generating source"
     },
     {
+      "prompt": "Add reproducible source generation for binary spreadsheet fixtures whose parser tests pass but whose original cells and derivation are missing.",
+      "clause": "generating source"
+    },
+    {
       "prompt": "Replace an incorrect async test assertion that rejects valid repeated progress events, and ship bounded terminal-result coverage.",
       "clause": "implementing or shipping a feature, bug fix"
     },
