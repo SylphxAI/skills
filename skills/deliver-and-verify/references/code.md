@@ -578,9 +578,11 @@ prevents aggregate reexecution, but correlated scans of an unindexed materialize
 pool can still be quadratic. Empty-result distributions
 can reject every candidate upstream or reach costly downstream branches before
 later predicates reject them all; identical output cardinality does not establish
-comparable work coverage. Performance evidence includes reachable repeated scans
-and function calls, distinguishing repeated function planning from execution cost
-where applicable.
+comparable work coverage. When only existence is needed, joining then
+deduplicating can enumerate every matching pair; verify bounded match work in the
+actual plan, while preserving multiplicity when all pairs are required. Performance
+evidence includes reachable repeated scans and function calls, distinguishing
+repeated function planning from execution cost where applicable.
 
 When adding a variant, asset or status to a pipeline with evaluate-only and
 effectful modes, prove one authorised durable round trip: schema constraints,
