@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Pack independently run test workspaces into fewer CI jobs while preserving every failing test name in the final incident summary.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Repair CI diagnostics that upload an earlier successful test report but omit a custom test failure later in the same job.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Fix a SaaS export adapter whose reusable JSON stub hides a second Fetch body read that loses a structured refusal code.",
       "clause": "implementing or shipping a feature, bug fix"
     },
