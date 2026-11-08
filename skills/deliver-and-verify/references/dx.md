@@ -368,8 +368,14 @@ supported by that manifest and trace its checksum pin. After installation, recor
 the resolved path and version and prove the required capability through the actual
 consumer invocation and environment, including the next CI step when PATH changes
 apply there: a same-step version check can report a preexisting executable.
-Keep the checksum pinned with the version; an automatic update proposal should copy both from the release's checksum artifact
-and follow normal review, rather than fetching a new checksum at install time.
+Keep the checksum pinned with the version; update proposals derive digests from
+the release's checksum artifact or its verified contents through normal review,
+rather than fetching a new checksum at install time. Reusing image-installed
+executables is a second artifact source: verify the private bytes that will run
+against that pinned release identity before probing their exact version.
+**Bad:** accept a familiar path or version banner; **Good:** prove matching local
+bytes cause zero downloads, while a digest or version mismatch takes the
+checksum-verified pinned-download path.
 Verify the upgraded client's default workflow with the consumer's actual
 credential path: a broader maintainer login can hide scope requirements in newly
 enabled optional endpoints. A working version command or an explicitly disabled

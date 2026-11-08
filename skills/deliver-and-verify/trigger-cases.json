@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a CI installer to reuse a preinstalled executable only when its exact version and SHA-256 match the pinned release; prove zero downloads and mismatch fallback.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Ship a document converter that can reuse a mutable local compiler; verify the private bytes it executes rather than trusting the version banner.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Upgrade an engine SDK bootstrap that reuses image-installed tools; preserve pinned release identity across local reuse and downloaded fallback.",
+      "clause": "upgrading engine or SDK dependencies"
+    },
+    {
       "prompt": "Implement a campaign-code parser that accepts numeric suffixes without misrouting a longer supported alias that ends in a digit.",
       "clause": "implementing or shipping a feature, bug fix, parser"
     },
