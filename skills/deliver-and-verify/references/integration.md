@@ -32,6 +32,17 @@ selects the changed rows.
 
 ## Destructive and conditional writes
 
+A conditional action is only as reversible as its cancellation or revocation
+path: before relying on an automatic compensating action, validate its own
+request contract and exercise the intended state transition through the real
+adapter in an authorized fixture, including rejected input and lost-acknowledgement
+cases. **Bad:** a successful enable request and a working status read imply
+that an untested cancellation will work; **Good:** the cancellation request
+uses its own endpoint schema and the fixture proves the target is no longer
+active, without repeating an uncertain write. A proven pre-execution rejection
+permits a corrected request after a fresh state read; an unknown effect still
+requires [duplicate-safety reconciliation](#provider-integration).
+
 A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
 query parameter: the [API handler](https://github.com/kubernetes/kubernetes/blob/v1.36.4/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/delete.go#L95)
 decodes query options only when the body is empty (source read 2026-11-06).

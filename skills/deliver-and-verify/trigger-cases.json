@@ -2224,6 +2224,18 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an automatic cancellation guard for a queued SaaS export; verify cancellation through the real adapter rather than inferring it from successful submission and status reads.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement revocation of a temporary card-game event grant and test its separate request schema, rejected payload and lost acknowledgement without issuing duplicate grants.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Arm a conditional release that must leave the merge queue if its live readiness condition expires; qualify its dequeue control before relying on automatic removal.",
+      "clause": "publishing, editing or arming PRs"
     }
   ],
   "negative": [
@@ -3766,6 +3778,11 @@
       "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Check whether a reported cancellation actually removed the queued export, without implementing or publishing a change.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
     }
   ]
 }
