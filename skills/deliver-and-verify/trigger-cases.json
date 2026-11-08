@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Add reproducible source generation for binary spreadsheet fixtures whose parser tests pass but whose original cells and derivation are missing.",
+      "clause": "generating source"
+    },
+    {
       "prompt": "Repair export retention so an active-tenant wildcard does not retain every deleted tenant archive, while an explicit historical archive reference remains protected.",
       "clause": "changing resource sizing or retention"
     },

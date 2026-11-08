@@ -417,6 +417,14 @@ tests can reuse cached modules and hide startup or import-path failures; exercis
 affected generation entrypoints in fresh processes.
 A lockfile-only install also changes source.
 
+Passing consumer tests and a README of expected outcomes do not establish a
+binary fixture's derivation: retain reviewable source inputs and their generating
+relationship, verify the complete emitted population against the artifacts, and
+exercise the real consumer separately. **Wrong:** cite a parser's rejection as
+proof of workbook provenance; **Right:** reproduce the workbook from explicit
+cells without reading existing binaries, compare emitted bytes, and independently
+decode the intended mutation while missing or changed outputs fail validation.
+
 Requiring a generator's missing output at admission creates a circular
 prerequisite: validate canonical inputs and invariant routing before generation,
 not that missing output. Post-generation acceptance and ordinary consumer checks
