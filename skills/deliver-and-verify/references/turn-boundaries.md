@@ -10,11 +10,17 @@ self-contained step per turn and push source before ending it; a long active too
 call does not protect unpushed work from deadline loss. Do not assume the same
 limit in a runtime with a different documented contract.
 
-A launcher found on `PATH` can derive a different child executable from `HOME`
-or a toolchain directory, so discovery or a version check does not prove the
-build will start. When a failure names a missing child executable, read that
-dispatch chain and use its supported path setting with admission controls intact;
-verify the originally failing subcommand before resubmitting a long suite.
+A launcher can resolve tools from `HOME` or separate cache and toolchain homes,
+and a wrapper's exported settings reach only its descendants, so a passing
+wrapped subcommand does not establish a direct sibling command's context.
+After isolating a home, trace the actual dispatch paths, retain required proxy
+directories behind admission wrappers, and pass supported selectors to every
+entrypoint that consumes them; Rust's [CARGO_HOME](https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-reads)
+and [RUSTUP_HOME](https://rust-lang.github.io/rustup/environment-variables.html)
+are independent (references read 2026-11-08).
+**Wrong:** accept `cargo fmt --version` as proof that direct `rustfmt` works;
+**Right:** exercise the check's direct and wrapped commands under the final UID,
+`PATH` and toolchain-home settings before resubmitting, with admission controls intact.
 
 Run long builds and suites in CI. Record the submitted revision and run ID, set a
 `github:check:<owner>/<repo>@<ref>` event watch and end the turn instead of waiting
