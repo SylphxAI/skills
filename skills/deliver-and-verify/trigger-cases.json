@@ -2388,6 +2388,18 @@
     {
       "prompt": "Fix an endpoint that deduplicates independent actors sharing one source object, while preserving retry safety and source attribution.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a source guard that loses unknown values during boolean transformations and omits interface implementations from call reachability.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression coverage proving an authorization analyzer retains uncertainty across expression transforms without rejecting known constant denials.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a static exception guard and publish its independently executed interface-dispatch refusal controls.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -4065,6 +4077,21 @@
       "prompt": "Verify whether an existing PostgreSQL concurrent-index timeout was caused by snapshot waits or slow heap scanning, without changing source, deployment configuration or live state.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
+    },
+    {
+      "prompt": "Review whether an existing analyzer silently drops unknown flags without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare compiler-backed and symbolic dataflow analysis architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining unknown analysis results without changing software or publishing code.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     }
   ]
 }
