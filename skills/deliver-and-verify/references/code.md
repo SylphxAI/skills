@@ -473,6 +473,18 @@ progress; pre-aged records, hardcoded deletion or single-head success can hide
 lost work or excessive serialization. Match the claim to the observed resource
 boundary: aggregate pool-model success does not establish per-node feasibility
 or a reservation guarantee without evidence at those boundaries.
+
+Planning order is not execution order: prerequisite invariants must survive
+inventory ordering, coalescing and executor concurrency, so a failed or unconfirmed
+prerequisite cannot permit dependent effects while independent recovery can still
+progress. Verify those boundaries through the production executor with reordered
+inputs, prerequisite failure and stalled work, proving both dependency order and
+independent progress rather than globally serializing or parallelizing a batch.
+When concurrent work is tracked, retain every active identity and its own deadline
+through production tracking and reporting; a first-item projection can hide
+surviving work or attribute one operation's expiry to another, so vary completion,
+failure and expiry independently across multiple active identities.
+
 Prove refusal while the interval is still unexpired and recovery after expiry,
 with enough margin that the refusal probe cannot pass after the deadline.
 Use persistence-representable timestamps and verify encode/store/decode round

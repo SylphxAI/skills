@@ -2224,6 +2224,18 @@
     {
       "prompt": "Ship a regression proving nested work progresses when a woken admission waiter is deliberately left unpolled.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a SaaS provisioning reconciler whose coalesced writes apply restrictions before their prerequisite is confirmed, while independent recovery must keep progressing.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
+      "prompt": "Fix a card-game tournament executor that parallelizes dependent effects whenever unrelated cleanup is present.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a concurrent export status tracker that retains only the first active operation and assigns its deadline to other exports.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -3764,6 +3776,21 @@
     },
     {
       "prompt": "Rewrite a user guide explaining buffered streams and waiting, without changing code or publishing a release.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether current execution traces prove prerequisite ordering after coalescing, without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare dependency-aware concurrency and global serialization for a proposed provisioning architecture without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of per-operation status deadlines without changing software, tests or publication settings.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
