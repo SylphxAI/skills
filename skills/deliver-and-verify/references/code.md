@@ -341,7 +341,7 @@ controlled clock to keep all classes ready across slow passes, with idle and
 missed-tick controls proving that advancing time neither invents pending
 notification work nor creates an undeclared catch-up burst.
 
-Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe.
+Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe. A work deadline stops new effects, but completed-effect receipts and accounting still need a bounded finalization path that does not depend on that expired work budget. **Wrong:** exercise only a synthetic timeout exception while the real deadline remains open; **Right:** expire the production rule and enclosing-operation deadlines after a confirmed partial effect, then verify further effects stop while durable receipts and counters retain exactly the completed work.
 
 In poll-driven runtimes, waking a future does not release its resources: a
 buffered producer can stop being polled while its consumer awaits the same lock.
@@ -608,10 +608,14 @@ An output subset need not contain the dependencies needed to evaluate its rows:
 a timestamp filter can remove the true predecessor while leaving a plausible,
 non-null earlier row. Define adjacency from the authoritative ordering over the
 necessary history before restricting scored rows; time-based pruning needs a
-proven ordering guarantee or comparison with full-history evaluation.
-**Wrong:** trust a non-null `LAG` over a recent slice. **Right:** place an
-intermediate event outside that slice and independently assert its successor's
-predecessor, exposing both hidden violations and invented gaps.
+proven ordering guarantee or comparison with full-history evaluation. Output
+selection and diagnostic-history limits are separate contracts: retaining exact
+adjacency does not prove that a later attribution lookup retained its evidence.
+**Wrong:** trust a non-null `LAG` or a recent-only history match. **Right:** pin
+the clock and vary each dependency's age across the selection boundary while
+asserting the selected row's predecessor and classification independently;
+exercise historical rows through a supported historical selector, not an assumed
+full-scan mode.
 
 Execute changed SQL through the production driver, including parameter encoding
 and result decoding, against a disposable database built from the complete
@@ -731,16 +735,16 @@ Test control traffic can be swallowed by the same transport a fixture mocks, and
 
 For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
 
-Path-sensitive exception guards connect the handler to a mutation in its guarded
-operation and the result visible after failure, preserving post-commit logging
-catches; call-graph membership alone cannot establish that violation. Outcome
-evidence includes assignment-time values, the callable that owns the return,
-exceptional completion and cleanup that can replace it; a later variable value or
-lexical return alone cannot establish caller-visible success. **Wrong:** classify
-a copied result using its source variable's later value, or report a return
-replaced by cleanup; **Right:** compare findings with independently executed
-failure outcomes in methods and callbacks, including success-returning and
-fail-closed controls.
+Path-sensitive exception guards connect a guarded mutation, its actual source
+dispatch targets and the caller-visible exceptional outcome; membership alone
+cannot establish a violation, and a declared interface does not exclude its
+source implementations or inherited implementations. Transfer functions retain
+uncertainty unless semantics prove a constant result, while assignment snapshots,
+return ownership and cleanup preserve the outcome actually observed by callers.
+**Wrong:** turn an unknown operand into an empty understood value, or test only
+concrete receivers; **Right:** independently execute refusal cases through
+interface dispatch and unknown-value expressions alongside absorbing-failure,
+unrelated-receiver and post-commit logging controls.
 A shrinking findings baseline needs both current-finding equality (reject stale
 entries) and prior-identity containment (reject new exemptions); first enrollment
 must derive permitted findings from the independent base revision rather than

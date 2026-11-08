@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a billing reconciliation query whose exact predecessor remains available but whose attribution evidence disappears when that history ages beyond the output selection window.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a card-game audit query so historical reward evidence follows record order rather than the current clock, preserving the separately documented event-context limit.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Repair export retention so an active-tenant wildcard does not retain every deleted tenant archive, while an explicit historical archive reference remains protected.",
       "clause": "changing resource sizing or retention"
     },
@@ -32,6 +40,10 @@
     {
       "prompt": "Implement a campaign-code parser that accepts numeric suffixes without misrouting a longer supported alias that ends in a digit.",
       "clause": "implementing or shipping a feature, bug fix, parser"
+    },
+    {
+      "prompt": "Fix a provenance probe whose API permits an empty revision string, proving omitted, empty and known values through the executable's JSON output and exit status.",
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
@@ -2414,7 +2426,27 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
-      "prompt": "Fix a provenance probe whose API permits an empty revision string, proving omitted, empty and known values through the executable's JSON output and exit status.",
+      "prompt": "Publish an existing PR from a recovery worktree whose local branch name differs from the PR head ref; update the provider-owned target and verify its exact source SHA.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Update a fork-based PR with a verified fix while preserving its actual head repository rather than publishing a same-named branch in the base repository.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Publish a reviewed service configuration from a locally renamed checkout and verify the authorized remote resource advanced, not only that the uploaded bytes match.",
+      "clause": "authorized operational, repository"
+    },
+    {
+      "prompt": "Fix a source guard that loses unknown values during boolean transformations and omits interface implementations from call reachability.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression coverage proving an authorization analyzer retains uncertainty across expression transforms without rejecting known constant denials.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a static exception guard and publish its independently executed interface-dispatch refusal controls.",
       "clause": "implementing or shipping a feature, bug fix"
     }
   ],
@@ -4106,6 +4138,36 @@
     },
     {
       "prompt": "Rewrite a customer explanation of replay expiry and explicit retained references; do not change the collector.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past source push updated a PR or only created another remote branch; report evidence without changing or publishing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-resolved and locally configured publication destinations as proposed architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of branch names and pull request head refs without changing source or publishing anything.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether an existing analyzer silently drops unknown flags without changing or publishing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare compiler-backed and symbolic dataflow analysis architectures without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining unknown analysis results without changing software or publishing code.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }
