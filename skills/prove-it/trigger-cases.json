@@ -360,6 +360,18 @@
     {
       "prompt": "Verify a repository release status through authenticated provider metadata and prepare a safe report without copying temporary access credentials.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Verify that a SaaS repository has no legacy endpoint callers when the search glob excludes nested deployment manifests and uppercase file extensions.",
+      "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "Verify that a card-game repository has no serving compiler caller when a partial clone lists every intended path but some object bodies are unavailable.",
+      "clause": "checking that a resource or bug is absent"
+    },
+    {
+      "prompt": "Reconcile a document archive search reporting unchanged hits with an independently derived inventory containing files its effective selector omitted.",
+      "clause": "reconciling conflicting readings"
     }
   ],
   "negative": [
@@ -552,6 +564,21 @@
       "prompt": "Explain what a Git commit parent is using static knowledge, without checking a repository or live run.",
       "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill",
       "route_to": null
+    },
+    {
+      "prompt": "Explain what a Git partial clone is from static knowledge, without checking a repository or reported failure.",
+      "clause": "Static general knowledge, arithmetic and routine acknowledgements do not need this skill.",
+      "route_to": null
+    },
+    {
+      "prompt": "Implement and publish a source-materialization fix that batches missing object downloads without changing the selected input population.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Compare partial-clone and complete-clone architectures for a proposed build service without verifying an existing claim.",
+      "clause": "challenge to compare designs",
+      "route_to": "challenge"
     }
   ]
 }

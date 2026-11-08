@@ -29,6 +29,14 @@ When reviewing shared engines, verifiers or skills, test the [three architectura
 - Stop a read batch on its first quota or guard refusal. Preserve completed results and continuation state, respect the reset or supported recovery condition, and resume only what remains needed. Do not continue refused aliases, switch identities or restart a bulk scan to evade the shared limit.
 - Distinguish measured physical use from reservations, and stocks from rates over a common window. Inspection can itself refresh indexes, access times or caches; disable optional observer writes when those fields decide eligibility, or record their exact effects separately. **Wrong:** treat a verifier-refreshed timestamp as owner activity. **Right:** preserve the pre-inspection state and distinguish observer changes from the writer being measured.
 - An absence claim needs an authoritative full read; otherwise state what was read and what was not. Validate absence queries with a positive control on the same route, scope and credential. A control must remain valid across supported lifecycle states: a known record becoming archived can preserve proof of census coverage while changing its eligibility for action. Test that transition separately from an unavailable or partial census. A token that works for one store, namespace or organization does not prove read access to another, so a 404 or refusal there is not evidence of absence. With `git grep`, put paths after `--` and distinguish no match (exit 1) from a command error (greater than 1). A zero-result reconciliation also needs a fresh source and evidence that the expected population was scanned; stale or empty input can pass vacuously.
+  Search coverage needs exact set equality between an independently derived
+  expected inventory and the tool's effective selection; unchanged hit counts can
+  hide case, nesting or exclusion omissions. Metadata can enumerate paths or
+  object IDs without readable bodies, so sparse/partial materializations also need
+  the required content readable under the consumer's final credentials
+  ([source materialization](../deliver-and-verify/references/dx.md#first-useful-success)).
+  **Wrong:** accept identical hits from a widened glob; **Right:** prove population
+  equality and readable inputs, then classify the matches at the pinned revision.
   Replaying a missed pre-publication or other incremental check after a mutation
   can silently select nothing because references, cursors or caches have advanced;
   preserve or reconstruct the original selection boundary in an isolated verifier
