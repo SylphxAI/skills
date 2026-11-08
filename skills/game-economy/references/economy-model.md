@@ -1,9 +1,10 @@
 # Economy model
 
-Read when choosing pack contents, diagnosing inflation, raising a cap or
-adding progression. The equations below are accounting identities or chosen
-approximations; the [sources](sources.md) support the modeling approach, not
-universal numerical limits.
+Read when choosing pack contents, diagnosing inflation, raising a cap, adding
+progression, or configuring or announcing a server-wide currency grant. The
+equations below are accounting identities or chosen approximations; the
+[sources](sources.md) support the modeling approach, not universal numerical
+limits.
 
 ## Reconcile each resource
 
@@ -39,6 +40,36 @@ play. Averages can hide both depleted newcomers and saturated veterans.
 Set the future net issuance path from active population, desired access and
 meaningful progression demand; a growing game need not have zero net issuance.
 Use wanted voluntary sinks and new goals where they address the measured surplus.
+
+## Admit a grant by progression, not delivery
+
+Mechanical redemption proof establishes that a route credited the configured
+assets exactly once. It does not establish economic admission. Before
+configuring or announcing any server-wide currency grant, read authoritative
+balance and remaining-progression-cost distributions by tenure, progression and
+payer band, plus the target currency's current source-minus-sink direction over
+a complete comparable window. Do not substitute aggregate balances or a
+successful first grant for these measurements: the decision can otherwise skip
+newcomers past early play or reverse the intended stock trajectory.
+
+Compare the fixed amount and plausible full-uptake issuance with the intended
+progression pace, remaining useful goals and desired opening-to-closing stock
+path. When the measured objective is to reduce currency stock, a large new
+currency grant is inadmissible even if every account can claim only once.
+Evaluate a progression-proportional amount or a non-currency reward instead,
+including the alternative's acceleration and purchase-displacement effects;
+binding an item does not make those effects free.
+
+Production acceptance must prove both the intended asset deltas and **exactly
+zero unwanted-currency delta** on first and duplicate redemption attempts. A
+no-op duplicate and a single successful credit are useful execution checks,
+not evidence that the reward was economically admissible or free of side effects.
+
+Synthetic contrast:
+
+| ❌ Bad | ✅ Good |
+| --- | --- |
+| New players hold a median of 40 coins and need 200 more for early progression; a fixed grant of 10,000 credits exactly once and the duplicate attempt is a no-op. The perfectly idempotent grant still skips the intended early game and reverses a measured deflation objective. | Choose a quantity bounded by the measured next progression step, or a non-currency reward whose acceleration remains within the intended band. First and duplicate checks confirm the intended items and zero additional coins, preserving progression and the stock objective. |
 
 ## Distinguish three problems
 
@@ -107,7 +138,8 @@ When changing issuance, calculate all concurrent claims and the replacement
 content together. Preserve existing assets and bought promises. Derive the
 limit from time to exhaustion, circulation, desired access and funded delivery
 capacity; replace it when those inputs change. Neither a large nominal number
-nor a fixed fraction of purchase price establishes economic harm.
+nor a fixed fraction of purchase price establishes economic harm by itself;
+idempotent delivery does not establish economic admission either.
 
 ## Evaluate a resource bottleneck
 
