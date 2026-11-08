@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Before changing CI selection for a SaaS billing regression, resolve whether the ready pull request invokes the helper's full mode while the merge group uses its reduced filter.",
+      "clause": "changing CI workflows"
+    },
+    {
+      "prompt": "Enroll a proven missing card-game purchase integration test without replacing an already-running complete verification mode with a guessed reduced-mode configuration.",
+      "clause": "enrolling disabled tests in CI"
+    },
+    {
+      "prompt": "Publish a reviewed parser fix while preserving its head if the current ready-PR caller already runs the required database tests despite a narrower queue mode.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Publish a stacked SaaS regression PR with an author-rewriting publisher after the remote base advanced; preserve already-published ancestry and the intended two-file delta.",
       "clause": "publishing, editing or arming PRs"
     },
