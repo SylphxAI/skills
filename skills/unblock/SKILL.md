@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -188,9 +188,12 @@ to its owner without restarting healthy work or repairing an unrelated runtime.
 
 ### Build wrapper timeouts
 
-A wrapper timeout without compiler or test output establishes no code verdict.
-Read the build lease or process status and reconcile an active attempt before
-starting another. When the runtime documents or the operator authorizes an
+An adapter startup error or wrapper timeout establishes no verdict on the requested
+operation. A successful initialization and harmless probe through a documented
+entrypoint with the same identity, capability and admission bounds can distinguish
+a broken wrapper from missing authority; it does not justify switching identities
+or bypassing a refusal. Reconcile dispatch and active process or lease state before
+repeating a possibly submitted operation. When the runtime documents or the operator authorizes an
 alternate executor, use its supported entrypoint for the affected tests, with
 bounded concurrency and a timeout that fits the execution deadline. Check the
 shared machine's resource limits; an alternate executor does not override a

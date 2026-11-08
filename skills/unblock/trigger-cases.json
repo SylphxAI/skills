@@ -136,6 +136,10 @@
     {
       "prompt": "The selected configuration is present, but a build timeout may be spent in implicit startup discovery. Restore the check by separating discovery from business execution and preserving its assertions.",
       "clause": "a wrapper or test timeout leaves no compiler or assertion output"
+    },
+    {
+      "prompt": "The tool adapter cannot start before dispatch, but the documented capability server may still be available under the same identity. Restore the requested operation without changing its grants.",
+      "clause": "a tool adapter fails before execution"
     }
   ],
   "negative": [
