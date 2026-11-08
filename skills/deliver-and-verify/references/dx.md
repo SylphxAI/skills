@@ -567,6 +567,16 @@ without entering the release. Register the consumed source path in each affected
 profile, or use a reviewed exact-path exclusion with a reason. Refuse registered
 inputs that no longer exist, including paths left behind by a rename.
 
+A compatibility replacement can satisfy a historical compiler while violating
+current source-registration rules; verify both contracts over the complete
+applicable diff. Where ordinary registration cannot represent a supported
+substitution, bind its declaration to exact source and replacement paths, their
+common assembled destination, reviewed content identities and a reason, so
+missing inputs or drift on either side invalidate it without widening exemptions.
+**Wrong:** Infer release acceptance from a successful backport compilation;
+**Right:** Run the actual assembly and registration guards, retaining passing
+coverage for the declared substitution and refusals for changed inputs or destinations.
+
 A small selector diff can import an entire newer plan. Before merging an
 isolated release binding, compare the complete resolved candidate file list and
 per-path blobs and file modes with the serving plan, including inherited base
