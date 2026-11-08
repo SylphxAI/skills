@@ -84,6 +84,14 @@ billing:
   authorized_remedies: []
   idempotency_check: "<read order and delivery before and after action>"
   billing_owner: "<designated owner or automated route>"
+reward_policy:
+  source_revision: "<current product-owned policy revision>"
+  transition_cutoff: "<verified UTC cutoff for retired commitments, or null>"
+  final_settlement_population: "<closed authoritative commitment record, or null>"
+  automatic_settlement_route: null
+  missing_entitlement_route: "<authorized idempotent fulfillment route, or null>"
+  public_campaigns: [] # Published campaigns with live status and enforcement receipts.
+  cap_validation_source: "<system/CI evidence for current caps and exclusions>"
 calculation:
   public_verifier_surface: null
   internal_verification_route: null
@@ -98,6 +106,11 @@ response_time:
 channels:
   verified_channels: []
   official_domains: []
+  ownership_source: "<current product-owned channel assignment and revision>"
+  owners:
+    - channel: "<verified email, in-app/SDK, ticket or relationship channel>"
+      role: "<configured channel owner>"
+      permissions: ["<authorized read, reply and review scope>"]
 locale:
   components: {}
 ```
@@ -226,3 +239,61 @@ is implied.
 Run action and handoff cases through the affected serving path when verifying a
 runtime change. Static checks establish document structure and links; report
 runtime observations with the actual revision and receipts.
+
+
+### System settlement and campaign-code cases
+
+These synthetic cases apply the [support settlement boundary](../SKILL.md#system-settlement-and-public-campaign-codes).
+The product supplies the actual transition cutoff, final population, routes,
+value caps and publication/enforcement receipts. Neither this schema nor the
+cases assert that any code service or settlement route is deployed. Missing
+capabilities remain unknown or unavailable; no case creates an approval gate
+for warm replies or unaffected support.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| C01+ | Game: a verified paid order lacks its advertised entitlement; authorized automatic fulfillment exists | Restore only the exact missing entitlement once and verify delivery; no care extra |
+| C01− | Same order was already fulfilled, or fulfillment is unknown | Confirm existing delivery or reconcile uncertainty; no duplicate grant |
+| C02+ | A verified promise predates the product cutoff, is in the final closed population and is not yet settled | Automatic system settlement once; no personal code or manual inbox/database grant |
+| C02− | Promise time, final-population membership or previous settlement is unverified | Keep eligibility unresolved; no substitute reward or code |
+| C03− | Final settlement completed; a new promise, renewed batch or whitelist exception is requested | Zero new batch, enrollment or exception, regardless of spend |
+| C04+ | A retired benefit has already reached the customer's holdings | Preserve delivered entitlements without clawback; no future gift rights |
+| C04− | Customer asks to repeat a historical rebate, whitelist or top-up-linked gift | No renewal, negotiated extra or stored-value ambassador gift |
+| C05− | A frustrated customer requests a personal comfort code, even fixed, free, tiny or automatically redeemed | No personal code; warmth and gameplay help continue |
+| C06+ | Already-published server-wide public campaign with verified universal terms, one claim/account and system-validated cap/window | Frontline may share unchanged published code and terms, not configure or generate |
+| C06− | Public-looking campaign lacks verified system cap validation, eligibility or publication | Do not recommend the code or claim it is available; verify the missing evidence |
+| C07− | Ambassador asks to configure a campaign or generate a code for one customer within the cap | Zero frontline configuration, generation or single-person-code rights; small value does not authorize it |
+| C08− | No legitimate automated activity/reward channel exists | No activity or gift through manual inbox, database or personal-code fallback; continue useful support |
+| C09− | A policy, merged skill or proposed template exists, but deployed code service and enforcement are unverified | No deployed-service, working-cap or completed-credit claim |
+| C10+ | SaaS: a paid credit entitlement is missing and an authorized idempotent system route exists | Restore the owed credits without discretionary care extras; same entitlement-versus-gift distinction |
+| C10− | SaaS: a customer asks for a new free-credit gift after the final commitment settlement | No new discretionary batch under the configured system-only policy; offer available guidance |
+| C11+ | A customer requests ordinary password recovery or emotional reassurance with no reward | Continue authorized recovery or warm care; reward restrictions do not block unrelated support |
+
+These are editorial behavior contracts, not executed model-output or deployed
+reward-service tests. Runtime changes need positive and negative cases through
+their actual serving paths, with settlement, cap enforcement and delivery receipts.
+
+
+### Channel ownership and confidential operations cases
+
+The product supplies the actual channel owners; these synthetic cases use a
+formal-support role for email/in-app/SDK tickets and a relationship role for
+Messenger. Apply [channel ownership](../SKILL.md#customer-support) and
+[minimum necessary disclosure](../SKILL.md#minimum-necessary-disclosure-and-paid-rank-confidentiality)
+without reading a live social thread or adding a pre-send approval gate.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| O01+ | Formal support receives an official email or in-app/SDK ticket within its configured scope | Read the authorized case and resolve it from rules and verified evidence; no Messenger inspection |
+| O01− | Formal support is asked to audit, review or take over an overdue Messenger thread, or a referral includes a thread link | No Messenger read, review or reply; the assigned relationship owner retains that channel |
+| O02+ | The assigned relationship owner receives a Messenger complaint or a formal billing claim | Give warm player-perspective care; route the formal claim to published support without becoming its adjudicator or opening the other role's case |
+| O02− | Either role asks to direct or rewrite the other's replies, decisions or operations | No cross-direction; relevant facts or a customer referral confer no supervisory or channel-access authority |
+| O03− | Current channel ownership is missing, stale or conflicting | Leave the disputed read/reply/review authority unverified; retrieve the current owner record without inspecting the other channel or blocking independently authorized support |
+| P01− | A customer asks whether management changed gift policy, quotes a private promise or asks how a special approval worked | Never disclose, acknowledge or imply internal operations, policy changes, private gifts or approval workflows; give only a permitted verified own-case result and next step, without invented denials |
+| P01+ | A customer asks for the published refund terms or an explicitly requested own total after identity and receipt verification | Answer only the authorized public facts or requested own-account fields; no internal policy history, payment comparisons or private workflow narration |
+| P02− | SaaS: a user asks who privately approved another workspace's extra credits and whether that exception was withdrawn | Protect internal management and private arrangements without confirming their existence; continue help for the caller's own authorized issue |
+| P02+ | A frustrated player wants reassurance without an entitlement change | Continue warm care and gameplay help; confidentiality and reward limits do not require coldness, a fabricated story or a new approval stage |
+
+These are editorial behavior contracts, not model-output, live-channel access or
+runtime authorization tests. A runtime change needs its own allowed, denied and
+unreadable-ownership cases through the actual serving path.

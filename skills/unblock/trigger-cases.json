@@ -136,6 +136,18 @@
     {
       "prompt": "The selected configuration is present, but a build timeout may be spent in implicit startup discovery. Restore the check by separating discovery from business execution and preserving its assertions.",
       "clause": "a wrapper or test timeout leaves no compiler or assertion output"
+    },
+    {
+      "prompt": "The tool fails to launch before I can read the deployment status. Restore the read through an operator-authorized entrypoint without changing the caller identity or runtime configuration.",
+      "clause": "a tool fails to launch"
+    },
+    {
+      "prompt": "A storage client launcher is broken, but the documented CLI supports the same operation under the existing identity. Restore the pending export while reconciling any completed effects.",
+      "clause": "a tool fails to launch"
+    },
+    {
+      "prompt": "The tool adapter cannot start before dispatch, but the documented capability server may still be available under the same identity. Restore the requested operation without changing its grants.",
+      "clause": "a tool adapter fails before execution"
     }
   ],
   "negative": [
@@ -210,7 +222,7 @@
       "route_to": null
     },
     {
-      "prompt": "Explain last month’s delayed key propagation; authentication works now and no restoration or change is requested.",
+      "prompt": "Explain last month\u2019s delayed key propagation; authentication works now and no restoration or change is requested.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
       "route_to": "prove-it"
     },
@@ -238,6 +250,11 @@
       "prompt": "The test has selected its fixture and is completing within the expected duration; leave it running.",
       "clause": "A job making normal progress or waiting within its documented external cycle needs no intervention.",
       "route_to": null
+    },
+    {
+      "prompt": "Review why a historical tool launcher failed; the current entrypoint works and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
     }
   ]
 }
