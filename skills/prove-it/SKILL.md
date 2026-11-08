@@ -192,6 +192,18 @@ resubmitting an unchanged refusal.
 ready to merge." **Right:** "That run passed; the replacement still expects its
 required check and has no queue entry."
 
+Batch admission can merge an earlier entry when a later group containing it
+passes required checks while the earlier entry's smaller group remains pending.
+A bypass claim therefore needs the actual merged parent chain, effective batching
+rule and required results completed before merge on a group that contains that
+chain; a passing sibling group or a result completed after merge cannot establish
+admission.
+**Wrong:** "Its first group is pending, so the merge bypassed CI."
+**Right:** "A later containing group passed before the batch merged; confirm its
+ancestry, required results and timestamps."
+
+Source read 2026-11-08: [GitHub merge-queue grouping and required checks](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
+
 ## Shared status projections
 
 When a dashboard or provider check conflicts with a source event, trace one
