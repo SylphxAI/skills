@@ -806,11 +806,15 @@ keep the optimization enabled, supply a genuine eligible hit, and vary the
 omitted policy so reuse must be refused. Pair it with a valid-hit positive
 control so disabling reuse entirely cannot pass as the fix.
 
-An optional selector's omitted or empty value can be a valid mode with its own
-required outputs. Test that mode through the real entrypoint and assert those
-outputs as well as status: a swallowed error can keep the enclosing workflow
-green while forcing an expensive fallback. Keep malformed nonempty inputs as
-negative cases rather than weakening their validation.
+An optional field's omitted or empty value can be a valid mode with required
+outputs, or a contract-defined missing sentinel: derive each consumer's
+interpretation rather than applying a null-only check. Exercise omission,
+explicit emptiness, malformed nonempty input and a known-value control through
+the real entrypoint, asserting structured output and enclosing status; an inner
+failure can leave a workflow green or force an expensive fallback.
+**Wrong:** accept an unknown provenance string as a successful probe; **Right:**
+preserve the missing observation and its required refusal status while a
+known-value control succeeds without inventing unrelated readiness.
 
 For before/after comparisons of derived state, preserve each version's source
 inputs while giving both sides equivalent dependency availability and preparation

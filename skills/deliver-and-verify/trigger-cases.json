@@ -46,6 +46,10 @@
       "clause": "implementing or shipping a feature, bug fix, parser"
     },
     {
+      "prompt": "Fix a provenance probe whose API permits an empty revision string, proving omitted, empty and known values through the executable's JSON output and exit status.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a scheduler where one ready item changes shared owner eligibility and suppresses sibling items; prove all admitted same-owner items and an initially blocked owner in a single pass before retries.",
       "clause": "implementing or shipping a feature, bug fix"
     },
