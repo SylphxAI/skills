@@ -673,6 +673,16 @@ migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
+A locking SELECT can require authority beyond ordinary reads: exercise the actual
+consumer's transaction and lock clauses under the exact proposed grants, checking
+the server version's privilege contract before broadening access or weakening
+concurrency semantics. **Wrong:** infer `FOR UPDATE` permission from a passing
+SELECT or replace it with `FOR SHARE` to make the test pass; **Right:** retain
+the consumer query and denied-mutation controls, and explicitly authorize any
+additional locking capability, including its contention effects
+([MySQL 8.0 locking reads](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html),
+read 2026-11-09).
+
 Derive mutation targets from authoritative ownership, not enumeration or sort
 order or matching content: a foreign object can have the same schema and values
 as an owned target. Through the production mutation path, vary names, layout and order
