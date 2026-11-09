@@ -683,9 +683,12 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
   selected runner in its own job, stage and build target, with production
   evaluator/runtime versions when claimed. Use declared setup for launchers and
   dependencies or a supported native runtime; later steps cannot prepare an
-  earlier check. Execute the parsed workflow command with its effective
-  checkout/copy inputs, working directory, PATH and packages, excluding undeclared
-  workstation tools and packages.
+  earlier check. A local workflow adapter must preserve the command's effective
+  workflow/job/step environment and preceding setup outputs, not just its `run:`
+  text; an omitted input can fail before the behavior being checked. Exercise the
+  originally failing command with that complete context, including checkout/copy
+  inputs, working directory, PATH and packages, before resubmitting the suite;
+  exclude undeclared workstation tools and packages.
   Dependency preparation and offline fixture
   compilation share the same effective executor, package source and cache;
   a wrapper can place each nested command in a fresh cold lease, so a successful
