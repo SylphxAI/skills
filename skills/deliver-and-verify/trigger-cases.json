@@ -2660,6 +2660,10 @@
     {
       "prompt": "Change a game-build fixture to provide declared helper inputs through the real package command and retain failure when a required helper is missing.",
       "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Benchmark two engines after moving the measurement output into a nested run directory; verify the unchanged harness resolves its fixtures before starting the repeated population.",
+      "clause": "benchmarking engines"
     }
   ],
   "negative": [
