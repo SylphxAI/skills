@@ -12,6 +12,13 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+A guard over inherited configuration needs the affected resource's effective
+identity and merged values, not the presence of a broad configuration section;
+aliases and split tables can change the protected resource while unrelated
+entries remain valid. **Wrong:** refuse every configured mirror to protect one
+registry; **Right:** allow an unrelated mirror while refusing redirection of the
+protected source by name or identity, with inherited-field and integrity controls.
+
 Replacing an interior-mutable cache with a lock does not establish thread safety
 for its containing type: retained receivers, thread-affine handles and trait
 objects can still prevent sharing. **Wrong:** infer `Send + Sync` from the changed
