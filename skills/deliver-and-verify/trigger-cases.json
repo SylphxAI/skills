@@ -2532,6 +2532,18 @@
     {
       "prompt": "Repair a callback safety analyzer and test the callback after receiver state changes between capture and invocation.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a paginated exporter whose record and byte allowances reset between scheduler phases; preserve one operation-wide bound after interruption.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a collector whose active execution allowance expires while unrelated indexing runs between phases; preserve the separate request wall deadline.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a replay worker whose shared candidate budget is lost after an empty storage phase; verify interruption and later-phase progress.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
@@ -4337,6 +4349,21 @@
     },
     {
       "prompt": "Rewrite a user-facing explanation of constructor side effects without changing an analyzer or tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review whether a past multi-phase collector exceeded its budget without editing or running code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare active execution allowances with wall-clock deadlines for a proposed scheduler, without implementing either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a local explanation of shared resource limits without changing software or publication.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

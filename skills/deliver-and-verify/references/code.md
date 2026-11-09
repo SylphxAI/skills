@@ -375,6 +375,14 @@ notification work nor creates an undeclared catch-up burst.
 
 Bound resource use and waits according to the operation's cancellation and recovery contract: capacity, batch size, deadline or durable pending state solve different needs. When a committed fact must cross a boundary, write its publication record with the state change and make consumers duplicate-safe. A work deadline stops new effects, but completed-effect receipts and accounting still need a bounded finalization path that does not depend on that expired work budget. **Wrong:** exercise only a synthetic timeout exception while the real deadline remains open; **Right:** expire the production rule and enclosing-operation deadlines after a confirmed partial effect, then verify further effects stop while durable receipts and counters retain exactly the completed work.
 
+A logical operation's allowance spans every scheduler phase and exceptional exit;
+per-call counters can multiply a shared bound, while a saved absolute deadline
+can charge unrelated work against a component's execution allowance. Distinguish
+that allowance from an end-to-end wall deadline, which includes waits, without
+relaxing live safety checks. **Wrong:** test one uninterrupted call; **Right:**
+drive the composed caller through empty and saturated phases, long unrelated gaps
+and interruption, asserting aggregate consumption and later-phase progress.
+
 In poll-driven runtimes, waking a future does not release its resources: a
 buffered producer can stop being polled while its consumer awaits the same lock.
 Admission-state locks must not survive refill sleeps; where progress instead
