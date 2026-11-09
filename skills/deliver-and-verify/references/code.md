@@ -86,6 +86,14 @@ method names only; **Right:** put a forbidden transitive effect behind the secon
 same-name declaration and prove complete traversal without rejecting an allowed
 same-name control.
 
+Expanding an inferred input set across a dependency graph can mistake lower-level
+lookup or classification data for content consumed by the feature. Source location
+is not that boundary: use the selected configuration's declarations or causal
+dependency direction, and prove both an external producer is included and its
+underlying infrastructure is excluded. **Wrong:** fix a missed external UI library
+by treating every parser's Unicode table as displayed text; **Right:** include the
+resolved UI producer and retain a non-UI table as a negative control.
+
 ## Deployment configuration
 
 A shared readiness or admission check must distinguish an intentionally
