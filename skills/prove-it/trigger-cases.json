@@ -384,6 +384,14 @@
     {
       "prompt": "The containing merge group passed after the recorded merge time. Verify whether those checks establish admission or leave the earlier merge unexplained.",
       "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "Verify a 24-hour quota report whose cached range response shifts the requested UTC boundaries onto a different sampling grid.",
+      "clause": "verifying time-windowed usage or billing queries"
+    },
+    {
+      "prompt": "Check whether 99 percent named caller coverage on recorded counters proves complete capture across short-lived workers and a shared provider quota.",
+      "clause": "verifying a live status or metric before reporting it"
     }
   ],
   "negative": [
