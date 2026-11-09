@@ -2,16 +2,16 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Check worker reports for missed finish times and contradictory progress claims.",
-      "clause": "checking other workers' output for a broken rule, a late finish time"
+      "prompt": "The normal release interval has passed but the public store and download page still show the old version. Inspect the outward result.",
+      "clause": "checking published store releases, live sites or social posts for stalled outward results after a reasonable delivery interval"
     },
     {
-      "prompt": "Compare the reported grant with its written spending cap and report any breach.",
-      "clause": "judging whether a spend, grant or change stayed within its written limit"
+      "prompt": "Compare the settled external purchase with the account owner's authorized spending scope and cap.",
+      "clause": "checking external effects against the accountable owner's scope and authorized spending or change limits"
     },
     {
-      "prompt": "Two workers published different revenue totals. Inspect the original reports and raise the discrepancy.",
-      "clause": "two documents or workers disagree on a number"
+      "prompt": "The store settlement and live revenue dashboard disagree. Inspect both authoritative external populations.",
+      "clause": "dual-store revenue discrepancies"
     },
     {
       "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
@@ -71,6 +71,16 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Read the worker's private turn transcript and demand a fresh ETA five minutes after work started.",
+      "clause": "Do NOT use when the task is internal transcript inspection, routine progress reports or ETA solicitation.",
+      "route_to": null
+    },
+    {
+      "prompt": "Collect routine internal milestone reports even though no external result is late or broken.",
+      "clause": "Do NOT use when the task is internal transcript inspection, routine progress reports or ETA solicitation.",
+      "route_to": null
+    },
     {
       "prompt": "Verify whether this one deployment is serving the reported revision.",
       "clause": "Use prove-it to establish one claim or review a diff",

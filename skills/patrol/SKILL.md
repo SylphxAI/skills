@@ -1,11 +1,11 @@
 ---
 name: patrol
-description: "Use when checking other workers' output for a broken rule, a late finish time, spend against a cap or a contradiction, inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies, or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon: reading progress reports and group posts; a finish time passed with no new one; a worker reports changing live data, sending a grant or reverting a config; judging whether a spend, grant or change stayed within its written limit; or two documents or workers disagree on a number. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
+description: "Use when inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies; checking published store releases, live sites or social posts for stalled outward results after a reasonable delivery interval; checking external effects against the accountable owner's scope and authorized spending or change limits; or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon. Do NOT use when the task is internal transcript inspection, routine progress reports or ETA solicitation. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
 ---
 
 # Patrol
 
-Find what is late, over a limit or contradictory while it is still cheap to fix, and bring the person who can act a fact they can use. Patrol reads and reports. The owner of the work changes it. Evidence standards live in [`prove-it`](../prove-it/SKILL.md).
+Inspect actual user, customer, account and financial outcomes, and give the accountable owner verified external evidence of a scope mismatch, breach or stalled result. Patrol does not demand explanations, inspect private turn progress or direct another person's implementation. Evidence standards live in [`prove-it`](../prove-it/SKILL.md).
 
 ## External Ground-Truth Patrol vs. Self-Report Reading
 
@@ -15,26 +15,26 @@ Find what is late, over a limit or contradictory while it is still cheap to fix,
   3. **Live endpoint responses:** Probe public domains and health endpoints as an external client (without internal routing headers) to detect cached synthetic probe bodies, stale revisions, or failing routes.
   4. **Official platform, developer-account & email truths (`外部客觀真相`):** Inspect official email accounts and platform consoles for app store or developer-account warnings, payment-processor notices, ad-account/social-page anomalies, cloud/domain alerts, or statutory notices. Distinguish **Track 1 subjective user wishes** (bring inside as reference signals for domain specialists to evaluate from first principles, never as orders) from **Track 2 objective external truths** (developer-account issues, platform warnings, verified broken flows—escalate and follow through to a live resolution receipt immediately).
   5. **Post-delivery live surface & cross-domain quality spot-checks (`事後活體產出與跨視角質量抽檢`):** Without adding pre-send approval gates, sample recent shipped outputs on the live surface—such as published social posts and page follower/ad-delivery status, recent outbound VIP/support replies (checking for third-party privacy or internal-bug disclosures), and live store/checkout funnels—so blind spots and regressions are caught internally before the user has to point them out.
-  6. **Sub-agent turn progress:** Read active and idle worker transcripts, tool receipts, and commit/PR state directly.
+  6. **Responsibility and scope:** Compare the observed external action with the current authorized ownership and change contract. A role mismatch is a routing fact, not permission to take over execution or inspect private transcripts.
 - **Zero-Token Event-Driven Watcher Pattern for Webhook-Less Surfaces:** Use a lightweight zero-token script or daemon to check a webhook-less external surface and write a `.trigger` file watched via `watch: "file:..."` only when `actionable_count > 0`; verify an actionable event wakes the agent before retiring polling, without recurring LLM turns (`every: 15m/1h`). Producer access to a trigger does not prove that the watcher's identity can traverse its parent directories: a permission-denied probe leaves wake coverage unavailable, not an observed missing file. Verify the native watch probe and event delivery; when access needs repair, expose only a known-nonsecret signal path or narrowly scoped read/traverse access, preserving private payloads and unrelated paths. A live observer and trigger file are insufficient wake coverage after a one-shot subscription fires. Each handoff needs active successor and failure/exit wake coverage, with changes reconciled across the successor's registration baseline so work arriving during registration is neither missed nor repeated. Keep observation availability separate from the condition being monitored: a null, unknown or failed read cannot clear the last known incident or become a synthetic recovery transition; retain its observation time until fresh authoritative evidence resolves it. **Bad:** turn an unavailable inbox count into zero and announce recovery; **Good:** report the current count as unknown, preserve the prior finding as historical, and accept a later verified zero as recovery.
 
 ## Read the original
 
 - Read the post, pull request, ledger row or database row itself. A summary drops the detail that matters.
 - Read the payload, not its label. A title, a commit subject or a status line states an intent; the stored row states what happened. They can differ on the amount.
-- When a worker cites a table, a standard or an approval, open it and find the row. "According to the table" stays a claim until the row is on your screen.
+- Open the governing table, standard or approval before judging an external effect; a cited summary is not its authoritative row.
 - Read the whole result before saying something is missing. A `tail`, a row limit or a keyword filter can hide the row that disproves you. A high-volume sender can mix routine automation with security or account notices, so exclusions follow verified message type, not sender alone. When serial body downloads exceed the observation budget, a complete bounded header census followed by read-only/peek retrieval of candidate bodies preserves coverage; unread candidates remain explicit uncertainty.
 - An empty incremental read can mean a stale cursor. Bind the cursor to the account, folder and source generation (`UIDVALIDITY` for IMAP); a changed generation, unknown cursor provenance or live high-watermark below the saved cursor calls for a bounded source read covering the requested window before claiming silence. Preserve read-only and peek semantics when recovering email coverage.
-- Judge a worker's state by its transcript and file times. A status table can show working while nothing moves, or idle while work continues.
+- Judge outward progress through the promised external result and its actual delivery cycle. Internal status tables and private transcripts are not the patrol's evidence source.
 - Compare what runs with what is committed. A private script, a hand-edited config or a local copy can diverge from the reviewed source, and then the reviewed source tells you nothing.
-- A permission refusal on another worker's private files is a boundary. Ask for a readable copy, or read the effects in the live store.
+- A permission refusal on private files is a boundary. Inspect permitted external effects; do not solicit private transcript copies as a supervision workaround.
 
 ## Measure against a limit
 
 - Before quoting a limit, search every place it could be written: documents, contract files, code and live configuration. When two versions disagree, report both and say which result each gives. Report the conclusion that survives the loosest version.
 - State the amount, the permitted amount and the multiple, with both sources.
 - After finding one case, sweep the population for the same kind. Report the count, the total and a size the reader can judge, such as the share of the whole stock.
-- Count independently of the worker's own audit. When the two counts differ, report both and the gap instead of choosing one.
+- Count from the external authoritative population. When settlement and published analytics disagree, retain both sources and the gap instead of selecting a preferred total.
 - Separate work inside the rule from work outside it before totalling, so an automated, published reward is not counted with a custom one.
 - Before calling something over a limit harmful, read what it earned. A breach and a revenue driver can be the same thing, so report both.
 
@@ -52,28 +52,21 @@ A live change lasts from the first write until the last reader stops using the o
 - Measure what acted under the changed value inside that window, as aggregates.
 - Report three things apart: what changed, what it caused, and what is still unread.
 
-## Push a time
+## Observe a reasonable external interval
 
-- A finish time is a UTC time and a named carrier. When it passes with no new one, ask the carrier once for a UTC time or a named blocker.
-- Set a timed check for the end of the answer window. Timed wakes can be dropped while you are busy or out of quota, so after any gap run the missed checks by hand.
-- With no answer in that window, tell the person who can act: who, where it is stuck, what is known and what is not.
-- Before calling work stuck, read whether its worker is still writing. An idle worker may have slept through a dependency that has since finished, which a single wake fixes.
-- Count repeated ranges. The seventh new finish time for one outcome is itself a finding; ask what changed since the sixth.
+Use the actual release, store-review, posting, settlement or support cycle and fresh external observations to judge progress. Work that just started or remains within that cycle needs no interruption. Only after a reasonable interval without the outward result, ask when it will appear or why the external surface has not advanced; do not solicit routine ETAs, milestone reports or internal explanations.
 
-## Report and Symmetric Tension Questioning
+## Share external evidence without directing execution
 
-- Send one short message: what, where, when and source. Across an ownership line it carries facts only, never an instruction.
-- **Symmetric Tension Questioning (Overcoming RLHF Sycophancy):** When raising an issue across a domain boundary, present the conflicting primary-source facts and constraints symmetrically without embedding a disguised command or preferred conclusion in a rhetorical question, leaving the design and decision to the domain owner. Because language models trained with RLHF are biased toward sycophantic compliance when questioned by a coordinator or patrol agent, a rhetorical question (*"Why did you grant X? Shouldn't we switch to Y immediately?"*) causes the domain owner to flip-flop on a live commitment without checking whether the original action served its goal. State both competing primary facts neutrally and never ask a worker to claw back an already delivered customer commitment unless a measured input (such as verified fraud or chargeback) changed.
+- Send a concise useful fact about the external object, discrepancy or scope mismatch and its authoritative source. State uncertainty; leave domain decisions and implementation with the accountable owner.
+- An acknowledgement confirms receipt only. Read the relevant authoritative source before answering substance or routing an issue; neither a quick reply nor a report label proves the facts.
 
 ```text
-❌ Leading / rhetorical question (triggers RLHF sycophancy and commitment flip-flop):
-   "Why did you issue 500B coins to <user_name>? Isn't that over the tier cap and shouldn't you switch it to materials?"
-✅ Symmetric tension question (presents both primary facts neutrally; owner decides):
-   "In transaction #4821, <user_name> (recent spend: $1,200) received 500B positional leaderboard coins, which places them within 5% of top spender <rival_user_name> ($18,000) on the public wealth board while resolving <user_name>'s ticket. Keep the already delivered grant intact; for future mid-tier retention grants, how should the budget weigh immediate coin appeal against zero leaderboard spillover onto top spenders?"
+❌ "Send a new ETA and your transcript; why have you not changed the deployment yet?"
+✅ "The published download still serves the previous version after the normal release interval; the release page also shows the old artifact. When will the new outward version be available?"
 ```
 
-- Raise observations, questions and possible problems. Leave the method and the decision to the owner: a recommendation or a plan from patrol reads as an order, and it can stop work that was earning. Say plainly what you have not read.
-- After reporting a breach to the person who set the rule, ask the worker a few open questions as well: what went wrong, what it could lead to, and how it could be solved. Ask whether the cause is the worker or a capability the system lacks. Leave the answer to the worker; someone in the middle of the work often can't see the pattern.
+- A measured external breach does not authorize clawbacks or another operation. Preserve delivered entitlements and existing authority while the owner assesses the evidence.
 - When a read changes your number, correct it at once in the same place, showing which number replaced which and whether the conclusion moved.
 - Hold your own work to the same standard and report your own breaches with the same words.
 - Stay silent when the owner has already told the same person the same fact.
@@ -84,7 +77,7 @@ A live change lasts from the first write until the last reader stops using the o
 
 ## Read safely
 
-- Scope history searches to a named worker or conversation. A search across everything can return private chats; if it does, do not use the result, and report it.
+- Keep reads within the authorized external account and audience; never use private agent conversations as patrol input. If unrelated private data appears, stop using it and report the scope error without copying the content.
 - Masking secret-store values or URLs alone can still expose authentication codes delivered in ordinary inbox bodies. Keep credential-bearing source fields and authentication payloads out of logs and tool stdout, including expired codes; report metadata and nonsecret security context instead. **Bad:** dump a verification email after stripping URLs; **Good:** report its sender, purpose and expiry without the code or credential-bearing link.
 - Use the store's read-only role. When a store has none, say which credential you used and file the missing role.
 - Keep personal rows off the machine you read from: compare identifiers inside the query and print counts.
