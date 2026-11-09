@@ -123,41 +123,56 @@ campaign code architecture across every title:
      "A Mysterious Player" and disabling profile inspection while keeping the
      broadcast active).
 ### Non-Retroactive Commitment Boundary
-   - The non-retroactive commitment boundary applies **only to a closed
-     historical population of verified pre-cutoff player-visible written
-     obligations**. Each verified obligation in that closed set settles **exactly
-     once** with its original promised content and requires **post-claim or
-     in-game consumer effect evidence** (such as inventory, currency, or
-     equipped-item state read back after claim) — inbox message insertion alone
-     is not completed settlement. Preserve reliance and purchase history: never
-     call a verified pre-cutoff obligation a misunderstanding, substitute zero,
-     or redirect the player to a cold email instead of the promised delivery. If
-     visibility is genuinely uncertain, read the actual outbound object first;
-     never relabel an already-public pre-cutoff promise as an unauthorized
-     internal proposal.
-   - Actual prior settlement is the dedup key: an already fulfilled commitment
-     must not be granted twice. Read authoritative settlement and claim state
-     before any repeat, and never use idempotent delivery as a reason to renege
-     on a verified pre-cutoff obligation.
-   - Once the closed legacy population is settled, **zero new private
-     negotiation, zero new private written promises, and zero custom or bespoke
-     packs** are permitted. All cumulative top-up progression and VIP tier
-     rewards must run through published, automated in-game milestones
-     (recurring cumulative recharge templates and permanent cumulative VIP tiers with selector chests)
-     and transparent fixed-tier official web top-up bonuses where every player reaching
-     the same threshold receives the exact same reward automatically.
+   - **1. Verification & Single-Settlement Dedup Gate:** The non-retroactive
+     commitment boundary applies **only to a closed historical population of
+     verified pre-cutoff player-visible written obligations**. Actual prior
+     settlement is the strict dedup key: read authoritative settlement and claim
+     state first, and once a pre-cutoff obligation has been settled and claimed,
+     enforce **zero secondary grants** for that commitment. Completed settlement
+     requires **post-claim or in-game consumer effect evidence** (inventory,
+     currency, or equipped-item state read back after claim) rather than inbox
+     row insertion alone.
+   - **2. First-Principles Sanity & Zero-Spillover Calibration (`Reasonable` vs. `Uncalibrated/Excessive`):**
+     Never swing between two extremes ("reject a verified pre-cutoff promise as
+     zero" vs. "blindly grant an uncalibrated promise 1:1 or convert it into an
+     equally destructive hard-currency / end-game material dump"):
+     - **Reasonable, bounded pre-cutoff commitments** (such as a single named
+       cosmetic, the exact small shard or crystal gap needed to finish an
+       immediate upgrade step, or standard non-positional items from a missed
+       recurring milestone) are fulfilled once as promised to close the
+       obligation cleanly.
+     - **Uncalibrated or excessive pre-cutoff promises** (such as massive
+       positional leaderboard currency, thousands of end-game chests, or
+       million-unit hard-currency grants — whether sent in one message or split
+       across smaller messages that still sum into total wealth rankings) must
+       **never** be granted 1:1 and must **never** be converted into outsized
+       hard-currency or end-game material dumps that merely shift inflation from
+       one ledger to another. Calibrate and cap the one-time settlement from
+       first principles to a modest, non-positional, non-inflationary closure
+       package (such as the player's named cosmetic wish plus a small standard
+       care token, or the exact immediate upgrade gap) that achieves a clean
+       one-time closure without leaderboard spillover or progression-sink collapse.
+   - **3. Zero Post-Cutoff Private Bargaining & Live End-to-End Feature Gate:**
+     Once a pre-cutoff obligation is closed, **zero new private negotiation,
+     zero new private written promises, and zero custom or bespoke packs** are
+     permitted. All cumulative top-up progression and VIP tier
+     rewards must run through automated in-game milestones (recurring cumulative
+     recharge templates and permanent cumulative VIP tiers with selector chests)
+     and transparent fixed-tier official web top-up bonuses. Never tell players
+     an automated milestone system is "already live" until both its production
+     client UI and production backend delivery are verified live end-to-end;
+     while rollout is in progress, describe it strictly as upcoming in a future
+     update with historical top-up progress preserved.
    - Ambassadors share **only published server-wide small campaign redemption
      codes** with system-enforced caps; official customer support handles
      **only verified missing-purchase fulfillment, account-recovery, statutory,
-     and technical remedies**. New economic admission governs all future
-     campaigns, codes, packages, and replies; new large-currency promises remain
-     inadmissible under the progression and faucet/sink model.
+     and technical remedies**.
 
 Synthetic contrast:
 
 | ❌ Bad | ✅ Good |
 | --- | --- |
-| A player lies in the verified pre-cutoff written-commitment set for 10,000 coins; reject the amount as excessive, offer zero, or treat an unclaimed inbox row as final consumer verification. Later, an ambassador negotiates a new post-cutoff custom VIP pack in private chat. | Settle the closed pre-cutoff obligation for 10,000 coins exactly once, verify post-claim in-game consumer effect, and grant nothing again once settled. Refuse all post-cutoff private promises or custom packs; route cumulative progression through automated permanent VIP tier milestones and fixed-tier web bonuses, limit ambassadors to server-wide campaign codes, and restrict support to verified missing-purchase, account-recovery, statutory, and technical remedies. |
+| Swing between extremes on a pre-cutoff promise: either flatly refuse a verified pre-cutoff promise with zero, or blindly grant an uncalibrated promise (such as millions of leaderboard coins, or converting it into 1,000,000 premium gems and 1,000 end-game chests, or granting a second payout after an earlier 6-mail settlement was already claimed). Tell players the new automated VIP tier milestones are already live while the client UI is unreleased and the backend store returns `503`. | Verify the pre-cutoff written record and prior claim state first (zero secondary payouts once settled). Fulfill reasonable bounded promises (e.g., an exact 44-shard upgrade gap or standard non-positional milestone shards) once; calibrate and cap excessive historical promises to a modest non-positional closure package (e.g., the player's named cosmetic coat plus 30 material boxes, with zero leaderboard coins and zero million-gem dumps), verify post-claim consumer effect, and describe unreleased client/backend milestone features strictly as upcoming with historical progress preserved. |
 
 
 ## Measure a gift's real cost
