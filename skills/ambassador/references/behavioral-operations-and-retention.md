@@ -67,24 +67,23 @@ Test the mechanism with voluntary participation, useful feedback, qualified refe
 
 ## 2. Three-tier support and retention grant matrix
 
-These tiers govern discretionary ambassador care, onboarding, and retention gifts. Apply the [retail valuation and discretionary grant caps](../SKILL.md#retail-valuation-and-discretionary-grant-caps) before using any tier or numerical dialogue example; neither a tier nor a company application overrides those ceilings. Paid-delivery restoration and mandatory billing remedies remain separate official support obligations; a care cooldown never delays them. Product configuration sets budgets, eligibility, and cooldowns. A budget permits generous care; it is not a demand for proof of legal loss or another purchase before helping.
+These tiers govern automated retention milestones, onboarding, and public campaign gifts. Apply the [retail valuation and automated milestone caps](../SKILL.md#retail-valuation-and-automated-milestone-caps) before using any tier or numerical dialogue example; neither a tier nor a company application overrides those ceilings. Paid-delivery restoration and mandatory billing remedies remain separate official support obligations; a care cooldown never delays them. Product configuration sets budgets, eligibility, and cooldowns. A budget permits generous care; it is not a demand for proof of legal loss or another purchase before helping.
 
 Before adjudicating any user issue, rival complaint, or goodwill request, read each party's historical (lifetime) and recent payment totals from the authoritative payment store (`Step 0 LTV & Payment-History Weighting`): weight internal prioritization, leeway, and goodwill tiers proportionally to lifetime and recent spend (siding with paying users over non-paying users, and higher spenders over lower spenders), while keeping external copy polite and neutral without ever disclosing payment-based favoritism. Once a remedy, compensation, or goodwill grant has been delivered and communicated to a paying user, maintain **commitment stability**: never claw it back or flip-flop, as an operator or lead question asks to understand facts and does not alter a delivered decision unless a measured input (such as verified chargeback or fraud) changes.
 
 | Tier | Target segment | Eligibility and cooldown | Permitted grant composition | Boundary |
 | --- | --- | --- | --- | --- |
-| **Tier 1 — Starter / non-payer activation** | New or unpaid users | Verified account; product-defined activation budget | Useful starter allowance, bound trial items, or cosmetics | Fund repeat care from an approved retention budget and measure net contribution and sales displacement; larger care uses the company application path |
-| **Tier 2 — Player and guild care** | Unhappy players or guilds, including verified mid-tier (`T1/T2`) payers after frustration or service trouble | Product-defined retention budget and cooldown; no legalistic proof of loss | Generous non-positional progression items (upgrade materials, protection stones, skill cards, bound gems, retry credits, cosmetics) matched to actual needs | Zero leaderboard spillover: never grant large amounts of positional leaderboard currency to `T1/T2` payers that dilute top spenders' (`T0`) public rank ([`../../game-economy/SKILL.md`](../../game-economy/SKILL.md)); preserve existing gains |
-| **Tier 3 — Order-backed milestone and VIP care (`Track B Standard <=10%` vs. `Track A Frozen Legacy Whitelist`)** | Paying and high-value (`T0`) users | Verified paid order or cumulative-spend milestone (`1 Order = 1 Bonus Grant`); Track B strictly `<= 10%` of verified cash paid; Track A limited to frozen point-in-time legacy whale snapshot (`exit-only`, zero new entrants) | Track B: complementary bound progression assets within `<= 10%` cap. Track A: 1-to-1 private bank-transfer / FPS concierge (settled arrival only, never screenshots) and standard bound bottleneck materials (`御用點菜`) delivered silently to private inbox | Never exceed purchased principal on Track B or open Track A precedents to new players; enforce 100% low-profile confidentiality (zero exclusive badges, marquees, or public announcements) so new players and new whales experience 100% fair public rules |
+| **Tier 1 — Starter / non-payer activation** | New or unpaid users | Verified account; product-defined activation budget | Useful starter allowance, bound trial items, or cosmetics via automated onboarding or server-wide public campaign codes | Fund repeat care from an approved retention budget and measure net contribution and sales displacement |
+| **Tier 2 — Player and guild care** | Unhappy players or guilds, including verified mid-tier (`T1/T2`) payers after frustration or service trouble | Product-defined public campaign or automated event budget | Non-positional progression items (upgrade materials, protection stones, skill cards, bound gems, retry credits, cosmetics) via server-wide public campaign codes | Zero leaderboard spillover: never grant large amounts of positional leaderboard currency to `T1/T2` payers that dilute top spenders' (`T0`) public rank ([`../../game-economy/SKILL.md`](../../game-economy/SKILL.md)); preserve existing gains |
+| **Tier 3 — Automated permanent cumulative VIP tier milestones & fixed-tier web bonuses (`Zero Bespoke Offers`)** | Paying and high-value (`T0`) users | Verified cumulative top-up thresholds (`VIP 1–10` permanent tiers, recurring cumulative recharge templates, and fixed-tier official web top-up bonuses) | 100% automated in-game selector chests and non-positional progression materials (`<= 25%` Clean-USD marginal and cumulative ceiling, zero positional leaderboard currency) | Zero private bargaining, zero manual per-order DM rebates, and zero custom off-menu bundles (`Bespoke Offers`); ambassadors provide emotional companionship and share server-wide uniform public campaign codes only |
 
 ### Auditable grant execution contract
 
-Generous care must preserve the upgrade sink and leave an attributable receipt;
-Track A privileges change approved budgets, not execution or progression rules.
+Generous care must preserve the upgrade sink and leave an attributable receipt.
 
 - **Grant API only:** All item, currency and progression grants resolve a
   **Canonical Slug**, never a memorized integer ID, and validate `expected_name`
-  and `expected_fun_type` against the serving catalog. Requests carry
+  and `expected_container_type` against the serving catalog. Requests carry
   `idempotency_key` and an order-backed grant's `verified_order_id`. Raw SQL
   (`INSERT INTO mail`, `UPDATE skill_card`) and direct progression edits are
   forbidden. The transactional append-only `grant_audit_log` records accepted
@@ -92,10 +91,10 @@ Track A privileges change approved budgets, not execution or progression rules.
   leaves state unchanged but its audit evidence persists.
 - **Seed the base, preserve the sink:** Paid-order bonuses and missing-item
   restorations grant only unowned `Lv.1` rare base cards/artifacts
-  (`allow_skill_card_lv_above_1 = false`, `unowned_first_copy_only = true`),
-  including grandfathered Track A whales. Add useful sink-matched upgrade
-  materials dosed to a `Taste` or milestone recipe cliff, never pre-maxed
-  `Lv.50` items or edits to `skill_card.lv`. Skipping upgrades destroys material
+  (`allow_skill_card_lv_above_1 = false`, `unowned_first_copy_only = true`).
+  Add useful sink-matched upgrade
+  materials dosed to a milestone recipe cliff, never pre-maxed
+  `Lv.50` items or edits to skill-level tables. Skipping upgrades destroys material
   demand and rewards complaints with bypassed progression (moral hazard).
   For scale, a quality-7 `Lv.1 -> Lv.50` recipe requiring `8,177,760 EXP` consumes
   `10,223` UR800 EXP cards; verify the serving recipe rather than treating that
@@ -107,7 +106,7 @@ Track A privileges change approved budgets, not execution or progression rules.
   pack bonuses only after authoritative in-game voucher redemption/consumption;
   an unspent wallet balance is not a consumed pack purchase.
 - **Receipt before announcement:** Only the Grant API's verified database
-  receipt (`mail.id` + validated attachments) establishes mail/item delivery.
+  receipt (inserted mail ID + validated attachments) establishes mail/item delivery.
   Request acceptance, queued work and an HTTP success alone do not justify
   telling the player it has been sent.
 - **100% Commitment Honor Before Transition (Never One-Size-Fits-All Cut Off Spoken Promises):**
@@ -135,17 +134,17 @@ Track A privileges change approved budgets, not execution or progression rules.
   2. **Universal public campaign redemption codes (`全服統一公開小禮包兌換碼`):**
      Sharing public server-wide campaign codes where all players benefit equally
      (zero single-player comfort or negotiated codes; see
-     [`../../game-economy/SKILL.md`](../../game-economy/SKILL.md#bottleneck-first-high-ticket-vip-bespoke-pricing-primary-source-item-template-verification)).
+     [`../../game-economy/SKILL.md`](../../game-economy/SKILL.md#automated-permanent-cumulative-vip-tier-milestones-fixed-tier-web-bonuses-primary-source-item-template-verification)).
   3. **Guiding users to existing in-product or official web events/vouchers and
      permanent in-product VIP tier systems:** All VIP progression and top-up
      rewards run 100% through transparent, deterministic in-product systems (such
-     as permanent cumulative VIP 1–10 tiers and in-product milestone events).
+     as permanent cumulative VIP 1–10 tiers with selector chests and transparent fixed-tier official web top-up bonuses).
   - **Permanent abolition of private top-up bargaining and bespoke item bundles
     (`Bespoke Offers`):** Do not privately negotiate custom item bundles tied to
     a user's next top-up, do not run manual per-order DM rebate composition, and
     do not promise off-menu items in exchange for a purchase, with **zero new
     manual gifts**, **zero whitelist vs. non-whitelist distinction**, and **zero
-    database writes** (`INSERT/UPDATE/DELETE` on `mail_task` or `chat_log`).
+    database writes** (`INSERT/UPDATE/DELETE` on mail or chat tables).
 
 **Contrast:** ❌ Promise a whale a max-level card, insert mail by integer ID and
 reuse the wallet-funding order for another bonus. ✅ Verify an unowned base slug,
@@ -161,7 +160,7 @@ Apply behavioral economics and psychology across ambassador and VIP touchpoints 
 - **Behavioral mechanism:** Under the **Labor Illusion** (Norton, Mochon & Ariely, 2011) and **Reciprocity** (Cialdini, 2009), an instant, effortless handout feels disposable, whereas a grant that reflects account review and an Ambassador advocating to the company on the user's behalf—either against a pre-approved quota or via a formal escalation application—creates strong emotional appreciation and reciprocity while keeping decision authority with the company.
 - **Execution rule:** Check the customer's account or match history, submit the grant through the pre-approved quota or formal application workflow, and communicate your personal advocacy in a natural first-person voice. Never promise an unapproved extra before approval. Apply approved care immediately; never manufacture artificial waiting time.
 
-| ❌ Bad (instant, robotic handout that feels worthless) | ✅ Good (high-effort bespoke advocacy and reciprocity framing) |
+| ❌ Bad (instant, robotic handout that feels worthless) | ✅ Good (high-effort personal advocacy and reciprocity framing) |
 | --- | --- |
 | *"Here is a free code for 1,000B coins."* (Gives no personal context or useful purpose.) | *"I got you upgrade stones. They’re in your inbox for your next level."* |
 | *"Gift sent to inbox."* (Zero emotional connection or perceived effort.) | *"Your starter gift is ready. Use WELCOME in Settings → Gift Code."* |
@@ -173,20 +172,20 @@ Apply behavioral economics and psychology across ambassador and VIP touchpoints 
 
 | ❌ Bad (passive tier listing with no personal momentum) | ✅ Good (endowed progress and exact remaining delta) |
 | --- | --- |
-| *"The HK$1,500 tier gives 15T coins and an outfit."* (Feels distant and impersonal.) | *"You have completed 9 of the 10 collection tasks; one more unlocks the outfit. Your approved upgrade materials are in your inbox."* |
+| *"The US$200 tier gives 15T coins and an outfit."* (Feels distant and impersonal.) | *"You have completed 9 of the 10 collection tasks; one more unlocks the outfit. Your approved upgrade materials are in your inbox."* |
 
-### 3.3 Zeigarnik complementary assets and bottleneck-first whale bespoke offers
+### 3.3 Zeigarnik complementary assets and automated VIP tier selector chests
 
 - **Behavioral hypothesis:** Partial progress toward a valued composite goal (such as upgrade protection materials, character/artifact shards, or SaaS workflow templates) encourages completion (Zeigarnik, 1927). Measure useful completion, return play, purchase displacement, and contribution for the actual offer.
 - **Execution rule (Permanent Steady-State Scope — System Event & VIP Tier Guidance Only; Zero Private Bespoke Offers):** Once pre-existing spoken commitments are settled (`#auditable-grant-execution-contract`), **never privately negotiate custom item bundles tied to a user's next top-up, never run manual per-order DM rebate composition, and never promise off-menu items in exchange for a purchase**. Instead, use silent backend context (`後台查全量、前台講分流`: live slot levels, warehouse balances, and `Lv.20–30` vs. `Lv.31–50` recipe transitions) to guide the user to existing deterministic in-product or official web events, selectable milestone chests, and permanent cumulative VIP tiers (such as VIP 1–10):
   1. **Inspect live slots + inventory + recipe cliffs silently:** Read equipped item/skill levels, warehouse balances, and upgrade templates before answering progression or event questions; never recommend an existing chest option that duplicates materials the player already holds in surplus (`10,000+` units).
   2. **Guide to existing in-product selectable chests and permanent VIP tiers:** Point out which existing in-game event tier, official web voucher pack, or permanent VIP 1–10 selectable chest option clears their immediate recipe cliff (e.g., `760` shards to advance `Lv.30 -> Lv.31` so they can use hoarded high-tier materials), without inventing private DM deals.
-  3. **Verify `ItemTemplate` (`funType`) and recipe math before explaining:** Confirm the serving template's exact item quantities, permanence (`day: -1`), and unlocked levels so in-product event and VIP tier guidance is 100% accurate.
+  3. **Verify the item template table (`container type`) and recipe math before explaining:** Confirm the serving template's exact item quantities, permanence (`day: -1`), and unlocked levels so in-product event and VIP tier guidance is 100% accurate.
 
 | ❌ Bad (private DM bundle bargaining or uncalibrated currency dump) | ✅ Good (guiding to existing deterministic in-product events & VIP selectable chests) |
 | --- | --- |
 | *"Here are 500T free coins."* (An uncalibrated currency grant; sales displacement and retention need measurement.) | *"You can claim the active public campaign code in Settings → Gift Code, and check the in-game milestone event for upgrade boxes."* |
-| *"Top up HK$1,576 and I'll privately bundle 300 Fine Shards + 50 Rocks for you in DM."* (Violates the permanent ban on private top-up bargaining and bespoke off-menu bundles while pitching surplus rocks.) | *"Reaching Lv.31 takes 760 Fine Shards per slot so you can start using higher-tier materials. In the active in-game event and permanent VIP tier selectable chests, picking the Fine Shards option clears 2 slots past Lv.31 right away."* |
+| *"Top up US$200 and I'll privately bundle 300 Fine Shards + 50 Rocks for you in DM."* (Violates the permanent ban on private top-up bargaining and bespoke off-menu bundles while pitching surplus rocks.) | *"Reaching Lv.31 takes 760 Fine Shards per slot so you can start using higher-tier materials. In the active in-game event and permanent VIP tier selectable chests, picking the Fine Shards option clears 2 slots past Lv.31 right away."* |
 
 ### Silent context vs. requested audit (`後台查全量、前台講分流`)
 
@@ -363,7 +362,7 @@ When a frustrated player explicitly demands that an uncollected ambassador care 
    - Never retract a mail whose attachment was already claimed (`receive = 1`), and never touch paid order deliveries.
 3. **Audit-Safe State Transition (`receive = 0, delete = 1, deleteType = 2`)**:
    - Execute retraction via the audited grant/retraction service (`retract_unclaimed_care_mail`); no raw-SQL fallback.
-   - **Never set `receive = 1` on a retracted mail**: `MailJooqDao.getDBMails` filters strictly on `delete = 0`, so `receive = 0, delete = 1, deleteType = 2` immediately removes the mail from the player UI (`GetMsgMailsReq_4001/4006`) and blocks attachment claiming (`ReceiveMsgMailReq_4003`), while preserving 100% audit truth that the attachment was **never claimed (`receive = 0`)**.
+   - **Never set `receive = 1` on a retracted mail**: the mail query handler filters strictly on `delete = 0`, so `receive = 0, delete = 1, deleteType = 2` immediately removes the mail from the player UI (`mail list handler`) and blocks attachment claiming (`mail claim handler`), while preserving 100% audit truth that the attachment was **never claimed (`receive = 0`)**.
 4. **Anti-Pendulum Rule — Proactive Emotional Companionship & System Event Guidance Without Private Bargaining (`主動關懷傾偈＋引導現有系統活動與公開兌換碼，零私下議價／零 Bespoke Offer`)**:
    - `Silent Context` forbids reciting raw backpack counts (*"你背包有 137 個禮包"*), and **Permanent Scope Convergence** forbids private top-up bargaining, bespoke item bundles (`Bespoke Offers`), and manual per-order DM rebate composition—neither rule makes the ambassador passive in friendship.
    - Proactively reach out 1-to-1 with warm emotional companionship (celebrating big wins, comforting tough hands, chatting about everyday life), share universal public campaign codes (`全服統一公開小禮包兌換碼`), and guide users as an insider friend to the highest-value **existing in-product or official web events, vouchers, and permanent cumulative VIP tiers (e.g., VIP 1–10)** without hard-selling price numbers (`388/788`) or promising off-menu items.
