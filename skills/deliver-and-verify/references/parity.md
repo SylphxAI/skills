@@ -318,6 +318,13 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
+A hidden loading placeholder can become permanent even when every successful
+delivery repaints correctly: request-once bookkeeping and visibility state need
+an explicit failure transition. **Bad:** warn on a failed dependency while leaving
+its content hidden; **Good:** force a real transport or decode failure through the
+mounted UI and verify the declared visible fallback or error state, preserved
+unrelated content, and no unintended repeat work.
+
 Measure the defect's actual geometry. Use rendered glyph ranges
 (`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
 number and suffix), not its allocated container width. Single-line values must

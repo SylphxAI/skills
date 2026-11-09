@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix lazy-loaded text that stays invisible after its first font request fails; verify the mounted fallback and unchanged neighboring content.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair an asynchronous report widget whose warning logs do not release its hidden loading state after a decode failure.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add a game asset failure transition that renders a visible fallback without retrying every animation frame.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2599,6 +2611,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a lazy widget's failed-request evidence establishes permanent invisibility; do not change source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare retry, fallback and error-state designs for asynchronous UI content without implementing one.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a loading-error help message and no other files.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review the evidence for a protocol fixture rejection and identify whether the client or fake violates the contract; make no changes.",
       "clause": "prove-it for a review or evidence check",
