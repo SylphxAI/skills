@@ -16,6 +16,13 @@ Prioritize product behavior and measured harm. Apply existing authority, data an
 - Secrets stay out of source/history, logs, chat/transcripts, URLs and third-party renderers. Read them in-process for an authorized operation and deliver replacements through an authorized secret store or encrypted sharing. Contain an exposure promptly and rotate/revoke at the provider when it reaches an unauthorized/public surface, within the existing grant; deleting the local copy does not revoke it.
 - Resource identification does not grant access. Check the actual resource's permission and keep delegated credentials isolated by tenant/principal.
 
+A stored permission marker is trusted only if every route that can seed, change
+or remove it enforces the declared writer authority; guarding updates alone
+leaves creation open, and absent-versus-empty can change the decision. **Bad:**
+protect an approval field on update while any creator can initialize it;
+**Good:** refuse unauthorized creation, replacement and removal while allowing
+ordinary creation without the marker and unrelated maintenance with it unchanged.
+
 ## Practices
 
 Use the authorized store and custody model for each product/provider. Keep reusable secrets concealed and isolate shared-machine sessions where principal/tenant separation requires it. Record security/dependency-alert outcomes accurately as fixed, rotated or dismissed with a reason.

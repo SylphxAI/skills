@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "On official support, guide a consumer-app user through an export feature only after verifying their installed app/version/build, current open rollout and visible entry point with fresh product-owned evidence.",
+      "clause": "feature availability"
+    },
+    {
+      "prompt": "A player asks official support where to claim synthetic VIP1–10 tiers that exist only in a plan, merged main or review; do not describe them as existing or invent navigation, and offer only a verified current alternative.",
+      "clause": "feature availability"
+    },
+    {
+      "prompt": "An official support ticket asks for an event whose flag is off or not yet open for this cohort, or whose shipped build is newer than the user's installed version; withhold current-feature guidance.",
+      "clause": "feature availability"
+    },
+    {
+      "prompt": "A support customer supplies only a screenshot and asks how to use a feature; installed version or current open state is unknown, so ask for missing version/build or current evidence rather than guessing steps.",
+      "clause": "feature availability"
+    },
+    {
+      "prompt": "On official SaaS support, describe a backend-only automatic-sync feature only when the installed client/build, applicable current rollout and actual current effect are verified; backend deployment alone never proves an effect or a menu.",
+      "clause": "feature availability"
+    },
+    {
+      "prompt": "A player asks official support for an already-published public campaign code; verify current live availability and the user's installed build and rollout scope as well as common eligibility and system caps before sharing unchanged terms.",
+      "clause": "campaign-code inquiries"
+    },
+    {
       "prompt": "A customer says a paid purchase is missing. Resolve it from verified product facts.",
       "clause": "missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices"
     },
@@ -115,6 +139,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Implement a live shipped-version evidence source and its consuming-path checks; no support ticket is being handled and an offline editorial contract is not a runtime guard.",
+      "clause": "deliver-and-verify to implement a fix",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "File a bug outcome for a game event advertised as open while the old installed client has no entry point; do not handle a customer reply or claim runtime enforcement.",
+      "clause": "author-item to file a bug outcome",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Rewrite general release-note prose to distinguish planned work from a shipped version, with no customer support case or product-state verification task.",
+      "clause": "clear-writing for general copy",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Chat with a player in character as the game ambassador to comfort them after a loss streak.",
       "clause": "Use ambassador for in-character ambassador or playmate companionship",

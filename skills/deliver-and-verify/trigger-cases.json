@@ -14,6 +14,18 @@
       "clause": "benchmarking engines"
     },
     {
+      "prompt": "Change a Kubernetes teardown admission rule that trusts namespace annotations; prevent other callers from seeding proof during CREATE as well as changing or removing it during UPDATE.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a SaaS approval guard whose protected field is restricted on update but can be initialized by any record creator; preserve ordinary creation and unrelated maintenance.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a game reward authorization marker that treats missing and empty fields alike even though one authorizes a grant; test unauthorized creation, replacement and removal.",
+      "clause": "changing admission or access rules"
+    },
+    {
       "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
       "clause": "implementing or shipping a feature, bug fix"
     },
