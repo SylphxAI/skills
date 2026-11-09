@@ -372,6 +372,10 @@ ends the batch. **Wrong:** prove cursor movement or a larger deadline; **Right:*
 interrupt the real scan budget before population exhaustion and prove completed
 eligible effects plus later-candidate and later-owner progress across fresh passes,
 with current eligibility rechecked and dry-run progress unchanged.
+An alternate removal path inherits the existing path's preservation contract:
+producer identity and absent primary input do not replace live ownership or
+embedded-source checks; test a dormant owner, unavailable ownership evidence and
+unexpected retained content alongside a genuinely unowned disposable control.
 
 A fixed-priority selector can starve eligible notifications or other timers when
 one periodic pass exceeds its interval and is overdue again at every selection;
