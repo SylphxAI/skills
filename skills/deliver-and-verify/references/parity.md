@@ -218,10 +218,16 @@ the engine's verdict.
    report actual capture/analysis gaps and observer overhead; a polling sleep is
    not the measurement's time resolution.
 5. Separate raw export bytes, compressed export bytes, startup response-body bytes
-   and actual network transfer. Name the compression settings and request census;
-   a server's completed write does not prove client receipt or wire bytes. Retain
-   startup phases and cache policy ([performance.md](performance.md)); do not
-   silently substitute archive size or engine-ready time for the user journey.
+    and actual network transfer. Name the compression settings and request census;
+    a server's completed write does not prove client receipt or wire bytes. Retain
+    startup phases and cache policy ([performance.md](performance.md)); do not
+    silently substitute archive size or engine-ready time for the user journey.
+    An asset's extension and smaller authored size do not establish its delivered
+    representation: packers may transcode or normalise it. **Wrong:** claim a
+    smaller image or document from source bytes alone; **Right:** inspect staged
+    and served signatures, MIME type, byte counts and real-consumer decoding,
+    proving byte identity when preservation is promised and explicit conversion
+    when required metadata prevents it.
 6. Report bounded conclusions with versions, workload, environment, uncertainty
    and unresolved acceptance cases. A serial entity-component-system (ECS) loop
    microbenchmark does not establish scheduler, rendering or whole-engine parity;

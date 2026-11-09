@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix an image packager that inflates smaller authored assets during staging while retaining their original extensions; verify actual served bytes and consumer decoding.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement byte-preserved document exports, keeping explicit conversion for metadata that the destination consumer cannot represent.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Benchmark an engine's compressed asset transfer after packaging, matching staged signatures, response MIME and source-versus-served size rather than assuming source size survives.",
+      "clause": "benchmarking engines"
+    },
+    {
       "prompt": "Change a Kubernetes teardown admission rule that trusts namespace annotations; prevent other callers from seeding proof during CREATE as well as changing or removing it during UPDATE.",
       "clause": "changing admission or access rules"
     },
