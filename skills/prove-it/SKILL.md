@@ -68,6 +68,11 @@ before/after latency claims, read [API latency evidence](references/api-latency.
 It covers parser and coverage controls, duplicate records versus proxy hops,
 observation boundaries, failed requests and comparable follow-up windows.
 
+For repeated launch trends or shared-host regression claims, read
+[measurement comparability](../deliver-and-verify/references/performance.md#repeated-measurements-and-shared-host-contention).
+For image-based readiness or artifact-size verdicts, use the
+[performance standard](../deliver-and-verify/references/performance.md).
+
 For fleet resource censuses, historical worker concurrency, idle replica floors or claimed capacity releases,
 read [fleet capacity evidence](references/fleet-capacity.md). It separates
 physical use, controller minima, admitted Pod requests, traffic evidence and
