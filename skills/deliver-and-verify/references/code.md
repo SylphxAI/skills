@@ -967,13 +967,14 @@ specified date string; a transport retry change needs no formatting cases.
 Source-API refusal and out-of-band tamper detection prove different boundaries and need separate fixture routes and assertions. Exercise forbidden writes through the source API; construct tamper directly on disk and assert its detection/count independently. **Bad:** require the API to accept a forbidden write to seed a tamper count; **Good:** retain the API refusal and seed the tamper fixture without that API.
 
 A negative test can pass for the wrong failure when setup refuses before the
-injected fault. Assert the specific typed refusal or root cause, print the full
-error chain on mismatch, and verify that substituting an unrelated fault makes
-the assertion fail. For expected compiler failures, match machine-readable diagnostic
-codes plus the intended source/API identity, never compiler English wording.
-**Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
-the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
-fails that same assertion.
+injected fault: pin the clock and own every dependent observation in a
+self-contained fixture, rather than refreshing one timestamp in a live snapshot.
+Require a working positive control and the specific typed refusal, so an unrelated
+staleness failure cannot satisfy it; compiler refusals bind machine-readable codes
+to the intended source/API identity, not English wording.
+**Wrong:** refresh the root timestamp and accept any error while nested evidence
+expires; **right:** keep all fixture observations consistent with a fixed clock
+and require the changed-price refusal, not a stale-heartbeat refusal.
 
 When a parser promises contextual errors, test invalid input through flattened
 and dynamically named maps as well as ordinary typed nesting: intermediate
