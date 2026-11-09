@@ -683,9 +683,13 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
   selected runner in its own job, stage and build target, with production
   evaluator/runtime versions when claimed. Use declared setup for launchers and
   dependencies or a supported native runtime; later steps cannot prepare an
-  earlier check. Execute the parsed workflow command with its effective
-  checkout/copy inputs, working directory, PATH and packages, excluding undeclared
-  workstation tools and packages. A package launcher can rewrite PATH or select
+  earlier check. A local workflow adapter must preserve the command's effective
+  workflow/job/step environment and preceding setup outputs, not just its `run:`
+  text; an omitted input can fail before the behavior being checked. Exercise the
+  originally failing command with that complete context, including checkout/copy
+  inputs, working directory, PATH and packages, before resubmitting the suite;
+  exclude undeclared workstation tools and packages.
+  A package launcher can rewrite PATH or select
   its bundled runtime, so a prepended test shim does not prove child interception;
   the assembled entrypoint's child output must establish what actually ran.
   **Wrong:** omit unrelated fixture modules because a PATH shim passed locally;
