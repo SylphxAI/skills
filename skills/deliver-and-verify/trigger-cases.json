@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Deploy an approved configuration through an automatic reconciler that tracks a branch; preserve its declared source policy and verify the immutable revision and effective content it applies.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Run one authorized disposable compute rental to prove its in-workload self-destroy timer, with independent fallbacks armed and authoritative deletion and billing verification.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },

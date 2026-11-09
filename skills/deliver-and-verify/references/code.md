@@ -149,6 +149,15 @@ missing, stale, unreadable or partial observations cannot justify a
 preservation-changing write, while first creation requires authoritative proof of
 exact-identity absence and a complete inventory of retained allocations.
 
+An operation-specific version can conflict with an automatic controller's declared
+tracking target even when both currently resolve to the same artifact; preserve
+the declared target, reconcile through its supported route, and verify the resolved
+immutable version and effective content afterward. **Wrong:** disable automatic
+reconciliation merely to force an otherwise valid version pin. **Right:** retain
+the controller's source policy and establish that its applied version contains
+the approved change; an explicit hold or required fixed-version contract still
+needs its own authorized source update.
+
 Server-side apply can succeed and attribute a field in `managedFields` even when
 mutating admission rewrites its value; compare the live post-apply values with
 intent before treating field ownership as authorship.
