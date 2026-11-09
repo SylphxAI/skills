@@ -136,7 +136,10 @@ read 2026-11-06).
 Faster source checkout or materialization must preserve the graphs and readable
 object bodies its consumers need under their final credential state: synthetic
 snapshots can lose original history, and a complete commit graph does not prove
-historical blobs remain readable. A history-dependent predicate can miss
+historical blobs remain readable. A checkout timeout leaves completion unknown;
+an intact current tree can support file-only work after identity and completeness
+checks without proving history repair or justifying another concurrent checkout.
+A history-dependent predicate can miss
 side-parent transitions under a first-parent walk, while treating every merge-parent
 diff as new can misclassify inherited baseline code. Real-graph acceptance varies
 supported parent order, intermediate add/revert and merge-only changes, with
