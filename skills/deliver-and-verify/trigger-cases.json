@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a payments readiness check that maps an expired shared processor credential to merchant permissions; preserve the restricted-key denial contract.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a SaaS document connector that asks tenants to grant scopes when the service's shared OAuth client credential expired; test both authentication modes.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game reward provider adapter that treats every HTTP 403 as player permission denial despite structured service-credential errors.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Implement a startup-effect guard whose call-graph cache currently merges overloaded methods and misses a forbidden transitive write behind the second declaration.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2547,6 +2559,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review evidence that a provider 403 comes from a shared credential rather than tenant permissions; report findings without changing source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare shared application credentials and tenant-owned credentials for a connector architecture; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a public FAQ explaining an expired integration credential; change prose only, not provider error handling.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an account importer binds an ambient cookie to the right saved account; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
