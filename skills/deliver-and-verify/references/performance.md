@@ -44,6 +44,16 @@ read 2026-11-09). **Bad:** declare no regression from a wide wall-clock interval
 **Good:** identify added work and CPU cost on identical outputs, leaving the
 wall-clock effect unresolved.
 
+For overlapping operations, compare the union of elapsed intervals and maximum
+concurrency on the same operation identities, stratifying synchronous and
+asynchronous execution and naming population or mode changes; per-request elapsed
+time includes scheduling and is not CPU or I/O service time. Preserve completion
+of required dependencies before consumption, and verify the user-visible endpoint
+separately: interval coverage alone does not establish the critical path.
+**Bad:** call a change slower because summed elapsed time rose from 20 s to 70 s;
+**Good:** show that the same operations' interval union fell from 20 s to 4 s as
+concurrency increased, with dependency ordering intact and endpoint timing measured.
+
 ## Build paths and artifact reproducibility
 
 Absolute build-environment paths add bytes and make artifacts depend on their
