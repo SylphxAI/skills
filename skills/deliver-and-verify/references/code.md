@@ -967,11 +967,11 @@ specified date string; a transport retry change needs no formatting cases.
 Source-API refusal and out-of-band tamper detection prove different boundaries and need separate fixture routes and assertions. Exercise forbidden writes through the source API; construct tamper directly on disk and assert its detection/count independently. **Bad:** require the API to accept a forbidden write to seed a tamper count; **Good:** retain the API refusal and seed the tamper fixture without that API.
 
 A negative test can pass for the wrong failure when setup refuses before the
-injected fault: pin the clock and own every dependent observation in a
-self-contained fixture, rather than refreshing one timestamp in a live snapshot.
-Require a working positive control and the specific typed refusal, so an unrelated
-staleness failure cannot satisfy it; compiler refusals bind machine-readable codes
-to the intended source/API identity, not English wording.
+injected fault. Pin fixture clocks and all dependent observations; require a
+positive control and the specific typed refusal, printing the full error chain
+on mismatch. Verify that substituting an unrelated fault makes the assertion
+fail; compiler refusals match machine-readable codes and source/API identity,
+not English wording.
 **Wrong:** refresh the root timestamp and accept any error while nested evidence
 expires; **right:** keep all fixture observations consistent with a fixed clock
 and require the changed-price refusal, not a stale-heartbeat refusal.
