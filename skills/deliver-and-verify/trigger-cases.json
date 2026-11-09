@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a source publisher that rewrites already-published ancestors because local remote-tracking refs omit another destination branch; refuse unreadable remote history before changing commits.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix an entitlement grant whose database callback returns normally after its inventory adapter returns null, allowing a durable success receipt to suppress the retry.",
       "clause": "implementing or shipping a feature, bug fix"
     },
