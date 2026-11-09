@@ -762,8 +762,12 @@ hidden; a caller timeout from a suspended observer does not disprove the transit
 Retain frame-based sampling when foreground animation timing is itself the
 acceptance contract.
 
-Establish foreground focus before measuring input-induced lifecycle changes,
-so startup transitions do not contaminate the measured sequence. Check the
+Establish foreground focus and isolate the document/window before measuring
+input-induced lifecycle changes: queued events and scroll anchoring after fixture
+DOM changes can satisfy a global listener without the action under test.
+**Wrong:** extend a delay or ignore all scroll events; **Right:** retain the real
+listener in a fresh browsing context, test foreign-context events as negatives,
+and keep native input in the owned context as a positive. Check the
 workflow invocation as well as the test file: a standalone trusted-input driver
 provides no CI coverage until the workflow runs it against the compiled fixture.
 
