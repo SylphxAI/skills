@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Remove real customer compensation recipients from a SaaS policy example and load their administratively published records at runtime without breaking committed receipt replay.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a card-game entitlement fixture to synthetic players and move the live cohort fingerprints and per-account exceptions out of the repository.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Publish a repository cleanup that replaces an approved payroll recipient roster with an empty example while retaining explicit runtime version selection and missing-state refusal.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Implement a startup-effect guard whose call-graph cache currently merges overloaded methods and misses a forbidden transitive write behind the second declaration.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2535,6 +2547,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a signed policy fixture contains operational customer identities; report evidence without changing source or records.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare database publication and externally mounted policy designs for private recipient lists; do not implement either.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a generic explanation of operational state versus source code; change prose only and no runtime configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an account importer binds an ambient cookie to the right saved account; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",

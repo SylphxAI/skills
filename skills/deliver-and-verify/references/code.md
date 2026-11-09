@@ -7,6 +7,17 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 
 ## Types and boundaries
 
+An approved operational record is still state, not source: recipient lists,
+individual entitlements, account exceptions and cohort fingerprints belong in the
+owning administrative store, while code, policy examples and regression tests
+describe the mechanism with empty or independently synthetic populations.
+Moving those records out of Git preserves the real consumer's explicit
+version/identity selection, validation and committed-receipt replay; missing or
+unreadable required state cannot silently select a repository default.
+**Wrong:** embed a reviewed customer roster in a signed JSON fixture;
+**Right:** load the authorized published record and prove synthetic allowed,
+unknown, mismatched and unavailable-state cases through the same entrypoint.
+
 - Parse untrusted input into typed domain values at ingress, giving identity, money, quantities and units explicit types. Sharing a validator can narrow an existing consumer's accepted input language: derive supported forms from each boundary's parser, normalization and fallback paths, preserving legacy-only forms at their existing boundary unless retirement is explicit. **Wrong:** reuse a new API's canonical-only validator for an existing import; **Right:** prove the import's supported aliases survive while the new API still refuses them. Parser acceptance alone does not establish the narrower grammar required by a security or diagnostic boundary: an accepted IPv6 zone suffix, for example, can contain arbitrary text. Validate permitted components explicitly, pairing rejected suffix sentinels with valid-address controls.
 - Model lifecycle states explicitly, handle them exhaustively, and return expected failures as typed values translated at the boundary; transitions that omit actions must still preserve authenticated provenance separately from execution intent. Persistence, inference, user-controlled names, or a verification marker with matching identity cannot authenticate a separately mutable parsed body: privilege elevation binds decision-bearing facts to the exact retained original bytes, event and verifier/hash, or independently proven enrichment. Documented provider-protocol signals may justify scheduling only within positively proven origin scope, so removing one requires an authoritative replacement available at the first actionable decision, not merely after later enrichment. Unknown or tampered proof cannot raise authority, explicit negative facts may lower it, and reuse rechecks current authority despite an earlier positive receipt. Verify those decisions from real provider-shaped inputs through upstream classification, transformations, persistence, reload and every consumer—not just directly seeded records—varying event, repository/fork origin and lookalike names independently, with absent, unknown or tampered provenance alongside an authoritative positive control, explicit contradictory evidence prevailing, and successive transitions with unchanged or changed inputs.
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
