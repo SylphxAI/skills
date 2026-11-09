@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a runtime policy migration whose admission validator still consults the embedded singleton and rejects a valid externally selected nondefault template.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Remove real customer compensation recipients from a SaaS policy example and load their administratively published records at runtime without breaking committed receipt replay.",
       "clause": "implementing or shipping a feature, bug fix"
     },
