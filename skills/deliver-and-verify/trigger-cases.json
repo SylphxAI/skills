@@ -2608,6 +2608,18 @@
     {
       "prompt": "Fix a source publisher that rewrites already-published ancestors because local remote-tracking refs omit another destination branch; refuse unreadable remote history before changing commits.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a CLI test fixture whose package launcher selects a bundled runtime instead of the PATH shim, while preserving the permitted invocation's exit assertion.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a payment-adapter test that omits unrelated child modules because its executable interceptor was only verified under the local launcher.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a game-build fixture to provide declared helper inputs through the real package command and retain failure when a required helper is missing.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
@@ -4458,6 +4470,21 @@
     },
     {
       "prompt": "Rewrite a public FAQ explaining an expired integration credential; change prose only, not provider error handling.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review the logs to determine whether a package launcher bypassed a fixture shim, without changing tests or source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare materialized fixture modules with executable interception for a future test architecture; implement neither.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite developer documentation explaining package-launcher PATH selection without modifying fixtures, commands or code.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

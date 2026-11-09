@@ -685,7 +685,13 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
   dependencies or a supported native runtime; later steps cannot prepare an
   earlier check. Execute the parsed workflow command with its effective
   checkout/copy inputs, working directory, PATH and packages, excluding undeclared
-  workstation tools and packages.
+  workstation tools and packages. A package launcher can rewrite PATH or select
+  its bundled runtime, so a prepended test shim does not prove child interception;
+  the assembled entrypoint's child output must establish what actually ran.
+  **Wrong:** omit unrelated fixture modules because a PATH shim passed locally;
+  **Right:** materialize the fixture's declared inputs or verify the launcher's
+  supported override, retaining a missing-input refusal control and the original
+  behavior assertion.
   Dependency preparation and offline fixture
   compilation share the same effective executor, package source and cache;
   a wrapper can place each nested command in a fresh cold lease, so a successful
