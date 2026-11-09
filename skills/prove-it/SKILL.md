@@ -36,6 +36,11 @@ When reviewing shared engines, verifiers or skills, test the [three architectura
   using the unchanged supported check, without rolling back live state. A passing
   replay needs evidence of the intended nonempty population, or a calibrated
   control establishing that an empty population is legitimate.
+  Permission-filtered metadata can omit existing objects; conditional creation
+  events can likewise preserve an older shape. **Wrong:** infer absence from an
+  empty restricted catalog or exact shape from `CREATE IF NOT EXISTS`; **Right:**
+  establish catalog visibility or combine an authoritative baseline with complete
+  subsequent changes, naming any unreadable baseline as uncertainty.
 - Keep source assertions, continuous integration (CI) enrollment and executed results separate. Read a worker's commit, push, test result or commercial record yourself before presenting it as verified; a writer's run remains attributed evidence, not the reviewer's own execution. An attributed report can be relayed with its unchecked status clear.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,
