@@ -43,6 +43,13 @@ active, without repeating an uncertain write. A proven pre-execution rejection
 permits a corrected request after a fresh state read; an unknown effect still
 requires [duplicate-safety reconciliation](#provider-integration).
 
+A deadline is enforced only while its executor survives: two schedulers on one
+host do not protect against that host's loss, and an in-workload timer is not a
+provider-enforced lease because it still depends on workload startup/liveness and
+provider reachability. **Bad:** call independent wake-ups a hard expiry;
+**Good:** identify the failure domain, observe authoritative resource removal
+without either fallback issuing cleanup, and retain the autonomous trigger's receipt.
+
 A Kubernetes DELETE carrying a `DeleteOptions` body ignores the `dryRun`
 query parameter: the [API handler](https://github.com/kubernetes/kubernetes/blob/v1.36.4/staging/src/k8s.io/apiserver/pkg/endpoints/handlers/delete.go#L95)
 decodes query options only when the body is empty (source read 2026-11-06).
