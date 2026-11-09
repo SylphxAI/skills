@@ -260,6 +260,8 @@ mock cannot establish which policy the real execution applies.
 inactive.” **Right:** “The mock captured an omitted argument; the real callee
 may resolve it from the environment. Test the shipped path before concluding.”
 
+Protection is established by the effective caller, not by a helper class being present: independently selected builds can include the same merge or recovery helper while only one consumer invokes it. A stale-object save after a separately committed update distinguishes adoption from class presence; compare the identical interrupted operation across supported builds before generalizing a passing result. **Wrong:** infer every release preserves a concurrent credit because the helper exists; **Right:** execute each release's real hydration and later save, retaining divergent outcomes.
+
 Response evidence depends on HTTP method, endpoint, range, headers, API
 version and immutable object version: successful metadata reads or valid bytes
 from an alternate route do not establish the failing consumer's read availability.
