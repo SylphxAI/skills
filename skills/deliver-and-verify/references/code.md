@@ -30,13 +30,15 @@ Verify publisher-to-real-consumer agreement with independent expected bytes and
 both collection and singleton response shapes, preserving equivalence only where
 the contract permits it and refusing meaningful field, type or ordering drift.
 
-An eligibility hold does not itself advance progress: replacing resumable state
-with a diagnostic wait loses recovery context, while retaining exclusive capacity
-forever can block every replacement. Exercise refusal, repeated holds, recovery
-and replacement from each in-flight phase: resume at retained progress or settle
-abandoned intent once outstanding effects permit it, without altering served data.
-**Wrong:** prove a paused import writes nothing; **Right:** also preserve its
-cursor on resume and let a qualified successor replace an abandoned owner.
+An admission predicate must preserve a permitted path to the state it guards:
+requiring an operation's future output as its own prerequisite creates a permanent
+hold. Evaluate new work against independently available inputs and account for its
+full cost without borrowing an existing item's identity or capacity; exercise
+refusal, recovery and replacement from each in-flight phase while preserving
+retained progress. **Wrong:** require a newly requested worker to exist before
+admitting the request that creates it; **Right:** admit a proven prospective
+allocation, refuse missing evidence for an existing worker, and verify that a
+paused import retains its cursor and can resume or transfer to a qualified owner.
 
 Losslessly retained token spelling does not establish domain equality or
 destination representability: derive value-defined comparisons and admission from
@@ -694,10 +696,13 @@ actual rows, loops and buffers as well as latency. A set-based source or
 cardinality choices can repeat it. Aggregate reuse is established by actual
 loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
 prevents aggregate reexecution, but correlated scans of an unindexed materialized
-pool can still be quadratic. Empty-result distributions
-can reject every candidate upstream or reach costly downstream branches before
-later predicates reject them all; identical output cardinality does not establish
-comparable work coverage. When only existence is needed, joining then
+pool can still be quadratic. An indexed owner lookup can repeatedly traverse
+unrelated history even when no result survives; a materialized relation is bounded
+only if its own access path selects the relevant population before expensive
+payload filtering. **Wrong:** infer bounded work from `MATERIALIZED` or zero output;
+**Right:** preserve the exact match and eligibility semantics while checking rows
+removed, loops and buffers at every narrowing boundary, alongside populated controls.
+When only existence is needed, joining then
 deduplicating can enumerate every matching pair; verify bounded match work in the
 actual plan, while preserving multiplicity when all pairs are required. Performance
 evidence includes reachable repeated scans and function calls, distinguishing
