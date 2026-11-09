@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement a startup-effect guard whose call-graph cache currently merges overloaded methods and misses a forbidden transitive write behind the second declaration.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a SaaS account importer that discards a working token when a revoked token for the same account appears first; preserve refreshed metadata on repeated identical credentials.",
       "clause": "implementing or shipping a feature, bug fix"
     },
