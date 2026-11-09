@@ -14,6 +14,10 @@
       "clause": "concise internal team/executive updates"
     },
     {
+      "prompt": "Rewrite this qualitative project update plainly without inventing metrics or adding irrelevant timestamps.",
+      "clause": "concise internal team/executive updates"
+    },
+    {
       "prompt": "Write instructions for a sub-agent that should not message its owner when its check passes.",
       "clause": "sub-agent instructions"
     },
