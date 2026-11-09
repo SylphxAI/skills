@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix release change detection so a rooted SaaS API rebuilds when an external shared source file copied by its immutable Dockerfile changes, while ignored documentation stays unaffected.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement asset-pack invalidation for a game whose packager reads shared inputs outside the pack root; derive the consumed inputs rather than appending guessed watch paths.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a source-selection repair that preserves explicit parent-relative watch patterns and refuses to prove unaffected from an incomplete comparison.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Deploy an approved configuration through an automatic reconciler that tracks a branch; preserve its declared source policy and verify the immutable revision and effective content it applies.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -2663,6 +2675,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Verify whether an external-only commit created a new rooted-consumer Release; inspect source and production metadata without changing anything.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare manual watch lists with dependency-derived build invalidation and recommend an architecture without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explaining project-relative watch patterns; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review a claimed hard expiry from two schedulers sharing one host; identify unsupported failure-domain claims without changing automation.",
       "clause": "prove-it for a review or evidence check",
