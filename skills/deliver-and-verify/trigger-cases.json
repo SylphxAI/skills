@@ -14,6 +14,18 @@
       "clause": "benchmarking engines"
     },
     {
+      "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a SaaS export fixture after the client begins reading optional metadata; run populated and absent-metadata consumers without making the fake accept every request.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update game replay protocol fixtures for a read-only census query while retaining unsupported-version and missing-provenance failures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a scale-out admission rule that requires the new worker to exist before admitting the request that creates it; preserve missing-existing-worker refusal and prove prospective capacity.",
       "clause": "changing admission or access rules"
     },
@@ -2599,6 +2611,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review the evidence for a protocol fixture rejection and identify whether the client or fake violates the contract; make no changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two version-negotiation designs for optional measurement commands without implementing them.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining optional capture metadata; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an account importer binds an ambient cookie to the right saved account; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
