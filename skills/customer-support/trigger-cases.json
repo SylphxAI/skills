@@ -62,7 +62,7 @@
       "clause": "care requests"
     },
     {
-      "prompt": "On official support, help a customer redeem a published public campaign code without creating a personal reward.",
+      "prompt": "On official support, share an already-published server-wide small public campaign code unchanged with verified system caps and common eligibility, without creating a personal reward.",
       "clause": "campaign-code inquiries"
     },
     {
@@ -70,7 +70,7 @@
       "clause": "care requests"
     },
     {
-      "prompt": "On official support, restore a verified missing paid entitlement exactly once while reviewing a separate historical gift promise.",
+      "prompt": "On official support, restore a verified paid order's missing system credit exactly once while a separate closed legacy operation remains pending.",
       "clause": "missing purchases"
     },
     {
@@ -78,7 +78,7 @@
       "clause": "care requests"
     },
     {
-      "prompt": "Handle an official support care request whose non-explicit historical courtesy-credit request falls outside preserved written commitments and has a proportionate resolution permitted by current terms.",
+      "prompt": "Handle an official support care request for a private custom compensation pack outside verified paid entitlements and the closed legacy population; refuse negotiation without a substitute promise.",
       "clause": "care requests"
     },
     {
@@ -94,7 +94,7 @@
       "clause": "care requests"
     },
     {
-      "prompt": "Handle an official support care request backed by a verified explicit written pre-cutoff commitment: governing terms preserve its original large-currency contents once, without discretionary recalibration, with post-claim evidence.",
+      "prompt": "Handle an official support inquiry about an existing closed legacy written obligation: authorized system operations preserve original pre-cutoff terms once, with claim/effect evidence, without opening a new entitlement or batch.",
       "clause": "care requests"
     },
     {
@@ -104,6 +104,14 @@
     {
       "prompt": "A customer asks official support for a new large-gold pack or infers a reward promise from friendly conversation; no verified explicit written pre-cutoff commitment exists.",
       "clause": "care requests"
+    },
+    {
+      "prompt": "Official support receives an ownership-verified recovery request, a statutory refund obligation and a verified technical fault; help within those scopes without negotiating compensation.",
+      "clause": "sign-in or recovery failures"
+    },
+    {
+      "prompt": "A verified paid order has state=2 in this product but no system credit; official support checks before/after fulfillment and performs only the exact missing entitlement once.",
+      "clause": "missing purchases"
     }
   ],
   "negative": [
@@ -176,6 +184,16 @@
       "prompt": "Rewrite a general article about proportionate business decisions with no support case or customer policy.",
       "clause": "clear-writing for general copy",
       "route_to": "clear-writing"
+    },
+    {
+      "prompt": "As the ambassador, give warm emotional companionship and share only an already-published server-wide small capped code, without private promises or custom reward negotiation.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
+    {
+      "prompt": "Implement a technical correction for a verified fault without handling a customer ticket or writing operational recipient state into a migration.",
+      "clause": "deliver-and-verify to implement a fix",
+      "route_to": "deliver-and-verify"
     }
   ]
 }
