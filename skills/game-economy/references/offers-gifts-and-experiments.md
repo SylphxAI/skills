@@ -122,26 +122,28 @@ campaign code architecture across every title:
      a user-facing privacy toggle (`stealth = true` masking the actor as
      "A Mysterious Player" and disabling profile inspection while keeping the
      broadcast active).
-3. **Calibrated Pre-Transition Commitment Sunset (`Proportionality & Anti-Blind-Fulfillment`):**
-   - **Earned & paid entitlements (`Category A`):** Paid purchases,
-     activity-earned rewards, verified undelivered paid entitlements, and
-     already-delivered inbox mails are honored and preserved 100%
-     (`exactly-once` automated system settlement; zero clawback of delivered
-     mails or claimed items).
-   - **Pre-transition discretionary promises (`Category B` vs. `Category C`):**
-     Legacy pre-transition commitments form a candidate audit population, NOT an
-     automatic 100% verbatim payout list. Evaluate each candidate item-by-item
-     against verified paid spend, authorization, sink progression integrity, and
-     public leaderboard fairness:
-     - **Moderate, proportionate commitments (`Category B`):** Non-leaderboard
-       commitments proportionate to verified paid spend may be settled once via
-       automated system settlement to close legacy tails cleanly.
-     - **Excessive or economy-destroying promises (`Category C`):** Excessive,
-       unauthorized, unverified, or sink/leaderboard-destroying promises (such
-       as unpaid currency grants exceeding paid purchase value, flipping public
-       wealth/rank leaderboards, or bypassing endgame progression sinks) must be
-       calibrated down or rejected, never blindly auto-settled verbatim.
-     - **Post-cutoff:** Allow zero new bespoke or off-system gift commitments.
+### Non-Retroactive Commitment Boundary
+   - Honor every documented player-visible written commitment exactly once with
+     the original promised content, even when it includes large currency.
+     Preserve reliance and purchase history. Never call the old amount a
+     misunderstanding, substitute zero, or redirect the player to a cold email
+     instead of the promised delivery. If visibility is genuinely uncertain,
+     read the actual outbound object first; never relabel an already-public
+     promise as an unauthorized internal proposal.
+   - New economic admission applies only to undocumented proposals and future
+     communications, including new activities, codes, packages and replies; it
+     never applies retroactively. New large-currency promises remain
+     inadmissible under the progression and faucet/sink model.
+   - Actual prior delivery is the dedup key: an already fulfilled commitment
+     must not be granted twice. Read actual settlement before any repeat, and
+     never use idempotent delivery as a reason to renege on the original promise.
+
+Synthetic contrast:
+
+| ❌ Bad | ✅ Good |
+| --- | --- |
+| A player purchases after a public written promise of 10,000 coins. Reject the amount as excessive, offer zero, and send a cold email instead. A second delivery is then attempted after the record already shows fulfillment. | Read the outbound object and deliver the promised 10,000 exactly once. If actual settlement is already present, grant nothing again. A future campaign proposing the same new large-currency reward is refused under economic admission. |
+
 
 ## Measure a gift's real cost
 
