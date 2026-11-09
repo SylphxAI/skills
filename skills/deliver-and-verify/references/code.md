@@ -672,6 +672,12 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+Disabling an optional test dependency inside a helper does not prove that ordinary
+production entrypoints cannot reach it, or that the package excludes its capability.
+Where production independence is the contract, exercise the packaged ordinary journey
+with that dependency absent and the supported restricted role, retaining a separate
+explicit test-mode control. **Wrong:** accept owner-account helper success or a default-off
+flag as removal; **Right:** verify ordinary completion and the declared packaged absence.
 
 Derive mutation targets from authoritative ownership, not enumeration or sort
 order or matching content: a foreign object can have the same schema and values
