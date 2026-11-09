@@ -79,6 +79,13 @@ must not erase the baseline or weaken current-state validation. Test expiry
 rollover and removal through the real comparison entrypoint, and regenerate any
 registry that attests the checker source when those bytes change.
 
+Traversal caches need the identity of each semantically distinct node, not just
+its display name: overloads, namespaces or variants can otherwise hide reachable
+effects behind an already-visited entry. **Wrong:** test a call graph with unique
+method names only; **Right:** put a forbidden transitive effect behind the second
+same-name declaration and prove complete traversal without rejecting an allowed
+same-name control.
+
 ## Deployment configuration
 
 A shared readiness or admission check must distinguish an intentionally
