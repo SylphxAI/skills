@@ -94,17 +94,24 @@ rather than fixtures invented around the parser. **Wrong:** a helper returns two
 accounts while its caller keeps only the first; **Right:** both remain selectable
 after relaunch, and unreadable evidence cannot authorize a new account.
 
-Credential imports have two independent equivalences: account identity and
-credential identity; deduplicating accounts before verification can discard the
-only working credential, while first-entry deduplication of identical credentials
-can discard newer usable metadata. An ambient bearer or cookie has no account
-binding merely because an entry lacks a token: retain the association established
-by its source or server verification, and test distinct candidates, reordered
-freshness, nonempty ambient credentials and every supported validator-optional
-path through import and reload. **Wrong:** keep the first account entry and fill
-its missing bearer from the browser session; **Right:** preserve candidate
-credentials until verification, retain the contract-selected complete record,
-and omit a bearer whose owner is unproven.
+Credential imports have separate account and credential equivalences: premature
+account deduplication can discard the only working token, while a newer sparse
+record can give inherited fields a false freshness if activity time replaces
+their original source times. An ambient bearer has no account binding merely
+because a saved entry lacks one; preserve verified ownership and field provenance
+through transport, merge, ordinary refresh and reload, including validator-optional
+paths. **Wrong:** promote an inherited token with a newer activity-only mirror or
+fill it from an unrelated browser session; **Right:** compare its actual source
+time with the retained native value and omit credentials whose owner is unproven.
+
+Partial import recovery preserves unresolved candidates without replaying a
+committed subset over subsequent user edits; a timeout establishes an unknown
+effect, not permission to retry the original batch. Bind acknowledgement and
+cleanup to the same durable attempt and source identity, keeping stale overlapping
+attempts from recreating retired work. **Wrong:** retry the entire batch after one
+candidate fails and restore an account the user deleted; **Right:** prove ordinary
+reload, late acknowledgement and overlapping retries retain only unresolved work
+while preserving completed removals and selection changes.
 
 For a live product, verify guest and account continuity across five distinct layers—passing one layer never substitutes for another:
 

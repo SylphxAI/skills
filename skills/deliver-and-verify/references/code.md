@@ -311,6 +311,13 @@ file replacement cannot serialize another writer that uses a different lock.
 stable transaction lock and ownership check; prove both transaction orders through
 the real concurrent entry points, preserving each writer's committed fields.
 
+Value equality is insufficient for a no-op when asynchronous consumers use object
+identity or generations as their authority: replacing an unchanged object can
+invalidate a legitimate pending result. **Wrong:** stale metadata ingestion
+recreates the active session and discards its in-flight refresh; **Right:** retain
+the existing identity for an unchanged merge, while proving a genuine replacement
+still invalidates the older request.
+
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local
 order cannot undo an account or row lock its caller already holds. Reserve the

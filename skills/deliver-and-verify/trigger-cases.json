@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a SaaS account import where a newer activity-only mirror makes inherited old tokens overwrite a newer saved credential; verify field source times through refresh and reload.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a game account migration whose partial retry restores an account removed after the first subset committed; include a lost native acknowledgement and overlapping retries.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix an unchanged metadata merge that replaces a reference-tracked session and incorrectly rejects its pending token refresh, retaining refusal after a real session replacement.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Deploy an approved configuration through an automatic reconciler that tracks a branch; preserve its declared source policy and verify the immutable revision and effective content it applies.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
