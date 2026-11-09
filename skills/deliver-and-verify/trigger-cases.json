@@ -2580,6 +2580,10 @@
     {
       "prompt": "Fix a game reward provider adapter that treats every HTTP 403 as player permission denial despite structured service-credential errors.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a source publisher that rewrites already-published ancestors because local remote-tracking refs omit another destination branch; refuse unreadable remote history before changing commits.",
+      "clause": "implementing or shipping a feature, bug fix"
     }
   ],
   "negative": [
