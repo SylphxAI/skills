@@ -148,6 +148,15 @@ Recover accounts through a verified channel with appropriate step-up checks and 
 
 Choose bounded access-token lifetimes and an explicit refresh/revocation profile (such as refresh-token rotation with reuse detection or sender-constrained tokens under RFC 9700). Protect web cookies with `HttpOnly`, `Secure`, and `SameSite`/CSRF controls, and store native tokens in OS keystore storage. Where Device Bound Session Credentials (DBSC) are supported, test renewal refusal without the registered key while maintaining a fallback for unsupported browsers. Provide a clear sign-out action and active-session management.
 
+A refresh repair can preserve continuity in one transport while another active
+transport persists rotation as an independent selection; the relevant population
+is every handler that changes the shared credentials, not only the failing client.
+**Bad:** verify one client's refresh helper and infer account continuity; **Good:**
+overlap each production refresh path with pending account or role work, allowing
+proven source-to-successor continuity while independent same-account and
+different-account replacements reject stale credential, cookie, retry and cleanup
+effects.
+
 With cookie-authenticated proxies, `Origin` and Fetch Metadata carry evidence
 about the initiating browser request; substituting a configured trusted origin
 or inventing `Sec-Fetch-Site` erases that provenance.
