@@ -1,6 +1,6 @@
 # Performance standard
 
-Trigger: setting a speed/reliability target, changing a hot path or investigating an incident.
+Trigger: setting a speed/reliability target, comparing repeated measurements or artifact sizes, calibrating visual readiness, changing a hot path or investigating an incident.
 
 Choose a measurable target for each critical journey and define its response when missed. Correctness remains part of the journey; state uncertainty when samples are insufficient.
 
@@ -11,7 +11,7 @@ Choose a measurable target for each critical journey and define its response whe
 - Store stability is a quality number nobody has to sign in to read. Google Play judges user-perceived ANR at 0.47% and user-perceived crash at 1.09% overall, and 8% per phone model, on a 28-day average; above them it may reduce visibility and warn on the listing ([Android vitals](https://developer.android.com/topic/performance/vitals), read 2026-11-02). Read every title daily through the Play Developer Reporting API with a service account (`crashRateMetricSet`, `anrRateMetricSet`, `errorIssues:search`, `errorReports:search`). A title over a limit is a defect even with no complaint. Report the user-perceived rate, not the larger all-ANR rate, and watch the daily rate, which moves before the 28-day figure.
 - When a cached reload is as slow as a cold open, look for fixed timers before caching or the engine: read the startup source for minimum splash and loading durations. A launch image must be bound natively, so it shows before the engine starts; if work continues behind it, show progress on it, because a still picture reads as a hang.
 - Choose caching, payload and JavaScript budgets from the journey and measured workload. Keep third-party work off the critical input path; cache anonymous content where its actual variation permits it.
-- Compare download and install sizes using the same measure before and after. Name the shipping version/build, platform, device, delivery variant, cache state and measurement source. APK/IPA archive bytes, expanded ZIP members, source assets, store estimates and installed disk use are different measures. Rank the largest entries from the complete delivered artifact or observed request population; a source directory is not a shipping inventory.
+- Compare download and install sizes using the same measure before and after. Name the shipping version/build, platform, device, delivery variant, cache state and measurement source. APK/IPA archive bytes, expanded ZIP members, source assets, store estimates and installed disk use are different measures. Rank the largest entries from the complete delivered artifact or observed request population; a source directory is not a shipping inventory. A deterministic compressor is still content-sensitive: even a one-byte input change can alter compressed size, so a size-budget verdict requires the exact final artifact, not a near-variant.
 - For Apple apps, the product page's Information size is the install size; over-the-air download size is compressed. Bind the released version to its build, then read the complete per-device size population in App Store Connect (`BuildBundleFileSize.downloadBytes` and `installBytes`), keeping the Universal variant separate. Label these provider sizes separately from physical-device measurements. Apple applies digital rights management (DRM) and recompression during distribution, so an uploaded archive does not establish final transfer size ([Apple build metadata](https://developer.apple.com/help/app-store-connect/manage-builds/view-builds-and-metadata/), [size API](https://developer.apple.com/documentation/appstoreconnectapi/buildbundlefilesize), read 2026-11-02).
 - Before ranking API routes or claiming a tail-latency improvement, use [API latency evidence](../../prove-it/references/api-latency.md) for the observation boundary, population controls, phase attribution and comparable follow-up.
 - Use [bounded calls and set-based queries](code.md#outbound-calls). Index growing filter/sort paths and use appropriate pagination. Choose report isolation, a read replica, rollup or asynchronous export when measured query cost would starve serving work; a fixed replica topology or timeout is not universal.
@@ -20,6 +20,44 @@ Choose a measurable target for each critical journey and define its response whe
 - Plan rollback/repair against the current schema using the [recovery procedure](security.md#recovery-procedure). Verify restored data and the affected customer behavior.
 
 Use the organization's declared incident threshold and measured impact/exposure. Record the cause and corrective action proportionate to the event; a terminology choice alone does not authorize an investigation or interrupt. Judge performance by the defined journey metric and population, not by completion of a report or job.
+
+## Repeated measurements and shared-host contention
+
+A long-lived emulator, VM or browser host can accumulate memory across launches,
+so later samples may measure a degraded instrument rather than a slower product.
+Bind each sample to the instrument's process/container working set from a retained
+raw series, container and boot identities, and test its association with latency
+before attributing a trend to the product; correlation alone does not establish
+the cause. Declare an acceptable instrument-state band, restore it through the
+supported clean-shutdown/reset path when it leaves that band, and mark samples
+following a reset without discarding earlier failures.
+
+When contention makes paired base/head wall-clock intervals inconclusive, compare
+expensive-operation counts per action (subprocesses, queries or metadata calls),
+process CPU time per action (user plus system, including waited children), and
+the exact set of rebuilt outputs under matched workloads and cache states. These
+measures are less sensitive to scheduling delays, not proof of uncontended user
+latency; retain wall clock as secondary evidence, its uncertainty, and pressure
+stall information (PSI), naming the resource, scope and window
+([Linux PSI](https://www.kernel.org/doc/html/latest/accounting/psi.html),
+read 2026-11-09). **Bad:** declare no regression from a wide wall-clock interval;
+**Good:** identify added work and CPU cost on identical outputs, leaving the
+wall-clock effect unresolved.
+
+## Build paths and artifact reproducibility
+
+Absolute build-environment paths add bytes and make artifacts depend on their
+builder. Derive every dependency-cache, workspace, toolchain-source and target
+prefix from actual build metadata rather than machine literals, and remap them
+at build time; for `rustc --remap-path-prefix`, the last matching mapping wins,
+so broad prefixes precede specific ones
+([rustc path remapping](https://doc.rust-lang.org/rustc/remap-source-paths.html),
+read 2026-11-09). Inspect the final artifact for remaining paths, including those
+emitted by generators or linkers outside the compiler's remapping, and require
+a byte-identical fresh-target rebuild under changed build roots; a reused target
+or two builds under identical paths cannot establish path independence. Use
+[ambient-input variation](dx.md#source-generation) for the wider reproducibility
+claim.
 
 
 ## Replicated readiness
@@ -168,6 +206,14 @@ Use this method when a startup event and the screen people can use disagree:
   while its data panels are blank; **Good:** retain separate shell, content and
   unobstructed-screen times, with hidden content bounded by the first verified
   unobstructed frame.
+- Whole-region pixel error with one threshold can reject ready content because
+  an animated highlight changed. Test every required element separately on its
+  stable core, excluding borders, badges and glow, using a bank of reviewed
+  animation phases. Calibrate against reviewed positives and negatives, including
+  shell-only frames and opaque or fading overlays; removing each required element
+  in turn must make the detector refuse readiness. For a disputed boundary,
+  retain per-region scores and full-resolution crops rather than relaxing one
+  global threshold.
 - For sampled video, retain the last frame missing the required content and
   the first frame showing it. Report that interval, including uncertainty in
   the input timestamp. Preserve original presentation timestamps (PTS) and

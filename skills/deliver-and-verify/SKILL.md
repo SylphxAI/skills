@@ -53,6 +53,13 @@ For readiness or propagation promises across replicas, or proof gates over a
 mutable serving population, read
 [replicated readiness](references/performance.md#replicated-readiness) before defining the probe population and timing boundary.
 
+For repeated launch measurements or performance regressions on a shared host,
+read [measurement comparability](references/performance.md#repeated-measurements-and-shared-host-contention).
+Visual readiness detectors use the
+[startup capture method](references/performance.md#startup-measurements-from-video-and-queued-logs).
+For build-path removal or reproducible artifact-size work, read
+[artifact reproducibility](references/performance.md#build-paths-and-artifact-reproducibility).
+
 For request/response limits, asynchronous effect admission, context compaction,
 agent tool outputs or low-rate flake comparisons, read
 [final encoded limits and reliability evidence](references/performance.md#final-encoded-limits-and-reliability-evidence).
