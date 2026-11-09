@@ -2,6 +2,30 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a Kubernetes teardown admission rule that trusts namespace annotations; prevent other callers from seeding proof during CREATE as well as changing or removing it during UPDATE.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a SaaS approval guard whose protected field is restricted on update but can be initialized by any record creator; preserve ordinary creation and unrelated maintenance.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a game reward authorization marker that treats missing and empty fields alike even though one authorizes a grant; test unauthorized creation, replacement and removal.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a SaaS export fixture after the client begins reading optional metadata; run populated and absent-metadata consumers without making the fake accept every request.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update game replay protocol fixtures for a read-only census query while retaining unsupported-version and missing-provenance failures.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a scale-out admission rule that requires the new worker to exist before admitting the request that creates it; preserve missing-existing-worker refusal and prove prospective capacity.",
       "clause": "changing admission or access rules"
     },
@@ -2584,9 +2608,36 @@
     {
       "prompt": "Fix a source publisher that rewrites already-published ancestors because local remote-tracking refs omit another destination branch; refuse unreadable remote history before changing commits.",
       "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a CLI test fixture whose package launcher selects a bundled runtime instead of the PATH shim, while preserving the permitted invocation's exit assertion.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Fix a payment-adapter test that omits unrelated child modules because its executable interceptor was only verified under the local launcher.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
+      "prompt": "Change a game-build fixture to provide declared helper inputs through the real package command and retain failure when a required helper is missing.",
+      "clause": "changing SQL queries or fixtures"
     }
   ],
   "negative": [
+    {
+      "prompt": "Review the evidence for a protocol fixture rejection and identify whether the client or fake violates the contract; make no changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare two version-negotiation designs for optional measurement commands without implementing them.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a user guide explaining optional capture metadata; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether an account importer binds an ambient cookie to the right saved account; report evidence without changing code.",
       "clause": "prove-it for a review or evidence check",
@@ -4419,6 +4470,21 @@
     },
     {
       "prompt": "Rewrite a public FAQ explaining an expired integration credential; change prose only, not provider error handling.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Review the logs to determine whether a package launcher bypassed a fixture shim, without changing tests or source.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare materialized fixture modules with executable interception for a future test architecture; implement neither.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite developer documentation explaining package-launcher PATH selection without modifying fixtures, commands or code.",
       "clause": "clear-writing for prose alone",
       "route_to": "clear-writing"
     }

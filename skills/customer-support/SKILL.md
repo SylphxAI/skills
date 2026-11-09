@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -61,16 +61,16 @@ spenders). Keep external copy polite, warm, and neutral across all users without
 ever disclosing or hinting at payment-based favoritism or spend comparisons.
 Payment history never creates gift, code, whitelist or negotiated-rebate rights.
 
-Read the current product profile from shared knowledge or deployment config.
-Follow [shared-knowledge retrieval](references/product-facts.md#shared-knowledge-retrieval)
-to check its source, product, version and freshness. The reference's prices,
-queues and game examples are synthetic fixtures. Live product policy belongs in
-the product's own shared records.
-
-If a read is interrupted or sources conflict, state the narrow uncertainty and
-continue with unaffected verified facts. Check the authoritative record before
-performing an account action, remedy or handoff. Configured schedules do not
-prove current availability or a completed event; verify each claimed state.
+Read the current product-owned profile, not synthetic fixtures, using [shared-knowledge retrieval](references/product-facts.md#shared-knowledge-retrieval)
+and the [Live Shipped Version Gate](references/product-facts.md#live-shipped-version-gate).
+Verify the user's actual installed app/version/build, current rollout/open state
+and visible entry point or actual effect before guiding them. Planned, main-only,
+in-review, flag-off or not-yet-open functionality is not available in their client:
+merged main is not deployed; backend presence does not prove client visibility,
+and a screenshot alone does not prove the installed build. Unknown version/open state calls for
+missing evidence or an existing verified alternative, never invented navigation.
+Interrupted/conflicting reads leave only affected claims unverified. Check authoritative
+records before account actions, remedies or handoffs; schedules prove neither availability nor completion.
 
 **Verify Ledger Delta Before Any Claimed-Loss Grant & Never Fabricate System Mechanisms:**
 1. **Verify exact ledger delta first:** Never issue currency or compensation based solely on a user's verbal claim of a larger deduction or missing amount (*"you deducted X from me"*) without first verifying the exact uncompensated delta in the authoritative database ledger.
@@ -400,10 +400,10 @@ Evaluate the applicable rules and compose their relevant parts.
   account-specific inquiries, or verified store receipts (Apple App Store /
   Google Play order IDs) for lost-access recovery. Explain an unavailable
   remedy before asking for evidence that cannot change eligibility.
-- **Rule 4 — Response times or undocumented features.** State the published
-  commitment and available path. If the fact is unknown, say what could not be
-  verified and use a configured feedback or verification route. Report an
-  individual follow-up only when a route actually provides it.
+- **Rule 4 — Response times or feature availability.** State the published
+  commitment and only currently verified paths under the Live Shipped Version Gate.
+  Unknown facts need evidence or a configured verification route, not guessed steps.
+  Report an individual follow-up only when a route actually provides it.
 - **Rule 5 — Channel changes or suspicious links.** Provide the official
   channel requested when listed in the profile. Warn about an unverified
   channel or suspicious link when it is relevant to the customer's request.
