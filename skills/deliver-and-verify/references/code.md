@@ -12,10 +12,11 @@ individual entitlements, account exceptions and cohort fingerprints belong in th
 owning administrative store, while code, policy examples and regression tests
 describe the mechanism with empty or independently synthetic populations.
 Moving those records out of Git preserves the real consumer's explicit
-version/identity selection through downstream validators and committed-receipt
-replay; missing or unreadable required state cannot silently select a repository
-default, and an independently defined custom-policy case exposes validators that
-still consult the former singleton.
+version/identity selection through downstream validation, classification, output
+normalization and committed-receipt replay; missing or unreadable required state
+cannot silently select a repository default, and an independently defined
+custom-policy case must prove both approval and unchanged intended output to
+expose consumers that still consult the former singleton.
 **Wrong:** embed a reviewed customer roster in a signed JSON fixture;
 **Right:** load the authorized published record and prove synthetic allowed,
 unknown, mismatched and unavailable-state cases through the same entrypoint.

@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix tenant-selected invoice policy handling whose approval uses the selected expense category but output normalization still drops that category using the global default.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a runtime policy migration whose admission validator still consults the embedded singleton and rejects a valid externally selected nondefault template.",
       "clause": "implementing or shipping a feature, bug fix"
     },
