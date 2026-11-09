@@ -30,13 +30,15 @@ Verify publisher-to-real-consumer agreement with independent expected bytes and
 both collection and singleton response shapes, preserving equivalence only where
 the contract permits it and refusing meaningful field, type or ordering drift.
 
-An eligibility hold does not itself advance progress: replacing resumable state
-with a diagnostic wait loses recovery context, while retaining exclusive capacity
-forever can block every replacement. Exercise refusal, repeated holds, recovery
-and replacement from each in-flight phase: resume at retained progress or settle
-abandoned intent once outstanding effects permit it, without altering served data.
-**Wrong:** prove a paused import writes nothing; **Right:** also preserve its
-cursor on resume and let a qualified successor replace an abandoned owner.
+An admission predicate must preserve a permitted path to the state it guards:
+requiring an operation's future output as its own prerequisite creates a permanent
+hold. Evaluate new work against independently available inputs and account for its
+full cost without borrowing an existing item's identity or capacity; exercise
+refusal, recovery and replacement from each in-flight phase while preserving
+retained progress. **Wrong:** require a newly requested worker to exist before
+admitting the request that creates it; **Right:** admit a proven prospective
+allocation, refuse missing evidence for an existing worker, and verify that a
+paused import retains its cursor and can resume or transfer to a qualified owner.
 
 Losslessly retained token spelling does not establish domain equality or
 destination representability: derive value-defined comparisons and admission from

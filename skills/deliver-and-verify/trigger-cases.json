@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a scale-out admission rule that requires the new worker to exist before admitting the request that creates it; preserve missing-existing-worker refusal and prove prospective capacity.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a staged-import guard that requires the final index before it permits the job that builds that index; test independently available inputs and recovery without losing the retained cursor.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Update an inventory-expansion fixture whose success case fabricates future children instead of proving the pre-admission state and reserving new capacity.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Fix an entitlement grant whose database callback returns normally after its inventory adapter returns null, allowing a durable success receipt to suppress the retry.",
       "clause": "implementing or shipping a feature, bug fix"
     },
