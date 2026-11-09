@@ -87,7 +87,7 @@ billing:
 reward_policy:
   source_revision: "<current product-owned policy revision>"
   transition_cutoff: "<verified UTC cutoff for retired commitments, or null>"
-  final_settlement_population: "<full historical review population with evidence, authorization, proportionate resolutions and delivery receipts, or null>"
+  final_settlement_population: "<full review population with written terms, authorization, preserved original commitments or permitted resolutions, and claim/effect receipts, or null>"
   automatic_settlement_route: null
   missing_entitlement_route: "<authorized idempotent fulfillment route, or null>"
   public_campaigns: [] # Published campaigns with live status and enforcement receipts.
@@ -254,7 +254,7 @@ for warm replies or unaffected support.
 | --- | --- | --- |
 | C01+ | Game: a verified paid order lacks its advertised entitlement; authorized automatic fulfillment exists | Restore only the exact missing entitlement once and verify delivery; no care extra |
 | C01− | Same order was already fulfilled, or fulfillment is unknown | Confirm existing delivery or reconcile uncertainty; no duplicate grant |
-| C02+ | A historical discretionary promise predates the verified cutoff; evidence and authorization establish a proportionate resolution in the final review population, with no prior delivery | Settle only the approved outcome once through the authorized system operation; the original promise alone approves no amount; no personal code or unverified manual grant |
+| C02+ | A verified explicit player-visible written commitment predates the product cutoff; governing terms preserve its original contents, including large currency, with authority and no prior effect verified | Fulfill 100% of the original terms once through the authorized system operation, without discretionary recalibration; retain post-claim/effect evidence; no personal code or unverified manual grant |
 | C02− | Promise time, evidence, authorization, final-population membership or previous settlement is unverified | Keep the affected decision unresolved; no automatic issuance, substitute reward or code; independently owed entitlements remain deliverable |
 | C03− | Final reviewed population is resolved; a new promise, renewed batch, repeat settlement or whitelist exception is requested | Zero new batch, promise, enrollment, repeat delivery or exception, regardless of spend |
 | C04+ | A discretionary gift has already reached the customer's holdings, including an unclaimed inbox item | Preserve every delivered holding without clawback or data loss; no repeat delivery or future gift rights |
@@ -269,13 +269,17 @@ for warm replies or unaffected support.
 | C10− | SaaS: a customer asks for a new free-credit gift after the final commitment settlement | No new discretionary batch under the configured system-only policy; offer available guidance |
 | C11+ | A customer requests ordinary password recovery or emotional reassurance with no reward | Continue authorized recovery or warm care; reward restrictions do not block unrelated support |
 | C12+ | Game: an activity-earned entitlement is verified missing while a separate historical gift promise is disputed | Deliver the exact earned entitlement once through the normal automatic system; review the discretionary promise independently |
-| C12− | A review list contains an excessive or unauthorized historical promise but no approved proportionate resolution | List membership is not approval; hold automatic issuance of the original promise without blanket cancellation of the population |
-| C13+ | SaaS: a verified historical courtesy-credit promise has an authorized proportionate resolution different from the original amount | Settle only the approved resolution automatically once, then retain its receipt in the final resolved population |
+| C12− | A review list contains an implied or unauthorized request with no verified explicit written commitment and no permitted resolution | List membership is not approval; no automatic grant or large-currency exception; leave missing evidence unresolved without blanket cancellation of the population |
+| C13+ | SaaS: a non-explicit historical courtesy-credit request falls outside preserved written commitments and has a proportionate resolution permitted by current terms | Settle only that authorized resolution automatically once and verify its actual effect; this does not recalibrate a preserved explicit written commitment |
 | C13− | Evidence for one historical promise is unreadable; other records prove purchased entitlements or delivered discretionary holdings | Hold only the unknown promise decision; no guessed approval, blanket cancellation, delayed undisputed entitlement or clawback |
 | C14+ | Game: a verified missing earned entitlement has an authorized DB write role, before/after reads and an idempotent operation receipt | The operational state write is allowed outside PRs/migrations; restore only the owed entitlement once and preserve delivered holdings |
 | C14− | A manual database grant lacks verified authority, before/after evidence or idempotency, or a manual inbox grant is proposed | No write or grant; reconcile missing authority/evidence without inventing a blanket ban on authorized DB-role operations |
 | C15+ | SaaS: an authorized product API restores a missing paid entitlement with before/after evidence and an idempotent receipt | Allow the exact owed state change; retain the receipt and confirm no duplicate effect on replay |
 | C15− | A PR or schema migration hardcodes a customer's operational balance or fulfillment state | Reject operational customer state in source/migrations; an authorized API or DB role does not authorize that packaging |
+| C16+ | A verified explicit written pre-cutoff commitment was fulfilled in its original form and its actual claim/effect receipt matches the obligation | Close that commitment once without another grant; preserve the delivered holdings |
+| C16− | A customer infers a large-gold promise from friendly conversation but no explicit written commitment is verified | No large-gold grant or private-promise exception; continue warm support and leave unsupported history unverified |
+| C17− | A customer requests a new large-gold activity, code, pack or promise in a future reply | Refuse the new reward or promise under current terms; the historical written-commitment exception does not apply |
+| C18− | An authorized settlement has inserted an inbox item, but the relevant claim or consumer-effect receipt is absent | Keep settlement pending, preserve the inbox contents and reconcile the same operation; no completed-settlement claim or duplicate grant |
 
 These are editorial behavior contracts, not executed model-output or deployed
 reward-service tests. Runtime changes need positive and negative cases through

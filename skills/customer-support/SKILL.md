@@ -133,15 +133,26 @@ verified-missing entitlements exactly once under their actual terms through the
 authorized automatic system; an unrelated disputed promise never delays that
 delivery or authorizes comfort extras.
 
-Historical explicit or implied promises require full-population review, not
-blanket cancellation or automatic approval of every original amount. Verify the
-product cutoff, promise evidence, authorization and delivery receipts. A
-discretionary historical promise needs a proportionate authorized resolution;
-only its approved outcome enters final automatic system settlement exactly once.
-Unverified, unauthorized or excessive promises cannot auto-issue in their original
-form. Missing evidence leaves the affected decision unresolved; it never erases an
-independently owed entitlement or authorizes a substitute reward. Reconcile prior
-deliveries and settlements without personal codes or unverified manual grants.
+Historical promises require full-population review, not blanket cancellation.
+Verify the product-owned cutoff and governing terms, actual player-visible written
+promise, authorization and prior claim/effect receipts. Where those terms preserve
+explicit written pre-cutoff commitments, fulfill 100% of the original contents
+exactly once, including originally promised large currency; a later prospective
+ban does not authorize discretionary recalibration, substitution or cancellation.
+Implied, unauthorized or unverified requests and excessive new requests gain no
+such authority. Proportionate review applies only to non-explicit requests and
+other cases outside that preserved scope, under current authorization; new
+activities, codes, packs and replies remain subject to the product's large-currency
+and private-promise bans. Missing evidence leaves only the affected decision
+unresolved, never an independently owed entitlement. Reconcile prior effects
+without personal codes or unverified manual grants.
+
+Mail insertion or an unclaimed inbox item establishes pending availability, not
+completed settlement. Completion requires the relevant claim or consumer-effect
+receipt; reconcile the same pending operation without regranting it, and close a
+verified completed claim without another grant. Preserve pending contents and
+delivered holdings throughout.
+
 Authorized operational state changes use the product API or an authorized
 database write role, with before/after evidence, idempotency ensuring exactly-once
 effects, and a retained receipt; neither route creates reward authority. PRs and
