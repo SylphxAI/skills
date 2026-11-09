@@ -44,7 +44,11 @@ Use wanted voluntary sinks and new goals where they address the measured surplus
 ## Admit a grant by progression, not delivery
 
 Mechanical redemption proof establishes that a route credited the configured
-assets exactly once. It does not establish economic admission. Before
+assets exactly once. It does not establish economic admission. This assessment
+is non-retroactive: it governs undocumented proposals and future communications,
+never the fulfillment of an existing player-visible written commitment; see the
+[Non-Retroactive Commitment Boundary](offers-gifts-and-experiments.md#non-retroactive-commitment-boundary).
+Before
 configuring or announcing any server-wide currency grant, read authoritative
 balance and remaining-progression-cost distributions by tenure, progression and
 payer band, plus the target currency's current source-minus-sink direction over
