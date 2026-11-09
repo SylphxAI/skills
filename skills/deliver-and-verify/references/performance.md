@@ -95,7 +95,9 @@ an added member, a removed member and a routing change during the proof.
 State the clock origin, preserve
 the original source-observation time across reloads and unchanged content, retain
 failed or censored samples, and identify excluded routes or a changed census
-rather than silently shrinking or mixing the population. A measured budget uses
+rather than silently shrinking or mixing the population. A measurement cohort
+started after instrument setup is repaired remains separate from the retained
+failed attempts; neither setup failures nor later successes erase product failures. A measured budget uses
 that complete cohort's maximum plus a stated margin; finite acceptance does not
 establish an absolute bound under failure or a production-population tail
 percentile.

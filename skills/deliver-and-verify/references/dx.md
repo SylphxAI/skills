@@ -18,9 +18,10 @@ Record generator inputs for generated output.
 release image still uses an older compiler. **Right:** Verify the selected
 source with the compatible compiler in both CI and the artifact build.
 
-A copied entrypoint is not a complete tool: derive its dependency files and
-wrapper-supplied launch context from the pinned launcher and verify initialization
-before expensive work; an initialization refusal establishes no policy or product
+A copied or relocated entrypoint is not a complete tool: derive its dependency
+files and wrapper-supplied launch context, including paths resolved from output
+arguments, and exercise setup from that final context before expensive or repeated
+work; a refusal before the product action is an instrument failure, not a product
 verdict. When current control helpers operate on historical inputs, assemble their
 complete sibling dependency closure from the control revision and pass the frozen
 target root (source, data or package) explicitly rather than inferring it from the
