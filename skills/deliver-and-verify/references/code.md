@@ -226,15 +226,14 @@ access and exclusion from unrelated selectors before propagating it.
 endpoints, then exercise the access path rather than treating policy eligibility
 as working connectivity.
 
-Trace changed inputs through the automatic writer's trigger, propagation time
-and consumer read behavior; a new deployment does not establish later updates.
-New metadata can also remain unpublished when an unchanged primary value skips
-the writer: exercise the real reconciliation entrypoint with old or absent
-metadata and an already-correct primary value, preserving that value while
-verifying the promised metadata reaches its consumer. **Wrong:** call the new
-formatter or force an unrelated state change to make the sample appear.
-**Right:** prove both changed and unchanged passes through the normal writer,
-with missing and existing metadata, within the declared publication contract.
+Trace changing dependencies through the consumer's actual publication path:
+historical background work may still need completion without blocking current
+readiness, and a cache hit or no-op can skip publication when eligibility changes
+but primary output does not. **Wrong:** clear a loading flag in a helper or force
+an unrelated redraw/update; **Right:** exercise the ordinary cached and changed
+entrypoints as a dependency leaves and later completes, proving immediate
+publication for current work, continued background progress, and refusal while a
+still-required dependency is pending.
 
 An automatic update can discard a temporary compatibility approval while another
 consumer still uses it. Exercise successive and unrelated updates during a

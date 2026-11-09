@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a renderer whose ready marker waits for an image removed from the current frame, then fails to publish on a cached frame when loading clears.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Repair a report dashboard whose cancelled tab keeps readiness blocked by a background export, while unchanged cached results skip readiness publication.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a delivery reconciler that never publishes new readiness metadata when the primary object is already correct; retain completion of unrelated background work.",
+      "clause": "repairing recovery references or reconcilers"
+    },
+    {
       "prompt": "Fix an entitlement grant whose database callback returns normally after its inventory adapter returns null, allowing a durable success receipt to suppress the retry.",
       "clause": "implementing or shipping a feature, bug fix"
     },
