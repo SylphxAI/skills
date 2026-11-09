@@ -366,6 +366,13 @@ different contract. Through the public worker or poll entrypoint, verify progres
 past those selections, effective capacity holds and completion of an already-scanned
 candidate after its inputs change, without an observing read completing the work. A durable idle transition does not atomically stop an in-memory worker: serialize the final pending-work check and stop publication with wake admission. Use barriers to prove a wake committed before stop cannot be consumed by the retiring slot and lost.
 
+A bounded scan can repeatedly expire before its deferred effect phase, while
+clock-derived batch rotation can skip unattempted work whenever an earlier limit
+ends the batch. **Wrong:** prove cursor movement or a larger deadline; **Right:**
+interrupt the real scan budget before population exhaustion and prove completed
+eligible effects plus later-candidate and later-owner progress across fresh passes,
+with current eligibility rechecked and dry-run progress unchanged.
+
 A fixed-priority selector can starve eligible notifications or other timers when
 one periodic pass exceeds its interval and is overdue again at every selection;
 burst-then-idle tests never sustain that contention. Where progress is promised

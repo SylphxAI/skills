@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a storage collector that exhausts its scan deadline before any deletion, and prove later owners make progress across fresh bounded passes without weakening retention checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a SaaS export worker whose clock-rotated batch skips unattempted exports when its effect limit ends each pass; preserve authorization checks and dry-run state.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement regression tests for a game reward backfill that repeatedly times out during candidate discovery before granting any eligible reward, including later-account progress.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
       "clause": "implementing or shipping a feature, bug fix"
     },
