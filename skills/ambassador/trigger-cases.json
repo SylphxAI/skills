@@ -72,6 +72,10 @@
     {
       "prompt": "Review an outbound ambassador reply that tells an angry player management cancelled all private manual gifts and top-tier special approvals; rewrite it to take personal conversational ownership and point to fixed pack rules without confessing past private gifts or reneging on already-spoken promises.",
       "clause": "drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or outbound transcripts"
+    },
+    {
+      "prompt": "A player shares an interactive quiz post card on Messenger and replies with a single-letter choice B one second later; extract the shared post description, attachments, and reply_to chain before replying or using the >24h authenticated inbox Web-UI fallback.",
+      "clause": "delivering 24-hour messaging-window replies via authenticated inbox Web-UI fallback"
     }
   ],
   "negative": [
