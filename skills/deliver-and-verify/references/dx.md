@@ -614,6 +614,7 @@ validator. **Wrong:** accept builder text or an overlay entry as closure;
 **Right:** exercise the selected caller's ordinary payload through the producer
 and the real release loader, with a valid-payload control. Shared inputs require
 registration in every consuming profile without creating false mixed scope.
+The same holds for protective helpers: a merge or recovery helper present in a build protects nothing unless that build's caller invokes it; compare the identical interrupted operation across builds.
 
 Keep PR filename diffs for ordinary source registration, rather than requiring
 every source PR to regenerate a frozen release binding. A pointer- or
