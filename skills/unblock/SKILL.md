@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, publication stalls inside a pre-push guard, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -201,6 +201,16 @@ fails. **Good:** use a supported entrypoint with unchanged authority, reconcile
 the deployment receipt and verify the remaining work.
 
 ### Build wrapper timeouts
+
+An outer tool deadline and an inner guard's fetch or validation deadline are
+independent: extending the first cannot repair the second. Where evidence places
+the timeout in acquisition of required immutable inputs, a supported reader can
+materialize those exact inputs before the unchanged guard runs again; reconcile
+the target and prior attempt first, preserve the retained source and full guard
+population, and use a different repair if acquisition completes but validation
+still stalls. **Bad:** disable the guard or repeatedly enlarge the outer timeout;
+**good:** establish which phase expired, prepare only its required inputs through
+the supported route, then verify the guarded operation's authoritative result.
 
 An adapter startup error or wrapper timeout establishes no verdict on the requested
 operation. A successful initialization and harmless probe through a documented

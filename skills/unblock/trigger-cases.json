@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Source publication stalls inside its pre-push guard while fetching required immutable history, even after the outer tool timeout was extended. Restore publication without disabling validation.",
+      "clause": "publication stalls inside a pre-push guard"
+    },
+    {
+      "prompt": "An artifact verification wrapper times out before assertions because its inner manifest fetch has a shorter deadline. Restore the same guarded verification with all required inputs retained.",
+      "clause": "a wrapper or test timeout leaves no compiler or assertion output"
+    },
+    {
       "prompt": "Recover a stalled merge queue entry, checking immediately before the write whether it is still failing or has resumed normal checks.",
       "clause": "a queue/review stops progressing"
     },
@@ -151,6 +159,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review why yesterday's publication guard timed out during history acquisition; the publication already succeeded and no restoration is needed.",
+      "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Audit an old recovery report for historical-dependency coverage; the current store is healthy and no restoration is needed.",
       "clause": "Use prove-it and challenge for attribution of a past failure without restoration.",
