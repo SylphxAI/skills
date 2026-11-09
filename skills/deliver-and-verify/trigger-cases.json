@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Run one authorized disposable compute rental to prove its in-workload self-destroy timer, with independent fallbacks armed and authoritative deletion and billing verification.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Implement an autonomous cleanup lease for temporary export workers; verify the resource expires without the creator issuing deletion and name its surviving executor dependencies.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a staging environment's shutdown automation so two timers sharing one host are not represented as surviving that host's failure; exercise cleanup using its scoped service identity.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Fix an image packager that inflates smaller authored assets during staging while retaining their original extensions; verify actual served bytes and consumer decoding.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2635,6 +2647,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review a claimed hard expiry from two schedulers sharing one host; identify unsupported failure-domain claims without changing automation.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-enforced leases with in-workload self-destroy timers for temporary compute; make an architecture recommendation only.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the explanation of a temporary worker's expiry limitations; edit prose only, without changing its configuration.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review the evidence for a protocol fixture rejection and identify whether the client or fake violates the contract; make no changes.",
       "clause": "prove-it for a review or evidence check",
