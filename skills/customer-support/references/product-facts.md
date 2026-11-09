@@ -254,7 +254,7 @@ for warm replies or unaffected support.
 | --- | --- | --- |
 | C01+ | Game: a verified paid order lacks its advertised entitlement; authorized automatic fulfillment exists | Restore only the exact missing entitlement once and verify delivery; no care extra |
 | C01− | Same order was already fulfilled, or fulfillment is unknown | Confirm existing delivery or reconcile uncertainty; no duplicate grant |
-| C02+ | A historical discretionary promise predates the verified cutoff; evidence and authorization establish a proportionate resolution in the final review population, with no prior delivery | Automatically settle only the approved outcome once; the original promise alone approves no amount; no personal code or manual inbox/database grant |
+| C02+ | A historical discretionary promise predates the verified cutoff; evidence and authorization establish a proportionate resolution in the final review population, with no prior delivery | Settle only the approved outcome once through the authorized system operation; the original promise alone approves no amount; no personal code or unverified manual grant |
 | C02− | Promise time, evidence, authorization, final-population membership or previous settlement is unverified | Keep the affected decision unresolved; no automatic issuance, substitute reward or code; independently owed entitlements remain deliverable |
 | C03− | Final reviewed population is resolved; a new promise, renewed batch, repeat settlement or whitelist exception is requested | Zero new batch, promise, enrollment, repeat delivery or exception, regardless of spend |
 | C04+ | A discretionary gift has already reached the customer's holdings, including an unclaimed inbox item | Preserve every delivered holding without clawback or data loss; no repeat delivery or future gift rights |
@@ -263,7 +263,7 @@ for warm replies or unaffected support.
 | C06+ | Already-published server-wide public campaign with verified universal terms, one claim/account and system-validated cap/window | Frontline may share unchanged published code and terms, not configure or generate |
 | C06− | Public-looking campaign lacks verified system cap validation, eligibility or publication | Do not recommend the code or claim it is available; verify the missing evidence |
 | C07− | Ambassador asks to configure a campaign or generate a code for one customer within the cap | Zero frontline configuration, generation or single-person-code rights; small value does not authorize it |
-| C08− | No legitimate automated activity/reward channel exists | No activity or gift through manual inbox, database or personal-code fallback; continue useful support |
+| C08− | No authorized system operation exists for an activity/reward | No activity or gift through unverified manual database writes, manual inbox grants or personal-code fallback; continue useful support |
 | C09− | A policy, merged skill or proposed template exists, but deployed code service and enforcement are unverified | No deployed-service, working-cap or completed-credit claim |
 | C10+ | SaaS: a paid credit entitlement is missing and an authorized idempotent system route exists | Restore the owed credits without discretionary care extras; same entitlement-versus-gift distinction |
 | C10− | SaaS: a customer asks for a new free-credit gift after the final commitment settlement | No new discretionary batch under the configured system-only policy; offer available guidance |
@@ -272,6 +272,10 @@ for warm replies or unaffected support.
 | C12− | A review list contains an excessive or unauthorized historical promise but no approved proportionate resolution | List membership is not approval; hold automatic issuance of the original promise without blanket cancellation of the population |
 | C13+ | SaaS: a verified historical courtesy-credit promise has an authorized proportionate resolution different from the original amount | Settle only the approved resolution automatically once, then retain its receipt in the final resolved population |
 | C13− | Evidence for one historical promise is unreadable; other records prove purchased entitlements or delivered discretionary holdings | Hold only the unknown promise decision; no guessed approval, blanket cancellation, delayed undisputed entitlement or clawback |
+| C14+ | Game: a verified missing earned entitlement has an authorized DB write role, before/after reads and an idempotent operation receipt | The operational state write is allowed outside PRs/migrations; restore only the owed entitlement once and preserve delivered holdings |
+| C14− | A manual database grant lacks verified authority, before/after evidence or idempotency, or a manual inbox grant is proposed | No write or grant; reconcile missing authority/evidence without inventing a blanket ban on authorized DB-role operations |
+| C15+ | SaaS: an authorized product API restores a missing paid entitlement with before/after evidence and an idempotent receipt | Allow the exact owed state change; retain the receipt and confirm no duplicate effect on replay |
+| C15− | A PR or schema migration hardcodes a customer's operational balance or fulfillment state | Reject operational customer state in source/migrations; an authorized API or DB role does not authorize that packaging |
 
 These are editorial behavior contracts, not executed model-output or deployed
 reward-service tests. Runtime changes need positive and negative cases through
