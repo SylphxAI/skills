@@ -153,6 +153,11 @@ warm consumer request counts, transferred bytes and elapsed time for the same
 selected population and effective Git/tool version, measuring checkout and later
 hydration separately from queue wait. Preserve source coverage while batching
 missing inputs rather than extending the deadline or hydrating unrelated data.
+Metadata-only discovery needs explicit suppression of implicit hydration in the
+actual installed tool version; a newer flag is not interchangeable with an
+older supported environment setting until the consumer proves it. Keep that
+suppression scoped to metadata reads: content validation still needs readable
+bodies, and missing required ancestry must refuse rather than silently fetch.
 **Wrong:** infer one network request from one batch-reader process. **Right:**
 trace requests through the real adapter, retaining a cold-input control that
 exposes lazy per-object reads and a warm-input control that proves reuse.
