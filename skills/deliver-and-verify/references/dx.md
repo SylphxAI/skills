@@ -602,7 +602,12 @@ keeps other dependencies byte-identical. A direct source overlay into a compiled
 module can replace that route; require binary synchronization only while those
 binaries remain the delivery mechanism. Derive registration and runtime scope
 from the input-to-destination mapping and actual consumers, not plan membership:
-an assembly can retain another role's scaffolding. Shared inputs require
+an assembly can retain another role's scaffolding. Selection and execution are
+independent: a selected producer can remain silent when its selected caller never
+populates a required field, and an embedded plan can fail its frozen release
+validator. **Wrong:** accept builder text or an overlay entry as closure;
+**Right:** exercise the selected caller's ordinary payload through the producer
+and the real release loader, with a valid-payload control. Shared inputs require
 registration in every consuming profile without creating false mixed scope.
 
 Keep PR filename diffs for ordinary source registration, rather than requiring
