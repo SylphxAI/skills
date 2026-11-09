@@ -22,10 +22,16 @@ are independent (references read 2026-11-08).
 **Right:** exercise the check's direct and wrapped commands under the final UID,
 `PATH` and toolchain-home settings before resubmitting, with admission controls intact.
 
-Run long builds and suites in CI. Record the submitted revision and run ID, set a
-`github:check:<owner>/<repo>@<ref>` event watch and end the turn instead of waiting
-inside it. On wake, read the actual run and continue from its receipt, without
-resubmitting a run whose result is unknown.
+Run long builds and suites in CI; retain the revision, run ID and attempt, then
+yield with an observer whose completion condition covers the required operation.
+A commit-check watch can finish while a concurrency-pending workflow has no jobs:
+workflow completion needs that exact run's lifecycle, while merge admission needs
+its designated required checks. **Wrong:** infer delivery completion from all
+existing checks being terminal; **Right:** observe the delivery run and inspect
+its actual selector or deployment receipt on wake, without resubmitting unknown
+work ([workflow runs](https://docs.github.com/en/rest/actions/workflow-runs#get-a-workflow-run)
+and [commit check runs](https://docs.github.com/en/rest/checks/runs#list-check-runs-for-a-git-reference),
+read 2026-11-09).
 
 If a build wrapper repeatedly times out before a compiler verdict, use the
 [build wrapper recovery procedure](../../unblock/SKILL.md#build-wrapper-timeouts).
@@ -58,11 +64,12 @@ lose the result. Preserve reports and captures on failure as well as success.
 Record per-run stop or teardown failures against that run; continue independent
 runs only when their declared starting state can still be established. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
-recoverable receipt. The observer needs its own access to that completion
-signal: a writer-readable private temporary directory can still make watch
-registration fail. Keep private payloads private; expose only a secret-free
-completion marker through a supported observer-readable location, or use the
-executor's operation identity. A terminal registration baseline needs immediate
+recoverable receipt. Signal creation and observation use independent identities:
+verify the producer can atomically write the signal and the native observer can
+read it; an approved temporary path or a private run directory proves neither.
+Keep private payloads private; expose only a secret-free completion marker through
+a supported location accessible to both identities, or use the executor's
+operation identity. A terminal registration baseline needs immediate
 receipt reconciliation, because no later transition may wake the worker. Verify
 the child survives the launching call using the
 [background-process guidance](dx.md#internal-development).
