@@ -1,6 +1,6 @@
 ---
 name: game-economy
-description: "Use when checking reward-route support, choosing a game's pack contents or price, designing bottleneck-first VIP bespoke tiers from inventory and recipe cliffs, verifying item template table container type payloads, auditing transitive reward graphs and recursive containers before reusing or repricing items, governing server-wide public campaign redemption codes (limited, unlimited, time-limited) with universal equal treatment and zero single-player codes, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover, checking virtual-currency inflation, drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, deliver-and-verify to implement a change, and clear-writing for unrelated copy."
+description: "Use when checking reward-route support, choosing a game's pack contents or price, designing automated VIP tier milestones and selector chests from progression cliffs, verifying item template table container type payloads, auditing transitive reward graphs and recursive containers before reusing or repricing items, governing server-wide public campaign redemption codes (limited, unlimited, time-limited) with universal equal treatment and zero single-player codes, comparing value per unit of money, raising a cap or adding a growth line, setting a gift or gift budget, preventing positional leaderboard spillover, checking virtual-currency inflation, drafting or reviewing VIP thanks, rank/tier wording or care-mail titles/bodies, or diagnosing why game sales fell. Use ambassador for relationship conversations, customer-support for an individual entitlement or refund case, challenge for general product or commercial strategy, deliver-and-verify to implement a change, and clear-writing for unrelated copy."
 ---
 
 # Game economy
@@ -118,7 +118,7 @@ mail (mail title / mail body) and public/community copy, never disclose, confirm
 or hint at server-wide real-money spending rank, cumulative-spend standing,
 spend percentile or rank-differentiated rebate percentages, even to the verified
 account owner. Public gameplay, tournament and collection scores are distinct
-from confidential spending comparisons. Describe bespoke care solely as personal
+from confidential spending comparisons. Describe VIP milestone appreciation solely as personal
 VIP appreciation ("Personal Exclusive VIP Appreciation"), without comparative hints such as
 “nobody contributes more” or “only the top few qualify.”
 
@@ -140,7 +140,7 @@ needed. Never assume the delivery operator can sanitize an already-inserted mail
 
 | ❌ Bad | ✅ Good |
 | --- | --- |
-| “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Track A order <order_id> **VIP**”. | “Personal Exclusive VIP Appreciation”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
+| “Server-wide #1 cumulative spender: +20% extra privilege”; mail titled “Internal-tier order <order_id> **VIP**”. | “Personal Exclusive VIP Appreciation”; natural copy describing the recipient's approved benefit without comparative standing or internal metadata. |
 
 Billing disclosure is role-specific: ambassadors never answer or quote cumulative
 recharge totals, order numbers or top-up amounts, even when the verified owner
@@ -157,38 +157,34 @@ path; own billing records are private, never public recognition. See the [suppor
 Explicit disinterest or a spending complaint stops the outbound sales sequence
 under [ambassador's stop-sales rule](../ambassador/SKILL.md#3-emotional-care-first-and-the-adversarial-turing-self-test).
 
-### Bottleneck-First High-Ticket VIP Bespoke Pricing & Primary-Source Item Template Verification
+### Automated Permanent Cumulative VIP Tier Milestones, Fixed-Tier Web Bonuses & Primary-Source Item Template Verification
 
-When pricing or structuring bespoke high-ticket packs (`US$200+`) for high-LTV payers (`T0`):
-1. **Cross-reference live slot levels, warehouse balances, and upgrade-recipe cliffs (skill template / progression tables) before choosing contents:**
-   - Never reuse a low-ticket starter/comfort ration (`100–300` units) on a high-ticket purchase ask; size quantities to clear concrete progression milestones (`2 / 6 / 10` slots across the player's actual level cliff) with progressive unit-value step-ups (`+12.5% -> +20% -> +25%`) that still leave `>= 40%` of total progression depth for subsequent repeat purchases (**Anti-Cheapening**).
-   - **Zero Overstock Dilution:** Exclude any secondary currency or material the player already holds in large surplus (`10,000+` units in inventory) and allocate 100% of the pack's budget to the specific bottleneck items blocking their next upgrade step.
-   - **Warehouse-Unlock Value Framing:** When clearing a mid-tier recipe cliff (e.g., `Lv.30 -> Lv.31`) unlocks tens of thousands of high-tier materials already sitting idle in the player's inventory, compute the exact reachable level from the serving template and present the pack as unlocking their existing warehouse hoard.
-2. **Verify the item template table (`container type`), transitive reward-graph closure, and schema permanence before quoting or reusing any item, container, or cosmetic ID:**
-   - Read the authoritative item template table (`container type` JSON payload), artifact template (`quality`, `skillId`), and database table schema (`day: -1` permanence vs. expiring columns) before placing any item ID into an offer config. Never assume an item is a "30-day trial card" or a top-tier item from its name alone.
+When structuring VIP retention, cumulative top-up milestones, and high-tier packs (`US$200+`):
+1. **Zero Private Bargaining or Manual Bespoke Top-Up Rebates:**
+   - Permanently abolish private 1-to-1 top-up bargaining, manual custom bundle composition by top-up amount (`Bespoke Offers`), and manual DM bundle rebates (`8%–25%` manual per-order rebates).
+   - Deliver VIP retention and high-tier top-up rewards **100% through automated in-game permanent cumulative top-up VIP tier milestones (with selector chests), automated recurring cumulative recharge templates, and transparent fixed-tier official web top-up bonuses**. Brand and game ambassadors provide emotional companionship and share server-wide uniform public campaign codes only.
+2. **Automated VIP Milestone & Selector Chest Design from Progression and Recipe Cliffs:**
+   - Size automated permanent cumulative VIP tier milestones (such as 10-tier permanent cumulative top-up milestones) to clear concrete progression cliffs using non-positional progression materials and selector chests (with zero positional leaderboard currency), keeping each tier's marginal rebate (`20%–25%` of incremental top-up) and lifetime cumulative rebate (`<= 25%` Clean-USD of cumulative top-up) strictly bounded while leaving `>= 40%` of total progression depth for subsequent repeat play and purchases (**Anti-Cheapening**).
+   - **Zero Overstock Dilution via Selector Chests:** Use in-game selector chests at cumulative VIP milestones so high-LTV payers can select the exact bottleneck materials blocking their next upgrade cliff (such as advancing `Lv.30 -> Lv.31` to unlock higher-tier materials) without receiving surplus materials they already hold in excess.
+3. **Verify the item template table (`container type`), transitive reward-graph closure, and schema permanence before quoting or reusing any item, container, or cosmetic ID:**
+   - Read the authoritative item template table (`container type` JSON payload), artifact template (`quality`, `skillId`), and database table schema (`day: -1` permanence vs. expiring columns) before placing any item ID into an automated VIP milestone or offer config. Never assume an item is a "30-day trial card" or a top-tier item from its name alone.
    - **Transitive Reward-Graph Closure & Live Cohort Ownership (`Zero Devaluation & Zero Duplicate Milestone Grants`):** Before classifying an item or cosmetic as "unmonetized" or reusing it in new progression, VIP, or bundle tiers, compute the fixed-point transitive closure across (a) direct cash and shop SKUs, (b) activity and event trigger-currency handlers (reading the server handler that credits each activity to check whether a cost-type flag binds progress to real-money recharges rather than gameplay currency), and (c) recursive chest, random-box, and choice-box (`container type`) payloads down to leaf IDs, then verify live player holdings across the target payer cohort. When top spenders already unlocked an asset through prior cumulative-recharge containers, reusing it on new or retroactive VIP tiers both devalues past paid events and delivers duplicate zero-utility grants; create net-new tier-exclusive assets whenever transitive cash provenance or payer holdings overlap.
-3. **1:1 Cross-Channel Price Unity & Dynamic Mail Split:**
-   - Keep price and item quantities `1:1` identical between self-serve personalized web offers and 1-to-1 VIP concierge quotes, and derive multi-mail delivery counts (`2 / 5 / 10` mails) directly from each tier's configuration rather than hardcoded labels.
 4. **100% System Monetization, Universal Equal Treatment & Public Campaign Codes Only ([offers, gifts and experiments](references/offers-gifts-and-experiments.md#100-system-monetization-universal-equal-treatment-public-campaign-codes-only)):**
-   - **100% System Monetization & Zero Single-Player Codes or Micro-Gifts:** Ambassadors and support agents provide emotional value, onboarding help, and gameplay guidance only. Every promotion, event, and reward across all titles must execute 100% through automated product/platform systems; if an event or reward cannot be executed through a legitimate automated system channel, do not run the event or issue the reward. Never issue individual soothing codes, personal care codes, free micro-gifts, manual inbox grants, or ad-hoc database rewards to placate individual players, and never offer top-up-linked or player-negotiated gifts.
+   - **100% System Monetization & Zero Single-Player Codes or Micro-Gifts:** Ambassadors and support agents provide emotional value, onboarding help, and gameplay guidance only. Every promotion, event, VIP tier milestone, and reward across all titles must execute 100% through automated product/platform systems; if an event or reward cannot be executed through a legitimate automated system channel, do not run the event or issue the reward. Never issue individual soothing codes, personal care codes, free micro-gifts, manual inbox grants, or ad-hoc database rewards to placate individual players, and never offer top-up-linked or player-negotiated gifts.
    - **Public Campaign Codes Only (Three-Layer Separation of Duties):** Apply one universal standard across all players with zero whale-whitelist vs. non-whitelist tracks and zero per-order or milestone ambassador rebate quotas. Redemption codes are restricted strictly to server-wide public campaigns that benefit all players equally (configured as `limited` total-claim cap, `unlimited`, or `time-limited` window, 1 claim per account). Governance uses three strict layers:
-     1. **Economy / CI Automated Cap & Blacklist Layer:** Machine-readable Clean-USD valuation SSOT and CI checks enforce hard per-player value ceilings (e.g., `<= US$1.50` Clean-USD for public festival/campaign codes) and block premium currencies, high-tier progression bottlenecks, and unpriced containers before merge.
-     2. **Product / Game Design Configuration Layer:** Only the game/product engineering flow configures public campaign code templates within CI-enforced caps.
-     3. **Ambassador / Support / Marketing Distribution Layer:** Frontline channels hold zero code-generation, reward-configuration, or single-player grant authority; they only announce and share already-published server-wide public campaign codes.
+     1. **Economy / CI Automated Cap & Blacklist Layer:** Machine-readable Clean-USD valuation SSOT and CI checks enforce hard per-player value ceilings (e.g., `<= US$1.50` Clean-USD for public festival/campaign codes, `<= 25%` Clean-USD for automated permanent cumulative VIP tier milestones) and block uncalculated positional currency, unapproved bottlenecks, and unpriced containers before merge.
+     2. **Product / Game Design Configuration Layer:** Only the game/product engineering flow configures automated VIP milestones and public campaign code templates within CI-enforced caps.
+     3. **Ambassador / Support / Marketing Distribution Layer:** Frontline channels hold zero code-generation, reward-configuration, or single-player grant authority; they only announce and share already-published server-wide public campaign codes and guide players to automated in-game systems.
    - **Non-Retroactive Commitment Boundary:** Read the [commitment boundary](references/offers-gifts-and-experiments.md#non-retroactive-commitment-boundary). Documented player-visible written commitments are fulfilled exactly once with their original promised content; actual prior delivery is the dedup key. New economic admission applies only to undocumented proposals and future communications.
 
-Before running a gift program, whoever holds its budget sets the eligible
+Before configuring an automated reward program or public campaign code, whoever holds its budget sets the eligible
 population, allowed reward types, per-recipient and aggregate exposure,
 overlap rules, delivery window, funding and review conditions. Derive quantities
 from the economy, expected uptake, sales displacement and measured ability to
-add useful content. The person serving the player chooses within that standing
-authority without asking for each case. Update the budget when its measured
-inputs change; a proposed gift outside it needs a budget decision.
+add useful content. Update the budget when its measured
+inputs change; a proposed campaign outside it needs a budget decision.
 
-For ambassador retention, VIP care and Save-to-Upsell bundles, apply the
-[live retail valuation and discretionary grant caps](../ambassador/SKILL.md#retail-valuation-and-discretionary-grant-caps)
-before choosing quantities; synthetic internal conversions cannot replace
-matching direct-cash store SKUs.
+For automated VIP tier milestones, recurring cumulative recharge templates, and public campaign codes, verify every item's live retail value against direct-cash store SKUs before choosing quantities; synthetic internal conversions cannot replace matching direct-cash store SKUs.
 
 Keep owed fulfillment and repairs separate from optional generosity. When a
 service mistake grants too much, absorb its cost and preserve what the player

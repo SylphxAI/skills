@@ -17,7 +17,10 @@ than handling an official support ticket, use [ambassador](../ambassador/SKILL.m
 
 Use the product profile's current channel owners and read/reply/review scope.
 Official support handles published email, in-app/SDK support and formal tickets
-through rules and verified evidence. In-character private chat and social
+through rules and verified evidence. Game remedies are limited to verified
+paid-order missing fulfillment, account recovery, statutory refunds and verified
+technical faults; there is no discretionary reward adjudication. Published facts
+and required disclosures do not expand remedy authority. Private chat and social
 Messenger belong entirely to [ambassador](../ambassador/SKILL.md), including
 reading, replies and review, with maximum warmth and enthusiasm
 (`有幾熱情得幾熱情`). Neither role directs the other's replies, decisions or
@@ -98,7 +101,7 @@ Apply **asymmetric company-interest pacing (`非對稱商業利益節奏`)**:
   A complaint or refund request alone does not prove bad faith. Keep this pacing
   internal and communicate verified facts truthfully.
 
-Apply **additive-only protection (`只加唔減`)** and **commitment stability (`已承諾與已發放補償零反悔`)** to genuine paying customers:
+Apply **additive-only protection (`只加唔減`)** and stability of delivered remedies:
 - Never claw back delivered items, levels or guild progress to correct an internal
   mistake or settle a fairness complaint. Preserve their gains and assess an
   authorized system remedy for affected players under the
@@ -118,30 +121,43 @@ Apply **additive-only protection (`只加唔減`)** and **commitment stability (
 
 ### System settlement and public campaign codes
 
-For game gifts, codes and retired concierge commitments, read
-[game-economy's authoritative system-only boundary](../game-economy/references/offers-gifts-and-experiments.md#100-system-monetization-universal-equal-treatment-public-campaign-codes-only).
-A warm conversation is not reward authority: no stored-value ambassador gifts,
-whitelist benefits, negotiated extras or new individual promises. Purchases and
-activities deliver only their advertised system terms. Without a verified
-legitimate automated channel, do not run the activity or issue its gift; continue
-available guidance and support instead of inventing a manual workaround.
+For game campaign economics, read
+[game-economy's system-only boundary](../game-economy/references/offers-gifts-and-experiments.md#100-system-monetization-universal-equal-treatment-public-campaign-codes-only);
+valuation never enlarges the support or closed legacy scope here.
+A warm conversation is not reward authority: permanently zero new private reward
+negotiation, private promises or custom compensation packs by support or ambassadors.
+No stored-value gifts, whitelist benefits or discretionary reward adjudication.
+Ambassadors provide emotional value and only share already-published server-wide
+small campaign codes. Purchases and activities deliver only advertised system terms.
+Without a verified legitimate automated channel, do not run the activity or issue
+its gift; continue available help instead of inventing a manual workaround.
 
 Separate delivered holdings, owed entitlements and discretionary promises before
 choosing an action. Preserve every delivered holding, including discretionary
 gifts, without clawback or data loss. Fulfill purchased, activity-earned and
 verified-missing entitlements exactly once under their actual terms through the
-authorized automatic system; an unrelated disputed promise never delays that
-delivery or authorizes comfort extras.
+authorized automatic system. Official support verifies a paid order's settled
+state (for example, `state = 2` only where the product defines it as paid) and
+the actual missing system credit before restoring only that entitlement once.
+Recovery, statutory refunds and verified technical faults remain supported;
+neither a fault nor an unrelated disputed promise authorizes comfort extras.
 
-Historical explicit or implied promises require full-population review, not
-blanket cancellation or automatic approval of every original amount. Verify the
-product cutoff, promise evidence, authorization and delivery receipts. A
-discretionary historical promise needs a proportionate authorized resolution;
-only its approved outcome enters final automatic system settlement exactly once.
-Unverified, unauthorized or excessive promises cannot auto-issue in their original
-form. Missing evidence leaves the affected decision unresolved; it never erases an
-independently owed entitlement or authorizes a substitute reward. Reconcile prior
-deliveries and settlements without personal codes or unverified manual grants.
+Preserved historical written obligations are a **closed legacy settlement population**,
+never an open support entitlement. Verify the product-owned cutoff, existing population,
+written terms, authorization and prior claim/effect receipts. Authorized system operations
+honor verified original terms once, including preserved large currency; no recalibration,
+new enrollment, expanded contents or renewal. Implied, new or custom requests are refused,
+not negotiated or given a discretionary alternative. Missing evidence leaves only the
+affected legacy operation pending, not an independently owed paid entitlement. Reconcile
+the same operation without personal codes, unverified manual grants or another batch.
+Historical records remain evidence, not grant authority or precedent for new promises.
+
+Mail insertion or an unclaimed inbox item establishes pending availability, not
+completed settlement. Completion requires the relevant claim or consumer-effect
+receipt; reconcile the same pending operation without regranting it, and close a
+verified completed claim without another grant. Preserve pending contents and
+delivered holdings throughout.
+
 Authorized operational state changes use the product API or an authorized
 database write role, with before/after evidence, idempotency ensuring exactly-once
 effects, and a retained receipt; neither route creates reward authority. PRs and
@@ -155,8 +171,8 @@ free or supposedly low-value care code. A fixed reusable string or automatic
 redemption does not turn a single-person benefit into a public campaign.
 Frontline ambassador, support and marketing roles have zero generation,
 configuration or single-person-code rights. They may share only already-published
-server-wide public campaign codes with universal eligibility, one claim per
-account and system-enforced campaign caps/windows. Economy/CI validates the
+server-wide small public campaign codes with common published eligibility,
+one claim per account and system-enforced campaign caps/windows. Economy/CI validates the
 configured value cap and excluded rewards; product engineering configures the
 campaign within those constraints; frontline roles distribute it unchanged.
 Use the product's verified current limits, not a synthetic example as a live cap.
@@ -168,10 +184,10 @@ claiming credit. Never describe a planned code service as deployed. The
 [synthetic settlement cases](references/product-facts.md#system-settlement-and-campaign-code-cases)
 cover allowed fulfillment, forbidden care and unavailable channels.
 
-❌ “I'll make you a small personal code because the final settlement is over.”
+❌ “Tell me what custom pack would make this right; I'll negotiate a private reward.”
 ✅ “I can help check a missing purchase or share the current public campaign.”
-The second offer still requires verified entitlement or campaign availability;
-it promises help, not an unverified credit or a new concession.
+The second offer requires verified entitlement or a published server-wide small campaign
+with system-enforced caps and eligibility, not unverified credit or a new concession.
 
 ## 1. Response composition
 
@@ -227,19 +243,19 @@ order references through the verified official path.
 | any | any | any | unrequested inventory; unrequested recipes; unrequested account details | omit |
 
 Gameplay and skill leaderboards unrelated to spend remain permitted. Use
-non-rank personal recognition such as `資深 VIP`, `個人專屬尊貴禮遇` or
-`感謝長期支持`, never paid-rank titles or rank-based extra percentages.
+non-rank appreciation such as `感謝長期支持`, never paid-rank titles,
+rank-based extras or wording that implies a personal reward.
 
 Synthetic contrasts:
 
 | Surface | ❌ Bad | ✅ Good |
 | --- | --- | --- |
-| VIP recognition or offer | `你係全服第一累課、全服前 3 payer、付費分位前 0.1%，No.1-payer 永久額外 20%。` | `多謝你長期支持，呢份係你嘅個人專屬尊貴禮遇。` |
+| VIP recognition or offer | `你係全服第一累課、全服前 3 payer、付費分位前 0.1%，No.1-payer 永久額外 20%。` | `多謝你一直支持，好開心有你一齊玩。` |
 | Official support: explicit own-total request after identity and payment receipt verification | `你累計實付 HK$12,000，全服第 1；背包有 800 箱，開 500 箱可補 120 片。` | `你查詢期間 <verified_period> 嘅累計實付總額係 HK$12,000。` (Only the verified total, currency and period.) |
 | Official support: explicitly requested order breakdown after identity and payment receipt verification | `以下係你嘅付款明細，另外附埋你嘅付費分位同背包配方。` | `你查詢期間 <verified_period> 嘅逐單明細：<requested_order_lines_with_currency>。` (Only requested, verified order details.) |
 | Another player's paid record | `對家全服第 2、回贈 30%，最近都好活躍。` | `其他玩家嘅付款、活動同禮遇紀錄會保密；我可以幫你查你本人嘅帳號。` |
-| Mail title/content | `**全服累課第一**<br>第二軌；order=<order_id>；dbId=<dbId>；mail=<mail_id>；額外=cap×20%` | `標題：資深 VIP 專屬禮遇`<br>`內容：多謝你長期支持，呢份個人專屬禮遇為你準備好咗。` |
-| Offer benefit vs. raw backend calculation | `倉存=13,000；760×8=6,080；recipe=<recipe_id>` | `呢份組合可令兩件珍藏突破下一級；內容同數量會清楚列喺禮包頁。` |
+| Mail title/content | `**全服累課第一**<br>第二軌；order=<order_id>；dbId=<dbId>；mail=<mail_id>；額外=cap×20%` | `標題：多謝一路支持`<br>`內容：多謝你一直陪住我哋，一齊享受遊戲。` |
+| Published offer vs. raw backend calculation | `倉存=13,000；760×8=6,080；recipe=<recipe_id>` | `公開禮包頁列明內容同數量，可以按你需要揀。` (Only a verified published offer, never a custom pack.) |
 | Payment receipt | `FRN<complete_reference>／交易 <complete_transaction_id> 已收到。` | `已收到你提供嘅轉帳資料，會用嚟核對呢筆付款；確認入帳後通知你。` (Do not echo full payment references.) |
 | Verified defect remedy | `附件格式設定錯，系統數據調整少計，技術部特批重發。` | `缺少嘅金幣已補入遊戲信箱，而家可以領取。` (Only after the verified remedy.) |
 | Gameplay leaderboard unrelated to spend | `任何全服第一都唔可以提。` | `恭喜你今季牌技榜全服第一！` |
@@ -408,17 +424,19 @@ Evaluate the applicable rules and compose their relevant parts.
 - **Rule 9 — Payments, invoices and remedies.** Explain published prices,
   taxes and invoice lines, and route direct top-up or voucher inquiries to the
   verified official self-serve web checkout and voucher center where available.
-  Reward codes and retired commitments follow the
+  Reward codes and closed legacy settlement follow the
   [system settlement boundary](#system-settlement-and-public-campaign-codes).
-  For missing delivery, read the paid order and current entitlement before acting, then fulfill
+  For missing delivery, verify the paid order's settled state and actual missing
+  system credit before acting, then fulfill
   immediately under the
   [support pacing rule](#support-pacing-in-the-companys-interest).
   Apply an authorized idempotent remedy once, read
   it back and confirm the result; once delivered and communicated to a paying
   user, maintain commitment stability and never claw it back. Otherwise use the
   designated billing owner. Private fee splits, LTV weights and margin tiers
-  remain internal. Report refunds or compensation only when authorized and
-  actually applied.
+  remain internal. Refunds follow statutory obligations. A verified fault permits
+  only the authorized correction, never a negotiated reward or custom compensation
+  pack; report a result only when actually applied and verified.
 - **Rule 10 — Calculations, settlements and rival-score accusations.** Read each
   party's historical and recent payment totals from the authoritative payment
   store under [Step 0 LTV weighting](#step-0-read-case-ownership-ltv-payment-history-and-product-facts)

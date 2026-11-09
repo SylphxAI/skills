@@ -52,8 +52,11 @@ after an environment or placement change may contain different work; bind every
 handoff to a remotely readable commit or complete recovery receipt and verify
 the destination tree against it. Resolve those selectors again through the
 supported wrapper before resuming, keeping admission controls intact.
-Send stdout and stderr to a durable log and write the exit status when the
-command ends. Preserve reports and captures on failure as well as success. Watch the
+Send stdout and stderr to durable logs and persist the terminal/exit receipt
+before attempting a completion message, so failed notification delivery cannot
+lose the result. Preserve reports and captures on failure as well as success.
+Record per-run stop or teardown failures against that run; continue independent
+runs only when their declared starting state can still be established. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
 recoverable receipt. The observer needs its own access to that completion
 signal: a writer-readable private temporary directory can still make watch

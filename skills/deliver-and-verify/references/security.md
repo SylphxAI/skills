@@ -133,13 +133,15 @@ resolver substitution. **Bad:** compare a shared branch with its reflog, then pu
 by branch name; **Good:** prove that ref, reflog and resolver tampering cannot change
 the authorized uploaded tree, while permitted deterministic rewrites still work.
 
-A rewrite that selects unpublished commits from local remote-tracking refs can
-mistake already-published base commits for unpublished work when those refs are
-stale; equal final trees do not preserve PR ancestry or its review range. Compare
-the rewrite boundary with the provider's live base/head and verify ancestry and
-the intended base-relative file set after publication. **Bad:** accept an unchanged
-tree while the stack now includes upstream changes; **Good:** retain published
-ancestors and confirm only the authorized delta remains in the PR.
+A rewrite bounded by cached references can mistake published ancestors for local
+work; one live branch tip still misses history published under other destination
+refs, and equal trees do not preserve ancestry or review scope. Derive the
+preservation set from the actual destination's complete advertised refs and
+readable required history before transformation, refusing unknown state, then
+verify retained ancestry and the intended base-relative delta after publication.
+**Bad:** protect only the branch being pushed; **Good:** a stale-cache stacked or
+merged fixture preserves every published ancestor, while remote-read failure
+causes neither a rewrite nor a push.
 
 A rewritten source pin advances only from the publisher's directly captured output
 after exit 0: in a receipt with `expected_head`, `source_head` and `local_head`,
