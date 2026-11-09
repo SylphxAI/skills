@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix a migration guard that rejects identical current-target files as new during a divergent merge-queue comparison; retain changed-byte, changed-mode and out-of-order refusals.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Repair a SaaS release admission guard that revalidates unchanged target artifacts as new because they are absent from an older ancestor; prove exact content and mode identity.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Implement a card-game configuration history guard that distinguishes unchanged live-target records from genuinely new candidate entries across divergent branches.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Fix an image packager that inflates smaller authored assets during staging while retaining their original extensions; verify actual served bytes and consumer decoding.",
       "clause": "implementing or shipping a feature, bug fix"
     },
