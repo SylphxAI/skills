@@ -994,7 +994,10 @@ Source-API refusal and out-of-band tamper detection prove different boundaries a
 A negative test can pass for the wrong failure when setup refuses before the
 injected fault. Pin fixture clocks and all dependent observations; require a
 positive control and the specific typed refusal, printing the full error chain
-on mismatch. Verify that substituting an unrelated fault makes the assertion
+on mismatch. A paused async runtime can still auto-advance while real I/O is
+pending; inhibit that advancement until an observable peer-entry handshake, then
+explicitly advance the deadline under test ([Tokio paused-clock semantics](https://docs.rs/tokio/1.54.1/tokio/time/fn.pause.html#preventing-auto-advance), read 2026-11-09).
+Verify that substituting an unrelated fault makes the assertion
 fail; compiler refusals match machine-readable codes and source/API identity,
 not English wording.
 **Wrong:** refresh the root timestamp and accept any error while nested evidence
