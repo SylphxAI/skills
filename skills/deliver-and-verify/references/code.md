@@ -672,6 +672,12 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+Disabling an optional test dependency inside a helper does not prove that ordinary
+production entrypoints cannot reach it, or that the package excludes its capability.
+Where production independence is the contract, exercise the packaged ordinary journey
+with that dependency absent and the supported restricted role, retaining a separate
+explicit test-mode control. **Wrong:** accept owner-account helper success or a default-off
+flag as removal; **Right:** verify ordinary completion and the declared packaged absence.
 
 Derive mutation targets from authoritative ownership, not enumeration or sort
 order or matching content: a foreign object can have the same schema and values
@@ -967,13 +973,14 @@ specified date string; a transport retry change needs no formatting cases.
 Source-API refusal and out-of-band tamper detection prove different boundaries and need separate fixture routes and assertions. Exercise forbidden writes through the source API; construct tamper directly on disk and assert its detection/count independently. **Bad:** require the API to accept a forbidden write to seed a tamper count; **Good:** retain the API refusal and seed the tamper fixture without that API.
 
 A negative test can pass for the wrong failure when setup refuses before the
-injected fault. Assert the specific typed refusal or root cause, print the full
-error chain on mismatch, and verify that substituting an unrelated fault makes
-the assertion fail. For expected compiler failures, match machine-readable diagnostic
-codes plus the intended source/API identity, never compiler English wording.
-**Wrong:** accept `is_err()` or a wrapper's generic “check failed”; **right:** require
-the changed-price refusal after a passing baseline, while a stale-heartbeat refusal
-fails that same assertion.
+injected fault. Pin fixture clocks and all dependent observations; require a
+positive control and the specific typed refusal, printing the full error chain
+on mismatch. Verify that substituting an unrelated fault makes the assertion
+fail; compiler refusals match machine-readable codes and source/API identity,
+not English wording.
+**Wrong:** refresh the root timestamp and accept any error while nested evidence
+expires; **right:** keep all fixture observations consistent with a fixed clock
+and require the changed-price refusal, not a stale-heartbeat refusal.
 
 When a parser promises contextual errors, test invalid input through flattened
 and dynamically named maps as well as ordinary typed nesting: intermediate
