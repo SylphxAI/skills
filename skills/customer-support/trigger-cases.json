@@ -78,7 +78,7 @@
       "clause": "care requests"
     },
     {
-      "prompt": "Handle an official support care request whose historical courtesy-credit promise has evidence and an authorized proportionate resolution different from the original amount.",
+      "prompt": "Handle an official support care request whose non-explicit historical courtesy-credit request falls outside preserved written commitments and has a proportionate resolution permitted by current terms.",
       "clause": "care requests"
     },
     {
@@ -91,6 +91,18 @@
     },
     {
       "prompt": "A customer asks official support to repeat an already-settled historical promise after the final reviewed population has closed.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "Handle an official support care request backed by a verified explicit written pre-cutoff commitment: governing terms preserve its original large-currency contents once, without discretionary recalibration, with post-claim evidence.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "A support customer sees a pending settlement item in the inbox, but no claim or consumer-effect receipt exists; distinguish availability from completion without regranting it.",
+      "clause": "care requests"
+    },
+    {
+      "prompt": "A customer asks official support for a new large-gold pack or infers a reward promise from friendly conversation; no verified explicit written pre-cutoff commitment exists.",
       "clause": "care requests"
     }
   ],
