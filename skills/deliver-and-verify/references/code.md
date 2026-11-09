@@ -694,10 +694,13 @@ actual rows, loops and buffers as well as latency. A set-based source or
 cardinality choices can repeat it. Aggregate reuse is established by actual
 loops × per-loop work and populated timing, not source shape. `MATERIALIZED`
 prevents aggregate reexecution, but correlated scans of an unindexed materialized
-pool can still be quadratic. Empty-result distributions
-can reject every candidate upstream or reach costly downstream branches before
-later predicates reject them all; identical output cardinality does not establish
-comparable work coverage. When only existence is needed, joining then
+pool can still be quadratic. An indexed owner lookup can repeatedly traverse
+unrelated history even when no result survives; a materialized relation is bounded
+only if its own access path selects the relevant population before expensive
+payload filtering. **Wrong:** infer bounded work from `MATERIALIZED` or zero output;
+**Right:** preserve the exact match and eligibility semantics while checking rows
+removed, loops and buffers at every narrowing boundary, alongside populated controls.
+When only existence is needed, joining then
 deduplicating can enumerate every matching pair; verify bounded match work in the
 actual plan, while preserving multiplicity when all pairs are required. Performance
 evidence includes reachable repeated scans and function calls, distinguishing
