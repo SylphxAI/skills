@@ -76,6 +76,7 @@ identity_privacy:
 features:
   feedback_path: null
   undocumented_feature_component: "<uncertainty and available route>"
+  live_shipped_features: [] # Product-owned evidence records below; no live claim by default.
 billing:
   public_pricing: []
   tax_display: "<public tax treatment>"
@@ -119,6 +120,81 @@ The profile can provide localized response components for the rules it uses.
 Compose each component for its part of the customer's request. Confirm human
 takeover through `acceptance_check` before locking a case. With no accepted
 owner, the automated window continues its configured support.
+
+### Live Shipped Version Gate
+
+A release claim is specific to the user's installed client and current access.
+Planned work, merged main, review approval, a backend deployment or a published
+announcement can each exist without a usable feature. Before describing a feature
+as available or giving navigation, match current product-owned shipped evidence
+to the actual installed app, platform, version/build and applicable rollout scope
+(such as region, server or cohort), and verify it is open now. Require the visible
+entry point for UI guidance or the actual current effect for backend-only behavior;
+backend presence never licenses an invented client menu. A screenshot alone does
+not establish the current installed build, even when it resembles a shipped screen.
+
+Unknown installed version, rollout/open state or evidence freshness leaves the
+affected availability claim unverified. Ask only for the missing version/build or
+current evidence, or offer an independently verified existing alternative. A store's
+latest version is not the user's installed version; an update suggestion needs
+verified release and rollout evidence too. Keep unrelated support moving.
+Published campaigns also need current live availability, eligibility and window
+evidence in addition to the existing publication and system-enforcement checks.
+
+`features.live_shipped_features` is an empty-by-default list of records supplied
+by the owning product, not a catalog of capabilities supplied by this skill.
+Each record has this shape; placeholders and state alternatives are schema notation,
+not live values or an example that enables a feature:
+
+```yaml
+feature_id: "<stable product-owned feature identifier>"
+app:
+  id: "<app/package identifier>"
+  platform: "<client platform>"
+shipped_client:
+  version_scope: "<explicit supported versions/builds, not an inferred latest>"
+  release_evidence: "<product release record binding shipped artifact to versions/builds>"
+rollout:
+  scope: "<applicable region/server/cohort and eligibility>"
+  state: "<open | closed | flag_off | planned | unknown>"
+  evidence: "<current authoritative rollout/open-state record>"
+  opens_at_utc: null # null means unknown, not open.
+  closes_at_utc: null # null means unknown, not unlimited availability.
+entrypoint:
+  state: "<visible | absent | unknown>"
+  path: null # Verified visible labels/route; no route supplied by default.
+  evidence: null # Current client observation bound to app/version/build and rollout scope.
+effect:
+  state: "<verified | absent | unknown>"
+  description: null # Actual current effect; no effect supplied by default.
+  evidence: null # Current effect receipt/observation for the applicable scope.
+provenance:
+  source: "<product-owned authoritative record and revision>"
+  observed_at_utc: "<UTC evidence observation time>"
+  valid_until_utc: null
+  refresh_when: "<freshness policy and invalidating version/flag/window/scope changes>"
+```
+
+The internal case evidence separately records the user's actual installed
+app/platform/version/build, its verification source and UTC observation time, plus
+the applicable rollout scope; it is not customer state committed into this schema.
+`open` alone is insufficient: all matching, freshness and entrypoint/effect evidence
+must support the proposed claim at reply time. Missing fields, unreadable sources or
+null evidence never grant availability. Planned, closed and flag-off records cannot
+support a current-feature claim. A verified backend effect may be described at that
+scope without asserting an absent UI. Existing confidentiality and entitlement
+boundaries still apply; availability never creates a private reward right.
+
+❌ “VIP1–10 is merged, so open the VIP tab and claim it.”
+✅ “I haven't verified that feature in your installed version. Which version/build
+are you using?” Offer an existing alternative only when independently verified.
+The VIP range is synthetic planned work here, never an available product fact.
+
+This is an editorial evidence contract with synthetic acceptance cases, not a
+runtime guard, feature detector or populated live source. Offline cases establish
+neither a runtime consumer nor enforcement. A product-owned live shipped-version
+source and actual consuming-path verification are needed before claiming runtime
+enforcement; keyword or regex detection cannot establish these state preconditions.
 
 ## 2. Archetype A: SaaS / API workspace profile
 
@@ -210,6 +286,27 @@ related negative cases. A and B refer only to the synthetic profiles above.
 | K02 | Wrong-product, stale or conflicting profile | Keep the affected fact unverified and continue supported help |
 | K03 | Interrupt retrieval or repeat a remedy request | Preserve case state and reconcile the action receipt before retrying |
 | K04 | Ask to design a game economy or implement billing | Route to design or delivery; these are not incoming support cases |
+
+### Live shipped-version cases
+
+These synthetic positive and negative behavior pairs apply the
+[Live Shipped Version Gate](#live-shipped-version-gate) across consumer apps, SaaS
+and games. They establish editorial acceptance expectations, not model-output tests,
+deployed guards or live product availability.
+
+| Case | Input or setup | Expected observation |
+| --- | --- | --- |
+| V01+ | Consumer app: installed app/version/build verified; matching product-owned release evidence, current open rollout and visible export entry point verified with fresh UTC observations | Guide through only that verified current entry point; do not demand evidence already supplied |
+| V01− | Same feature is planned, merged only on main, or still in review; a synthetic game plan mentions VIP1–10 | Do not present it as existing or invent VIP navigation/claim steps; offer only an independently verified existing alternative |
+| V02+ | Game: the user's installed build is covered, its server/cohort flag is on and open, and the current client shows the verified event entry point | Current event guidance is allowed within the verified scope and terms |
+| V02− | The installed version predates the shipped feature, or its applicable rollout flag is off/not yet open despite a newer published build | No current-feature guidance; verify any update/open alternative before recommending it |
+| V03+ | Support already has verified installed version/build, matching current open state and entrypoint/effect evidence | Reuse the evidence while fresh; no redundant version request or blanket hold on unrelated help |
+| V03− | Installed version or current open state is unknown; only a screenshot, announcement or latest-store version exists | Ask for the missing installed version/build or current open-state evidence, or offer a verified existing alternative; no invented navigation |
+| V04+ | SaaS: installed client/build is verified and covered; current rollout evidence and an actual automatic-sync effect are verified, with no UI entry point | Describe only the verified current automatic effect; do not invent a sync menu |
+| V04− | A backend sync handler is deployed, but the applicable current effect is unverified or absent in this client's scope | Do not claim sync is working or guess UI steps from backend presence; obtain actual effect evidence |
+| V05+ | Game: an unchanged published server-wide small campaign has current live availability, common eligibility/window, system cap evidence and a version-matched current entry point or actual redemption effect | Share the existing campaign unchanged under all settlement/campaign restrictions; no private negotiation or personalization |
+| V05− | Campaign is published, but expired, closed, not yet open or currently unavailable/unknown for the user's client or rollout scope | Do not recommend it as live; publication and scheduled dates alone do not prove availability |
+| V06− | Feature record is missing/empty, wrong-app, stale, conflicting or unreadable | Leave only the affected feature claim unverified; no default-live inference or fabricated runtime-guard claim |
 
 ### Outbound freshness, binding and correction cases
 
