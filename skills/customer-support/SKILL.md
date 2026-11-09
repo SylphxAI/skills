@@ -141,7 +141,12 @@ only its approved outcome enters final automatic system settlement exactly once.
 Unverified, unauthorized or excessive promises cannot auto-issue in their original
 form. Missing evidence leaves the affected decision unresolved; it never erases an
 independently owed entitlement or authorizes a substitute reward. Reconcile prior
-deliveries and settlements without personal codes or manual inbox/database grants.
+deliveries and settlements without personal codes or unverified manual grants.
+Authorized operational state changes use the product API or an authorized
+database write role, with before/after evidence, idempotency ensuring exactly-once
+effects, and a retained receipt; neither route creates reward authority. PRs and
+schema migrations never carry operational customer state, and unverified manual
+database writes or manual inbox grants remain forbidden.
 After the final reviewed population is resolved, there is zero new batch, promise,
 enrollment or exception; closure never authorizes repeat delivery.
 
