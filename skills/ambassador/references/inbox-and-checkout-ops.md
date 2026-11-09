@@ -1,6 +1,6 @@
 # Social Inbox Quote/Share Pre-Flight Extraction, Web-UI Triple-Lock, and Checkout Operations
 
-This reference accompanies [ambassador](../SKILL.md). It specifies the mandatory pre-flight extraction gate for quoted messages, shared post cards, and media attachments on social messaging channels (`shares`, `attachments`, `reply_to`), the active-bubble-bound Web-UI DOM fallback contract, and the 12-case positive/negative regression verification matrix.
+This reference accompanies [ambassador](../SKILL.md). It specifies the mandatory pre-flight extraction gate for quoted messages, shared post cards, and media attachments on social messaging channels (`shares`, `attachments`, `reply_to`), the active-bubble-bound Web-UI DOM fallback contract, the Live Shipped Version Gate (`is_feature_open_in_client` and `enforce_live_shipped_version_gate`), and the 16-case positive/negative regression verification matrix.
 
 ## 1. Mandatory Quote, Share, Post-Card, and Attachment Pre-Flight Extraction
 
@@ -38,9 +38,25 @@ When an outside-24h messaging-window refusal (`#10`) routes through the platform
    - Never scrape the last `N` generic card nodes across the entire thread DOM, which leaks stale historical post cards or another user's shared cards into the current turn.
    - `build_webui_triple_lock_js(expected_inbound_mid, expected_author)` MUST locate the exact active reply target bubble (`expected_inbound_mid` and `expected_author`, or the last inbound bubble from `expected_author`) and extract `dom_share_previews` (`active_bubble_bound: true`, `bound_message_id`) **exclusively** from that active message row and its immediate preceding companion sibling row from the **same author** (`previousElementSibling` with matching `data-author`), strictly excluding older thread cards and other-author rows.
 
-## 3. 12/12 Positive and Negative Regression Verification Matrix
+## 3. Live Shipped Version Gate
 
-Implementations of the quote/share/attachment extractor and Web-UI fallback must pass all 12 deterministic positive and negative regression cases before deployment:
+Never present planned, `main_only`, `flag_off`, or not-yet-open functionality as if it already existed in the user's installed client:
+
+1. **Fail-Closed Client Availability Predicate (`is_feature_open_in_client(feature_key, client_version, feature_registry)`):**
+   - Evaluates a caller-supplied `feature_registry` entry (`state`, `min_shipped_version`, `flag_open`, `entry_point`, `mention_re`, `live_claim_re`, `unreleased_qualifier_re`).
+   - Returns `True` **ONLY** when all four conditions hold simultaneously:
+     1. `state == "deployed_visible"`;
+     2. `flag_open is True`;
+     3. a non-empty live `entry_point` is present; and
+     4. `semver(client_version) >= semver(min_shipped_version)` (an `unknown`, malformed, or older `client_version` returns `False`).
+2. **Pre-Send Outbound Copy Gate (`enforce_live_shipped_version_gate(text, client_version, feature_registry)`):**
+   - Runs before any outbound reply is dispatched. When `text` matches a feature's `mention_re` and `is_feature_open_in_client(feature_key, client_version, feature_registry)` is `False`:
+     - **Blocks live-availability or UI-navigation claims:** Raises `ValueError` if `live_claim_re` matches (claiming the feature is already live, auto-granting in the current build, or instructing the user to open its in-app UI entry point).
+     - **Requires explicit upcoming-version framing + deployed alternative:** Raises `ValueError` unless `unreleased_qualifier_re` matches (explicitly stating that the feature is upcoming in a future/next client version and is not yet visible in the current build, while guiding the user to an already-deployed live alternative such as the official web voucher center).
+
+## 4. 16/16 Positive and Negative Regression Verification Matrix
+
+Implementations of the quote/share/attachment extractor, Web-UI fallback, and Live Shipped Version Gate must pass all 16 deterministic positive and negative regression cases before deployment:
 
 | Case | Scenario | Input Fixture | Expected Invariant / Verdict |
 | --- | --- | --- | --- |
@@ -56,3 +72,7 @@ Implementations of the quote/share/attachment extractor and Web-UI fallback must
 | **Case 10** | Off-page `reply_to.mid` resolved via `message_fetcher` | Inbound reply quoting `m_older_offpage_parent` absent from `thread_messages` page | Invokes `message_fetcher(mid)` (`GET /{mid}?fields=...`), resolves parent message + embedded share (`resolved_via = "single_message_fetch"`), and passes `assert_quote_context_resolved`. |
 | **Case 11** | Unresolved `reply_to.mid` blocked fail-closed by `assert_quote_context_resolved` | Inbound reply quoting missing `m_missing_parent_999` where `message_fetcher` returns `None` | Sets `has_unresolved_quote = True`, marks `[REPLY_TO mid=... unresolved]`, and `assert_quote_context_resolved` raises fail-closed error (`BLOCKED BY Unresolved Quote Gate`). |
 | **Case 12** | Active-bubble-bound Web-UI DOM selection excluding older/other-user share cards | Synthetic DOM with stale older card (`m_old_stale_1`), other-user card (`m_other_user_2`), active companion share (`m_active_share_99`), and active text bubble (`m_active_100`) | Returns `TRIPLE_LOCK_PASSED`, `active_bubble_bound = True`, `bound_message_id = "m_active_100"`, extracts only the active companion share card, and excludes stale/other-user cards. |
+| **Case 13** | `main_only` unreleased feature blocked by `enforce_live_shipped_version_gate` | Feature with `state = "main_only"`, `min_shipped_version = "1.0.30"`, `flag_open = False` on `client_version = "1.0.29"` claimed as live or auto-granting | `is_feature_open_in_client` returns `False`; `enforce_live_shipped_version_gate` raises `ValueError` (`BLOCKED BY Live Shipped Version Gate`). |
+| **Case 14** | `main_only` feature with explicit upcoming qualifier + deployed alternative allowed | Outbound text explicitly qualifies the feature as upcoming in the next version (`即將喺下個新版本推出`) and points to the live web voucher center | Passes `enforce_live_shipped_version_gate` without error. |
+| **Case 15** | `deployed_visible` feature with `flag_open = True` and `client_version >= min_shipped_version` allowed | Live web voucher center on `1.0.29`, or milestone feature with `state = "deployed_visible"`, `flag_open = True`, `entry_point = "Lobby -> VIP"`, `client_version = "1.0.30"` | `is_feature_open_in_client` returns `True`; passes `enforce_live_shipped_version_gate` for direct in-app UI instructions. |
+| **Case 16** | `flag_off`, `old_version`, or `unknown` client version blocked fail-closed | Feature with `state = "deployed_visible"` when (a) `flag_open = False` on `1.0.30`, (b) `flag_open = True` on older `1.0.29`, or (c) `client_version = "unknown"` | `is_feature_open_in_client` returns `False` in all three sub-cases; `enforce_live_shipped_version_gate` raises `ValueError`. |
