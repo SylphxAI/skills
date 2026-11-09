@@ -123,26 +123,40 @@ campaign code architecture across every title:
      "A Mysterious Player" and disabling profile inspection while keeping the
      broadcast active).
 ### Non-Retroactive Commitment Boundary
-   - Honor every documented player-visible written commitment exactly once with
-     the original promised content, even when it includes large currency.
-     Preserve reliance and purchase history. Never call the old amount a
-     misunderstanding, substitute zero, or redirect the player to a cold email
-     instead of the promised delivery. If visibility is genuinely uncertain,
-     read the actual outbound object first; never relabel an already-public
-     promise as an unauthorized internal proposal.
-   - New economic admission applies only to undocumented proposals and future
-     communications, including new activities, codes, packages and replies; it
-     never applies retroactively. New large-currency promises remain
+   - The non-retroactive commitment boundary applies **only to a closed
+     historical population of verified pre-cutoff player-visible written
+     obligations**. Each verified obligation in that closed set settles **exactly
+     once** with its original promised content and requires **post-claim or
+     in-game consumer effect evidence** (such as inventory, currency, or
+     equipped-item state read back after claim) — inbox message insertion alone
+     is not completed settlement. Preserve reliance and purchase history: never
+     call a verified pre-cutoff obligation a misunderstanding, substitute zero,
+     or redirect the player to a cold email instead of the promised delivery. If
+     visibility is genuinely uncertain, read the actual outbound object first;
+     never relabel an already-public pre-cutoff promise as an unauthorized
+     internal proposal.
+   - Actual prior settlement is the dedup key: an already fulfilled commitment
+     must not be granted twice. Read authoritative settlement and claim state
+     before any repeat, and never use idempotent delivery as a reason to renege
+     on a verified pre-cutoff obligation.
+   - Once the closed legacy population is settled, **zero new private
+     negotiation, zero new private written promises, and zero custom or bespoke
+     packs** are permitted. All cumulative top-up progression and VIP tier
+     rewards must run through published, automated in-game ladders
+     (`cumulative_charge` and permanent VIP tiers) where every player reaching
+     the same threshold receives the exact same reward automatically.
+   - Ambassadors share **only published server-wide small campaign redemption
+     codes** with system-enforced caps; official customer support handles
+     **only verified missing-purchase fulfillment, account-recovery, statutory,
+     and technical remedies**. New economic admission governs all future
+     campaigns, codes, packages, and replies; new large-currency promises remain
      inadmissible under the progression and faucet/sink model.
-   - Actual prior delivery is the dedup key: an already fulfilled commitment
-     must not be granted twice. Read actual settlement before any repeat, and
-     never use idempotent delivery as a reason to renege on the original promise.
 
 Synthetic contrast:
 
 | ❌ Bad | ✅ Good |
 | --- | --- |
-| A player purchases after a public written promise of 10,000 coins. Reject the amount as excessive, offer zero, and send a cold email instead. A second delivery is then attempted after the record already shows fulfillment. | Read the outbound object and deliver the promised 10,000 exactly once. If actual settlement is already present, grant nothing again. A future campaign proposing the same new large-currency reward is refused under economic admission. |
+| A player lies in the verified pre-cutoff written-commitment set for 10,000 coins; reject the amount as excessive, offer zero, or treat an unclaimed inbox row as final consumer verification. Later, an ambassador negotiates a new post-cutoff custom VIP pack in private chat. | Settle the closed pre-cutoff obligation for 10,000 coins exactly once, verify post-claim in-game consumer effect, and grant nothing again once settled. Refuse all post-cutoff private promises or custom packs; route cumulative progression through automated `cumulative_charge` / VIP ladders, limit ambassadors to server-wide campaign codes, and restrict support to verified missing-purchase, account-recovery, statutory, and technical remedies. |
 
 
 ## Measure a gift's real cost
