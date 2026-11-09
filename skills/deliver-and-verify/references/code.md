@@ -711,6 +711,13 @@ promised.
 **Good:** respect owner-managed dependents and prove dependency-safe completion,
 subsequent use and failure atomicity.
 
+A new owned resource expands lifecycle obligations even when its feature tests
+pass: reconcile the complete schema/resource population with deletion, retention
+and export registries, then seed the new resource through its real writer and
+exercise the existing lifecycle entrypoint. **Bad:** test the new handler's own
+cleanup alone; **Good:** the full ownership-inventory guard and account/project
+lifecycle tests cover the new state while preserving explicitly retained records.
+
 For parameterized SQL performance across broad and keyed selectors, a fast
 custom plan or empty result can hide generic-plan cardinality errors, repeated
 scans and join products. Measure populated cases through the consuming driver's
