@@ -2,16 +2,16 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Check worker reports for missed finish times and contradictory progress claims.",
-      "clause": "checking other workers' output for a broken rule, a late finish time"
+      "prompt": "The public store still serves the old version after the intended release window. Check delivery and identify any ownership gap.",
+      "clause": "checking public stores, live services or delivered artifacts for missing releases, ownership gaps"
     },
     {
-      "prompt": "Compare the reported grant with its written spending cap and report any breach.",
-      "clause": "judging whether a spend, grant or change stayed within its written limit"
+      "prompt": "Compare settled payment records and delivered grants with the authorized spending cap and report any breach.",
+      "clause": "spending-limit breaches"
     },
     {
-      "prompt": "Two workers published different revenue totals. Inspect the original reports and raise the discrepancy.",
-      "clause": "two documents or workers disagree on a number"
+      "prompt": "The live payment dashboard and canonical order ledger disagree on revenue. Inspect the original records and raise the discrepancy.",
+      "clause": "conflicting records"
     },
     {
       "prompt": "Patrol external production surfaces directly for unanswered customer inbox threads and dual-store revenue discrepancies.",
@@ -71,6 +71,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Collect every worker's status and next finish time for the daily progress table.",
+      "clause": "Do NOT use when collecting routine worker status or ETAs or inspecting private transcripts.",
+      "route_to": null
+    },
+    {
+      "prompt": "Read an idle worker's private transcript to determine whether it has been busy.",
+      "clause": "Do NOT use when collecting routine worker status or ETAs or inspecting private transcripts.",
+      "route_to": null
+    },
+    {
+      "prompt": "Send hourly reminders asking a subordinate for a revised ETA without checking any external delivery surface.",
+      "clause": "Do NOT use when collecting routine worker status or ETAs or inspecting private transcripts.",
+      "route_to": null
+    },
     {
       "prompt": "Verify whether this one deployment is serving the reported revision.",
       "clause": "Use prove-it to establish one claim or review a diff",

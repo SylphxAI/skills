@@ -36,6 +36,14 @@
     {
       "prompt": "Draft Hong Kong social copy without blending the regional offer into the global Page announcement.",
       "clause": "public social posts/captions/comments/card text"
+    },
+    {
+      "prompt": "Rewrite this friendly invitation in natural prose without adding irrelevant measurements or UTC timestamps.",
+      "clause": "drafting, rewriting, editing, translating, or localizing dedicated written content"
+    },
+    {
+      "prompt": "Edit a release announcement to retain measured performance evidence where useful and express the launch time in the reader's local time zone.",
+      "clause": "customer-facing announcements, release notes"
     }
   ],
   "negative": [
