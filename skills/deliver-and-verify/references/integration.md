@@ -32,6 +32,13 @@ selects the changed rows.
 
 ## Destructive and conditional writes
 
+Matching final edits do not prove that a replacement preserves the complete
+object being retired: earlier history, parent state or untouched fields can
+contain unique work. **Bad:** close a proposal because its last commit matches;
+**Good:** prove preservation of the whole retired unit, with a negative case
+that hides unique content before the matching final edit. This applies to
+automatic retirement; independent verified work need not wait for cleanup.
+
 A conditional action is only as reversible as its cancellation or revocation
 path: before relying on an automatic compensating action, validate its own
 request contract and exercise the intended state transition through the real
@@ -117,7 +124,12 @@ caller versions and trace every status-to-behavior mapping through its real
 classifier, including fallback, retry, abort, genuine denial and required-operation
 controls; a future client update cannot establish compatibility for clients
 already in the field. **Wrong:** test only the new server response; **Right:** prove the
-response still selects the intended behavior in deployed client versions.
+response still selects the intended behavior in deployed client versions. An
+inner handler's error does not establish the public response: generated routers,
+registry mappings and proxies can translate its HTTP status while retaining its
+domain code. **Wrong:** copy a helper's status into an HTTP regression; **Right:**
+derive the expected status and envelope from the public contract and exercise
+the actual caller-facing route, preserving typed reason and effect assertions.
 
 Enabling a shared dependency feature can change defaults for every consumer,
 including clients whose builders did not change. Verify the effective feature
