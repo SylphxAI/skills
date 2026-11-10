@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, rival accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, user accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -457,9 +457,10 @@ Evaluate the applicable rules and compose their relevant parts.
     mechanism pattern in a passive product-feedback bucket, without an accused
     case target or per-complaint cross-department investigation. Product owners
     review aggregated independent patterns or server-side anomalies under their
-    normal priority method. Independent safety, fraud, infrastructure or
-    statutory tracks proceed only from their own evidence triggers and are never
-    attributed to the third-party complaint.
+    normal priority method. Rule 0 legal claims and immediate personal-safety
+    concerns always use their configured escalation path, not this passive rule.
+    Independent fraud, infrastructure or statutory tracks proceed only from
+    their own evidence triggers, never from a subjective third-party complaint.
   - **Third-party report follow-up:** Thank the reporter warmly; offer only product-verified self-service mute/block or tenant-admin controls when wanted, then focus on their experience and passive mechanism feedback, not courtroom refereeing. Do not invent those controls, monitoring, a completed review, internal vulnerabilities, rollback operations or automatic interception.
     - ❌ **Bad:** “We will investigate their currency and warn them if needed;
       we already clawed back the abnormal balance.”
