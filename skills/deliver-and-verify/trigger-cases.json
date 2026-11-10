@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Consolidate six CI executors into one build-once job while preserving test identities, total runner-time savings and timeout margin under measured load.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Fix a document-export validator whose frozen install leaves a stale workspace dependency shadowing the locked package, preserving its content assertions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Add cache traffic diagnostics to a game build without making one optional backend's counters mandatory for supported fallback backends.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Install a protected-base review producer whose own pull request cannot receive its output, using the authorized bootstrap review without weakening the required gate.",
       "clause": "changing CI workflows or concurrency"
     },
