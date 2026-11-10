@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change both CI workflows to accept a generated deployment inventory's exact tenant paths under the naming policy, retaining source-binding validation and executable-name refusal controls.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Generate a game server's resource inventory without disguising identifiers; verify the pinned naming scanner's narrow data exception and reject product-specific branches in generic code.",
+      "clause": "generating source"
+    },
+    {
+      "prompt": "Repair a SaaS repository's failed name scan by constraining the generated artifact's schema, checking source equality and exercising every workflow consumer's actual exclusions.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair an invoice API regression whose generated public router translates an inner handler's HTTP status; assert the public status, typed reason and effect through the actual route.",
       "clause": "implementing or shipping a feature, bug fix"
     },
@@ -2740,14 +2752,29 @@
   ],
   "negative": [
     {
+      "prompt": "Review whether a naming-scan exception covers executable code; report concrete defects without changing the scanner or workflows.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
       "prompt": "Review whether an HTTP response status claim came from an internal helper or the public route, without changing code or tests.",
       "clause": "prove-it for a review or evidence check",
       "route_to": "prove-it"
     },
     {
+      "prompt": "Compare generated-inventory naming-policy designs without implementing an exception or changing a repository.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
       "prompt": "Compare gateway-owned and service-owned error translation as an architecture decision; do not implement either design.",
       "clause": "Use challenge for a plan or architecture",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the documentation explaining why a resource inventory retains exact tenant identifiers; prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
     },
     {
       "prompt": "Rewrite an API error-status explanation for developers; change prose only, not the response contract or its tests.",
