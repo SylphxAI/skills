@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Official support receives a player's demand to investigate and warn a gameplay rival for abnormal wealth; do not query or act against the rival, promise an investigation or disclose status, and record only the experience pattern as passive product-mechanism feedback.",
+      "clause": "rival accusations"
+    },
+    {
       "prompt": "On official support, guide a consumer-app user through an export feature only after verifying their installed app/version/build, current open rollout and visible entry point with fresh product-owned evidence.",
       "clause": "feature availability"
     },
@@ -139,6 +143,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "A VIP tells the in-character game ambassador that a rival guild is padding its roster; respond warmly as a companion and convert the experience into mechanism feedback rather than opening an official ticket.",
+      "clause": "Use ambassador for in-character ambassador or playmate companionship",
+      "route_to": "ambassador"
+    },
     {
       "prompt": "Implement a live shipped-version evidence source and its consuming-path checks; no support ticket is being handled and an offline editorial contract is not a runtime guard.",
       "clause": "deliver-and-verify to implement a fix",

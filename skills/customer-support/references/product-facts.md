@@ -329,8 +329,8 @@ is implied.
 | S04− | An apology exists but the old message remains readable or recipient-UI removal is unknown | Do not claim Unsend or erase the error from the case record; a correction does not prove removal |
 | S05+ | Transport confirmation, fulfilled entitlement and latest substantive question each have their own evidence | Record each supported outcome separately; close only under the product's actual closure rule |
 | S05− | Graph shows a Page-authored reply claiming credit, or Page-last status, while fulfillment or a later question is unverified | Message presence cannot establish credit, factual accuracy, customer reading or business resolution |
-| S06+ | A reporter receives warm thanks plus only a supported system-level outcome | Protect third-party records and internal findings while preserving useful support |
-| S06− | A privacy-safe draft claims an unverified completed review, real-time monitoring or automatic interception | Remove unsupported assurances; confidentiality does not authorize invented capabilities |
+| S06+ | A player reports a gameplay rival's suspected score-feeding | Give warm thanks and record only the experience pattern in a passive product-feedback bucket; create no rival investigation, cross-department case, warning, sanction or account-status disclosure |
+| S06− | A draft promises to investigate or warn the named rival, requests the rival's records, or claims an unverified review, monitoring or interception | Remove the enforcement trigger, third-party query/status and unsupported assurances; confidentiality does not permit a rival case or invented capabilities |
 | S07− | Configured event hours exist but enablement, a last settlement or reopening time is unverified | Keep each unsupported state unknown; do not infer current availability from the schedule alone |
 
 Run action and handoff cases through the affected serving path when verifying a
