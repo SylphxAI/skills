@@ -2,8 +2,16 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "On B2B SaaS support, a tenant admin demands an investigation and restrictions against another tenant for unfair quota use; do not query, warn or restrict the other tenant, disclose status or open a cross-department case, and record only passive product feedback with any verified tenant-admin controls.",
+      "clause": "user accusations"
+    },
+    {
+      "prompt": "Official support receives a report that another user has threatened immediate physical harm; use the Rule 0 personal-safety escalation path instead of the Rule 10 passive product-feedback bucket.",
+      "clause": "legal or safety escalations"
+    },
+    {
       "prompt": "Official support receives a player's demand to investigate and warn a gameplay rival for abnormal wealth; do not query or act against the rival, promise an investigation or disclose status, and record only the experience pattern as passive product-mechanism feedback.",
-      "clause": "rival accusations"
+      "clause": "user accusations"
     },
     {
       "prompt": "On official support, guide a consumer-app user through an export feature only after verifying their installed app/version/build, current open rollout and visible entry point with fresh product-owned evidence.",

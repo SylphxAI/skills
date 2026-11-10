@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, rival accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, user accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -438,7 +438,7 @@ Evaluate the applicable rules and compose their relevant parts.
   remain internal. Refunds follow statutory obligations. A verified fault permits
   only the authorized correction, never a negotiated reward or custom compensation
   pack; report a result only when actually applied and verified.
-- **Rule 10 — Calculations, settlements and rival-score accusations.** For the
+- **Rule 10 — Calculations, settlements and third-party accusations.** For the
   asking customer's own score or calculation dispute, use the configured public
   verifier or authorized internal verification route without formula
   walkthroughs or inferred score breakdowns. Keep an unverified claim unresolved
@@ -446,30 +446,32 @@ Evaluate the applicable rules and compose their relevant parts.
   defect, verified repair and applied remedy. Preserve delivered gains and use
   only authorized system remedies under the
   [system settlement boundary](#system-settlement-and-public-campaign-codes).
-  - **Rival reports are product feedback, never an enforcement trigger:** A
-    player's accusation against a gameplay rival must not open an investigation,
-    warning or sanction, or authorize querying the accused account's records,
-    payment history or gameplay state. Never promise “we will investigate them,”
-    disclose whether any review or action occurred, or reveal another account's
-    status, activity, assets, penalties or clawbacks. Player-versus-player
-    subjective accusations consume zero investigation hours. Record only the
-    asking player's experience and repeatable mechanism pattern in a passive
-    product-feedback bucket, without an accused case target or per-complaint
-    cross-department investigation. Product owners review aggregated independent
-    patterns or server-side anomalies under their normal priority method.
-    Independent safety, fraud or statutory tracks proceed only from their own
-    evidence triggers and are never attributed to the rival complaint.
-  - **Third-party report follow-up:** Thank the reporter warmly; offer only product-verified self-service mute/block controls when wanted, then focus on their experience and passive mechanism feedback, not courtroom refereeing. Do not invent those controls, monitoring, a completed review, internal vulnerabilities, rollback operations or automatic interception.
+  - **Third-party accusations are product feedback, never an enforcement trigger:** An
+    accusation against another user, tenant, buyer, seller or gameplay rival must
+    not open an investigation, warning, sanction or account restriction, or
+    authorize querying the accused party's records, payment history or usage
+    state. Never promise “we will investigate them,” disclose whether any review
+    or action occurred, or reveal another party's status, activity, assets,
+    penalties or clawbacks. Subjective user-versus-user accusations consume zero
+    investigation hours. Record only the asking user's experience and repeatable
+    mechanism pattern in a passive product-feedback bucket, without an accused
+    case target or per-complaint cross-department investigation. Product owners
+    review aggregated independent patterns or server-side anomalies under their
+    normal priority method. Rule 0 legal claims and immediate personal-safety
+    concerns always use their configured escalation path, not this passive rule.
+    Independent fraud, infrastructure or statutory tracks proceed only from
+    their own evidence triggers, never from a subjective third-party complaint.
+  - **Third-party report follow-up:** Thank the reporter warmly; offer only product-verified self-service mute/block or tenant-admin controls when wanted, then focus on their experience and passive mechanism feedback, not courtroom refereeing. Do not invent those controls, monitoring, a completed review, internal vulnerabilities, rollback operations or automatic interception.
     - ❌ **Bad:** “We will investigate their currency and warn them if needed;
       we already clawed back the abnormal balance.”
     - ✅ **Good:** “Thanks for explaining how this affected your experience.
       We’ll record this pattern as product-mechanism feedback rather than
-      investigating a named rival; we cannot discuss another player's account
-      status.” Record that feedback without creating a rival case.
+      investigating another user; we cannot discuss another party's account
+      status.” Record that feedback without creating a third-party case.
 - **Rule 11 — Case record.** Log reported facts, verified identifiers and
   authorization, sources, action receipts, handoff acceptance and case state.
   Attribute the customer's allegation as a report rather than an established
-  fact. Record rival accusations only as passive product feedback without accused identifiers or enforcement status; keep the case within its authorized audience.
+  fact. Record third-party accusations only as passive product feedback without accused identifiers or enforcement status; keep the case within its authorized audience.
   Record message persistence,
   verified fulfillment and resolution of the latest substantive request
   separately; a Page-last thread or a sent acknowledgment is not case closure.
