@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Switch a visual worker to a new agent runtime and model, then reinspect its actual rendered character frames before accepting the delivery instead of retaining the old runtime's PNG refusal.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Accept a MetaHuman-style character only after direct rendered-image inspection, retaining mesh, rig and geometry checks as supporting evidence rather than visual proof.",
+      "clause": "implementing or shipping a feature"
+    },
+    {
+      "prompt": "Run an authorized cloud-GPU render rental: verify vulkaninfo before the workload, arm independent automatic deletion paths, and confirm authoritative deletion and billing afterward.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Repair a staged SaaS deployment where a paused import blocks the later schema and runtime it requires, preserving the pause and proving prerequisites deploy without execution.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -2679,6 +2691,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a character's mesh counts and bounds prove its visual quality without changing the asset or its acceptance configuration.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare provider-enforced GPU expiry with external lease controllers as an architecture exercise without renting or changing any resource.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite a handoff explaining that a new runtime's image capability needs a fresh probe; edit prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a reported deployment stall comes from suspended-task health or missing capacity, without changing configuration or the running operation.",
       "clause": "prove-it for a review or evidence check",

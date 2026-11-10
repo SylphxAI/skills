@@ -315,6 +315,23 @@ do not weaken them to fit the candidate. The release automation runs the checks,
 decides pass/fail and performs recovery. No hand publication based on someone
 looking at screenshots.
 
+### Runtime-specific image inspection and 3D assets
+
+Image-input capability belongs to the current model, agent runtime and tool route.
+After changing any of them, read a real rendered image through the new route
+before carrying forward either an older capability claim or an older refusal.
+If the current route cannot return image content, direct visual inspection is
+still undone; use a supported image route and keep the limitation explicit.
+
+Accept 3D character or MetaHuman-style assets only after directly inspecting
+representative rendered views against their approved reference, including the
+intended customization extremes. Geometry, mesh counts, bounds and rig metrics
+remain useful supporting checks, but cannot establish facial or body appearance,
+material quality or the absence of visible artifacts. **Bad:** valid bounds pass
+a distorted face because an old runtime prohibited PNG reads. **Good:** the new
+runtime reads the actual renders, visible defects are repaired and the geometry
+checks still run.
+
 ### UI coverage, geometry and painted output
 
 Declare the expected case count and each fixture's target identities/counts
