@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair an invoice API regression whose generated public router translates an inner handler's HTTP status; assert the public status, typed reason and effect through the actual route.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a card-game entitlement test that copies a private helper's error status even though the public gateway uses its canonical registry mapping; preserve the refusal and no-grant checks.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change a checkout SQL fixture and its HTTP assertions so the exercised public adapter, rather than an internal error helper, defines the expected envelope.",
+      "clause": "changing SQL queries or fixtures"
+    },
+    {
       "prompt": "Repair a SaaS export worker whose controller deletes private scratch diagnostics at process termination; emit a sanitized cause before exit without losing the original status.",
       "clause": "changing diagnostic redaction"
     },
@@ -2715,6 +2727,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether an HTTP response status claim came from an internal helper or the public route, without changing code or tests.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare gateway-owned and service-owned error translation as an architecture decision; do not implement either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an API error-status explanation for developers; change prose only, not the response contract or its tests.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a benchmark's elapsed-time claim includes observer delay; identify unsupported attribution without changing the collector.",
       "clause": "prove-it for a review or evidence check",

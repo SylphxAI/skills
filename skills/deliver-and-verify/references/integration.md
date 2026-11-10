@@ -117,7 +117,12 @@ caller versions and trace every status-to-behavior mapping through its real
 classifier, including fallback, retry, abort, genuine denial and required-operation
 controls; a future client update cannot establish compatibility for clients
 already in the field. **Wrong:** test only the new server response; **Right:** prove the
-response still selects the intended behavior in deployed client versions.
+response still selects the intended behavior in deployed client versions. An
+inner handler's error does not establish the public response: generated routers,
+registry mappings and proxies can translate its HTTP status while retaining its
+domain code. **Wrong:** copy a helper's status into an HTTP regression; **Right:**
+derive the expected status and envelope from the public contract and exercise
+the actual caller-facing route, preserving typed reason and effect assertions.
 
 Enabling a shared dependency feature can change defaults for every consumer,
 including clients whose builders did not change. Verify the effective feature
