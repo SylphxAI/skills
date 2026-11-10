@@ -90,6 +90,15 @@ same-name control.
 
 ## Deployment configuration
 
+An intentional execution hold can prevent an ordered deployment from applying
+the prerequisites needed to release that hold; choose ordering from the
+controller's actual operation-progress predicate, not an aggregate health badge.
+**Wrong:** mark paused work healthy or start it to unblock its missing runtime;
+**Right:** deploy independent prerequisites before held work, preserve the hold
+and resource identity, and verify both prerequisite convergence and non-execution.
+An already-running operation may retain its earlier revision, so a corrected
+declaration still needs authorized reconciliation of that operation.
+
 A shared readiness or admission check must distinguish an intentionally
 unconfigured optional capability from a configured capability that is unavailable:
 derive configured-versus-absent from the capability's own declaration before
