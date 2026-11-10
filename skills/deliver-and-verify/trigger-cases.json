@@ -14,6 +14,18 @@
       "clause": "implementing or shipping a feature, bug fix"
     },
     {
+      "prompt": "Repair a staged SaaS deployment where a paused import blocks the later schema and runtime it requires, preserving the pause and proving prerequisites deploy without execution.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Fix a card-game rehearsal rollout whose suspended verification jobs block later storage configuration; preserve job identities and prove no measurement starts.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship an ordered deployment correction, then reconcile the existing operation that still selects the old revision without weakening its execution hold.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
       "prompt": "Deploy an approved configuration through an automatic reconciler that tracks a branch; preserve its declared source policy and verify the immutable revision and effective content it applies.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -2679,6 +2691,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a reported deployment stall comes from suspended-task health or missing capacity, without changing configuration or the running operation.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare separate applications with ordered deployment waves for paused maintenance tasks; recommend an architecture without implementing it.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an operator explanation of a paused task and a successful prerequisite rollout; change prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review a claimed hard expiry from two schedulers sharing one host; identify unsupported failure-domain claims without changing automation.",
       "clause": "prove-it for a review or evidence check",
