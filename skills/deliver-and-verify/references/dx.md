@@ -66,7 +66,16 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap. Cleanup of a stateful session or fixture can destroy the only evidence of a failure, so retain the safe cause and a bounded, best-effort snapshot before release without replaying the failed action. Neither diagnostic nor cleanup faults may replace the original failure or prevent the remaining cleanup; exercise their combined failure paths, not just the collector in isolation.
+Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap.
+
+Transient diagnostics can disappear when a process or controller releases its
+resources, before an observer handles the terminal event; preserve a bounded,
+sanitized cause through the actual launcher's durable output before that release,
+without replaying the failed action. Neither diagnostic nor cleanup faults may
+replace the original failure or prevent remaining cleanup; exercise their combined
+failure paths. **Wrong:** retain only a path inside a terminated worker. **Right:**
+the worker emits a safe failure record before exit, even when diagnostic capture
+itself fails, while preserving the original status.
 
 Nested commands can override outer temporary, build-output or cache settings;
 resolve the child's effective paths, working directory and wrapper overrides
