@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Install a protected-base review producer whose own pull request cannot receive its output, using the authorized bootstrap review without weakening the required gate.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Restore a SaaS repository's blocked merge queue by enrolling its missing evidence producer, then prove explicit success on a separate covered candidate after activation.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
+      "prompt": "Ship a game build attestation workflow loaded only from the default branch; distinguish the installer change's independent review from a later build's real attestation.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
       "prompt": "Publish a generator change that adds new generated output directories while the trusted fixup writer still reads the default branch's older output policy.",
       "clause": "generating source"
     },
@@ -2775,6 +2787,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Check whether a protected-base review producer already exists and whether its check passed; report evidence without changing workflows or merge state.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare bootstrap designs for a protected-base build attestation producer without implementing or activating one.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the operator explanation of why an installer change cannot receive the producer's own output; prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether this image-migration PR actually delivers the client's loader and sibling executable to its one-off caller; do not change code.",
       "clause": "prove-it for a review or evidence check",
