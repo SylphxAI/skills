@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling a customer's official support message, ticket, or inquiry across SaaS, games, or consumer apps: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, rival accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, and legal or safety escalations. Use the product's verified support profile. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -50,16 +50,17 @@ For an open case, resolve the product from the authenticated support window and
 the customer's message. Reuse an identifying mode or product name already
 supplied; ask only when the product remains ambiguous.
 
-**Step 0 LTV & Payment-History Weighting:** Before adjudicating any user issue,
-rival or guild dispute, or goodwill request, read each party's actual historical
-(lifetime) and recent payment totals from the authoritative payment store.
-Expected future cohort net contribution and churn cost scale with verified
-spend: weight internal prioritization, investigation depth and operational leeway
-within authorized service scope proportionally to lifetime and recent spend
-(siding with paying users over non-paying users, and higher spenders over lower
-spenders). Keep external copy polite, warm, and neutral across all users without
-ever disclosing or hinting at payment-based favoritism or spend comparisons.
-Payment history never creates gift, code, whitelist or negotiated-rebate rights.
+**Step 0 LTV & Payment-History Weighting:** Before resolving the asking
+customer's own issue or goodwill request, read that customer's actual historical
+(lifetime) and recent payment totals from the authoritative payment store when
+relevant to authorized service. Expected future cohort net contribution and
+churn cost scale with verified spend: weight internal prioritization and service
+leeway within authorized scope proportionally to lifetime and recent spend.
+Keep external copy polite, warm and neutral without disclosing payment-based
+favoritism. Payment history never creates gift, code, whitelist or
+negotiated-rebate rights. A rival accusation never authorizes querying the
+accused party's records or payment history, comparing rivals by spend, or
+opening an investigation, warning or enforcement case.
 
 Read the current product-owned profile, not synthetic fixtures, using [shared-knowledge retrieval](references/product-facts.md#shared-knowledge-retrieval)
 and the [Live Shipped Version Gate](references/product-facts.md#live-shipped-version-gate).
@@ -437,37 +438,35 @@ Evaluate the applicable rules and compose their relevant parts.
   remain internal. Refunds follow statutory obligations. A verified fault permits
   only the authorized correction, never a negotiated reward or custom compensation
   pack; report a result only when actually applied and verified.
-- **Rule 10 — Calculations, settlements and rival-score accusations.** Read each
-  party's historical and recent payment totals from the authoritative payment
-  store under [Step 0 LTV weighting](#step-0-read-case-ownership-ltv-payment-history-and-product-facts)
-  before adjudicating a dispute, weighting authorized investigation and service
-  attention toward verified payers and higher spenders while keeping external copy strictly
-  polite and neutral. Use the configured public verifier or internal
-  verification route. For fairness disputes, give the verification route without
-  calculations, formula walkthroughs or inferred score breakdowns. Use approved
-  public explanations within the
-  [game-support rule](#4-product-incidents-and-game-support),
-  without assuming another user's historical equipment,
-  match details or behavior. Keep an unverified claim unresolved rather than
-  declaring the system correct or defective. Separate a confirmed defect,
-  a verified repair and an applied remedy. Serve customers from their perspective
-  rather than acting as a courtroom referee adjudicating who is right or wrong:
-  preserve delivered gains and use only authorized system remedies for affected
-  players under the [system settlement boundary](#system-settlement-and-public-campaign-codes),
-  never discretionary gifts or negotiated extras.
-  Third-party private records remain confidential. Ask for evidence only when
-  the authorized verification path needs it, and promise an investigation only
-  after it is accepted.
-  - **Third-party report follow-up:** Thank the reporter warmly without
-    exposing another account's activity, match counts, item/currency provenance,
-    payment history, penalties or clawbacks, or internal vulnerabilities and
-    rollback operations. Internal findings inform the action, not the outbound
-    disclosure. A system-level assurance must itself be verified: never invent
-    a completed review, real-time monitoring or automatic interception.
-    - ❌ **Bad:** "Their currency came from an old exploit; we clawed it back.
-      Monitoring now catches every abnormal match automatically."
-    - ✅ **Good:** "Thanks for flagging this and helping protect fair play."
-      Add a verified review outcome or available next step only when supported.
+- **Rule 10 — Calculations, settlements and rival-score accusations.** For the
+  asking customer's own score or calculation dispute, use the configured public
+  verifier or authorized internal verification route without formula
+  walkthroughs or inferred score breakdowns. Keep an unverified claim unresolved
+  rather than declaring the system correct or defective, and separate a confirmed
+  defect, verified repair and applied remedy. Preserve delivered gains and use
+  only authorized system remedies under the
+  [system settlement boundary](#system-settlement-and-public-campaign-codes).
+  - **Rival reports are product feedback, never an enforcement trigger:** A
+    player's accusation against a gameplay rival must not open an investigation,
+    warning or sanction, or authorize querying the accused account's records,
+    payment history or gameplay state. Never promise “we will investigate them,”
+    disclose whether any review or action occurred, or reveal another account's
+    status, activity, assets, penalties or clawbacks. Convert only the asking
+    player's experience and the repeatable mechanism pattern into product or
+    game-mechanism design feedback, without naming an accused player as a case
+    target. Independent server-side safety, fraud or statutory tracks proceed
+    only from their own evidence triggers and are never attributed to the rival
+    complaint.
+  - **Third-party report follow-up:** Thank the reporter warmly and focus on
+    their experience and the mechanism-design route rather than acting as a
+    courtroom referee. Do not invent monitoring, a completed review, internal
+    vulnerabilities, rollback operations or automatic interception.
+    - ❌ **Bad:** “We will investigate their currency and warn them if needed;
+      we already clawed back the abnormal balance.”
+    - ✅ **Good:** “Thanks for explaining how this affected your experience.
+      We will route this pattern for product-mechanism review rather than
+      investigating a named rival; we cannot discuss another player's account
+      status.” Actually route that feedback without creating a rival case.
 - **Rule 11 — Case record.** Log reported facts, verified identifiers and
   authorization, sources, action receipts, handoff acceptance and case state.
   Attribute the customer's allegation as a report rather than an established

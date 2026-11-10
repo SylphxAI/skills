@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Reply in character to a VIP accusing a rival guild of score-feeding: do not investigate, warn or query the rival, disclose no account status, and route only the experience pattern as game-mechanism feedback.",
+      "clause": "handling rival accusations as product feedback"
+    },
+    {
       "prompt": "Reply in character as the game ambassador to a player joking that they want 1,000 upgrade chests.",
       "clause": "engaging users or players as an in-character brand or game ambassador"
     },
@@ -79,6 +83,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "File a product outcome to redesign guild population incentives; no player conversation or rival accusation is being handled.",
+      "clause": "author-item to file a bug outcome",
+      "route_to": "author-item"
+    },
     {
       "prompt": "Handle an official support ticket for a missing invoice, privacy deletion request, or statutory AI disclosure.",
       "clause": "Use customer-support for official support tickets, billing or refund remedies, account recovery, privacy requests, and statutory disclosures",
