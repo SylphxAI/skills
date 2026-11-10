@@ -440,7 +440,13 @@ or rows. **Wrong:** declare regeneration complete because types are unchanged.
 **Right:** rebuild affected catalogs, validators and fixtures from final bytes,
 while separately comparing the full named population and values. In-process
 tests can reuse cached modules and hide startup or import-path failures; exercise
-affected generation entrypoints in fresh processes.
+affected generation entrypoints in fresh processes. Importing metadata can
+execute optional dependencies before generation; moving an import later proves
+neither dependency-free rendering nor the fallback's consumer compatibility.
+**Wrong:** qualify only the metadata import on a configured workstation;
+**Right:** make the optional module unavailable in a fresh process and exercise
+both metadata and generation through the actual output consumer, or declare and
+verify that dependency in CI.
 A lockfile-only install also changes source.
 
 Passing consumer tests and a README of expected outcomes do not establish a
