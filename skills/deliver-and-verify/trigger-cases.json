@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Fix an engine benchmark whose synchronous process snapshot makes a completed short build appear slower; preserve diagnostics without charging their completion to the workload.",
+      "clause": "benchmarking engines"
+    },
+    {
+      "prompt": "Repair a document-export latency probe so a slow resource snapshot cannot extend the recorded export duration, while retaining evidence after failure.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Implement repeated replay measurements that reuse an output path without deleting an earlier invocation's diagnostic evidence.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Switch a visual worker to a new agent runtime and model, then reinspect its actual rendered character frames before accepting the delivery instead of retaining the old runtime's PNG refusal.",
       "clause": "authorized operational, repository, marketing, or commercial change"
     },
@@ -2691,6 +2703,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether a benchmark's elapsed-time claim includes observer delay; identify unsupported attribution without changing the collector.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare sampling-thread and event-timestamp designs for latency instrumentation, without implementing or running either design.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an explanation of workload duration versus diagnostic capture time; edit documentation prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a character's mesh counts and bounds prove its visual quality without changing the asset or its acceptance configuration.",
       "clause": "prove-it for a review or evidence check",
