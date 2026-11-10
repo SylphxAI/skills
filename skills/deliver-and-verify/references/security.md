@@ -263,12 +263,13 @@ exact finding and reason, then publish through the unchanged scanner.
 ## Recovery procedure
 
 Removing an access exception can also remove a controller's noninteractive
-recovery operation; establish the actual operation and its arguments before
-concluding every use of an interactive-capable transport is interactive access.
-**Bad:** exempt the controller identity wholesale or ban its transport without
-testing recovery; **Good:** admit only the authenticated caller's exact bounded
-operation and argument grammar, prove shells/data reads remain refused at every
-independent policy layer, and verify a fresh recovery receipt after deployment.
+recovery operation; derive callers from deployed and retained scripts as well as
+workload specifications before narrowing access, and verify their fresh completion
+after deployment. Exact arguments constrain only admission-visible inputs: a
+fixed database client or interpreter consuming unrestricted stdin still delegates
+SQL or code authority. **Bad:** call an exact-argv exception safe from impersonation;
+**Good:** test altered arguments and identities, state the remaining input authority,
+and distinguish closing an accidental route from removing the underlying privilege.
 
 1. Read the failing request/component, serving revision and data/reconciliation authority. Preserve the healthy serving path and unique or uncertain user data while choosing the repair.
 2. Use the affected service's runbook and existing supported controls. Treat executable rollback and snapshot restoration as separate operations: the old executable must serve current schema/data, while restoring a snapshot can discard later accepted writes. A backup's integrity on an idle fixture does not prove it completes under live writes; exercise a committing concurrent writer using the production journal and isolation settings. An owned platform gap is repaired at its owner rather than hidden in a privileged downstream path.

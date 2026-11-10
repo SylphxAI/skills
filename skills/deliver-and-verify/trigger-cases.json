@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Tighten container exec admission while preserving the database provisioner's exact command; account for SQL arriving on stdin before claiming privilege removal.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Ship a SaaS document worker access restriction that retains a fixed interpreter command accepting scripts on stdin, and document which input authority remains.",
+      "clause": "changing admission or access rules"
+    },
+    {
+      "prompt": "Remove a card-game operations team's default database exec path without breaking its declared noninteractive recovery Jobs; inventory mounted scripts and complete argv first.",
+      "clause": "changing admission or access rules"
+    },
+    {
       "prompt": "Install a protected-base review producer whose own pull request cannot receive its output, using the authorized bootstrap review without weakening the required gate.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -2787,6 +2799,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review the claim that exact database-client arguments bound SQL authority even though stdin is unrestricted, without implementing any changes.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare moving provisioners from container exec to scoped network roles; architecture advice only, no deployment.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite an operator notice explaining that an accidental exec route was removed but stdin authority remains; prose only.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Check whether a protected-base review producer already exists and whether its check passed; report evidence without changing workflows or merge state.",
       "clause": "prove-it for a review or evidence check",
