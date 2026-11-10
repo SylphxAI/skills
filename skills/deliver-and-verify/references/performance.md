@@ -32,6 +32,13 @@ the cause. Declare an acceptable instrument-state band, restore it through the
 supported clean-shutdown/reset path when it leaves that band, and mark samples
 following a reset without discarding earlier failures.
 
+Diagnostic snapshots can outlive a short operation and inflate its recorded duration
+even when the later observer join is excluded; the latency boundary is independently
+observed workload completion, not completion of instrumentation. Verify that boundary
+with deliberately slow or failing diagnostics, retaining each invocation's evidence
+when an output path is reused. **Bad:** call a delayed snapshot a slow export or build;
+**Good:** preserve the snapshot while recording the operation's own completion time.
+
 When contention makes paired base/head wall-clock intervals inconclusive, compare
 expensive-operation counts per action (subprocesses, queries or metadata calls),
 process CPU time per action (user plus system, including waited children), and
