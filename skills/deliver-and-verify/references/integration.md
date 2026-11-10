@@ -89,6 +89,25 @@ contract explicitly guarantees byte identity. **Bad:** register a published
 package using a parallel archive's descriptor; **Good:** resolve the descriptor
 for the returned published digest and reject a different digest.
 
+### Disposable cloud-GPU rentals
+
+For an authorized billed GPU instance, verify the graphics environment before
+starting the intended workload: run `vulkaninfo` through the actual instance,
+container and execution identity, and match the reported device, driver and
+required API features to that workload. An ordered GPU model, a healthy instance
+or a device node alone does not establish a usable graphics stack.
+
+Arm at least two automatic deletion safeguards with independent executor or
+failure domains, such as provider-enforced expiry plus an external lease
+controller; an in-workload self-destroy timer can add protection but shares the
+rented host's failure domain. Two timers on that host are one safeguard. Read
+back the armed safeguards at creation and verify authoritative resource deletion
+and billing afterward rather than relying on an agent to remember cleanup.
+**Bad:** start an expensive render after seeing a GPU model, protected only by
+two same-host timers. **Good:** `vulkaninfo` proves the required graphics stack,
+independent expiry paths are demonstrably armed, and the provider later confirms
+both deletion and stopped billing.
+
 ## Shared dependency features and client policy
 
 A server status or error envelope is also an instruction to deployed callers: a

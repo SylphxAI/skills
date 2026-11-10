@@ -71,6 +71,8 @@ before choosing storage queries and transport APIs.
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
 UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
+For 3D visual assets or image-based acceptance after a model or agent-runtime change, read
+[runtime-specific image inspection](references/parity.md#runtime-specific-image-inspection-and-3d-assets).
 When reducing fragment-shader cost, read
 [fragment-shader hot paths](references/performance.md#fragment-shader-hot-paths)
 before choosing an optimization.
@@ -123,6 +125,8 @@ For public social feed publishing, follow the [social post media and visual insp
 
 For destructive or conditional API writes, read
 [destructive and conditional writes](references/integration.md#destructive-and-conditional-writes).
+Before creating a billed disposable GPU instance, read
+[disposable cloud-GPU rentals](references/integration.md#disposable-cloud-gpu-rentals).
 
 Before bulk mutations, including cancelling CI runs, read
 [bulk mutation controls](references/dx.md#bulk-mutations).
