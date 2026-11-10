@@ -213,13 +213,15 @@ read 2026-11-06).
 A matching version and checksum identify an artifact, not the capabilities of its edition or build. Match the published variant to the required inner command; a license or feature refusal is a verifier-selection failure, not evidence that the dependency is broken.
 
 A CLI can fail in configuration or interpreter startup before the requested
-program runs; a successful transport-only probe does not establish that program's
-execution. Before relying on a privileged effect, prove a harmless operation-specific
-result through the actual interpreter, input mode, identity, mounts, environment
-and filesystem restrictions, including absent default files, while retaining a
-sanitized failure cause. **Bad:** a remote shell exits zero, so assume an embedded
-program executes; **Good:** the workload's exact launch chain emits the program's
-expected marker using only its declared inputs.
+program runs; copied executables can also retain hidden dependencies on their
+loader, shared libraries or sibling tools. Verify an operation-specific result
+through each changed caller's actual runtime, identity, mounts and input mode,
+not just a version banner or successful transport; a passing scheduled caller
+does not qualify an unchanged one-off caller that shares its helper. **Bad:**
+move a container-local command to a coordinator because its wrapper test passes;
+**Good:** deliver and exercise its complete runtime dependencies there, or retain
+an intentionally dormant caller unchanged until its versioned replacement is
+authorized, preserving sanitized failure evidence.
 
 A writable temporary parent does not make a metadata-preserving copy of an
 immutable fixture writable: copied directory modes can still deny state creation

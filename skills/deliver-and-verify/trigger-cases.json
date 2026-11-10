@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Implement network-based restore verification in a coordinator that previously ran the database's in-container clients; preserve client-library and sibling-tool dependencies for every active caller.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Ship a document-export helper migration to a new worker image while retaining dormant one-off Jobs that have not received the new runtime dependencies.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Fix a game asset validator copied into a minimal job image whose child executable is located beside its parent rather than through PATH; exercise the real validation operation.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Change both CI workflows to accept a generated deployment inventory's exact tenant paths under the naming policy, retaining source-binding validation and executable-name refusal controls.",
       "clause": "changing CI workflows or concurrency"
     },
@@ -2751,6 +2763,21 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Review whether this image-migration PR actually delivers the client's loader and sibling executable to its one-off caller; do not change code.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Compare keeping an in-container exporter with moving it to a network client; discuss the architecture and runtime tradeoffs only.",
+      "clause": "Use challenge for a plan or architecture",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Rewrite the client migration announcement for operators without changing or publishing the implementation.",
+      "clause": "clear-writing for prose alone",
+      "route_to": "clear-writing"
+    },
     {
       "prompt": "Review whether a naming-scan exception covers executable code; report concrete defects without changing the scanner or workflows.",
       "clause": "prove-it for a review or evidence check",
