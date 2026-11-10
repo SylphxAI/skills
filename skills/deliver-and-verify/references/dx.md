@@ -577,6 +577,12 @@ confirm cleanup through the normal path.
 
 ## Workflow admission
 
+Protected-base checks can freeze an entire reachable member, so a credential or
+diagnostic-only change may require a reasoned fingerprint update even without a
+new state write. **Wrong:** infer admission from a passing feature suite;
+**Right:** run the enforced base-owned check over the full candidate and review
+its exact declared delta without weakening unrelated fingerprints.
+
 A control protects a witnessed failure or a real invariant within its owning authority. Remove or recalibrate a control that blocks work without protecting either, rather than adding another bypass. Checks and mutations share one resolved target context and environment, with configuration validated against the native helper's exact schema and its effective destination checked after rewrites. **Wrong:** validate the caller's working directory with a permissive fake, then let a helper select another repository; **Right:** native compatibility passes while alternate-directory, environment-override and destination-rewrite cases cannot redirect the authorized write.
 
 A generic guard derives each target's contract and required verdicts from its
