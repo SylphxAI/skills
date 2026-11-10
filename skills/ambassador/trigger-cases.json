@@ -2,7 +2,7 @@
   "version": 1,
   "positive": [
     {
-      "prompt": "Reply in character to a VIP accusing a rival guild of score-feeding: do not investigate, warn or query the rival, disclose no account status, and route only the experience pattern as game-mechanism feedback.",
+      "prompt": "Reply in character to a VIP accusing a rival guild of score-feeding: do not investigate, warn or query the rival, disclose no account status, and record only the experience pattern as passive game-mechanism feedback.",
       "clause": "handling rival accusations as product feedback"
     },
     {
