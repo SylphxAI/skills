@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a SaaS export worker whose controller deletes private scratch diagnostics at process termination; emit a sanitized cause before exit without losing the original status.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
+      "prompt": "Fix a card-game import job so its failed authentication condition survives automatic container cleanup without exposing credentials or replaying the import.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
+      "prompt": "Change diagnostic redaction in a batch launcher and test reporter failure together with worker failure, preserving the original process status.",
+      "clause": "changing diagnostic redaction"
+    },
+    {
       "prompt": "Fix an engine benchmark whose synchronous process snapshot makes a completed short build appear slower; preserve diagnostics without charging their completion to the workload.",
       "clause": "benchmarking engines"
     },
