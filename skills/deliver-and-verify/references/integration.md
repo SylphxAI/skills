@@ -32,6 +32,13 @@ selects the changed rows.
 
 ## Destructive and conditional writes
 
+Matching final edits do not prove that a replacement preserves the complete
+object being retired: earlier history, parent state or untouched fields can
+contain unique work. **Bad:** close a proposal because its last commit matches;
+**Good:** prove preservation of the whole retired unit, with a negative case
+that hides unique content before the matching final edit. This applies to
+automatic retirement; independent verified work need not wait for cleanup.
+
 A conditional action is only as reversible as its cancellation or revocation
 path: before relying on an automatic compensating action, validate its own
 request contract and exercise the intended state transition through the real
