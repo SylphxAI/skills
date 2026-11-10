@@ -14,6 +14,18 @@
       "clause": "changing SQL queries or fixtures"
     },
     {
+      "prompt": "Publish a CI workflow after merging main, preserving both parents' permission changes when Git reports a clean merge but the combined job has duplicate mappings.",
+      "clause": "changing CI workflows or concurrency"
+    },
+    {
+      "prompt": "Ship a SaaS deployment configuration after two branches add the same key at different positions; verify effective values with the native consumer instead of a permissive YAML load.",
+      "clause": "authorized operational, repository, marketing, or commercial change"
+    },
+    {
+      "prompt": "Publish a game build fix after integrating its latest base, checking the combined configuration rather than reusing each parent's green tests.",
+      "clause": "publishing, editing or arming PRs"
+    },
+    {
       "prompt": "Repair a SaaS export worker whose controller deletes private scratch diagnostics at process termination; emit a sanitized cause before exit without losing the original status.",
       "clause": "changing diagnostic redaction"
     },
