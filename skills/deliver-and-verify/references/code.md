@@ -12,6 +12,14 @@ Make behavior, authority and failure handling visible. Keep one authority for ea
 - Pass dependencies explicitly. Keep deterministic decisions and calculations in a pure domain core; place database, HTTP, clock and other I/O in adapters.
 - Keep queries, mutations, round-trips and lock lifetimes visible. Organize by capability rather than collecting unrelated helpers into technical-layer folders.
 
+Successful verification of a successor or aggregate establishes only the inputs
+actually evaluated; ancestry or inclusion does not certify an earlier artifact
+that the successor repaired or reverted. Reusing that result for admission needs
+contract-defined input equivalence, including when an older success is reloaded
+from storage. **Wrong:** deploy an untested version because its repaired successor
+passed; **Right:** verify the selected version or deploy the verified successor,
+keeping historical completion evidence separate from permission for new effects.
+
 Replacing an interior-mutable cache with a lock does not establish thread safety
 for its containing type: retained receivers, thread-affine handles and trait
 objects can still prevent sharing. **Wrong:** infer `Send + Sync` from the changed
