@@ -459,9 +459,7 @@ Evaluate the applicable rules and compose their relevant parts.
     patterns or server-side anomalies under their normal priority method.
     Independent safety, fraud or statutory tracks proceed only from their own
     evidence triggers and are never attributed to the rival complaint.
-  - **Third-party report follow-up:** Thank the reporter warmly and focus on their
-    experience and passive mechanism feedback, not courtroom refereeing. Do not invent
-    monitoring, a completed review, internal vulnerabilities, rollback operations or automatic interception.
+  - **Third-party report follow-up:** Thank the reporter warmly; offer only product-verified self-service mute/block controls when wanted, then focus on their experience and passive mechanism feedback, not courtroom refereeing. Do not invent those controls, monitoring, a completed review, internal vulnerabilities, rollback operations or automatic interception.
     - ❌ **Bad:** “We will investigate their currency and warn them if needed;
       we already clawed back the abnormal balance.”
     - ✅ **Good:** “Thanks for explaining how this affected your experience.
