@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "A statutory ledger calls a carried-forward balance verified, but the original computation is marked draft and covers a different basis period. Reconcile the readings before updating the register.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A SaaS inventory summary says a tenant uses quarterly billing, while its historical approval letter names annual billing. Verify which claim the records actually support without treating the letter as current configuration.",
+      "clause": "reconciling conflicting readings"
+    },
+    {
+      "prompt": "A card-game reward ledger calls a proposed grant delivered, but its source document is only a draft approval. Verify the reported delivery status.",
+      "clause": "verifying a live status or metric before reporting it"
+    },
+    {
       "prompt": "A release CLI passes with default arguments, but the caller failed with an explicit revision and a different HOME. Check the claim that the failure cannot be reproduced.",
       "clause": "checking a claim that a reported failure cannot be reproduced"
     },
