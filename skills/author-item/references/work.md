@@ -38,7 +38,8 @@ change. Caller migration and removal of the replaced implementation belong to
 the same outcome as the replacement.
 
 Name shared-file or live-state dependencies and assign one writer per target.
-Parallel agents help where work is independent. The outcome owner integrates
+Fan out independent slices concurrently along causal boundaries without arbitrary
+worker-count caps ([fan-out](../../fan-out/SKILL.md)). The outcome owner integrates
 contributions and records any custody transfer explicitly.
 
 ## Lifecycle and dependencies

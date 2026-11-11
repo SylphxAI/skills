@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Split this migration across twelve independent service modules so parallel workers can finish without stepping on each other.",
+      "clause": "partitioning work across parallel agents or workers, processing independent shards, modules, repositories, channels, or time windows concurrently"
+    },
+    {
+      "prompt": "Decide which steps of this data backfill must wait on schema creation and which shard ranges can run at the same time.",
+      "clause": "deciding what to run in parallel versus serialize on causal dependencies or shared write locks"
+    },
+    {
+      "prompt": "Draft self-contained briefs with non-overlapping file ownership for each parallel worker on this multi-repository rollout.",
+      "clause": "writing disjoint slice contracts"
+    },
+    {
+      "prompt": "Break down this multi-part release goal into concurrent tracks with clear shared-lock boundaries.",
+      "clause": "Use when decomposing a multi-part goal"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Gather independent security and commercial viewpoints because either angle could change whether we sign this vendor agreement.",
+      "clause": "Use swarm-fuse for independent viewpoints that can change one decision",
+      "route_to": "swarm-fuse"
+    },
+    {
+      "prompt": "Implement, test, publish, merge, and verify this single parser bug fix in one module.",
+      "clause": "deliver-and-verify for shipping and verifying a single slice",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Fix the off-by-one condition in this local helper function directly without delegating.",
+      "clause": "direct single-agent work when a cohesive task needs no split.",
+      "route_to": null
+    }
+  ]
+}
