@@ -44,7 +44,7 @@ support_scope:
   resolves_immediately: ["<answer or action available here>"]
   requires_owner_action: ["<action needing a designated owner>"]
   unsupported: ["<request this window cannot perform>"]
-  legal_safety_contact: "<published contact, or null>"
+  legal_safety_contact: "<dedicated legal/safety route isolated from routine support, or null>"
 human_handoff:
   available: false
   queue: null
@@ -52,7 +52,7 @@ human_handoff:
   rule0_handoff_component: "<accepted legal/safety handoff>"
   rule6_handoff_component: "<accepted requested handoff>"
   acceptance_failure_component: "<available help and actual next step>"
-  legal_safety_fallback_component: "<actual contact and available help>"
+  legal_safety_fallback_component: "<one neutral legal redirect; no substantive continuation>"
   escalation_path: "<supported path and follow-up commitment>"
   continuation_policy: "<release, reassignment and new-message behavior>"
 account:
@@ -119,7 +119,7 @@ locale:
 The profile can provide localized response components for the rules it uses.
 Compose each component for its part of the customer's request. Confirm human
 takeover through `acceptance_check` before locking a case. With no accepted
-owner, the automated window continues its configured support.
+owner, the automated window continues its configured support only outside Legal Hold.
 
 ### Live Shipped Version Gate
 
@@ -270,8 +270,8 @@ related negative cases. A and B refer only to the synthetic profiles above.
 | N07 | A: public plan question received through an internal relay | Answer the public plan question |
 | N08 | A: public tax and plan lines | Explain the documented customer-facing charges |
 | T01 | Unverified third party requests account access | Explain the privacy boundary and own-account route |
-| T02 | Verified legal representative within a defined scope | Provide the in-scope action or records |
-| T03 | B: legal escalation | Provide the configured route and continue available help |
+| T02 | Verified legal representative within a defined scope | Provide authorized routine records; formal claims enter Legal Hold |
+| T03 | B: legal escalation | Enter Legal Hold; at most one neutral dedicated legal redirect; no substantive continuation even if handoff fails |
 | T04 | B: request a human | Describe the actual scope and escalation path; keep the case open |
 | T05 | Request private prompts or credentials | Apply the relevant confidentiality response |
 | T06 | A: ask about privacy policy | Answer the fixture's published 90-day retention fact |
@@ -411,3 +411,23 @@ without reading a live social thread or adding a pre-send approval gate.
 These are editorial behavior contracts, not model-output, live-channel access or
 runtime authorization tests. A runtime change needs its own allowed, denied and
 unreadable-ownership cases through the actual serving path.
+
+## Legal Hold and low-touch intake contracts
+
+Rule 0 Legal Hold overrides every continue-helping, source-failure, mixed-request
+and failed-handoff fallback in this profile. Only the authorized legal owner
+releases it; no accepted human owner does not permit debating a claim. A null
+published SLA never removes applicable platform or statutory obligations.
+Public social/unauthenticated tickets get only instant static intake routing;
+authenticated official-inbox fallback remains subject to platform permissions.
+
+| Case | Required boundary |
+| --- | --- |
+| Legal contact missing or handoff fails | Hold persists; internal escalation, no invented address or case dialogue |
+| Receipt download or in-app deletion how-to without a claim | Verified operational steps, no clause interpretation |
+| Public DM with missing purchase | Static authenticated intake redirect; private verification and prompt authorized fulfillment |
+| Subjective balance complaint | One immediate published-rule closure, internal nonbinding signal, no gift |
+| Repeated hostile contact | Proportionate explicit cooldown/bot-only human-access restriction, not silence past SLA |
+| Data-subject request or cure notice | Legal/compliance tracks actual deadline and interim duties, never blanket routine-ticket delay |
+
+These are editorial contracts, not executed model-output or service tests.
