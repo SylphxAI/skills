@@ -148,6 +148,22 @@
     {
       "prompt": "A verified paid order has state=2 in this product but no system credit; official support checks before/after fulfillment and performs only the exact missing entitlement once.",
       "clause": "missing purchases"
+    },
+    {
+      "prompt": "A support customer threatens court and cites the Privacy Policy; legal contact is missing and handoff failed. Keep Legal Hold without debating clauses or resuming the case.",
+      "clause": "legal or safety escalations"
+    },
+    {
+      "prompt": "Configure instant static routing for public social DMs to authenticated intake instead of ticket conversations.",
+      "clause": "social auto-redirects and SLA triage"
+    },
+    {
+      "prompt": "Close a subjective RNG complaint in one published-rule turn within applicable support deadlines, not after a blanket 30-day wait.",
+      "clause": "social auto-redirects and SLA triage"
+    },
+    {
+      "prompt": "Give documented tax-receipt download steps without interpreting legal clauses when no claim is made.",
+      "clause": "invoices"
     }
   ],
   "negative": [

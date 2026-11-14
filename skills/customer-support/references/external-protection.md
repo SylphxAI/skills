@@ -36,3 +36,12 @@ in-product mail titles/bodies, and public storefront/promotion copy.
   discount-cap formulas (such as combined-rate ceiling rules), or static
   evergreen claims; time-limited offers follow active backend schedules with
   visible live countdowns and genuine expiry.
+
+## Legal Hold precedence
+
+Formal legal, regulatory, contractual or IP claims immediately enter Rule 0 Legal
+Hold. Support sends at most one neutral redirect to the dedicated legal contact,
+never clause interpretation, liability debate or substantive case continuation.
+Missing contacts or failed handoffs never reopen dialogue. Preserve evidence,
+mandatory notices, emergency guidance and lawful remedies; silence-first drafting
+does not override statutory duties or recognized notice receipt.
