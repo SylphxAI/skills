@@ -44,6 +44,18 @@
     {
       "prompt": "Independent game item-schema changes merge cleanly, but their generated catalog keeps the total at 810 instead of 811. How should the committed output be designed?",
       "clause": "when independent generated code changes conflict or merge into stale output"
+    },
+    {
+      "prompt": "Review Terms of Service, Privacy Policies and EULAs for a SaaS product and a game, separating consumer rights from B2B caps.",
+      "clause": "when drafting or reviewing Terms of Service, Privacy Policies, EULAs, signup/login clickwrap, versioned re-consent, or support-vs-legal isolation"
+    },
+    {
+      "prompt": "Design signup/login clickwrap and versioned re-consent that records acceptance without bundling optional privacy consent.",
+      "clause": "when drafting or reviewing Terms of Service, Privacy Policies, EULAs, signup/login clickwrap, versioned re-consent, or support-vs-legal isolation"
+    },
+    {
+      "prompt": "Review support-vs-legal isolation: ordinary help and signed pre-action notices need distinct inboxes without blocking statutory routes.",
+      "clause": "when drafting or reviewing Terms of Service, Privacy Policies, EULAs, signup/login clickwrap, versioned re-consent, or support-vs-legal isolation"
     }
   ],
   "negative": [
@@ -69,6 +81,16 @@
     },
     {
       "prompt": "Implement the approved generator change that removes the shared fingerprint and verify the generated files.",
+      "clause": "deliver-and-verify to execute changes.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Implement the approved signup clickwrap and acceptance ledger.",
+      "clause": "deliver-and-verify to execute changes.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Deploy the approved privacy notice and blocking re-consent flow.",
       "clause": "deliver-and-verify to execute changes.",
       "route_to": "deliver-and-verify"
     }

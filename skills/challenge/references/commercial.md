@@ -292,24 +292,73 @@ channel method in [clear-writing](../../clear-writing/SKILL.md).
 
 ## Legal surface
 
-Provide the applicable entity, privacy and contract information at the points
-where people need it, including before an account, regulated data processing or
-purchase. Use the actual market's cancellation, pricing, tax and data-protection
-requirements. Drafting stance and claim handling follow
-[conduct](conduct.md#methods-table).
+Maximize enforceable protection without sacrificing mandatory rights or making
+promises the product cannot keep. Read the actual Terms of Service, Privacy
+Policy, EULA, signup/login and purchase surfaces, acceptance records and change
+history against the contracting entity, market, consumer/B2B status, processing
+purposes and governing law. A clause that exceeds mandatory law can weaken the
+protection it was meant to buy; changed law, contradictory product behavior or
+missing assent evidence falsifies the proposed allocation.
 
-- State delivery and remedy commitments accurately. Separate statutory remedies
-  from discretionary goodwill and voluntary commercial guarantees.
-- Distinguish digital content from ongoing services. For UK immediate digital
-  content, regulation 37 requires prior express consent, acknowledgment of the
-  cancellation consequence and the required confirmation; it does not erase
-  remedies for defective content or every service cancellation right
-  ([regulation 37](https://www.legislation.gov.uk/uksi/2013/3134/regulation/37)).
-- Use the protections, liability allocation and change rights that the applicable
-  law enforces while preserving mandatory consumer and data-subject rights.
-- Use confident sales copy and working demos. A pre-sale or roadmap offer states
-  material scope and timing in context, especially before self-serve purchase.
-  Deliver what the contract promises when it promises it.
+- **Assent and change:** Present accessible versioned terms before affirmative
+  clickwrap acceptance at signup/login or purchase; bind the account's acceptance
+  to `terms_version`, `privacy_version`, `accepted_at` and `surface`, retaining
+  the text shown and reliable attribution. Meaningful material updates require
+  blocking re-consent before affected continued use, with adequate notice and
+  lawful exit plus access to mandatory rights. Privacy-notice acknowledgment
+  records receipt; it does not establish consent to optional processing. Where
+  consent is the lawful basis, keep it specific, freely given and withdrawable,
+  separately from service acceptance; a material notice update alone does not
+  make every processing purpose require consent.
+- **Support and legal isolation:** Separate ordinary help (`hi@example.com`)
+  from formal notices (`legal@example.com`), with a monitored handoff for notices
+  received through either route where law recognizes receipt. Support restores
+  paid service and explains published remedies; it does not casually admit
+  liability, amend terms or waive defenses. Neither routing nor a disclaimer
+  negates actual authority, binding promises or statutory notice validity.
+  Where enforceable, require signed written pre-action notice and reasonable
+  cure (synthetic example: 30 days); preserve urgent injunctions, limitation
+  expiry protection and nonwaivable regulator and data-subject routes.
+- **Entity and evidence:** Name the contracting entity and allocate liability
+  to it rather than implying personal guarantees by founders, staff or agents;
+  a guarantee needs a separate valid undertaking. Server-authoritative transaction
+  and entitlement records can prevail over stale client displays under clear
+  terms, but cannot manufacture conclusive evidence, erase a binding displayed
+  offer or bar correction and statutory challenge. Preserve auditable originals
+  and a way to dispute errors.
+- **Virtual value:** Describe virtual credits as a limited, revocable,
+  nontransferable license with no cash value, subject to mandatory law, applicable
+  redemption rights and existing promises. Define lawful revocation grounds;
+  chargeback or exploit clawbacks require verified attributable grants and
+  consumption evidence, with correction for mistakes. A label does not remove
+  stored-value, refund or property protections that actually apply.
+- **Outputs and inputs:** Explain material AI/probabilistic output limitations,
+  appropriate verification and third-party DOM/interface dependency risks without
+  disclaiming promised performance, mandatory duties or known misrepresentation.
+  User warranties cover rights and permissions in submitted inputs and recordings,
+  including third-party privacy and recording rights; tailor indemnities to
+  attributable breach and enforceable scope rather than shifting the provider's
+  own nonwaivable obligations.
+- **Maximum enforceable allocation:** Seek the strongest supported B2B liability
+  cap, indirect-loss exclusion, class-action waiver and contractual time bar,
+  calibrated to the governing law and actual deal. Separate consumer terms and
+  preserve mandatory consumer/data-subject rights and liabilities that cannot
+  be limited; severability wording cannot rescue an unlawful core bargain.
+  Distinguish statutory remedies from goodwill and commercial guarantees.
+- **Delivery and cancellation:** Distinguish digital content from ongoing
+  services. For UK immediate digital content, regulation 37 requires prior
+  express consent, acknowledgment of the cancellation consequence and required
+  confirmation; defective-content remedies and other service cancellation rights
+  remain ([regulation 37](https://www.legislation.gov.uk/uksi/2013/3134/regulation/37)).
+  State material pre-sale/roadmap scope and timing before purchase and deliver
+  the contract's commitments. Drafting stance and claim handling follow
+  [conduct](conduct.md#methods-table).
+
+❌ **Bad:** “Logging in accepts all future terms; our database is final, and
+all privacy requests must wait 30 days.”
+✅ **Good:** Capture affirmative acceptance of identified versions, block affected
+use for material re-consent while preserving mandatory access, and allow record
+correction and urgent or statutory routes outside any enforceable cure period.
 
 ## How it is judged
 
