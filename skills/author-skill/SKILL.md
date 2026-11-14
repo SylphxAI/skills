@@ -1,6 +1,6 @@
 ---
 name: author-skill
-description: "Use when creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md), or distilling a daily detour, rework, patrol blind spot, or verified reusable playbook into an auto-triggered skill: write concrete moment-based trigger descriptions so skills fire automatically without manual reminders, package opinionated methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
+description: "Use ONLY when explicitly asked for creating, refactoring, or auditing a reusable Agent Skill (SKILL.md and its colocated references/*.md): write concrete moment-based trigger descriptions so skills fire automatically without manual reminders, package opinionated methodology (how to think, discuss, build, choose tech stacks, score risks, and write) rather than neutral option lists or organization state, and validate positive/negative trigger test cases. Use author-item to write a work outcome ticket."
 ---
 
 # Author a Reusable, Opinionated Agent Skill (`author-skill`)
