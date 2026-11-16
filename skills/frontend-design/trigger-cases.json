@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Design a distinctive web landing page for a creative editor, including its visual direction and working interface.",
+      "clause": "designing, redesigning, styling, or building web, mobile, or desktop UI surfaces, landing pages"
+    },
+    {
+      "prompt": "Redesign the native mobile settings interface with a consistent typography and spacing system.",
+      "clause": "designing, redesigning, styling, or building web, mobile, or desktop UI surfaces"
+    },
+    {
+      "prompt": "Style the desktop file browser so its hierarchy and interaction states feel like one finished product.",
+      "clause": "designing, redesigning, styling, or building web, mobile, or desktop UI surfaces"
+    },
+    {
+      "prompt": "Build a storefront with a cohesive product presentation and purchase action.",
+      "clause": "storefronts"
+    },
+    {
+      "prompt": "Design the pricing and top-up checkout screens around the user decision rather than backend fields.",
+      "clause": "pricing, checkout or top-up pages"
+    },
+    {
+      "prompt": "Design a dense analytics dashboard without making every metric an identical decorative card.",
+      "clause": "dashboards"
+    },
+    {
+      "prompt": "Create an onboarding flow whose empty, loading and error states fit the visual direction.",
+      "clause": "onboarding flows"
+    },
+    {
+      "prompt": "Build an interactive date picker with deliberate focus, selection and transition states.",
+      "clause": "interactive visual components"
+    },
+    {
+      "prompt": "Review the rendered desktop and phone interface for visual polish, contrast and localized text wrapping.",
+      "clause": "reviewing visual and UX quality"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Rewrite only the headline and product description; leave layout and visual styling unchanged.",
+      "clause": "Use clear-writing for standalone prose or copy editing without visual design.",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Compare backend payment processing architectures without designing any interface.",
+      "clause": "Use challenge for backend or commercial architecture without interface design.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Deploy the already-approved interface build and verify that the release is serving.",
+      "clause": "Use deliver-and-verify for deployment and release execution.",
+      "route_to": "deliver-and-verify"
+    }
+  ]
+}
