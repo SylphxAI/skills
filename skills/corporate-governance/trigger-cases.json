@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Prepare the annual confirmation statement from the current official company record and verify its acceptance.",
+      "clause": "preparing or verifying statutory corporate secretarial filings, annual confirmation statements or annual returns"
+    },
+    {
+      "prompt": "Verify the annual return filing window for the actual entity and reporting period.",
+      "clause": "annual confirmation statements or annual returns"
+    },
+    {
+      "prompt": "Update the statutory director and beneficial-owner registers after a verified change.",
+      "clause": "director, officer, beneficial-owner or registered-office registers"
+    },
+    {
+      "prompt": "Prepare the statutory accounts and reconcile their bank and processor balances to source records.",
+      "clause": "statutory accounting and bank or payment-processor reconciliation"
+    },
+    {
+      "prompt": "Reconcile a net payment-processor payout with orders, fees, refunds and the bank deposit.",
+      "clause": "bank or payment-processor reconciliation"
+    },
+    {
+      "prompt": "Document connected-party payments while preserving each legal entity’s own accounts and obligations.",
+      "clause": "multi-entity ring-fencing and connected-party documentation"
+    },
+    {
+      "prompt": "Verify corporation-tax payment, return filing and VAT deadlines separately for the current period.",
+      "clause": "corporate tax, VAT or filing-calendar obligations"
+    },
+    {
+      "prompt": "Audit recurring vendor debits against invoices, paid-account identifiers and approved spending.",
+      "clause": "recurring vendor spend audits"
+    },
+    {
+      "prompt": "Verify the renewal notice window and early-termination calculation before cancelling an existing vendor contract.",
+      "clause": "commercial contract renewals or cancellations"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Compare proposed group structures and future tax strategies; do not execute any existing obligation.",
+      "clause": "Use challenge for proposed corporate structures, tax strategies or contract negotiations without executing an existing obligation.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Polish the wording of this cancellation letter using the already-verified facts, without reviewing the contract or sending it.",
+      "clause": "Use clear-writing for standalone correspondence after the facts are established.",
+      "route_to": "clear-writing"
+    },
+    {
+      "prompt": "Help an individual customer recover a missing purchase or request a refund.",
+      "clause": "Use customer-support for an individual customer's billing or refund case.",
+      "route_to": "customer-support"
+    }
+  ]
+}
