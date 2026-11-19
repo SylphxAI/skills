@@ -30,8 +30,12 @@
       "clause": "web top-up vs. wallet/voucher design"
     },
     {
-      "prompt": "Should we add an SMS adapter to V1 or bridge old clients into the shared identity service while retiring V1?",
-      "clause": "legacy-to-modern strangler migration"
+      "prompt": "Should we keep a legacy V1 backend running alongside the new backend or plan a verified lossless cutover with thin edge adapters for existing clients?",
+      "clause": "legacy-to-modern backend cutover and client replacement"
+    },
+    {
+      "prompt": "Should a new Rust service adopt jiff or chrono for date and time handling given current RustSec maintenance advisories?",
+      "clause": "challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis"
     },
     {
       "prompt": "Design wallet cancellation when several grants share a balance and only their current remainders are imported.",

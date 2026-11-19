@@ -29,15 +29,21 @@ provide a common starting point:
   services, data planes, durable workers, and CLI tools: safe Rust by default,
   isolated `unsafe` behind a safe API with a written safety contract, typed
   failures on recoverable paths, explicit ownership and cancellation, and
-  measurement before low-level tuning.
+  measurement before low-level tuning. Audit `Cargo.lock` against RustSec
+  (`cargo audit` / `cargo deny`) and choose actively maintained crates for new
+  code—prefer **`jiff`** over **`chrono`** for new Rust date/time handling
+  (`chrono` carries RustSec unmaintained advisory `RUSTSEC-2026-0543`).
 - **One unified frontend/UI engine per product line** (such as a shared
   cross-platform web/mobile/game engine or the repository's declared web
   framework) rather than maintaining parallel UI stacks in the same product.
   When a shared engine lacks a needed capability, build the capability into
   the shared engine rather than working around it in individual callers.
-- **Incremental replacement of superseded stacks:** when a repository migrates
-  from a legacy stack, complete each vertical slice in one pass rather than
-  leaving half-ported modules.
+- **Lossless backend cutover and parallel client maturation:** replace
+  superseded backends, databases, and ledgers through planned maintenance with
+  verified lossless migration (`diff == 0`) and backward-compatible edge
+  adapters rather than dual-backend coexistence; keep the live production
+  client maintained while a replacement client matures against that single
+  backend until it meets or exceeds commercial craft.
 - **PostgreSQL** is the reference relational default. Use one versioned schema
   migration owner per repository; Atlas is the reference tool.
 - **Choose engines by lifecycle value.** Compare workload correctness,
@@ -131,6 +137,7 @@ prior approved artifact, and verify the resulting product.
 ## References
 
 - Rust(edition 2024), checked 2026-10-30: https://doc.rust-lang.org/edition-guide/rust-2024/index.html
+- RustSec `RUSTSEC-2026-0543` (`chrono` unmaintained; recommends `jiff` or `time`) and `jiff`, checked 2026-11-19: https://rustsec.org/advisories/RUSTSEC-2026-0543.html ; https://docs.rs/jiff/latest/jiff/
 - Protobuf, checked 2026-10-30: deterministic serialization is not canonical, https://protobuf.dev/programming-guides/serialization-not-canonical/ ; ProtoJSON serializes int64 as strings and accepts numeric or string input, https://protobuf.dev/programming-guides/json/
 - Wasmtime v50 WASIp3 module, read 2026-10-30: "Experimental, unstable and incomplete … not ready for production use", https://github.com/bytecodealliance/wasmtime/blob/v50.0.0/crates/wasi/src/p3/mod.rs
 - Component Model FAQ, read 2026-10-30: "WASI is layered on top of the Component Model", https://github.com/WebAssembly/component-model/blob/main/design/high-level/FAQ.md
