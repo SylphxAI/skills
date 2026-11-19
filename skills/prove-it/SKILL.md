@@ -167,20 +167,19 @@ may intentionally run admission alone: skipped jobs then establish neither a
 failed ready run nor successful ready verification. Bind the verdict to the
 ready pull request's authoritative run and required aggregate.
 
-A provider can accept `neutral` or `skipped` checks while a required review has
-incomplete coverage; derive approval requirements from the repository's declared
-merge contract as well as its effective rules. When that contract requires a
-review, verify the named producer's explicit `success`, complete reported scope
-and current head; `completed`, zero findings or a separate approval do not
-substitute. A historical review ID is audit evidence, not an extra admission
-requirement unless the contract pins that exact generation. For a replacement
-result at the same source revision, evaluate the authoritative current producer,
-verdict and scope; a pending, failed or incomplete replacement cannot reuse the
-older pass. Keep advisory reviews advisory.
+Agent-native repositories do not require pre-merge human or agent PR review
+gates: sensitive invariants are enforced by deterministic failing-closed CI
+checks, and shipped live surfaces are verified directly post-merge. Only when
+contributing to an external repository whose own merge contract explicitly
+requires a review check, verify that a provider's acceptance of `neutral` or
+`skipped` checks does not mask incomplete coverage—check the named producer's
+explicit `success`, complete reported scope and current head (`completed`, zero
+findings or a separate approval do not substitute; a historical review ID is
+audit evidence unless pinned, and a pending, failed or incomplete replacement
+cannot reuse an older pass). Keep advisory reviews advisory.
 
-**Wrong:** "CI passed and the completed review has zero findings, so enqueue."
-**Right:** "The review is neutral with unreviewed paths; its required success is
-still missing."
+**Wrong:** "External CI passed and the required external review is neutral with unreviewed paths, so treat it as approved."
+**Right:** "The external repository's required review is neutral with unreviewed paths; its required success is still missing."
 
 Source read 2026-11-07: [GitHub required status checks accept successful, skipped or neutral results](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging).
 
@@ -347,13 +346,16 @@ For agent/runtime claims, use the shared [model/runtime boundary](../challenge/S
 
 When evidence overturns a claim, correct what was wrong, state the bounded verified fact and source/read time, and credit whoever caught it.
 
-### Pull request review receipts
+### Audit and post-merge review receipts
 
-Unread automated findings can invalidate an independent PASS, and a stricter
-error path can break clients that depended on a fallback.
+Agent-native delivery does not require pre-merge human or agent PR review
+receipts to merge—deterministic CI checks gate merge, and live shipped surfaces
+are verified directly post-merge. When producing a signed audit, compliance, or
+external-repository review receipt, unread automated findings can invalidate a
+PASS and a stricter error path can break callers that depended on a fallback:
 
-- Before any PASS, list every exact-head automated finding from review check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
+- Before any PASS, list every exact-head automated finding from check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
 - Record UTC observation and signing times from a clock or provider record, not an estimate; writing a receipt later does not move its observation time. Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
-- If that head has no automated review, state that with the UTC read time and label the verdict a source receipt (source review only), not an arming receipt (review supporting merge activation).
+- If that head has no automated check output yet, state that with the UTC read time and label the verdict a source-only receipt rather than a complete verification receipt.
 - For each fallback or soft-failure path removed or tightened, name who used it and whether they still have a working path; use the [caller refusal tests](../deliver-and-verify/references/code.md#tests) for side-effecting callers and treat comments justifying a fallback as invariants.
 - Treat a signed receipt as immutable once signed. Put facts learned later, such as cleanup verification or late CI, in a separately hashed addendum that names the signed receipt; editing the original invalidates every hash already relayed. For example, append a late cleanup result to the addendum rather than changing the signed receipt's original verdict.

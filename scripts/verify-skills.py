@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Deterministic verification suite for reusable skills."""
 
+from __future__ import annotations
+
 import argparse
 import glob
 import json

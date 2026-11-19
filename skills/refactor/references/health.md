@@ -37,7 +37,7 @@ An interrupted or unverified copy leaves the source intact and claims no release
 - Duplicate authorities for the same domain rule, schema or contract. Multiple language clients or independent concepts are not automatically duplicates.
 - Whether the affected tests are selected and can fail on the behavior they claim to check.
 - Runner cost, feedback time and queue delay against the repository's declared budget.
-- Module cohesion, navigation and change cost on representative supported changes; file size can flag a place to inspect rather than dictate a split.
+- Module cohesion, bounded-context isolation, navigation and change cost on representative supported changes; treat ~1,500 lines in a production source file as a structural ceiling to inspect and split along cohesive sub-capabilities so parallel agents do not collide on a god file (without superficial golfing or arbitrary micro-fragmentation).
 - Links and capability statements that still match the code and delivered behavior.
 
 Use the repository's available checks appropriate to those signals. State missing coverage instead of claiming an uninstalled check exists. Report size/duplication changes when they help assess the outcome, and record a repeated lesson beside its owning method or issue.

@@ -859,11 +859,17 @@ Read the current store controls and the product's release contract. Identify the
 
 ## Merge queue
 
-Before arming a merge, verify the repository's declared approval requirements
-through the [current-head review and check results](../../prove-it/SKILL.md#pull-request-checks-and-merge-queue-state);
-provider merge eligibility can leave a required review unenforced.
+Agent-native delivery uses **zero pre-merge human or agent PR review gates**:
+do not add PR review workflows, review-status gates, required approvals, or
+up-to-date/rebase locks on PR branches. Enforce sensitive invariants through
+deterministic compiler, type, schema, and system checks that fail closed, ship
+small orthogonal PRs with auto-merge enabled into the optimistic merge queue on
+open, and never hold or serialize orthogonal PRs by hand. Only when contributing
+to an external repository whose branch rules mandate an explicit external
+approval, verify those declared requirements through the
+[current-head check results](../../prove-it/SKILL.md#pull-request-checks-and-merge-queue-state).
 
-Use the normal queue with its required checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings and queue membership before changing them; preserve an already-correct request for unchanged approved source. An automatic merge request can survive a source push: the original head match protects its submission, not every later update. When new source requires renewed approval, remove and verify both activation intent and queue membership before publishing it, then restore intent only for the newly approved head.
+Use the normal queue with its required deterministic checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings and queue membership before changing them; preserve an already-correct auto-merge request on an unchanged head. An automatic merge request can survive a source push: if a later push intentionally moves a PR back to draft or holds a stacked dependency, remove and verify both activation intent and queue membership before publishing it, then re-arm once ready.
 
 - **Publication and merge intent:** Bind source changes to [source publication authority](security.md#source-publication-authority), including successful receipt adoption after a rewrite. Read the publisher's merge defaults before
   creating or updating a PR that must remain held. Omitting an activation flag

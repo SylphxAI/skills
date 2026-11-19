@@ -3,13 +3,7 @@
 Trigger: placing a new capability, module, boundary, or integration; designing
 shared-service capacity, storage, scheduled jobs, checkpoints or metering.
 
-Goal: one change is understood in one focused read, and a mistake stops at its
-boundary. The shape is feature-first vertical slices, a functional core inside
-a slice that has invariants, ports only at external edges, and one deployable
-per product until a named need. These answer different questions (grouping,
-side effects, edges, deployment), so they combine. Agents copy what they find,
-so fix recurring degraded patterns at their source and add a proportionate
-regression check when it distinguishes the failure from valid designs.
+Goal: one change is understood in one focused read, parallel agents edit disjoint files without colliding, and a mistake stops at its boundary. The shape is **bounded contexts**, **feature-first vertical slices**, a **functional core** inside a slice that has invariants, **lightweight hexagonal ports only at replaceable external edges**, cohesive bounded files (keep production files under ~1,500 lines and split god files along sub-capabilities before they become merge magnets), and one deployable per product until a named need. Avoid horizontal technical-layer folders (`controllers/`, `services/`, `repositories/`, `models/`) and Clean Architecture pass-through boilerplate. These choices answer different questions (ownership, grouping, side effects, edges, deployment), so they combine. Agents copy what they find, so fix recurring degraded patterns at their source and add a proportionate regression check when it distinguishes the failure from valid designs.
 
 Design fault isolation so a bad input, unpriced SKU or dead connection affects
 its request or tenant while unrelated work can continue
@@ -190,8 +184,15 @@ live, what to test, or what to delete.
 
 ## Committed generated output
 
-For independent input changes `A` and `B` from a common base, committed generated
-output should satisfy this composition test across every generated projection:
+Prefer **not committing generated build outputs (`dist/`), hash manifests, or
+repo-wide counts to Git** at all: compute build outputs and provenance hashes at
+build, pack, or CI time so orthogonal PRs never create artificial merge conflicts
+on derived files.
+
+Where a repository genuinely must commit a generated projection (such as a
+lockfile or checked-in protocol binding), independent input changes `A` and `B`
+from a common base must satisfy this composition test across every generated
+projection:
 
 ```text
 G(A ∪ B) = merge(G(A), G(B)) = merge(G(B), G(A))
@@ -258,18 +259,19 @@ target design before live state makes migration expensive.
   verify actual concurrent interleavings using the
   [transaction standard](../../deliver-and-verify/references/code.md#transactions-and-idempotency).
   Why: a helper's local ordering cannot prevent a cycle created by its caller.
-- **Expand and contract rolling storage changes.** Persisted serialization
-  formats inside unchanged columns follow this method too. First deploy readers
-  of both formats while retaining the old write format. Verify the expanded
-  reader serves fully and
-  retire every old reader and its in-flight work before switching writes;
-  include tagged recovery revisions and background workers in that census.
-  A storage cutover also needs compatible dual writes or an equivalent
-  authoritative projection until old consumers retire. Verify the destination
-  before removing old data in a later change, following
+- **Expand and contract rolling storage changes within one backend.** Routine
+  zero-downtime schema or persisted serialization upgrades inside a single
+  backend follow expand-and-contract: first deploy readers of both formats while
+  retaining the old write format, verify the expanded reader serves fully, and
+  retire every old reader and its in-flight work before switching writes
+  (including tagged recovery revisions and background workers in that census).
+  Verify the destination before removing old fields in a later change, following
   [migration compatibility](../../deliver-and-verify/references/code.md#migrations).
   Rollback after the write switch must retain the expanded reader. Missing
-  required data is an error rather than an empty replacement.
+  required data is an error rather than an empty replacement. (For replacing an
+  entire legacy backend, database, or ledger, use
+  [planned lossless backend cutover](#planned-lossless-backend-cutover-and-client-maturation)
+  with `diff == 0` instead of dual-backend coexistence.)
   Why: an older reader can fail to decode newly acknowledged writes even when
   the database schema is unchanged, or return false empty state.
 - **Declare product schedules with the product.** Declare scheduled work as a
@@ -401,26 +403,35 @@ system, and revisit when its workload or costs change.
   is met. Use controlled version-pin updates and relevant validation.
 
 
-### Forward-only modernization: strangle legacy V1 paths
+### Planned lossless backend cutover and client maturation
 
-Use the [strangler pattern](https://martinfowler.com/bliki/StranglerFigApplication.html)
-(primary source read 2026-11-05): shrink the legacy surface instead of making it
-the home of new work. Never add new features, provider adapters (such as
+Keep **one backend and one source of truth** rather than long-lived dual-backend
+or strangler coexistence. Never add new features, provider adapters (such as
 product-local SMS or OAuth clients), or new identity or voucher concepts to a
-legacy V1 surface. Build each shared capability once in its owning platform
+legacy V1 backend. Build each shared capability once in its owning modern
 service and consume its published contract.
 
-Bridge existing clients with zero-input signed deep links or thin compatibility
-adapters. Translate the old contract, not business logic or a second identity
-authority. Bind links to the intended account, audience and action with expiry
-and replay protection; require no credential re-entry when an authenticated
-session already supplies the required authority. Links never create authority.
-
-Retire V1 paths incrementally as callers move. Preserve live accounts, purchases,
-data and supported old-client access; verify parity and caller usage before
-removal. Compatibility repairs remain valid, but new capabilities go forward to
-the owning service. Measure remaining callers and duplicated logic: a bridge
-that grows new product behavior expands the legacy system rather than retiring it.
+- **Planned lossless backend cutover (`diff == 0`):** Replace legacy backends,
+  databases, and ledgers through planned maintenance with clear user notice and
+  verified 100% lossless migration (`diff == 0`) rather than running parallel
+  backends or dual-write ledgers in production. Verify a recoverable backup and
+  zero real-user data loss (`diff == 0`) before cutover, then delete legacy
+  backend code and retired databases at cutover once recovery and parity are
+  verified. (Rolling expand-and-contract remains appropriate for routine
+  zero-downtime schema or serialization upgrades within that single backend.)
+- **Backward-compatible edge adapters, not old backends:** Keep deployed older
+  clients working through thin, backward-compatible edge APIs, protocol
+  adapters, or signed deep links on the single modern backend. Translate the old
+  wire contract without duplicating business logic or keeping a legacy database
+  or second identity authority alive. Bind any signed compatibility links to the
+  intended account, audience, and action with expiry and replay protection;
+  require no credential re-entry when an authenticated session already supplies
+  the required authority. Links never create authority.
+- **Client quality before replacement:** Maintain the live production client
+  (including revenue and UX fixes) while a replacement client matures in
+  parallel against the same single modern backend. Replace the live client only
+  when the new client meets or exceeds production commercial quality and craft;
+  never ship an immature rewrite or freeze live improvements.
 
 ### Injection defence is architectural, not a prompt rule
 
