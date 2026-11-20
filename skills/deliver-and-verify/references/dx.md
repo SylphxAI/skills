@@ -38,7 +38,12 @@ which inputs should exist, so selection drift alone establishes neither byte
 corruption nor permission to drop intended inputs. A clean status or regenerated
 `git ls-files` inventory can omit required imports/modules under
 `.git/info/exclude` even when their bytes arrived intact; rebuildable caches stay
-outside the population unless the check's contract includes them.
+outside the population unless the check's contract includes them. Complete Git
+ancestry likewise does not imply that a partial clone has historical blobs.
+Before an offline history check, verify the required objects are present (for
+example, require a successful `GIT_NO_LAZY_FETCH=1 git rev-list --objects
+--missing=print <revisions>` with no missing-object entries). If not, materialize
+the exact inputs rather than enabling network access in the verifier.
 
 Expanding a parent selection can leave nested exclusions effective, so recovery
 is established by the complete required descendant inventory while unrelated
