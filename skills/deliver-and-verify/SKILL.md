@@ -189,8 +189,9 @@ depend on files across language and workspace boundaries.
 
 Before changing server status-code/error-envelope translation or its regression assertions, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
-relevant endpoint and error-contract boundaries in tests. Admission and later
-dispatch can run under different provider configuration.
+relevant endpoint and error-contract boundaries in tests. When porting a provider-backed
+operation, verify its [runtime resource bindings](references/integration.md#provider-integration);
+admission and later dispatch can run under different provider configuration.
 
 For browser keyboard, clipboard, pointer, focus or foreground lifecycle changes,
 also read
