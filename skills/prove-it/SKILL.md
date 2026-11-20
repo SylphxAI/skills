@@ -239,12 +239,14 @@ owner's durable outcome before attributing the result."
 
 Before calling a reported failure non-reproducible, run the caller's exact
 arguments and relevant effective environment through the same executable version
-and wrapper; flags, working directory, identity, `HOME` and configuration paths
-can select different code paths. Preserve the sanitized original failure and
-name any mismatched or unavailable inputs: success on a default or simplified
-route does not contradict failure on another. Once the matched case reproduces,
-vary suspected inputs independently and retain that case as regression acceptance
-for a repair.
+and wrapper. Flags, working directory, identity, configuration (including HOME),
+cache state, and dependency access can select different paths at the same
+revision. Preserve the producer's original failing stage and first error, with
+sensitive values redacted. Keep a replay's error separate until the original
+attempt corroborates it; a simplified replay's success does not contradict the
+original failure, and an unchanged successful retry establishes recovery, not
+root cause. Once the matched case reproduces, vary suspected inputs independently
+and retain it as regression acceptance for a repair.
 
 **Wrong:** "The default command passes, so the caller's failure does not reproduce."
 **Right:** "The caller supplies an explicit revision and another configuration
