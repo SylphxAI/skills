@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Port the merchant checkout to a new runtime and verify that its price IDs and credential resolve in the same live provider environment before testing payment fulfillment.",
+      "clause": "checkout or voucher channel"
+    },
+    {
       "prompt": "Install a protected-base review producer whose own pull request cannot receive its output, using the authorized bootstrap review without weakening the required gate.",
       "clause": "changing CI workflows or concurrency"
     },
