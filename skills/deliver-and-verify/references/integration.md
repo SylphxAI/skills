@@ -142,6 +142,16 @@ the strict proxy after the dependency resolves its full feature set.
 
 ## HTTP test doubles and routing
 
+Binding a public domain can expose an older release or a healthy application
+whose ingress rewrites the request authority. A 200 or controller-live result
+alone does not establish that public behavior is correct. Test the documented
+proxy header contract, including what ingress overwrites, using both the real
+public path and an upstream-shaped fixture. Check the serving revision,
+indexing headers, robots policy, canonical URLs, and redirect locations on the
+public hostname. Pair that with a preview or unknown-host case that stays
+unindexed. Do not accept ambiguous forwarded authorities or treat a
+client-supplied header as trustworthy without an ingress guarantee.
+
 A direct HTTP fake can skip a CLI or proxy's persistent cache: after a process
 restart, that adapter may inject its own validator and restore cached bytes under
 304 headers even though the caller has no matching page or pagination metadata.
