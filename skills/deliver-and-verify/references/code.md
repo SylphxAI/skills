@@ -242,7 +242,11 @@ generation, or authorize a distinct operation identity rather than rewriting or
 replaying the completed operation. **Wrong:** validate a template and its generator
 independently; **Right:** resolve the rendered references and dry-run the effective
 update against existing objects, proving unchanged immutable templates and no
-unintended execution.
+unintended execution. For a configuration refactor that must not roll out,
+compare rendered resources across the affected release, including indirect
+consumers. A comment inside a mounted file is payload to the content hasher even
+if the application parser ignores it; compare the exact generator input and
+resulting workload identity, not just parsed settings.
 
 Identity-label selectors depend on the producer's propagation contract and every
 consumer of the label, not the key's apparent meaning: compare admitted children

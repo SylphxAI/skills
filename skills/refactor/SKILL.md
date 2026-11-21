@@ -1,6 +1,6 @@
 ---
 name: refactor
-description: "Use when splitting an oversized module or test suite, deduplicating implementations across packages or runtimes, deleting dead code or unused dependencies, removing completed compatibility layers, reducing scattered edits for one supported change, or restructuring a codebase while preserving its observable behavior. Use challenge for architecture-only advice without implementation. Use deliver-and-verify when the outcome adds features or changes product behavior."
+description: "Use when splitting an oversized module or test suite, deduplicating implementations across packages or runtimes, deleting dead code or unused dependencies, removing completed compatibility layers, reducing scattered edits for one supported change, restructuring deployment configuration without a rollout, or restructuring a codebase while preserving its observable behavior. Use challenge for architecture-only advice without implementation. Use deliver-and-verify when the outcome adds features or changes product behavior."
 ---
 
 # Refactor
@@ -13,6 +13,9 @@ Preserve the supported behavior while removing the named structural debt. Read [
 4. Use available language tooling when it adds coverage: `knip` and `jscpd` for JavaScript/TypeScript; `cargo machete`, `cargo +nightly udeps`, clippy and clone detection for Rust; appropriate static analysis for other languages. Tools supply candidates. Check public exports, generated/macro entry points, dynamic hooks and supported feature targets before deletion.
 5. Consolidate copies of the same domain rule, parser or contract. Keep independent concepts separate when combining them would create a false abstraction. Collapse pass-through wrappers and unused compatibility paths when no supported contract or test boundary needs them.
 6. Run the required and affected compiler, lint, type and behavior checks. Broaden coverage when shared interfaces or uncertain boundaries justify it. Judge the result by behavior preservation and clearer boundaries; a useful refactor can add explicit types or module declarations.
+
+For deployment changes that must not restart or rerun workloads, use the
+[rendered deployment comparison](../deliver-and-verify/references/code.md#deployment-configuration).
 
 When sharing code across runtimes, check each consumer's dependency constraints
 before choosing the owning package. A pure module still inherits its package's
