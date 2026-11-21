@@ -25,3 +25,9 @@ optional features separately. For a published package, verify a
 [fresh registry-only consumer](../deliver-and-verify/references/dx.md#private-package-verification).
 When every supported consumer already accepts the parent package's dependencies,
 retain the simpler module boundary.
+
+When extracting shared code, check what its original location supplied: moving
+identical code can change injected inputs, discovery, or which policy applies.
+Keep host-owned inputs at the entry point that receives them, pass them explicitly
+to shared code, and try the assembled consumers with both the pinned policy checker
+and their compiler or runtime. Do not widen an exemption to make moved code pass.

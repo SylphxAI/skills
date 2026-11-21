@@ -18,6 +18,10 @@
       "clause": "deduplicating implementations across packages or runtimes"
     },
     {
+      "prompt": "Share duplicated build logic across packages while preserving each generated entry point's host-provided paths and validation scope.",
+      "clause": "deduplicating implementations across packages or runtimes"
+    },
+    {
       "prompt": "Consolidate the duplicate input parsers so a command-line client can use the shared package without loading the desktop shell.",
       "clause": "deduplicating implementations across packages or runtimes"
     },
