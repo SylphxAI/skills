@@ -183,9 +183,13 @@ When changing generator inputs, running a generator locally or remotely, or
 running a package manager through a remote command wrapper, read
 [source generation](references/dx.md#source-generation).
 
-When editing PR titles or bodies, changing CI workflows or concurrency, publishing CI probe workflows, enrolling disabled tests in CI, running tests in fresh build leases, or selecting checks for source, SDK or transport changes, read
-[affected-test selection](references/dx.md#continuous-integration). Tests can
-depend on files across language and workspace boundaries.
+When editing PR titles or bodies, changing CI workflows, their helper
+interfaces or concurrency, publishing CI probe workflows, enrolling disabled
+tests in CI, running tests in fresh build leases, or selecting checks for
+source, SDK or transport changes, read
+[continuous integration](references/dx.md#continuous-integration). A workflow
+can invoke a helper from a different revision; tests can depend on files across
+language and workspace boundaries.
 
 Before changing server status-code/error-envelope translation or its regression assertions, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
