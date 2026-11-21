@@ -124,6 +124,13 @@ re-enqueueing is needed, because rerunning an ejected group's job does not
 re-admit the pull request. **Bad:** treat a green orphan retry as queue recovery;
 **good:** verify a live queue entry and its required checks at the current head.
 
+A green pull request can still conflict with an earlier entry: queue merge
+checks combine changes not yet on the protected branch. Reproduce a reported
+conflict against the actual merge-group predecessor before changing source. If
+queue membership locks the source branch, confirm the same head is still blocked
+and dequeue only that entry to publish the repair. Then verify normal enqueueing
+and required checks on the repaired head; leave healthy entries running.
+
 For a lost GitHub Actions job, read its check-run annotations when the log
 download is unavailable; a missing log alone does not prove runner failure. If
 the job-rerun API refuses because its workflow is still running, preserve healthy
