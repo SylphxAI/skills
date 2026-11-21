@@ -525,9 +525,12 @@ complete output set. Choosing one parent's generated file can silently discard
 the other's served guarantees. Preserve both revisions and check each parent's
 response compatibility when both changed public contracts.
 
-If CI adds a generated commit, inspect that commit and fast-forward the checkout
-before further edits. Re-evaluate checks and approvals against the new head;
-results tied to the previous head do not authorize the generated delta.
+If CI adds a generated commit, inspect the exact file delta and the contribution
+metadata the merge strategy will carry. A squash can turn generator authors into
+co-author trailers that a green branch check never evaluated. If the metadata
+violates policy, publish the verified files through the authorized source path
+without changing the policy. Adopt the published head before further edits and
+bind both branch and merge checks to the resulting candidates.
 
 A candidate that expands a trusted writer's output policy cannot rely on that
 new grant before the policy is admitted: read the policy revision the writer
