@@ -152,6 +152,12 @@ public hostname. Pair that with a preview or unknown-host case that stays
 unindexed. Do not accept ambiguous forwarded authorities or treat a
 client-supplied header as trustworthy without an ingress guarantee.
 
+When asserting the server's cold redirect chain, a new tab in a shared browser
+context can still reuse or revalidate the destination: a 304 does not imply a broken
+redirect. **Bad:** expect a fresh 200 on each navigation in a shared cache;
+**Good:** isolate or disable the browser cache for each cold variant and check
+every hop. Keep the cache enabled when testing repeat visits or validators.
+
 A direct HTTP fake can skip a CLI or proxy's persistent cache: after a process
 restart, that adapter may inject its own validator and restore cached bytes under
 304 headers even though the caller has no matching page or pagination metadata.
