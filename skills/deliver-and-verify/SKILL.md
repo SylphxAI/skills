@@ -5,7 +5,7 @@ description: "Use when secret scanners refuse, provisioning previews, changing s
 
 # Deliver and verify
 
-Carry the authorized outcome through execution and verification at the user, partner, or operator surface. Use the existing grants and release path; preserve user data and authorized spending limits.
+Carry the authorized outcome through execution and verification at the user, partner, or operator surface. Use the existing grants and release path; preserve user data and authorized spending limits. Keep repositories clean: commit only executable code, declarative configuration, and tests—never commit local scratch paths, point-in-time readouts, live resource UID prerequisite files, caller-census JSON dumps, or command-hash allowlists into source trees; record verification summaries in the pull request description instead.
 
 When changing a game, app or SaaS user journey, remaking a product, or publishing
 assets or configuration that change the experience, or comparing engines, read
