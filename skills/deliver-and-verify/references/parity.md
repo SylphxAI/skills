@@ -356,6 +356,13 @@ intended junction. A corrected probe must retain the original failure and reject
 both the known defective frame and an independent missing-segment control with
 unchanged paint tolerances, then accept the repair under the same conditions.
 
+When the defect is unwanted paint in a stream, recording or export, inspect the
+pixels at that output boundary before the viewer adds its own overlays. Change a
+known background or frame marker after moving the suspect element so a stale
+frame cannot pass the absence check. **Bad:** infer clean output from a capture
+flag or a screenshot of the viewer. **Good:** the fresh transmitted frame contains
+none of the excluded paint, and the viewer's intended overlay or input still works.
+
 Also reject a deliberate half-width regression. Sticky headers and ordinary cells
 can have different offset parents: measure reachability with viewport rectangles,
 the current scroll offset and pinned-column width, never `offsetLeft`.
