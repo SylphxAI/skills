@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Bind the service to its production domain and verify that proxy-rewritten authority does not block indexing or alter canonical URLs.",
+      "clause": "binding or verifying public domains"
+    },
+    {
       "prompt": "Port the merchant checkout to a new runtime and verify that its price IDs and credential resolve in the same live provider environment before testing payment fulfillment.",
       "clause": "checkout or voucher channel"
     },
@@ -63,7 +67,7 @@
     },
     {
       "prompt": "Change a checkout SQL fixture and its HTTP assertions so the exercised public adapter, rather than an internal error helper, defines the expected envelope.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Publish a CI workflow after merging main, preserving both parents' permission changes when Git reports a clean merge but the combined job has duplicate mappings.",
@@ -79,7 +83,7 @@
     },
     {
       "prompt": "Repair a SaaS export worker whose controller deletes private scratch diagnostics at process termination; emit a sanitized cause before exit without losing the original status.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix a card-game import job so its failed authentication condition survives automatic container cleanup without exposing credentials or replaying the import.",
@@ -87,7 +91,7 @@
     },
     {
       "prompt": "Change diagnostic redaction in a batch launcher and test reporter failure together with worker failure, preserving the original process status.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix an engine benchmark whose synchronous process snapshot makes a completed short build appear slower; preserve diagnostics without charging their completion to the workload.",
@@ -143,11 +147,11 @@
     },
     {
       "prompt": "Fix a migration guard that rejects identical current-target files as new during a divergent merge-queue comparison; retain changed-byte, changed-mode and out-of-order refusals.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a SaaS release admission guard that revalidates unchanged target artifacts as new because they are absent from an older ancestor; prove exact content and mode identity.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Implement a card-game configuration history guard that distinguishes unchanged live-target records from genuinely new candidate entries across divergent branches.",
@@ -167,15 +171,15 @@
     },
     {
       "prompt": "Change a Kubernetes teardown admission rule that trusts namespace annotations; prevent other callers from seeding proof during CREATE as well as changing or removing it during UPDATE.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Fix a SaaS approval guard whose protected field is restricted on update but can be initialized by any record creator; preserve ordinary creation and unrelated maintenance.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a game reward authorization marker that treats missing and empty fields alike even though one authorizes a grant; test unauthorized creation, replacement and removal.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Fix a capture client test whose older fake rejects a newly added zero-work measurement request; preserve command ordering, no extra simulation and existing refusal assertions.",
@@ -191,7 +195,7 @@
     },
     {
       "prompt": "Fix a scale-out admission rule that requires the new worker to exist before admitting the request that creates it; preserve missing-existing-worker refusal and prove prospective capacity.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a staged-import guard that requires the final index before it permits the job that builds that index; test independently available inputs and recovery without losing the retained cursor.",
@@ -199,7 +203,7 @@
     },
     {
       "prompt": "Update an inventory-expansion fixture whose success case fabricates future children instead of proving the pre-admission state and reserving new capacity.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix an entitlement grant whose database callback returns normally after its inventory adapter returns null, allowing a durable success receipt to suppress the retry.",
@@ -211,7 +215,7 @@
     },
     {
       "prompt": "Add SQL-backed regression fixtures for a callback returning false without throwing, with separate delivery and completion failures.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Implement a startup-effect guard whose call-graph cache currently merges overloaded methods and misses a forbidden transitive write behind the second declaration.",
@@ -251,15 +255,15 @@
     },
     {
       "prompt": "Fix a shared-database webhook fixture whose queued callbacks reach a later mock when the operating system reuses its listening address; preserve signature and audience assertions.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair an asynchronous file-export fixture whose retained job writes into a later test's reused output path despite different database row identifiers.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Change a notification fixture to give each receiver a unique identity and force address reuse in its regression test instead of relying on random port allocation.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Publish a multiline PR description through a shell-wrapped CLI and verify the published body preserves its line breaks.",
@@ -271,11 +275,11 @@
     },
     {
       "prompt": "Fix a billing reconciliation query whose exact predecessor remains available but whose attribution evidence disappears when that history ages beyond the output selection window.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Change a card-game audit query so historical reward evidence follows record order rather than the current clock, preserving the separately documented event-context limit.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair export retention so an active-tenant wildcard does not retain every deleted tenant archive, while an explicit historical archive reference remains protected.",
@@ -331,7 +335,7 @@
     },
     {
       "prompt": "Change deployment admission so a verification hold preserves resumable progress but an abandoned intent can settle and release its slot for a qualified successor without changing serving traffic.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Fix a payroll import that overwrites its progress cursor with a diagnostic wait and cannot resume after authorization recovers.",
@@ -359,23 +363,23 @@
     },
     {
       "prompt": "Change a Pod admission guard whose offline test adapter overwrites UPDATE and resize context with CREATE defaults, preserving ordinary updates while denying forbidden resizes.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a game trade-access policy whose fixture names the player identity but whose adapter substitutes an administrator, then verify the actual allowed and denied requests.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a SaaS invoice fixture whose tolerant schema replay exits successfully although one missing grantee invalidates the application role grant.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a card-game tournament fixture that assumes an empty migrated database despite retained seed rows and enabled activation guards.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Change a payroll database fixture to verify effective application-role privileges after partially successful setup without broadening production grants.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Implement shared validation for a SaaS file importer and a new API without dropping the importer's supported aliases or widening API admission.",
@@ -547,11 +551,11 @@
     },
     {
       "prompt": "Fix a SaaS database reset whose catalog enumeration treats owner-managed dependents as independently removable; prove cleanup and reuse under its actual identity.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair a card-game test database cleanup that passes only when object names happen to match dependency order, preserving rollback after a late failure.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Ship a catalog-driven cleanup regression with adversarial object ordering, verifying successful reset and subsequent writes as well as failure atomicity.",
@@ -687,11 +691,11 @@
     },
     {
       "prompt": "Repair a database provisioning Job whose remote shell succeeds but the native interpreter never executes its program, proving the exact launch chain before privileges change.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Fix a game administration tool whose read-only mode dispatches to the grant writer, testing zero effects through its real entrypoint and a misrouting mutant.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Change workload credential isolation so a verifier without an admin mount cannot retrieve the same secret through its shared API identity.",
@@ -699,7 +703,7 @@
     },
     {
       "prompt": "Change diagnostic redaction for a privileged worker to preserve safe execution stages and error codes without inferring that a missing receipt means no effects.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
@@ -763,27 +767,27 @@
     },
     {
       "prompt": "Ship a cookie-session proxy repair that forwards the incoming browser Origin without inventing trusted request metadata.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Fix session middleware that blocks the document editor's server-rendered POST search query while continuing to reject originless mutations.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a game account console whose POST inventory query is read-only, and verify the actual API session guard still refuses foreign-origin writes.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Grant selected non-secret columns to a shared support reader so a blocked report can run.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Expose aggregate billing reports through a shared database login without invalidating its reconciler checks.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Restore a shared analytics reader after a temporary ACL change disabled its login, using the supported role-management path.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Upgrade the engine dependency from source and ship its release image after checking the new compiler minimum in both CI and the artifact builder.",
@@ -1167,43 +1171,43 @@
     },
     {
       "prompt": "Ship a CI guard that refuses worker sources omitted from a historical-base release overlay.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Add a shared library fix to both game release manifests and prove the publisher compiles the mapped source path.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Change a copied prebuilt dependency in a selected-source release and verify assembly inclusion and artifact policy coverage.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Fix a database controller whose enum result decodes only in a TEXT test fixture; ship and verify the correction.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Replace a flaky scheduled-message test with a far-future delivery fixture and a controlled due transition that satisfy the real admission and database constraints.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair an invoice-limit fixture whose extreme amount violates the cross-field balance constraint before the entitlement decision executes.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Update the billing SQL parameter binding and its schema-backed regression fixtures before publishing the fix.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Change the game inventory query and test it through the application role against the migrated schema.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a ledger SQL guard whose recent-time filter omits the true predecessor even though its LAG value is non-null.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Add an inventory-history fixture where the intermediate revision has an older event clock, and ship the adjacency repair.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix an access-change verifier that skips an explicit requested change when its account is outside the old audit sample.",
@@ -1295,15 +1299,15 @@
     },
     {
       "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Change stderr redaction so structured worker failures stay parseable while credential values remain concealed.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Implement diagnostic-preserving stderr redaction and verify the calling build tool still receives its error.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Downsize a database on saturated shared capacity; verify that the old shape and its replacement can coexist during the transition, including runtime overhead and preemption effects.",
@@ -1359,7 +1363,7 @@
     },
     {
       "prompt": "Fix a JSON checkpoint update that replaces another transaction's committed renewal deadline.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Ship concurrent stock reservation and pricing updates that preserve the fields each writer owns.",
@@ -1419,11 +1423,11 @@
     },
     {
       "prompt": "Add a migration-only function ACL check before fixture grants can mask a missing app permission.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair a schema fixture so invoker triggers use the application role and private definer helpers keep their owner permissions.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Implement a function privilege guard that distinguishes app mutations from administrative trigger events.",
@@ -1447,15 +1451,15 @@
     },
     {
       "prompt": "Port billing aggregate views between database engines while preserving exact decimal results on repeating fractions.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Implement a support SQL function whose validated text parameter can inherit a caller-provided nondeterministic collation.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Update a card game reporting fixture to exercise NULL, scalar JSON and collation-sensitive candidate limits on the real migrated schema.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair a payment fault-injection test that accepts an authentication refusal before reaching its intended changed-price check, and ship specific refusal coverage.",
@@ -1467,7 +1471,7 @@
     },
     {
       "prompt": "Repair database fixture readiness so a socket-only initialization server cannot satisfy the final TCP-server probe, then run the real fixture.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix and ship an SDK test whose fetch mock passes runtime checks but fails compilation with the web consumer's actual ambient declarations and test-library overloads.",
@@ -1511,19 +1515,19 @@
     },
     {
       "prompt": "Fix API refusal diagnostic redaction when JSON escaping or an excerpt length limit leaves credential material in the emitted error, also covering alternate public proxy response headers on success and failure while preserving internal diagnostics and ordinary public headers.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Repair a migrated billing database fixture that is prepared but cannot admit charges until its guarded activation transition completes.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Update a game-server database fixture to activate its real save authority with the required role and closed legacy writers before running recovery tests.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a document-worker schema fixture that bypasses its activation guard instead of satisfying the real privilege and state-transition prerequisites.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Provision an existing API credential’s first value version and verify that the running service consumes it.",
@@ -1547,7 +1551,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -1655,11 +1659,11 @@
     },
     {
       "prompt": "Change diagnostic redaction so failed sanitization of container-owned logs cannot feed an unconditional artifact upload, while retaining safe status evidence.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Repair diagnostic redaction for a report produced by a different user and verify only successfully sanitized reports reach retained artifacts.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix and ship a change feed that skips late commits when consumers resume after a sequence cursor.",
@@ -1695,7 +1699,7 @@
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
@@ -1711,11 +1715,11 @@
     },
     {
       "prompt": "Repair a database reader whose admission and report use separate connections so backend routing cannot replace the admitted session.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Remove an operator's direct database write access while checking inherited groups and pod execution cannot recover a writer credential.",
-      "clause": "changing database privileges"
+      "clause": "database privileges"
     },
     {
       "prompt": "Retire an inherited container-execution route only after its billing collector works through the approved read-only client.",
@@ -1747,7 +1751,7 @@
     },
     {
       "prompt": "Repair diagnostic redaction so a configuration dry-run can show the intended safe settings without exposing unchanged credential context.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Provision a public preview from this generated create command; establish that the deployed handler admits the selected artifact and target before depending on its URL.",
@@ -1827,19 +1831,19 @@
     },
     {
       "prompt": "Change a database-backed retry fixture to prove effective eligibility across message and shared-resource deadlines, including refusal before expiry, recovery afterward and timestamp precision across persistence.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Repair frozen-release fixtures that incorrectly rebind a historical assembly to the current checkout after an unrelated source change.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Change a release guard so its fixture reads the selected plan and policy from the same committed revisions as the publisher.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Ship regression coverage proving that unrelated checkout edits preserve a bound release while a changed selected input is rejected.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Fix a generic pull-request publisher that refuses a healthy documentation repository because it assumes another target's optional verification workflow exists.",
@@ -1867,11 +1871,11 @@
     },
     {
       "prompt": "Repair a SaaS worker test that mistakes accepted but unfinished setup work for completed work, so legitimate recovery races its duplicate-delivery assertion.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a game reward retry fixture by proving completed and interrupted grants have distinct lifecycle states before testing duplicate delivery.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Implement an ETag-based catalog watcher whose CLI adapter retains its cache across process restarts, preserving pagination and quota admission.",
@@ -1899,15 +1903,15 @@
     },
     {
       "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
@@ -1923,7 +1927,7 @@
     },
     {
       "prompt": "Repair a selected-source release check that rereads current source twice but never binds it to the archived package contents.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Ship a game content exporter fix that proves every approved source maps to the corresponding immutable output position, including one stable replaced input.",
@@ -2035,7 +2039,7 @@
     },
     {
       "prompt": "Fix a checkout transaction that stalls only when the configured catalogue cache refreshes with a pool of one connection.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Ship a save-helper repair whose absent-cache fixture passes while its enabled cache borrows a nested connection.",
@@ -2043,7 +2047,7 @@
     },
     {
       "prompt": "Change an additive shared helper and verify every selected release profile, including an unrelated fixed comparison, retains only its declared differences.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Extend terminal-state replay tests to resend the original payload through a discarded alias, including source-only replay and late redelivery.",
@@ -2075,7 +2079,7 @@
     },
     {
       "prompt": "Change diagnostic redaction to cover encoded concatenated output across transport-frame and UTF-8 boundaries before truncation and fan-out to storage, uploads and the next request, withholding bytes when bounded sanitization cannot establish safety.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix a worker shutdown race where an old slot consumes a wake after durable idle but before publishing its stop.",
@@ -2099,7 +2103,7 @@
     },
     {
       "prompt": "Change database fixture identifiers to respect the tightest seeded column bound while retaining a random suffix.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Publish a SaaS reader-permission delta stacked on its held dependency branch when the commit is local but the publisher cannot find that branch's remote-tracking base.",
@@ -2127,7 +2131,7 @@
     },
     {
       "prompt": "Change a release uploader to consume the digest retained by its authorizing process, not a mutable tag re-resolved at upload time, and test a tag substitution.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Fix a configuration activator that compares two records writable by the same actor; bind activation to the independently retained approved content digest.",
@@ -2139,7 +2143,7 @@
     },
     {
       "prompt": "Harden CLI diagnostic redaction so allowed operation and request-ID fields reject bearer strings, URL queries and unsafe parsed address suffixes.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Repair a resumable installer download and prove its second Range request advances beyond the retained partial prefix and the final digest matches.",
@@ -2207,7 +2211,7 @@
     },
     {
       "prompt": "Change failure-path redaction to sanitize the whole stream before output caps and finish within its reporting budget, including a growing single-line regression.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix a publisher of already-local, caller-authorized source that contacts the remote before validating malformed local objects; prove zero HTTP or transport calls for those inputs while preserving explicitly authorized fetch-and-parse workflows for missing immutable parents.",
@@ -2235,11 +2239,11 @@
     },
     {
       "prompt": "Change a game release guard to classify changed frozen, inherited and removed runtime inputs in pointer-only selections before checking module scope, while keeping single-module selections passing.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Update a SaaS deploy approval to select previously merged source and compare every materialized destination, including inherited inputs and content or mode changes labeled frozen.",
-      "clause": "changing selected-source release inputs"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Publish a SaaS batch-reader code correction whose generated configuration hash would rewrite completed Job templates; preserve the old operations and verify the effective update against their live objects.",
@@ -2323,15 +2327,15 @@
     },
     {
       "prompt": "Change a work-admission policy that currently accepts any job with a matching display name; bind admission to authenticated caller context.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a SaaS import queue that accepts another tenant producer using the approved task label; verify identity cannot be overridden by the producer.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Update a game reward worker admission rule: reject another origin with the same task name and malformed identity, but retain supported versions of the authorized origin.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
@@ -2455,7 +2459,7 @@
     },
     {
       "prompt": "Share two safe service-status files with an operator group while keeping the engine report private across old-grant migration and future atomic replacements.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a shared configuration lost update between an installer and operator pause command, preserving both fields in both concurrent transaction orders.",
@@ -2463,7 +2467,7 @@
     },
     {
       "prompt": "Change diagnostic publication so a bounded worker report with raw provider input remains private and only a validated status projection is shared.",
-      "clause": "changing diagnostic redaction"
+      "clause": "diagnostic redaction"
     },
     {
       "prompt": "Fix a SaaS editor's Cmd/Ctrl+V support when focus remains on the surrounding page, and verify native paste through its shipped client/server path.",
@@ -2499,7 +2503,7 @@
     },
     {
       "prompt": "Change asynchronous export admission so a compact request is refused before its claim and outbox commit when the worker's destination serializer exceeds a database byte limit.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Fix a card-game reward queue that accepts source JSON but exceeds the destination attachment column after serialization and a configured extra item; cover exact-limit materialization and one-byte-over refusal.",
@@ -2511,11 +2515,11 @@
     },
     {
       "prompt": "Change admission rules for a SaaS export queue so fresh requests survive controller convergence and complete before their caller deadlines under contention.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Change admission rules for a multiplayer matchmaking queue and verify repeated fresh arrivals progress after a failed head releases capacity.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Repair a rendering queue whose short-lived producer records expire before protection takes effect; test the production expiry predicates rather than pre-aging fixtures.",
@@ -2591,7 +2595,7 @@
     },
     {
       "prompt": "Change a provisioning access rule so revocation during an awaited resource read prevents the later cleanup delete without discarding acknowledged state.",
-      "clause": "changing admission or access rules"
+      "clause": "admission or access rules"
     },
     {
       "prompt": "Ship an automatic cancellation guard for a queued SaaS export; verify cancellation through the real adapter rather than inferring it from successful submission and status reads.",
@@ -2607,15 +2611,15 @@
     },
     {
       "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Change a card-game operations wrapper to preserve byte-exact credential output into a program while refusing terminal aliases and a forwarding subprocess.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
-      "clause": "changing credential input/output guards"
+      "clause": "credential input/output guards"
     },
     {
       "prompt": "Regenerate schemas after merging a declaration change, preserving table and field semantics while refreshing every catalog and validator that records their hashes.",
@@ -2731,7 +2735,7 @@
     },
     {
       "prompt": "Repair a database fixture that connects with one supported client but another client defaults to TLS unavailable on the disposable server; retain explicit secure configurations.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a static guard that assumes a mutable receiver still has its declaration values when a method runs later.",
@@ -2775,15 +2779,15 @@
     },
     {
       "prompt": "Repair a CLI test fixture whose package launcher selects a bundled runtime instead of the PATH shim, while preserving the permitted invocation's exit assertion.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Fix a payment-adapter test that omits unrelated child modules because its executable interceptor was only verified under the local launcher.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Change a game-build fixture to provide declared helper inputs through the real package command and retain failure when a required helper is missing.",
-      "clause": "changing SQL queries or fixtures"
+      "clause": "SQL queries or fixtures"
     },
     {
       "prompt": "Benchmark two engines after moving the measurement output into a nested run directory; verify the unchanged harness resolves its fixtures before starting the repeated population.",
@@ -2791,6 +2795,11 @@
     }
   ],
   "negative": [
+    {
+      "prompt": "Audit the evidence for whether an already-bound domain serves the claimed release; report what is proven without changing the deployment.",
+      "clause": "prove-it for a review or evidence check",
+      "route_to": "prove-it"
+    },
     {
       "prompt": "Check whether a protected-base review producer already exists and whether its check passed; report evidence without changing workflows or merge state.",
       "clause": "prove-it for a review or evidence check",
