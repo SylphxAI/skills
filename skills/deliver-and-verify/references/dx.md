@@ -650,7 +650,12 @@ not call the new helper: an additive edit still changes its retained bytes.
 Preserve each profile's declared comparison instead of widening its expected
 delta to accept unrelated code. Bind the comparison to the candidate head and
 serving revision, and refresh it if either changes: matching counts or passing
-source tests do not establish scope.
+source tests do not establish scope. To update an archive-entry policy, build
+both pinned selections with the publisher’s toolchain and compare all shipped
+entries and runtime files; one source change can emit nested classes or be
+copied into several archives. When the policy is relative to a fixed baseline,
+use the paired delta to identify entries to review, but classify each entry
+against that baseline, not against the prior release.
 
 Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
