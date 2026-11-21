@@ -365,6 +365,18 @@ A published package states its API, runtimes, and license and follows its versio
 
 Verify supported external construction and call forms against the published version contract; adapting in-repository callers can hide a consumer source break. Adding even a defaulted field to an exhaustively constructible public type, or making a field private, can invalidate existing consumer construction. Within a stable contract, prefer an additive policy-aware entrypoint that preserves supported construction and legacy calls over extending that type in place.
 
+A callable handler does not prove that clients can discover it: registration,
+wire metadata, and caller-specific filtering are separate from dispatch. For a
+new or changed discoverable operation, have a real client read the catalog and
+invoke the advertised operation in each affected transport and access scope;
+confirm restricted operations stay undiscoverable and non-callable where the
+contract requires both. **Wrong:** test only the handler and update a name
+snapshot. **Right:** validate the advertised schema against the protocol (for
+example, MCP requires an object root in `Tool.inputSchema`) and run the
+transport and consumer tests that assert the catalog or parse its metadata.
+See [MCP tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools),
+read 2026-11-21.
+
 When publication requires the selected commit to equal a live branch head, even
 documentation-only commits invalidate that identity. Coordinate every writer to
 that branch through the authoritative validation boundary, without a standing
