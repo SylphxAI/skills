@@ -2,6 +2,14 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The browser shows a report as unavailable although its complete HTTP 200 body is valid JSON. Trace what the shipped consumer rejected.",
+      "clause": "judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer"
+    },
+    {
+      "prompt": "Investigate why a client rejected a complete inventory reply with HTTP 200 after the backend reported that every row passed its type checks.",
+      "clause": "judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer"
+    },
+    {
       "prompt": "A release CLI passes with default arguments, but the caller failed with an explicit revision and a different HOME. Check the claim that the failure cannot be reproduced.",
       "clause": "checking a claim that a reported failure cannot be reproduced"
     },

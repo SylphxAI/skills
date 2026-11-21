@@ -1,6 +1,6 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; judging parse or validation failures after a truncated or bounded read; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Full-read parse errors need no truncation investigation. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings; judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Full-read parse errors need no truncation investigation. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
@@ -272,6 +272,12 @@ distinguishing valid empty encodings from malformed envelopes. A transport-libra
 generic `2xx` does not establish the route's terminal state: accept only its
 contract-defined status and required body fields, types and ownership, including
 a legitimate queued `202` where specified.
+
+When a complete successful response fails in a consumer, apply that revision's
+exact acceptance checks across the failing population, not a generic schema
+check; one row can reject an entire batch. Vary the suspected field and the
+suspected body size independently through the same consumer to distinguish
+validation from transport. Report only the minimum non-sensitive diagnostics.
 
 Providers can normalize display fields while retaining different immutable or
 signed bytes. Bind integrity claims to the contract's authoritative payload,
