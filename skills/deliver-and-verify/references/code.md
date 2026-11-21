@@ -698,6 +698,14 @@ precedes fixture grants: copying live permissions into setup can hide missing
 migration grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
+
+Separate SQL projections can coerce the same stored value differently, even
+when each query returns a row. For a database-backed conditional write, submit
+the current version token emitted by the ordinary read, then verify that an
+older token is rejected without changing state. **Wrong:** test only a write
+without a token or compute the expected token in the fixture. **Right:** pass
+the token unchanged between the real read and write under the migrated types.
+
 Disabling an optional test dependency inside a helper does not prove that ordinary
 production entrypoints cannot reach it, or that the package excludes its capability.
 Where production independence is the contract, exercise the packaged ordinary journey
