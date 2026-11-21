@@ -94,7 +94,9 @@ Time-windowed usage or billing queries also use
 
 When storing process/tool output in JSON or a database, read
 [binary output and text storage](references/code.md#binary-output-and-text-storage).
-For worker replacement, snapshot selection or partial checkpoints, read
+For worker replacement after a timeout or supervisor exit, read
+[supervised runtime health](references/dx.md#supervised-runtime-health).
+For snapshot selection or partial checkpoints, read
 [execution environment recovery](references/code.md#execution-environment-recovery)
 before changing capture coverage or restoring user files.
 

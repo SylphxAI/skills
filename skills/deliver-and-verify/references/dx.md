@@ -572,17 +572,20 @@ label a shell's signal-like status as a convention rather than proof of cause.
 Missing logs limit the conclusion; do not substitute a resource or flag change
 for evidence of the failure.
 
-A supervisor-only lock and deadline disappear on `SIGKILL`, while a detached
-child can continue work and overlap its replacement. Exclusion and cleanup must
-cover the whole child lifetime: a cleanup owner retaining an inherited lock and
-watching a pipe whose sole writer is the supervisor can detect EOF, terminate
-child process groups and finish cleanup before releasing the lock. In a
-disposable fixture, hard-kill only the supervisor and verify descendant
-termination, owned temporary-state cleanup and replacement exclusion until
-cleanup finishes; graceful-stop tests do not establish this contract. A terminal
-receipt can precede process exit and inherited-descriptor closure; retain
-exclusion through publication, then observe actual lock acquisition within a
-bounded deadline rather than treating the receipt timestamp as resource release.
+A timeout, released lease, or terminal receipt can precede process exit and
+inherited-descriptor closure. Before admitting replacement work on the same
+resource, prove the previous execution can no longer use it: retain exclusion
+through descendant cleanup, or record verifiable ownership before the child can
+start so a later launcher can safely retire it. For immediate crash cleanup, a
+separate cleanup process can retain the lock and detect supervisor exit through
+EOF on a pipe whose only writer is the supervisor. A recycled PID or a receipt
+from another runtime does not authorize signalling.
+
+In a disposable fixture, exercise replacement with both a hung supervisor and a
+hard-killed supervisor whose descendants still hold the real resource. Require
+the replacement to acquire it within a bounded deadline, and verify that owned
+scratch state is removed and unrelated work is untouched. Graceful shutdown and
+a terminal callback alone prove none of these outcomes.
 
 Verify with a disposable instance: terminate only the supervised runtime, then
 observe management readiness, refusal without dispatch, retained files and
