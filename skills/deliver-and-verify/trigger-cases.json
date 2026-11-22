@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "A native binding generator finds the library via pkg-config but fails on a transitive C header in a build runner where I cannot install packages system-wide.",
+      "clause": "native build failures"
+    },
+    {
       "prompt": "Bind the service to its production domain and verify that proxy-rewritten authority does not block indexing or alter canonical URLs.",
       "clause": "binding or verifying public domains"
     },
