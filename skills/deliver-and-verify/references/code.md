@@ -244,15 +244,16 @@ independently; **Right:** resolve the rendered references and dry-run the effect
 update against existing objects, proving unchanged immutable templates and no
 unintended execution.
 
-Identity-label selectors depend on the producer's propagation contract and every
-consumer of the label, not the key's apparent meaning: compare admitted children
-with their source, preserving opaque IDs and intentional omissions. A label that
-grants access can also select traffic, scheduling or metrics, so verify intended
-access and exclusion from unrelated selectors before propagating it.
-**Wrong:** copy a service's labels to a worker because its access policy matches;
-**Right:** inherit declared identity while proving the worker never joins serving
-endpoints, then exercise the access path rather than treating policy eligibility
-as working connectivity.
+Identity-label selectors depend on admitted labels and every consumer of them,
+not the key's apparent meaning. Check matches in both directions: changed labels
+against existing selectors and changed selectors against existing workloads,
+including unrelated workloads that share grouping labels. Use a dedicated positive
+identity for an isolation boundary, preserving opaque IDs and intentional omissions.
+**Wrong:** test a new network policy only against its intended pods, or rewrite
+an immutable controller selector to repair the overlap. **Right:** test allow and
+deny effects on intended and neighboring pods, preserve immutable selectors, and
+prove old and new pod templates remain isolated through reconciliation (or drain
+the affected workload first). Verify connectivity, not just selector eligibility.
 
 Trace changed inputs through the automatic writer's trigger, propagation time
 and consumer read behavior; a new deployment does not establish later updates.

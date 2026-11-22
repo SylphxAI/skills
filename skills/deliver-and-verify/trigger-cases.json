@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Change a network policy label selector in a shared namespace without disrupting the neighboring service or opening a gap during rollout.",
+      "clause": "admission or access rules"
+    },
+    {
       "prompt": "A native binding generator finds the library via pkg-config but fails on a transitive C header in a build runner where I cannot install packages system-wide.",
       "clause": "native build failures"
     },
