@@ -52,9 +52,14 @@ after an environment or placement change may contain different work; bind every
 handoff to a remotely readable commit or complete recovery receipt and verify
 the destination tree against it. Resolve those selectors again through the
 supported wrapper before resuming, keeping admission controls intact.
-Send stdout and stderr to durable logs and persist the terminal/exit receipt
-before attempting a completion message, so failed notification delivery cannot
-lose the result. Preserve reports and captures on failure as well as success.
+Send stdout and stderr to durable logs. Persist the child process's exit status
+when it returns, before cleanup, post-run validation, or notification can fail.
+Record those later outcomes separately; a child success does not satisfy a
+failed postcondition. **Wrong:** report a generic wrapper failure as a failed
+suite, or invent a child exit code from its last log line. **Right:** retain both
+the suite verdict and the wrapper's failure; if the child status was never
+observed, record it as unknown. Preserve reports and captures on failure as well
+as success.
 Record per-run stop or teardown failures against that run; continue independent
 runs only when their declared starting state can still be established. Watch the
 completion file or the executor's operation ID; a session handle alone is not a
