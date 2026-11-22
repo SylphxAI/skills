@@ -831,11 +831,17 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
   an elapsed-time change to reuse.
 - Size time/resource bounds to the operation being measured: an enclosing hang ceiling covers the complete enrolled inventory, sequential fixtures and child commands, calibrated from measured runtime on the smallest declared runner plus margin. Preserve inner per-case bounds and correctness assertions; separate independent scenarios into fixtures with named results, but keep a shared deadline when aggregate latency is the acceptance contract. A corpus split preserves the complete input inventory and fail-closed parsing and coverage assertions; report total and slowest-case times so missing work cannot masquerade as a speedup. Check runner billing against the existing grant: standard public hosted runners are free, while larger runners are billed even for public repositories.
 - Classify assertions by what they protect when making measurements advisory: runner load can perturb timing, while finite outputs and numerical accuracy bounds may enforce correctness. **Wrong:** remove every numeric assertion because timings are noisy; **Right:** report noisy timings while retaining correctness checks. Quarantine a demonstrated flaky case instead of retrying until green; a named defect or infrastructure repair can justify an affected rerun. Dependency-unavailability decisions can time out on real retry backoff before reaching the assertion: inject the failed resolution into the production decision path while retaining adapter and entrypoint coverage. Measure real waiting when retry timing is itself the acceptance contract.
-- Before a local integration proof, read its fixture contract: an empty database
-  and a migrated database are different inputs. Select the test runner's supported
-  fixture before treating a relation-exists error as a product defect. Check
-  scratch-directory ownership and Unix socket path limits; use supported
-  per-run overrides for writable, short paths instead of changing shared tools.
+- Before attributing an integration failure to the change, check the fixture's
+  effective capabilities and state at the operation under test, including inherited
+  defaults. A database can accept connections yet lack a required SQL feature, or
+  create test databases with a different encoding than the connected database.
+  Use the supported fixture and run the original assertions. Check scratch-directory
+  ownership and Unix socket path limits; use supported per-run overrides for writable,
+  short paths instead of changing shared tools.
+- When fixture teardown can race the result under test, synchronize on the
+  consumer's completed operation, not the producer's last write or read. Keep the
+  test deadline and assertions intact. When disconnect handling is the contract,
+  induce it at the intended boundary instead of suppressing it.
 - When testing scheduling decisions, give competing callbacks the same controlled clock, including clock reads inside the callbacks. Advance it explicitly to check both overlap suppression and a later interval that must run; suppressing every callback must fail the test. Restore replaced clocks and scheduler functions, then run the enclosing suite to expose leaked state or mismatched time sources. Use real elapsed time when latency or throughput is itself the acceptance contract.
 
 ### Browser input and foreground tests
