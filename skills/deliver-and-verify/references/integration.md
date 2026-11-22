@@ -152,6 +152,13 @@ public hostname. Pair that with a preview or unknown-host case that stays
 unindexed. Do not accept ambiguous forwarded authorities or treat a
 client-supplied header as trustworthy without an ingress guarantee.
 
+When a public route becomes an alias, an upstream router may still send users
+there. Derive starting paths from the upstream declarations and follow the
+effective redirect rules to the intended page. **Bad:** infer reachability from
+page files alone, or accept the first redirect as success. **Good:** keep the
+upstream cases, prove the terminal page and required query values, and reject
+missing targets and cycles.
+
 When asserting the server's cold redirect chain, a new tab in a shared browser
 context can still reuse or revalidate the destination: a 304 does not imply a broken
 redirect. **Bad:** expect a fresh 200 on each navigation in a shared cache;
