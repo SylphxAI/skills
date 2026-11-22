@@ -401,7 +401,12 @@ Treat target size, hit testing and visible paint as separate assertions:
 - A control can submit the right values and expose an accessibility label while
   rendering no visible label. Assert its displayed content as well as its
   accessible name and action, and inspect the captured frame before presenting
-  it as visual proof.
+  it as visual proof. For [WCAG Label in Name](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html),
+  require the rule to evaluate the intended control in a painted browser at
+  each breakpoint where its text is visible. Hiding supplemental text from
+  assistive technology does not remove it from the painted label: distinguish
+  the label from adjacent metadata such as a shortcut hint, then check icon-only
+  naming and pointer activation separately.
 - For runtime-activated controls that are serialized inactive, evaluate each
   target with sibling menus still inactive. Resolve its runtime layout and
   nearest click-handler ancestor, then require the primary visible artwork
