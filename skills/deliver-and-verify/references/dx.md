@@ -862,6 +862,13 @@ fixture's active mocks: a mocked product transport can acknowledge a driver
 request without delivering input. Keep the input driver's control path independent
 of mocked product transport, preserving the native default-effect assertion and
 behavioral negative when repairing the bridge.
+
+A desktop-sized headless viewport can receive mouse events and match `:hover`
+without advertising `(hover: hover)` or a fine pointer. Verify the media
+capability required by the shipped rule before judging its painted effect. Use
+a headed browser or explicit, verified input capability emulation for the
+positive case, and retain a no-hover or coarse-pointer negative.
+
 For tab visibility or window blur, change actual browser focus and verify
 `document.hidden` and `document.hasFocus()` before judging the application.
 Disable automation focus emulation for that scenario, and use a headed browser
