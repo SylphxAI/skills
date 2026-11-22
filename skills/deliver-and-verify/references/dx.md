@@ -196,8 +196,13 @@ Audit native requirements in the locked transitive dependencies' build scripts
 and binding generators, including ordinary crates without a `-sys` suffix.
 Check headers, linker libraries, configuration executables and compiler-loaded
 libraries; finding a package with `pkg-config` alone may miss a later binding or
-link failure. Add an image-build probe that exercises those requirements. Then
-run the original failing command through the ordinary build route, preserving
+link failure. Without system install privileges, prefer a private dependency
+root populated with packages for the runner's distribution and architecture.
+Verify compiler resource headers, transitive includes, linking, and loading
+from the actual build environment: one missing file can hide the next, and
+package discovery alone does not prove the compiler uses those files.
+For build images, add a probe that exercises those requirements. Then run
+the original failing command through the ordinary build route, preserving
 its size, architecture and region, and record the selected image digest.
 Map distinct template selectors and read their effective pins; success on one
 placement does not prove another pool received the published image. Resolve
