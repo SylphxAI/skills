@@ -207,6 +207,16 @@ changing runtime settings or treating an access/quota refusal as a launch error.
 fails. **Good:** use a supported entrypoint with unchanged authority, reconcile
 the deployment receipt and verify the remaining work.
 
+### Missing artifacts between jobs
+
+A consumer's “artifact not found” error does not tell you whether the producer
+failed to create it, failed to publish it, or published it under a different
+identifier. Match the producer's creation and publication results with the
+consumer's exact run, attempt, and artifact identifier before retrying. If a
+transfer failed after creation, recover that transfer on the same inputs through
+the supported retry path and confirm that the consumer reads it in the
+recovered run; do not change the build or substitute an unverified local copy.
+
 ### Build wrapper timeouts
 
 An outer tool deadline and an inner guard's fetch or validation deadline are
