@@ -96,6 +96,13 @@ Classify from the newest run on that commit and its first exact error; an older 
 
 ### Parent-operation recovery
 
+A batch claim can advance an item's attempt timestamp without starting its
+handler: the worker may return unstarted rows to pending when an earlier item
+uses the run budget. Compare claim and deferral records with a per-item
+execution or provider receipt before blaming the downstream service or
+re-enqueueing. Verify that the original item gets a turn under the competing
+load, not merely that the queue touches it again.
+
 An idle replacement process proves liveness, not recovery: same-process tests
 can retain unsaved payloads that disappear after restart. For restartable work,
 compare accepted payload identities and order, acknowledgements and completed-effect
