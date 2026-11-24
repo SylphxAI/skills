@@ -303,7 +303,7 @@
     },
     {
       "prompt": "Fix a recovery-artifact reconciler so broad active-resource selectors use their declared population rather than every garbage-collection candidate.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Change a partial-clone CI checkout reader to batch historical source reads; prove remote request count on cold history and reuse on warm history, not just one local process.",
@@ -667,15 +667,15 @@
     },
     {
       "prompt": "Repair a paged payment reconciler so an undispatchable oldest receipt cannot block later work or other tenants, while an already-scanned receipt is revisited after provider settlement.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Fix a CRM delivery worker that treats every undispatched message as a capacity hold, preserving deliberate holds while yielding ineligible messages and revisiting them when the customer becomes contactable.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Repair a retention reconciler so failed preflight durably yields to later candidates without losing retry eligibility after a later page succeeds.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Implement a live database snapshot before a gateway upgrade, proving it completes while another connection keeps committing writes.",
@@ -719,15 +719,15 @@
     },
     {
       "prompt": "Repair a cache reconciler that aborts when another user owns its completion marker, proving every later tree is still repaired.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Fix a report backfill whose stale completion flag suppresses unfinished records after a writer handover.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Ship a game asset reconciler repair that rebuilds malformed completion evidence without following references into private files.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Change a sparse source checkout and prove that widening restores every required nested file without changing sibling selections.",
@@ -819,15 +819,15 @@
     },
     {
       "prompt": "Run a native game QA session in a device lease whose granted expiry exceeds its idle timeout, retaining it only for the active test.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Run the document editor browser suite in a lease, renewing its short initial grant through the supported API after readiness.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Run a long leased integration test with a detached task-scoped heartbeat, verifying the launching tool returns and qualifying activity succeeds.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
@@ -895,15 +895,15 @@
     },
     {
       "prompt": "Run the document editor's Playwright checks in a fresh remote build lease with the browser and its system libraries installed there.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Verify a game landing page in a new disposable build lease; an earlier lease installed Chromium but this one has no browser executable.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Prepare and run the checkout browser regression suite inside one fresh build lease using the pinned CI browser setup.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Fix the remote Rust build image after a locked dependency without a -sys suffix invokes missing native binding tools; verify a normal lease uses the published image.",
@@ -939,15 +939,15 @@
     },
     {
       "prompt": "Repair a service reconciler that preserves a missing zero-weight recovery release and causes the provider to reject the entire resource.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Fix a game fleet reconciler that overwrites a valid pending rollback target with a lagging observation of the currently served version.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Ship a queue-worker recovery fix that creates its target first and waits for provider-confirmed existence before adding the warm-up reference.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Fix the first document-editor toolbar click being lost when a new browser session receives its guest cookie and refreshes.",
@@ -1239,7 +1239,7 @@
     },
     {
       "prompt": "Run the changed browser fixture in a fresh build lease and keep its logs, exit status and captures available after this turn ends.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Finish implementing this feature, verify the exact source revision remotely, and preserve its result before yielding the session.",
@@ -1275,11 +1275,11 @@
     },
     {
       "prompt": "Run focused workspace tests in a fresh build lease; a package export resolves to generated files that are absent after installing dependencies.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Evaluate a changed alert rule in a fresh build lease with the evaluator version deployed in production.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Ship the invoice display join and update isolated database fixtures, including guest-checkout cases that do not select the customer branch.",
@@ -1299,15 +1299,15 @@
     },
     {
       "prompt": "Rotate a Secret consumed by an already-completed reconciliation Job and ship its new configuration.",
-      "clause": "rotating secrets consumed by Jobs"
+      "clause": "rotating Job secrets"
     },
     {
       "prompt": "Change only an encrypted input used by a scheduled Job and verify the deployed consumer reads its new value.",
-      "clause": "rotating secrets consumed by Jobs"
+      "clause": "rotating Job secrets"
     },
     {
       "prompt": "Deliver a replacement API credential to a one-shot Job without changing the credential value in source.",
-      "clause": "rotating secrets consumed by Jobs"
+      "clause": "rotating Job secrets"
     },
     {
       "prompt": "Fix the stderr redaction filter that removes compiler JSON diagnostics containing source assignments.",
@@ -1547,7 +1547,7 @@
     },
     {
       "prompt": "Rotate a scheduled export worker’s signing key and verify its next Job consumes the enabled replacement version.",
-      "clause": "rotating secrets consumed by Jobs"
+      "clause": "rotating Job secrets"
     },
     {
       "prompt": "Fix and publish deployment scripts stored as shell files and generated ConfigMaps, checking both CI validators after regeneration.",
@@ -2211,7 +2211,7 @@
     },
     {
       "prompt": "Run tests with offline fixture compilation in a fresh build lease; preparation and real fixture subcommands must share the effective executor, package source and cache, keeping that cache out of the source files scanned by lint.",
-      "clause": "running builds or tests in a lease"
+      "clause": "builds or tests in a lease"
     },
     {
       "prompt": "Fix a SaaS build guard that relaxes inspection before proving pointer-file, configuration-include and inherited-environment trust; keep unproven resolution on the strict path.",
@@ -2315,7 +2315,7 @@
     },
     {
       "prompt": "Rotate a Job's credential file and ensure a FIFO at that path is refused before its open can stall unrelated jobs.",
-      "clause": "rotating secrets consumed by Jobs"
+      "clause": "rotating Job secrets"
     },
     {
       "prompt": "Ship a file-indexing service fix that rejects named pipes before opening them can block the shared worker.",
@@ -2559,7 +2559,7 @@
     },
     {
       "prompt": "Change a durable job controller so disabling new-job eligibility cannot bypass its recorded execution owner or create a second owner through fallback.",
-      "clause": "repairing recovery references or reconcilers"
+      "clause": "recovery references or reconcilers"
     },
     {
       "prompt": "Fix account erasure racing an already-active external export after durable admission, preserving progress for unrelated accounts.",
@@ -2804,6 +2804,10 @@
     {
       "prompt": "Benchmark two engines after moving the measurement output into a nested run directory; verify the unchanged harness resolves its fixtures before starting the repeated population.",
       "clause": "benchmarking engines"
+    },
+    {
+      "prompt": "Ship a consent change after an optional browser SDK sent a raw campaign query in its automatic beacon despite a redacted app payload.",
+      "clause": "browser consent"
     }
   ],
   "negative": [

@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, binding or verifying public domains, changing source checkouts, SQL queries or fixtures, admission or access rules, database privileges, selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, running builds or tests in a lease, native build failures, generating source, upgrading engine or SDK dependencies, benchmarking engines, repairing recovery references or reconcilers, rotating secrets consumed by Jobs, changing resource sizing or retention, diagnostic redaction, credential argv/FD/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, binding or verifying public domains, changing source checkouts, SQL queries or fixtures, admission or access rules, database privileges, selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, builds or tests in a lease, native build failures, generating source, upgrading engine or SDK dependencies, benchmarking engines, recovery references or reconcilers, rotating Job secrets, changing resource sizing or retention, diagnostic redaction, browser consent, credential argv/FD/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -139,7 +139,7 @@ Before bulk mutations, including cancelling CI runs, read
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating secrets consumed by Jobs, or changing resource sizing or retention, read
+When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating Job secrets, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging, one-off container probes or runtime fixtures copied
@@ -196,7 +196,7 @@ source, SDK or transport changes, read
 can invoke a helper from a different revision; tests can depend on files across
 language and workspace boundaries.
 
-Before changing server status-code/error-envelope translation or its regression assertions, provider calls, shared HTTP-client features or defaults, HTTP test doubles, streamed output, queued
+Before changing server status-code/error-envelope translation or its regression assertions, provider calls, shared HTTP-client features or defaults, browser consent, HTTP test doubles, streamed output, queued
 dispatch, receipt parsing or webhooks, read [integration.md](references/integration.md). Preserve
 relevant endpoint and error-contract boundaries in tests. When porting a provider-backed
 operation, verify its [runtime resource bindings](references/integration.md#provider-integration);

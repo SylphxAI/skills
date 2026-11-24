@@ -195,10 +195,13 @@ a mocked client method returning JSON; **Good:** the fixture rejects the wrong
 route, media type and cross-origin credentials, and a real metadata read
 confirms the permitted request.
 
-For browser privacy claims, include [browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests).
-A clean payload observed by a transport mock cannot establish whole-request
-privacy: verify headers and ambient identity on an actual browser request, with
-a positive control showing the fixture observes them when protection is absent.
+A clean mock payload or a correctly ordered consent command cannot establish
+browser privacy. With a synthetic sentinel, inspect the URLs, bodies, and
+[browser-added credentials and referrer metadata](https://fetch.spec.whatwg.org/#requests)
+of requests from an actual browser, including automatic SDK beacons. Use a
+positive control showing the probe observes traffic; if an optional script's
+pre-consent traffic cannot be kept free of identifiers, defer its load until
+consent and prove both pre-consent silence and post-consent delivery.
 
 When management and data traffic use different origins, run distinct fake
 listeners and reject a request sent to the wrong one. One permissive listener
