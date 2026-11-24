@@ -935,6 +935,10 @@ Establish foreground focus before measuring input-induced lifecycle changes,
 so startup transitions do not contaminate the measured sequence. Check the
 workflow invocation as well as the test file: a standalone trusted-input driver
 provides no CI coverage until the workflow runs it against the compiled fixture.
+An isolated test can pass while its trusted input leaves the real cursor, focus,
+or emulated device state affecting the next test. Run the enclosing suite on
+CI's browser version, and isolate or restore shared browser state rather than
+adjusting later assertions to tolerate it.
 
 For an interaction that fails after a fresh load, test fresh and returning
 browser contexts separately against the production artifact. Record whether
