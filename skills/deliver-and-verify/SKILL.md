@@ -203,7 +203,7 @@ operation, verify its [runtime resource bindings](references/integration.md#prov
 admission and later dispatch can run under different provider configuration.
 
 For browser keyboard, clipboard, pointer, focus or foreground lifecycle changes,
-also read
+or a native form that redirects to a provider, read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
 For changes to transaction locks or nested transactional helpers, read

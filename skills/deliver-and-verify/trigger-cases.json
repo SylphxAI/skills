@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Add an operator form that POSTs locally, then sends the browser to an external consent page; verify the redirect from the normal navigation entry.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "Repair a layered character garment whose trim disappears during animation; reproduce the painted failure before deciding whether the texture or the fit needs to change.",
       "clause": "implementing or shipping a feature, bug fix"
     },
