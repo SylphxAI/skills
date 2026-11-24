@@ -72,7 +72,12 @@ completion marker through a supported observer-readable location, or use the
 executor's operation identity. A terminal registration baseline needs immediate
 receipt reconciliation, because no later transition may wake the worker. Verify
 the child survives the launching call using the
-[background-process guidance](dx.md#internal-development).
+[background-process guidance](dx.md#internal-development). That first sample
+proves startup, not survival across a turn: a supervisor can reap descendants
+regardless of shell detachment. Before relying on a later wake, confirm that the
+executor supports cross-turn jobs or prove it with a disposable job that writes
+its exit receipt after the turn ends. Otherwise keep the bounded check in the
+current turn or submit it to CI.
 
 On wake, read that run's receipt and the executor's current status before
 starting another attempt. Keep queue admission, source transfer, dependency setup
