@@ -967,9 +967,11 @@ Compiler context explains why syntactic exceptions cannot establish closure:
 - Binding inventories distinguish runtime writes from annotation-only bindings
   and read/delete targets while respecting nested scopes; a refusal naming the
   wrong unresolved target is still a resolution defect.
-- A token-tree exemption needs positive proof of the declared exempt construct;
-  a valid non-exempt form reusing its operator still contains declarations that
-  cannot be skipped.
+- A keyword may name an effect in a declaration without performing it. Use the
+  supported grammar to distinguish the executable form from metadata; do not
+  exempt the containing statement or file. Test the lookalike and a real effect
+  together through the guard, with the effect at sibling and nested boundaries.
+  A token-tree exemption still needs positive proof of the exempt construct.
 
 For guards enforcing syntax behavior, put a real state mutation after every
 supported control opener and exercise allowed and forbidden forms through
