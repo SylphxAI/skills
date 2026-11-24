@@ -292,6 +292,13 @@ container daemon or host install. Check the connected server version and run
 the actual fixture under its restricted role; keep this receipt separate from
 CI, which still has to verify its own packaging and startup path.
 
+When a protected deployment policy rules out the intended topology, a smaller
+fixture can still prove behavior that does not depend on the missing topology.
+A standalone backend can prove authentication and reconnect after endpoint
+replacement, but not operator-driven primary promotion or continuity of
+acknowledged writes. Keep those gates pending in the supported target rather
+than loosening policy or counting the substitute as topology-equivalent.
+
 An isolated database fixture needs every schema object referenced by its
 queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
