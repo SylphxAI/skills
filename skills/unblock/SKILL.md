@@ -260,8 +260,12 @@ within its expected duration continues on its existing executor.
 
 Split elapsed time at the boundaries the verifier actually waits for: setup,
 preparation, work submission, completion and capture. A mount or load duration
-does not measure the whole operation. Retain the last typed readiness state and
-timings on failure; a generic loading message does not identify a missing asset.
+does not measure the whole operation. Keep the first typed failure and record
+which phase produced each readiness observation. If the final failure names a
+later phase, an earlier successful sample is history, not the current state.
+**Wrong:** infer that navigation went backward from cached recognition text.
+**Right:** read the failed phase's own evidence; recover it from the retained
+attempt under the producer's authorized scope before rerunning the workload.
 
 An enclosing timeout can be spent on implicit discovery even when the intended
 fixture or configuration already exists; existence does not prove selection.
