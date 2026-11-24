@@ -547,6 +547,12 @@ related fields. Keep the start of work separately when the API needs it.
 An absolute deadline or a lifetime explicitly measured from the request keeps
 that origin; publication and retries must not extend it.
 
+When a stored deadline is projected to a coarser precision, specify the rounding
+direction: an implicit cast can round an authority ceiling up while another
+consumer truncates it. Derive each expected output from one stored instant, and
+pin a fractional input that distinguishes the conversions; whole-second fixtures
+or a timing tolerance can hide the mismatch.
+
 Startup validity does not establish validity throughout a run that rechecks it:
 required horizon = issuance-to-start lead time + maximum run duration +
 finalization margin, within the issuer's authority policy.
