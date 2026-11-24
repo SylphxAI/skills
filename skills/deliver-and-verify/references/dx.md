@@ -651,12 +651,13 @@ declared change under test. An unchanged-input exemption requires identical
 pinned content and modes; a frozen provenance label cannot exclude changed
 destinations from scope checks. Resolve the serving selection from its producer's frozen approval, not
 the selected source revision's own selector.
-Include every other profile selecting a changed shared file, even if it does
-not call the new helper: an additive edit still changes its retained bytes.
-Preserve each profile's declared comparison instead of widening its expected
-delta to accept unrelated code. Bind the comparison to the candidate head and
-serving revision, and refresh it if either changes: matching counts or passing
-source tests do not establish scope.
+Before publishing an ordinary source PR, resolve every affected source consumer,
+including frozen candidates compiled only in CI. An additive edit to an unpinned
+overlay can change the frozen tree while the plan file and release lock stay
+identical. Compare resolved paths, modes, and blobs against the reviewed tree at
+the actual tested revision. Keep an unrelated consumer byte-identical (for
+example, isolate a new helper from its shared input) instead of updating its
+approval digest. Refresh the comparison when the candidate or baseline changes.
 
 Read how dependency binaries reach the runtime. A copied prebuilt binary needs
 both assembly inclusion and permission in the artifact policy when that policy
