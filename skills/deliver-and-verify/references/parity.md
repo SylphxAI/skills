@@ -332,6 +332,13 @@ a distorted face because an old runtime prohibited PNG reads. **Good:** the new
 runtime reads the actual renders, visible defects are repaired and the geometry
 checks still run.
 
+A missing detail on layered, animated geometry may be occluded rather than
+unpainted: isolate the visible layer in a matched replay and measure signed
+clearance on the actual posed surfaces, including adjacent geometry, before
+choosing an offset. **Bad:** accept a brighter edge in the texture or a moved
+rim in bind pose. **Good:** the same camera and motion restore the visible edge
+without introducing intersections or changing an unaffected view.
+
 ### UI coverage, geometry and painted output
 
 Declare the expected case count and each fixture's target identities/counts

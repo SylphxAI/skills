@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Repair a layered character garment whose trim disappears during animation; reproduce the painted failure before deciding whether the texture or the fit needs to change.",
+      "clause": "implementing or shipping a feature, bug fix"
+    },
+    {
       "prompt": "A native binding generator finds the library via pkg-config but fails on a transitive C header in a build runner where I cannot install packages system-wide.",
       "clause": "native build failures"
     },
