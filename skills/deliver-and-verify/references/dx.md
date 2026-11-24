@@ -469,10 +469,12 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 Generator obligations follow changed inputs, including declarative objects,
 even when no generator code changes. A green generator check covers only its own
 outputs: a consumer may treat those outputs as input to a separate checked-in
-projection. Follow consumers and their freshness tests until no affected derived
-outputs remain. **Wrong:** stop after regenerating API clients. **Right:** also
-rebuild the gateway's reserved names if it derives them from those clients, and
-verify the compiled gateway reads the updated list. Even a provenance-only edit
+projection. Follow consumers and their freshness tests through check-only
+compatibility baselines, which may not be refreshed by the generator even for
+additive changes. **Wrong:** accept a clean regeneration as API compatibility.
+**Right:** inspect the derived diff and run the compatibility checker against
+the retained base as well as the refreshed snapshot; refreshing the snapshot
+must not normalize a breaking change. Even a provenance-only edit
 can change output digests without changing fields or rows. Rebuild from final
 inputs and compare the full named population and values. Exercise affected
 entrypoints in fresh processes; in-process tests may reuse cached modules.
