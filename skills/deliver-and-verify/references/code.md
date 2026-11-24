@@ -1164,14 +1164,17 @@ For example, a SQL view containing a VOLATILE rejection function may evaluate
 it even when its output column is unused. Validate metadata-only reads and row
 locks independently before using that view to judge the production projection.
 
-For pooled-resource teardown, check client ownership and server state separately.
-A returned close future does not establish that the pool drained every resource.
-Before attributing a surviving session to a worker, read the exact driver's close
-and return ordering and measure the remaining pool size. Reproduce a return
-racing shutdown with a barrier, and retain a negative case in which a genuinely
-held connection stays usable after cleanup reports it. Keep a driver workaround
-in its version-specific adapter and remove it when the supported upgrade fixes
-the ordering; do not hide the failure by terminating unrelated sessions.
+For pooled-resource teardown, check client ownership and server state separately:
+a returned close future does not prove that the server sees no sessions. When
+fixing pool semantics, read the driver's close and return ordering, reproduce the
+race with a barrier, and verify a genuinely held connection remains usable; keep
+any version-specific workaround in the driver adapter. When deleting an owned,
+disposable test fixture instead, close its pools first and prefer a supported
+server-side operation that terminates remaining sessions and deletes only that
+fixture (for example, PostgreSQL 13+ `DROP DATABASE ... WITH (FORCE)`).
+**Wrong:** sleep after the close or terminate sessions on a shared database.
+**Right:** hold an open fixture session, verify that cleanup removes the fixture,
+and confirm a separate control database remains usable.
 
 ## Outbound calls
 
