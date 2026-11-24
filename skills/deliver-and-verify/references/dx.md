@@ -873,6 +873,13 @@ request without delivering input. Keep the input driver's control path independe
 of mocked product transport, preserving the native default-effect assertion and
 behavioral negative when repairing the bridge.
 
+A cross-origin frame is not necessarily out-of-process: changing only the port
+changes the origin but not the site used for Chromium process isolation. When
+verifying routing to an out-of-process iframe, use distinct test sites and
+require an attached iframe target for the selected frame before accepting the
+behavior. Keep a local-frame control so testing one route cannot hide a failure
+in the other.
+
 A desktop-sized headless viewport can receive mouse events and match `:hover`
 without advertising `(hover: hover)` or a fine pointer. Verify the media
 capability required by the shipped rule before judging its painted effect. Use

@@ -202,7 +202,7 @@ relevant endpoint and error-contract boundaries in tests. When porting a provide
 operation, verify its [runtime resource bindings](references/integration.md#provider-integration);
 admission and later dispatch can run under different provider configuration.
 
-For browser keyboard, clipboard, pointer, focus or foreground lifecycle changes,
+For browser keyboard, clipboard, pointer, iframe, focus or foreground lifecycle changes,
 or a native form that redirects to a provider, read
 [browser input and foreground tests](references/dx.md#browser-input-and-foreground-tests).
 
