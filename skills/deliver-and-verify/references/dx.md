@@ -715,6 +715,14 @@ Source: [GitHub workflow events](https://docs.github.com/en/actions/reference/wo
 
 ## Continuous integration
 
+An automated failure report must not turn a suspect set into a recipient list:
+route directly to an affected thread only with positive attribution, not because
+filtering left one candidate; otherwise use one owner-routed report with inert
+identifiers and update the same incident record on replay. Count effects at the
+provider boundary, including notifications from mentions, auto-linked references,
+and mirrored audit comments; exercise both a proven recipient and an unproven
+singleton, plus a large candidate set and a replay.
+
 When an expected pull-request workflow has no run, check event eligibility before
 changing runners: read the current head, draft/job conditions, mergeability and
 configured activity types. GitHub suppresses `pull_request` runs while the PR
