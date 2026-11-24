@@ -274,10 +274,14 @@ contract-defined status and required body fields, types and ownership, including
 a legitimate queued `202` where specified.
 
 When a complete successful response fails in a consumer, apply that revision's
-exact acceptance checks across the failing population, not a generic schema
-check; one row can reject an entire batch. Vary the suspected field and the
-suspected body size independently through the same consumer to distinguish
-validation from transport. Report only the minimum non-sensitive diagnostics.
+exact acceptance checks across the failing population; one row can reject an
+entire batch. If the consumer is opaque, validate the complete failing bytes
+against its published contract, including order and extension constraints a
+syntax parser does not enforce. A known-invalid baseline and repaired witness
+prove contract repair, not that the external consumer retried or accepted it.
+When the consumer can be exercised, vary the suspected field and body size
+independently to distinguish validation from transport. Report only the minimum
+non-sensitive diagnostics.
 
 Providers can normalize display fields while retaining different immutable or
 signed bytes. Bind integrity claims to the contract's authoritative payload,
