@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The browser queued three analytics events, but an audit of request URLs found only one. Verify the count against the collector traffic.",
+      "clause": "reconciling conflicting readings or counting outcomes from batched traffic"
+    },
+    {
       "prompt": "The browser shows a report as unavailable although its complete HTTP 200 body is valid JSON. Trace what the shipped consumer rejected.",
       "clause": "judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer"
     },
