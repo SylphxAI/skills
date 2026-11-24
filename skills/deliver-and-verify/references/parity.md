@@ -355,6 +355,14 @@ an overlay. Check the result's bounds against the clipped viewport without
 scrolling it into view, and inspect that exact frame rather than substituting a
 full-page or element capture.
 
+For asynchronous or streamed views, hold a successful response across the first
+paint and release it separately from a failed response. **Bad:** a healthy final
+screenshot passes although the pending frame claimed failure. **Good:** the
+initial viewport makes no success or failure claim until the response settles,
+and the failed response still produces the intended recovery state. Measure
+shift at the swap across the whole viewport, including shared chrome that can
+move when a short result replaces a placeholder.
+
 Measure the defect's actual geometry. Use rendered glyph ranges
 (`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
 number and suffix), not its allocated container width. Single-line values must
