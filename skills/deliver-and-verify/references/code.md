@@ -139,6 +139,14 @@ remaining contention. **Wrong:** select a catalogued isolated tier that is absen
 in the target scope; **Right:** retain the served memory class until scoped
 desired and served inventories establish the isolated replacement.
 
+When a shared resource replaces one allocation per item, verify the unit each
+quota protects before changing the count. A routing or database record can still
+represent ownership without consuming a provider allocation. Prove admission at
+an already-full inventory for the verified shared-resource path, refusal for a
+lookalike caller or ordinary allocation, and that the shared path does not
+create the metered object; enforce any remaining record or routing limits for
+the resource they actually protect.
+
 Percentage availability or quota rules act on integer populations with
 provider-specific rounding; adding nominal replicas can create no usable slack.
 For example, Kubernetes `minAvailable: 80%` rounds four replicas up to four
