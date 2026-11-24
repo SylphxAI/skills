@@ -616,7 +616,12 @@ guard, and a green schema-snapshot check can omit migration history: compare
 guarded paths and effective per-file dialects with the actual migration runners.
 Add any missing shared-engine routing as an opt-in that preserves existing
 defaults before enrolling consumer scopes, and read and run the delivery path's
-pinned guard on the actual candidate. Where the delivery contract requires
+pinned guard on the actual candidate. A lexical guard can read a keyword in a
+policy declaration as an executable statement. Prefer supported syntax with the
+same authorization outcomes, or correct the grammar at its owner; do not add a
+contract waiver for non-destructive DDL. Prove permitted and refused effects
+under the real database role as well as acceptance by the pinned guard.
+Where the delivery contract requires
 monotonic migration versions, a text-clean branch merge can still put new files
 below the current base's high-water mark. Verify the combined ordering against
 that current base; applied/base history stays immutable, and supported
