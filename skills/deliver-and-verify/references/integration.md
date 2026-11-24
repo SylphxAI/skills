@@ -133,6 +133,14 @@ domain code. **Wrong:** copy a helper's status into an HTTP regression; **Right:
 derive the expected status and envelope from the public contract and exercise
 the actual caller-facing route, preserving typed reason and effect assertions.
 
+Bind each HTTP assertion to the actual runtime profile and its registered
+upstreams, not just a reachable health endpoint. A well-formed unknown ID can
+return 404 only after the owning service confirms absence; an unregistered or
+unavailable upstream does not prove that outcome. In a reduced profile, keep a
+strict assertion for a refusal decided at the tested boundary (for example, a
+malformed ID), and retain the valid-but-absent case in a profile with an
+authoritative lookup. Do not broaden the expected statuses to make both pass.
+
 Carry the error kind from the boundary that established it through intermediate
 adapters. A shared diagnostic string cannot distinguish an invalid declaration
 from a failed dependency. **Wrong:** publish exceptions whose text looks like a
