@@ -158,6 +158,16 @@ Verify both permitted reads and refused mutations through the actual session
 middleware and downstream handler: a forwarding-only mock can miss a guard that
 breaks server-rendered reads or admits an unverified write.
 
+A hosting proxy can rewrite the request URL to an internal listener; the public
+callback origin, the proxy-proven public host, and the browser's initiating
+`Origin` are three different inputs. Keep callback URLs pinned to configuration,
+and require a documented proxy boundary that overwrites forwarded authority.
+**Wrong:** compare only the listener URL or trust a bare forwarded host.
+**Right:** test the actual adapter and server-rendered discovery with the deployed
+request shape, then refuse a missing or ambiguous proxy binding, foreign public
+host, and wrong browser origin. Verify discovery and one real redirect start
+through the shipping proxy; a green app build or loopback browser is not proof.
+
 ## Agents, CLIs, and MCP clients
 
 Use OAuth 2.0 Device Authorization (RFC 8628) for interactive user delegation from browserless or CLI clients, and scoped workload identities for unattended agents. Describe delegated tokens by issuer, subject/actor, audience, scope, and expiry (RFC 8693), with optional DPoP sender constraints (RFC 9449) where selected.
