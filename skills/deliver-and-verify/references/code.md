@@ -335,6 +335,11 @@ file replacement cannot serialize another writer that uses a different lock.
 **Right:** every writer reads and merges only its owned fields under the same
 stable transaction lock and ownership check; prove both transaction orders through
 the real concurrent entry points, preserving each writer's committed fields.
+When a request supplies digests or versions for replaceable inputs, check them
+against the exact snapshot used to produce the durable result. A prior inventory
+read can validate bytes the operation never consumes. Replace one input under
+the same identity, submit the old proof, and verify no output is committed and
+the retry with the current proof succeeds.
 
 For a lock-order change, audit from every caller that owns the transaction,
 including batches and helpers that acquire locks implicitly. A helper's local
