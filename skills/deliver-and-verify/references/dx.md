@@ -455,14 +455,15 @@ If verification fails after publication, preserve the artifacts. Repair the veri
 ## Source generation
 
 Generator obligations follow changed inputs, including declarative objects,
-even when no generator code changes. Trace those inputs through the repository's
-generation and freshness checks to every affected registry, client and document.
-Even a provenance-only edit can change output digests without changing fields
-or rows. **Wrong:** declare regeneration complete because types are unchanged.
-**Right:** rebuild affected catalogs, validators and fixtures from final bytes,
-while separately comparing the full named population and values. In-process
-tests can reuse cached modules and hide startup or import-path failures; exercise
-affected generation entrypoints in fresh processes.
+even when no generator code changes. A green generator check covers only its own
+outputs: a consumer may treat those outputs as input to a separate checked-in
+projection. Follow consumers and their freshness tests until no affected derived
+outputs remain. **Wrong:** stop after regenerating API clients. **Right:** also
+rebuild the gateway's reserved names if it derives them from those clients, and
+verify the compiled gateway reads the updated list. Even a provenance-only edit
+can change output digests without changing fields or rows. Rebuild from final
+inputs and compare the full named population and values. Exercise affected
+entrypoints in fresh processes; in-process tests may reuse cached modules.
 A lockfile-only install also changes source.
 
 Passing consumer tests and a README of expected outcomes do not establish a
