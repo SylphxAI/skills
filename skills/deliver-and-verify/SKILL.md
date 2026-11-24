@@ -92,6 +92,8 @@ For regional store SKU or price changes, read
 
 For SQL, database cleanup or fixture changes, read
 [database boundary tests](references/code.md#database-boundary-tests).
+For deadline projections across precision boundaries, also read
+[publication time and expiry](references/code.md#publication-time-and-expiry).
 Time-windowed usage or billing queries also use
 [temporal query evidence](../prove-it/references/model-usage.md#temporal-query-evidence).
 
