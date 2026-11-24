@@ -132,6 +132,13 @@ domain code. **Wrong:** copy a helper's status into an HTTP regression; **Right:
 derive the expected status and envelope from the public contract and exercise
 the actual caller-facing route, preserving typed reason and effect assertions.
 
+Carry the error kind from the boundary that established it through intermediate
+adapters. A shared diagnostic string cannot distinguish an invalid declaration
+from a failed dependency. **Wrong:** publish exceptions whose text looks like a
+field error; **right:** exercise a real validator refusal and a dependency
+failure with similar text, and show that only the validator's safe detail is
+public and only the dependency failure is retryable.
+
 Enabling a shared dependency feature can change defaults for every consumer,
 including clients whose builders did not change. Verify the effective feature
 set and each client's response policy through its own entry point; make behavior
