@@ -22,10 +22,12 @@ are independent (references read 2026-11-08).
 **Right:** exercise the check's direct and wrapped commands under the final UID,
 `PATH` and toolchain-home settings before resubmitting, with admission controls intact.
 
-Run long builds and suites in CI. Record the submitted revision and run ID, set a
-`github:check:<owner>/<repo>@<ref>` event watch and end the turn instead of waiting
-inside it. On wake, read the actual run and continue from its receipt, without
-resubmitting a run whose result is unknown.
+Run long builds and suites in CI. Record the submitted revision and run ID.
+Before ending the turn, verify that the runtime accepted a completion watch for
+the event and pair it with an explicit expected-completion timer. If the runtime
+rejects the topic or cannot watch local files or processes, use the timer rather
+than assume that a local observer will wake the next turn. On wake, read the run
+at the recorded revision; do not resubmit a run whose result is unknown.
 
 If a build wrapper repeatedly times out before a compiler verdict, use the
 [build wrapper recovery procedure](../../unblock/SKILL.md#build-wrapper-timeouts).
