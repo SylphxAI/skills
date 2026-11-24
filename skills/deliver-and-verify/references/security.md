@@ -279,7 +279,7 @@ independent policy layer, and verify a fresh recovery receipt after deployment.
 
 ## Personal data
 
-Collect what the product needs and limit exposure in logs/analytics. An opaque linkable identifier is pseudonymous and can still be personal data; it is not proof of anonymization.
+Collect what the product needs and limit exposure in logs/analytics. A write-only identity field is still collection: omit it unless a consumer, security control, or legal purpose needs it. For each retained identifier, exercise the erasure inventory against the candidate schema even if the API never returns it. An opaque linkable identifier can still be personal data; it is not proof of anonymization.
 
 Implement the product's deletion contract across relevant stores/processors, billing and credentials, including newly introduced stores, and distinguish accepted processing from verified completion. For an identity-bound whole-object erasure, remove every authoritatively owned historical body/version without text-equality or containment predicates; missing legacy ownership is uncertainty, not erasure authority. Physical-erasure claims require verification of every copy and raw database/journal residue, including write-ahead logs; a held reader can prolong that residue, so measure and report its remaining window rather than claiming full erasure.
 
