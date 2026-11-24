@@ -83,6 +83,14 @@ List linked sign-in methods in settings and prevent removing the last active sig
 
 ### Prove guest continuity
 
+An admitted session and its accepted results can survive while unfinished work
+is lost. **Wrong:** reopen a finished item or verify the guest credential and
+infer that drafts survive. **Right:** create a visible, non-default edit as a
+fresh guest, reload before completion with optional consent untouched, and
+verify that the same consumer restores the edit and can still complete the work.
+Assert necessary recovery storage and the absence of optional storage or
+network effects separately.
+
 Recovery has two independent facts: retained-source presence and readable
 credential value. A decoded optional value cannot prove absence; test absent,
 corrupt-only and corrupt-plus-readable sources through the public login path,

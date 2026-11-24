@@ -18,7 +18,8 @@ including restored integrations,
 read [shipping-host verification](references/parity.md#verify-engine-and-sdk-changes-in-the-shipping-host).
 Native tests and browser previews can exercise different input and feature paths.
 
-For credential import, guest restoration or account-continuity changes, read
+For credential import, restoring unfinished guest work after reload, or other
+account-continuity changes, read
 [guest continuity](references/auth.md#prove-guest-continuity) before defining
 tests; decoding a retained value is not proof that its production consumer keeps it.
 
