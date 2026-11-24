@@ -693,9 +693,13 @@ credential bytes another driver uses. **Wrong:** validate once and reuse the URL
 unchanged across clients; **right:** exercise each actual parser with independently
 specified targets and reserved-character credentials, including raw escape-looking
 text that exposes accidental double decoding. Use the application's effective role
-and verify the database version, role and relevant column types in the test. A migration-only privilege proof
-precedes fixture grants: copying live permissions into setup can hide missing
-migration grants. Required access follows the effective caller and reachable
+and verify the database version, role and relevant column types in the test. A
+change without a migration can still require a state the deployed constraints
+reject. Test both directions of the transition and legacy rows through the
+shipped schema; for competing transitions, verify who wins and whether the
+waiting consumer actually resumes. A migration-only privilege proof precedes
+fixture grants: copying live permissions into setup can hide missing migration
+grants. Required access follows the effective caller and reachable
 operation across invoker, definer and trigger-event boundaries; a source
 reference or table privilege alone does not establish an application-role call.
 
