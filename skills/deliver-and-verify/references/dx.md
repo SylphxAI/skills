@@ -1011,6 +1011,13 @@ Use the normal queue with its required deterministic checks and existing inciden
   hold until the prerequisite is merged and the PR targets its intended
   integration branch; then follow that branch's required checks and queue.
 
+  When issue closure must wait for independent acceptance, use a non-closing
+  reference and verify the provider's effective closing links before enabling
+  merge. Hosting services can infer closure from prose or an explicit issue
+  link, so absence of an intended directive is not evidence that the issue
+  stays open. On GitHub, check the PR's `closingIssuesReferences`; after merge,
+  read the issue state back rather than treating a green merge as acceptance.
+
   GitHub clears `autoMergeRequest` when a PR enters the merge queue. Determine
   whether it is armed from pending auto-merge intent and actual queue membership
   (GraphQL `mergeQueue.entries` or your queue cache), never from
