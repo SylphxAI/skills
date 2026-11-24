@@ -139,7 +139,7 @@ Before bulk mutations, including cancelling CI runs, read
 When changing selected-source release inputs or their CI guards, read
 [selected release inputs](references/dx.md#selected-release-inputs).
 
-When changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating Job secrets, or changing resource sizing or retention, read
+When adding an environment read or changing CI runner selectors, shared runtime settings, identity-label selectors or deployment overlays, rotating Job secrets, or changing resource sizing or retention, read
 [deployment configuration](references/code.md#deployment-configuration).
 
 For container packaging, one-off container probes or runtime fixtures copied

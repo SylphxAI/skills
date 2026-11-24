@@ -98,6 +98,12 @@ same-name control.
 
 ## Deployment configuration
 
+A new environment read can pass compilation and tests while failing the
+release's configuration contract. Add its declaration in the owning source
+schema or sample in the same change, distinguishing optional settings,
+managed secrets and test-only values. Verify literal reads against the pinned
+conformance checker on the candidate tree; never disguise a read to pass it.
+
 An intentional execution hold can prevent an ordered deployment from applying
 the prerequisites needed to release that hold; choose ordering from the
 controller's actual operation-progress predicate, not an aggregate health badge.
