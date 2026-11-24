@@ -308,6 +308,12 @@ effective grants or an empty database: one invalid grantee can fail a grouped
 Establish readiness from effective runtime-role privileges and retained rows under
 enabled guards, not the replay's exit status or a "fully migrated" label;
 permissive local trust can also hide missing transport credentials.
+A fixture administrator can have table privileges and still fail a trigger that
+checks the effective writer role. Stage guarded transitions through the sanctioned
+writer without changing the reader's role or disabling triggers. If test setup
+stripped privileges, restore only the required access in the disposable clone,
+including any reads performed by invoker triggers; this tests the transition,
+not whether the production grants are complete.
 Derive fixture values and controlled transitions from the real validator, schema
 constraints, and role, privilege and state-transition preconditions, with every
 guard enabled; extreme values or times can break a cross-field or ordering constraint before the intended behavior runs. Derive synthetic identifiers from the tightest type/domain bound across every seeded column, keeping randomness in the retained suffix: a permissive format check does not widen a narrower column type. A small setup-and-transition
