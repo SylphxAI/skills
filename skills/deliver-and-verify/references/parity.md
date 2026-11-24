@@ -348,6 +348,13 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
+For before/after comparisons, match and record the inputs that decide whether
+an action is offered: for example, sale availability, viewer entitlement or
+workflow state. An eligible renewal offer in production and an intentionally
+closed store in a fixture are two useful tests, not a comparison of the offer’s
+visual treatment. Verify the action and its destination in the matched eligible
+state; verify intended absence separately.
+
 When the claim is that a result is visible on entry, inspect the pixels in the
 unaltered initial viewport. An element can be present in the DOM and deemed
 visible by an automation locator while it is outside the scrollport or behind
