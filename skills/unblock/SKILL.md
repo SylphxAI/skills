@@ -1,6 +1,6 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, publication stalls inside a pre-push guard, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, publication stalls inside a pre-push guard or the guard reports a missing pinned tool, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
@@ -234,6 +234,13 @@ population, and use a different repair if acquisition completes but validation
 still stalls. **Bad:** disable the guard or repeatedly enlarge the outer timeout;
 **good:** establish which phase expired, prepare only its required inputs through
 the supported route, then verify the guarded operation's authoritative result.
+
+A passing direct check does not prove its publication hook sees the same
+pinned executable: a generator wrapper can install a tool only for its own
+children. If the hook reports a version mismatch, supply the verified pinned
+version to the actual publishing process and rerun the unchanged hook on the
+same source. An assertion failure that persists with the correct executable
+is a different failure; do not classify it as setup or skip the hook.
 
 An adapter startup error or wrapper timeout establishes no verdict on the requested
 operation. A successful initialization and harmless probe through a documented
