@@ -124,6 +124,12 @@ re-enqueueing is needed, because rerunning an ejected group's job does not
 re-admit the pull request. **Bad:** treat a green orphan retry as queue recovery;
 **good:** verify a live queue entry and its required checks at the current head.
 
+A green job rerun may coexist with a failed check suite for the same revision.
+Trust the queue's admission verdict, not a CLI view that lists only the latest
+jobs. If the stale suite still blocks an otherwise eligible revision, a
+tree-identical commit can start a fresh suite without bypassing checks: confirm
+unchanged source and verify the new head's normal checks and queue receipt.
+
 A green pull request can still conflict with an earlier entry: queue merge
 checks combine changes not yet on the protected branch. Reproduce a reported
 conflict against the actual merge-group predecessor before changing source. If
