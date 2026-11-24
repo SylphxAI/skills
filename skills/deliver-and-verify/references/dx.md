@@ -515,11 +515,14 @@ receiver rejects the server's wire representation; feed canonical populated
 server response bytes through the real generated receiver, including the
 protocol's scalar encodings.
 
-Contract conformance and generated-file freshness are separate: regeneration can
-emit consistent clients from an invalid public contract. Run the repository's
-actual standards checker as well as its generation check. When generated outputs
-include source hashes, format and validate the canonical inputs before generation;
-even a whitespace-only source edit invalidates that provenance and requires regeneration.
+Contract conformance, generated-file freshness, and compatibility with an older
+contract are separate. Run the repository's standards checker and generation
+checks, including check-only snapshots the generator deliberately does not
+rewrite. If a snapshot needs an intentional refresh, inspect the exact delta
+and compare the candidate against the immutable base; comparison against the
+new snapshot alone cannot detect a removed guarantee. When outputs include
+source hashes, format and validate the inputs first; even whitespace changes
+require regeneration.
 
 For a remote generator or package manager, establish how changed files and
 deletions return to the publishing checkout. A tar of existing changed paths
