@@ -318,8 +318,11 @@ Durable business events still follow their own transition and ordering contract.
 
 Use schedules for genuinely time-based work such as expiry, backoff and daily
 reports. Where an external provider offers only polling, use its supported
-bounded interface and measure freshness; a gap in an owned engine is fixed
-upstream rather than hidden by a downstream poller.
+bounded interface and measure freshness; fix an owned engine gap upstream
+rather than hiding it behind a downstream poller. A request timeout bounds
+one call, not the observation run: for a temporary trial, cap the total read
+cycles and stream lifetime, and test an idle or failing source through the
+actual loop to prove it exits without another read.
 
 Set latency and freshness targets at the user surface. Measure critical-path
 spans and remove avoidable overhead when the benefit justifies total cost.
