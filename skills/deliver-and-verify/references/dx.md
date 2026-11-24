@@ -846,6 +846,14 @@ Source: [GitHub context](https://docs.github.com/en/actions/reference/workflows-
 
 ### Browser input and foreground tests
 
+A browser can send a native same-origin form POST yet block its cross-origin
+redirect under the loaded document's Content Security Policy. Exercise the normal
+entry into the production build and assert both the POST and arrival at an inert
+provider response in the browser; neither an HTTP redirect check nor inspecting the
+form proves arrival. Scope any policy expansion to the document and destination
+that need it, and check entry through client-side routing because it retains the
+originating document's policy.
+
 Use trusted browser input through the shipped client/server path for focus
 ownership, native defaults such as Tab or clipboard paste, and complete pointer
 press/move/release sequences, including supported focus locations outside the main
