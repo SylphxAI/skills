@@ -348,6 +348,13 @@ Record expected, discovered and checked counts, and cover every rendered row in
 scope. Exact named-label assertions complement that census; a passing loop over
 `[]` proves nothing. An intentionally empty state needs its own acceptance case.
 
+When the claim is that a result is visible on entry, inspect the pixels in the
+unaltered initial viewport. An element can be present in the DOM and deemed
+visible by an automation locator while it is outside the scrollport or behind
+an overlay. Check the result's bounds against the clipped viewport without
+scrolling it into view, and inspect that exact frame rather than substituting a
+full-page or element capture.
+
 Measure the defect's actual geometry. Use rendered glyph ranges
 (`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
 number and suffix), not its allocated container width. Single-line values must
