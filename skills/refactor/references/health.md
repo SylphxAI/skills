@@ -12,6 +12,10 @@ Supported uses include production, SDK clients, development/build tools, tests a
 
 Inspect tracked files and nested repositories before removing a directory. A name such as `build`, `bin` or `target`, its age, or an ignore rule does not prove all descendants are disposable. Preserve tracked source and unique or uncertain work; remove only the proven-unused subset.
 
+When historical records still point to a retired asset, distinguish asset availability from record retention.
+**Wrong:** rewrite migration history or exempt a specific missing file to pass a test that inventories every retained row.
+**Right:** keep historical data checks and test asset availability against the records supported consumers can actually resolve, including preview and recovery if they still need the asset.
+
 ## Storage cleanup evidence
 
 Keep these quantities separate:
