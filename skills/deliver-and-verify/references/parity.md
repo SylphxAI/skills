@@ -460,6 +460,13 @@ disconfirming check establishes the cause; adopt only explained, intended change
 
 ### Verify engine and SDK changes in the shipping host
 
+When enrolling a real-browser test in CI, run it first with CI's pinned
+browser and, if used, its driver. A debugger listening and a page target
+being registered are separate events: wait for the intended target under
+a bounded deadline, then check the product. An empty target list before the
+test starts is a fixture startup failure, not a product regression. Do not
+replace the readiness check with a fixed sleep or retry the whole test.
+
 For an in-place update or engine replacement, compare the signed package with
 both current production and the oldest supported client, then upgrade synthetic
 existing guests without clearing app data. Prove the same UI account and owned
