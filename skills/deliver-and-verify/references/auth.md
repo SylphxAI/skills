@@ -175,6 +175,13 @@ Preserve paste and password-manager/autofill support across all authentication f
 
 Verify the unified sign-in flow (Screen 1, Screen 2 code/passkey, returning sign-in, new sign-in, in-app browser fallback, guest-to-linked upgrade, session revocation, and account deletion) on phone and desktop viewports against the live serving environment.
 
+For browser tests of an OAuth integration, keep the real app start, HTTPS
+cookies, and callback, and replace only the provider navigation. Browser
+interceptors can miss redirects after the first request or drop navigation
+metadata on replay. Verify that the stub sees the hop and no test proof leaves
+for the real provider. Check the provider destination and callback contract
+separately on the live app; a stubbed login does not prove either.
+
 Present-but-invalid stored credentials are unreadable, not absence that
 permits a replacement user or fallback to another saved identity. Positive
 absence and a source-documented zero-byte standalone-file fallback are distinct
