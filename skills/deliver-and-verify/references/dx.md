@@ -284,6 +284,14 @@ container exit with no operation-specific evidence leaves the check unverified.
 
 ## Database test fixtures
 
+A container pull or native build failure can prevent the database test from
+starting without saying anything about the query. For local behavioral proof,
+a verified, version-pinned distribution package extracted into a private
+fixture directory can supply the server, data files and libraries without a
+container daemon or host install. Check the connected server version and run
+the actual fixture under its restricted role; keep this receipt separate from
+CI, which still has to verify its own packaging and startup path.
+
 An isolated database fixture needs every schema object referenced by its
 queries: PostgreSQL resolves joins even when the seeded `CASE` branch does not
 use their values. Derive those dependencies from the migration-owned schema
