@@ -70,6 +70,9 @@ before choosing storage queries and transport APIs.
 
 For code or test changes, read [code.md](references/code.md). Formatting fixes
 need independent expected strings and cases that expose locale and sign errors.
+When a control switches currencies or units, test the rendered value after a
+real selection: a locale-valid shorthand can still be ambiguous among available
+choices. Assert the qualifier separately from the unchanged amount or unit conversion.
 UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
 For 3D visual assets or image-based acceptance after a model or agent-runtime change, read
 [runtime-specific image inspection](references/parity.md#runtime-specific-image-inspection-and-3d-assets).
