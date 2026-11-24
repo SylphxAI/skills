@@ -99,10 +99,11 @@ same-name control.
 ## Deployment configuration
 
 A new environment read can pass compilation and tests while failing the
-release's configuration contract. Add its declaration in the owning source
-schema or sample in the same change, distinguishing optional settings,
-managed secrets and test-only values. Verify literal reads against the pinned
-conformance checker on the candidate tree; never disguise a read to pass it.
+release's configuration contract. Reuse an existing approved binding when it
+has the same scope and lifecycle; otherwise declare the setting in the owning
+schema or sample, separating runtime secrets from test fixtures. Check both
+that the candidate's reads are declared and that its declarations are admitted
+by the pinned guards; neither check substitutes for the other.
 
 An intentional execution hold can prevent an ordered deployment from applying
 the prerequisites needed to release that hold; choose ordering from the
