@@ -326,10 +326,13 @@ from the declared environment, preserve explicit security settings, and exercise
 every supported client through actual connection setup. Where credentials are
 required, pair accepted restricted-role behavior with unauthenticated connection
 refusal, without weakening authentication or broadening grants.
-Fixture isolation follows retained work across the actual executor's processes:
-global reconciliation can deliver an earlier case's queued effects to a later
-case's reused resource, even when their row identifiers differ. Bind retained
-effects to a per-fixture receiver identity that survives address reuse, and
+A reconciliation test shares every pending record its scan can reach, not just
+the fixture's primary keys. Isolate unrelated control cases from that scan or
+bind the observed effects to their exact work identities; a global count alone
+can fail on unrelated work or pass when a fallback does the work under test.
+When a fallback could mask a missing recovery path, establish that the intended
+record is ineligible for the fallback before invoking reconciliation. Bind
+retained effects to fixture receiver identities that survive address reuse, and
 exercise forced reuse without weakening authentication or ownership assertions.
 A process-local mutex does not isolate a process-per-test runner.
 
@@ -356,7 +359,10 @@ statements ([Java JDBC contract](https://docs.oracle.com/javase/8/docs/api/java/
 read 2026-11-06). Compile the actual changed setup block with its real imports
 and pinned dependencies; an isolated helper can miss ambiguous imported types.
 Then run the fixture against its supported database and driver to establish
-that setup completes and the existing assertions execute.
+that setup completes and the existing assertions execute. A synchronous adapter
+can drive its own asynchronous runtime internally: before invoking it from a
+test runtime, match the adapter's supported blocking context. A test that
+compiles or passes without connecting cannot establish that compatibility.
 
 Capture bounded server logs and available session diagnostics on every failure
 before destroying the disposable database. Retain the original exit status
