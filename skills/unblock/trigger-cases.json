@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Regeneration passes, but the publishing hook rejects the installed schema compiler version. Restore the hook without changing which tests run.",
+      "clause": "the guard reports a missing pinned tool"
+    },
+    {
       "prompt": "Source publication stalls inside its pre-push guard while fetching required immutable history, even after the outer tool timeout was extended. Restore publication without disabling validation.",
       "clause": "publication stalls inside a pre-push guard"
     },
