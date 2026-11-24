@@ -825,6 +825,12 @@ matching filtered count. **Right:** use a known hidden object or row to distingu
 the limited observer from a full-scope control, and preserve an explicit unknown
 result when scope cannot be proved.
 
+Freezing source writes does not invalidate cached catalog values. When metadata
+drives a decision, establish the required freshness on the connection that reads
+it. Verify with a cache populated before a source change: the real reader and
+any independent verifier must agree with the authoritative value, not merely
+with each other.
+
 Cross-engine SQL needs populated differential cases that distinguish rounding,
 NULL/JSON behavior and collations; successful creation or empty SELECTs cannot
 establish output parity. Collation can arrive through a function argument before
