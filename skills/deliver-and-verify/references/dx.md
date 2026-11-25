@@ -121,6 +121,13 @@ read 2026-11-06). Verify both control values in fresh child executions, an
 unrelated variable still filtered, and unchanged task hashes; cached log replay
 is not a new child observation.
 
+The reverse also matters when running CI checks locally: an inherited build
+profile can change a child fixture's cache behavior even if the checker sets
+the CI profile for its main build. Reproduce the smallest failing check with
+its declared profile and only the local overrides it needs; keep fixtures
+and thresholds unchanged. Check free space on the actual output filesystem,
+not only the checkout's volume.
+
 A dependency's generic function can be instantiated in its consumer, so a
 package-only optimization override may leave the failing machine code unchanged;
 bind the diagnosis to the emitting crate and exact linked artifact, rather than
