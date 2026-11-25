@@ -38,8 +38,11 @@ which inputs should exist, so selection drift alone establishes neither byte
 corruption nor permission to drop intended inputs. A clean status or regenerated
 `git ls-files` inventory can omit required imports/modules under
 `.git/info/exclude` even when their bytes arrived intact; rebuildable caches stay
-outside the population unless the check's contract includes them. Complete Git
-ancestry likewise does not imply that a partial clone has historical blobs.
+outside the population unless the check's contract includes them. Fetched branch tips do not prove complete Git ancestry: a shallow boundary can
+make a one-commit rebase select the branch's entire history. Before rewriting,
+verify the merge base and outgoing commit range; deepen the relevant history if
+they are missing or unexpectedly broad. Complete Git ancestry likewise does not
+imply that a partial clone has historical blobs.
 Before an offline history check, verify the required objects are present (for
 example, require a successful `GIT_NO_LAZY_FETCH=1 git rev-list --objects
 --missing=print <revisions>` with no missing-object entries). If not, materialize
