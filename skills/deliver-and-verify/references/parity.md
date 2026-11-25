@@ -308,12 +308,10 @@ not public propagation, installed behavior or real authentication/server effects
 
 ## Let machine checks decide publication
 
-Human or agent inspection finds quality gaps and informs acceptance cases. It
-cannot replace executable pass/fail checks or authorize a failed release. Define
-the expected values, tolerances, timeout and recovery action before publishing;
-do not weaken them to fit the candidate. The release automation runs the checks,
-decides pass/fail and performs recovery. No hand publication based on someone
-looking at screenshots.
+Match checks to release risk. Define required assertions, tolerances, deadlines
+and recovery before publication; inspection finds defects but cannot override
+a failed required check. A reversible presentation edit can use existing
+checks and fast consumer verification. Do not add manual publication gates.
 
 ### Runtime-specific image inspection and 3D assets
 
@@ -606,119 +604,68 @@ and [avoiding keyboard traps](https://www.w3.org/WAI/WCAG22/Understanding/no-key
 
 ### Before publishing assets, tables or configuration
 
-A generated image a release depends on fails closed on blank output: check its
-colours or variance, not only that the file exists.
+For a reversible presentation edit that does not change packaging, selection or
+data behavior, check the changed output in the affected browser, client or
+renderer. A text or spacing change does not need a bundle inventory or a new
+decoder. An asset format change, hot-update manifest or server table can break
+referenced content or user state; check the complete affected artifact or data
+set through the actual release path for those risks:
 
-- Enumerate every changed asset and table from the candidate manifest/diff,
-  including additions, removals and the complete declared dependency closure;
-  match the checked set to that inventory so one sample cannot stand for all files.
-  Artifact identity and admission include referenced payload bytes stored
-  separately from root metadata; changed unowned or unverifiable payloads fail
-  closed. The real publication gate must reject an undeclared change confined
-  to referenced external bytes while accepting an explicitly declared complete
-  closure. Identical objects do not prove compatibility: validate container and
-  each serialized member’s target, runtime version and format metadata against
-  the independently selected platform/runtime, with metadata-only negative
-  controls through both the producer and an independent reader.
-- Snapshot serving inputs read-only before handoff and diff the candidate against
-  that baseline, not repository copies; for display claims, use only the bundle
-  actually served to users. For probability fixes, trace the server's reader to
-  the exact columns, report their before/after values and enumerate every row
-  whose real probability changes: `display == actual` says neither which column changed nor
-  that actual odds stayed fixed. Label each changed cell as chosen with its
-  decision or unchosen drift; ship only chosen changes and preserve/report the
-  live value for drift, since stale templates or a hiding flag can remove owned
-  value.
-- Trace asset generation through export/build, package staging and runtime
-  manifest/cache/remote selection: a store build may skip a separate bundle
-  builder, packaging may only copy an export, and remote content may supersede
-  embedded assets. Bind the loaded-content evidence to prepared input hashes
-  after live-data overlays; the same source commit or a new binary proves
-  neither identical inputs nor delivery of serialized UI changes alongside
-  runtime-created UI. Establish that every required changed resource was built,
-  staged and selected.
-- Read every changed artifact with an independent reader: the actual shipped
-  consumer or a separately implemented decoder/validator. Reusing the writer's
-  serialization code or comparing its output with itself is insufficient. Check
-  the decoded values against the intended change, including field types, units,
-  ranges, relationships, missing fields and intended removals. At displayed
-  precision, reproduce the shipping consumer's numeric widths, cast order and
-  rounding rather than an algebraically equivalent rational formula. For
-  example, an independent consumer run can disprove equality at a rounding
-  boundary: displayed `1.00%` versus consumer-formatted actual `1.01%` at raw
-  `1.005%`.
-- Exercise assets in their consuming renderer, including selected attribute
-  mappings and changed states. Structural validity, hashes and draw counts cannot
-  establish the original visual predicate: compare projected extents or silhouettes
-  with independent expectations and a broken-shape negative control. **Bad:** close
-  a visible defect after a successful import; **Good:** consumed attributes are
-  valid, but unchanged failing pixels keep the defect open.
-- Start the client and, for server-loaded data, a server built/configured from
-  those exact candidate files; load every changed table and assert its consuming
-  behavior, not schema acceptance alone. For reward delivery, apply the
-  [channel-specific dispatch and effective-item checks](../../game-economy/SKILL.md#1-establish-what-is-happening).
-  For random pools or boxes, every
-  reachable outcome ID must resolve in the type-specific template used by the
-  actual grant handler before deployment. Enforce cross-table references during configuration compilation so dangling IDs fail the build. Exercise single and batch draws with
-  unknown-ID/null-grant controls, asserting durable grants and the contract's
-  charge/rollback behavior: a response can list rewards even when one unknown ID
-  suppresses the whole batch after charging.
-- Emit machine-readable results bound to the candidate digest: checked artifact
-  IDs, expected/actual values, assertions, failures and tool versions. Missing
-  required results fail publication. Preserve the last known good release and
-  prove the rollback path in an isolated or synthetic environment.
+- Compare additions, changes and removals against the intended manifest and,
+  when preserving live values, a read-only baseline from serving inputs, not a
+  repository copy. Include the full declared dependency closure, even payloads
+  stored outside root metadata. Reject missing or undeclared changes within
+  that closure. The release check should accept the declared complete set and
+  reject an undeclared change confined to referenced payload bytes. Check
+  container and member compatibility against the target runtime, including
+  metadata-only mismatches when metadata governs admission.
+- Trace the affected files from export/build and staging to runtime selection.
+  Bind what loaded to the prepared inputs after overlays; remote content can
+  supersede embedded assets. For hot updates, use the real publisher's manifest
+  generator and verify each referenced bundle has a catalog row and staged file.
+  Report the download bytes the update costs a returning user.
+- For serialized content or data changes where writer/reader disagreement can
+  corrupt output, decode each changed artifact with the shipped consumer or a
+  separately implemented decoder. Verify values, types, units, ranges,
+  references and intended removals; the writer's own round trip is not
+  independent. Check release-critical generated images for blank output and
+  use actual renders for visual claims; valid geometry or hashes do not prove
+  appearance.
+- For consequential tables, load the exact candidate in the client or server
+  that consumes it and assert the changed behavior. For probability changes,
+  trace the columns used by the real reader, compare all affected rows to the
+  live baseline and ship only intended changes. Match the consumer's numeric
+  widths, cast order and rounding when comparing displayed and actual values.
+  For rewards, follow the [dispatch and effective-item checks](../../game-economy/SKILL.md#1-establish-what-is-happening):
+  reject dangling outcome IDs during configuration compilation. Verify durable
+  grants and charge or rollback behavior for single and batch draws, including
+  unknown-ID or null-grant cases.
+- Bind machine-readable results to the candidate digest and checked artifact IDs.
+  Missing required results fail publication. Preserve the last known good release
+  and prove recovery in isolation for changes with material integrity risk.
 
 ### After publishing
 
-A WORSE row found on a live surface outranks queued work on that product: restore the reference or repair it first. When showing a person an image, say whether it is a design or already live; they may read a live screen as a demo.
+Repair live regressions before queued work on the affected product. Distinguish
+live captures from designs when sharing them. Check the serving revision after
+publication: inspect the changed presentation at the affected surface or run the
+changed journey and verify its dependent effects. Use executable assertions for
+required behavior; screenshots alone do not prove it.
 
-Run a browser or device check against the serving revision immediately after
-publication. Exercise the affected journey, assert its visible state and
-actions, and verify the dependent API/server effects. Include visual regression
-checks where they distinguish the defect, with recorded reference images and
-tolerances. Visual inspection alone cannot pass this check.
+For server-side effects, use isolated synthetic accounts and read the affected
+fields through the authoritative API. A success toast does not establish a plan,
+quota or expiry. Keep fixtures out of real balances, messages, purchases and
+metrics. A new purchase route needs a test order that grants and can consume the
+entitlement; working sales on the old route do not verify it. If test-store orders
+are refused by design, use a supported test route scoped to synthetic accounts.
 
-Use synthetic accounts owned for testing for server-side verification, never
-real users' accounts. Read the authoritative state through the supported API or
-scoped test interface and compare **field by field against the intended change**.
-Check both the UI and server state when the journey has both. For example, a
-changed subscription grant checks plan, features, quota and expiry, plus refusal
-after expiry; a success toast proves none of those fields. Keep synthetic
-fixtures isolated from real balances, messages, purchases and audience metrics.
-
-A store test purchase proves a purchase path only if the server grants it. A
-server that rightly refuses store test orders needs a supported test path: an
-allowlist of synthetic test accounts that an agent can set through the API with a
-narrow machine credential, without a person's login. When a release moves
-purchases to a new delivery path, the old path's working sales prove nothing about
-the new one; prove the new one with a granted, consumed test order before real
-players reach it.
-
-For web releases, hot updates and other reversible deployments, arm automatic
-rollback before publication. A failed, missing or timed-out required
-post-publish check automatically restores the last known good code/assets/config
-and verifies that restored revision and journey. The automation records both
-failure and recovery. Preserve user data: rollback does not rewind customer
-writes or undo a ledger. If recovery fails, report that failure explicitly.
-Where a channel cannot retract installed clients, follow its supported stop or
-disable mechanism and verify it; do not claim automatic rollback that the channel
-cannot perform ([app-store releases](dx.md#app-store-client-releases)).
-
-Before a hot update reaches a device, run the real publisher's manifest generator
-on the PR and assert that every bundle and dependency the build lists has a
-catalog row and a staged file. A build that lists all its bundles can disagree
-with a publisher that collects from a narrower list, and the client then waits
-forever on a screen that reads as slow. Report what a returning player must
-download for that update, in bytes, before publishing: on a coarse bundle layout
-a small art change can cost hundreds of megabytes at startup.
-
-Illustrative automated cases:
-
-| Change | Independent pre-publish check | Live check and failure action |
-| --- | --- | --- |
-| Game reward table and icon atlas | Shipping client decodes every changed reward row; a separate atlas reader resolves frames; renderer shows each changed icon | Owned synthetic account sees the offer, receives the exact configured reward and can use it; wrong amount or missing icon restores the prior data/assets automatically |
-| App navigation rebuild | Browser assertions cover route, focus, back navigation and layout; captures compare phone/tablet/desktop with the real original | Served revision matches; create/reopen journey succeeds at each size; a broken route restores the prior web release automatically |
-| SaaS plan configuration | Independent reader checks every changed plan field and reference; candidate server loads the configuration | Owned synthetic account's UI and server plan, quota, features and expiry match field by field; mismatch restores prior configuration automatically |
+Use the existing recovery path for reversible deployments. When failure could
+break the journey or corrupt shipped data, arm automatic recovery before release
+where supported. Failed, missing or timed-out required live checks trigger
+recovery; verify the restored revision and behavior. Do not rewind accepted writes
+or undo a ledger. Record failures, including recovery failures. Where installed
+clients cannot be retracted, use and verify the channel's supported stop or
+disable mechanism ([app-store releases](dx.md#app-store-client-releases)).
 
 ### Temporary release announcements
 
@@ -804,17 +751,11 @@ OPEN; quarantine cannot silently turn an unverified release green. Rerun an
 affected check after a concrete code, fixture or infrastructure repair, recording
 what changed ([CI discipline](dx.md#continuous-integration)).
 
-Keep one writer per change, branch and live publication target. Inspect open
-changes before editing; readers can compare independently, and separate changes
-can proceed together. A collision is resolved before either writer changes the
-other's work. Follow the existing merge/release path.
+Follow the [delivery workflow](../SKILL.md) for work ownership and publication.
 
 ## Completion receipt
 
-Report the delivered revision, dated live run, machine verdict, parity sheet
-and paired captures, plus any unresolved facts and actual recovery result. For
-a remake, include the owner-facing side-by-side and establish that all original
-rows pass. Synthetic checks establish the tested journeys and account states;
-they do not establish real audience enjoyment, retention or willingness to pay.
-Product-specific commands, device IDs, benchmarks, account fixtures and current
-release state live in the product repository, not this reusable method.
+Report the serving revision, time, affected check and result, and any uncertainty
+or recovery. A remake also needs the full parity sheet and paired captures showing
+that every original row passes. Synthetic sessions prove the tested states and
+journeys, not real enjoyment, retention or willingness to pay.

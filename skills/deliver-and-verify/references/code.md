@@ -866,6 +866,12 @@ publishing the correction.
 
 ## Tests
 
+For API refusals, use a valid control and a forbidden input at the real
+entrypoint. Assert the specific refusal and absence of the protected effect.
+Test on-disk tampering separately only if the runtime ingests mutable files
+an untrusted writer can alter outside that entrypoint. Seed a disposable file
+fixture directly and verify detection or refusal through the real reader.
+
 Removing an entry point from discovery does not necessarily retire its direct route or interface. Check the affected suites for uses of the old entry as a fixture for unrelated behavior; move those assertions to a discoverable entry with the same relevant properties, and test catalog absence separately from direct access if direct access remains supported. **Wrong:** drop the rendering assertion because a retired item no longer appears; **right:** retain it on an eligible item and check the intentional absence at the discovery boundary.
 
 Lexical matching changes need both false-positive rejection and preservation cases from the complete supported vocabulary; permitting a suffix can make a short alias capture a longer valid name even with an anchored pattern. **Wrong:** resolve `arena2` as `arena` plus a campaign number because that alias appears first; **Right:** establish the contract's precedence or ambiguity rejection across exact names and permitted suffixes, and test overlapping aliases with and without those suffixes through the actual resolver. Tightening boundaries must still preserve supported compounds without accepting arbitrary adjacent fragments.
@@ -876,7 +882,11 @@ An operation can install an in-memory handle before its required durable effect 
 
 Test control traffic can be swallowed by the same transport a fixture mocks, and resetting a counter does not remove installed observation hooks. Keep the control channel independent and reuse or remove persistent instrumentation explicitly; calibrate zero, one and multiple effects across repeated cases. Passing each case alone does not establish that they work together in one session.
 
-For mutation testing, use one mutation per retained contract boundary, run the complete boundary suite once unchanged as the passing control, then run each mutation only against its intended boundary. Build every mutated copy in an output directory unique to that copy, separate from the unchanged control and every other mutation; a shared build cache can silently reuse the unmutated binary. Record exact selected and executed case inventories and require each mutation to fail its target's unchanged assertion with typed evidence; compiler, fixture or setup failures are INVALID, not kills. For example, a run using one shared `CARGO_TARGET_DIR` discovered 162 tests where the mutated source should have discovered 151; discard that verdict as INVALID and rebuild the mutant in its own directory. Mutation runs are a one-off proof cited by receipt hash, never a standing CI workflow or registered test.
+When using mutation testing to prove a boundary check can fail, pass the unchanged
+suite first. Isolate build outputs per mutant so a cache cannot reuse the original
+binary. Run the targeted cases and require the intended assertion to fail; a
+compiler or setup failure tells you nothing about the assertion. Record the
+executed cases and result. This proof need not be a standing CI job.
 
 Path-sensitive exception guards connect a guarded mutation, its actual source
 dispatch targets and the caller-visible exceptional outcome; membership alone
@@ -891,10 +901,8 @@ ownership and cleanup preserve the outcome actually observed by callers.
 concrete receivers; **Right:** independently execute refusal cases through
 interface dispatch and unknown-value expressions alongside absorbing-failure,
 unrelated-receiver and post-commit logging controls.
-A shrinking findings baseline needs both current-finding equality (reject stale
-entries) and prior-identity containment (reject new exemptions); first enrollment
-must derive permitted findings from the independent base revision rather than
-the candidate's list.
+A shrinking findings baseline admits no new exemptions and keeps no stale ones.
+Derive initial exemptions from the base revision, not the candidate.
 
 Derive conformance vectors' expected outcomes from the contract or specification
 before reading the implementation; a green suite whose expected outcomes copy an
@@ -929,13 +937,9 @@ supported.
 
 Choose the smallest test that fails on the defect: examples for finite decisions, properties for broad/conserved state, fuzzing for parsers, differential checks for two implementations and deterministic simulation for concurrency, retry or time. Run a regression against the pre-fix and fixed behavior where practical. Compare incremental paths with independent recomputation across the allowed input range and repeated return-to-origin cycles; isolated endpoints miss cumulative drift. Separately passing deferred handlers can still reverse accepted intent when host events and UI callbacks queue before one presentation update; verify the combined path preserves accepted event order without navigation cancelling or replaying business work already in flight. **Bad:** test modal open and dismiss separately, allowing a deferred open to reopen it after an accepted dismiss. **Good:** exercise both accepted orders before the same update through the mounted UI, asserting the final visibility and preservation of pending business work. Failure feedback can precede the committed state that makes recovery actionable, so assert restored state and control readiness at the notification itself, then exercise the next action without an extra settling wait. **Bad:** wait for a retry control to enable after an error toast; **Good:** prove it is enabled when the toast fires, retry succeeds, and in-flight duplicates still cannot dispatch.
 
-Repeated matching reads of mutable metadata prove stability during that interval,
-not which source produced an earlier transformed artifact. **Wrong:** reread the
-current source twice and authorize an older output; **right:** bind immutable
-inputs or reconstruct each authorized source's output in its immutable context
-and require equality. Test a replacement source that stays unchanged throughout
-validation, alongside unchanged-source and independently changed batch-position
-controls; churn-only tests cannot expose this gap.
+If admission depends on artifact origin, bind the decision to the exact input
+that produced it. Repeated reads of mutable metadata prove current stability,
+not past origin. A stable replacement is the distinguishing negative control.
 
 Cache-key or content-digest equality proves only the inputs represented by that
 key or digest; independently authoritative policy omitted from it still governs
@@ -1059,20 +1063,12 @@ hides which authority the component actually reads.
 currency label. A date display regression similarly asserts an independently
 specified date string; a transport retry change needs no formatting cases.
 
-Source-API refusal and out-of-band tamper detection prove different boundaries and need separate fixture routes and assertions. Exercise forbidden writes through the source API; construct tamper directly on disk and assert its detection/count independently. **Bad:** require the API to accept a forbidden write to seed a tamper count; **Good:** retain the API refusal and seed the tamper fixture without that API.
-
-A negative test can pass for the wrong failure when setup refuses before the
-injected fault. Pin fixture clocks and all dependent observations; require a
-positive control and the specific typed refusal, printing the full error chain
-on mismatch. A paused async runtime can still auto-advance while real I/O is
-pending; inhibit that advancement until an observable peer-entry handshake, then
-explicitly advance the deadline under test ([Tokio paused-clock semantics](https://docs.rs/tokio/1.54.1/tokio/time/fn.pause.html#preventing-auto-advance), read 2026-11-09).
-Verify that substituting an unrelated fault makes the assertion
-fail; compiler refusals match machine-readable codes and source/API identity,
-not English wording.
-**Wrong:** refresh the root timestamp and accept any error while nested evidence
-expires; **right:** keep all fixture observations consistent with a fixed clock
-and require the changed-price refusal, not a stale-heartbeat refusal.
+Require the specific refusal and a valid control; a setup failure must not pass
+as the injected fault. Use consistent fixture clocks when expiry matters. A
+[paused async clock](https://docs.rs/tokio/1.54.1/tokio/time/fn.pause.html#preventing-auto-advance)
+can auto-advance while real I/O is pending: wait for peer entry before advancing
+the test deadline. For compiler refusals, match diagnostic code and source/API
+identity rather than English wording.
 
 When a parser promises contextual errors, test invalid input through flattened
 and dynamically named maps as well as ordinary typed nesting: intermediate
@@ -1089,33 +1085,17 @@ action; repair setup without suppressing legitimate recovery. For UI retention,
 establish a present, laid-out element with accepted input before comparison; an
 absent node's empty getter is not evidence of loss.
 
-A safety or dependency predicate can be correct while discovery or routing never
-selects it; differential preservation checks include reference-only identities,
-since iterating only surviving candidates hides deleted working capabilities.
-Test disappearance and retained-but-broken behavior independently; an explicit
-removal waiver suppresses only the local disappearance finding for an actually
-removed identity. Preserve each independent reason for selection: historical
-comparison coverage does not limit explicit requested assertions about objects
-outside that population. Offline tests establish only their evaluator's effective
-request context: adapters can omit or overwrite a fixture's verb, subresource,
-identity or old object. Verify alternative supported routes through actual
-selection and enforcement, with permitted controls and the intended denial.
-**Wrong:** infer a debug-update ban from create tests, or skip a requested
-permission change because its account is absent from the old audit sample.
-**Right:** exercise the alternate update route and requested objects inside and
-outside comparison coverage, proving fulfilled requests pass and unfulfilled
-requests fail without expanding collateral comparisons.
-
-A helper's refusal or dry-run guarantee can disappear in public mode dispatch or
-exit-status translation. Exercise allowed and refused cases through the assembled
-entrypoint, asserting effects, structured output and the enclosing caller's status.
-**Wrong:** count `valid: false` with exit status 0 as a rejected command; **right:**
-when the command promises rejection, refusal exits nonzero without mutation while
-a valid dry run exits 0 without mutation.
+Follow the [security boundary](security.md#hard-lines) for admission. Test routes
+that actually enforce it; a dry run may supply a different verb, identity or prior
+object. Include reference-only identities in preservation checks. An intentional
+removal excuses only its disappearance, not retained failures or explicit cases
+outside the comparison population.
 
 A committed write does not establish visibility for a reader that refreshes only on a notification; acceptance includes the publication route and the reader's refresh behavior, not just durable storage. **Wrong:** count committed rows while an already-connected dashboard retains its cache; **right:** exercise the routed signal, verify committed state at notification time and reader refresh without reconnecting, with no signal on refusal/rollback and no suppression of an earlier committed update by a later batch failure.
 
-Test runtime behavior by calling it. Never write source-grep fake tests (`std::fs::read_to_string("src/...")`, `include_str!("../src/...")`, or `fs.readFileSync("src/...")` asserting substring presence in implementation source) as a substitute for behavioral execution. For a declarative/source contract, use a parser, lint or boundary check suited to that contract. Documentation/code drift checks are useful; exact wording pins and tests that reimplement the same logic are weak signals.
+Exercise runtime behavior rather than grepping implementation text. Use a parser
+or lint for declarative contracts, and assert behavior independently instead of
+copying the implementation into the test.
 
 Reproduce test selection on CI's runtime version: a newer local runtime can accept selectors the deployed runner rejects. For example, `node --test tests` fails to resolve the directory on Node 22, while explicit file globs such as `node --test tests/*.test.js` work; verify discovered names/counts rather than inferring execution from an exit code ([Node 22 test runner](https://nodejs.org/docs/latest-v22.x/api/test.html#running-tests-from-the-command-line), read and reproduced 2026-11-07).
 
@@ -1139,12 +1119,10 @@ parity; **right:** preserve both records and exercise the real persistence or
 transport adapter as well as the pure decision.
 A read-cost regression measures actual provider requests or database statements and work examined across the complete consumer lifecycle, including follow-on generation or validation, through the real adapters using request counters, engine statistics or query plans; rows returned and cache-friendly helper mocks do not establish that bound. For immutable-input caches, distinguish authoritative absence, successful incomplete evidence that may be retained only as unknown, and retryable failures that must not become immutable cached answers or suppress later retry. Pair reuse and downstream-cost controls with truncated responses and transient failures through those adapters, so a helper-only saving cannot hide repeated reads or turn incomplete evidence into absence.
 
-A public caller can turn an inner typed refusal, unavailable dependency or malformed
-response into successful empty data and destructive local reconciliation; zero
-network calls do not prove refusal, unchanged local state or a nonzero enclosing
-status. Exercise the assembled entrypoint for caller-visible refusal and preservation
-of all protected data and metadata, contrasting missing/unusable input with a
-validated authoritative empty snapshot that must still perform permitted removals.
+Exercise refusals through side-effecting callers: assert the result, exit status
+and preserved state. A refused command must not look like a successful dry run.
+Do not treat failed or malformed input as an authoritative empty snapshot; only
+the latter can justify permitted removals.
 For shared eligibility or availability rules, verify each public contract for temporary
 unavailability, permanent denial and recovery, including discovery and retry
 metadata. Missing optional recovery metadata leaves recovery timing unknown; it does not
@@ -1158,9 +1136,17 @@ and discards pending input. **Right:** exercise refusal and success through ever
 side-effecting caller, preserving pending input on refusal and checking any
 advertised discovery or recovery behavior against the available evidence.
 
-Test a distributed artifact in its built environment, including a control that distinguishes the old behavior where applicable. For Android artifacts, DEX type/string references and dependency version markers do not establish that a required class is defined; verify its definition in the shipped DEX. Static initialization (`<clinit>`, including Kotlin object initialization) can fail before a method's guard executes, so trace initialization before attributing an observed refusal to that guard. Test preparation (smoke patches, dependency stripping or stubbed clients) must not affect a store-bound build; verify the required class definitions and absence of smoke-only markers in the exact uploaded artifact rather than a separately rebuilt test artifact. When a shared component changes, list every assembly, profile or bundle that consumes it, including any added on the base branch after yours was cut, carry its source, generated code and runtime resources together, and verify each assembled consumer; one green profile does not prove the others. A selected or checked-in test is not coverage until each runner compiles and executes it: confirm the reported test names or counts include it for every release profile. When a release qualifies pinned source hashes, inject test-only hooks into a disposable copy inside the test job, record the input and final hashes, and fail on input drift; never commit those hooks to the product tree. After a preimage change, inspect and compile the final transformed consumer and verify its intended behavior; zero-context patch applicability does not establish semantic correctness. Source-extracted fixtures can retain the right method name but freeze an obsolete signature or dependency set: select the intended declaration unambiguously, reject missing or ambiguous declarations with a named error, and execute its unchanged body with current production dependencies. **Wrong:** update an extraction string until the fixture builds; **right:** exercise newly added parameter paths with independent expected results and ensure changes to extracted production inputs trigger that fixture in CI. Keep shell scripts in files and feed them to the container, for example `docker run -i --entrypoint /bin/sh <image> -s < test.sh`. This avoids shell-specific heredoc/command-substitution parsing. Verify the actual runner/image tool capabilities when they matter; `mawk` supports POSIX character classes.
+Test each affected shipped assembly or profile in its intended runtime, including
+consumers added on the base branch. Confirm the intended tests ran. In uploaded
+DEX files, check required class definitions, not just references, and distinguish
+static initialization failures from the guard under test. Keep smoke-only
+substitutions out of shipped artifacts.
 
-**Wrong:** treat an authentication refusal as proof of an empty-configuration guard because the DEX contains the SDK name. **Right:** verify the required class definitions in the uploaded DEX, distinguish any initializer failure from the guard, and check that smoke-only substitutions did not reach that artifact.
+When testing a transformed pinned input, modify only a disposable copy and verify
+its input and output hashes. Compile and exercise the result, not just patch
+applicability. A source-extracted fixture must select one unambiguous declaration,
+exercise it unchanged with current dependencies and independent expectations,
+and run when those inputs change.
 
 For source included from multiple workspaces, compatibility depends on each
 consumer's pinned dependencies, compiler configuration and ambient declarations;
@@ -1208,10 +1194,17 @@ and confirm a separate control database remains usable.
 
 ## Cleanup and review
 
-Use [repository health](../../refactor/references/health.md) to verify unused paths and duplicate authorities before deletion. Before regenerating data or code, establish the authoritative baseline from the selected or deployed artifact; a checked-in snapshot can already drift. Prove preservation with the pinned, checksum-verified generator, an independent decoder and the actual consuming runtime, while validating current declarations separately; an older runtime model does not justify weakening the current schema. Compare the full decoded population, including secondary records, formulas and cached values where relevant, allow only declared changes, and name representation-only differences. A release scoped to one bundle prepares only that bundle's inputs and keeps everything else at the served bytes. Fixtures and admission evidence prepared after unrelated overlays do not attest what shipped, even when the final bundle is byte-identical. Check re-rendered goldens against the merge result CI tests, not the branch alone: compare the exact file set, dimensions and changed regions, because the base may have added cases the branch did not touch. Keep generated distribution sources reproducible when supported consumers need them; remove scratch output and evidence dumps from source, and link claims to their authoritative result.
+Use [repository health](../../refactor/references/health.md) before deleting unused
+paths. For regenerated release inputs, follow the [artifact integrity checks](parity.md#before-publishing-assets-tables-or-configuration).
+When preservation depends on regeneration, pin the generator and compare decoded
+values against the serving baseline, including derived records. Validate current
+declarations separately from any older schema. A scoped bundle release leaves
+unrelated served bytes unchanged. Check golden file sets, dimensions and changed
+regions on the merge result. Keep distribution sources reproducible and scratch
+output out of source control.
 
 Text-clean integration and recorded conflict resolutions can violate both parents' contracts: duplicate configuration keys may be silently overwritten by a permissive parser, while obsolete assertions or helper calls remain valid syntax. **Wrong:** accept a clean merge or successful parse as integration proof. **Right:** compare effective behavior with both current parents, validate configuration through its native consumer or duplicate-rejecting checker, and run the affected checks against the combined candidate.
 
 Resolve a conflict in an additive registry, manifest or allowlist by stable entry identity, not by position. Compare the full entry set before and after the merge. Every entry from both sides should appear exactly once, and no existing key should change its mapping. Where order carries no meaning, keep entries sorted or keyed by identity, and check that in CI. Parallel changes then insert at different points instead of colliding at one shared append point.
 
-Review the failure modes and checks relevant to the change through [prove-it](../../prove-it/SKILL.md). Track throughput and review latency alongside incident/revert rates on a named population and window. A metric change is a signal to investigate, not by itself proof of causation.
+Verify changed behavior and relevant failure modes through [prove-it](../../prove-it/SKILL.md).
