@@ -154,7 +154,7 @@ For source checkout or materialization changes, shared-cache permission failures
 child-workspace or build-output sharing, UID/GID fixtures, pinned-tool launch
 failures, generated CLI calls, sandbox build templates, native compilation failures,
 or diagnostic capture and cleanup failure handling, read [first useful success](references/dx.md#first-useful-success).
-Source publication and receipt adoption after a rewrite also use
+For publishing source or rewriting unpublished work, follow
 [source publication authority](references/security.md#source-publication-authority).
 
 When changing database test setup or disposable fixture cleanup, read
@@ -168,19 +168,16 @@ When changing admission or access rules or admission policies, read
 When changing runtime isolation or removing operational access, read
 [runtime isolation](references/security.md#runtime-isolation).
 
-For privileged filesystem changes under directories another principal can write,
-or when filesystem or tool-resolution trust would relax inspection, read
-[security.md](references/security.md) before trusting resolution or changing objects.
+Before running maintenance against user-writable code or paths with elevated
+privileges, read the [security practices](references/security.md#practices).
 
-Before changing database roles, privileges, reader transports or session-bound
-database checks, read
+Before changing database roles, privileges or the way a shared reader connects, read
 [shared reader privileges](references/security.md#shared-reader-privileges).
 
-When changing credential routing, credential argv/FD/output guards or diagnostic or
-stored-body redaction, read
-[security.md](references/security.md) to protect
-the actual launching process, preserve useful diagnostics and prevent content
-from reappearing through later writes.
+For credential routing or diagnostic redaction, follow the
+[security practices](references/security.md#practices) at the actual output boundary.
+For data that could reappear after erasure, see
+[personal data](references/security.md#personal-data).
 
 When a secret scanner refuses publication, follow
 [reviewing scanner findings](references/security.md#secret-scanner-publication-refusals).
