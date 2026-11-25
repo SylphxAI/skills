@@ -74,7 +74,10 @@ capability, or mark the dependent verification unavailable.
 flag. **Right:** establish the supported deployment path, verify an outside
 request and confirm deletion before claiming the fixture worked.
 
-Use diagnostics with exact paths/lines and distinguish invalid input, authority denial, conflict, unavailable dependency, limit, cancellation, and unknown effect where recovery differs. A wrapper’s translated error can hide the cause of a child-command failure; retain the command, exit status and bounded stderr, with secrets redacted, before choosing recovery. A readiness deadline can expire because its probe client rejects the invocation before contacting the service; distinguish that failure from a server response using the actual executable, arguments and isolated context before changing the service or its timeout. When raw diagnostics cannot be safely retained, preserve a known-safe execution stage and finite error code; a missing receipt leaves effects unknown until authoritative reconciliation. Preserve upstream refusal classification, structured reason and request ID through adapters and the CLI; map quota shedding to a retryable typed outcome rather than permission denial even when their HTTP statuses overlap.
+Preserve structured error reasons, source locations and request IDs through
+wrappers. Distinguish retryable quota shedding from access denial. Keep the
+child's exit status and bounded [redacted diagnostics](security.md#practices).
+Check whether a probe reached the service before changing its readiness deadline.
 
 Transient diagnostics can disappear when a process or controller releases its
 resources, before an observer handles the terminal event; preserve a bounded,
@@ -85,35 +88,28 @@ failure paths. **Wrong:** retain only a path inside a terminated worker. **Right
 the worker emits a safe failure record before exit, even when diagnostic capture
 itself fails, while preserving the original status.
 
-Nested commands can override outer temporary, build-output or cache settings;
-resolve the child's effective paths, working directory and wrapper overrides
-before concluding no executor is available. Probe the required operations as
-the final UID/GID across the actual mutation set, including fixture outputs
-relative to package working directories and existing tool-home or cache/index
-leaves: a writable target or fresh temporary path does not prove access to those
-other writes. Compare the original command under another execution identity or
-change only the suspected path to isolate the cause. For a capacity refusal,
-preserve admission thresholds, select an admitted path and require the
-originally refused inner operation to succeed there before claiming recovery.
+Before diagnosing a permission or capacity failure, find the child's effective
+working directory, tool home, cache, and output paths, including overrides from
+wrappers. Recheck the original operation on the repaired or admitted path under
+its actual execution identity. A writable temp directory does not prove that
+existing indexes or package-relative outputs are writable. A pinned tool must
+launch or fail clearly, not fall back to another version.
 
-Choose cache sharing from every consumer's trust on reuse: untrusted writers can
-share package bytes only when every reuse verifies the actual inputs, including
-indexes and extracted source, against trusted integrity metadata obtained outside that
-writable tree. Otherwise use private caches or a trusted single writer with
-read-only consumers; credentials, signing keys and config remain private.
-**Wrong:** share extracted source because downloads have checksums; **Right:**
-verify each reused input against independent trusted metadata or isolate it. A writable
-mixed-home parent permits replacing its private entries even if file modes stay
-0600, so grant access only to named content leaves and retain read-only parents.
-Setgid preserves a group, not write permission. Scope additive access/default POSIX ACLs to named shared-content leaves, never mixed metadata parents or defaults that admit future siblings; preserve existing effective grants and the original owner's future access, judging ACL writers rather than group mode bits, which represent the ACL mask. Read-only entries also need unlink/rename protection through every writable ancestor. Verify old contents and future writes under restrictive umasks with two real UIDs, preserve outside links and active locks, and report privilege skips rather than acceptance. Derive each shared principal grant's lifetime from all active server-owned use records under one transition lock; revoke only grants no survivor needs and read effective access back independently of dirty-file retention. A declared tool version must either launch or fail clearly after an
-install/lock error, rather than silently running another major.
+Default to private caches. Use a trusted writer with read-only consumers when
+sharing is useful; keep credentials, signing keys and private configuration out
+of shared writable trees. When a writer is not trusted by a consumer, share
+only if reuse verifies the actual consumed bytes (including indexes and unpacked
+sources) against trusted metadata outside the writable tree. Download checksums
+alone do not verify an extracted cache on reuse.
 
-Identity fixtures keep the real UID and primary GID separate; one cannot be
-derived from the other. Assert both OS identities, retain an environment where
-they differ, and make synthetic fixture UIDs or kinds distinct from the executor's
-real identity so the fixture cannot accidentally exercise the current-user path.
-**Bad:** return `(current_uid(), current_uid())` or use the executor as a synthetic
-other user; **Good:** verify the actual tuple and a distinct synthetic identity.
+Use real cross-UID/GID fixtures only if behavior depends on permissions across
+OS principals. Check allowed and denied operations on existing entries and new
+entries under a restrictive umask, as relevant. Setgid and mode bits alone do
+not establish effective ACL access; a writable parent can allow replacement of
+read-only children. Scope grants to shared leaves; preserve existing access,
+outside links and active locks. Serialize changes to temporary grants and revoke
+only after the last authorized use ends. Test distinct UID/GID values when identity
+mapping matters; a privilege skip proves nothing.
 
 Before concluding a local-mode override is ineffective, check the mode flag's
 effective value in a fresh task-runner child; exporting it in the parent shell
@@ -591,7 +587,7 @@ successful generation or fresh bytes alone cannot establish them.
 
 ## Internal development
 
-Follow the [delivery workflow](../SKILL.md): practical targeted checks, publication, iteration on the same branch, and the repository's required merge/release path. State what remains unverified and rerun affected checks after a repair. Independent review does not manufacture a new publication/completion stage.
+Use the [delivery workflow](../SKILL.md) and the repository's existing release path.
 
 - **Dependency audit repairs:** Read the exact advisory ranges, every independent affected lockfile, and effective workspace overrides before choosing versions. An exact root override can keep a vulnerable resolution despite a dependency manifest bump. Update the applicable requirements and overrides together, regenerate each lockfile with its package manager, and run the audit without event-based skips. Keep a required major-version migration separate from a drop-in repair when they verify independently; report unrelated findings without suppressing them.
 
@@ -993,14 +989,9 @@ Read the current store controls and the product's release contract. Identify the
 
 ## Merge queue
 
-Agent-native delivery uses **zero pre-merge human or agent PR review gates**:
-do not add PR review workflows, review-status gates, required approvals, or
-up-to-date/rebase locks on PR branches. Enforce sensitive invariants through
-deterministic compiler, type, schema, and system checks that fail closed, ship
-small orthogonal PRs with auto-merge enabled into the optimistic merge queue on
-open, and never hold or serialize orthogonal PRs by hand. Only when contributing
-to an external repository whose branch rules mandate an explicit external
-approval, verify those declared requirements through the
+Use the [delivery workflow](../SKILL.md) for targeted checks and Ready PRs
+with auto-merge. Do not add manual review gates. For an external repository
+that requires approval, read its declared rules and
 [current-head check results](../../prove-it/SKILL.md#pull-request-checks-and-merge-queue-state).
 
 Use the normal queue with its required deterministic checks and existing incident-priority rules. Diagnose a red default branch from its completed failing run and repair the owning cause. Coordinate a bottleneck's own repair so an unrelated hold does not prevent recovery. Keep the actual labels, grants, and runbook beside the queue implementation. Read existing auto-merge settings and queue membership before changing them; preserve an already-correct auto-merge request on an unchanged head. An automatic merge request can survive a source push: if a later push intentionally moves a PR back to draft or holds a stacked dependency, remove and verify both activation intent and queue membership before publishing it, then re-arm once ready.
