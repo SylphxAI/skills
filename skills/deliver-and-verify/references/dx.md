@@ -315,7 +315,10 @@ cannot prepare an earlier test phase. A migrated local database can hide missing
 fixture setup; verify the consuming test from the database state available at
 its actual CI phase. Fixture isolation must cover every namespace the real query
 resolves; a private `search_path` does not isolate schema-qualified objects, so
-choose an isolation boundary that contains them too.
+choose an isolation boundary that contains them too. Keep test-only provider
+fixtures in the repository’s designated test source directory and run the same
+policy checks as CI: a passing test does not prove the scanner classifies its
+fixture as test-only. Do not relax production provider restrictions.
 If a complete replay fails under the application role while the deployed schema
 works, compare effective privileges along the failing function call chain in
 both databases. Record each differing function, role and privilege, the live
@@ -499,6 +502,10 @@ must not normalize a breaking change. Even a provenance-only edit
 can change output digests without changing fields or rows. Rebuild from final
 inputs and compare the full named population and values. Exercise affected
 entrypoints in fresh processes; in-process tests may reuse cached modules.
+A clean build can still hide broken incremental generation. Track the actual
+files the generator reads, not only directory timestamps: change an existing
+input in place in a warm build, then verify that the consumer sees the new
+output without a clean or forced regeneration.
 A lockfile-only install also changes source.
 
 Passing consumer tests and a README of expected outcomes do not establish a
