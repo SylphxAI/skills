@@ -68,6 +68,26 @@
     {
       "prompt": "Replace recurring LLM inbox polling with a zero-token file-watch trigger daemon for a store support queue, retaining historical incidents without treating their old counts as current.",
       "clause": "replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon"
+    },
+    {
+      "prompt": "Patrol live authentication usage and settlements: sign-up verification is disabled because the internal operating budget is zero, but the customer cohort may cover its variable costs.",
+      "clause": "classifying live customer-triggered costs versus internal spend"
+    },
+    {
+      "prompt": "Reconcile live inference charges split between customer requests and internal batch jobs. Check refunds, retries and the effective abuse caps before classifying the spend.",
+      "clause": "classifying live customer-triggered costs versus internal spend"
+    },
+    {
+      "prompt": "Check whether paid ads and a prepaid vendor commitment were booked as customer-triggered expenses despite a missing approved cap.",
+      "clause": "classifying live customer-triggered costs versus internal spend"
+    },
+    {
+      "prompt": "During one tenant’s release freeze, trace whether the proposed shared gateway rollout actually changes that tenant’s live routes or just serves another tenant.",
+      "clause": "verifying tenant release or promo freeze scope"
+    },
+    {
+      "prompt": "Check the live inventory for archived task volumes and superseded clones with no active references. Report which are cleanup candidates and which have unverified retention.",
+      "clause": "identifying unused storage cleanup candidates"
     }
   ],
   "negative": [
@@ -130,6 +150,21 @@
       "prompt": "Compare designs for representing unavailable telemetry separately from healthy and unhealthy states, without implementing or patrolling either.",
       "clause": "challenge to compare designs.",
       "route_to": "challenge"
+    },
+    {
+      "prompt": "Compare two proposed ad budgets and forecast their payback; there are no live charges to classify.",
+      "clause": "challenge to compare designs.",
+      "route_to": "challenge"
+    },
+    {
+      "prompt": "Verify the single claim that this one tenant’s production route already serves revision 42; do not assess any release freeze.",
+      "clause": "Use prove-it to establish one claim or review a diff",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Execute the already-approved removal of these verified disposable snapshots and check the remaining backup state.",
+      "clause": "Use deliver-and-verify for authorized cleanup.",
+      "route_to": "deliver-and-verify"
     }
   ]
 }
