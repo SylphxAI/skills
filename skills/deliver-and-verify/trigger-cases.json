@@ -2,6 +2,18 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "An inspector dock narrows the editable pane without resizing the app window. Ship the pane breakpoint and verify typing state survives the mode switch.",
+      "clause": "UI breakpoints"
+    },
+    {
+      "prompt": "Fix a thumbnail grid that selects the phone layout from the window width instead of the width it gets next to the live filter panel.",
+      "clause": "UI breakpoints"
+    },
+    {
+      "prompt": "On live resize, a game inventory stays in its old layout one frame after a side panel opens. Fix it and verify both the transition and preserved selection.",
+      "clause": "UI breakpoints"
+    },
+    {
       "prompt": "Add an operator form that POSTs locally, then sends the browser to an external consent page; verify the redirect from the normal navigation entry.",
       "clause": "implementing or shipping a feature, bug fix"
     },

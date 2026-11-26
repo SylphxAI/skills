@@ -368,6 +368,16 @@ and the failed response still produces the intended recovery state. Measure
 shift at the swap across the whole viewport, including shared chrome that can
 move when a short result replaces a placeholder.
 
+For a responsive breakpoint, measure the container that owns the decision in
+its real host; a viewport-only test cannot distinguish container width from
+window width. Hold viewport width fixed while a sibling or parent moves the
+container across the threshold, and assert geometry and preserved user state
+after the host has committed the frame that consumes the new measurement.
+**Bad:** mount a fresh screen at each viewport width, or assert on the frame
+that only reports the old layout's new bounds. **Good:** capture both sides and
+the exact threshold on one live screen, and check the first frame separately
+if the claim includes avoiding a visible flash on resize.
+
 Measure the defect's actual geometry. Use rendered glyph ranges
 (`Range.getClientRects()` for DOM text) for the whole composite value (prefix,
 number and suffix), not its allocated container width. Single-line values must
