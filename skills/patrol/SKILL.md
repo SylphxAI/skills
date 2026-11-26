@@ -1,6 +1,6 @@
 ---
 name: patrol
-description: "Use when inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies; checking published store releases, live sites or social posts for stalled outward results after a reasonable delivery interval; checking external effects against the accountable owner's scope and authorized spending or change limits; or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon. Do NOT use when the task is internal transcript inspection, routine progress reports or ETA solicitation. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
+description: "Use when inspecting external production surfaces for unanswered customer inbox queues, official email notices and dual-store revenue discrepancies; checking published store releases, live sites or social posts for stalled outward results after a reasonable delivery interval; checking external effects against the accountable owner's scope and authorized spending or change limits; handing verified live defects to commercial operations; or replacing recurring LLM inbox polling with a zero-token file-watch trigger daemon. Do NOT use when the task is internal transcript inspection, routine progress reports or ETA solicitation. Use prove-it to establish one claim or review a diff, unblock to restore stalled work, author-item to file a new outcome and challenge to compare designs."
 ---
 
 # Patrol
@@ -57,6 +57,9 @@ A live change lasts from the first write until the last reader stops using the o
 Use the actual release, store-review, posting, settlement or support cycle and fresh external observations to judge progress. Work that just started or remains within that cycle needs no interruption. Only after a reasonable interval without the outward result, ask when it will appear or why the external surface has not advanced; do not solicit routine ETAs, milestone reports or internal explanations.
 
 ## Share external evidence without directing execution
+
+- Hand commercial operations only four verified facts for a live defect: (1) affected surface and cohort share, plus which surfaces were verified healthy; (2) whether the core path is completely down or partially affected, with the measured failure rate; (3) irreversible billing, data, legal, tenant-isolation or store-compliance risk; (4) evidence-backed time to a live fix, or unknown.
+- Leave ad pauses, sales restrictions and customer notices to commercial operations, which weighs the commercial error budget and limits any intervention to the affected scope.
 
 - Send a concise useful fact about the external object, discrepancy or scope mismatch and its authoritative source. State uncertainty; leave domain decisions and implementation with the accountable owner.
 - An acknowledgement confirms receipt only. Read the relevant authoritative source before answering substance or routing an issue; neither a quick reply nor a report label proves the facts.

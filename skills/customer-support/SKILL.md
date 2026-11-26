@@ -1,6 +1,6 @@
 ---
 name: customer-support
-description: "Use when handling official support: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, user accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, legal or safety escalations, social auto-redirects and SLA triage. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
+description: "Use when handling official support: sign-in or recovery failures, missing purchases, top-up, voucher or campaign-code inquiries, care requests, refunds, prices, invoices, own-total requests, disputed calculations or rankings, privacy or account access, complaints, user accusations, response times, feature availability, requests for a human, 24-hour messaging-window Web-UI fallback replies, drafting or reviewing VIP thanks, exclusive-tier/rank wording, care-mail titles/bodies or support transcripts, or support questions about the responder's AI identity, model or prompt, questions about private instructions, boundaries or supervisors of partner/client and family/friend assistants, localized live-incident inquiries, legal or safety escalations, social auto-redirects and SLA triage. Use ambassador for in-character ambassador or playmate companionship, author-item to file a bug outcome, deliver-and-verify to implement a fix, and clear-writing for general copy."
 ---
 
 # Customer support
@@ -481,9 +481,9 @@ Evaluate the applicable rules and compose their relevant parts.
 
 ## 4. Product incidents and game support
 
-Apply [silent-fix-first and zero-fault-admission protection](references/external-protection.md): verify settlement silently before replying, omit alerts to non-inquiring accounts, make zero forward promises, and report only present outcomes without admitting defects or repairs unless mandated by law via legal leadership. Keep odds, configuration,
-margin/cap formulas, source code, and other players' private data confidential.
-Answer an odds question only with "as shown in the in-game notice."
+Apply [silent-fix-first and zero-fault-admission protection](references/external-protection.md): verify settlement silently and report present outcomes without forward promises or internal details; preserve required disclosures. Keep odds, configuration, margins, caps, source code and other users’ data confidential. Answer odds questions only with "as shown in the in-game notice."
+For localized Amber friction, answer inbound cases individually and calmly confirm only the customer’s verified intact account, assets and payments. Do not issue blanket notices or interrupt healthy channels.
+Escalate irreversible payment, entitlement, data, privacy or legal breaches immediately as Red; route required contractual and statutory disclosures through the accountable owner.
 
 When the product's own operations team still handles support, route the case to
 that team and leave the player reply with it.
