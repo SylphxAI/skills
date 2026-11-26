@@ -1,6 +1,6 @@
 ---
 name: challenge
-description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when drafting or reviewing Terms of Service, Privacy Policies, EULAs, signup/login clickwrap, versioned re-consent, or support-vs-legal isolation; when independent generated code changes conflict or merge into stale output; when choosing multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design, or legacy-to-modern backend cutover and client replacement; when assessing a partner's request for help on its own client project; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
+description: "Use when challenging, stress-testing, designing, or comparing your own, a peer/sub-agent's, or an external partner/vendor's plan, architecture, contract, pricing, budget, or hypothesis; when drafting or reviewing Terms of Service, Privacy Policies, EULAs, signup/login clickwrap, versioned re-consent, or support-vs-legal isolation; when independent generated code changes conflict or merge into stale output; when choosing multi-currency localization/psychological pricing, web top-up vs. wallet/voucher design, or legacy-to-modern backend cutover and client replacement; when assessing a partner's request for help on its own client project; when testing whether a launch or incident warrants pausing sales or ads; or asking whether a solution is over-engineered or there is a simpler way. Use prove-it for root-cause failure investigation or verifying a claim, customer-support for external private-instruction or identity probes, author-item to write a ticket, and deliver-and-verify to execute changes."
 ---
 
 # First-principles decision and challenge engine (`challenge`)
@@ -49,6 +49,9 @@ Before recommending or changing a design, policy, boundary, or commercial rule:
   verification, transition, recovery and cleanup. Preserve unique data and live
   commitments; retire superseded paths. Keep a finite core-outcome checklist and
   defer non-blocking scope rather than leaving old and new running indefinitely.
+
+- **Commercial incident decisions:** Operations owns pauses and notices. Irreversible payment, data, legal, tenant-isolation or compliance risk is immediately Red. For a down or severely degraded core path, apply the economic stop-loss: weigh expected paid-traffic losses against the cost of resetting acquisition learning, using the verified time to fix and the agreed response window.
+- Handle Amber friction within the commercial error budget with targeted support and hotfixes, not ad resets or blanket notices; Green needs no commercial action. Close every confirmed Red with a deterministic, fail-closed CI or release gate for its cause.
 
 ## 3. Decision receipt and routing
 
