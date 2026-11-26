@@ -404,9 +404,26 @@
     {
       "prompt": "Check whether 99 percent named caller coverage on recorded counters proves complete capture across short-lived workers and a shared provider quota.",
       "clause": "verifying a live status or metric before reporting it"
+    },
+    {
+      "prompt": "Run an independent acceptance check of the published invoice export. Use the calculation contract and settlement records, not the implementer's fixtures.",
+      "clause": "independently testing a change"
+    },
+    {
+      "prompt": "Check the new replay viewer without the author's results. Use the replay specification to select valid and rejected inputs for the released build.",
+      "clause": "independently testing a change"
+    },
+    {
+      "prompt": "Can we remove a staging volume marked expired? The attachment list is truncated and a snapshot exists by name only.",
+      "clause": "checking whether a resource is safe to remove"
     }
   ],
   "negative": [
+    {
+      "prompt": "Carry out the authorized cleanup after the dependency and recovery checks already passed. Verify the removal afterward.",
+      "clause": "Use deliver-and-verify to publish or arm a PR or carry out changes.",
+      "route_to": "deliver-and-verify"
+    },
     {
       "prompt": "Arm this reviewed pull request at its exact head through the normal merge queue.",
       "clause": "Use deliver-and-verify to publish or arm a PR",
@@ -519,7 +536,7 @@
     },
     {
       "prompt": "Implement fresh nonterminal check publication before each external approval rerun.",
-      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
       "route_to": "deliver-and-verify"
     },
     {
@@ -534,7 +551,7 @@
     },
     {
       "prompt": "Implement a configurable upload-size limit and publish the endpoint change.",
-      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
       "route_to": "deliver-and-verify"
     },
     {
@@ -579,7 +596,7 @@
     },
     {
       "prompt": "Arm the reviewed pull request after its current required review and CI have passed.",
-      "clause": "Use deliver-and-verify to publish or arm a PR.",
+      "clause": "Use deliver-and-verify to publish or arm a PR",
       "route_to": "deliver-and-verify"
     },
     {
