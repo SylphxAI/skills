@@ -314,4 +314,4 @@ required historical dependencies are present after it.
 
 Use the [self-service credential and minimal handoff method](../deliver-and-verify/references/security.md#practices) for held TOTP, passkeys or a genuine human-only gate. Keep unaffected work moving. After 10 minutes without new disconfirming evidence, change the approach or run [independent probes](../swarm-fuse/SKILL.md). If no authorized route remains, route the dependency to its owner with the exact operation, error and UTC receipt.
 
-Route reusable lessons from recovery to [author-skill](../author-skill/SKILL.md); keep case-specific evidence local.
+Use [learn](../learn/SKILL.md) to route lessons from recovery; keep case-specific evidence local.

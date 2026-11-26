@@ -64,7 +64,7 @@ Use the actual release, store-review, posting, settlement or support cycle and f
 
 ## Autonomous Skill Distillation Gate (Completion / Exit Gate)
 
-Distill reusable lessons from detours, post-release defects and recurring blind spots. Use [`author-skill`](../author-skill/SKILL.md) to refine the owning skill when authorized; otherwise route the lesson to its owner.
+Use [learn](../learn/SKILL.md) to route lessons from detours, post-release defects and recurring missed checks to the layer that can prevent recurrence.
 
 ## Read safely
 

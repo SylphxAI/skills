@@ -38,7 +38,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | [`unblock`](skills/unblock/SKILL.md) | Restoring progress when work hits a blocker, CI/build failure, runner/env error, `"done but still broken"` report, or upstream dependency defect | *(Coordinates with `swarm-fuse` and `challenge`)* |
 | [`refactor`](skills/refactor/SKILL.md) | Splitting oversized files/modules/test suites, deleting dead code/flags, consolidating duplicate logic into one SSOT, or restructuring into vertical slices | `health.md` |
 | [`clear-writing`](skills/clear-writing/SKILL.md) | Drafting or rewriting user-facing replies, release notes, technical docs, partner emails, articles, or landing-page copy (`Audience × Purpose × Channel`) | `work-communication.md`, `articles-and-copy.md`, `terminology.md` |
-| [`author-skill`](skills/author-skill/SKILL.md) | Creating, refactoring, or auditing reusable `SKILL.md` files and their `references/` | `docs.md` |
+| [`learn`](skills/learn/SKILL.md) | Routing lessons from completed work, corrections, recurring problems, and maintenance findings; writing or auditing reusable skills | `skill-craft.md` |
 | [`customer-support`](skills/customer-support/SKILL.md) | Handling official customer support tickets, billing/refund remedies, account recovery, privacy requests, and statutory disclosures | `product-facts.md` |
 | [`ambassador`](skills/ambassador/SKILL.md) | Engaging users or players as an in-character brand or game ambassador (`大使`, such as `<ambassador_name>`), playmate companion, or VIP relationship host | `behavioral-operations-and-retention.md` |
 
@@ -124,8 +124,8 @@ run a blind evaluation of positive and negative prompts with the affected model
 and runtime when available. Keep expected answers and quoted clauses out of that
 evaluation's input, and record prompts, model/runtime, per-case decisions, and
 any confusion. A metadata-only model check is not an end-to-end automatic skill
-loading test. See [skill authoring](skills/author-skill/SKILL.md) for that evidence
-boundary.
+loading test. See [skill craft](skills/learn/references/skill-craft.md#author-and-verify-a-trigger)
+for that evidence boundary.
 
 ## License
 

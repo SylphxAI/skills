@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "The release is complete. What should we retain from the handoff that went well?",
+      "clause": "reviewing completed work for lessons"
+    },
+    {
+      "prompt": "A user corrected my assumption about their preferred report format. Where should I record that?",
+      "clause": "receiving a user correction"
+    },
+    {
+      "prompt": "We retried the same setup three times because we omitted a prerequisite. Where should we prevent this?",
+      "clause": "finding a recurring detour or missed check"
+    },
+    {
+      "prompt": "/hygiene found two copies of the same recovery instruction. Decide what should change.",
+      "clause": "acting on a /hygiene finding"
+    },
+    {
+      "prompt": "Consolidation flagged a repeated cross-session pattern for promotion. Decide whether it belongs beyond private memory.",
+      "clause": "reviewing a cross-turn pattern flagged for promotion"
+    },
+    {
+      "prompt": "Audit this SKILL.md against held-out activation and near-miss prompts.",
+      "clause": "auditing a reusable skill or its trigger cases."
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "Write a backlog ticket for the already specified checkout fix.",
+      "clause": "Use author-item to write a work ticket",
+      "route_to": "author-item"
+    },
+    {
+      "prompt": "Implement the specified checkout timeout fix and run the existing tests.",
+      "clause": "deliver-and-verify to implement a fix.",
+      "route_to": "deliver-and-verify"
+    },
+    {
+      "prompt": "Follow the existing runbook and close this routine handoff. Nothing unusual occurred.",
+      "clause": "Do NOT use when closing routine work with no lesson or simply applying existing guidance.",
+      "route_to": null
+    }
+  ]
+}

@@ -86,6 +86,24 @@ class SkillContractTests(unittest.TestCase):
         self.assertEqual(discovered, descriptions.keys())
         self.assertTrue(all(count >= 3 * len(discovered) for count in counts))
 
+    def test_learn_covers_reflection_moments_and_excludes_direct_work(self):
+        errors = []
+        descriptions = verifier.verify_skills_frontmatter(errors)
+        verifier.verify_trigger_cases(descriptions, errors)
+        self.assertEqual([], errors)
+        cases = json.loads((ROOT / 'skills/learn/trigger-cases.json').read_text())
+        positive = {case['clause'] for case in cases['positive']}
+        self.assertTrue({
+            'reviewing completed work for lessons',
+            'receiving a user correction',
+            'finding a recurring detour or missed check',
+            'acting on a /hygiene finding',
+            'reviewing a cross-turn pattern flagged for promotion',
+            'auditing a reusable skill or its trigger cases.',
+        } <= positive)
+        self.assertTrue({'author-item', 'deliver-and-verify', None} <=
+                        {case['route_to'] for case in cases['negative']})
+
     def test_caller_policy_covers_all_textual_skill_resources(self):
         policy = self.root / 'policy.json'
         policy.write_text(json.dumps({'patterns': [r'ExamplePersona', r'account-98765']}))

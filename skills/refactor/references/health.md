@@ -58,4 +58,4 @@ edit, or couples independent concepts.
 **Bad:** merge modules because a formatter touched both. **Good:** trace repeated
 edits for one rule through its consumers and compare that path after consolidation.
 
-[Code conventions](../../deliver-and-verify/references/code.md), [developer experience](../../deliver-and-verify/references/dx.md) and [documentation](../../author-skill/references/docs.md) provide the detailed methods.
+[Code conventions](../../deliver-and-verify/references/code.md), [developer experience](../../deliver-and-verify/references/dx.md) and [documentation](../../learn/references/skill-craft.md#documentation) provide the detailed methods.
