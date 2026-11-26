@@ -1,6 +1,6 @@
 ---
 name: deliver-and-verify
-description: "Use when secret scanners refuse, provisioning previews, binding or verifying public domains, changing source checkouts, SQL queries or fixtures, admission or access rules, database privileges, selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, builds or tests in a lease, native build failures, generating source, upgrading engine or SDK dependencies, benchmarking engines, recovery references or reconcilers, rotating Job secrets, changing resource sizing or retention, diagnostic redaction, browser consent, credential argv/FD/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
+description: "Use when secret scanners refuse, provisioning previews, binding or verifying public domains, changing source checkouts, SQL queries or fixtures, admission or access rules, database privileges, selected-source release inputs, publishing, editing or arming PRs, changing CI workflows or concurrency, selecting delivery subsets, enrolling disabled tests in CI, builds or tests in a lease, native build failures, UI breakpoints, generating source, upgrading engine or SDK dependencies, benchmarking engines, recovery references or reconcilers, rotating Job secrets, changing resource sizing or retention, diagnostic redaction, browser consent, credential argv/FD/output guards, implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change. Use challenge for a plan or architecture, prove-it for a review or evidence check, clear-writing for prose alone."
 ---
 
 # Deliver and verify
@@ -74,7 +74,7 @@ need independent expected strings and cases that expose locale and sign errors.
 When a control switches currencies or units, test the rendered value after a
 real selection: a locale-valid shorthand can still be ambiguous among available
 choices. Assert the qualifier separately from the unchanged amount or unit conversion.
-UI control and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
+UI control, responsive breakpoint, and renderer changes also use the [visual acceptance checks](references/parity.md#ui-coverage-geometry-and-painted-output), including engine components tested outside a complete app.
 When changing a rendered control or markup, also select the [affected artifact tests](references/dx.md#continuous-integration), including browser invariants that run only after merge.
 For 3D visual assets or image-based acceptance after a model or agent-runtime change, read
 [runtime-specific image inspection](references/parity.md#runtime-specific-image-inspection-and-3d-assets).
