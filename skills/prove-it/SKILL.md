@@ -1,26 +1,43 @@
 ---
 name: prove-it
-description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings or counting outcomes from batched traffic; judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer; or checking that a resource or bug is absent. Use deliver-and-verify to publish or arm a PR. Use unblock to restore currently failing work and challenge to compare designs. Full-read parse errors need no truncation investigation. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
+description: "Use when investigating a root-cause claim for a past failure; checking a claim that a reported failure cannot be reproduced; reviewing a PR, diff, proposal or contract for concrete defects; verifying a live status or metric before reporting it; verifying an Android license-tester purchase; verifying time-windowed usage or billing queries; reconciling conflicting readings or counting outcomes from batched traffic; judging parse or validation failures after a truncated or bounded read or when a successful response is rejected by its consumer; checking that a resource or bug is absent; independently testing a change; or checking whether a resource is safe to remove. Use deliver-and-verify to publish or arm a PR or carry out changes. Use unblock to restore currently failing work and challenge to compare designs. Full-read parse errors need no truncation investigation. Static general knowledge, arithmetic and routine acknowledgements do not need this skill."
 ---
 
 # Prove it
 
-Support a claim with the authoritative object at the layer being claimed. Cached badges, summaries, undeployed branches and unchecked reports can differ from that object.
+Use evidence from the layer of the claim: a cached badge, branch or report may differ from the authoritative object.
 
 When reviewing shared engines, verifiers or skills, test the [three architectural invariants](../challenge/references/architecture.md#mechanism-domain-boundaries-and-causal-guards): neutral mechanisms with caller-owned policy, zero domain leakage including fixtures and denylists, and exact causal guards. Allowed, denied and unreadable-required-state cases must reach the actual decision, without identity guessing or fail-open defaults.
 
+## Independent blind verification
+
+Start a separate verifier in parallel as inputs become available. Share the
+published contract and target, not the author's assertions, expected outputs or
+results. Derive positive and negative cases from the contract and compute expected
+outcomes independently from authoritative inputs. Exercise the real affected path:
+for a release claim, test the published artifact or serving path, not a mock or
+preview. Record the environment, exact revision, UTC observation time and expected
+versus observed results. Mark unrun cases unverified.
+
+**Wrong:** replay the author's expected export and a successful status response.
+**Right:** derive the expected rows from the documented rules and input data, then
+check the shipped export and a request the contract says must be refused.
+Deterministic acceptance checks can gate delivery, not another person's or
+agent's diff approval.
+
 ## Establish the evidence
 
-- Before claiming something is serving, deployed, merged, fixed or blocked, read its mutable status and name the object, version/revision and UTC read time; an immutable object already read can be reused at that exact version and scope. A cache reader can exit zero while an individual result says `stale: true`; check structured freshness, object identity/version and observation time rather than equating command success or a repository-level timestamp with current evidence. A stale observation cannot establish a current value or authorize a conditional write; any documented refresh or authoritative fallback stays within existing authority and the remaining read budget, without replaying completed stages or treating a quota/access refusal as staleness.
+- For a mutable claim, read the authoritative object and record its identity, revision and UTC observation time. Reuse immutable evidence only at the same version and scope. Exit zero or a repository timestamp does not override a per-object `stale: true`. Stale evidence proves neither current state nor a conditional-write precondition. Refresh or fall back only within existing authority and read budget; do not replay finished stages or mistake a quota or access refusal for staleness.
 - Start a failure investigation from a concrete request, job, pod or transaction and its governing code/configuration. Use population measurements to establish scope without substituting an aggregate for the failing event.
 - Before presenting a root cause, run the available check most likely to disprove it. If it cannot run, keep the explanation a hypothesis and name the missing check.
 - An intermittent failure that disappears in isolation can still be a product race: a removed object's queued work may target a replacement that reuses its identifier. Hold and release that continuation across replacement, separately from delaying a valid completion event beyond the test's sample; **wrong:** lengthen every wait, **right:** repair obsolete authority in product code, or wait for the promised observable state when only the test's timing assumption fails.
 - Read the authoritative object back after a mutation before claiming completion. A successful command or response alone establishes only that command's result.
-- A passing step or terminal child summary proves only its scope: a restarted test process can report zero assertion failures despite an earlier crash in the same operation. Bind the enclosing verdict to run-level failures, executed-test counts and retained pre-restart diagnostics before blaming build warnings, declaring the baseline flaky or retrying. When display and machine representations intentionally differ, enumerate and assert each surface independently in source and live output (for example, visible text, `tel:` href, JSON-LD `telephone` and analogous structured fields). A correct value on one surface or a whole-output normalization does not prove the others; spaced display text can pass while a machine field incorrectly retains those spaces. A failure in a verifier's own output can mask the real verdict, so keep safe diagnostics and the original exit status. A waiter on checks can hang on one stuck optional check, so list the non-terminal checks yourself when it passes its expected time. For pull request checks and merge claims, use the [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
-- Before citing a regression test, compare its named execution in the intended environment with an independently declared test population; rediscovering only surviving sources can hide an omitted test, while a passing sibling cannot establish that an ignored method ran. Bind diagnostic failures, framework results, process exit and execution receipts to the same success predicate, including skipped prerequisites; a printed failure with exit zero is not a pass. Give independent fixture scenarios distinct resource keys so an earlier success cannot satisfy a later negative case.
+- A clean restart can hide an earlier crash. Include run-level failures, executed counts, framework results and safe pre-restart diagnostics; preserve the original exit status if reporting fails. If a waiter overruns, list non-terminal checks, including optional ones. For merge claims, read [current pull request and queue state](#pull-request-checks-and-merge-queue-state).
+- Assert intended representations separately in source and live output (for example visible text, `tel:` href and JSON-LD `telephone`). Whole-output normalization can conceal a broken machine field.
+- Match named test executions and receipts in the intended environment to an independently declared population. Rediscovering survivors can hide omissions; a passing sibling proves nothing about an ignored test. Fail on diagnostic failures or skipped prerequisites even if the process exits zero. Give fixtures distinct resource keys so a previous success cannot satisfy a negative case.
 - A status list can say working or idle while the opposite is true. To learn whether a worker is moving, read the newest write in its own session or output, and compare times across workers; a stop at the same second across workers points to the platform.
-- Match the evidence to the claim: a verified witness can establish “at least this size succeeded under these conditions,” while an exact maximum or absence needs complete coverage. For a lower-bound acceptance decision, a bounded search can suffice when the relevant version, dimensions and consumer outcome match; a newly stored request is not a successful consumer result. **Wrong:** scan every historical upload to decide whether a smaller payload is supported; **Right:** verify a comparable successful upload, leaving the global maximum unknown.
-- Separate source completeness from completeness of the returned representation: `truncated=true`, byte/offset bounds, log tails or page limits leave unread content unknown, not malformed or absent. Complete the relevant JSON/YAML/CSV, log or API read through paging, offsets or a full read before drawing that conclusion; a fully read source that remains malformed is broken. **Wrong:** call source JSON corrupt when parsing a truncated prefix fails at the cut-off. **Right:** finish the read and validate the full source.
+- One comparable consumer success proves a lower bound, not a maximum or absence; those require complete coverage. Match the revision, relevant dimensions and consumer outcome. A stored request is not a consumer success. **Wrong:** scan every upload to prove a smaller payload is supported. **Right:** verify one comparable success and leave the maximum unknown.
+- `truncated=true`, byte/offset bounds, log tails or page limits leave unread content unknown, not malformed or absent. Finish the relevant JSON/YAML/CSV, log or API read by paging, offsets or a full read. A parse error at a truncated boundary proves nothing about the full source; an error after a complete read can establish malformed input.
 - Before a required full read with a time cap, multiply the measured rate by the population, so a cap can't silently end it part-way. Plan the continuation before launch and keep each pass's result separate.
 - Before judging a product from an offline render, emulator or reconstruction, compare that method with a real capture of the same scene.
 - A GPU name visible to the page (the WebGL renderer string or WebGPU adapter info) can be masked by browser fingerprint settings. Before calling a capture hardware-rendered, read the browser process's own GPU report (for example the DevTools Protocol `SystemInfo.getInfo` device and driver) or the device's driver output. A software rasterizer such as llvmpipe, SwiftShader or WARP means software rendering even when the page shows a hardware name.
@@ -39,7 +56,15 @@ When reviewing shared engines, verifiers or skills, test the [three architectura
   using the unchanged supported check, without rolling back live state. A passing
   replay needs evidence of the intended nonempty population, or a calibrated
   control establishing that an empty population is legitimate.
-- Keep source assertions, continuous integration (CI) enrollment and executed results separate. Read a worker's commit, push, test result or commercial record yourself before presenting it as verified; a writer's run remains attributed evidence, not the reviewer's own execution. An attributed report can be relayed with its unchecked status clear.
+- Distinguish source assertions, continuous integration (CI) enrollment and executed results. Read primary records before calling a worker’s result verified; attribute runs you did not execute and flag unchecked reports.
+
+For [cleanup acceptance cases](../deliver-and-verify/SKILL.md#establish-the-acceptance-cases),
+prove disposability from fresh runtime state, a complete dependency inventory and
+retention records. Show no live consumers, required rollback references, retention
+holds or irreplaceable data. Age labels, missing or partial inventories and
+snapshot names prove neither disposability nor recoverability. When relying on a
+retained copy, test an isolated restore and compare it with expected state.
+Preserve resources when evidence is missing; proof is not write authority.
 
 Before treating a continuity mismatch as lost state, verify that entity identity,
 units and balance basis agree, including whether rows represent separate instances.
@@ -361,11 +386,10 @@ When evidence overturns a claim, correct what was wrong, state the bounded verif
 
 ### Audit and post-merge review receipts
 
-Agent-native delivery does not require pre-merge human or agent PR review
-receipts to merge—deterministic CI checks gate merge, and live shipped surfaces
-are verified directly post-merge. When producing a signed audit, compliance, or
-external-repository review receipt, unread automated findings can invalidate a
-PASS and a stricter error path can break callers that depended on a fallback:
+[Independent verification](#independent-blind-verification) is not a pre-merge
+review receipt. For a signed audit, compliance or external-repository review,
+unread automated findings can invalidate a PASS; stricter errors can break callers
+that relied on a fallback:
 
 - Before any PASS, list every exact-head automated finding from check output, annotations and inline comments, marking each real with evidence or rebutted with the exact code that disproves it; unresolved real findings prevent PASS.
 - Record UTC observation and signing times from a clock or provider record, not an estimate; writing a receipt later does not move its observation time. Refresh the live head and its automated output in the same UTC minute you sign; a moved head voids the verdict.
