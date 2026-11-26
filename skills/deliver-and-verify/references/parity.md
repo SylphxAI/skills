@@ -565,9 +565,14 @@ visibility and action. Keep a negative control that fails when the control is
 absent or inactive; a test that still passes against a removed entry is not
 testing that entry. Exercise the full routed pointer-down and pointer-up sequence
 for missing activation and duplicate side effects; a direct callback test misses
-overlapping handlers on different phases of the same gesture. For account
-changes, reopen an authorized existing-session or guest fixture and verify the
-same canonical account and retained value.
+overlapping handlers on different phases of the same gesture. When an interaction
+replaces the focused subtree, read host focus after the new frame is presented
+and again after dismissing it. An accepted focus request can resolve against the
+previous tree and miss a control that has not mounted; the test must observe
+focus in the incoming control and its return to a reachable control.
+
+For account changes, reopen an authorized existing-session or guest fixture and
+verify the same canonical account and retained value.
 
 For custom-rendered browser controls, distinguish three observations:
 
