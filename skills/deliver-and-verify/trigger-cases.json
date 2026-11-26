@@ -2,16 +2,20 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "An archived task's disk is a cleanup candidate. Verify the task verdict, retention and recovery dependencies, then remove it if it is truly disposable.",
+      "clause": "retiring resources"
+    },
+    {
       "prompt": "An inspector dock narrows the editable pane without resizing the app window. Ship the pane breakpoint and verify typing state survives the mode switch.",
-      "clause": "UI breakpoints"
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Fix a thumbnail grid that selects the phone layout from the window width instead of the width it gets next to the live filter panel.",
-      "clause": "UI breakpoints"
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "On live resize, a game inventory stays in its old layout one frame after a side panel opens. Fix it and verify both the transition and preserved selection.",
-      "clause": "UI breakpoints"
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Add an operator form that POSTs locally, then sends the browser to an external consent page; verify the redirect from the normal navigation entry.",
@@ -23,11 +27,11 @@
     },
     {
       "prompt": "A native binding generator finds the library via pkg-config but fails on a transitive C header in a build runner where I cannot install packages system-wide.",
-      "clause": "native build failures"
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Bind the service to its production domain and verify that proxy-rewritten authority does not block indexing or alter canonical URLs.",
-      "clause": "binding or verifying public domains"
+      "clause": "binding public domains"
     },
     {
       "prompt": "Port the merchant checkout to a new runtime and verify that its price IDs and credential resolve in the same live provider environment before testing payment fulfillment.",
@@ -843,15 +847,15 @@
     },
     {
       "prompt": "Enroll disabled payment contract tests in CI and verify each named case executes against the required isolated database.",
-      "clause": "enrolling disabled tests in CI"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Add ignored game-server save recovery tests to the existing CI runner, repairing fixture drift while retaining the fault negative.",
-      "clause": "enrolling disabled tests in CI"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Enroll skipped database release tests through their existing proof modes and state the protections absent from the reduced fixture.",
-      "clause": "enrolling disabled tests in CI"
+      "clause": "changing CI workflows or concurrency"
     },
     {
       "prompt": "Add an operational alert manifest and ship its dedicated runbook together with the generated alert index.",
@@ -1575,7 +1579,7 @@
     },
     {
       "prompt": "Contain a bearer token exposed by a process listing, preserve its consumers during rotation and verify that the actual launcher keeps credentials out of argv.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Implement worker placement reservations that cover the execution object after target-side admission defaults.",
@@ -1723,7 +1727,7 @@
     },
     {
       "prompt": "Fix an HTTP wrapper protecting credentials whose password check can be bypassed by combined short options, while preserving output filenames that resemble flags.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Replace a database reader that executes inside the serving pod with an audited network client before removing exec permission.",
@@ -1927,15 +1931,15 @@
     },
     {
       "prompt": "Repair an HTTP fallback that puts a bearer API key in curl argv while preserving its large JSON stdin body and quota-refusal bytes.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Fix a database import command that exposes its password in process arguments without changing the SQL already supplied over stdin.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Ship an artifact signing launcher that keeps the signing credential out of child argv while preserving the binary artifact input stream.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Fix a SaaS worker that replays interrupted jobs ahead of deferred customer requests because its idle result was mistaken for an empty durable queue.",
@@ -1971,19 +1975,19 @@
     },
     {
       "prompt": "Build a zero-token external queue watcher that preserves independent measurements when one inventory read times out and keeps the queue gate unknown during the gap.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Ship a zero-token SaaS support queue watcher that keeps independent queues observed when one target becomes stale, and re-arms unknown alerts only after fresh evidence.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Repair a zero-token card-game support inbox watcher that repeatedly wakes on the same unknown state because successful requests return stale snapshots.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Implement per-target failure recovery in a zero-token external queue watcher, preserving healthy observations and stopping at the shared quota boundary.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Implement an async clipboard write that survives an A-to-B same-text interleaving by carrying entity and version identity across the held promise.",
@@ -2027,7 +2031,7 @@
     },
     {
       "prompt": "Implement bounded transcript recall with continuation when a single tool output exceeds the encoded response budget.",
-      "clause": "implementing or shipping a feature, bug fix, parser, export format, endpoint, checkout or voucher channel, synthetic probe, zero-token external inbox/queue watcher, or authorized operational, repository, marketing, or commercial change"
+      "clause": "implementing or shipping a feature, bug fix"
     },
     {
       "prompt": "Change a CI test invocation to explicit file globs that discover the intended tests on the pinned runtime version.",
@@ -2363,15 +2367,15 @@
     },
     {
       "prompt": "Ship a zero-token SaaS inbox watcher handoff that retains successor wake coverage after a one-shot subscription fires.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Implement a zero-token card-game support queue watcher that reconciles changes during successor watch registration without replaying completed work.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Repair a zero-token external inbox watcher handoff so observer failure or exit still wakes the responsible agent without recurring LLM polling.",
-      "clause": "zero-token external inbox/queue watcher"
+      "clause": "external inbox/queue watcher"
     },
     {
       "prompt": "Fix a SaaS scheduler where a slow timed pass starves notification-driven continuation work that remains ready; prove bounded service across every promised work class.",
@@ -2515,15 +2519,15 @@
     },
     {
       "prompt": "Admit a mobile platform-only bundle through the CLI and preserve downstream packaging when the other platform build is intentionally skipped.",
-      "clause": "selecting delivery subsets"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Select only one architecture for a native SDK bundle while ensuring joins and artifact downloads do not require the omitted target.",
-      "clause": "selecting delivery subsets"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Enable independently selectable SaaS deploy components without accepting missing or failed evidence from a selected component.",
-      "clause": "selecting delivery subsets"
+      "clause": "selected-source release inputs"
     },
     {
       "prompt": "Change asynchronous export admission so a compact request is refused before its claim and outbox commit when the worker's destination serializer exceeds a database byte limit.",
@@ -2635,15 +2639,15 @@
     },
     {
       "prompt": "Repair a SaaS credential-export CLI guard that accepts a forwarding launcher inheriting the terminal transcript descriptor while preserving a nested-shell private-file consumer.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Change a card-game operations wrapper to preserve byte-exact credential output into a program while refusing terminal aliases and a forwarding subprocess.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Fix a database configuration exporter whose safe-looking output filename aliases an existing transcript, without breaking authorized private-file exports.",
-      "clause": "credential argv/FD/output guards"
+      "clause": "credential guards"
     },
     {
       "prompt": "Regenerate schemas after merging a declaration change, preserving table and field semantics while refreshing every catalog and validator that records their hashes.",
