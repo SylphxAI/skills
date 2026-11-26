@@ -2,6 +2,10 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "The new sign-in API is being built. How can we split UI exploration, duplicate-code cleanup, and tests derived independently from the contract without waiting for the API?",
+      "clause": "running independent blind tests alongside delivery"
+    },
+    {
       "prompt": "Split this migration across twelve independent service modules so parallel workers can finish without stepping on each other.",
       "clause": "partitioning work across parallel agents or workers, processing independent shards, modules, repositories, channels, or time windows concurrently"
     },
