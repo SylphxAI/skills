@@ -9,13 +9,13 @@ Shorten the critical path to a verified outcome without creating conflicting wri
 
 ## Run ready work together
 
-- Start disjoint implementation, independent blind testing, UI/UX exploration, codebase slimming and deduplication together. Testers can derive checks from the contract while implementation proceeds; execution against a real surface waits only for that surface. See [independent evidence](../prove-it/SKILL.md#establish-the-evidence).
+- Start disjoint implementation, independent blind testing, UI/UX exploration, codebase slimming and deduplication together. Testers can derive checks from the contract while implementation proceeds; execution against a real surface waits only for that surface. See [independent evidence](../prove-it/SKILL.md#independent-blind-verification).
 - Serialize only the work that consumes an unfinished dependency, shares a write lock, or awaits an external clock. Agree on the minimum shared interface, then run implementations, callers and tests concurrently. Use one writer per mutable scope; parallel probes can feed one integrating writer.
 - Let independent work set width. Bound it by evidenced compute, memory, quota, spend or contention limits, not a worker-count rule. Add a coordinator only where a subsystem has its own dependency graph; execute cohesive work directly when a handoff adds no parallelism.
 
 ## Give workers the acceptance contract
 
-Parallel slices integrate on the first pass only when each worker can finish and verify its slice without guessing hidden context or colliding with peers. Every dispatched slice contract states four fields:
+Give each worker enough context to finish and verify its slice without guessing or colliding with peers:
 
 1. **Outcome and acceptance check:** The exact finished behavior, artifact, or question this slice owns and the observable positive and negative checks that prove it ([author-item](../author-item/SKILL.md)).
 2. **Disjoint write boundary:** Exact files, directories, branch/worktree, shard key range, or `read-only` constraint owned by this worker, plus adjacent targets it must not mutate.

@@ -48,6 +48,12 @@ hardening by likely harm. Do not invent an audit or approval stage for deferred 
   or secret links intentionally supplied by authorized users without blocking or
   redacting the inbound handoff. Use them in-process for the authorized operation;
   do not echo them or copy them into subsequent model requests.
+- Use held grants, vault-backed TOTP and authorized browser passkeys directly;
+  routine authentication is not a human gate. For an unsolved CAPTCHA, live
+  bank, biometric or statutory identity check, or a binding decision on new spend,
+  protected data deletion or an irreversible change, prepare everything reversible and
+  authorized first (aim for 99%). Hand off only the final human-only step
+  (aim for five seconds), then resume from the same session or receipt.
 - Keep secrets out of source and history, process arguments, URLs you emit, logs,
   transcripts, artifacts and third-party renderers. Contain unauthorized exposure
   and rotate or revoke at the provider; deleting the local copy is not revocation.
