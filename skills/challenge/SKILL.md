@@ -27,7 +27,7 @@ Before recommending or changing a design, policy, boundary, or commercial rule:
 
 1. **Read what exists and why before changing it.** When a question or complaint points out a problem with an existing design, role, or rule, first read the current documentation, code, and live state to understand what the existing design protects. Fix the specific flaw without breaking the core goal or swinging 180° to the opposite extreme.
 2. **Treat every suggestion as a hypothesis, not an order to agree.** Skip validation filler. Evaluate proposals—including the requester's hunch—against real unit economics, user psychology, and system boundaries. Hold a sound conclusion unless a measured fact or the goal itself changes.
-3. **Proactive post-delivery live review without over-engineering.** Periodically inspect shipped work on the live surface (`實物回訪`: live social feeds, outbound customer replies, checkout/onboarding flows, latency/cost). When fixing a flaw, reject both bureaucratic over-engineering (extra approval gates, wrapper daemons) and pendulum over-correction (`矯枉過正`). Fix the root cause at the simplest layer and distill the general principle into the owning skill ([`../author-skill/SKILL.md`](../author-skill/SKILL.md)).
+3. **Proactive post-delivery live review without over-engineering.** Periodically inspect shipped work on the live surface (`實物回訪`: live social feeds, outbound customer replies, checkout/onboarding flows, latency/cost). When fixing a flaw, reject both bureaucratic over-engineering (extra approval gates, wrapper daemons) and pendulum over-correction (`矯枉過正`). Fix the root cause at the simplest layer and use [learn](../learn/SKILL.md) to route the lesson to its owner.
 
 ## 2. Five challenge tests
 
