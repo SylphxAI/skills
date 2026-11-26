@@ -2,12 +2,16 @@
   "version": 1,
   "positive": [
     {
+      "prompt": "Live checkout is dropping paid entitlements across the affected region; the failure is confirmed. Contain the harm and restore service without losing orders.",
+      "clause": "containing a verified critical production incident"
+    },
+    {
       "prompt": "Regeneration passes, but the publishing hook rejects the installed schema compiler version. Restore the hook without changing which tests run.",
-      "clause": "the guard reports a missing pinned tool"
+      "clause": "reports a missing pinned tool"
     },
     {
       "prompt": "Source publication stalls inside its pre-push guard while fetching required immutable history, even after the outer tool timeout was extended. Restore publication without disabling validation.",
-      "clause": "publication stalls inside a pre-push guard"
+      "clause": "a publication guard stalls"
     },
     {
       "prompt": "An artifact verification wrapper times out before assertions because its inner manifest fetch has a shorter deadline. Restore the same guarded verification with all required inputs retained.",
@@ -159,7 +163,7 @@
     },
     {
       "prompt": "The tool adapter cannot start before dispatch, but the documented capability server may still be available under the same identity. Restore the requested operation without changing its grants.",
-      "clause": "a tool adapter fails before execution"
+      "clause": "its adapter fails before execution"
     }
   ],
   "negative": [

@@ -1,11 +1,9 @@
 ---
 name: unblock
-description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing: a promised fix still fails, a call is refused, a tool fails to launch, a tool adapter fails before execution, authority is missing, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, publication stalls inside a pre-push guard or the guard reports a missing pinned tool, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
+description: "Use when restoring a task, deployment or CI/build run that has actually stalled or is failing, or containing a verified critical production incident: a promised fix still fails, a call is refused, a tool fails to launch or its adapter fails before execution, a runner hits a resource limit, a wrapper or test timeout leaves no compiler or assertion output, a publication guard stalls or reports a missing pinned tool, a queue/review stops progressing, a pull request has no CI run after a push, a completion watch stays pending after its target finishes, or an environment disappears with unpushed work. Use prove-it and challenge for attribution of a past failure without restoration. A job making normal progress or waiting within its documented external cycle needs no intervention."
 ---
 
 # Unblock Stalled or Failing Work
-
-Use this skill to restore a task, CI run, merge queue entry, or deployment that has actually stalled or failed.
 
 When an environment disappears or is about to be retired, preserve stranded
 work using [references/stranded-work.md](references/stranded-work.md) before
@@ -299,7 +297,11 @@ increase the budget.
 measure discovery/startup separately from business execution, and fix the phase
 or resource policy the data identifies.
 
-## 3. Ship a Reversible Workaround When the Durable Fix Is Slow
+## Contain verified critical production harm
+
+Activate the narrowest authorized maintenance or reversible control immediately to stop user or financial harm. Preserve data, ledger integrity, operator access and healthy tenants. Race a forward fix and clean rollback in parallel from the same evidence; keep validation environments disjoint and one production writer. Promote whichever first verifies safe recovery in a representative environment; a rollback that cannot preserve intervening writes is not a candidate. Confirm recovery on the actual affected live paths before lifting containment. Reconcile temporary runtime changes with declared configuration; remove the workaround after the durable repair verifies.
+
+For a slower durable fix without a critical incident, a scoped reversible repair can restore the affected behavior within existing grants; name its removal condition.
 
 Incremental synchronization can preserve old gaps because it trusts the current
 baseline. When restoring incomplete state, choose a mode that can recover data
@@ -308,18 +310,8 @@ including historical or private recovery roots in scope, before clearing recover
 metadata. **Bad:** declare recovery from a successful refresh; **good:** prove the
 required historical dependencies are present after it.
 
-When live user harm is occurring or the upstream engine/platform fix will take longer than the operational window:
-1. **Apply the smallest supported reversible control now:** Use the product's API, feature flag, routing weight, or GitOps sync to restore service immediately while preserving all user data and ledger integrity.
-2. **Drive the durable fix to completion:** Open and merge the source repair in the owning repository, verify it live, and remove the temporary workaround in the same delivery cycle.
+## Pivot when evidence stops
 
-## 4. Escalate or Switch Method After 10 Minutes Without New Evidence
+Use the [self-service credential and minimal handoff method](../deliver-and-verify/references/security.md#practices) for held TOTP, passkeys or a genuine human-only gate. Keep unaffected work moving. After 10 minutes without new disconfirming evidence, change the approach or run [independent probes](../swarm-fuse/SKILL.md). If no authorized route remains, route the dependency to its owner with the exact operation, error and UTC receipt.
 
-If 10 minutes of investigation produce no new disconfirming evidence:
-- Change the diagnostic angle or launch parallel read-only checks across the competing hypotheses (`../swarm-fuse/SKILL.md`).
-- If an external dependency is genuinely unavailable and no workaround exists within current authority, record the exact failing endpoint, timestamp, and error receipt, and hand off or escalate with that concrete evidence.
-
-## 5. Autonomous Skill Distillation Gate (Completion / Exit Gate)
-
-Before declaring an unblocking task or incident restoration complete:
-- Check whether resolving the blocker required a **second-attempt detour** (an initial approach hit an undocumented trap and a fallback approach was needed), fixed a **post-ship defect or rework** (an existing verification checklist missed a dimension), or surfaced a **recurring cross-agent blind spot**.
-- Whenever any of the three occurred, distill the role-neutral governing mechanism into the owning skill in the shared skills repository following [`../author-skill/SKILL.md`](../author-skill/SKILL.md)—refining the existing skill in place 90% of the time rather than creating fragmented micro-skills—as part of completion, without waiting for a human prompt.
+Route reusable lessons from recovery to [author-skill](../author-skill/SKILL.md); keep case-specific evidence local.
