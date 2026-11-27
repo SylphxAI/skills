@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "positive": [
+    {
+      "prompt": "Survey how public libraries lend ebooks across five countries and synthesize the differences from official program records.",
+      "clause": "broad surveys"
+    },
+    {
+      "prompt": "Investigate urban heat mitigation from the angles of measured cooling, maintenance costs and neighborhood access, then write one sourced report.",
+      "clause": "multi-angle investigations"
+    },
+    {
+      "prompt": "Compare all four major parliamentary archives for historical coverage, metadata and licensing using their official documentation.",
+      "clause": "exhaustive comparisons"
+    }
+  ],
+  "negative": [
+    {
+      "prompt": "What year did the James Webb Space Telescope launch?",
+      "clause": "Do NOT use when a simple factual lookup can be answered directly.",
+      "route_to": null
+    },
+    {
+      "prompt": "Verify the claim that yesterday’s deployment reduced p95 latency by 20% against the production metrics.",
+      "clause": "Use prove-it to verify a specific claim",
+      "route_to": "prove-it"
+    },
+    {
+      "prompt": "Get independent platform and finance views before we decide whether to renew the hosting contract.",
+      "clause": "swarm-fuse for independent views that can change a decision",
+      "route_to": "swarm-fuse"
+    },
+    {
+      "prompt": "Split the implementation of these independent importers among agents with separate write scopes.",
+      "clause": "fan-out for partitioning execution into disjoint work.",
+      "route_to": "fan-out"
+    }
+  ]
+}
