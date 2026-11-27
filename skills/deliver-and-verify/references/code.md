@@ -392,6 +392,12 @@ a row-lock queue can place the second operation behind the first waiter, so
 counting only direct blockers can miss real contention. A sleep, eventual success
 or empty uncalibrated join alone does not prove the intended interleaving. Assert
 the final conserved state and rollback behavior as well as completion.
+In a deterministic history, an observed wait must yield to the step that can
+release it. Waiting for the statement result first can turn a valid history into
+a test-runner timeout or blur a statement error into a commit error. **Wrong:**
+drain the blocked operation before advancing its blocker. **Right:** after
+observing the wait, run the releasing step, then collect the operation result
+and check statement and commit outcomes separately.
 
 A sequence-backed feed cursor orders allocation, not commit: a delayed writer
 can publish below a cursor already advanced past it. Where consumers resume
