@@ -31,6 +31,7 @@ Opinionated, scenario-driven Agent Skills and colocated reference methodologies 
 | [`corporate-governance`](skills/corporate-governance/SKILL.md) | Preparing and verifying statutory filings, accounts, tax calendars, entity separation, recurring spend and contract renewals or cancellations | *(Uses primary entity records and external-write verification)* |
 | [`game-economy`](skills/game-economy/SKILL.md) | Choosing pack contents or prices, changing caps or growth lines, budgeting gifts, checking inflation, or diagnosing falling game sales | `economy-model.md`, `offers-gifts-and-experiments.md`, `sources.md` |
 | [`deliver-and-verify`](skills/deliver-and-verify/SKILL.md) | Executing, finishing, merging, deploying, and verifying a change end-to-end (Limit Work in Progress, Release Scope Management, Upstream-First, Complete Replacement) | `parity.md`, `code.md`, `auth.md`, `security.md`, `integration.md`, `identifiers.md`, `performance.md`, `dx.md` |
+| [`deep-research`](skills/deep-research/SKILL.md) | Researching broad surveys, multi-angle investigations, or exhaustive comparisons in parallel and synthesizing a sourced report | *(Uses primary sources and independent research tracks)* |
 | [`prove-it`](skills/prove-it/SKILL.md) | Reviewing a PR/diff, auditing contract/SLA evidence, or verifying a live status/readiness claim against primary sources | *(Uses Stage 1 acceptance criteria and live system queries)* |
 | [`patrol`](skills/patrol/SKILL.md) | Inspecting external production/customer/account/revenue surfaces for stalled outward results, scope mismatches or discrepancies | *(External evidence, not internal progress demands; the accountable owner changes the result)* |
 | [`fan-out`](skills/fan-out/SKILL.md) | Decomposing multi-part goals along causal dependency boundaries for maximum parallel execution across disjoint write scopes without arbitrary worker-count caps | *(Coordinates with `author-item`, `swarm-fuse`, and `deliver-and-verify`)* |
@@ -129,7 +130,9 @@ for that evidence boundary.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE), except where otherwise noted. The `deep-research` skill is adapted
+from [Google Gemini’s upstream skill](https://github.com/google-gemini/demolab/blob/199811528de7dab339492ea05036cccbd73e27de/skills/deep-research/SKILL.md)
+and distributed under the [Apache License 2.0](skills/deep-research/LICENSE).
 
 ## Caller-owned content policy
 
